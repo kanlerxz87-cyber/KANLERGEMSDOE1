@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hypotheses · KANLERGEMSDOE1</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header>
+  <div class="wrap" style="padding-bottom:0">
+    <div class="brand">KANLERGEMSDOE1</div>
+    <h1>Five hypotheses ranked before code</h1>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="executive-summary.html">Executive summary</a>
+      <a href="how-to-submit.html">How to submit</a>
+      <a href="hypotheses.html">Hypotheses</a>
+      <a href="research.html">Why 0.2778</a>
+      <a href="sources.html">Sources</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <p>Pre-registered this session. Ranked by expected DTI improvement vs implementation cost. Top three were run (budget: 3 experiments). None used the H19-5 / D2.8 ranking field.</p>
+  <div class="card">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Hypothesis</th><th>Layers</th><th>Physical signature</th><th>Why unmapped, not catalogue</th><th>Differs from this repo / GEMSDOE32</th><th>Expected DTI / cost</th><th>Result</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><b>H1 IEDR</b> — Independent-earthquake dilatation residual (selected lane)</td>
+          <td>Band 16 <code>ieq_n100a15</code>, band 8 <code>geod_dilaterate</code>, band 3 <code>tmi_hg</code>, band 19 slope (soft)</td>
+          <td>Linear ridges of independent (catalogue-decoupled) seismicity in dilatational crust along magnetic contacts</td>
+          <td>INGENIOUS independent EQ density is built to residualize events not tied to known faults. Qfaults is photogeologic/scarp-biased; seismogenic blind faults still generate ieq ridges.</td>
+          <td>No module here or in GEMSDOE32 uses ieq as the <em>primary</em> ranker with field-ranked √10 Poisson. Champion is raster-order √8 on H19-5 scarps.</td>
+          <td>Highest expected / low cost</td>
+          <td>Run. HOLDOUT-DTI 0.00617 vs champ 0.00452 (CI overlap). SGMC 0.034 vs 0.096. Unique. <span class="bad">negative</span></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><b>H2 HTSI</b> — Hydrothermal temperature + paleo-sinter + ieq corridors</td>
+          <td>GDR #1391 well/spring <code>temp_c</code> (row/col already on grid; <code>dist_known_fault_px</code> never used), paleo sinter/travertine, bands 16, 8, 17</td>
+          <td>Gaussian thermal halos and sinter/travertine deposits aligned with dilatation and independent seismicity</td>
+          <td>Blind geothermal upflow (Desert Peak / McGinness Hills analogues) leaks heat and deposits sinter without a mappable Quaternary scarp. Faulds et al. note step-overs host a large fraction of Great Basin systems.</td>
+          <td>GEMSDOE32 H38 fused GDR as one of 53 channels with LiDAR. This is a thermal-primary corridor, no LiDAR.</td>
+          <td>Medium / low (CSV already restored)</td>
+          <td>Run. HOLDOUT-DTI 0.00628. SGMC 0.030. Unique. <span class="bad">negative</span></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><b>H3 COND-RESID</b> — Conductivity residual after elevation nuisance regression</td>
+          <td>Band 17 <code>cond_surf</code>, 12 <code>det_elev</code>, 19 slope, 8 dilatation</td>
+          <td>Hessian ridges of conductivity after removing the topographic/lithologic trend</td>
+          <td>Hydrothermal clay and brine along fractures are conductive independent of topography. Raw conductivity edges hug playas and range fronts that are already mapped.</td>
+          <td>Prior work used raw <code>cond_edge</code> as one GBM channel. Explicit OLS residualisation then ridge extraction was proposed as R6-3 in GEMSDOE32 and not shipped as a solo emission here.</td>
+          <td>Medium / low</td>
+          <td>Run. HOLDOUT-DTI 0.00426 (below champ). Best SGMC of the three (0.064) still trails 0.096. Unique. <span class="bad">negative</span></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>H4 — Independent vs dependent EQ discordance</td>
+          <td>Bands 16 and 10</td>
+          <td>Places where ieq is high and deq is low: seismicity not explained by the mapped network</td>
+          <td>Same as H1, more aggressive residual</td>
+          <td>Not previously a solo emission</td>
+          <td>Similar to H1, extra leak risk if deq inverted</td>
+          <td>Not run (budget 3). Folded conceptually into H1.</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>H5 — 2 m temperature-probe shapefile corridors</td>
+          <td>INGENIOUS 2 m probe zip (restored)</td>
+          <td>Shallow soil-temperature lineaments</td>
+          <td>Same geothermal-blind logic as H2, denser probes in some valleys</td>
+          <td>Would need shapefile reader (fiona) not in the template stack</td>
+          <td>Needs extra dependency; H2 already uses the on-grid well temperatures</td>
+          <td>Not run. Free official source is GDR #1391 (already on disk). Deferred to avoid a private fork of the template environment.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Official geothermal structure references: Faulds et al. on step-overs (OSTI 1148722); INGENIOUS compilation DOI 10.15121/1881483; GeoDAWN USGS ScienceBase <a href="https://www.sciencebase.gov/catalog/item/657e1d85d34e23d3533209f7">657e1d85d34e23d3533209f7</a>.</p>
+  <footer>Lane stayed on H1. H2 and H3 were the other two budgeted experiments.</footer>
+</main>
+</body>
+</html>

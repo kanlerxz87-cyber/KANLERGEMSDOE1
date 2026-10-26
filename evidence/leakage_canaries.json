@@ -1,0 +1,51 @@
+{
+  "evaluator": "sklearn.roc_auc_score symmetric",
+  "limit": 0.9,
+  "features": {
+    "ieq_n100a15": {
+      "symmetric_auc": 0.56816916125,
+      "pass": true
+    },
+    "deq_n100a15": {
+      "symmetric_auc": 0.5492526293750001,
+      "pass": true
+    },
+    "geod_dilaterate": {
+      "symmetric_auc": 0.527891820625,
+      "pass": true
+    },
+    "tmi_hg": {
+      "symmetric_auc": 0.527787488125,
+      "pass": true
+    },
+    "det_elev_slope": {
+      "symmetric_auc": 0.559651360625,
+      "pass": true
+    },
+    "det_elev": {
+      "symmetric_auc": 0.51394665375,
+      "pass": true
+    },
+    "cond_surf": {
+      "symmetric_auc": 0.515682136875,
+      "pass": true
+    },
+    "geod_2ndinv": {
+      "symmetric_auc": 0.56844038875,
+      "pass": true
+    },
+    "rtp": {
+      "symmetric_auc": 0.5027030075000001,
+      "pass": true
+    },
+    "iso_grav_anom": {
+      "symmetric_auc": 0.5397024500000001,
+      "pass": true
+    },
+    "depth_to_base_surf": {
+      "symmetric_auc": 0.5097043918749999,
+      "pass": true
+    }
+  },
+  "failed": []
+}
