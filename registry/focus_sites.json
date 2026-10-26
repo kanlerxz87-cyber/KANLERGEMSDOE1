@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-10-26",
+  "notice": "Historical file-to-score associations are user-reported and unverified; they are not organizer receipts or forecasts. Snapshot references are pinned and may be superseded.",
+  "sites": [
+    {
+      "id": "GEMSDOE24",
+      "reported_claim": "0.2477",
+      "history_id": "h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "ref": "07345ea0604953d7efb858d9cfbc21e20c7aca0b",
+      "path": "docs/downloads/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+      "site": "https://buffedlizard55-lab.github.io/GEMSDOE24/",
+      "sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+      "bytes": 1632732
+    },
+    {
+      "id": "GEMSDOE25",
+      "reported_claim": "0.2600",
+      "history_id": "dotted-h19-5-d2-8-20261002-e56ea318af89-nan",
+      "repo": "buffedlizard55-lab/GEMSDOE25",
+      "ref": "04333cc3fbf7486c56e0324fd07aee684be614dc",
+      "path": "docs/downloads/gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+      "site": "https://buffedlizard55-lab.github.io/GEMSDOE25/",
+      "sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+      "bytes": 1603424
+    },
+    {
+      "id": "GEMSDOE27",
+      "reported_claim": "0.2449",
+      "history_id": "topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan",
+      "repo": "buffedlizard55-lab/GEMSDOE27",
+      "ref": "b8dd298e10884afffa05436673ac73aeaf850b8c",
+      "path": "docs/downloads/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+      "site": "https://buffedlizard55-lab.github.io/GEMSDOE27/",
+      "sha256": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+      "bytes": 1635084
+    },
+    {
+      "id": "GEMSDOE28",
+      "reported_claim": "0.2710",
+      "history_id": "h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan",
+      "repo": "buffedlizard55-lab/GEMSDOE28",
+      "ref": "12ec4fea4c97a7887a7ca8a06f9bd94c7609ea07",
+      "path": "docs/downloads/gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif",
+      "site": "https://buffedlizard55-lab.github.io/GEMSDOE28/",
+      "sha256": "5556aa1438fd67376b60d5ffc99228ec09dcc11a8408298a743ccb88d6163641",
+      "bytes": 1590848
+    },
+    {
+      "id": "GEMSDOE30",
+      "reported_claim": "0.2600",
+      "history_id": "d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca",
+      "repo": "buffedlizard55-lab/GEMSDOE30",
+      "ref": "3d5bec2af5f29291617f97c9e2dfe443be6f55c3",
+      "path": "docs/downloads/gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif",
+      "site": "https://buffedlizard55-lab.github.io/GEMSDOE30/",
+      "sha256": "8cf893ead5667df21d3288a9968c35fd5385c425b029d82ee71d311715b129fd",
+      "bytes": 806758
+    },
+    {
+      "id": "GEMSDOE31",
+      "reported_claim": "0.2708",
+      "history_id": "h27-4-solo-d28-20261004-8acb75e1-nan",
+      "repo": "buffedlizard55-lab/GEMSDOE31",
+      "ref": "cf13282fcd86290f1539f0a86446c8ba7205a79b",
+      "path": "docs/downloads/gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif",
+      "site": "https://buffedlizard55-lab.github.io/GEMSDOE31/docs/",
+      "sha256": "07b6db440535404bb41ec8ddc797713e200d308e3da35937393efde5eb84bc40",
+      "bytes": 199214
+    },
+    {
+      "id": "GEMSDOE32",
+      "reported_claim": "0.2778",
+      "history_id": "h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros",
+      "repo": "buffedlizard55-lab/GEMSDOE32",
+      "ref": "012e17b2a115c3c0d5e7885bea625bf9657c99fc",
+      "path": "docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+      "site": "https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html",
+      "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "bytes": 219065
+    },
+    {
+      "id": "GEMSDOE33",
+      "reported_claim": "0.2632",
+      "history_id": "h33d-analog-tip-stepover-r30-20261004-cb490425926e",
+      "repo": "buffedlizard55-lab/GEMSDOE33",
+      "ref": "f52533110fe62cd03e77f1228e9e5ecac412c463",
+      "path": "docs/downloads/GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif",
+      "site": "https://buffedlizard55-lab.github.io/GEMSDOE33/",
+      "sha256": "87f857d505e23247e991ccfab2cbe9f49a04df4f9c8028dce7ea261554690757",
+      "bytes": 917544
+    },
+    {
+      "id": "GEMSDOE36",
+      "reported_claim": "0.2750",
+      "history_id": "anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros",
+      "repo": "buffedlizard55-lab/GEMSDOE36",
+      "ref": "c9ad59ec6f969ed931d089a03044c1567a633e84",
+      "path": "docs/downloads/gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif",
+      "site": "https://buffedlizard55-lab.github.io/GEMSDOE36/docs/",
+      "sha256": "e15891020b9c57056ac7fa874a5e506fbd6ed9314a4ea8e73af0753887a3708a",
+      "bytes": 318190
+    }
+  ]
+}

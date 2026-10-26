@@ -1,0 +1,11 @@
+# Competition data and regenerated local caches are never committed.
+/data/
+/.cache/
+/.venv/
+/vendor-cache/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.DS_Store

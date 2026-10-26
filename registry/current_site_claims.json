@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "notice": "Two research files described as eligible on sibling pages; this is not approval here. The current GEMSDOE31 page also contains conflicting no-submit banners.",
+  "candidates": [
+    {
+      "id": "GEMSDOE27-H31",
+      "repo": "buffedlizard55-lab/GEMSDOE27",
+      "ref": "bef7ae8e8f63b69d299c9214c75988c8f5055f9c",
+      "path": "docs/downloads/gems27-h31-drcg-wl-celf28-20261026-cf8e1bbef244-allfinite.tif",
+      "sha256": "2c002b02792419864bd3b29a218e543cb41e3f07b3b57c29ef35c6e39e184bfe",
+      "bytes": 825820,
+      "site": "https://buffedlizard55-lab.github.io/GEMSDOE27/"
+    },
+    {
+      "id": "GEMSDOE31-H31X",
+      "repo": "buffedlizard55-lab/GEMSDOE31",
+      "ref": "776bf4668a8c10631908c9bba9443a8f11ce5036",
+      "path": "docs/downloads/gemsdoe31-h31x-piedmont-junction-37654-20261026-5a956da9-zeros.tif",
+      "sha256": "eff2b18e37378d0f0a2f5c8e22fc68e7c359ee161114502a985135e03dd217f9",
+      "bytes": 147703,
+      "site": "https://buffedlizard55-lab.github.io/GEMSDOE31/docs/"
+    }
+  ]
+}

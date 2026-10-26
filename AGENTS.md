@@ -1,0 +1,7 @@
+# Repository guidance for future sessions
+
+1. Read `README.md`, `research/project-brief.md`, `research/preregistration.md`, `research/review-and-next-steps.md`, and `evidence/run-card.json` before proposing or running an experiment. The project brief is a reconstructed requirements record, not a verbatim original prompt.
+2. The current decision is negative: no approved contest GeoTIFF, no measured holdout score and no selected slot. Do not present historical files as new submissions or promote a file without the user's documented gates and a separate selector.
+3. Reuse the pinned shared template unchanged; do not privately fork its evaluator, writer or release gate. Resolve shared defects and registry scope at the source, not with local exemptions. Never rebuild the missing pre-existing feature stack as though it were the required cache.
+4. Keep local competition data, extracted upstream templates, generated caches and large rasters ignored. Authenticate organizer provenance before using the mirrored sample as authoritative. Never automate DrivenData monitoring or bypass access controls.
+5. Run the tests and recheck evidence, dates, format, source links, leakage, saved-byte validation and weekly availability before changing a published status. `scripts/build_site.py` is intentionally negative-only; a future promotion requires a separately reviewed selector, not a text edit.

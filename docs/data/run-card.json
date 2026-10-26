@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-10-26",
+  "hypothesis": "HC3: cross-edge hydrochemical contrasts may locate previously unmapped permeable or sealing faults beneath cover.",
+  "mechanism": "Compare independent well/spring temperature and chemistry residuals across a coherent magnetic or gravity edge, correcting for spatial trend and sampling effort; use no full-catalogue distance feature.",
+  "named_non_fault_mimic": "Aquifer mixing or stratigraphic contact unrelated to faulting, compounded by preferential well sampling.",
+  "assigned_lane": "No explicit single method paragraph was supplied; HC3 is a locally proposed lane, not an externally assigned lane.",
+  "experiments_run": 0,
+  "budget": "At most three experiments or two hours; no experiment was started after the preflight capacity failure.",
+  "holdout": {
+    "label": "HOLDOUT-DTI",
+    "evaluator_version": null,
+    "withheld_positives": null,
+    "value": null,
+    "ci95": null,
+    "status": "NOT RUN: required shared feature stack is missing, the sample is unauthenticated, the shared preview gate and holdout bookkeeping have reproduced defects, and 37,654 dots cannot pass the literal lattice rule."
+  },
+  "leakage_canaries": {
+    "status": "NOT RUN",
+    "max_auc": null
+  },
+  "registry": {
+    "surface_spearman": null,
+    "surface_overlap": null,
+    "final_spearman": null,
+    "final_overlap": null,
+    "candidate_status": "No candidate surface or dots generated; no complete-registry uniqueness claim.",
+    "lattice_footprint_coverage_within_3px": 0.9987132726822701,
+    "lattice_outside_3px_cells": 6649,
+    "minimum_possible_overlap_at_37654_dots": 0.8234184947150369,
+    "first_dot_count_impossible_under_70_percent_limit": 22164,
+    "evidence": "evidence/focus-site-audit-20261026.json"
+  },
+  "raster_sha256": null,
+  "validator_output": {
+    "status": "NOT RUN: no candidate raster exists",
+    "no_nan_inside_footprint": null,
+    "values_in_0_1": null,
+    "crs_match": null,
+    "shape_match": null,
+    "transform_match": null,
+    "organizer_acceptance": null,
+    "single_band_float32": null,
+    "no_nodata_inside_footprint": null,
+    "no_infinity_inside_footprint": null,
+    "outside_footprint_encoding": null,
+    "saved_bytes_reopened_and_hashed": null
+  },
+  "submission_name": null,
+  "submission_note": "No candidate generated; research blocked. Do not submit.",
+  "estimated_leaderboard_score": null,
+  "weekly_slot_selected": false,
+  "weekly_slot_availability": "unknown without the authenticated submission page",
+  "verdict": "negative",
+  "shared_upstream_issues": [
+    "https://github.com/buffedlizard55-lab/GEMSDOE32/issues/42",
+    "https://github.com/buffedlizard55-lab/GEMSDOE32/issues/41",
+    "https://github.com/buffedlizard55-lab/GEMSDOE32/issues/37"
+  ]
+}

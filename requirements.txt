@@ -1,0 +1,5 @@
+# Evaluation and audit dependencies. The model/evaluator itself is the pinned upstream template.
+numpy>=1.26,<3
+scipy>=1.11,<2
+rasterio>=1.3,<2
+pytest>=8,<10

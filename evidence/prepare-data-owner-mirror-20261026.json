@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "prepared_utc": "2026-10-26T21:41:39+00:00",
+  "grid": {
+    "epsg": 32611,
+    "height": 3730,
+    "width": 3292,
+    "total_cells": 12279160,
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "pixel_size_m": [
+      100.0,
+      100.0
+    ]
+  },
+  "counts": {
+    "footprint_valid_pixels": 5167373,
+    "outside_footprint_pixels": 7111787,
+    "positive_catalogue_label_pixels": 60988,
+    "negative_in_footprint_pixels": 5106385,
+    "total_sentinel_band_pixels_inside_footprint": 58171,
+    "unique_footprint_pixels_with_any_sentinel": 3073
+  },
+  "source_hashes": {
+    "training_features.tif": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+    "labels.tif": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+    "sample_submission.tif": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc"
+  },
+  "bands": [
+    {
+      "index": 1,
+      "name": "mag_anom",
+      "finite_in_footprint": 5164312,
+      "sentinel_in_footprint": 3061,
+      "min": -1052.0047607421875,
+      "p05": -204.36949157714844,
+      "median": -57.68793487548828,
+      "p95": 162.7369384765625,
+      "max": 2109.447509765625
+    },
+    {
+      "index": 2,
+      "name": "rtp",
+      "finite_in_footprint": 5164312,
+      "sentinel_in_footprint": 3061,
+      "min": -2786.299560546875,
+      "p05": -332.47589111328125,
+      "median": -137.22166442871094,
+      "p95": 153.74588012695312,
+      "max": 4508.76025390625
+    },
+    {
+      "index": 3,
+      "name": "tmi_hg",
+      "finite_in_footprint": 5164312,
+      "sentinel_in_footprint": 3061,
+      "min": 0.004909869749099016,
+      "p05": 1.6395492553710938,
+      "median": 13.155465126037598,
+      "p95": 93.85163116455078,
+      "max": 2200.4365234375
+    },
+    {
+      "index": 4,
+      "name": "geod_2ndinv",
+      "finite_in_footprint": 5164312,
+      "sentinel_in_footprint": 3061,
+      "min": 1.2000000476837158,
+      "p05": 2.5,
+      "median": 19.90778923034668,
+      "p95": 46.20000076293945,
+      "max": 87.45342254638672
+    },
+    {
+      "index": 5,
+      "name": "iso_grav_anom_slope",
+      "finite_in_footprint": 5164312,
+      "sentinel_in_footprint": 3061,
+      "min": 0.0013825353235006332,
+      "p05": 0.02875160053372383,
+      "median": 0.10218460857868195,
+      "p95": 0.27035272121429443,
+      "max": 0.6517290472984314
+    },
+    {
+      "index": 6,
+      "name": "tc",
+      "finite_in_footprint": 5164300,
+      "sentinel_in_footprint": 3073,
+      "min": 2.9534237384796143,
+      "p05": 11.806571960449219,
+      "median": 18.481700897216797,
+      "p95": 25.58231544494629,
+      "max": 88.56654357910156
+    },
+    {
+      "index": 7,
+      "name": "geod_shearrate",
+      "finite_in_footprint": 5164312,
+      "sentinel_in_footprint": 3061,
+      "min": 0.0,
+      "p05": 0.0,
+      "median": 9.699999809265137,
+      "p95": 29.143348693847656,
+      "max": 54.400001525878906
+    },
+    {
+      "index": 8,
+      "name": "geod_dilaterate",
+      "finite_in_footprint": 5164312,
+      "sentinel_in_footprint": 3061,
+      "min": -16.5,
+      "p05": -2.850332498550415,
+      "median": 5.5,
+      "p95": 19.200000762939453,
+      "max": 34.52448272705078
+    },
+    {
+      "index": 9,
+      "name": "tmi_vg",
+      "finite_in_footprint": 5164312,
+      "sentinel_in_footprint": 3061,
+      "min": -7.650597095489502,
+      "p05": -0.2846248149871826,
+      "median": -0.008997071534395218,
+      "p95": 0.31916630268096924,
+      "max": 20.510923385620117
+    },
+    {
+      "index": 10,
+      "name": "deq_n100a15",
+      "finite_in_footprint": 5164312,
+      "sentinel_in_footprint": 3061,
+      "min": 0.0,
+      "p05": 180.8000030517578,
+      "median": 622.7999877929688,
+      "p95": 8631.3828125,
+      "max": 4962515.0
+    },
+    {
+      "index": 11,
+      "name": "iso_grav_anom_vg",
+      "finite_in_footprint": 5164312,
+      "sentinel_in_footprint": 3061,
+      "min": -18.164581298828125,
+      "p05": -2.696582317352295,
+      "median": -0.07213491946458817,
+      "p95": 2.606743335723877,
+      "max": 12.578903198242188
+    },
+    {
+      "index": 12,
+      "name": "det_elev",
+      "finite_in_footprint": 5164312,
+      "sentinel_in_footprint": 3061,
+      "min": -589.9837036132812,
+      "p05": -330.6675109863281,
+      "median": -75.57621002197266,
+      "p95": 450.23626708984375,
+      "max": 1469.9127197265625
+    },
+    {
+      "index": 13,
+      "name": "iso_grav_anom",
+      "finite_in_footprint": 5164312,
+      "sentinel_in_footprint": 3061,
+      "min": -45.75756072998047,
+      "p05": -26.093978881835938,
+      "median": -7.26103401184082,
+      "p95": 7.737759590148926,
+      "max": 24.232954025268555
+    },
+    {
+      "index": 14,
+      "name": "tmi",
+      "finite_in_footprint": 5164312,
+      "sentinel_in_footprint": 3061,
+      "min": -2178.27783203125,
+      "p05": -298.6368713378906,
+      "median": -124.8157730102539,
+      "p95": 140.07701110839844,
+      "max": 4506.14111328125
+    },
+    {
+      "index": 15,
+      "name": "depth_to_base_surf",
+      "finite_in_footprint": 5164312,
+      "sentinel_in_footprint": 3061,
+      "min": -14.837310791015625,
+      "p05": 6.208613395690918,
+      "median": 316.3645324707031,
+      "p95": 1881.2606201171875,
+      "max": 7135.306640625
+    },
+    {
+      "index": 16,
+      "name": "ieq_n100a15",
+      "finite_in_footprint": 5164312,
+      "sentinel_in_footprint": 3061,
+      "min": 236.8000030517578,
+      "p05": 312.5,
+      "median": 755.7000122070312,
+      "p95": 2723.60009765625,
+      "max": 7869.5
+    },
+    {
+      "index": 17,
+      "name": "cond_surf",
+      "finite_in_footprint": 5164312,
+      "sentinel_in_footprint": 3061,
+      "min": 0.1937037855386734,
+      "p05": 1.8359887599945068,
+      "median": 2.885897636413574,
+      "p95": 3.9114627838134766,
+      "max": 4.969292640686035
+    },
+    {
+      "index": 18,
+      "name": "iso_grav_anom_hg",
+      "finite_in_footprint": 5164312,
+      "sentinel_in_footprint": 3061,
+      "min": -15.441243171691895,
+      "p05": -3.3952438831329346,
+      "median": 0.037620771676301956,
+      "p95": 3.296633005142212,
+      "max": 12.856057167053223
+    },
+    {
+      "index": 19,
+      "name": "det_elev_slope",
+      "finite_in_footprint": 5164312,
+      "sentinel_in_footprint": 3061,
+      "min": 0.001103136339224875,
+      "p05": 0.16759774088859558,
+      "median": 3.749262809753418,
+      "p95": 25.336517333984375,
+      "max": 62.64591598510742
+    }
+  ]
+}
