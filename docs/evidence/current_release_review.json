@@ -7,5 +7,16 @@
   "best_holdout_dti": 0.006168701520087212,
   "champion_holdout_dti": 0.00451537871535044,
   "champion_live_owner_report": 0.2778,
-  "public_leaderboard_snapshot": {"rank1": 0.4437, "who": "xiaofanhu", "date": "2026-10-26"}
+  "public_leaderboard_snapshot": {
+    "rank1": 0.4437,
+    "who": "xiaofanhu",
+    "date": "2026-10-26"
+  },
+  "audit_status": "QUARANTINED_NOT_PROMOTION_EVIDENCE",
+  "audit_reasons": [
+    "IR-IEDR-OOF: full-catalogue exclusion applied before holdout scoring",
+    "IR-IEDR-UNIQ: prohibited lattice exemption in historical uniqueness gate",
+    "IR-IEDR-CANARY: feature AUC was catalogue-wide, not fold-local hide-and-recover"
+  ],
+  "promotion_authorized": false
 }

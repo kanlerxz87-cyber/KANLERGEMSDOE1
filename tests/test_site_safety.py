@@ -1,79 +1,78 @@
+import importlib.util
 import json
 import unittest
-from html.parser import HTMLParser
 from pathlib import Path
+from html.parser import HTMLParser
+
+import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
+spec = importlib.util.spec_from_file_location('runner', ROOT / 'scripts/run_iedr_experiments.py')
+runner = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(runner)
 
 
 class Links(HTMLParser):
     def __init__(self):
         super().__init__()
-        self.hrefs = []
-        self.disabled_download_button = False
+        self.links = []
 
     def handle_starttag(self, tag, attrs):
-        attributes = dict(attrs)
-        if tag == "a" and "href" in attributes:
-            self.hrefs.append(attributes["href"])
-        if tag == "button" and "disabled" in attributes:
-            # The visible label is tested separately in the page text.
-            self.disabled_download_button = True
+        a = dict(attrs)
+        for key in ('href', 'src'):
+            if key in a:
+                self.links.append(a[key])
 
 
-class SiteSafetyTests(unittest.TestCase):
-    def read_html(self, name):
-        return (ROOT / name).read_text(encoding="utf-8")
+class SafetyTests(unittest.TestCase):
+    def test_canonical_site_and_redirects(self):
+        for page in ('index', 'executive-summary', 'hypotheses', 'sources'):
+            self.assertIn('docs/' + page + '.html', (ROOT / (page + '.html')).read_text())
+            s = (ROOT / 'docs' / (page + '.html')).read_text()
+            self.assertIn('DO NOT SUBMIT', s)
+            self.assertIn('historical evidence quarantined', s)
 
-    def test_landing_page_has_prominent_negative_release_gate(self):
-        html = self.read_html("index.html")
-        self.assertIn("NO TIFF IS CLEARED FOR DOWNLOAD OR SUBMISSION", html)
-        self.assertIn("Download unavailable", html)
-        self.assertIn("no candidate raster", html)
-        parser = Links()
-        parser.feed(html)
-        self.assertTrue(parser.disabled_download_button)
+    def test_local_links(self):
+        for page in list(ROOT.glob('*.html')) + list((ROOT / 'docs').glob('*.html')):
+            p = Links()
+            p.feed(page.read_text())
+            for link in p.links:
+                if ':' in link or link.startswith(('#', '//')):
+                    continue
+                path = page.parent / link.split('#')[0].split('?')[0]
+                self.assertTrue(path.exists(), f'{page}: {link}')
 
-    def test_executive_summary_covers_all_nine_sites_and_blocks_download(self):
-        html = self.read_html("executive-summary.html")
-        for site in ("GEMSDOE24", "GEMSDOE25", "GEMSDOE27", "GEMSDOE28", "GEMSDOE30", "GEMSDOE31", "GEMSDOE32", "GEMSDOE33", "GEMSDOE36"):
-            with self.subTest(site=site):
-                self.assertIn(site, html)
-        self.assertIn("Score estimate", html)
-        self.assertIn("Unavailable — no admissible HOLDOUT-DTI", html)
-        self.assertIn("DO NOT DOWNLOAD OR SUBMIT A FILE", html)
+    def test_all_nine_sites(self):
+        s = (ROOT / 'docs/executive-summary.html').read_text()
+        for n in (24, 25, 27, 28, 30, 31, 32, 33, 36):
+            self.assertIn('GEMSDOE' + str(n), s)
 
-    def test_no_site_page_links_directly_to_a_historical_submission_tiff(self):
-        for name in ("index.html", "executive-summary.html", "hypotheses.html", "sources.html"):
-            parser = Links()
-            parser.feed(self.read_html(name))
-            with self.subTest(page=name):
-                self.assertFalse(
-                    any(
-                        "/docs/downloads/" in href.lower()
-                        and href.lower().split("?", 1)[0].endswith((".tif", ".tiff"))
-                        for href in parser.hrefs
-                    ),
-                    "Historical submission TIFFs must not appear as download actions. User-supplied input/sample mirrors may be listed for provenance.",
-                )
+    def test_lattice_has_no_exemption(self):
+        f = np.ones((8, 8), dtype=bool)
+        dots = np.zeros_like(f)
+        dots[::2, ::2] = True
+        result = runner.uniqueness_report(np.arange(64).reshape(8, 8), dots, f, [
+            dict(name=runner.LATTICE_HINT, dots=dots, n=int(dots.sum()))])
+        self.assertFalse(result['unique_vs_genuine_detectors'])
+        self.assertTrue(result['rows'][0]['duplicate_by_overlap'])
 
-    def test_negative_run_card_is_well_formed_and_has_no_claimed_result(self):
-        card = json.loads((ROOT / "data/run-card.json").read_text(encoding="utf-8"))
-        self.assertEqual(card["verdict"], "negative")
-        self.assertFalse(card["promotion_authorized"])
-        self.assertEqual(card["holdout_dti"]["status"], "NOT_RUN")
-        self.assertIsNone(card["holdout_dti"]["value"])
-        self.assertIsNone(card["raster_sha256"])
-        self.assertEqual(card["validator_output"]["status"], "NOT_RUN")
-        self.assertIsNone(card["submission_name"])
-        self.assertIsNone(card["submission_note"])
+    def test_missing_registry_is_fail_closed(self):
+        f = np.ones((8, 8), dtype=bool)
+        for registry in ([], [dict(name='broken', error='unreadable')]):
+            result = runner.uniqueness_report(f, f, f, registry)
+            self.assertFalse(result['unique_vs_genuine_detectors'])
 
-    def test_hypothesis_page_does_not_claim_validation_or_viability(self):
-        html = self.read_html("hypotheses.html")
-        self.assertIn("not yet viable", html)
-        self.assertIn("Expected DTI improvement:</strong> not estimated", html)
-        self.assertIn("No experiment has started", html)
+    def test_legacy_runner_stops_before_loading_data(self):
+        with self.assertRaisesRegex(RuntimeError, 'quarantined'):
+            runner.main()
+
+    def test_cards_quarantined(self):
+        for p in (ROOT / 'evidence').glob('run_card_h*.json'):
+            c = json.loads(p.read_text())
+            self.assertFalse(c['ok_to_submit'])
+            self.assertEqual(c['audit_status'], 'QUARANTINED_NOT_PROMOTION_EVIDENCE')
+            self.assertLessEqual(len(c['submission_note']), 140)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()

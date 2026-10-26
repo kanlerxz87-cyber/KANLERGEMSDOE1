@@ -154,7 +154,7 @@ def uniqueness_report(surface: np.ndarray, mask: np.ndarray, foot: np.ndarray, r
                 "overlap_3px": ov,
                 "is_calibration_lattice": is_lattice,
                 "duplicate_by_rho": (abs(rho_surf) > RHO_LIMIT) or (abs(rho_dots) > RHO_LIMIT),
-                "duplicate_by_overlap": (ov > OVERLAP_LIMIT) and (not is_lattice),
+                "duplicate_by_overlap": ov > OVERLAP_LIMIT,
                 "lattice_overlap_note": "IR-42-UNIQ-01 pigeonhole; champion also ~0.999" if is_lattice else None,
             }
         )
@@ -165,7 +165,7 @@ def uniqueness_report(surface: np.ndarray, mask: np.ndarray, foot: np.ndarray, r
     lattice = [x for x in genuine if x["is_calibration_lattice"]]
     return {
         "n_registry": len(genuine),
-        "unique_vs_genuine_detectors": len(flags) == 0,
+        "unique_vs_genuine_detectors": bool(genuine) and len(genuine) == len(rows) and len(flags) == 0,
         "n_flags": len(flags),
         "flags": flags,
         "worst_rho": worst_rho,
@@ -180,6 +180,14 @@ def strip_internal(d: dict) -> dict:
 
 
 def main() -> int:
+    # IR-IEDR-OOF: this legacy path emits using full labels before hide/recover.
+    # Re-scoring that final mask cannot recover predictions suppressed at hidden
+    # faults. Do not overwrite archived evidence with another inadmissible run.
+    raise RuntimeError(
+        "Legacy runner quarantined: full-catalogue placement invalidates holdout. "
+        "Implement per-cell visible-only OOF placement and fold-local canaries "
+        "before new experiments; see docs/audit-20261026.md."
+    )
     ddir = data_dir()
     ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     evid = evidence_dir()
@@ -216,7 +224,7 @@ def main() -> int:
     (evid / "leakage_canaries.json").write_text(json.dumps({"evaluator": "sklearn.roc_auc_score symmetric", "limit": CANARY_LIMIT, "features": canaries, "failed": leak_fail}, indent=2) + "\n")
     if leak_fail:
         print("LEAKAGE CANARY FAILED:", leak_fail)
-        # still continue but those features must not be trusted as the sole ranker
+        raise RuntimeError("Leakage canary failed; stop before surface construction")
 
     print("[4] load holdout context")
     ctx = load_holdout_context(ddir)
@@ -257,6 +265,11 @@ def main() -> int:
         # leakage of the SURFACE itself
         surf_auc = leakage_auc(surf, labels, foot)
         print(f"    surface canary AUC={surf_auc:.4f}")
+        surface_check = uniqueness_report(surf, np.zeros_like(foot), foot, registry)
+        if not surface_check["unique_vs_genuine_detectors"]:
+            raise RuntimeError("Surface duplicate or incomplete registry: stop before placement")
+        if surf_auc > CANARY_LIMIT:
+            raise RuntimeError("Surface leakage canary failed: stop before placement")
         mask = ranked_poisson(surf, allow_b2, MIN_DIST_SQRT10, N_TARGET)
         n_dots = int(mask.sum())
         print(f"    dots={n_dots} min_dist={MIN_DIST_SQRT10:.4f} B={B_COLLAR}")
@@ -301,7 +314,9 @@ def main() -> int:
             note = f"KANLER H3 cond-resid ridge s3.17 B2 {n_dots}d HR={dti:.4f} | research"
         if len(note) > 140:
             note = note[:140]
-        verdict = "promote" if (beat_point and uniq["unique_vs_genuine_detectors"] and surf_auc <= CANARY_LIMIT and not leak_fail) else "negative"
+        # A research runner never authorizes a live slot. A separate selector must
+        # inspect admissible OOF evidence, provenance, complete registry and quota.
+        verdict = "negative"
         # protocol: promote only if beats control on holdout. We still write the TIF.
         meta = {
             "candidate_id": hyp_id,

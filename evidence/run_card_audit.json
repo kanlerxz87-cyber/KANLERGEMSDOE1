@@ -1,0 +1,31 @@
+{
+  "hypothesis": "Audit of inherited IEDR lane; no new scientific experiment",
+  "mechanism": "Inspect full-catalogue placement, strict registry gates, and fresh TIFF byte/range checks",
+  "named_non_fault_process": "Mining-induced or injection seismicity can mimic natural fault seismicity",
+  "holdout_dti": {
+    "status": "NOT_ADMISSIBLE",
+    "value": null,
+    "ci95": null,
+    "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.0",
+    "n_withheld_positives": null,
+    "reason": "Full-catalogue placement preceded scoring; no new holdout run"
+  },
+  "correlation_overlap_vs_registry": {
+    "status": "FAIL",
+    "reason": "Archived lattice overlap exceeds 70%; exception removed",
+    "fresh_surface_correlation": null
+  },
+  "raster_sha256": null,
+  "validator_output": {
+    "status": "PARTIAL",
+    "no_nan_anywhere": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match": "historical reference only; official template unavailable",
+    "report": "evidence/artifact_audit.json"
+  },
+  "submission_name": null,
+  "submission_note": "Audit only; prior holdout and uniqueness clearance revoked. DO NOT SUBMIT.",
+  "verdict": "negative",
+  "promotion_authorized": false,
+  "experiments_run": 0
+}
