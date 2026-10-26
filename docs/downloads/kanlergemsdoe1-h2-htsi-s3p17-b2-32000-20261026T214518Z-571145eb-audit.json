@@ -1,0 +1,120 @@
+{
+  "candidate_id": "H2_HTSI",
+  "slug": "h2-htsi-s3p17-b2-32000",
+  "content_digest8": "571145eb",
+  "description": "KANLER H2 HTSI thermal+paleo+ieq s3.17 B2 32000d HR=0.0063 | research",
+  "submission_note_zeros": "KANLER H2 HTSI thermal+paleo+ieq s3.17 B2 32000d HR=0.0063 | research",
+  "submission_note_nan": "KANLER H2 HTSI thermal+paleo+ieq s3.17 B2 32000d HR=0.0063 | research",
+  "zeros_tif": {
+    "filename": "kanlergemsdoe1-h2-htsi-s3p17-b2-32000-20261026T214518Z-571145eb-zeros.tif",
+    "size_bytes": 140721,
+    "sha256": "da8d6f42d95ca4a1b525745283f34a47e85d2daf195c08ff8d919003b27522ae",
+    "mode": "zeros",
+    "geometry_reference": "/home/user/KANLERGEMSDOE1/.cache/gems_data/sample_submission.tif",
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "nodata_repr": "None",
+    "emitted_positive_pixels": 32000,
+    "footprint_fraction": 0.006193,
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_finite_pixels": 5167373,
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 1.0,
+    "full_grid_finite_pixels": 12279160,
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "zero_on_catalogue_leakage": true,
+      "validator_range_0_1_guaranteed": true
+    },
+    "all_checks_passed": true
+  },
+  "nan_tif": {
+    "filename": "kanlergemsdoe1-h2-htsi-s3p17-b2-32000-20261026T214518Z-571145eb-nan.tif",
+    "size_bytes": 271960,
+    "sha256": "397e2c9b89edd62ecc2fb38c563317a359b09cdfd3482d131afc0ff9a50483c8",
+    "mode": "nan",
+    "geometry_reference": "/home/user/KANLERGEMSDOE1/.cache/gems_data/sample_submission.tif",
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "nodata_repr": "nan",
+    "emitted_positive_pixels": 32000,
+    "footprint_fraction": 0.006193,
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_finite_pixels": 5167373,
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 1.0,
+    "full_grid_finite_pixels": 5167373,
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "zero_on_catalogue_leakage": true,
+      "validator_range_0_1_guaranteed": true
+    },
+    "all_checks_passed": true
+  },
+  "holdout_metrics": {
+    "catalogue_hidden_mean": 0.006280305749689602,
+    "catalogue_hidden_per_quadrant": {
+      "NW": 0.0026872365253279218,
+      "NE": 0.0023580821417410087,
+      "SW": 0.010449600010277295,
+      "SE": 0.0035594271552328166
+    },
+    "sgmc_prevalence_calibrated_dti": 0.02075395826051785,
+    "drift_corrected_holdout_mean": 0.006280305749689602,
+    "drift_corrected_per_quadrant": {
+      "NW": 0.0026872365253279218,
+      "NE": 0.0023580821417410087,
+      "SW": 0.010449600010277295,
+      "SE": 0.0035594271552328166
+    },
+    "predicted_leaderboard_dti": null,
+    "ei_drift_corrected": null,
+    "slot_decision": "SELECTOR-REVIEW"
+  }
+}

@@ -1,39 +1,105 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8">
-<title>Executive summary & how to submit · KANLERGEMSDOE1</title>
-<style>body{font-family:system-ui,Arial,sans-serif;max-width:980px;margin:2rem auto;padding:0 1rem;line-height:1.55;color:#14202b}.bad{background:#fdecec;border:2px solid #c0392b;padding:1rem;border-radius:8px}code{background:#eef2f5;padding:.1rem .3rem;border-radius:4px}li{margin:.35rem 0}</style></head><body>
-<h1>Executive summary &amp; exactly how to make a submission</h1>
-<div class="bad"><strong>Current status: 🔴 NO FILE FROM THIS REPO IS OK TO SUBMIT.</strong>
-The unique file on the <a href="index.html">home page</a> is a research download (verdict <code>negative</code>).
-The steps below are the complete, correct procedure for the day a future file passes every
-automated gate and a separate selector approves a weekly slot. Following them today with the
-current file would spend a slot on an unproven candidate — do not.</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Executive summary · KANLERGEMSDOE1</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<aside style="border:3px solid #b91c1c;padding:1rem;margin:1rem;background:#fff;color:#111" role="alert"><strong>AUTOMATED AUDIT: DO NOT SUBMIT — historical evidence quarantined.</strong><p>The numerical results below are archived diagnostics, not admissible HOLDOUT-DTI or live-score estimates. Full-catalogue masking preceded placement; leakage canaries were not fold-local. The prior uniqueness gate exempted a lattice whose overlap exceeded the mandatory limit. No uniqueness clearance survives the strict protocol. Leaderboard numbers below are inherited, not freshly verified organizer receipts.</p><p><a href="audit-20261026.md">Audit and next steps</a> · <a href="evidence/artifact_audit.json">Automated artifact checks</a></p></aside>
+<header>
+  <div class="wrap" style="padding-bottom:0">
+    <div class="brand">KANLERGEMSDOE1</div>
+    <h1>Executive summary</h1>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="executive-summary.html">Executive summary</a>
+      <a href="how-to-submit.html">How to submit</a>
+      <a href="hypotheses.html">Hypotheses</a>
+      <a href="research.html">Why 0.2778</a>
+      <a href="sources.html">Sources</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <div class="banner">
+    <strong>🔴 DO NOT SUBMIT any file from this repository to DrivenData.</strong>
+    <p>Research GeoTIFFs exist; strict uniqueness clearance is revoked. They are not a holdout win against the 0.2778 champion on 95% CI or SGMC. An inherited, unverified leaderboard snapshot reports 0.4437 (INHERITED UNVERIFIED snapshot 2026-10-26).</p>
+  </div>
 
-<h2>The gates a file must pass before step 1 (all automated, no human inspector)</h2>
-<ol>
-<li><strong>Format/range:</strong> vendor <code>gems57.validate</code> — single band, float32, 3730×3292, EPSG:32611, exact sample-submission transform, no NaN/Inf anywhere, every value in [0,1] (all-finite build; this prevents the portal error “Predicted values must be in range [0, 1]”), 0 outside the footprint, 0 dots on the mapped catalogue.</li>
-<li><strong>Leakage canary:</strong> every new feature alone AUC ≤ 0.90 (two-sided) on withheld positives.</li>
-<li><strong>Holdout efficacy:</strong> pooled HOLDOUT-DTI beats the same-evaluator control with paired spatial-block 95% CI &gt; 0, and does not regress on the off-catalogue SGMC discovery proxy vs the champion.</li>
-<li><strong>Uniqueness:</strong> pre-placement surface |Spearman| ≤ 0.90 and final-dot 3-px overlap ≤ 70% vs every discrete registry raster (spacing-5 lattice blanket disclosed separately, IR-K1).</li>
-<li><strong>Selector approval:</strong> a separate step checks the weekly cap on the submission page. This repo never contacts DrivenData.</li>
-</ol>
-<p>Current file: gates 1 ✅, 2 ✅, 4 ✅ — gate 3 ❌ (SGMC 0.0563 vs champion 0.0954) → <strong>DO NOT SUBMIT</strong>.</p>
+  <h2>Nine-site historical comparison (user-supplied reports, not organizer-confirmed)</h2><p>No live-score estimate is available for any new file. No historical entry is recommended for resubmission. Exact-hash receipt verification and complete cross-site uniqueness remain unavailable.</p><table><thead><tr><th>Site</th><th>Reported best historical file family</th><th>User-reported leaderboard result (unverified)</th><th>New-file estimated score / uniqueness / upload</th></tr></thead><tbody><tr><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE24/">GEMSDOE24</a></td><td>h25-1-dotted-h19-5-d1-5</td><td>0.2477</td><td>Unavailable / not cleared / DO NOT SUBMIT</td></tr><tr><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE25/">GEMSDOE25</a></td><td>dotted-h19-5-d2-8</td><td>0.2600</td><td>Unavailable / not cleared / DO NOT SUBMIT</td></tr><tr><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE27/">GEMSDOE27</a></td><td>topo-gap-closure-t-v2-on-d1-5</td><td>0.2449</td><td>Unavailable / not cleared / DO NOT SUBMIT</td></tr><tr><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE28/">GEMSDOE28</a></td><td>h36-1-rung30-blind-r1</td><td>0.2710</td><td>Unavailable / not cleared / DO NOT SUBMIT</td></tr><tr><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE30/">GEMSDOE30</a></td><td>d28-poisson300m-offcat-44090</td><td>0.2600</td><td>Unavailable / not cleared / DO NOT SUBMIT</td></tr><tr><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE31/">GEMSDOE31</a></td><td>h27-4-solo-d28</td><td>0.2708</td><td>Unavailable / not cleared / DO NOT SUBMIT</td></tr><tr><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE32/">GEMSDOE32</a></td><td>h33-h33-2-b2</td><td>0.2778</td><td>Unavailable / not cleared / DO NOT SUBMIT</td></tr><tr><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE33/">GEMSDOE33</a></td><td>h33d-analog-tip-stepover-r30</td><td>0.2632</td><td>Unavailable / not cleared / DO NOT SUBMIT</td></tr><tr><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE36/">GEMSDOE36</a></td><td>anderson-geothermal-pinn-38854</td><td>0.2750</td><td>Unavailable / not cleared / DO NOT SUBMIT</td></tr></tbody></table>
+<h2>Decision table — which file, what number, is it unique?</h2>
+  <p class="note">HOLDOUT-DTI is labeled with evaluator version, withheld-positive count, and 95% CI. A projection is never written as a score. OWNER-REPORT live values are copied from GEMSDOE sites, not from a submission-page receipt stored here.</p>
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>Download</th>
+          <th>What the number is</th>
+          <th>Unique vs listed GEMSDOE sites?</th>
+          <th>Submit?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="downloads/kanlergemsdoe1-h1-iedr-s3p17-b2-32000-20261026T214518Z-fe519ae3-zeros.tif">H1 IEDR zeros.tif</a></td>
+          <td>HOLDOUT-DTI 0.00617 [0.00426, 0.00857]<br>GEMSDOE32-HIDE-RECOVER-v3.0, n=22,232<br>SGMC raw 0.0344 vs champion 0.0961<br><b>No estimated live score</b></td>
+          <td>NOT CLEARED — strict registry overlap fails</td>
+          <td class="bad">NO</td>
+        </tr>
+        <tr>
+          <td><a href="downloads/kanlergemsdoe1-h2-htsi-s3p17-b2-32000-20261026T214518Z-571145eb-zeros.tif">H2 HTSI zeros.tif</a></td>
+          <td>HOLDOUT-DTI 0.00628 [0.00415, 0.00888]<br>SGMC raw 0.0299<br><b>No estimated live score</b></td>
+          <td>NOT CLEARED — strict registry overlap fails</td>
+          <td class="bad">NO</td>
+        </tr>
+        <tr>
+          <td><a href="downloads/kanlergemsdoe1-h3-condresid-s3p17-b2-32000-20261026T214518Z-42802022-zeros.tif">H3 COND-RESID zeros.tif</a></td>
+          <td>HOLDOUT-DTI 0.00426 [0.00303, 0.00580]<br>SGMC raw 0.0639 (closest SGMC, still trails)<br><b>No estimated live score</b></td>
+          <td>NOT CLEARED — strict registry overlap fails</td>
+          <td class="bad">NO</td>
+        </tr>
+        <tr>
+          <td><a href="https://buffedlizard55-lab.github.io/GEMSDOE32/docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif">GEMSDOE32 h33-2-b2 zeros</a></td>
+          <td>OWNER-REPORT live <b>0.2778</b><br>HOLDOUT-DTI on this evaluator 0.00452 [0.00391, 0.00529]</td>
+          <td>Already in the registry — do not copy</td>
+          <td class="bad">NO (already submitted)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-<h2>Submission procedure (for a future approved file)</h2>
-<ol>
-<li>Download the approved <code>.tif</code> (or its single-TIF <code>.zip</code>) from the home page; verify its SHA-256 against the run card.</li>
-<li>Go to <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData competition #306</a> → <em>New submission</em>.</li>
-<li><em>File to submit:</em> choose the downloaded <code>.tif</code> (single-band GeoTIFF; CRS/shape/geotransform already match the sample submission).</li>
-<li><em>Note (optional, ≤140 chars in our convention):</em> paste the note from the run card, e.g. a future approved note would name the method, dot count, and HOLDOUT-DTI — never a projected live score.</li>
-<li>Check your remaining weekly submissions on the page, then <em>Create submission</em>.</li>
-<li>Save the submission-page receipt (score + submission ID) into <code>evidence/</code> — only then may a score be labelled ORGANIZER-CONFIRMED and tied to those exact bytes.</li>
-</ol>
+  <h2>PhD-level finding: why 0.2778 is high inside GEMSDOE, and why it is not the competition ceiling</h2>
+  <div class="card">
+    <p>The official metric is a distance-weighted Tversky index with α=0.2, β=0.8 and a 300 m triangular kernel (<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">problem description</a>). Known USGS/INGENIOUS faults are masked from scoring. Consequences:</p>
+    <ol>
+      <li><b>Recall is priced 4× precision.</b> A missed hidden-fault pixel costs 0.8; a false alarm costs 0.2.</li>
+      <li><b>TP is a max over the 300 m kernel, not a sum.</b> Painting a thick line wastes FP. Sparse binary dots with spacing just under 300 m are the metric’s own currency.</li>
+      <li><b>The 0–200 m collar around the public catalogue is almost pure FP</b> on the initial prize round (those pixels are next to masked known faults, not next to the hidden test traces except at true tips/extensions).</li>
+    </ol>
+    <p>GEMSDOE32’s nested family is the cleanest demonstration: H19-5 multiline (OWNER-REPORT 0.1922) → D2.8 thinning (0.2600) → B=1 prune (0.2708) → B=2 prune (0.2778). Two levers created the jump: kernel non-maximum decimation (~+0.068) and near-catalogue collar exclusion (~+0.018). That is metric geometry, not a new geological discovery.</p>
+    <p>The inherited, unverified leaderboard snapshot reports <b>0.4437</b> (xiaofanhu, 31 submissions, snapshot 2026-10-26). Beating 0.2778 therefore requires a <em>different ranking field</em> that still packs well, not another permutation of H19-5. Re-thinning H19-5 is a 3-px duplicate of the champion family and is forbidden by the lane protocol.</p>
+    <p>This session’s IEDR lane is that different field (independent seismicity × dilatation × magnetic HGM). Strict uniqueness clearance is revoked. It slightly beats the champion on this hide-and-recover point estimate (0.00617 vs 0.00452) but the 95% CIs overlap and SGMC is worse. That is a negative result, and a negative result is a deliverable.</p>
+  </div>
 
-<h2>Evidence classes used everywhere in this project</h2>
-<ul>
-<li><strong>HOLDOUT-DTI</strong> — local hide-and-recover measurement (evaluator version, withheld n, 95% CI always attached). Never a leaderboard score.</li>
-<li><strong>OWNER-REPORTED</strong> — a score claimed in a prompt/site with no organizer receipt (all 9 focus-site scores, including 0.2778).</li>
-<li><strong>ORGANIZER-CONFIRMED</strong> — copied from a submission-page receipt tied to exact bytes. None exists in this repo.</li>
-<li><strong>PROJECTION</strong> — a model-based forecast. We publish none: no calibrated holdout→live mapping exists (README §Score estimation).</li>
-</ul>
-<p><a href="index.html">← Back to home / downloads</a></p>
-</body></html>
+  <h2>How to make a contest submission (when a future file is authorized)</h2>
+  <ol class="steps">
+    <li>Open <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">the competition</a> → Submit.</li>
+    <li>Upload the <b>-zeros.tif</b> or the zip that contains only that GeoTIFF. Never the -nan twin if you have previously seen <code>Predicted values must be in range [0, 1]</code>.</li>
+    <li>Paste the unique name and the ≤140 character note from the table.</li>
+    <li>Do this only when the banner on the home page is green. It is red today.</li>
+  </ol>
+  <p>Full walkthrough: <a href="how-to-submit.html">How to submit</a>.</p>
+
+  <h2>JSON run cards</h2>
+  <ul>
+    <li><a href="evidence/run_card_h1_iedr.json">H1 IEDR</a></li>
+    <li><a href="evidence/run_card_h2_htsi.json">H2 HTSI</a></li>
+    <li><a href="evidence/run_card_h3_condresid.json">H3 COND-RESID</a></li>
+    <li><a href="evidence/session_summary.json">Session summary</a></li>
+  </ul>
+  <footer>KANLERGEMSDOE1 · 2026-10-26 · Maximize P(Win) · Own the Outcome</footer>
+</main>
+</body>
+</html>

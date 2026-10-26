@@ -12,9 +12,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-
-def data_dir() -> Path:
-    return ROOT / "data"
+sys.path.insert(0, str(ROOT / "src"))
+from gems32.paths import data_dir  # noqa: E402
 
 
 def sha256_file(p: Path) -> str:
