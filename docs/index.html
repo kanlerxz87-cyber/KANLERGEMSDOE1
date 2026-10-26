@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Evidence-first research and submission readiness for the DOE GEMS fault-mapping competition.">
+  <title>KANLERGEMSDOE1 · GEMS Research Desk</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand-row">
+      <a class="brand" href="index.html" aria-label="KANLERGEMSDOE1 home">
+        <span class="brand-mark" aria-hidden="true">G</span>
+        <span class="brand-name">KANLERGEMSDOE1<span class="brand-subtitle">Evidence-first GEMS research desk</span></span>
+      </a>
+      <span class="updated">Evidence snapshot: 2026-10-26 · no file approved</span>
+    </div>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html" aria-current="page">Overview</a>
+      <a href="executive-summary.html">Executive summary</a>
+      <a href="how-to-submit.html">How to submit</a>
+      <a href="hypotheses.html">Hypotheses</a>
+      <a href="sources.html">Sources &amp; limits</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="hero" aria-labelledby="page-title">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">DOE GEMS · spatial fault discovery · evidence before upload</p>
+        <h1 id="page-title">Find unmapped faults. Prove the file. Protect the slot.</h1>
+        <p class="lede">A clear, auditable view of the requested nine GEMSDOE sites, official competition requirements, research hypotheses, and what this checkout can actually validate.</p>
+        <div class="actions">
+          <a class="button" href="executive-summary.html">Read the nine-site executive summary</a>
+          <a class="button secondary" href="how-to-submit.html">Open the submission guide</a>
+        </div>
+      </div>
+      <aside class="status-panel" aria-label="Current submission decision">
+        <span class="status-label"><span class="status-dot" aria-hidden="true"></span>Fail-closed decision</span>
+        <h2>NO TIFF TO DOWNLOAD · DO NOT SUBMIT</h2>
+        <p>This checkout contains no training data, sample template, shared holdout evaluator, submission writer, registry rasters, or candidate GeoTIFF. No experiment or slot selection was made.</p>
+        <p><strong>There is no download button because there is no validated original file.</strong> We will not create a random TIFF or relabel someone else's raster as unique.</p>
+      </aside>
+    </div>
+    <div class="metric-grid" aria-label="Key evidence at a glance">
+      <div class="metric">
+        <span class="metric-label">Best historical claim in requested sites</span>
+        <span class="metric-value">0.2778 · GEMSDOE32 B2</span>
+        <span class="metric-note">OWNER-REPORTED / UNVERIFIED; not a receipt</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">New submission score estimate</span>
+        <span class="metric-value">Not estimable</span>
+        <span class="metric-note">No local holdout experiment or calibration</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">Official public leaderboard snapshot</span>
+        <span class="metric-value">0.4437 · 2026-10-26</span>
+        <span class="metric-note"><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Live leaderboard ↗</a>; not this project's score</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="callout warning">
+      <p><strong>Do not confuse a promising source-site banner with a project approval.</strong> The nine external repositories use different holdouts, evaluator versions, registry scopes, and sometimes conflicting selector verdicts. Their decisions do not transfer to this checkout. The supplied protocol also says not to select a real submission slot here.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Decision path</p>
+        <h2>Three things must be true before any TIFF is uploadable</h2>
+      </div>
+      <p>File format, scientific evidence, and global uniqueness are separate gates. Passing one does not substitute for another.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <span class="tag negative">Gate 01 · scientific</span>
+        <h3>Beat a matched holdout</h3>
+        <p>Use buffered whole-segment hide-and-recover with visible-only catalogue features, exact masking, leakage canaries, and the shared DTI evaluator. Report evaluator, withheld positives, and 95% CI.</p>
+      </article>
+      <article class="card">
+        <span class="tag warning">Gate 02 · uniqueness</span>
+        <h3>Stay outside every duplicate lane</h3>
+        <p>Check the pre-placement surface and final dots against the full registry. Stop at absolute rank correlation above 0.90 or more than 70% of dots within 3 pixels of one raster.</p>
+      </article>
+      <article class="card">
+        <span class="tag negative">Gate 03 · file</span>
+        <h3>Validate the saved GeoTIFF</h3>
+        <p>Match the sample template's CRS, shape, bounds, resolution, and transform; require one float32 band, in-footprint values in [0,1], and null/NaN outside bounds as specified.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Current blockers</p>
+        <h2>Why this review did not produce a TIFF</h2>
+      </div>
+    </div>
+    <ul class="inline-list">
+      <li><strong>Empty clone:</strong> before this documentation, the only tracked file was a one-line README. There is no `data/` directory or cached feature stack.</li>
+      <li><strong>Shared tools absent:</strong> no `evaluate_holdout.py`, `submission_writer.py`, sample template, labels, or registry arrays are present. The protocol forbids substituting a private evaluator.</li>
+      <li><strong>Data access gated:</strong> the public DrivenData data URL redirects to login in this environment. No authenticated competition files were downloaded.</li>
+      <li><strong>Lane unspecified:</strong> the parallel-run instructions refer to a single method paragraph, but no single method paragraph is present. No lane was guessed.</li>
+    </ul>
+    <div class="actions">
+      <span class="button blocked" aria-disabled="true">No validated TIFF available</span>
+      <a class="button secondary" href="data/run-card.json">Read the blocked run card</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Next research step</p>
+        <h2>Use the science, not the filename</h2>
+      </div>
+      <p>The candidate slate is intentionally qualitative. It contains no score projections and is not a claim of global novelty.</p>
+    </div>
+    <div class="callout">
+      <p><strong>First-ranked proposal:</strong> test whether discontinuities in the conductive-base-depth/surface-conductivity layers become more informative when conditioned on local geodetic dilation and shear. The signal could expose buried fault structure, but basin edges, lithologic contacts, clay alteration, and saturation are realistic mimics. It cannot be run until data, shared tools, full registry, and a lane are present.</p>
+      <p><a href="hypotheses.html">Review all four hypotheses and the prior-art caveats →</a></p>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="footer-inner">
+    <p><strong>KANLERGEMSDOE1</strong> · Evidence snapshot 2026-10-26.</p>
+    <p>Source-site numbers are labeled by evidence class. A local validation pass is not organizer acceptance. <a href="project-charter.md">Read the project charter</a> · <a href="sources.html">Review sources</a>.</p>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "generated_at_utc": null,
+  "purpose": "Public-source availability and content fingerprints only; not a score feed, quality audit, scientific validation, or submission approval.",
+  "scores_scraped": false,
+  "upload_or_submission_actions_performed": false,
+  "sources": [],
+  "status": "Awaiting the first GitHub Pages workflow run on main. The feed script has not been run against live sources in this sandbox."
+}

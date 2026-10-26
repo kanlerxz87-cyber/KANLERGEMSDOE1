@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Official competition, USGS, DOE GDR, reference-code, and owner-maintained sources with access and evidence limits.">
+  <title>Sources &amp; limits · KANLERGEMSDOE1</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand-row">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">G</span><span class="brand-name">KANLERGEMSDOE1<span class="brand-subtitle">Evidence-first GEMS research desk</span></span></a>
+      <span class="updated">Sources reviewed: 2026-10-26</span>
+    </div>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html">Overview</a>
+      <a href="executive-summary.html">Executive summary</a>
+      <a href="how-to-submit.html">How to submit</a>
+      <a href="hypotheses.html">Hypotheses</a>
+      <a href="sources.html" aria-current="page">Sources &amp; limits</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <p class="breadcrumb"><a href="index.html">Overview</a> / Sources &amp; limits</p>
+  <div class="page-intro">
+    <p class="eyebrow">Provenance ledger · current review</p>
+    <h1>What was checked, what it supports, and what it does not.</h1>
+    <p>Official competition and government sources establish task definitions, file requirements, data provenance, and public availability. The GEMSDOE pages are owner-maintained experiment reports; their numbers and approval banners are not independent organizer receipts.</p>
+  </div>
+
+  <section class="section" aria-labelledby="feed-title">
+    <div class="section-head"><div><p class="eyebrow">Automated source feed</p><h2 id="feed-title">Public-page availability, not a score feed</h2></div></div>
+    <div class="card">
+      <p id="source-feed-updated" aria-live="polite">Loading the latest published source check…</p>
+      <p id="source-feed-summary" class="small">This feed records page availability, final URL, title, and a content fingerprint. It deliberately does not scrape scores or infer that a file is scientifically valid or approved.</p>
+      <ul id="source-feed-list" aria-label="Latest public source availability"></ul>
+      <noscript><p class="small">JavaScript is disabled. Use the direct source links below. The automatically refreshed JSON is <a href="data/live-source-status.json">available here</a>.</p></noscript>
+      <p class="small" style="margin-top:12px">GitHub Actions refreshes this snapshot daily after the Pages workflow is enabled on the default branch. The live feed only indicates page availability; it cannot download login-gated data or replace scientific review.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><p class="eyebrow">Competition sources</p><h2>Official task, rules, data access, and public leaderboard</h2></div></div>
+    <div class="card">
+      <div class="source-item">
+        <div><span class="source-kind">Official competition · problem description</span><p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DOE GEMS Prize challenge overview</a>. Checked for task definition, DTI math, provided-feature names, submission CRS/grid/dtype/range, and external-data condition.</p></div>
+        <span class="source-status">READ · public</span>
+      </div>
+      <div class="source-item">
+        <div><span class="source-kind">Official competition · about</span><p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/">About the GeoDAWN/INGENIOUS data and fault-mapping context</a>. Describes geology, the GeoDAWN surveys, lidar collection, and task context.</p></div>
+        <span class="source-status">READ · public</span>
+      </div>
+      <div class="source-item">
+        <div><span class="source-kind">Official competition · submission data</span><p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">Competition data download page</a>. The page resolved to a DrivenData login page during this review. No competition files were downloaded; the current session has no authenticated data path.</p></div>
+        <span class="source-status">LOGIN REDIRECT</span>
+      </div>
+      <div class="source-item">
+        <div><span class="source-kind">Official competition · leaderboard</span><p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Live public leaderboard</a>. The page fetched on 2026-10-26 showed rank one at 0.4437. This is a public leaderboard snapshot, not a receipt for any GEMSDOE file and not a forecast for this project.</p></div>
+        <span class="source-status">READ · 2026-10-26</span>
+      </div>
+      <div class="source-item">
+        <div><span class="source-kind">Official rules · NLR/DOE</span><p><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">GEMS Prize Official Rules PDF</a> (document marked September 2026). Review current official rules before competition entry and final submission.</p></div>
+        <span class="source-status">READ · public PDF</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><p class="eyebrow">Research and data provenance</p><h2>Reference code and public geoscience data</h2></div></div>
+    <div class="card">
+      <div class="source-item">
+        <div><span class="source-kind">Organizer reference code</span><p><a href="https://github.com/drivendataorg/gems-prize-reference-solution/tree/aebe92f7c8a990f0e3443451b7a825d9afd6336b">Pinned reference-solution repository</a>. Its README says the challenge data must be downloaded from the competition website and placed in `data/`. It is a baseline, not a source of the gated training files.</p></div>
+        <span class="source-status">READ · pinned commit</span>
+      </div>
+      <div class="source-item">
+        <div><span class="source-kind">USGS · GeoDAWN</span><p><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">GeoDAWN airborne magnetic and radiometric survey data release</a> and <a href="https://doi.org/10.5066/P93LGLVQ">DOI 10.5066/P93LGLVQ</a>. The USGS page describes the survey, release products, acquisition, and CC0 dedication.</p></div>
+        <span class="source-status">READ · official .gov</span>
+      </div>
+      <div class="source-item">
+        <div><span class="source-kind">DOE Geothermal Data Repository · INGENIOUS</span><p><a href="https://gdr.openei.org/submissions/1391">INGENIOUS — Great Basin Regional Dataset Compilation</a>. The listing says public access, CC BY 4.0, and includes multiple data families (including 2-m temperature probes, faults, strain, gravity/magnetics, heat flow, conductance, and geothermal features). The source page was read; resource ZIPs were not downloaded or hashed.</p></div>
+        <span class="source-status">READ · public listing</span>
+      </div>
+      <div class="source-item">
+        <div><span class="source-kind">INGENIOUS project context</span><p><a href="https://gbcge.org/current-projects/ingenious/">Great Basin Center for Geothermal Energy project page</a>. Used for the project description and published source citations, not as direct validation of a fault prediction.</p></div>
+        <span class="source-status">READ · project site</span>
+      </div>
+      <div class="source-item">
+        <div><span class="source-kind">CRS reference</span><p><a href="https://epsg.io/32611">EPSG:32611 — WGS 84 / UTM zone 11N</a>. The competition problem page itself links to this CRS definition; the submission must match the actual sample grid, not merely carry this CRS code.</p></div>
+        <span class="source-status">READ · CRS reference</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><p class="eyebrow">Science and method precedents</p><h2>What the literature supports—and what it cannot prove here</h2></div></div>
+    <div class="card">
+      <div class="source-item">
+        <div><span class="source-kind">USGS · Great Basin structural controls</span><p><a href="https://www.usgs.gov/publications/structural-discontinuities-and-their-control-hydrothermal-systems-great-basin-usa">Siler (2023), “Structural discontinuities and their control on hydrothermal systems in the Great Basin, USA”</a>, DOI <a href="https://doi.org/10.1144/geoenergy2023-009">10.1144/geoenergy2023-009</a>. The USGS abstract reports localized stress/strain at structural settings hosting hydrothermal systems, particularly stepovers and fault terminations. It motivates a testable physical prior; it does not show that any proposed raster will beat a holdout.
+        </p></div><span class="source-status">READ · USGS</span>
+      </div>
+      <div class="source-item">
+        <div><span class="source-kind">USGS · potential-field analogue</span><p><a href="https://www.usgs.gov/publications/influence-pre-existing-structures-geothermal-springs-inferences-potential-field">Glen and Earney, “The influence of pre-existing structures on geothermal springs”</a>. The USGS page describes a Surprise Valley magnetic anomaly and reports springs near local breaks/bends. This is one field analogue, not a universal rule and not a competition holdout result.</p></div><span class="source-status">READ · USGS</span>
+      </div>
+      <div class="source-item">
+        <div><span class="source-kind">DOE GDR · measurement caveat</span><p><a href="https://gdr.openei.org/submissions/297">Shallow (2-meter) Temperature Surveys in Colorado</a>. Its public record describes measurements intended to investigate upflow structures and explicitly notes that 2-m temperature varies with both solar heating and possible geothermal heating. It is a method precedent, not a GeoDAWN-area input file.</p></div><span class="source-status">READ · public GDR</span>
+      </div>
+      <div class="source-item">
+        <div><span class="source-kind">Peer-reviewed · automated fault mapping</span><p><a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2020JB021269">Mattéo et al. (2021), Journal of Geophysical Research: Solid Earth</a>. The open-access paper evaluates a U-Net for fractures/faults in optical and topographic data. It emphasizes contextual information; its discussion notes that omitting topography can make sub-linear features—including non-tectonic ones—look fault-like. It is methodological context, not a training recipe for this project.</p></div><span class="source-status">READ · peer-reviewed</span>
+      </div>
+      <div class="source-item">
+        <div><span class="source-kind">USGS · lidar mapping / false positives</span><p><a href="https://www.usgs.gov/data/quaternary-fault-mapping-zapata-and-blanca-sections-sangre-de-cristo-fault-zone-high">USGS high-resolution 3DEP fault-mapping data release</a> (DOI <a href="https://doi.org/10.5066/P13NFGLT">10.5066/P13NFGLT</a>) demonstrates detailed scarp mapping from 1 m/pixel DEM derivatives with selected GPS validation and attributes for fault confidence and anthropogenic modification. This example is outside the GEMS study area and is a method precedent only. The <a href="https://www.usgs.gov/3d-elevation-program/about-3dep-products-services">USGS 3DEP program page</a> says its DEM/lidar products are free and without use restrictions; exact study-area coverage still needs checking.</p></div><span class="source-status">READ · USGS</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><p class="eyebrow">Owner-maintained evidence</p><h2>Nine GEMSDOE sites and cross-site review</h2></div><p>These pages are useful starting points, but their statements remain claims unless verified against local bytes and an organizer receipt.</p></div>
+    <div class="card">
+      <div class="source-item"><div><span class="source-kind">GEMSDOE24</span><p><a href="https://buffedlizard55-lab.github.io/GEMSDOE24/">Overview and source records</a></p></div><span class="source-status">OWNER SOURCE</span></div>
+      <div class="source-item"><div><span class="source-kind">GEMSDOE25</span><p><a href="https://buffedlizard55-lab.github.io/GEMSDOE25/">Overview and current review</a></p></div><span class="source-status">OWNER SOURCE</span></div>
+      <div class="source-item"><div><span class="source-kind">GEMSDOE27</span><p><a href="https://buffedlizard55-lab.github.io/GEMSDOE27/">Overview and automated readiness page</a></p></div><span class="source-status">OWNER SOURCE</span></div>
+      <div class="source-item"><div><span class="source-kind">GEMSDOE28</span><p><a href="https://buffedlizard55-lab.github.io/GEMSDOE28/">Overview and session evidence</a></p></div><span class="source-status">OWNER SOURCE</span></div>
+      <div class="source-item"><div><span class="source-kind">GEMSDOE30</span><p><a href="https://buffedlizard55-lab.github.io/GEMSDOE30/">Overview</a> · <a href="https://buffedlizard55-lab.github.io/GEMSDOE30/priority-executive-summary.html">Nine-site priority executive summary</a></p></div><span class="source-status">OWNER SOURCE</span></div>
+      <div class="source-item"><div><span class="source-kind">GEMSDOE31</span><p><a href="https://buffedlizard55-lab.github.io/GEMSDOE31/docs/">Overview and selector sections</a></p></div><span class="source-status">OWNER SOURCE</span></div>
+      <div class="source-item"><div><span class="source-kind">GEMSDOE32</span><p><a href="https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html">Overview and H33-B2 provenance statement</a></p></div><span class="source-status">OWNER SOURCE</span></div>
+      <div class="source-item"><div><span class="source-kind">GEMSDOE33</span><p><a href="https://buffedlizard55-lab.github.io/GEMSDOE33/">Overview and current negative run cards</a></p></div><span class="source-status">OWNER SOURCE</span></div>
+      <div class="source-item"><div><span class="source-kind">GEMSDOE36</span><p><a href="https://buffedlizard55-lab.github.io/GEMSDOE36/docs/">Overview and current gate report</a></p></div><span class="source-status">OWNER SOURCE</span></div>
+      <div class="source-item"><div><span class="source-kind">Cross-site audit</span><p><a href="https://buffedlizard55-lab.github.io/GEMSDOE30/priority-executive-summary.html">GEMSDOE30's read-only nine-site audit</a>. It reports historical lineage and uncertainty, but is not independently reproduced in this checkout.</p></div><span class="source-status">OWNER AUDIT</span></div>
+      <div class="source-item"><div><span class="source-kind">Portfolio synthesis</span><p><a href="https://buffedlizard55-lab.github.io/GEMSDOE25/knowledge/31_h72_outcomes_and_portfolio_synthesis_2026-10-26.md">GEMSDOE25's dated portfolio synthesis</a>. It surfaces a 0.2683/0.2750 discrepancy for the GEMSDOE36 historical result and competing leaderboard snapshots.</p></div><span class="source-status">OWNER AUDIT</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><p class="eyebrow">Evidence labels</p><h2>What counts as a score in this project?</h2></div></div>
+    <div class="cards">
+      <article class="card"><span class="tag">HOLDOUT-DTI</span><h3>Local hide-and-recover measurement</h3><p>Must include the evaluator version, number of withheld positives, and 95% CI. It is a research measurement, not an organizer or leaderboard score.</p></article>
+      <article class="card"><span class="tag">ORGANIZER-CONFIRMED</span><h3>Receipt-bound result</h3><p>Use only when copied from the matching organizer submission-page receipt. The receipt should identify the exact submission; the filename alone is insufficient.</p></article>
+      <article class="card"><span class="tag warning">OWNER-REPORTED</span><h3>Historical site claim</h3><p>Useful for finding artifacts and building hypotheses, but not independently confirmed by this checkout. Keep it labeled unverified and never use it as a calibrated prediction.</p></article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="callout negative">
+      <p><strong>Audit boundary:</strong> these sources were read, but this checkout has not downloaded or hash-verified any competition GeoTIFF or candidate raster, has not replayed a holdout, and has not uploaded to DrivenData. Statements about those events are intentionally absent.</p>
+      <p><a href="data/site-audit.json">Open the machine-readable nine-site audit</a> · <a href="data/run-card.json">Open the blocked run card</a></p>
+    </div>
+  </section>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Official primary sources are separated from owner-maintained experiment pages.</p><p><a href="index.html">Overview</a> · <a href="executive-summary.html">Executive summary</a> · <a href="project-charter.md">Project charter</a></p></div></footer>
+<script defer src="assets/live-feed.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "run_card_version": "gems-parallel-run-card-v1",
+  "date_utc": "2026-10-26",
+  "hypothesis": "No experiment was started. The protocol requires one named method lane, but none was specified, and the shared input/evaluation assets are absent.",
+  "mechanism": "Not tested. Ranked candidate mechanisms are documented in ../hypotheses.html; none is designated as the active lane.",
+  "named_non_fault_process_that_could_mimic_it": "Not applicable to a non-run; each candidate's named mimics are listed in ../hypotheses.html.",
+  "holdout_dti": {
+    "status": "NOT RUN",
+    "evaluator_version": null,
+    "withheld_positive_count": null,
+    "value": null,
+    "ci_95": null,
+    "reason": "No shared evaluator, labels, feature stack, or candidate raster exists in this checkout."
+  },
+  "correlation_overlap_vs_registry": {
+    "status": "NOT RUN",
+    "preplacement_max_absolute_rank_correlation": null,
+    "preplacement_max_dot_overlap_within_3px": null,
+    "final_max_absolute_rank_correlation": null,
+    "final_max_dot_overlap_within_3px": null,
+    "reason": "No candidate surface, candidate dots, or local registry rasters are present."
+  },
+  "raster_sha256": null,
+  "validator_output": {
+    "status": "BLOCKED — no candidate TIFF or sample template",
+    "no_nan_inside_footprint": "NOT ASSESSED",
+    "values_in_range_0_to_1": "NOT ASSESSED",
+    "crs_shape_transform_match": "NOT ASSESSED"
+  },
+  "submission_name": null,
+  "submission_note_max_140_characters": null,
+  "verdict": "negative",
+  "slot_approved": false,
+  "new_tiff_generated": false,
+  "experiments_run": 0,
+  "experiment_cap": 3,
+  "stop_reason": "Preflight blocked: missing lane definition and required shared assets. No competition slot was selected or spent."
+}

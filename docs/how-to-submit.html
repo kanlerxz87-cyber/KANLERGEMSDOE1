@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A fail-closed guide to validating and submitting a GEMS competition GeoTIFF.">
+  <title>How to submit · KANLERGEMSDOE1</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand-row">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">G</span><span class="brand-name">KANLERGEMSDOE1<span class="brand-subtitle">Evidence-first GEMS research desk</span></span></a>
+      <span class="updated">Submission guide · updated 2026-10-26</span>
+    </div>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html">Overview</a>
+      <a href="executive-summary.html">Executive summary</a>
+      <a href="how-to-submit.html" aria-current="page">How to submit</a>
+      <a href="hypotheses.html">Hypotheses</a>
+      <a href="sources.html">Sources &amp; limits</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <p class="breadcrumb"><a href="index.html">Overview</a> / How to submit</p>
+  <div class="page-intro">
+    <p class="eyebrow">Executive-summary subpage · exact process</p>
+    <h1>How to submit a GEMS GeoTIFF</h1>
+    <p>This is the portal workflow and preflight standard, not authorization to upload. A file is uploadable only after the scientific selector separately approves it. <strong>At this review, there is no validated TIFF to download or submit.</strong></p>
+  </div>
+
+  <div class="callout negative">
+    <p><strong>Current state: NO FILE APPROVED · NO DOWNLOAD LINK · DO NOT SUBMIT.</strong> No candidate raster, template, or local validation receipt exists in this checkout. The historical GEMSDOE32 H33-B2 file is a previous claimed submission and must not be copied, renamed, or re-uploaded as a new candidate.</p>
+  </div>
+
+  <section class="section">
+    <div class="section-head"><div><p class="eyebrow">Before opening the portal</p><h2>Automated gates — all must pass</h2></div></div>
+    <ol class="steps">
+      <li><div><strong>Freeze the scientific experiment.</strong><p>Use the selected lane and shared `evaluate_holdout.py`/`submission_writer.py`. The evaluator must hide whole fault segments with a buffer, build catalogue-derived features from visible faults only, mask visible faults pixel-exactly, and score pooled DTI using alpha 0.2, beta 0.8, and the 300 m triangular kernel. Report `HOLDOUT-DTI`, evaluator version, withheld-positive count, and 95% CI. Do not translate this to a leaderboard forecast.</p></div></li>
+      <li><div><strong>Pass leakage canaries.</strong><p>Test each feature alone before trusting the model. Under the supplied protocol, a single-feature AUC above 0.90 is a stop until leakage is ruled out. Confirm every catalogue-derived feature was generated fold-locally from visible faults.</p></div></li>
+      <li><div><strong>Pass both uniqueness checks.</strong><p>Compare the candidate surface before placement and final dots against the full frozen registry. Stop if absolute rank-correlation exceeds 0.90 or more than 70% of candidate dots lie within 3 pixels of any one registry raster. Record the registry snapshot, nearest raster, and both pre-placement/final measurements.</p></div></li>
+      <li><div><strong>Validate the saved file against the actual sample template.</strong><p>Use the official sample-submission grid, not a guessed width/height or another team's raster. Require one GeoTIFF band, `float32`, EPSG:32611, matching shape, bounds, resolution, and affine transform. Confirm every valid in-footprint pixel is finite and in `[0,1]`; nonfinite/nodata cells must be outside the valid footprint, consistent with the competition specification. Reopen the TIFF after writing and validate the bytes that will be uploaded.</p></div></li>
+      <li><div><strong>Issue a complete run card.</strong><p>Include the hypothesis, mechanism, a named non-fault mimic, holdout result and CI, registry comparisons, SHA-256, technical validator output, a unique portal name, a note of at most 140 characters, and a `promote` or `negative` verdict. A failed or incomplete gate means research-only, not uploadable.</p></div></li>
+      <li><div><strong>Make a separate slot decision.</strong><p>The supplied protocol explicitly separates promotion to a competition slot from experimentation. Check the current submission-page quota/cap yourself; this project has not selected or spent a slot. The official challenge description says competitors choose one submission for scoring across both prize rounds before the deadline.</p></div></li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><p class="eyebrow">Portal actions</p><h2>Once—and only once—the file is approved</h2></div></div>
+    <ol class="steps">
+      <li><div><strong>Open the official competition page and sign in.</strong><p>Go to <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData · DOE GEMS</a>, then open the competition's submission area. The competition data page redirected to login in this review environment; no automated account access or portal submission was performed.</p></div></li>
+      <li><div><strong>Choose the exact approved file.</strong><p>In “New submission,” select the one approved `.tif`. The portal text quoted in the project brief also says it accepts a `.zip` containing one GeoTIFF; re-check the live form before relying on that alternative. Do not select a report, sidecar, NaN/zero twin, or a historical source-site TIFF.</p></div></li>
+      <li><div><strong>Enter a unique name and short note.</strong><p>Use the name and note bound to the run card. Keep the note at or below 140 characters for this project and ensure it says what distinguishes this experiment. Example template only (not an approval): <code>GEMS &lt;lane&gt; &lt;mechanism&gt; | HOLDOUT-DTI &lt;value&gt; n=&lt;count&gt; | &lt;id&gt;</code>. Do not invent a value or call a holdout result a leaderboard score.</p></div></li>
+      <li><div><strong>Review the portal receipt after uploading.</strong><p>Only a submission-page receipt that identifies the submission and score can establish an `ORGANIZER-CONFIRMED` result under this project's evidence policy. Preserve the receipt, exact filename, SHA-256, portal name/note, and time. Do not infer acceptance from a local format pass.</p></div></li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><p class="eyebrow">Prevent the range error</p><h2>“Predicted values must be in range [0, 1]”</h2></div></div>
+    <div class="card">
+      <p>The error text alone does not identify the cause. This checkout has no failed TIFF to inspect, so the cause is <strong>unresolved</strong>. Before a future upload, reopen the written file and check all in-footprint prediction values—not just the model output or a display-scaled image.</p>
+      <ul>
+        <li>Verify finite in-footprint minimum is at least 0 and maximum at most 1; catch negative values, values above 1, and infinities.</li>
+        <li>Check the nodata mask against the sample template. A numeric nodata sentinel such as a large negative value must not be treated as an ordinary prediction inside the valid footprint.</li>
+        <li>Check for NaN inside the footprint. The official page specifies null/NaN outside bounds; do not use outside-bound values that violate the template's mask or the portal's range check.</li>
+        <li>Reopen the exact `.tif` after saving, read the stored band and metadata, then recompute the minimum/maximum over the valid footprint.</li>
+        <li>Keep the validator output and TIFF SHA-256 with the run card. If the portal still rejects the file, preserve the exact error/receipt and do not silently change the array.</li>
+      </ul>
+      <p class="small">The competition's official format requires one `float32` layer, EPSG:32611, the same grid/bounds/resolution, in-footprint predictions in [0,1], and null/NaN outside the bounds. The live template and portal remain authoritative for a future upload.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="callout warning">
+      <p><strong>Current download state:</strong> no file exists here, and no site file is being repackaged. Historic score claims and local holdout values in other repositories do not authorize a download or upload from this project.</p>
+      <p><a href="executive-summary.html">Return to the nine-site table →</a> · <a href="data/run-card.json">Read the current negative run card →</a></p>
+    </div>
+  </section>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Official format reference: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">GEMS problem description</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">data page (login required)</a>.</p><p><a href="index.html">Overview</a> · <a href="sources.html">Sources &amp; limits</a> · <a href="project-charter.md">Project charter</a></p></div></footer>
+</body>
+</html>

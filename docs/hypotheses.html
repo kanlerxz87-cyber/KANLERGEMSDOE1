@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ranked, falsifiable GEMS fault-mapping hypotheses with target layers, physical signatures, confounders, costs, and data provenance.">
+  <title>Hypotheses · KANLERGEMSDOE1</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand-row">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">G</span><span class="brand-name">KANLERGEMSDOE1<span class="brand-subtitle">Evidence-first GEMS research desk</span></span></a>
+      <span class="updated">Proposal slate · no experiments run</span>
+    </div>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html">Overview</a>
+      <a href="executive-summary.html">Executive summary</a>
+      <a href="how-to-submit.html">How to submit</a>
+      <a href="hypotheses.html" aria-current="page">Hypotheses</a>
+      <a href="sources.html">Sources &amp; limits</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <p class="breadcrumb"><a href="index.html">Overview</a> / Hypotheses</p>
+  <div class="page-intro">
+    <p class="eyebrow">Preregistration candidates · ranked qualitatively</p>
+    <h1>Four mechanisms worth testing—none is a score claim.</h1>
+    <p>Ranking reflects mechanistic plausibility and cost, not measured DTI. This repository has no implementation or data, so these are new relative to this checkout. The external GEMSDOE sites have extensive, fast-changing experiment histories; the published pages are not a complete code-level inventory. We therefore <strong>cannot certify global novelty</strong> for any candidate yet.</p>
+  </div>
+
+  <div class="callout warning">
+    <p><strong>No experiment has been run.</strong> The protocol refers to one specific method paragraph as the active lane, but none was supplied. The competition data, sample template, shared evaluator/writer, and registry rasters are also absent. Do not choose a lane, touch a weekly slot, or call any hypothesis “validated” until these blockers are resolved.</p>
+  </div>
+
+  <section class="section">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th scope="col">Priority</th><th scope="col">Hypothesis &amp; layers</th><th scope="col">Physical signature / why it may find an unmapped fault</th><th scope="col">Difference from known implementation</th><th scope="col">Non-fault mimic</th><th scope="col">Qualitative DTI upside / cost</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1</strong><br><span class="tag">Stack-only</span></td>
+            <td><strong>Conductive-base step geometry × geodetic dilation</strong><br><span class="small">Surface conductivity; depth to conductive base surface; dilatation rate; shear strain rate; second strain invariant.</span></td>
+            <td>Test persistent, multi-scale discontinuities/step-overs in conductive-base depth and conductivity where geodetic dilation or shear localization supports an opening/shear corridor. The geophysical/strain evidence is independent of proximity to visible fault lines, so it can nominate a buried or unmapped segment if the structural signal exists. This is a physically motivated prior, not a result: a <a href="https://www.usgs.gov/publications/structural-discontinuities-and-their-control-hydrothermal-systems-great-basin-usa">USGS study of Great Basin hydrothermal systems</a> reports localized stress/strain at structural discontinuities, especially fault stepovers and terminations.</td>
+            <td>The feature transformation is a cross-layer geometric interaction, not label-conditioned dot thinning or a terrain-only scarp detector. However, published sites discuss clay-cap, conductivity, and structural-conduit ideas; global novelty is not cleared.</td>
+            <td>Sedimentary-basin boundary, lithologic contact, conductive clay alteration without a fault, saturated basin fill, or interpolation seam.</td>
+            <td><strong>Relative potential:</strong> highest of this slate, but unknown. <strong>Cost:</strong> medium; all named layers are in the official provided-feature description, but files are login-gated here.</td>
+          </tr>
+          <tr>
+            <td><strong>2</strong><br><span class="tag warning">External data</span></td>
+            <td><strong>Effort-adjusted shallow-temperature residual × strain</strong><br><span class="small">DOE GDR INGENIOUS 2-meter temperature-probe observations; competition dilatation/shear layers.</span></td>
+            <td>After spatially blocked background correction using only metadata-supported covariates, test whether local shallow thermal residuals align with strain corridors away from visible faults. DOE GDR 1391 lists a Great Basin 2-m probe resource; a separate <a href="https://gdr.openei.org/submissions/297">GDR 2-m survey method record</a> describes its use to investigate possible upflow structures and explicitly warns that measured temperatures also vary with solar heating. A thermal upflow can reveal fluid ascent associated with a previously unmapped conduit, but the competition labels are faults, not geothermal sites; spatial linkage must be demonstrated.</td>
+            <td>Adds a sparse, independent observation family not listed among the competition's raster feature layers. This is distinct from using only the competition's conductivity/gravity/terrain stack. A historical GEMSDOE24 page names a geothermal-lineament experiment, so full prior-art review is required.</td>
+            <td>Solar exposure/aspect, elevation, soil moisture, shallow groundwater, seasonal/campaign effects, land-cover differences, or biased probe placement.</td>
+            <td><strong>Relative potential:</strong plausible, high uncertainty. <strong>Cost:</strong> high because sparse sampling, provenance, effort bias, coordinate alignment, and cross-validation must be handled. DOE GDR lists a public 2-m probe ZIP under CC BY 4.0; live file transfer was not tested here.</td>
+          </tr>
+          <tr>
+            <td><strong>3</strong><br><span class="tag">Stack-only</span></td>
+            <td><strong>Magnetic source-depth edge persistence × gravity-edge concordance</strong><br><span class="small">Top-of-crustal magnetic source-depth estimate; RTP/TMI anomaly gradients; isostatic gravity anomaly and its slope.</span></td>
+            <td>Look for linearly persistent, multi-scale offsets in inferred magnetic source depth that are independently supported by a gravity gradient. Buried basement discontinuities may survive where the surface has no clear scarp and the visible catalogue is incomplete. An official <a href="https://www.usgs.gov/publications/influence-pre-existing-structures-geothermal-springs-inferences-potential-field">USGS potential-field case study</a> reports springs near local breaks and bends in a magnetic anomaly; that is a site-specific analogue, not proof that the same signature predicts the competition faults.</td>
+            <td>Uses co-registered cross-physics edge persistence rather than a single magnetic edge or binary point-density mask. Prior-art risk is high: source sites already describe pseudogravity, magnetic curvature, and potential-field dipole approaches, so novelty must be established from code and raster registry.</td>
+            <td>Intrusive bodies, lithologic boundaries, alteration fronts, flight-line artifacts, or unrelated density/susceptibility contrasts.</td>
+            <td><strong>Relative potential:</strong moderate. <strong>Cost:</strong medium; derivatives and scale-space are tractable, but channel semantics and survey artifacts require audit.</td>
+          </tr>
+          <tr>
+            <td><strong>4</strong><br><span class="tag warning">Confounded</span></td>
+            <td><strong>Earthquake-density anisotropy × strain-gradient interaction</strong><br><span class="small">Earthquake density; shear strain rate; dilatation; second strain invariant.</span></td>
+            <td>Test directional persistence in the earthquake-density surface where strain gradients independently support a corridor, while excluding the visible fault mask. An active, unmapped fault may localize seismicity and deformation even without a mapped trace.</td>
+            <td>Uses density-gradient orientation and fold-local interaction rather than treating earthquake density as a generic scalar feature. The official stack already includes earthquake density, and external site histories are extensive, so this is least likely to be globally novel.</td>
+            <td>Earthquake swarm unrelated to a mapped fault, network-coverage/completeness edge, induced seismicity, or a non-fault tectonic cluster.</td>
+            <td><strong>Relative potential:</strong low-to-moderate. <strong>Cost:</strong low-to-medium; the main difficulty is acquisition bias and proving the feature is not already a tested channel.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><p class="eyebrow">Viability and validation</p><h2>What has to happen before the top candidate is tested</h2></div></div>
+    <div class="cards">
+      <article class="card"><span class="tag negative">Lane blocker</span><h3>One method paragraph is missing</h3><p>The parallel protocol says the session must stay inside a single method lane, but the prompt contains no unambiguous lane paragraph. The hypothesis ranking is not a license to test all four.</p></article>
+      <article class="card"><span class="tag warning">Data blocker</span><h3>Competition assets are absent</h3><p>Download the authenticated official data to the designated data folder, then verify it against the official sample submission and shared template. The login redirect was observed; no data bytes were fetched.</p></article>
+      <article class="card"><span class="tag warning">Prior-art blocker</span><h3>External experiment history is incomplete</h3><p>Audit the pinned source code, manifests, and raster hashes across all nine specified sites before calling any method globally novel. Public landing pages alone cannot prove a method was never tried.</p></article>
+    </div>
+    <div class="callout" style="margin-top:16px">
+      <p><strong>Preflight for candidate 1:</strong> only if an active lane is formally identified and the shared tools/data are restored, preregister the edge scales and directional interaction, define the non-fault controls, freeze spatial folds, run each input feature alone through the leakage canary, and compare against the same-fold shared baseline. If the lane refers to a different mechanism, do not substitute candidate 1.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>External-data availability check</h2>
+    <div class="card">
+      <p>The official DOE Geothermal Data Repository entry <a href="https://gdr.openei.org/submissions/1391">INGENIOUS — Great Basin Regional Dataset Compilation</a> says the collection is publicly accessible under CC BY 4.0 and lists “2m Temperature Probes.zip” as a downloadable resource. The page lists the resource; this sandbox did not retrieve or hash the ZIP. The competition permits additional data only when the license permits use for the challenge and sharing with the sponsor. Check the dataset's terms, metadata, spatial coverage, campaign dates, and covariates before treating candidate 2 as viable.</p>
+      <p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#external-datasets">Official competition external-data guidance ↗</a></p>
+    </div>
+  </section>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Hypotheses are not scores. No holdout measurement or leaderboard projection is reported on this page.</p><p><a href="index.html">Overview</a> · <a href="executive-summary.html">Executive summary</a> · <a href="sources.html">Sources &amp; limits</a></p></div></footer>
+</body>
+</html>

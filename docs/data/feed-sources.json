@@ -1,0 +1,86 @@
+[
+  {
+    "id": "drivendata-leaderboard",
+    "label": "Official DrivenData leaderboard",
+    "kind": "official competition page",
+    "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/"
+  },
+  {
+    "id": "drivendata-problem",
+    "label": "Official DrivenData problem page",
+    "kind": "official competition page",
+    "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/"
+  },
+  {
+    "id": "drivendata-data",
+    "label": "Official DrivenData data page",
+    "kind": "official competition page",
+    "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/data/"
+  },
+  {
+    "id": "usgs-geodawn",
+    "label": "USGS GeoDAWN data release",
+    "kind": "official government source",
+    "url": "https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and"
+  },
+  {
+    "id": "doe-gdr-ingenious",
+    "label": "DOE GDR INGENIOUS dataset listing",
+    "kind": "official dataset repository",
+    "url": "https://gdr.openei.org/submissions/1391"
+  },
+  {
+    "id": "gemsdoe24",
+    "label": "GEMSDOE24 owner-maintained page",
+    "kind": "owner-maintained research page",
+    "url": "https://buffedlizard55-lab.github.io/GEMSDOE24/"
+  },
+  {
+    "id": "gemsdoe25",
+    "label": "GEMSDOE25 owner-maintained page",
+    "kind": "owner-maintained research page",
+    "url": "https://buffedlizard55-lab.github.io/GEMSDOE25/"
+  },
+  {
+    "id": "gemsdoe27",
+    "label": "GEMSDOE27 owner-maintained page",
+    "kind": "owner-maintained research page",
+    "url": "https://buffedlizard55-lab.github.io/GEMSDOE27/"
+  },
+  {
+    "id": "gemsdoe28",
+    "label": "GEMSDOE28 owner-maintained page",
+    "kind": "owner-maintained research page",
+    "url": "https://buffedlizard55-lab.github.io/GEMSDOE28/"
+  },
+  {
+    "id": "gemsdoe30",
+    "label": "GEMSDOE30 owner-maintained page",
+    "kind": "owner-maintained research page",
+    "url": "https://buffedlizard55-lab.github.io/GEMSDOE30/"
+  },
+  {
+    "id": "gemsdoe31",
+    "label": "GEMSDOE31 owner-maintained page",
+    "kind": "owner-maintained research page",
+    "url": "https://buffedlizard55-lab.github.io/GEMSDOE31/docs/"
+  },
+  {
+    "id": "gemsdoe32",
+    "label": "GEMSDOE32 owner-maintained page",
+    "kind": "owner-maintained research page",
+    "url": "https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html"
+  },
+  {
+    "id": "gemsdoe33",
+    "label": "GEMSDOE33 owner-maintained page",
+    "kind": "owner-maintained research page",
+    "url": "https://buffedlizard55-lab.github.io/GEMSDOE33/"
+  },
+  {
+    "id": "gemsdoe36",
+    "label": "GEMSDOE36 owner-maintained page",
+    "kind": "owner-maintained research page",
+    "url": "https://buffedlizard55-lab.github.io/GEMSDOE36/docs/"
+  }
+]

@@ -1,0 +1,11 @@
+# Keep authenticated competition inputs and generated model outputs out of Git.
+/data/
+/cache/
+/artifacts/
+/outputs/
+
+# Python bytecode and local environments.
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/

@@ -1,0 +1,150 @@
+{
+  "schema_version": "1.0",
+  "review_date_utc": "2026-10-26",
+  "scope": [
+    "GEMSDOE24",
+    "GEMSDOE25",
+    "GEMSDOE27",
+    "GEMSDOE28",
+    "GEMSDOE30",
+    "GEMSDOE31",
+    "GEMSDOE32",
+    "GEMSDOE33",
+    "GEMSDOE36"
+  ],
+  "workspace_finding": "This checkout has no competition inputs, shared evaluator/writer, registry rasters, or candidate TIFF. Historical raster bytes were not independently loaded here.",
+  "score_policy": "Site-listed historical values are OWNER-REPORTED / UNVERIFIED, not HOLDOUT-DTI and not ORGANIZER-CONFIRMED receipts. New leaderboard estimates are not estimable.",
+  "current_public_leaderboard": {
+    "value": "0.4437",
+    "evidence_class": "OFFICIAL PUBLIC LEADERBOARD PAGE SNAPSHOT, fetched 2026-10-26; not this project's score and not a submission-page receipt",
+    "url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+    "note": "The prompt's 0.3195 and 0.4413 are older user-provided snapshots and are not the value shown by the live public page fetched for this review."
+  },
+  "sites": [
+    {
+      "site": "GEMSDOE24",
+      "url": "https://buffedlizard55-lab.github.io/GEMSDOE24/",
+      "historical_file": "gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+      "historical_claim": "0.2477",
+      "historical_claim_class": "OWNER-REPORTED / UNVERIFIED; no organizer receipt tied to these exact bytes was independently found",
+      "leaderboard_estimate": "Not estimable",
+      "unique_under_protocol": "NOT ESTABLISHED here; historical file, no local raster/registry re-run; not a new submission",
+      "current_source_page_decision": "Landing page presents a later DPRF1 artifact as research-only and says no submission is approved.",
+      "irregularity": null,
+      "source_summary": "https://buffedlizard55-lab.github.io/GEMSDOE30/priority-executive-summary.html",
+      "unique_cleared_for_new_submission": false
+    },
+    {
+      "site": "GEMSDOE25",
+      "url": "https://buffedlizard55-lab.github.io/GEMSDOE25/",
+      "historical_file": "gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+      "historical_claim": "0.2600",
+      "historical_claim_class": "OWNER-REPORTED / UNVERIFIED; no organizer receipt tied to these exact bytes was independently found",
+      "leaderboard_estimate": "Not estimable",
+      "unique_under_protocol": "NOT ESTABLISHED here; historical file and shared H19-5/D2.8 lineage are source-reported; not a new submission",
+      "current_source_page_decision": "The latest visible page says no competition-ready TIFF is approved; its H72-3 artifact is research-only.",
+      "irregularity": null,
+      "source_summary": "https://buffedlizard55-lab.github.io/GEMSDOE30/priority-executive-summary.html",
+      "unique_cleared_for_new_submission": false
+    },
+    {
+      "site": "GEMSDOE27",
+      "url": "https://buffedlizard55-lab.github.io/GEMSDOE27/",
+      "historical_file": "gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+      "historical_claim": "0.2449",
+      "historical_claim_class": "OWNER-REPORTED / UNVERIFIED; no organizer receipt tied to these exact bytes was independently found",
+      "leaderboard_estimate": "Not estimable",
+      "unique_under_protocol": "NOT ESTABLISHED here; historical file and no local registry comparison; not a new submission",
+      "current_source_page_decision": "The live front page says H31-1 passes that repository's local gates; a cross-site review reports a stricter literal-registry conflict. Do not transfer that local approval to this repository.",
+      "irregularity": "Local gate scope differs across source pages; a repository-specific approval is not a nine-site/global uniqueness result.",
+      "source_summary": "https://buffedlizard55-lab.github.io/GEMSDOE30/priority-executive-summary.html",
+      "unique_cleared_for_new_submission": false
+    },
+    {
+      "site": "GEMSDOE28",
+      "url": "https://buffedlizard55-lab.github.io/GEMSDOE28/",
+      "historical_file": "gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif",
+      "historical_claim": "0.2710",
+      "historical_claim_class": "OWNER-REPORTED / UNVERIFIED; no organizer receipt tied to these exact bytes was independently found",
+      "leaderboard_estimate": "Not estimable",
+      "unique_under_protocol": "NOT ESTABLISHED here; historical file and no local registry comparison; not a new submission",
+      "current_source_page_decision": "The latest visible S21 page reports a negative holdout result and says do not submit.",
+      "irregularity": null,
+      "source_summary": "https://buffedlizard55-lab.github.io/GEMSDOE30/priority-executive-summary.html",
+      "unique_cleared_for_new_submission": false
+    },
+    {
+      "site": "GEMSDOE30",
+      "url": "https://buffedlizard55-lab.github.io/GEMSDOE30/",
+      "historical_file": "gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif",
+      "historical_claim": "0.2600",
+      "historical_claim_class": "OWNER-REPORTED / UNVERIFIED; no organizer receipt tied to these exact bytes was independently found",
+      "leaderboard_estimate": "Not estimable",
+      "unique_under_protocol": "NOT ESTABLISHED here; source audit identifies the D2.8 family as a repeated lineage; not a new submission",
+      "current_source_page_decision": "The GDX-1 landing page says the new research artifact failed its promotion gate; no slot is selected.",
+      "irregularity": null,
+      "source_summary": "https://buffedlizard55-lab.github.io/GEMSDOE30/priority-executive-summary.html",
+      "unique_cleared_for_new_submission": false
+    },
+    {
+      "site": "GEMSDOE31",
+      "url": "https://buffedlizard55-lab.github.io/GEMSDOE31/docs/",
+      "historical_file": "gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif",
+      "historical_claim": "0.2708",
+      "historical_claim_class": "OWNER-REPORTED / UNVERIFIED; no organizer receipt tied to these exact bytes was independently found",
+      "leaderboard_estimate": "Not estimable",
+      "unique_under_protocol": "NOT ESTABLISHED here; historical file and no local registry comparison; not a new submission",
+      "current_source_page_decision": "The fetched page contains conflicting selector sections (some promote H31-T/H31-X under their own gates; another current research run is negative). No external banner is adopted here.",
+      "irregularity": "Conflicting current selector verdicts and differing registry scopes are visible on the same published page.",
+      "source_summary": "https://buffedlizard55-lab.github.io/GEMSDOE30/priority-executive-summary.html",
+      "unique_cleared_for_new_submission": false
+    },
+    {
+      "site": "GEMSDOE32",
+      "url": "https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html",
+      "historical_file": "gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+      "historical_claim": "0.2778",
+      "historical_claim_class": "OWNER-REPORTED / UNVERIFIED; the site's current page explicitly says no submission-page receipt links this value to the raster hash",
+      "leaderboard_estimate": "Not estimable",
+      "unique_under_protocol": "NO / NOT ESTABLISHED; source audits describe B2 as a pruned subset of D2.8/H19-5 and the source page says no file in that repository is currently authorized. Not independently recomputed here.",
+      "current_source_page_decision": "The fetched page says no new file is authorized for upload; strict literal uniqueness blocks the dense map.",
+      "irregularity": "Source audits differ on whether a relation is an exact duplicate or a strict subset; either way, uniqueness for a new submission is not demonstrated.",
+      "source_summary": "https://buffedlizard55-lab.github.io/GEMSDOE30/priority-executive-summary.html",
+      "unique_cleared_for_new_submission": false
+    },
+    {
+      "site": "GEMSDOE33",
+      "url": "https://buffedlizard55-lab.github.io/GEMSDOE33/",
+      "historical_file": "GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif",
+      "historical_claim": "0.2632",
+      "historical_claim_class": "OWNER-REPORTED / UNVERIFIED; no organizer receipt tied to these exact bytes was independently found",
+      "leaderboard_estimate": "Not estimable",
+      "unique_under_protocol": "NOT ESTABLISHED here; historical file and no local registry comparison; not a new submission",
+      "current_source_page_decision": "The fetched current page describes several newer artifacts as negative and says not to spend a weekly slot.",
+      "irregularity": null,
+      "source_summary": "https://buffedlizard55-lab.github.io/GEMSDOE30/priority-executive-summary.html",
+      "unique_cleared_for_new_submission": false
+    },
+    {
+      "site": "GEMSDOE36",
+      "url": "https://buffedlizard55-lab.github.io/GEMSDOE36/docs/",
+      "historical_file": "gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif",
+      "historical_claim": "0.2750",
+      "historical_claim_class": "OWNER-REPORTED / UNVERIFIED; no organizer receipt tied to these exact bytes was independently found",
+      "leaderboard_estimate": "Not estimable",
+      "unique_under_protocol": "NOT ESTABLISHED here; source review describes strong B2 lineage overlap; not a new submission",
+      "current_source_page_decision": "The fetched current page says HVG-36 is a research-only negative and fails a broader literal-registry gate.",
+      "irregularity": "A GEMSDOE25 portfolio ledger reports 0.2683 for this historical entry while its focus-site summary and the GEMSDOE36 page report 0.2750; unresolved.",
+      "source_summary": "https://buffedlizard55-lab.github.io/GEMSDOE30/priority-executive-summary.html",
+      "unique_cleared_for_new_submission": false
+    }
+  ],
+  "project_decision": {
+    "new_tiff_generated": false,
+    "reason": "No data/template/shared evaluator/writer/registry rasters are present, and no single method lane was specified.",
+    "download_for_submission": "NO FILE AVAILABLE",
+    "ok_to_submit": false,
+    "leaderboard_score_estimate": "Not estimable",
+    "verdict": "negative"
+  }
+}
