@@ -1,0 +1,13 @@
+# Python test/runtime artifacts
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# Competition data and generated rasters are not tracked by default
+data/*.tif
+data/*.tiff
+data/*.zip
+data/raw/
+data/processed/
+.cache/
