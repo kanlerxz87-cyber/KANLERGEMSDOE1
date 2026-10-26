@@ -1,3 +1,5 @@
+> **Historical MPLC plan, not current release evidence.** The resulting artifact overlaps the registered lattice by 99.9522%, violating the literal all-registry rule; that lane is stopped. Holdout provenance was not independently replayed in the present review. The ranking is historical and not an approved future experiment. See [the current audit](evidence/protocol_audit_20261026.json) and [research slate](hypotheses.html).
+
 # Ranked candidate hypotheses (pre-registered 2026-10-26, before any model fit in this repo)
 
 Evidence classes: HOLDOUT-DTI / OWNER-REPORTED / ORGANIZER-CONFIRMED / PROJECTION.
@@ -9,18 +11,14 @@ No number in this file is a score. Live scores quoted from the prompt are OWNER-
 Official metric (DrivenData #306 problem page, verified 2026-10-26): distance-weighted
 Tversky, alpha=0.2 (FP), beta=0.8 (FN), 300 m triangular kernel, EPSG:32611, 100 m.
 Algebra (vendor/gems57/metric.py, brute-force tested upstream): with T=kernel TP credit,
-S=emitted mass, M=self-credit, DTI = T / (0.2*(T+S-M) + 0.8*|G|). A non-redundant dot
-raises DTI iff its kernel credit k > 0.2*DTI (~0.056 at 0.2778). The H19-5 lineage is
-nested (OWNER-REPORTED): solid 121,131 dots 0.1922 -> d1.5 60,069 dots 0.2477 ->
-d2.8 44,090 dots 0.2600 -> B2-pruned 37,654 dots 0.2778. Thinning deletes dots whose
-realised credit is below the metric's own break-even bar while the 300 m kernel still
-covers the same truth pixels from neighbours; B=2 additionally removes dots within
-2 px of the *known* catalogue, which can only earn credit already saturated by the
-catalogue trace itself on hidden-fault scoring. Conclusion: the win is mostly an
-*emission* effect on one good field, not a new detector. Beating it requires a field
-whose top ~37k off-catalogue pixels carry >~25% more mean kernel credit (GEMSDOE32
-knowledge/01 derivation), i.e. a detector improvement, verified on hide-and-recover
-holdout — not another thinning of the same field (that is also the duplicate lane).
+S=emitted mass, M=self-credit, DTI = T / (0.2*(T+S-M) + 0.8*|G|). For an idealized isolated addition with full incremental truth credit, a dot raises DTI
+if its kernel credit exceeds 0.2×DTI; this is not a general threshold for overlapping
+or already covered predictions. The H19-5 family is nested in the audited supports:
+121,131 → 44,090 → 37,654 cells. Associated 0.1922, 0.2600 and 0.2778 are owner
+reports without receipts. Pruning can remove low-credit false-positive mass, but the
+organizer masks known-fault pixels exactly and hidden faults may be nearby; a 2-pixel
+collar can also discard true positives. The score-to-file mapping and causal mechanism
+are not established, and no percentage improvement is required or forecast here.
 
 ## Candidates (all use only data already restored hash-verified in data/, see registry/data_manifest.json)
 
@@ -33,8 +31,7 @@ holdout — not another thinning of the same field (that is also the duplicate l
 | 5 | SCARPASYM | B12/B19 + LiDAR u8 stack | Scarp asymmetry index: signed cross-ridge elevation difference normalised by relief, from 100 m DEM + LiDAR step bands | Young scarps are asymmetric; symmetric ridges (dikes, shorelines) are the main mimic and are explicitly down-weighted | LiDAR scarp *magnitude* is heavily tried (GEMSDOE7/12/47/64/66); the signed asymmetry normalisation is not in the sibling grep | Medium |
 
 Ranking logic: expected DTI gain per unit cost and per unit leakage risk. MPLC is rank 1
-because it is the only candidate whose targeted population (low-amplitude blind steps)
-is disjoint from the population every magnitude-based lane already harvests.
+as a qualitative research idea. A distinct or disjoint hidden-fault population has not been established.
 
 **Non-fault mimic for MPLC (named, per protocol):** lithologic contacts, mafic dikes,
 paleo-shoreline risers, and road/terrace edges are also phase-congruent steps. The
@@ -53,9 +50,7 @@ HGB (trained on real faults) are the mitigations; the holdout decides.
   Pooled DTI alpha=0.2 beta=0.8 R=3px; paired 20-km block bootstrap CI (vendor pooled_summary).
 - Leakage canary: every MPLC band alone, AUC withheld-vs-active per pooled folds; >0.90 = leakage stop.
 - Uniqueness gates (protocol): surface |Spearman| <= 0.90 and final-dot 3-px overlap <= 70%
-  vs every registry raster (discrete scored peers; the spacing-5 lattice blanket is
-  reported separately — under a literal all-raster reading every dense map fails it,
-  disclosed as IR-K1, same disclosure as GEMSDOE31 IR-U-02).
+  vs every registry raster, including the spacing-5 lattice. The historical artifact failed this literal rule and the lane is stopped; no density or lattice exception is authorized.
 - Promotion gate: candidate must beat EXP1 AND the champion raster's same-evaluator
   HOLDOUT-DTI with paired CI > 0, pass canary + uniqueness + vendor format validator.
   Otherwise verdict=negative, file is research-only, no slot spent.

@@ -1,4 +1,6 @@
-# Original prompt (stored verbatim in substance, 2026-10-26)
+# Earlier prompt-in-substance reconstruction (2026-10-26)
+
+This is a prior summary, not the complete verbatim original. Read it alongside the current [standing protocol](../ORIGINAL_PROMPT.md) and current audit; historical leaderboard values and uniqueness claims are not receipts.
 
 Focus on the highest-scoring submissions from GEMSDOE24, 25, 27, 28, 30, 31, 32, 33, 36.
 Executive summary per site; obvious which file to download; estimate each score; prove

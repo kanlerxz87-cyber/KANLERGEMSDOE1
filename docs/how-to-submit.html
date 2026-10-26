@@ -1,75 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>How to submit · KANLERGEMSDOE1</title>
-  <link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
-<aside style="border:3px solid #b91c1c;padding:1rem;margin:1rem;background:#fff;color:#111" role="alert"><strong>AUTOMATED AUDIT: DO NOT SUBMIT — historical evidence quarantined.</strong><p>The numerical results below are archived diagnostics, not admissible HOLDOUT-DTI or live-score estimates. Full-catalogue masking preceded placement; leakage canaries were not fold-local. The prior uniqueness gate exempted a lattice whose overlap exceeded the mandatory limit. No uniqueness clearance survives the strict protocol. Leaderboard numbers below are inherited, not freshly verified organizer receipts.</p><p><a href="audit-20261026.md">Audit and next steps</a> · <a href="evidence/artifact_audit.json">Automated artifact checks</a></p></aside>
-<header>
-  <div class="wrap" style="padding-bottom:0">
-    <div class="brand">KANLERGEMSDOE1</div>
-    <h1>How to submit a GeoTIFF to the GEMS Prize</h1>
-    <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="executive-summary.html">Executive summary</a>
-      <a href="how-to-submit.html">How to submit</a>
-      <a href="hypotheses.html">Hypotheses</a>
-      <a href="research.html">Why 0.2778</a>
-      <a href="sources.html">Sources</a>
-    </nav>
-  </div>
-</header>
-<main class="wrap">
-  <div class="banner">
-    <strong>Today: DO NOT SUBMIT.</strong>
-    <p>Follow these steps only when the home-page banner is green. The files currently in <code>docs/downloads/</code> are research artifacts.</p>
-  </div>
-
-  <h2>Official contract</h2>
-  <p>Verified from the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#submission-format">problem description, submission format</a>:</p>
-  <ul>
-    <li>Single-band GeoTIFF, or a zip containing a single GeoTIFF</li>
-    <li>CRS EPSG:32611 (UTM 11N), 100 m, same bounds as training data</li>
-    <li>float32 values in <b>[0, 1]</b> (this is the error you hit if NaNs or sentinels leak into the grid)</li>
-    <li>Higher = higher confidence of fault presence</li>
-  </ul>
-  <p>This repo’s writer emits a <b>-zeros.tif</b> with <code>nodata=None</code> and 0.0 outside the footprint so every one of the 12,279,160 cells is finite and in [0, 1]. That is the file to upload if a future candidate is authorized. Do not upload the -nan twin to DrivenData.</p>
-
-  <h2>Portal steps</h2>
-  <ol class="steps">
-    <li>Log in at <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData competition 306</a>.</li>
-    <li>Open <b>Submit</b> / New submission.</li>
-    <li>Choose the authorized <code>*-zeros.tif</code> or its single-TIFF <code>.zip</code>.</li>
-    <li>Note field (optional, ≤140 chars): paste the exact note from the home-page table. Example of a <em>research</em> note, not for use today:<br>
-      <code>KANLER H1 IEDR ieq*dil*hgm s3.17 B2 32000d HR=0.0062 | research | DO-NOT-SUBMIT</code></li>
-    <li>Submit. If the portal returns <code>Predicted values must be in range [0, 1]</code>, you uploaded a file with NaN, Inf, or a nodata sentinel. Use the zeros variant.</li>
-  </ol>
-
-  <h2>What this repo already checks (no human inspector)</h2>
-  <div class="card">
-    <table>
-      <thead><tr><th>Check</th><th>H1 zeros</th></tr></thead>
-      <tbody>
-        <tr><td>CRS EPSG:32611</td><td class="good">PASS</td></tr>
-        <tr><td>Shape 3730 × 3292</td><td class="good">PASS</td></tr>
-        <tr><td>Transform (100, 0, 243350, 0, -100, 4508550)</td><td class="good">PASS</td></tr>
-        <tr><td>dtype float32, single band</td><td class="good">PASS</td></tr>
-        <tr><td>No NaN inside footprint (5,167,373 cells)</td><td class="good">PASS</td></tr>
-        <tr><td>Values in [0, 1] on the full grid (zeros variant)</td><td class="good">PASS</td></tr>
-        <tr><td>Zero positive pixels on existing_faults.tif</td><td class="good">PASS (0 / 32,000)</td></tr>
-        <tr><td>Lane uniqueness vs genuine detectors</td><td class="good">PASS</td></tr>
-        <tr><td>Holdout beat of champion by 95% CI + SGMC</td><td class="bad">FAIL — hence DO NOT SUBMIT</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h2>Weekly slot</h2>
-  <p>DrivenData rate-limits submissions. Spending a slot on a file that is a 3-px duplicate of a previous upload, or that lost holdout, is negative expected value. The selector — not this experiment runner — spends slots.</p>
-
-  <footer>Official submit UI: DrivenData competition 306. Rules PDF: NREL/TP-5700-96647.</footer>
-</main>
-</body>
-</html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Submission gate &amp; upload · KANLER GEMS</title><link rel="stylesheet" href="assets/style.css"></head>
+<body><header><div class="wrap head"><p class="brand">KANLERGEMSDOE1 / DOE GEMS PRIZE / RESEARCH DESK</p><h1>Submission gate &amp; upload</h1><nav class="nav" aria-label="Primary"><a href="index.html">Status</a><a href="executive-summary.html">Executive summary</a><a href="research.html">Why 0.2778?</a><a href="hypotheses.html">Research slate</a><a href="how-to-submit.html" aria-current="page">Submission gate</a><a href="sources.html">Sources</a></nav></div></header>
+<main class="wrap"><div class="banner" role="status"><strong>STOP — NO RASTER IS CLEARED FOR SUBMISSION</strong><p>The IEDR lane failed the literal registry-duplication rule. There is no demonstrated unique, high-scoring candidate and no authorized download for contest use. No weekly slot was used in this review.</p></div>
+<h2>Do not upload an existing artifact</h2><p>No current filename or note is authorized. A format pass is not a uniqueness pass, and there is no proof that zero outside the footprint caused or fixes the prior <code>Predicted values must be in range [0, 1]</code> rejection. The official instructions call for null/NaN outside bounds; use an organizer-authenticated template and current portal instructions, not assumptions about a local variant.</p>
+<h2>For a future candidate, only after a separate selector approves</h2><ol class="steps">
+<li>Check the current official <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">format and metric</a> and authenticated platform quota. The <a href="https://community.drivendata.org/t/submission-amount-question/11553">organizer says the website's displayed submission limit prevails</a>.</li>
+<li>Reproduce fold-local features, leak canaries and pooled HOLDOUT-DTI with evaluator version, withheld-positive count and 95% interval. Verify complete-registry surface and final-dot gates. No calibration or density exemption without an explicit policy change.</li>
+<li>Run the shared writer; independently reopen the output and compare single band, float32, exact CRS/shape/transform, finite [0,1] values throughout the footprint and pixel-exact known-label masking against the official sample. Check the actual outside-footprint/nodata rules. Do not clip invalid input to disguise errors.</li>
+<li>Have the separate selector assess uniqueness, scientific performance and evidence; only then publish one approved download, SHA-256, distinct name and a note ≤140 characters. Record the exact uploaded file hash, timestamp, and organizer submission-page receipt. A successful local audit does not guarantee portal acceptance.</li></ol>
+<p>These are future instructions, not permission to submit H1/H2/H3 or the historical GEMSDOE32 artifact. See the <a href="evidence/current_run_card.json">negative run card</a>.</p>
+<footer>Review: 26 October 2026 UTC · No contest slot used in this review · <a href="sources.html">Evidence &amp; sources</a></footer></main></body></html>

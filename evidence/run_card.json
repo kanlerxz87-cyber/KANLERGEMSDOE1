@@ -1,4 +1,11 @@
 {
+  "status_update_20261026": {
+    "status": "SUPERSEDED / DUPLICATE / NOT PROMOTION EVIDENCE",
+    "reviewed_utc_date": "2026-10-26",
+    "correction": "The literal any-registry rule includes the spacing-5 lattice. The parallel MPLC artifact has 0.9995219631380464 directional 3-pixel overlap and therefore fails; no lattice exemption is authorized. Its reported per-fold holdout has not been independently replayed in this review. Local [0,1] validation does not prove portal acceptance.",
+    "current_audit": "docs/evidence/protocol_audit_20261026.json",
+    "ok_to_submit": false
+  },
   "hypothesis": "MPLC: multi-scale (8/20/50px) oriented log-Gabor phase congruency on RTP, isostatic gravity and detrended elevation, plus cross-source PC concordance and RTP structure-tensor orientation coherence, added to a 39-band HGB, catches low-amplitude buried fault steps that amplitude-biased gradient stacks miss.",
   "mechanism": "Contrast-invariant local-phase alignment across scales (Kovesi PC with frequency-spread weighting); dots emitted by dotted greedy max-cover on E[k], 37,654 budget, <=2px catalogue prune, visible faults masked pixel-exact.",
   "named_non_fault_mimic": "Lithologic contacts, mafic dikes, paleo-shoreline risers, road/terrace edges are also phase-congruent steps; mitigated by cross-source concordance + supervised HGB, decided by holdout.",

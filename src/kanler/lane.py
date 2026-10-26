@@ -1,9 +1,8 @@
-"""KANLER lane: MPLC features + HistGradientBoosting + dotted max-cover emission.
+"""Historical parallel MPLC lane — stopped after literal lattice duplication.
 
-Holdout honesty: quadrant-spatial training (a fold's model never trains on
-that quadrant), vendor gems57 whole-segment hide-and-recover cells (seed 20,
-mode=all), visible faults masked pixel-exact by the vendor cell, no
-catalogue-derived features, emission prune (<=2 px) uses visible faults only.
+The earlier report described quadrant training, vendor hide-and-recover and
+visible-only emission pruning. This review has not independently replayed the
+fold provenance. The generator is disabled; old results remain historical.
 """
 from __future__ import annotations
 import sys, json, time
@@ -133,6 +132,7 @@ def cell_terms(cell, emitted_crop):
 
 
 def run_holdout(budget_total=BUDGET_TOTAL, seed=20):
+    raise RuntimeError("STOP: the parallel MPLC lane failed the literal registry-lattice uniqueness rule; no further experiment is authorized.")
     from sklearn.ensemble import HistGradientBoostingClassifier
     grid, footprint, catalogue = load_grid()
     ctx = vhold.build_holdout(grid, seeds=(seed,), modes=("all",))

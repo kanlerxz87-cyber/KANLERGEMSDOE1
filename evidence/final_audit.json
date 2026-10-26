@@ -1,4 +1,11 @@
 {
+  "status_update_20261026": {
+    "status": "SUPERSEDED / DUPLICATE / NOT PROMOTION EVIDENCE",
+    "reviewed_utc_date": "2026-10-26",
+    "correction": "The literal any-registry rule includes the spacing-5 lattice. The parallel MPLC artifact has 0.9995219631380464 directional 3-pixel overlap and therefore fails; no lattice exemption is authorized. Its reported per-fold holdout has not been independently replayed in this review. Local [0,1] validation does not prove portal acceptance.",
+    "current_audit": "docs/evidence/protocol_audit_20261026.json",
+    "ok_to_submit": false
+  },
   "validator": {
     "file": "/home/user/KANLERGEMSDOE1/docs/downloads/kanler-mplc-hgb-37654-20261026-0741963ae4e9-zeros.tif",
     "bytes": 128469,

@@ -1,45 +1,5 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8">
-<title>KANLERGEMSDOE1 · DOE GEMS MPLC lane — DO NOT SUBMIT (research download)</title>
-<style>body{font-family:system-ui,Arial,sans-serif;max-width:980px;margin:2rem auto;padding:0 1rem;line-height:1.5;color:#14202b}table{border-collapse:collapse;width:100%;font-size:.92em}td,th{border:1px solid #c9d4dd;padding:.45rem .6rem;text-align:left}.bad{background:#fdecec;border:2px solid #c0392b;padding:1rem;border-radius:8px}.ok{background:#eaf7ee;border:1px solid #2e7d32;padding:1rem;border-radius:8px}a.btn{display:inline-block;background:#14558f;color:#fff;padding:.7rem 1.1rem;border-radius:6px;text-decoration:none;font-weight:600}code{background:#eef2f5;padding:.1rem .3rem;border-radius:4px}</style></head><body>
-<h1>KANLERGEMSDOE1 — DOE GEMS Prize (DrivenData #306)</h1>
-<div class="bad"><strong>🚦 AUTOMATED VERDICT: 🔴 DO NOT SUBMIT TO DRIVENDATA.</strong><br>
-New unique GeoTIFF generated and format-valid, but the promotion gate is <code>negative</code>:
-it trails the champion on the off-catalogue SGMC discovery proxy (0.0563 vs 0.0954 COMPUTED).
-Download for research only. No weekly slot may be spent on this file. Slots spent by this repo: 0.</div>
-<h2>One-click research download</h2>
-<p><a class="btn" href="../downloads/kanler-mplc-hgb-37654-20261026-0741963ae4e9-zeros.tif">⬇ Download unique TIF (research only — DO NOT SUBMIT)</a>
-<a class="btn" href="../downloads/kanler-mplc-hgb-37654-20261026-0741963ae4e9-zeros.zip">⬇ Single-TIF ZIP</a></p>
-<p><strong>File:</strong> <code>kanler-mplc-hgb-37654-20261026-0741963ae4e9-zeros.tif</code> · 37,654 dots ·
-SHA-256 <code>fe4b8d742c1b12f60727ae22d4ae2dd96e6bfcb76b7f35e985d0e707bb816db3</code> ·
-single-band float32 · EPSG:32611 · 3730×3292 · values exactly {0,1}, all-finite (prevents the “Predicted values must be in range [0, 1]” portal error) ·
-0 dots on the mapped catalogue · vendor validator: <strong>all checks PASS</strong>.<br>
-<strong>Name:</strong> <code>kanler-mplc-hgb-37654-20261026-0741963ae4e9</code> ·
-<strong>Note (89/140, provenance only):</strong> <code>KANLER MPLC phase-congruency HGB 37654d B2 | HOLDOUT-DTI 0.0894 vs 0.0840 | DO NOT SUBMIT</code></p>
-
-<h2>Executive summary — which file, what estimate, is it unique?</h2>
-<table><tr><th>Site</th><th>Highest file</th><th>Score</th><th>Estimated live score</th><th>Unique?</th><th>OK to submit?</th></tr>
-<tr><td>GEMSDOE32</td><td>h33-h33-2-b2 (37,654d)</td><td>0.2778 OWNER-REPORTED</td><td>— (already scored)</td><td>NO — H19-5 family parent</td><td>🔴 NO, already submitted</td></tr>
-<tr><td>GEMSDOE36</td><td>anderson-geothermal-pinn (38,854d)</td><td>0.2750 OWNER-REPORTED</td><td>—</td><td>NO — 97.4% vs champion</td><td>🔴 NO</td></tr>
-<tr><td>GEMSDOE28</td><td>h36-1-rung30-blind-r1</td><td>0.2710 OWNER-REPORTED</td><td>—</td><td>NO — nested</td><td>🔴 NO</td></tr>
-<tr><td>GEMSDOE31</td><td>h27-4-solo-d28</td><td>0.2708 OWNER-REPORTED</td><td>—</td><td>NO — nested</td><td>🔴 NO</td></tr>
-<tr><td>GEMSDOE33</td><td>h33d-analog-tip-stepover-r30</td><td>0.2632 OWNER-REPORTED</td><td>—</td><td>NO — 92.6% vs champion</td><td>🔴 NO</td></tr>
-<tr><td>GEMSDOE25 / 30</td><td>dotted-h19-5-d2-8 (44,090d)</td><td>0.2600 OWNER-REPORTED</td><td>—</td><td>NO — duplicates each other</td><td>🔴 NO</td></tr>
-<tr><td>GEMSDOE24</td><td>h25-1-dotted-h19-5-d1-5</td><td>0.2477 OWNER-REPORTED</td><td>—</td><td>NO</td><td>🔴 NO</td></tr>
-<tr><td>GEMSDOE27</td><td>topo-gap-closure-t-v2-on-d1-5</td><td>0.2449 OWNER-REPORTED</td><td>—</td><td>NO</td><td>🔴 NO</td></tr>
-<tr><td><strong>KANLERGEMSDOE1 (new)</strong></td><td><strong>kanler-mplc-hgb-37654-20261026-0741963ae4e9-zeros</strong></td><td>HOLDOUT-DTI 0.0894 [0.0757, 0.1028] (gems57-pooled-hide-v2, 11,318 withheld)</td><td><strong>NOT ESTIMABLE</strong> — no calibrated holdout→live mapping exists; any number would be fabricated</td><td><strong>YES</strong> vs discrete peers: max 3-px overlap 46.2% ≤ 70%, max |Spearman| 0.126 ≤ 0.90 (lattice blanket disclosed, IR-K1)</td><td>🔴 <strong>NO — verdict negative</strong></td></tr></table>
-
-<h2>Why 0.2778 won — and why this file does not claim to beat it</h2>
-<p>DTI = TPw/(TPw + 0.2·FPw + 0.8·FNw) with a 300 m triangular kernel (<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">official problem page</a>).
-A dot helps iff its kernel credit &gt; 0.2·DTI. The champion family (121,131d/0.1922 → 60,069d/0.2477 → 44,090d/0.2600 → 37,654d/0.2778, all OWNER-REPORTED)
-is one field thinned to the metric's break-even bar plus a ≤2 px catalogue prune — an <em>emission</em> win, not a new detector.
-Our MPLC phase-congruency detector beats its own 39-band control on hide-and-recover holdout
-(0.0894 vs 0.0840, paired Δ +0.0054, 95% CI [+0.0004, +0.0108]; leakage canary PASS, AUC ≤ 0.528),
-but on off-catalogue USGS SGMC faults it earns 0.0563 vs the champion's 0.0954 (COMPUTED, same code).
-That regression blocks promotion. <strong>Negative results are deliverables.</strong></p>
-<p>Full evidence: <a href="executive-summary.html">Executive summary &amp; how-to-submit guide</a> ·
-<a href="https://github.com/kanlerxz87-cyber/KANLERGEMSDOE1/blob/main/evidence/run_card.json">JSON run card</a> ·
-<a href="https://github.com/kanlerxz87-cyber/KANLERGEMSDOE1/blob/main/docs/HYPOTHESES.md">Ranked hypotheses</a> ·
-<a href="https://github.com/kanlerxz87-cyber/KANLERGEMSDOE1/blob/main/README.md">README</a></p>
-<p style="font-size:.85em;color:#555">Live leaderboard fetched 2026-10-26: #1 xiaofanhu 0.4437 (public observation; the prompt's 0.4413/0.3195 are stale — IR-K3).
-All 9-site scores are OWNER-REPORTED; no ORGANIZER-CONFIRMED receipt exists in any fetched repo (IR-K4).</p>
-</body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Parallel MPLC artifact · retrospective review</title><link rel="stylesheet" href="../assets/style.css"></head><body><header><div class="wrap head"><p class="brand">KANLERGEMSDOE1 / PARALLEL RESEARCH ARCHIVE</p><h1>MPLC retrospective</h1><nav class="nav"><a href="../index.html">Current status</a><a href="../executive-summary.html">Executive summary</a><a href="../sources.html">Sources</a></nav></div></header><main class="wrap">
+<div class="banner"><strong>STOP — NOT UNIQUE, DO NOT SUBMIT</strong><p>The earlier parallel MPLC TIFF is not a contest download. Its 3-pixel overlap with the registered lattice is <b>99.9522%</b>, above the literal 70% limit; there is no lattice exemption. Its earlier “unique versus discrete peers” statement did not establish a pass under the user's all-registry rule.</p></div>
+<p>The earlier lane reported a <strong>HOLDOUT-DTI</strong> of 0.0894 (KANLER-HOLDOUT-v1 / gems57-pooled-hide-v2; 11,318 withheld positives; 95% CI [0.0757, 0.1028]). We have not independently replayed the per-fold feature and training provenance in this review. It is neither a live score nor a reason to bypass the duplicate STOP. The reported SGMC comparison is also a proxy, not private test truth.</p>
+<p>We reopened the existing single-band TIFF and verified its hash and local format against the pinned owner mirror. The mirror is not an authenticated organizer sample, and a finite zero-outside encoding does not prove that the portal will accept it or fix a previous rejection.</p>
+<p>The artifact and original experiment are preserved in the repository and Git history for provenance. No experiment in this parallel lane was run during this review and its generator is now stopped. See the <a href="../evidence/protocol_audit_20261026.json">current audit</a>, <a href="../executive-summary.html">main executive summary</a>, and <a href="../how-to-submit.html">future submission gate</a>.</p><footer>Retrospective correction · 2026-10-26 UTC</footer></main></body></html>

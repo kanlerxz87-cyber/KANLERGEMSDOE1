@@ -179,14 +179,12 @@ def compute_h33_1_thermal_conduit(bands_dir: Path, ddir: Path, foot: np.ndarray)
 
     Physical model
     --------------
-    A silica/cation geothermometer returns the temperature of the *reservoir* that a spring is
-    discharging from, not the spring's surface temperature.  A reservoir above ~150 deg C in the
-    Great Basin implies a magmatic or deeply-circulating heat source.  Fluid reaches the surface
-    along a permeable fault, so the surface trace of that fault must exist somewhere within the
-    spring's recharge/upflow catchment.  The USGS Quaternary catalogue only records faults with
-    evidence of coseismic deformation in the last 1.6 Ma, so a conduit whose throw is small, whose
-    scarp is erased by argillic alteration, or which is a *secondary* structure inside a step-over
-    is systematically absent -- which is exactly the population the competition scores.
+    Silica/cation geothermometers estimate reservoir temperatures indirectly and carry chemical
+    and sampling uncertainty. Deep circulation along permeable structures is a possible source
+    of hot fluids, but heat does not prove that a surface trace exists at the observed spring.
+    A small, buried or eroded secondary fault might be absent from a mapped catalogue. The
+    competition's private fault types and coverage have not been disclosed, so this is a
+    hypothesis rather than a description of the test-label population.
 
     Transform
     ---------
@@ -208,7 +206,8 @@ def compute_h33_1_thermal_conduit(bands_dir: Path, ddir: Path, foot: np.ndarray)
     tmi_hg = load_band(bands_dir, 3, "tmi_hg")
     depth_base = load_band(bands_dir, 15, "depth_to_base_surf")
 
-    gy, gx = np.gradient(det_elev)
+    # The magnetic channel must be the gradient of tmi_hg, not det_elev.
+    gy, gx = np.gradient(tmi_hg)
     hess_ridge = _hessian_ridge_response(det_elev, 2.0)
     g_tmi = gaussian_filter(np.hypot(gx, gy), 1.0)
     gdb = np.gradient(depth_base)
@@ -230,17 +229,9 @@ def compute_h33_1_thermal_conduit(bands_dir: Path, ddir: Path, foot: np.ndarray)
 
 
 def _hessian_ridge_response(a: np.ndarray, sigma: float) -> np.ndarray:
-    """Sato/Frangi-style ridge response (largest-|eigenvalue| with the ridge sign convention)."""
-    from scipy.ndimage import gaussian_filter as _gf
-    axx = _gf(a, sigma, order=(0, 2), mode="nearest")
-    ayy = _gf(a, sigma, order=(2, 0), mode="nearest")
-    axy = _gf(a, sigma, order=(1, 1), mode="nearest")
-    tmp = np.sqrt(np.maximum(((axx - ayy) * 0.5) ** 2 + axy ** 2, 0.0))
-    l1 = (axx + ayy) * 0.5 + tmp
-    l2 = (axx + ayy) * 0.5 - tmp
-    big = np.where(np.abs(l1) >= np.abs(l2), l1, l2)
-    small = np.where(np.abs(l1) >= np.abs(l2), l2, l1)
-    return (-small * (big < 0)).astype(np.float32)
+    """Shared bright-ridge principal curvature; prior results used a defective eigenvalue."""
+    from .features import _hessian_ridge
+    return _hessian_ridge(a, sigma)
 
 
 # --------------------------------------------------------------------------------------------

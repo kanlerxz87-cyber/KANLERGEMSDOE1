@@ -25,7 +25,9 @@ NEAR_LABEL_PX = 3    # 300 m kernel radius around known catalogue faults
 ESTIMATED_LB_HIDDEN_TRUTH_PX = 12691.0  # Calibrated from blind lattice-s5 (0.0904) & h19-5->d1.5->d2.8
 EVALUATOR_VERSION = "GEMSDOE32-HOLDOUT-v3-visible-only"
 HOLDOUT_EVALUATOR_VERSION = "GEMSDOE32-HOLDOUT-v3-visible-gated"
-HIDE_RECOVER_EVALUATOR_VERSION = "GEMSDOE32-HIDE-RECOVER-v3.0"
+# v3.1 fixes the omission of false-positive mass from truth-empty cells.
+# v3.0 results are historical and must not be mixed with this evaluator.
+HIDE_RECOVER_EVALUATOR_VERSION = "GEMSDOE32-HIDE-RECOVER-v3.1"
 SGMC_EVALUATOR_VERSION = "GEMSDOE32-SGMC-CAL-v3.0"
 
 
@@ -100,10 +102,26 @@ def _pick_components(rng, comp_size: np.ndarray, ids: np.ndarray, target_px: flo
 
 def load_holdout_context(ddir: Path, hide_frac: float = 0.20) -> HoldoutContext:
     with rasterio.open(ddir / "sample_submission.tif") as ds:
+        if ds.count != 1 or ds.crs is None:
+            raise ValueError("Invalid sample template")
+        grid = (ds.shape, ds.crs, ds.transform)
         foot = np.isfinite(ds.read(1))
-    labels = read_binary(ddir / "labels.tif") & foot
+    if not foot.any():
+        raise ValueError("Sample has no finite footprint")
+    with rasterio.open(ddir / "labels.tif") as ds:
+        if ds.count != 1 or (ds.shape, ds.crs, ds.transform) != grid:
+            raise ValueError("Catalogue grid does not match sample")
+        raw_labels = ds.read(1)
+        if not np.isfinite(raw_labels[foot]).all() or not np.isin(raw_labels[foot], (0, 1)).all():
+            raise ValueError("Catalogue must be finite and binary inside the footprint")
+        labels = (raw_labels == 1) & foot
     with rasterio.open(ddir / "external" / "derived_sgmc_faults_100m_u8.tif") as ds:
-        sgm = ds.read(1) > 0
+        if ds.count != 1 or (ds.shape, ds.crs, ds.transform) != grid:
+            raise ValueError("SGMC grid does not match sample")
+        sgraw = ds.read(1)
+        if not np.isfinite(sgraw[foot]).all() or not np.isin(sgraw[foot], (0, 1)).all():
+            raise ValueError("SGMC must be finite and binary inside the footprint")
+        sgm = sgraw == 1
     near = binary_dilation(labels, iterations=NEAR_LABEL_PX)
     sgmc_off = sgm & ~labels & ~near & foot
 
@@ -640,14 +658,27 @@ def evaluate_hide_and_recover(
     n_boot: int = 1000,
     seed: int = 20261026,
     name: str = "candidate",
+    diagnostic_allow_full_map: bool = False,
 ) -> dict:
-    """Protocol Rule 2 leak-free Hide-and-Recover Pooled DTI evaluator (fixes IR-32-INSTR-03).
+    """Evaluate binary per-cell predictions with visible-only masks and pooled DTI.
 
-    Withholds whole fault segments with a 15-px collar buffer, masks ONLY visible faults pixel-exactly
-    (plus optional ``b_visible_px`` exclusion strictly around visible faults — NEVER hidden faults),
-    and computes exact pooled DTI (alpha=0.2, beta=0.8, 300 m triangular kernel) with a spatial
-    ``grid_n x grid_n`` block cluster-bootstrap 95% CI.
+    The caller must generate every catalogue-derived feature and emission from
+    that cell's visible faults only. The evaluator cannot prove the provenance
+    of an array. A final full-catalogue map is rejected unless explicitly opted
+    into as a diagnostic; its score is not promotion evidence. v3.1 includes
+    false positives from zero-truth cells in both the pooled score and CI.
     """
+    def binary_array(value, description):
+        a = np.asarray(value)
+        if not (np.issubdtype(a.dtype, np.number) or a.dtype == np.bool_):
+            raise ValueError(f"{description} must be a binary numeric/boolean array")
+        if not np.isfinite(a).all() or not np.all((a == 0) | (a == 1)):
+            raise ValueError(f"{description} must already be finite and binary (0/1)")
+        return a.astype(bool, copy=False)
+
+    is_cell_dict = isinstance(pred_or_cells, dict)
+    if not is_cell_dict and not diagnostic_allow_full_map:
+        raise ValueError("Full-catalogue map is diagnostic only; provide fold-local cell predictions")
     h, w = ctx.foot.shape
     n_blocks = grid_n * grid_n
     tp_blk = np.zeros(n_blocks, dtype=np.float64)
@@ -657,21 +688,29 @@ def evaluate_hide_and_recover(
     fy, fx = np.nonzero(ctx.foot)
     active_blocks = np.unique(_spatial_block_index(fy, fx, (h, w), grid_n))
 
-    is_cell_dict = isinstance(pred_or_cells, dict)
-    base_mask = None if is_cell_dict else (np.asarray(pred_or_cells, bool) & ctx.foot)
+    if grid_n <= 0 or n_boot < 20 or not np.isfinite(b_visible_px) or b_visible_px < 0:
+        raise ValueError("grid_n > 0, n_boot >= 20, and finite nonnegative b_visible_px required")
+    base_mask = None if is_cell_dict else (binary_array(pred_or_cells, "full map") & ctx.foot)
+    if base_mask is not None and base_mask.shape != (h, w):
+        raise ValueError("full map does not match the footprint")
 
     folds: dict[str, dict] = {}
     for cell in ctx.cells:
         sl = cell.bbox
         r0, c0 = int(sl[0].start), int(sl[1].start)
         if is_cell_dict:
-            raw_cell = np.asarray(pred_or_cells[cell.key], bool)
+            if cell.key not in pred_or_cells:
+                raise ValueError(f"missing fold-local prediction {cell.key}")
+            raw_cell = binary_array(pred_or_cells[cell.key], f"prediction {cell.key}")
             sub_in = raw_cell[sl] if raw_cell.shape == (h, w) else raw_cell
         else:
             sub_in = base_mask[sl]
-
+        if sub_in.shape != cell.active_sub.shape:
+            raise ValueError(f"prediction {cell.key} has an incorrect shape")
         p_sub = sub_in & cell.active_sub
-        if b_visible_px > 0.0 and cell.d_vis_sub is not None:
+        if b_visible_px > 0.0:
+            if cell.d_vis_sub is None:
+                raise ValueError(f"visible-fault distance missing for {cell.key}")
             p_sub = p_sub & (cell.d_vis_sub > b_visible_px)
 
         n_emit = int(p_sub.sum())
@@ -680,6 +719,12 @@ def evaluate_hide_and_recover(
         t_blk = _spatial_block_index(ty_sub + r0, tx_sub + c0, (h, w), grid_n)
 
         if n_t == 0:
+            # With no hidden positives, each emitted unit contributes one FP.
+            # These negative-only cells still affect the pooled denominator and
+            # must be assigned to the same physical blocks as other cells.
+            py_sub, px_sub = np.nonzero(p_sub)
+            p_blk = _spatial_block_index(py_sub + r0, px_sub + c0, (h, w), grid_n)
+            np.add.at(fp_blk, p_blk, 1.0)
             folds[cell.key] = {"dti": 0.0, "tp": 0.0, "fp": float(n_emit), "fn": 0.0, "n_truth": 0, "emitted": n_emit}
             continue
 
@@ -722,6 +767,10 @@ def evaluate_hide_and_recover(
         "candidate_id": name,
         "evaluator_version": HIDE_RECOVER_EVALUATOR_VERSION,
         "score_label": "HOLDOUT-DTI",
+        "prediction_mode": "per_cell" if is_cell_dict else "full_map_diagnostic_only",
+        "catalogue_feature_provenance_verified": False,
+        "promotion_evidence": False,
+        "provenance_warning": "Fold-local array inputs alone cannot prove visible-only feature construction; require an independent replay.",
         "b_visible_px": float(b_visible_px),
         "n_withheld_positives": n_withheld,
         "n_spatial_clusters": int(active_blocks.size),

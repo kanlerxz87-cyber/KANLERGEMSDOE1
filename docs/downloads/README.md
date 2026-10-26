@@ -1,0 +1,3 @@
+# Historical artifacts only — DO NOT SUBMIT
+
+All TIFFs and ZIPs in this directory predate the 2026-10-26 retrospective review. H1/H2/H3 and the separately generated MPLC artifact fail the literal registry-lattice overlap limit; GEMSDOE32 is a previously submitted reference and also fails it. IEDR's global-mask holdout results are inadmissible; MPLC's per-fold provenance has not been independently replayed here. Audit JSONs retain historical values for provenance, with a supersession notice. See [the current run card](../evidence/current_run_card.json) and [audit](../evidence/protocol_audit_20261026.json). No file here is an authorized contest download.

@@ -1,7 +1,7 @@
-"""H35 — five NEW untried hypotheses distinct from all prior GEMSDOE repos.
+"""Historical H35 hypothesis sketches; global novelty and provenance are unverified.
 
-Every surface is label-free (19 official bands + external lidar/rad), so safe for holdout.
-Each hypothesis names: layers, physical signature, why off-catalogue, novelty.
+The surfaces use mirrored numerical and external data, without directly reading
+labels. This does not prove leakage-free data provenance or fold-local emissions.
 """
 from __future__ import annotations
 from pathlib import Path
@@ -31,14 +31,9 @@ def _fill(a: np.ndarray, foot: np.ndarray, sigma: float | None) -> np.ndarray:
     return gaussian_filter(f, sigma, mode="nearest") if sigma else f
 
 def line_response(a: np.ndarray, sigma: float) -> np.ndarray:
-    axx = gaussian_filter(a, sigma, order=(0, 2), mode="nearest")
-    ayy = gaussian_filter(a, sigma, order=(2, 0), mode="nearest")
-    axy = gaussian_filter(a, sigma, order=(1, 1), mode="nearest")
-    tmp = np.sqrt(np.maximum(((axx - ayy) * 0.5) ** 2 + axy ** 2, 0.0))
-    l1 = (axx + ayy) * 0.5 + tmp
-    l2 = (axx + ayy) * 0.5 - tmp
-    small = np.where(np.abs(l1) >= np.abs(l2), l2, l1)
-    return -small
+    """Shared bright-ridge curvature; old H35 runs used a defective eigenvalue."""
+    from .features import _hessian_ridge
+    return _hessian_ridge(a, sigma)
 
 def structure_orientation(a: np.ndarray, sigma: float):
     gx = gaussian_filter(a, sigma, order=(0, 1), mode="nearest")

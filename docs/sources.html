@@ -1,60 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sources · KANLERGEMSDOE1</title>
-  <link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
-<aside style="border:3px solid #b91c1c;padding:1rem;margin:1rem;background:#fff;color:#111" role="alert"><strong>AUTOMATED AUDIT: DO NOT SUBMIT — historical evidence quarantined.</strong><p>The numerical results below are archived diagnostics, not admissible HOLDOUT-DTI or live-score estimates. Full-catalogue masking preceded placement; leakage canaries were not fold-local. The prior uniqueness gate exempted a lattice whose overlap exceeded the mandatory limit. No uniqueness clearance survives the strict protocol. Leaderboard numbers below are inherited, not freshly verified organizer receipts.</p><p><a href="audit-20261026.md">Audit and next steps</a> · <a href="evidence/artifact_audit.json">Automated artifact checks</a></p></aside>
-<header>
-  <div class="wrap" style="padding-bottom:0">
-    <div class="brand">KANLERGEMSDOE1</div>
-    <h1>Official verified sources</h1>
-    <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="executive-summary.html">Executive summary</a>
-      <a href="how-to-submit.html">How to submit</a>
-      <a href="hypotheses.html">Hypotheses</a>
-      <a href="research.html">Why 0.2778</a>
-      <a href="sources.html">Sources</a>
-    </nav>
-  </div>
-</header>
-<main class="wrap">
-  <p>Every dataset used for training/inference in this session is either a SHA-256-pinned owner mirror of a login-walled DrivenData file (integrity-pinned, <b>not</b> organizer-authenticated) or a public USGS/DOE product. No credentials were requested or stored.</p>
-  <div class="card">
-    <table>
-      <thead><tr><th>Source</th><th>URL</th><th>Used for</th><th>Caveat</th></tr></thead>
-      <tbody>
-        <tr><td>DrivenData #306 problem</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">page/967</a></td><td>Task, DTI formula, submission contract</td><td>Primary spec</td></tr>
-        <tr><td>DrivenData about</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/">page/968</a></td><td>GeoDAWN / 3DEP context</td><td></td></tr>
-        <tr><td>DrivenData data tab</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">data/</a></td><td>Official rasters</td><td>Login wall. We did not authenticate.</td></tr>
-        <tr><td>DrivenData leaderboard</td><td><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">leaderboard</a></td><td>#1 0.4437 xiaofanhu (2026-10-26 snapshot)</td><td>Public round only</td></tr>
-        <tr><td>Reference solution</td><td><a href="https://github.com/drivendataorg/gems-prize-reference-solution">github.com/drivendataorg/gems-prize-reference-solution</a></td><td>U-Net baseline, env</td><td>Does not implement official DTI</td></tr>
-        <tr><td>Tversky index</td><td><a href="https://en.wikipedia.org/wiki/Tversky_index">Wikipedia</a></td><td>α, β interpretation</td><td>Competition uses a distance-weighted variant</td></tr>
-        <tr><td>EPSG:32611</td><td><a href="https://epsg.io/32611">epsg.io/32611</a></td><td>UTM 11N</td><td></td></tr>
-        <tr><td>GeoDAWN</td><td><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN</a> · ScienceBase <a href="https://www.sciencebase.gov/catalog/item/657e1d85d34e23d3533209f7">item</a></td><td>Magnetics / radiometrics</td><td>Public USGS</td></tr>
-        <tr><td>INGENIOUS / GDR 1391</td><td><a href="https://gdr.openei.org/submissions/1391">gdr.openei.org/submissions/1391</a> DOI 10.15121/1881483</td><td>Wells, paleo geothermal, Qfaults, strain</td><td>CC BY 4.0</td></tr>
-        <tr><td>INGENIOUS project</td><td><a href="https://gbcge.org/current-projects/ingenious/">gbcge.org</a></td><td>Project context</td><td></td></tr>
-        <tr><td>NREL rules PDF</td><td><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">docs.nlr.gov … 96647.pdf</a></td><td>Prize rules</td><td></td></tr>
-        <tr><td>Pinned training_features.tif</td><td>GitHub parts from buffedlizard55-lab/GEMSDOE</td><td>19 bands, 418,912,844 B</td><td>sha256 4371c82e…23bc5 · owner mirror</td></tr>
-        <tr><td>Pinned labels/existing_faults.tif</td><td>buffedlizard55-lab/GEMSDOE24 data/bridge</td><td>Catalogue 60,988 px</td><td>sha256 7ba308cc…4093 · byte-identical pair</td></tr>
-        <tr><td>Pinned sample_submission.tif</td><td>same</td><td>Grid / footprint 5,167,373</td><td>sha256 2176d08e…5cbc · its 1.0 pixels sit on labelled faults (IR: not “total absence”)</td></tr>
-        <tr><td>GEMSDOE32 site</td><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html">docs/index.html</a></td><td>0.2778 family, holdout code reused</td><td></td></tr>
-      </tbody>
-    </table>
-  </div>
-  <h2>Irregularities flagged</h2>
-  <ul>
-    <li><b>IR-DATA-01.</b> Competition data tab redirects to login. Restored bytes are owner mirrors. A human with DrivenData access should byte-compare before spending a live slot.</li>
-    <li><b>IR-SAMPLE-01.</b> Official text says the sample predicts “total fault absence”; the pinned sample has 60,988 pixels equal to 1 on the catalogue. We use it only as a grid/footprint template.</li>
-    <li><b>IR-42-UNIQ-01.</b> The 5-px calibration lattice covers ~99% of any moderately dense dot map within 3 px. Champion does too. Uniqueness vs that raster is non-discriminating.</li>
-    <li><b>IR-SCORE-01.</b> 0.2778 has no submission-page receipt in this checkout. Labeled OWNER-REPORT.</li>
-    <li><b>IR-FOOT-01.</b> Feature band-1 finite count is 5,165,852; sample footprint is 5,167,373. Writer uses the sample footprint, matching the portal template.</li>
-  </ul>
-  <footer>Manual review links are in the table. No hallucinations: hashes were computed on restored bytes in this session.</footer>
-</main>
-</body>
-</html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sources &amp; evidence · KANLER GEMS</title><link rel="stylesheet" href="assets/style.css"></head>
+<body><header><div class="wrap head"><p class="brand">KANLERGEMSDOE1 / DOE GEMS PRIZE / RESEARCH DESK</p><h1>Sources &amp; evidence</h1><nav class="nav" aria-label="Primary"><a href="index.html">Status</a><a href="executive-summary.html">Executive summary</a><a href="research.html">Why 0.2778?</a><a href="hypotheses.html">Research slate</a><a href="how-to-submit.html">Submission gate</a><a href="sources.html" aria-current="page">Sources</a></nav></div></header>
+<main class="wrap"><div class="banner" role="status"><strong>STOP — NO RASTER IS CLEARED FOR SUBMISSION</strong><p>The IEDR lane failed the literal registry-duplication rule. There is no demonstrated unique, high-scoring candidate and no authorized download for contest use. No weekly slot was used in this review.</p></div>
+<h2>Organizer</h2><ul><li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Problem, data format and distance-weighted Tversky metric</a> · official.</li><li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Public leaderboard</a> · snapshot 2026-10-26: rank 1, xiaofanhu, 0.4437. Not a candidate submission-page receipt.</li><li><a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/4">Staff: pixel-exact known-fault exclusion and nearby new faults</a>.</li><li><a href="https://community.drivendata.org/t/leaderboard-aggregation-pooled-over-public-test-pixels-or-mean-of-per-chunk-scores/11550">Staff: pooled public/private scoring</a>; <a href="https://community.drivendata.org/t/how-were-the-new-test-faults-identified-data-sources-and-fault-types/11527/10">staff: test-fault source/coverage details not disclosed</a>; <a href="https://community.drivendata.org/t/submission-amount-question/11553">staff: platform quota prevails</a>.</li><li><a href="https://github.com/drivendataorg/gems-prize-reference-solution">Official reference solution</a> and <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">official 2026 rules</a>.</li></ul>
+<h2>Public science &amp; data</h2><ul><li><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN magnetic and radiometric data</a> · DOI 10.5066/P93LGLVQ · CC0.</li><li><a href="https://gdr.openei.org/submissions/1391">INGENIOUS regional compilation · GDR 1391</a> · CC BY 4.0; cite the data and respect the terms of each component.</li><li><a href="https://earthquake.usgs.gov/fdsnws/event/1/">USGS earthquake FDSN service</a> · a bounded count was verified; individual event data have not been acquired or audited here.</li><li><a href="https://www.usgs.gov/publications/discovering-blind-geothermal-systems-great-basin-region-integrated-geologic-and">Faulds et al., USGS 2019: blind geothermal play fairways</a> · DOI 10.2172/1724080.</li><li><a href="https://www.usgs.gov/publications/structural-discontinuities-and-their-control-hydrothermal-systems-great-basin-usa">Siler, USGS 2023: structural discontinuities</a> · DOI 10.1144/geoenergy2023-009.</li><li><a href="https://www.osti.gov/dataexplorer/biblio/dataset/1148722">DOE: structural inventory of Great Basin geothermal systems</a> · DOI 10.15121/1148722; check individual data license before use.</li></ul>
+<h2>Repository evidence and provenance</h2><ul><li><a href="evidence/protocol_audit_20261026.json">Reproduced raster audit</a> and <a href="evidence/current_run_card.json">one negative JSON card</a>.</li><li><a href="review-record.md">Three-pass review record</a>; <a href="ORIGINAL_PROMPT.md">standing prompt reconstruction</a>. The exact earlier user message is not available verbatim in this session.</li></ul>
+<p>Competition files were restored from SHA-256-pinned owner-hosted mirrors, not downloaded from the authenticated organizer portal. Hashes establish the identity of those mirrored bytes, not their source authenticity. The mirrored sample has positive values at mapped labels despite the organizer's description of a zero prediction; do not treat those sample values as a candidate.</p>
+<footer>Review: 26 October 2026 UTC · No contest slot used in this review · <a href="sources.html">Evidence &amp; sources</a></footer></main></body></html>

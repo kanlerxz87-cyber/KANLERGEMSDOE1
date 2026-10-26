@@ -1,4 +1,9 @@
 {
+  "status_update_20261026": {
+    "status": "SUPERSEDED / INVALID FOR PROMOTION",
+    "correction": "Lattice was improperly exempted; the current literal audit fails.",
+    "ok_to_submit": false
+  },
   "n_registry": 21,
   "unique_vs_genuine_detectors": true,
   "n_flags": 0,
