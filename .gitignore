@@ -1,19 +1,23 @@
-.venv/
-.cache/
+# Python
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
+.venv/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+
+# Competition data and generated rasters (restored locally)
 data/*.tif
-data/*.npy
+data/*.tiff
+data/*.zip
+data/raw/
+data/processed/
 data/raw_parts/
-registry/rasters/
 .cache/
+registry/rasters/
 *.assembling
+
+# Secrets / OS
 .DS_Store
 .env
 GEMS_DATA_DIR
-src/gems32/__pycache__/
-src/gemsdoe1/__pycache__/

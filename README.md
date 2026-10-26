@@ -2,13 +2,15 @@
 
 DOE GEMS Prize (DrivenData #306) — lane **L-IEDR-2026-10-26** (independent-earthquake dilatation residual).
 
+> **Standing instruction — read this README and `docs/ORIGINAL_PROMPT.md` before every session.** Maximize P(Win). Own the Outcome.
+
 ## 🔴 DO NOT SUBMIT
 
-No file in this repository is authorized for DrivenData upload.
+**No file in this repository is authorized for DrivenData upload.**
 
-Three unique, format-valid GeoTIFFs were generated. They pass CRS/shape/transform, values in `[0, 1]`, zero NaN inside the footprint, and lane uniqueness versus genuine detectors. They do **not** beat the GEMSDOE32 champion on holdout 95% CI or off-catalogue SGMC. A HOLDOUT-DTI is not a live score. Promotion to a weekly slot is a separate selector step.
+Three unique, format-valid GeoTIFFs were generated in `docs/downloads/`. They pass CRS/shape/transform, values in `[0, 1]`, zero NaN inside the footprint, and lane uniqueness versus genuine detectors. They do **not** beat the GEMSDOE32 champion on holdout 95% CI or off-catalogue SGMC. A HOLDOUT-DTI is not a live score. Promotion to a weekly slot is a separate selector step.
 
-Site: `docs/index.html` (GitHub Pages from `/docs`).
+Primary site: [`docs/index.html`](docs/index.html) (GitHub Pages from `/docs`).
 
 | Download | HOLDOUT-DTI | Unique vs GEMSDOE 24/25/27/28/30/31/32/33/36? | Submit? |
 |---|---|---|---|
@@ -65,6 +67,7 @@ See [docs/research.html](docs/research.html). Short version: 0.2778 is Poisson-d
 - No DrivenData credentials in this sandbox.
 - Hide-and-recover of mapped scarps is a biased proxy for blind geothermal faults.
 - Template holdout code is reused from GEMSDOE32 (`src/gems32/`). One template fix: `filename_prefix` on the writer so artifacts are not forced to a `gemsdoe32-` name.
+- Root `index.html` is the previous session’s “no raster yet” desk. The experiment site with downloads is under `docs/`.
 
 ## Next work
 
@@ -80,4 +83,4 @@ Maximize P(Win). Own the Outcome.
 
 ## Archived session prompt
 
-The standing Arena prompt for this project is stored verbatim in [`docs/ORIGINAL_PROMPT.md`](docs/ORIGINAL_PROMPT.md). Read it at the start of every session.
+The standing Arena prompt is in [`docs/ORIGINAL_PROMPT.md`](docs/ORIGINAL_PROMPT.md). Read it at the start of every session.
