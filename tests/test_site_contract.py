@@ -70,14 +70,34 @@ def test_builder_rejects_tampered_decisions_and_audit():
     manifest=json.loads((ROOT/'registry/focus_sites.json').read_text())
     audit=json.loads((ROOT/'evidence/focus-site-audit-20261026.json').read_text())
     card=json.loads((ROOT/'evidence/run-card.json').read_text())
-    validate_negative_evidence(manifest,audit,card)
+    parallel_manifest=json.loads((ROOT/'registry/parallel_artifacts.json').read_text())
+    parallel=json.loads((ROOT/'evidence/parallel-artifact-audit-20261026.json').read_text())
+    validate_negative_evidence(manifest,audit,card,parallel_manifest,parallel)
     for key, value in [('verdict','promote'),('raster_sha256','abcd'),('weekly_slot_selected',True)]:
         altered=copy.deepcopy(card); altered[key]=value
         import pytest
-        with pytest.raises(ValueError): validate_negative_evidence(manifest,audit,altered)
+        with pytest.raises(ValueError): validate_negative_evidence(manifest,audit,altered,parallel_manifest,parallel)
     altered=copy.deepcopy(card); altered['holdout']['value']=0.5
-    with pytest.raises(ValueError): validate_negative_evidence(manifest,audit,altered)
+    with pytest.raises(ValueError): validate_negative_evidence(manifest,audit,altered,parallel_manifest,parallel)
     altered=copy.deepcopy(audit); altered['lattice']['outside_3px_pixels']=1
-    with pytest.raises(ValueError): validate_negative_evidence(manifest,altered,card)
+    with pytest.raises(ValueError): validate_negative_evidence(manifest,altered,card,parallel_manifest,parallel)
     altered=copy.deepcopy(audit); altered['sites']['GEMSDOE24']['literal_peer_gate_pass']=True
-    with pytest.raises(ValueError): validate_negative_evidence(manifest,altered,card)
+    with pytest.raises(ValueError): validate_negative_evidence(manifest,altered,card,parallel_manifest,parallel)
+    altered_parallel=copy.deepcopy(parallel); altered_parallel['artifacts']['H1 IEDR']['lattice_overlap_fraction']=0.1
+    with pytest.raises(ValueError): validate_negative_evidence(manifest,audit,card,parallel_manifest,altered_parallel)
+
+
+def test_parallel_results_are_research_only_and_sha_pinned():
+    import hashlib
+    manifest=json.loads((ROOT/'registry/parallel_artifacts.json').read_text())
+    audit=json.loads((ROOT/'evidence/parallel-artifact-audit-20261026.json').read_text())
+    assert audit['verdict']=='negative' and audit['ok_to_submit'] is False
+    assert len(manifest['candidates'])==3
+    for entry in manifest['candidates']:
+        row=audit['artifacts'][entry['id']]
+        assert hashlib.sha256((ROOT/entry['path']).read_bytes()).hexdigest()==entry['sha256']==row['sha256']
+        assert row['positive_pixels']==32000 and row['literal_lattice_gate_pass'] is False
+        assert row['lattice_near_dots']*10>7*row['positive_pixels']
+        assert row['saved_bytes_single_band_float32'] and row['saved_bytes_grid_matches_owner_mirror']
+        assert row['organizer_acceptance'] is None
+    assert json.loads((ROOT/'docs/data/parallel-artifact-audit.json').read_text()) == audit

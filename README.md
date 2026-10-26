@@ -1,10 +1,10 @@
 # GEMS Field Notes
 
-> **Submission status: BLOCKED.** No new GeoTIFF was generated or approved, no holdout experiment was run, and no competition slot was used. Historical files linked from the site are **research artifacts, not authorized submissions**. See the [submission guide](https://kanlerxz87-cyber.github.io/KANLERGEMSDOE1/executive-summary.html), [negative run card](evidence/run-card.json), and [evidence review](research/review-and-next-steps.md).
+> **Submission status: BLOCKED.** This audit generated no new GeoTIFF, ran no experiment and used no slot. A parallel run produced three existing TIFFs, but all fail the literal lattice rule and are **research artifacts, not authorized submissions**. See the [submission guide](https://kanlerxz87-cyber.github.io/KANLERGEMSDOE1/executive-summary.html), [negative run card](evidence/run-card.json), and [evidence review](research/review-and-next-steps.md).
 
 An independent, evidence-first research and decision record for the DOE Geologic Enhanced Mapping System (GEMS) Prize fault-mapping challenge. The goal is a **genuinely new, high-performing, reproducible** GeoTIFF—not a repackaged earlier submission. The scientific target is previously unmapped faults associated with hidden geothermal systems; a spatial holdout is only a proxy for the organizers' hidden labels.
 
-**Read first in every new session:** this README → [standing project brief](research/project-brief.md) → [preregistration](research/preregistration.md) → [current run card](evidence/run-card.json). The brief accurately reconstructs the requirements available in this session; the original full prompt was not available verbatim, so it is not represented as a transcript. If the user supplies the complete original, preserve it separately and link it here.
+**Read first in every new session:** this README → [standing project brief](research/project-brief.md) → [preregistration](research/preregistration.md) → [current run card](evidence/run-card.json). The brief accurately reconstructs the requirements available in this session; the original full prompt was not available verbatim, so it is not represented as a transcript. The prior branch's [standing summary](docs/ORIGINAL_PROMPT.md) is also a reconstruction, not a verbatim transcript. If the user supplies the complete original, preserve it separately and link it here.
 
 ## Executive decision · 26 October 2026
 
@@ -12,11 +12,12 @@ An independent, evidence-first research and decision record for the DOE Geologic
 - The user's reported **0.2778** for GEMSDOE32 H33 has no organizer receipt available here. Its attribution and the reason for the reported performance remain unverified. The pinned H33 support is exactly the D2.8 support with dots within two pixels of the mirrored known-fault catalogue removed. That may reduce false-positive mass, but can also remove true nearby hidden faults; the causal effect on a hidden score is unknown.
 - Under the literal shared uniqueness rule, the registered lattice covers **5,160,724 of 5,167,373** cells of the provisional owner-mirrored footprint within three pixels. At the H33 budget of 37,654 distinct dots, at least **82.34%** must overlap it, exceeding 70%; any candidate with **22,164 or more** dots must fail. Smaller candidates are not categorically ruled out. The footprint is not authenticated organizer data, and this is a mathematical bound, not a candidate test or a score.
 - Two sibling recommendations conflict with this broader registry: GEMSDOE27 H31 and GEMSDOE31 H31-X have **99.61%** and **99.34%** lattice overlap, respectively. Neither is approved here. The nine focus-site historical supports also each fail against at least one audited focus peer.
+- A concurrent run already produced three 32,000-dot TIFFs. On this provisional footprint, H1/H2/H3 overlap the lattice by **99.39% / 99.59% / 99.19%**. The files are preserved as [research-only downloads](docs/index.html#parallel-run), not valid submissions. The prior run used a full-catalogue distance collar before withholding and its canaries sampled the catalogue without spatial blocking; its reported holdout scores are not accepted as compliant. It already recorded three experiments, exhausting that run's budget. [Independent saved-byte audit](evidence/parallel-artifact-audit-20261026.json).
 - The mandatory shared 35-channel feature cache is missing and the sample is an unauthenticated owner mirror. The shared pre-placement overlap gate and holdout bookkeeping have reproduced defects; the writer/holdout CLI also silently binarize probabilities. They are tracked in upstream issues [#42](https://github.com/buffedlizard55-lab/GEMSDOE32/issues/42), [#41](https://github.com/buffedlizard55-lab/GEMSDOE32/issues/41), and [#37](https://github.com/buffedlizard55-lab/GEMSDOE32/issues/37). The template is read-only to this account; it has not been privately forked or patched. Do not exempt the lattice, target rare lattice holes, or use a weekly slot to work around these blockers.
 
 ### Nine-site historical snapshot
 
-These file-to-score associations were user-reported, not verified against organizer receipts. They are neither forecasts nor candidates. The [interactive table](https://kanlerxz87-cyber.github.io/KANLERGEMSDOE1/#portfolio) links each pinned research file and records its nearest audited peer; [manifest](registry/focus_sites.json), [full audit](evidence/focus-site-audit-20261026.json).
+These file-to-score associations were user-reported, not verified against organizer receipts. They are neither forecasts nor candidates. The [site overview](https://kanlerxz87-cyber.github.io/KANLERGEMSDOE1/) links each pinned research file and records its nearest audited peer; [manifest](registry/focus_sites.json), [full audit](evidence/focus-site-audit-20261026.json).
 
 | Site | Reported historical claim | Decision |
 |---|---:|---|
@@ -48,6 +49,7 @@ bash scripts/restore_owner_mirrors.sh     # pinned core owner mirrors
 python scripts/fetch_focus_rasters.py        # nine historical files, lattice, two sibling claims
 python scripts/prepare_owner_mirror.py               # optional shared 19-band preparation; NOT the missing 35-channel cache
 OPENBLAS_NUM_THREADS=1 python scripts/audit_focus.py
+OPENBLAS_NUM_THREADS=1 python scripts/audit_parallel_artifacts.py # checks existing research files; generates no TIFF
 python scripts/build_site.py
 python -m pytest -q
 python scripts/check_shared_gate.py           # currently exits 1: known preview-gate defect reproduced

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "notice": "Prior parallel-run artifacts, preserved for research only. They are not approved submissions. Their holdout protocol and lattice exemption are not accepted by this audit.",
+  "source_main_merge": "700fba55c56b389b3c626ef950d03f52046d3218",
+  "candidates": [
+    {
+      "id": "H1 IEDR",
+      "path": "docs/downloads/kanlergemsdoe1-h1-iedr-s3p17-b2-32000-20261026T214518Z-fe519ae3-zeros.tif",
+      "sha256": "455c3a1780806718c881480228631046cb3090a4734fac54f398c97533a89d39",
+      "run_card": "evidence/run_card_h1_iedr.json"
+    },
+    {
+      "id": "H2 HTSI",
+      "path": "docs/downloads/kanlergemsdoe1-h2-htsi-s3p17-b2-32000-20261026T214518Z-571145eb-zeros.tif",
+      "sha256": "da8d6f42d95ca4a1b525745283f34a47e85d2daf195c08ff8d919003b27522ae",
+      "run_card": "evidence/run_card_h2_htsi.json"
+    },
+    {
+      "id": "H3 COND-RESID",
+      "path": "docs/downloads/kanlergemsdoe1-h3-condresid-s3p17-b2-32000-20261026T214518Z-42802022-zeros.tif",
+      "sha256": "e5ff0120380fa316ccfa63c27d5383de4d74f963419d41e2ea4418ad73b4c950",
+      "run_card": "evidence/run_card_h3_condresid.json"
+    }
+  ]
+}

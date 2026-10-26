@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "scope": "Three existing parallel research artifacts; owner-mirrored sample is not authenticated. No new experiment or candidate was created by this audit.",
+  "sample_sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+  "lattice_sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
+  "registry_scope": "only the registered lattice was replayed; full-registry and pre-placement checks were not reproduced",
+  "holdout_status": "Prior reports are preserved but not accepted as compliant: the placement collar used the complete catalogue before holdout; canaries were random catalogue samples, not blocked holdout tests.",
+  "artifacts": {
+    "H1 IEDR": {
+      "sha256": "455c3a1780806718c881480228631046cb3090a4734fac54f398c97533a89d39",
+      "binary_support_sha256": "4e098a598829d4f1e7ff6738fe31f1d575cc849f53d3465471221b4e32d3666c",
+      "positive_pixels": 32000,
+      "finite_inside_footprint": true,
+      "all_finite_full_grid": true,
+      "saved_bytes_single_band_float32": true,
+      "saved_bytes_grid_matches_owner_mirror": true,
+      "saved_bytes_inside_min": 0.0,
+      "saved_bytes_inside_max": 1.0,
+      "outside_footprint": "all zero",
+      "nodata_value": null,
+      "lattice_near_dots": 31806,
+      "lattice_overlap_fraction": 0.9939375,
+      "literal_lattice_gate_pass": false,
+      "organizer_acceptance": null
+    },
+    "H2 HTSI": {
+      "sha256": "da8d6f42d95ca4a1b525745283f34a47e85d2daf195c08ff8d919003b27522ae",
+      "binary_support_sha256": "a61f9564e16e196dbe892f46b143438645e8653c10ecb92fc21033334ba56594",
+      "positive_pixels": 32000,
+      "finite_inside_footprint": true,
+      "all_finite_full_grid": true,
+      "saved_bytes_single_band_float32": true,
+      "saved_bytes_grid_matches_owner_mirror": true,
+      "saved_bytes_inside_min": 0.0,
+      "saved_bytes_inside_max": 1.0,
+      "outside_footprint": "all zero",
+      "nodata_value": null,
+      "lattice_near_dots": 31868,
+      "lattice_overlap_fraction": 0.995875,
+      "literal_lattice_gate_pass": false,
+      "organizer_acceptance": null
+    },
+    "H3 COND-RESID": {
+      "sha256": "e5ff0120380fa316ccfa63c27d5383de4d74f963419d41e2ea4418ad73b4c950",
+      "binary_support_sha256": "739f644b4fffb47613b03755e9d37325bb927fb6c31c992e2213a2030750bb36",
+      "positive_pixels": 32000,
+      "finite_inside_footprint": true,
+      "all_finite_full_grid": true,
+      "saved_bytes_single_band_float32": true,
+      "saved_bytes_grid_matches_owner_mirror": true,
+      "saved_bytes_inside_min": 0.0,
+      "saved_bytes_inside_max": 1.0,
+      "outside_footprint": "all zero",
+      "nodata_value": null,
+      "lattice_near_dots": 31741,
+      "lattice_overlap_fraction": 0.99190625,
+      "literal_lattice_gate_pass": false,
+      "organizer_acceptance": null
+    }
+  },
+  "verdict": "negative",
+  "ok_to_submit": false
+}

@@ -1,0 +1,8 @@
+{
+  "competition": "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/",
+  "leaderboard": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+  "geodawn": "https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and",
+  "ingenious_gdr": "https://gdr.openei.org/submissions/1391",
+  "epsg": "https://epsg.io/32611",
+  "reference_solution": "https://github.com/drivendataorg/gems-prize-reference-solution"
+}

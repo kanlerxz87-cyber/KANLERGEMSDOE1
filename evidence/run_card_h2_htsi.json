@@ -1,0 +1,176 @@
+{
+  "superseded_review": {
+    "reviewed_utc": "2026-10-26",
+    "verdict": "negative",
+    "ok_to_submit": false,
+    "reason": "Historical parallel-run report: registered lattice was exempted, the full catalogue was used for the placement collar before holdout, and canaries were not spatially blocked. Prior holdout/uniqueness claims are not accepted for selection. Zero-outside portal acceptance is unverified.",
+    "current_evidence": "evidence/parallel-artifact-audit-20261026.json"
+  },
+  "hypothesis": "H2_HTSI",
+  "mechanism": "GDR well/spring T>=40C gaussian halo + paleo sinter/travertine halo x ieq x dilatation x conductivity",
+  "named_non_fault_mimic": "Deep circulation through unfaulted permeable volcanic stratigraphy; well-field sampling bias along roads",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.0",
+    "n_withheld_positives": 22232,
+    "n_bootstrap": 256,
+    "pooled_dti": 0.006280305749689602,
+    "ci95": [
+      0.004146771112230785,
+      0.008876310000465808
+    ],
+    "b_visible_px": 2.0
+  },
+  "champion_holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.0",
+    "pooled_dti": 0.00451537871535044,
+    "ci95": [
+      0.003913743803608577,
+      0.0052891627999727105
+    ],
+    "file": "gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+    "owner_report_live": 0.2778,
+    "owner_report_class": "OWNER-REPORT"
+  },
+  "sgmc": {
+    "evidence_class": "HOLDOUT-DTI",
+    "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+    "n_positives": 62703,
+    "raw_pooled_dti": 0.029912103606570362,
+    "raw_ci95": [
+      0.01880702109624345,
+      0.04354580599166433
+    ],
+    "prevalence_calibrated_dti": 0.02075395826051785
+  },
+  "correlation_overlap_vs_registry": {
+    "n_registry": 21,
+    "unique_vs_genuine_detectors": true,
+    "n_flags": 0,
+    "worst_rho": {
+      "name": "8GEMSDOE_Hedge-v2_submission.tif",
+      "n_theirs": 227507,
+      "sha256": "052688eafbc7a55d",
+      "spearman_surface": 0.0614244460749706,
+      "spearman_dots": -0.002136894702291218,
+      "overlap_3px": 0.35253125,
+      "is_calibration_lattice": false,
+      "duplicate_by_rho": false,
+      "duplicate_by_overlap": false,
+      "lattice_overlap_note": null
+    },
+    "worst_overlap_genuine": {
+      "name": "gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+      "n_theirs": 69281,
+      "sha256": "7637b72d4c6c3e10",
+      "spearman_surface": 0.030762584821449113,
+      "spearman_dots": 0.003120979126617656,
+      "overlap_3px": 0.35959375,
+      "is_calibration_lattice": false,
+      "duplicate_by_rho": false,
+      "duplicate_by_overlap": false,
+      "lattice_overlap_note": null
+    },
+    "lattice": [
+      {
+        "name": "13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+        "n_theirs": 206895,
+        "sha256": "b4570b406efec198",
+        "spearman_surface": 0.0014831793015731558,
+        "spearman_dots": 0.0019712626609070124,
+        "overlap_3px": 0.995875,
+        "is_calibration_lattice": true,
+        "duplicate_by_rho": false,
+        "duplicate_by_overlap": false,
+        "lattice_overlap_note": "IR-42-UNIQ-01 pigeonhole; champion also ~0.999"
+      }
+    ]
+  },
+  "raster_sha256": "da8d6f42d95ca4a1b525745283f34a47e85d2daf195c08ff8d919003b27522ae",
+  "validator": {
+    "all_checks_passed": true,
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "zero_on_catalogue_leakage": true,
+      "validator_range_0_1_guaranteed": true
+    },
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 1.0,
+    "emitted_positive_pixels": 32000,
+    "on_catalogue_positive_pixels": 0,
+    "shape": [
+      3730,
+      3292
+    ],
+    "crs": "EPSG:32611",
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true
+  },
+  "submission_name": "kanlergemsdoe1-h2-htsi-s3p17-b2-32000-20261026T214518Z-571145eb-zeros.tif",
+  "submission_note": "KANLER H2 HTSI thermal+paleo+ieq s3.17 B2 32000d HR=0.0063 | research | DO-NOT-SUBMIT",
+  "note_n_chars": 85,
+  "surface_canary_auc": 0.5678563993749999,
+  "feature_canaries": {
+    "ieq_n100a15": {
+      "symmetric_auc": 0.56816916125,
+      "pass": true
+    },
+    "deq_n100a15": {
+      "symmetric_auc": 0.5492526293750001,
+      "pass": true
+    },
+    "geod_dilaterate": {
+      "symmetric_auc": 0.527891820625,
+      "pass": true
+    },
+    "tmi_hg": {
+      "symmetric_auc": 0.527787488125,
+      "pass": true
+    },
+    "det_elev_slope": {
+      "symmetric_auc": 0.559651360625,
+      "pass": true
+    },
+    "det_elev": {
+      "symmetric_auc": 0.51394665375,
+      "pass": true
+    },
+    "cond_surf": {
+      "symmetric_auc": 0.515682136875,
+      "pass": true
+    },
+    "geod_2ndinv": {
+      "symmetric_auc": 0.56844038875,
+      "pass": true
+    },
+    "rtp": {
+      "symmetric_auc": 0.5027030075000001,
+      "pass": true
+    },
+    "iso_grav_anom": {
+      "symmetric_auc": 0.5397024500000001,
+      "pass": true
+    },
+    "depth_to_base_surf": {
+      "symmetric_auc": 0.5097043918749999,
+      "pass": true
+    }
+  },
+  "verdict": "negative",
+  "ok_to_submit": false,
+  "min_dist_px": 3.1622776601683795,
+  "n_dots": 32000,
+  "timestamp_utc": "20261026T214518Z",
+  "promote_withdrawn_reason": "Point HOLDOUT-DTI may exceed champion but 95% CI overlaps champion; SGMC raw trails champion 0.09606; protocol requires beat by >2 SE AND no SGMC regression. Selector step is separate. DO NOT SUBMIT."
+}

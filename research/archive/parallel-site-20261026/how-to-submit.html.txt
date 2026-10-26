@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to submit · KANLERGEMSDOE1</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header>
+  <div class="wrap" style="padding-bottom:0">
+    <div class="brand">KANLERGEMSDOE1</div>
+    <h1>How to submit a GeoTIFF to the GEMS Prize</h1>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="executive-summary.html">Executive summary</a>
+      <a href="how-to-submit.html">How to submit</a>
+      <a href="hypotheses.html">Hypotheses</a>
+      <a href="research.html">Why 0.2778</a>
+      <a href="sources.html">Sources</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <div class="banner">
+    <strong>Today: DO NOT SUBMIT.</strong>
+    <p>Follow these steps only when the home-page banner is green. The files currently in <code>docs/downloads/</code> are research artifacts.</p>
+  </div>
+
+  <h2>Official contract</h2>
+  <p>Verified from the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#submission-format">problem description, submission format</a>:</p>
+  <ul>
+    <li>Single-band GeoTIFF, or a zip containing a single GeoTIFF</li>
+    <li>CRS EPSG:32611 (UTM 11N), 100 m, same bounds as training data</li>
+    <li>float32 values in <b>[0, 1]</b> (this is the error you hit if NaNs or sentinels leak into the grid)</li>
+    <li>Higher = higher confidence of fault presence</li>
+  </ul>
+  <p>This repo’s writer emits a <b>-zeros.tif</b> with <code>nodata=None</code> and 0.0 outside the footprint so every one of the 12,279,160 cells is finite and in [0, 1]. That is the file to upload if a future candidate is authorized. Do not upload the -nan twin to DrivenData.</p>
+
+  <h2>Portal steps</h2>
+  <ol class="steps">
+    <li>Log in at <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData competition 306</a>.</li>
+    <li>Open <b>Submit</b> / New submission.</li>
+    <li>Choose the authorized <code>*-zeros.tif</code> or its single-TIFF <code>.zip</code>.</li>
+    <li>Note field (optional, ≤140 chars): paste the exact note from the home-page table. Example of a <em>research</em> note, not for use today:<br>
+      <code>KANLER H1 IEDR ieq*dil*hgm s3.17 B2 32000d HR=0.0062 | research | DO-NOT-SUBMIT</code></li>
+    <li>Submit. If the portal returns <code>Predicted values must be in range [0, 1]</code>, you uploaded a file with NaN, Inf, or a nodata sentinel. Use the zeros variant.</li>
+  </ol>
+
+  <h2>What this repo already checks (no human inspector)</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>Check</th><th>H1 zeros</th></tr></thead>
+      <tbody>
+        <tr><td>CRS EPSG:32611</td><td class="good">PASS</td></tr>
+        <tr><td>Shape 3730 × 3292</td><td class="good">PASS</td></tr>
+        <tr><td>Transform (100, 0, 243350, 0, -100, 4508550)</td><td class="good">PASS</td></tr>
+        <tr><td>dtype float32, single band</td><td class="good">PASS</td></tr>
+        <tr><td>No NaN inside footprint (5,167,373 cells)</td><td class="good">PASS</td></tr>
+        <tr><td>Values in [0, 1] on the full grid (zeros variant)</td><td class="good">PASS</td></tr>
+        <tr><td>Zero positive pixels on existing_faults.tif</td><td class="good">PASS (0 / 32,000)</td></tr>
+        <tr><td>Lane uniqueness vs genuine detectors</td><td class="good">PASS</td></tr>
+        <tr><td>Holdout beat of champion by 95% CI + SGMC</td><td class="bad">FAIL — hence DO NOT SUBMIT</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Weekly slot</h2>
+  <p>DrivenData rate-limits submissions. Spending a slot on a file that is a 3-px duplicate of a previous upload, or that lost holdout, is negative expected value. The selector — not this experiment runner — spends slots.</p>
+
+  <footer>Official submit UI: DrivenData competition 306. Rules PDF: NREL/TP-5700-96647.</footer>
+</main>
+</body>
+</html>

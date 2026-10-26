@@ -6,7 +6,7 @@
   "named_non_fault_mimic": "Aquifer mixing or stratigraphic contact unrelated to faulting, compounded by preferential well sampling.",
   "assigned_lane": "No explicit single method paragraph was supplied; HC3 is a locally proposed lane, not an externally assigned lane.",
   "experiments_run": 0,
-  "budget": "At most three experiments or two hours; no experiment was started after the preflight capacity failure.",
+  "budget": "This audit ran no experiment. A separate parallel run already recorded three experiments; do not launch more under that run\u2019s three-experiment budget.",
   "holdout": {
     "label": "HOLDOUT-DTI",
     "evaluator_version": null,
@@ -56,5 +56,16 @@
     "https://github.com/buffedlizard55-lab/GEMSDOE32/issues/42",
     "https://github.com/buffedlizard55-lab/GEMSDOE32/issues/41",
     "https://github.com/buffedlizard55-lab/GEMSDOE32/issues/37"
-  ]
+  ],
+  "prior_parallel_run": {
+    "experiments_recorded": 3,
+    "research_artifacts": 3,
+    "literal_lattice_overlap_fractions": {
+      "H1 IEDR": 0.9939375,
+      "H2 HTSI": 0.995875,
+      "H3 COND-RESID": 0.99190625
+    },
+    "status": "Existing files are research-only and fail the literal uniqueness rule. Their recorded holdouts are not compliant: placement used the full catalogue before withholding; canaries were not spatially blocked. No independent slot selection or organizer receipt is known.",
+    "evidence": "evidence/parallel-artifact-audit-20261026.json"
+  }
 }

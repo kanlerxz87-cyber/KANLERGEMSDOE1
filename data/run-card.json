@@ -1,0 +1,42 @@
+{
+  "historical_context": "Initial earlier session only; a separate parallel run later made three research files. Current audit decision is evidence/run-card.json; no upload approved.",
+  "hypothesis": "ASTER spectral hydrothermal-alteration corridors may indicate permeable structures above blind geothermal systems; not tested in this checkout.",
+  "mechanism": "Hydrothermal mineral assemblages can create spatially coherent SWIR absorption and thermal-emissivity contrasts. This is an indirect structural proxy, not a fault label.",
+  "named_non_fault_process": "Host-rock mineralogy, clay-rich basin sediment, mine tailings, or exposed lithologic contacts can mimic an alteration response; no data were available to test these confounds.",
+  "holdout_dti": {
+    "status": "NOT_RUN",
+    "value": null,
+    "evaluator_version": null,
+    "withheld_positive_count": null,
+    "reason": "The shared evaluator, cached feature stack, competition labels, and template are absent from this checkout.",
+    "confidence_interval_95": null
+  },
+  "registry_correlation_overlap": {
+    "status": "NOT_RUN",
+    "surface_rank_correlation_max": null,
+    "final_dot_within_3px_fraction_max": null,
+    "surface_stop_threshold": 0.9,
+    "dot_overlap_stop_threshold": 0.7,
+    "reason": "No candidate surface, final dots, or registry rasters are present."
+  },
+  "raster_sha256": null,
+  "validator_output": {
+    "status": "NOT_RUN",
+    "no_nan_inside_footprint": null,
+    "values_in_0_1": null,
+    "crs_shape_transform_match": null,
+    "single_band": null,
+    "reason": "No candidate TIFF or official sample-submission template exists in this checkout."
+  },
+  "submission_name": null,
+  "submission_note": null,
+  "verdict": "negative",
+  "promotion_authorized": false,
+  "reason": "No experiment was run: the method lane is ambiguous, and the shared data/tools required by the user's protocol are missing. No TIFF was generated or selected.",
+  "feature_canaries": {
+    "status": "NOT_RUN",
+    "results": [],
+    "reason": "No feature stack or labels are present."
+  },
+  "experiments_completed": 0
+}

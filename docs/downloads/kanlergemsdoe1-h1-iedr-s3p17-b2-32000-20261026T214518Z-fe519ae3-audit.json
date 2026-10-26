@@ -1,0 +1,127 @@
+{
+  "superseded_review": {
+    "reviewed_utc": "2026-10-26",
+    "verdict": "negative",
+    "ok_to_submit": false,
+    "reason": "Historical parallel-run report: registered lattice was exempted, the full catalogue was used for the placement collar before holdout, and canaries were not spatially blocked. Prior holdout/uniqueness claims are not accepted for selection. Zero-outside portal acceptance is unverified.",
+    "current_evidence": "evidence/parallel-artifact-audit-20261026.json"
+  },
+  "candidate_id": "H1_IEDR",
+  "slug": "h1-iedr-s3p17-b2-32000",
+  "content_digest8": "fe519ae3",
+  "description": "KANLER H1 IEDR ieq*dil*hgm s3.17 B2 32000d HR=0.0062 | research",
+  "submission_note_zeros": "KANLER H1 IEDR ieq*dil*hgm s3.17 B2 32000d HR=0.0062 | research",
+  "submission_note_nan": "KANLER H1 IEDR ieq*dil*hgm s3.17 B2 32000d HR=0.0062 | research",
+  "zeros_tif": {
+    "filename": "kanlergemsdoe1-h1-iedr-s3p17-b2-32000-20261026T214518Z-fe519ae3-zeros.tif",
+    "size_bytes": 159972,
+    "sha256": "455c3a1780806718c881480228631046cb3090a4734fac54f398c97533a89d39",
+    "mode": "zeros",
+    "geometry_reference": "/home/user/KANLERGEMSDOE1/.cache/gems_data/sample_submission.tif",
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "nodata_repr": "None",
+    "emitted_positive_pixels": 32000,
+    "footprint_fraction": 0.006193,
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_finite_pixels": 5167373,
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 1.0,
+    "full_grid_finite_pixels": 12279160,
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "zero_on_catalogue_leakage": true,
+      "validator_range_0_1_guaranteed": true
+    },
+    "all_checks_passed": true
+  },
+  "nan_tif": {
+    "filename": "kanlergemsdoe1-h1-iedr-s3p17-b2-32000-20261026T214518Z-fe519ae3-nan.tif",
+    "size_bytes": 292782,
+    "sha256": "13ca177a047929e51ea2cbe8aa53290bf5ed696a9141fb5405e93afe4410eea2",
+    "mode": "nan",
+    "geometry_reference": "/home/user/KANLERGEMSDOE1/.cache/gems_data/sample_submission.tif",
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "nodata_repr": "nan",
+    "emitted_positive_pixels": 32000,
+    "footprint_fraction": 0.006193,
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_finite_pixels": 5167373,
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 1.0,
+    "full_grid_finite_pixels": 5167373,
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "zero_on_catalogue_leakage": true,
+      "validator_range_0_1_guaranteed": true
+    },
+    "all_checks_passed": true
+  },
+  "holdout_metrics": {
+    "catalogue_hidden_mean": 0.006168701520087212,
+    "catalogue_hidden_per_quadrant": {
+      "NW": 0.0031023710372445395,
+      "NE": 0.0,
+      "SW": 0.008902861977870482,
+      "SE": 0.006387694105192687
+    },
+    "sgmc_prevalence_calibrated_dti": 0.02385532471682352,
+    "drift_corrected_holdout_mean": 0.006168701520087212,
+    "drift_corrected_per_quadrant": {
+      "NW": 0.0031023710372445395,
+      "NE": 0.0,
+      "SW": 0.008902861977870482,
+      "SE": 0.006387694105192687
+    },
+    "predicted_leaderboard_dti": null,
+    "ei_drift_corrected": null,
+    "slot_decision": "SELECTOR-REVIEW"
+  }
+}
