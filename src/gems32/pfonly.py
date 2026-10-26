@@ -61,13 +61,9 @@ def upward_continue(a: np.ndarray, height_px: float, dx_m: float = 100.0) -> np.
     return out.astype(np.float32)
 
 def hessian_ridge(a: np.ndarray, sigma: float) -> np.ndarray:
-    axx = ndimage.gaussian_filter(a, sigma, order=(0, 2), mode="nearest")
-    ayy = ndimage.gaussian_filter(a, sigma, order=(2, 0), mode="nearest")
-    axy = ndimage.gaussian_filter(a, sigma, order=(1, 1), mode="nearest")
-    tmp = np.sqrt(np.maximum(((axx - ayy) * 0.5) ** 2 + axy ** 2, 0.0))
-    l1 = (axx + ayy) * 0.5 + tmp; l2 = (axx + ayy) * 0.5 - tmp
-    small = np.where(np.abs(l1) >= np.abs(l2), l2, l1)
-    return (-small).astype(np.float32)
+    """Shared bright-ridge curvature; old PF-only caches used a defective eigenvalue."""
+    from .features import _hessian_ridge
+    return _hessian_ridge(a, sigma)
 
 def dot_thin(field: np.ndarray, eligible: np.ndarray, budget: int, min_dist: float = 2.8,
              pool: int = 900_000) -> np.ndarray:

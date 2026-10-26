@@ -1,16 +1,16 @@
 """H33 — five untried geological hypotheses, expressed as *label-free* physical surfaces.
 
-Every surface in this module is computed from the 19 official bands, the USGS 3DEP 1 m LiDAR
-scarp products and the GeoDAWN radiometric grids.  No surface reads ``labels.tif``,
-``existing_faults.tif`` or any scored submission, so each one is safe to evaluate on a spatial
-holdout without retrospective leakage.
+The historical surfaces use the 19 mirrored bands, a mirrored LiDAR-derived scarp product and
+GeoDAWN radiometric grids. Their upstream authenticity and coverage are not established here.
+The surfaces do not directly read ``labels.tif`` or a scored submission, but that alone does not
+prove fold-local emissions or rule out indirect provenance leakage.
 
 The five hypotheses
 -------------------
 H33-A  **Multi-physics oriented-lineament consensus.**  A fault is a *curvilinear* feature, and a
        fault that experts can only find by eye is normally one that shows up in *more than one*
        physical field with the *same* strike.  Each physics (magnetics, gravity, topography,
-       magnetotellurics, radiometrics, 1 m LiDAR scarps) is reduced to a scale-normalised
+       magnetotellurics, radiometrics, LiDAR-derived scarps) is reduced to a multiscale
        Hessian *line* response plus a local orientation; the surface is the product of (i) the
        orientation order parameter of the ensemble (do the physics agree on a strike?) and
        (ii) the OR-fusion of the individual responses (does any physics respond at all?).
@@ -34,8 +34,9 @@ H33-D  **Long-straight conductive/basement structural boundary.**  A fault in a 
        ``depth_to_base_surf`` as scalars / plain gradient magnitudes.
 
 H33-E  **Sub-kilometre seismicity lineaments (data upgrade).**  The two supplied seismic bands are
-       computed on a 100 km radius: measured here, ``ieq`` is 0.9935-correlated with itself at
-       3 km lag, i.e. it carries no information at the fault scale the metric resolves (300 m).
+       interpreted historically as 100 km products, but their precise support has not been
+       independently verified here. ``ieq`` is 0.9935-correlated at a 3 km lag; this suggests
+       smooth regional context, not proof of a particular kernel or zero local information.
        A raw epicentre catalogue (USGS ComSearch/FDSN, free and official) plus nodal-plane strikes
        would add the sub-kilometre structure the bands cannot carry.  The source is named and the
        sandbox reachability is recorded honestly in ``docs/research/h33-hypotheses.md``; no surface
@@ -81,19 +82,13 @@ def _fill(a: np.ndarray, foot: np.ndarray, sigma: float | None) -> np.ndarray:
 
 
 def line_response(a: np.ndarray, sigma: float) -> np.ndarray:
-    """Frangi/Sato-style curvilinear response: |smallest Hessian eigenvalue| with ridge/valley sign.
+    """Shared largest-magnitude curvature for bright and dark structures.
 
-    Both polarities are accepted (``max`` of the bright-ridge and dark-valley responses) because a
-    magnetic low and a magnetic high can equally well mark the same contact.
+    Historical H33 outputs used a flawed smaller-eigenvalue transform and must
+    not be relabelled as results of this corrected helper.
     """
-    axx = gaussian_filter(a, sigma, order=(0, 2), mode="nearest")
-    ayy = gaussian_filter(a, sigma, order=(2, 0), mode="nearest")
-    axy = gaussian_filter(a, sigma, order=(1, 1), mode="nearest")
-    tmp = np.sqrt(np.maximum(((axx - ayy) * 0.5) ** 2 + axy ** 2, 0.0))
-    l1 = (axx + ayy) * 0.5 + tmp
-    l2 = (axx + ayy) * 0.5 - tmp
-    small = np.where(np.abs(l1) >= np.abs(l2), l2, l1)      # eigenvalue of least |.| : the ridge axis
-    return -small                                            # > 0 on a line of either polarity
+    from .features import _hessian_both_polarities
+    return _hessian_both_polarities(a, sigma)
 
 
 def structure_orientation(a: np.ndarray, sigma: float) -> tuple[np.ndarray, np.ndarray]:
@@ -220,7 +215,8 @@ def build_h33b(bands_dir: Path, ddir: Path, foot: np.ndarray) -> np.ndarray:
     slope = _band(bands_dir, 19, "det_elev_slope", foot)
     slope_n = robust_unit(np.abs(slope), foot)
     # valley = ridge of the negated surface
-    vresp = np.maximum(line_response(-elev, 1.2), line_response(-elev, 2.5))
+    from .features import _hessian_ridge
+    vresp = np.maximum(_hessian_ridge(-elev, 1.2), _hessian_ridge(-elev, 2.5))
     vn = robust_unit(vresp, foot)
     # 1-px skeleton: non-maximum suppression across the 4 principal directions of the response
     mx = maximum_filter(vn, size=3)

@@ -1,52 +1,41 @@
-# Three-pass implementation and review record
+# Three-pass review record
 
-**Review date:** 2026-10-26 UTC
-**Repository:** `KANLERGEMSDOE1`
-**Release verdict:** `negative` — no TIFF generated, promoted, or authorized for upload.
+**Date:** 2026-10-26 UTC. **Outcome:** negative; do not submit any existing TIFF. This review did not generate a new candidate, spend a competition slot, or rerun the stopped lane.
 
-## Pass 1 — implement the safe deliverable
+## Pass 1 — implement and verify the evidence
 
-- Expanded the one-line README into the standing project brief, hard release rules, source limitations, and submission runbook.
-- Built a static GitHub Pages landing page with the release status at the top, and linked executive summary, hypothesis, and source pages.
-- Added the nine-site historical reference table, a qualitative three-hypothesis slate, and a machine-readable negative run card.
-- Did not copy any historical raster or create a synthetic submission. No scientific experiment was started because the specified lane, shared template, data, evaluator, writer, and registry are absent from this checkout.
+- Restored all 26 owner-mirrored files from pinned commits with size and SHA-256 checks; prepared the 19 input bands. Receipts are `data/restore_receipt.json` and `data/prepared_manifest.json`. Pins attest mirror bytes, not organizer origin. The unauthenticated mirrored sample has 60,988 positives on labels, contrary to the description of an all-zero sample; it is used only to establish a grid and footprint.
+- Fetched and independently checked nine pinned focus champion TIFFs and the registered spacing-5 lattice. `scripts/audit_existing_candidates.py --restore` reproduces the comparisons and writes `evidence/protocol_audit_20261026.json`, its Pages copy, and the one current negative JSON card. This is an audit of existing bytes, not a candidate experiment.
+- H1/H2/H3 have directional 3-pixel lattice overlaps 99.39375%, 99.5875% and 99.190625%. Any exceeds the literal 70% stop threshold. H1 passes the nine-focus-only overlap subset, but that is not the entire registry and does not erase the lattice failure. Every one of the nine focus champions exceeds 70% overlap with another focus champion.
+- Confirmed a budget-specific saturation bound: of 5,106,385 eligible off-label pixels, only 6,514 lie outside the lattice halo; a 32,000-dot map must overlap at least 79.64375%. This is not a proof for every sparse budget. Exact binary support for 25/30 is identical; 31 and 32 equal the 25 support after the >1- and >2-pixel catalogue distance tests, respectively.
+- Replaced the executable IEDR experiment runner with an explicit STOP. Preserved original TIFFs and historical metrics for provenance, but annotated their JSONs as superseded. Removed contest download links; root pages redirect to the actual `docs/` Pages site.
 
-## Pass 2 — review assumptions, bugs, and safety
+## Pass 2 — find and fix defects
 
-- Checked every page's local asset and navigation links; all local references resolve.
-- Confirmed that the landing page's download control is disabled and every site page avoids direct links to historical `.tif`/`.tiff` artifacts.
-- Checked that the executive table contains all nine requested focus sites and that score estimates remain unavailable without admissible holdout evidence or an organizer receipt.
-- Reviewed the candidate slate for the required layers, physical signatures, missing-catalogue rationale, difference from inspected approaches, named mimics, source links, and data-availability status.
-- A first website test run exposed two test-fixture assumptions about wording and HTML boolean attributes. Both test defects were corrected. They did not reveal a submission artifact or scientific result.
-- Added ignore rules for Python caches and raw/generated competition rasters and archives.
+- **Holdout:** prior final maps used full-catalogue placement/collar masks; archived holdouts and canaries are inadmissible. Shared hide-and-recover v3.1 includes false positives in truth-empty cells and rejects nonbinary/nonfinite predictions. A full map requires an explicit diagnostic opt-in; per-cell arrays cannot prove visible-only provenance. Catalogue/SGMC grids and binary values are checked against the sample.
+- **Uniqueness and selection:** no lattice/density exemption; candidate and reference support validated, surface and final checks required, missing/undefined comparisons and incomplete inventory fail closed. Promotion recommendations require all expected canaries, a separately verified fold-local replay, paired positive improvement and an authenticated template. A separate selector still decides any slot.
+- **Writer:** no clipping, thresholding or hidden mask repair; preserves soft probabilities, rejects bad/outside/on-catalogue pixels, validates geometry/range/nodata and stages TIFFs, JSON and one-file ZIP. Collision/failure rolls back linked outputs; the local format result does not guarantee organizer acceptance.
+- **Shared scientific code:** fixed principal-curvature eigenvalue sign/magnitude; distinguished bright-ridge and both-polarity callers; corrected a thermal-conduit magnetic term that previously used elevation gradients; fixed NAD83 and containing-pixel conversion in the palaeothermal helper. Historical results remain tied to old code. Derived feature caches require a new schema/source/sample/cache hash receipt and must be rebuilt before use; the real corrected stack was not rebuilt or evaluated after STOP. The original 19 prepared input-band caches are unaffected.
+- **Restoration and Pages:** enforced safe relative destinations, hashes and sizes, and aligned source CRS/shape/transform. Fixed the actual `/docs` pages rather than only the obsolete root files; eliminated unsupported claims about uniqueness, live score and portal acceptance. A daily Pages build attempts a public-board refresh and falls back to a dated snapshot; it has not yet been observed on GitHub Actions.
+- **Vendor provenance:** every recorded source hash matched at review time, but `vendor/README.md` and `vendor/PROVENANCE.json` give different source descriptions and cite a missing registry file. See `vendor/PROVENANCE-NOTES.md`; neither source attribution was silently rewritten.
 
-## Pass 3 — re-check against the full request
+## Pass 3 — full request recheck
 
-| Requirement | Final state |
+| Request | Result and limitation |
 |---|---|
-| Make submit readiness obvious at first visit | **Met safely:** prominent “NO TIFF IS CLEARED” banner and disabled download control. |
-| Unique, valid competition TIFF | **Not met / blocked:** no input grid, candidate, writer, or validator exists here; generating a placeholder would be unsafe and misleading. |
-| Nine-site executive summary | **Met with provenance limits:** each site and historical file ID is listed; estimate is explicitly unavailable; uniqueness claims are attributed to the external project report and not represented as freshly measured. |
-| Explain the H33-2-B2 historical result | **Partly met:** the pruning / marginal-credit mechanism is explained as a plausible hypothesis, not causal proof; exact organizer receipt is absent. |
-| Three to five new hypotheses | **Met with caveat:** three research-only hypotheses are listed; novelty is limited to reviewed records and not globally proven. |
-| Validate the top candidate before a slot | **Blocked, no slot used:** source data, shared evaluator, and lane selection are missing; no holdout score is fabricated. |
-| Official sources and no hallucinations | **Met conservatively:** verified GitHub evidence is distinguished from supplied-but-unfetched external links and team-maintained reports. |
-| Submission instructions and [0, 1] error prevention | **Met as documentation only:** strict requirements and upload steps are explained; automatic GeoTIFF validation cannot run without the official template and shared writer. |
-| Current automated feed | **Not connected:** no organizer feed/auth is available. The site does not claim live scores. |
-| Tests and release card | **Met:** standard-library tests pass; JSON card records a negative result and nulls for all unrun raster/holdout fields. |
+| Unique, high-scoring TIFF with easy contest download | **Not met.** Literal registry STOP; there is no demonstrated admissible high-scoring candidate, so no authorized download or portal note. |
+| Test the strongest new hypothesis before a slot | **Blocked by mandatory STOP.** Four future directions are ranked, but no new lane experiment was run and no slot was used. USGS event data were not downloaded. |
+| Nine-site executive summary | **Provided with attribution.** Owner-reported scores, pinned file names/hashes, and all 81 directional pair checks are disclosed; no submission receipts bind score to file. |
+| Explain h33 0.2778 | **Mechanism and limits provided.** Nested support was measured; DTI pruning is a plausible mechanism, not proof of private-score causation. |
+| Score and 95% uncertainty | **No valid new HOLDOUT-DTI.** The old v3.0 proxy and CI remain archival and explicitly inadmissible; no public leaderboard score was forecast. |
+| Automatic format checks and rejection guidance | **Implemented/tested locally.** Exact grid, footprint, dtype, range, nodata, exclusion and safe staging are checked; the organizer template and portal acceptance remain unverified. |
+| Official sources and feed | **Sources cited; feed conditional.** Organizer public leaderboard, staff clarifications, USGS and GDR sources linked. Pages has a tested parser and stale fallback, not an observed successful scheduled deployment. |
+| Prompt archive / three passes | **Provided.** Exact original wording is unavailable; the standing archive is explicitly a reconstruction. |
+| PR / merge and hosted Pages | **External action not established by this document.** Check the actual GitHub operation result and deployment status; never assume success from local files. |
 
-## Verification performed
+## Automated verification
 
-- `python -m unittest discover -s tests -v` — all tests pass.
-- Parsed all four HTML pages and checked local links — passed.
-- Parsed `data/run-card.json`; confirmed `verdict: negative`, no holdout result, no raster hash, and no promotion authorization.
-- Searched this checkout for TIFF files — none present.
-- `git diff --check` — passed.
-- GitHub API reports Pages is enabled for the repository from `main` at the root path. The site will use the new root `index.html` after merge; a post-merge Pages build was not yet verified.
-- Reviewed the official reference-solution README and repository tree through GitHub API. It requires data to be downloaded from the competition site; the reference repository does not supply the challenge rasters.
-- Reviewed the pinned GEMSDOE32 focus-site report and H33-2-B2 audit record through GitHub API. Those are team-maintained records, not organizer receipts. The report states the historic group score claims are not bound to exact raster hashes by an organizer receipt.
-- External DrivenData, USGS, NASA, NLR, OpenEI, and EPSG pages were not fetched because they are outside the session network allowlist. Their links are included for review and explicitly marked unverified here.
-
-## Next work allowed by the protocol
-
-Restore the shared template and official sample/labels/features/registry in the designated owner workflow; select the explicit single method lane; preregister one candidate; run feature-alone canaries and fold-local hide-and-recover with the shared evaluator; check surface and final-dot uniqueness against the complete registry; validate the writer's GeoTIFF; then provide the evidence to a separate selector. Do not open a submission slot before those gates pass.
+- `python -m unittest discover -s tests -v` — 27 tests, including literal saturation, whole-segment hiding, zero-truth false positives, exact DTI vs brute force, probability preservation and rollback, cache invalidation, actual `/docs` links, and feed success/fallback.
+- `python scripts/prepare_data.py` — prepared 19 aligned bands; 5,167,373 footprint pixels, 60,988 catalogue positives; recorded 58,171 sentinel band-pixels.
+- `python scripts/audit_existing_candidates.py --restore` — reproduced the lattice STOP, focus matrix and negative card. The 81 comparisons include each site's self-comparison.
+- Local output checks are automated. Tests do not authenticate data mirrors, prove independent per-fold feature construction, observe a GitHub Pages deployment, establish full-registry coverage, or replace an organizer receipt.

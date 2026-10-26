@@ -1,0 +1,9 @@
+{
+  "status": "dated_snapshot",
+  "rank_one_public_dti": 0.4437,
+  "observed_utc": "2026-10-26",
+  "last_refresh_attempt_utc": null,
+  "refresh_message": "Public leaderboard checked during review; no automatic refresh has run yet.",
+  "source_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+  "scope": "Official public leaderboard, not a receipt for a repository raster."
+}

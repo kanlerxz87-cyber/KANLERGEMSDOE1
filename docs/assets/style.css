@@ -75,3 +75,14 @@ code, .mono { font-family: var(--mono); font-size: .86em; }
 footer { color: var(--muted); font-size: .85rem; margin-top: 3rem; border-top: 1px solid var(--line); padding-top: 1rem; }
 ol.steps li { margin: .4rem 0; }
 .hash { word-break: break-all; }
+/* Review desk: accessible, responsive, and visibly fail-closed. */
+.head { padding-bottom: 0; }
+main.wrap { padding-top: 1rem; }
+.nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--copper); font-weight: 700; }
+.table-wrap { overflow-x: auto; margin: 1rem 0; border: 1px solid var(--line); border-radius: 10px; }
+.table-wrap table { min-width: 680px; }
+.file { overflow-wrap: anywhere; max-width: 28rem; font-family: var(--mono); font-size: .77rem; }
+small { color: var(--muted); font-weight: 400; }
+button[disabled] { background: #303b4c; color: #d7deeb; border: 1px solid #5b6c83; border-radius: 8px; padding: .55rem .8rem; font: inherit; cursor: not-allowed; }
+.actions { display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; }
+code.hash { overflow-wrap: anywhere; }

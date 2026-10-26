@@ -1,0 +1,77 @@
+{
+  "hypothesis": "H1 IEDR \u2014 prior independent-earthquake-density / dilation / magnetic-gradient lane",
+  "mechanism": "Historical raster ranked a seismicity-density, geodetic dilation and magnetic-gradient surface; spaced binary emission with a catalogue collar.",
+  "named_non_fault_process": "Earthquake swarms induced by geothermal injection or mining; geological contacts can also create magnetic edges.",
+  "holdout_dti": {
+    "status": "INADMISSIBLE",
+    "reason": "The archived full map was built with the complete catalogue; no fold-local emission provenance. Canary tested all labels, not withheld-only.",
+    "archived_diagnostic": {
+      "evidence_class": "HOLDOUT-DTI (invalid for promotion)",
+      "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.0",
+      "n_withheld_positives": 22232,
+      "value": 0.006168701520087212,
+      "ci95": [
+        0.004257781467839945,
+        0.008568349046095498
+      ]
+    },
+    "valid_value": null,
+    "valid_ci95": null
+  },
+  "correlation_overlap_vs_registry": {
+    "scope": "Nine pinned focus champions and one registered lattice; not a complete site-wide registry",
+    "surface_pre_placement": "NOT RECORDED; FAIL CLOSED",
+    "final_dots_spearman_vs_lattice": -0.0003301565638120439,
+    "final_dots_within_3px_of_lattice": 0.9939375,
+    "duplicate_threshold": 0.7,
+    "literal_uniqueness": "FAIL; STOP",
+    "all_focus_champions_pass_final_dot_comparisons": true,
+    "full_registry_checked": false
+  },
+  "raster_sha256": "455c3a1780806718c881480228631046cb3090a4734fac54f398c97533a89d39",
+  "validator_output": {
+    "all_checks_passed": true,
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "nodata_none_for_zeros": true,
+      "nodata_nan_for_nan": true,
+      "zero_on_catalogue_leakage": true,
+      "local_range_check": true
+    },
+    "shape": [
+      3730,
+      3292
+    ],
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 1.0,
+    "organizer_template_authenticated": false
+  },
+  "submission_name": "kanlergemsdoe1-h1-iedr-s3p17-b2-32000-20261026T214518Z-fe519ae3-zeros.tif",
+  "submission_note": "Research only: IEDR prior artifact; literal registry duplicate; DO NOT SUBMIT.",
+  "verdict": "negative",
+  "ok_to_submit": false,
+  "selector_required": true,
+  "new_experiments": 0,
+  "new_rasters": 0,
+  "slots_used": 0,
+  "reviewed_utc": "2026-10-26T22:26:32+00:00"
+}

@@ -1,4 +1,11 @@
 {
+  "status_update_20261026": {
+    "status": "SUPERSEDED / INVALID FOR PROMOTION",
+    "reviewed_utc_date": "2026-10-26",
+    "correction": "The old uniqueness calculation exempted a registered lattice, contrary to the literal protocol. H1/H2/H3 each overlap it by over 99% within 3 pixels. Full-catalogue placement contaminated the prior hide-and-recover scores; canary sampling was not proven withheld-fold-only. This historical object is preserved for provenance, not release authority.",
+    "current_audit": "protocol_audit_20261026.json",
+    "ok_to_submit": false
+  },
   "candidate_id": "H3_CONDRESID",
   "slug": "h3-condresid-s3p17-b2-32000",
   "content_digest8": "42802022",

@@ -1,11 +1,19 @@
 {
-  "timestamp_utc": "2026-10-26T21:50:00Z",
-  "banner": "DO NOT SUBMIT",
+  "reviewed_utc_date": "2026-10-26",
+  "banner": "STOP \u2014 DO NOT SUBMIT",
   "ok_to_submit": false,
-  "reason": "H1/H2 beat champion on HIDE-RECOVER-v3.0 point estimate but 95% CIs overlap and SGMC raw trails 0.09606. H3 loses holdout. Unique and format-valid is not sufficient. Selector step is separate.",
-  "best_research_file": "docs/downloads/kanlergemsdoe1-h1-iedr-s3p17-b2-32000-20261026T214518Z-fe519ae3-zeros.tif",
-  "best_holdout_dti": 0.006168701520087212,
-  "champion_holdout_dti": 0.00451537871535044,
-  "champion_live_owner_report": 0.2778,
-  "public_leaderboard_snapshot": {"rank1": 0.4437, "who": "xiaofanhu", "date": "2026-10-26"}
+  "verdict": "negative",
+  "reason": "Each previous IEDR candidate exceeds the literal 70% registry-lattice overlap; previous full-map holdouts and canaries are inadmissible. No surface-stage check or complete-registry pass was demonstrated.",
+  "current_card": "current_run_card.json",
+  "audit": "protocol_audit_20261026.json",
+  "valid_holdout_dti": null,
+  "public_leaderboard_snapshot": {
+    "rank_one_public_dti": 0.4437,
+    "participant": "xiaofanhu",
+    "observed_date_utc": "2026-10-26",
+    "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+    "scope": "organizer-published public board; not a candidate receipt"
+  },
+  "new_experiments": 0,
+  "slots_used": 0
 }

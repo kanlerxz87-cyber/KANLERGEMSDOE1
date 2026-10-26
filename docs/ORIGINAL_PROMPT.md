@@ -1,37 +1,24 @@
-# Standing Arena prompt (archive)
+# Standing request and protocol — reconstructed archive
 
-Read this at the start of every session. The live user message may add scores; the rules below do not expire.
+**Read on every session.** This is a faithful reconstruction of the consequential user requirements retained in the session memory, **not** a verbatim copy of the original prompt, whose full text is not available here. Later user instructions can add or amend it. Maximize P(Win); Own the Outcome.
 
-## Goal
+## Objective and deliverables
 
-Place on the DrivenData DOE GEMS Prize leaderboard (competition 306) with a **unique** single-band float32 GeoTIFF that matches the official submission contract. Maximize P(Win). Own the Outcome.
+Perform an autonomous deep review and improve this competition repository toward a genuinely unique, high-scoring, single-band GeoTIFF readily downloadable from a clean GitHub Pages executive summary. Use strict automatic validation, and prominently say whether any specific file is actually acceptable to download and submit. Explain the prior portal rejection `Predicted values must be in range [0, 1]` without inventing its cause or claiming an untested fix. Provide a nine-site executive summary for GEMSDOE24/25/27/28/30/31/32/33/36, a scientific account of the owner-reported GEMSDOE32 h33 0.2778 result, cited official/free/licensable sources, transparent limitations, a current-information feed, and future upload instructions and a unique note. Never manufacture a live-score prediction.
 
-Competition: https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/
+Rank 3–5 previously untried/differentiated geological hypotheses by expected benefit and cost, with input layers, transforms, hidden-fault mechanism, meaningful novelty relative to the examined record, named non-fault mimics and data availability. Test the top candidate with spatial-blocked holdout before spending a slot, **unless a mandatory duplicate STOP prohibits a further run**. Do not copy a previous submission except to learn. Negative results are deliverables.
 
-## Parallel-run protocol (mandatory)
+## Mandatory parallel-run protocol
 
-1. **LANE.** Stay inside the assigned method. If rank-correlation with any registry raster exceeds 0.90, or more than 70% of dots fall within 3 px of one genuine registry raster, log a duplicate and stop.
-2. **REUSE, DON'T REBUILD.** Use the template cached feature stack, `evaluate_holdout.py` and `submission_writer.py`. Holdout = hide-and-recover: withhold whole fault segments with a buffer, derive catalogue features only from visible faults, mask visible faults pixel-exactly, score pooled DTI (α 0.2, β 0.8, 300 m triangular kernel). Fix shared tools in the template once; never keep a private fork.
-3. **LABEL EVERY NUMBER** as HOLDOUT-DTI (evaluator version, n withheld positives, 95% CI) or ORGANIZER-CONFIRMED (copied from a submission-page receipt). A projection is never written as a score.
-4. **LEAKAGE CANARY.** Test each feature alone on the holdout before trusting any result. AUC above 0.90 means leakage until proven otherwise.
-5. **RUN CARD.** End with one JSON card: hypothesis; mechanism; named non-fault process that could mimic it; holdout DTI + CI; correlation/overlap vs registry; raster sha256; validator output (no NaN inside footprint, values in [0,1], CRS/shape/transform match); submission name + note ≤140 characters; verdict promote / negative. Negative results are deliverables.
-6. **BUDGET.** Stop after 3 experiments or 2 hours. Do not pick submissions: promotion to a real slot is a separate selector step.
+1. **Lane and uniqueness:** stay in one assigned method lane. Before placement check the surface and preregistered support, then check final dots. If rank correlation with any registry raster exceeds 0.90 **or** more than 70% of candidate dots lie within 3 pixels of any one registry raster, log a duplicate and stop. No lattice/density exemption was authorized; an incomplete registry is not a global pass.
+2. **Reuse and fold isolation:** use the shared cached feature stack, `evaluate_holdout.py`, and `submission_writer.py`. Withhold whole fault segments with a spatial buffer; compute every catalogue-derived feature and emission from visible faults only; mask visible faults pixel-exactly. Score pooled DTI, α=0.2, β=0.8, triangular 300 m kernel. Fix a shared tool once in the template, never as a private fork.
+3. **Score attribution:** label scores `HOLDOUT-DTI` with evaluator version, withheld-positive count and 95% CI, or `ORGANIZER-CONFIRMED` copied from an actual submission-page receipt. User/owner reports without receipts must be identified as such. A projection is not a score.
+4. **Leakage canary:** test each feature alone on the holdout; AUC >0.90 is leakage until disproven.
+5. **One JSON card:** include hypothesis, mechanism, named non-fault mimic, holdout DTI and CI, registry correlation/overlap, raster SHA-256, validator output including no NaN in footprint, [0,1] values and CRS/shape/transform match, submission name and note ≤140 characters, and verdict promote/negative.
+6. **Budget and selector:** at most three experiments or two hours. Do not pick or promote a real weekly submission; a separate selector step must decide. Respect the authenticated platform's actual weekly cap.
 
-## Submission contract (official)
+## Execution and rigor
 
-- Single-band GeoTIFF, EPSG:32611, 100 m, same grid as `sample_submission.tif` (3730 × 3292, origin 243350, 4508550).
-- float32 values in **[0, 1]**. NaN or nodata sentinels inside the scored grid cause `Predicted values must be in range [0, 1]`.
-- Prefer a zeros-outside-footprint variant (`nodata=None`) for portal upload.
-- Unique name + short note.
+Handle previous sessions' next steps first. Do not require manual inspection or validation. Verify claims line by line and flag irregularities; use only sources with appropriate rights and cite them. Carry out three review passes: implement/verify, find/fix bugs, then recheck the full request. Create and merge a PR only if GitHub authentication and repository permissions allow; never imply a merge, score, download readiness, slot use, or scheduled feed success that has not occurred.
 
-## Scientific constraint
-
-Known USGS/INGENIOUS faults are masked from scoring. The task is **hidden-fault discovery**, not catalogue reproduction. GEMSDOE32 h33-2-b2 OWNER-REPORT 0.2778 is D2.8 Poisson of H19-5 plus a 2 px catalogue collar — metric geometry, not a license to duplicate that raster.
-
-## Site
-
-GitHub Pages must make it **obvious** whether a file is OK to download and submit. Executive summary table: file, HOLDOUT-DTI (not a fake live estimate), uniqueness vs listed GEMSDOE sites, submit yes/no.
-
-## Data
-
-DrivenData data tab is login-walled. Restore hash-pinned mirrors with `scripts/restore_data.py`. Pins are not organizer authentication.
+The current lane has stopped. See the README and [executive summary](executive-summary.html) for the present negative result, [current run card](evidence/current_run_card.json) for machine-readable evidence, and [review record](review-record.md) for what remains unproven.

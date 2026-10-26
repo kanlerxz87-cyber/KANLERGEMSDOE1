@@ -16,11 +16,14 @@ Design notes (documented, not tuned on the held-out blocks):
 from __future__ import annotations
 
 from pathlib import Path
+import json
 
 import numpy as np
 from scipy import ndimage
 
 from . import grid
+
+FEATURE_SCHEMA_VERSION = "gems32-structural-v2-principal-curvature"
 
 CHANNELS = [
     *[f"band{i:02d}" for i in range(1, 20)],
@@ -39,17 +42,30 @@ def _grad_mag(a):
     return np.hypot(gx, gy)
 
 
-def _hessian_ridge(a, sigma):
-    """Sato/Frangi-style ridge response: largest |eigenvalue| with the ridge sign convention."""
+def _principal_curvature(a, sigma):
+    """Signed Hessian eigenvalue with largest absolute magnitude."""
     axx = ndimage.gaussian_filter(a, sigma, order=(0, 2), mode="nearest")
     ayy = ndimage.gaussian_filter(a, sigma, order=(2, 0), mode="nearest")
     axy = ndimage.gaussian_filter(a, sigma, order=(1, 1), mode="nearest")
     tmp = np.sqrt(np.maximum(((axx - ayy) * 0.5) ** 2 + axy ** 2, 0.0))
     l1 = (axx + ayy) * 0.5 + tmp
     l2 = (axx + ayy) * 0.5 - tmp
-    big = np.where(np.abs(l1) >= np.abs(l2), l1, l2)
-    small = np.where(np.abs(l1) >= np.abs(l2), l2, l1)
-    return -small * (big < 0).astype(np.float32)      # bright ridge on dark background
+    return np.where(np.abs(l1) >= np.abs(l2), l1, l2)
+
+
+def _hessian_ridge(a, sigma):
+    """Bright-ridge principal curvature, not a full Sato/Frangi filter.
+
+    Pre-v2 caches used the smaller-magnitude eigenvalue and must be rebuilt.
+    Historical results remain attached to their original implementation.
+    """
+    principal = _principal_curvature(a, sigma)
+    return np.maximum(-principal, 0.0).astype(np.float32)
+
+
+def _hessian_both_polarities(a, sigma):
+    """Principal curvature magnitude for both bright ridges and dark valleys."""
+    return np.abs(_principal_curvature(a, sigma)).astype(np.float32)
 
 
 def _structure_tensor(a, sigma):
@@ -87,19 +103,31 @@ def build(features_path: str | Path, out_path: str | Path, log=print) -> dict:
     features_path = Path(features_path)
     out_path = Path(out_path)
     out_path.parent.mkdir(parents=True, exist_ok=True)
+    metadata_path = out_path.with_suffix(out_path.suffix + ".json")
+    # Old or partial stacks have no trusted schema receipt. Remove any old
+    # receipt before touching bytes so interruptions cannot make them valid.
+    metadata_path.unlink(missing_ok=True)
     need = {12, 14, 2, 13, 17, 15}                       # bands used by the derived channels
     kept = {}
     import rasterio
     sample_path = features_path.parent / "sample_submission.tif"
     sample_foot = None
+    sample_grid = None
     if sample_path.exists():
         with rasterio.open(sample_path) as ds_sub:
+            if ds_sub.count != 1:
+                raise ValueError("sample template must have one band")
+            sample_grid = (ds_sub.shape, ds_sub.crs, ds_sub.transform)
             sample_foot = np.isfinite(ds_sub.read(1))
 
     base_valid = None
     base_idx = None
     with rasterio.open(features_path) as s:
         h, w, nb = s.height, s.width, s.count
+        if nb != 19:
+            raise ValueError(f"Expected exactly 19 input bands, got {nb}")
+        if sample_grid is not None and sample_grid != (s.shape, s.crs, s.transform):
+            raise ValueError("feature/sample CRS, shape or transform differs")
         stack = np.lib.format.open_memmap(out_path, mode="w+", dtype=np.float32,
                                           shape=(h, w, len(CHANNELS) + max(0, nb - 19)))
         for i in range(1, nb + 1):
@@ -141,5 +169,36 @@ def build(features_path: str | Path, out_path: str | Path, log=print) -> dict:
     stack[:, :, c] = np.where(fmask, np.sin(2 * theta), 0.0); c += 1
     stack[:, :, c] = footprint.astype(np.float32); c += 1
     stack.flush()
-    return dict(channels=CHANNELS, n_channels=len(CHANNELS), shape=[h, w],
-                footprint_px=int(footprint.sum()), path=str(out_path))
+    from .submission import sha256_file
+    receipt = dict(feature_schema_version=FEATURE_SCHEMA_VERSION,
+                   source_sha256=sha256_file(features_path),
+                   sample_sha256=sha256_file(sample_path) if sample_path.exists() else None,
+                   cache_sha256=sha256_file(out_path),
+                   channels=CHANNELS, n_channels=len(CHANNELS), shape=[h, w],
+                   footprint_px=int(footprint.sum()), path=str(out_path),
+                   cache_warning="Pre-v2 Hessian caches are incompatible with this builder.")
+    metadata_path.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
+    return receipt
+
+
+def load_checked(out_path: str | Path, features_path: str | Path):
+    """Load a schema- and source-pinned feature cache, or fail pending rebuild."""
+    from .submission import sha256_file
+    out_path, features_path = Path(out_path), Path(features_path)
+    metadata_path = out_path.with_suffix(out_path.suffix + ".json")
+    if not out_path.is_file() or not metadata_path.is_file():
+        raise ValueError("Derived feature cache/receipt missing; rebuild with features.build")
+    receipt = json.loads(metadata_path.read_text(encoding="utf-8"))
+    sample = features_path.parent / "sample_submission.tif"
+    sample_sha = sha256_file(sample) if sample.exists() else None
+    if (receipt.get("feature_schema_version") != FEATURE_SCHEMA_VERSION
+            or receipt.get("source_sha256") != sha256_file(features_path)
+            or receipt.get("sample_sha256") != sample_sha
+            or receipt.get("cache_sha256") != sha256_file(out_path)
+            or receipt.get("channels") != CHANNELS):
+        raise ValueError("Derived feature cache is stale or from different inputs; rebuild")
+    stack = np.load(out_path, mmap_mode="r", allow_pickle=False)
+    expected = (*receipt.get("shape", []), len(CHANNELS))
+    if stack.shape != expected or stack.dtype != np.float32:
+        raise ValueError("Derived feature cache dimensions/dtype do not match its receipt")
+    return stack

@@ -1,67 +1,98 @@
 """Fail-closed parallel-run gates. These never allocate competition submission slots."""
 from __future__ import annotations
 
+import re
+
 import numpy as np
 from scipy.ndimage import distance_transform_edt
 from scipy.stats import spearmanr
 
 
-def compare_registry(surface, dots, footprint, registry, *, stage="final"):
-    """Exact footprint ranks and directional <=3px dot overlap, without density exemptions.
+def compare_registry(surface, dots, footprint, registry, *, stage="final", inventory_complete=False):
+    """Exact ranks and directional <=3px support overlap, without exemptions.
 
-    registry maps names to (continuous_surface, positive_dot_mask). No sampling is
-    permitted here: a sample correlation is not the requested full-surface test.
-    Undefined correlations, missing references, and empty dots fail closed.
+    At the surface stage ``dots`` is a preregistered preview-support mask; at the
+    final stage it is the actual placed-dot mask. The caller must prove that the
+    inventory is complete for its stated scope; omission fails closed. This
+    function cannot by itself prove that remote/private repositories were scanned.
     """
     if stage not in {"surface", "final"}:
         raise ValueError("stage must be surface or final")
-    surface, footprint = np.asarray(surface), np.asarray(footprint, bool)
-    if stage == "final" and dots is None:
-        raise ValueError("final dot check requires dots")
-    dots = np.zeros(footprint.shape, bool) if dots is None else np.asarray(dots, bool)
+    surface = np.asarray(surface)
+    foot_raw = np.asarray(footprint)
+    if not np.isfinite(foot_raw).all() or not np.isin(foot_raw, (0, 1)).all():
+        raise ValueError("footprint must already be finite and binary")
+    footprint = foot_raw.astype(bool, copy=False)
+    if dots is None:
+        raise ValueError("a pre-placement preview support or final dots mask is required")
+    raw_dots = np.asarray(dots)
+    if not np.isfinite(raw_dots).all() or not np.isin(raw_dots, (0, 1)).all():
+        raise ValueError("candidate support must already be finite and binary")
+    dots = raw_dots.astype(bool, copy=False)
     if surface.shape != footprint.shape or dots.shape != footprint.shape:
         raise ValueError("surface/dots/footprint shape mismatch")
     if not footprint.any() or not np.isfinite(surface[footprint]).all():
         raise ValueError("empty footprint or nonfinite candidate surface")
-    dots = dots & footprint
+    if (dots & ~footprint).any():
+        raise ValueError("candidate support extends outside the footprint")
     rows = []
     for name, (other_surface, other_dots) in registry.items():
-        other_surface, other_dots = np.asarray(other_surface), np.asarray(other_dots, bool)
-        if other_surface.shape != footprint.shape or other_dots.shape != footprint.shape:
+        other_surface, other_raw = np.asarray(other_surface), np.asarray(other_dots)
+        if other_surface.shape != footprint.shape or other_raw.shape != footprint.shape:
             raise ValueError(f"registry shape mismatch: {name}")
-        other_dots = other_dots & footprint
+        if not np.isfinite(other_raw[footprint]).all() or not np.isin(other_raw[footprint], (0, 1)).all():
+            raise ValueError(f"registry support must be finite and binary inside footprint: {name}")
+        other_dots = (other_raw == 1) & footprint
         rho = None
         if np.isfinite(other_surface[footprint]).all():
             x, y = surface[footprint], other_surface[footprint]
             if np.ptp(x) > 0 and np.ptp(y) > 0:
                 rho = float(spearmanr(x, y).statistic)
         overlap = None
+        dot_rho = None
         if dots.any() and other_dots.any():
             overlap = float((distance_transform_edt(~other_dots)[dots] <= 3).mean())
-        duplicate = (rho is not None and rho > .90) or (stage == 'final' and overlap is not None and overlap > .70)
-        rows.append(dict(registry=name, spearman=rho, within_3px_fraction=overlap,
-                         duplicate=duplicate, measurable=rho is not None and (stage == 'surface' or overlap is not None)))
-    passed = bool(rows) and (stage == 'surface' or bool(dots.any())) and all(r['measurable'] and not r['duplicate'] for r in rows)
+            # Exact Spearman for binary fields equals the Pearson phi coefficient.
+            n, a, b = int(footprint.sum()), int(dots.sum()), int(other_dots.sum())
+            both = int((dots & other_dots).sum())
+            den = float(a * (n - a) * b * (n - b)) ** 0.5
+            if den:
+                dot_rho = float((n * both - a * b) / den)
+        duplicate = ((rho is not None and rho > .90) or
+                     (dot_rho is not None and dot_rho > .90) or
+                     (overlap is not None and overlap > .70))
+        rows.append(dict(registry=name, spearman_surface=rho, spearman_support=dot_rho,
+                         within_3px_fraction=overlap, duplicate=duplicate,
+                         measurable=rho is not None and dot_rho is not None and overlap is not None))
+    passed = (inventory_complete is True and bool(rows) and bool(dots.any())
+              and all(r['measurable'] and not r['duplicate'] for r in rows))
     return dict(stage=stage, rule="literal rho>0.90 OR directional overlap>0.70; no density exemptions",
+                inventory_complete=inventory_complete is True,
                 comparisons=rows, passed=passed, stop=not passed)
 
 
 REQUIRED_VALIDATOR_CHECKS = frozenset({
-    "single_band", "finite", "range_0_1", "crs_match", "shape_match", "transform_match",
+    "exact_reference_grid_match", "single_band", "dtype_float32", "dimensions_3730x3292",
+    "crs_epsg_32611", "in_footprint_all_finite", "in_footprint_zero_nan",
+    "in_footprint_range_0_1", "outside_footprint_compliant", "zero_on_catalogue_leakage",
 })
 
 
 def _valid_holdout(result):
-    """Reject missing provenance and malformed evidence rather than guessing defaults."""
+    """Fail closed unless an independent fold-local replay has been verified."""
     if not isinstance(result, dict):
         return False
     try:
-        ci = result.get("ci95", [])
-        dti = result["dti"]
+        ci = result.get("ci95_cluster_bootstrap", result.get("ci95", []))
+        dti = result.get("pooled_dti", result.get("dti"))
         n = result["n_withheld_positives"]
+        replay_hash = result.get("independent_replay_sha256", "")
         return bool(
-            isinstance(result.get("evaluator_version"), str)
+            result.get("score_label") == "HOLDOUT-DTI"
+            and isinstance(result.get("evaluator_version"), str)
             and result["evaluator_version"].strip()
+            and result.get("catalogue_feature_provenance_verified") is True
+            and isinstance(replay_hash, str) and re.fullmatch(r"[0-9a-f]{64}", replay_hash)
             and isinstance(n, int) and not isinstance(n, bool) and n > 0
             and len(ci) == 2 and np.isfinite([dti, *ci]).all()
             and 0 <= ci[0] <= dti <= ci[1] <= 1
@@ -70,37 +101,52 @@ def _valid_holdout(result):
         return False
 
 
+def _gate_ok(result, stage):
+    if not isinstance(result, dict) or result.get("stage") != stage:
+        return False
+    rows = result.get("comparisons")
+    return bool(result.get("inventory_complete") is True and result.get("passed") is True
+                and isinstance(rows, list) and rows
+                and all(isinstance(r, dict) and r.get("measurable") is True
+                        and r.get("duplicate") is False for r in rows))
+
+
 def promotion_decision(*, lane, surface_check, final_check, canary_aucs,
                        holdout, incumbent, same_evaluation, validator,
-                       paired_delta_ci95=None):
-    """Recommendation only. A paired improvement CI must exclude zero.
+                       paired_delta_ci95=None, expected_features=None):
+    """Return a recommendation only, never select a real slot.
 
-    Both estimates must identify the same evaluator and positive count. The
-    caller must compute the paired CI on matched spatial units, not subtract
-    marginal CI endpoints. Legacy/incomplete evidence deliberately rejects.
+    Missing registry coverage, a missing feature canary, unverified fold-local
+    replay, an unauthenticated sample, or a paired CI touching zero blocks it.
+    Even a promote result requires a separate selector and organizer quota check.
     """
-    aucs = list(canary_aucs)
     try:
         paired_win = bool(paired_delta_ci95 is not None
                           and len(paired_delta_ci95) == 2
                           and np.isfinite(paired_delta_ci95).all()
                           and 0 < paired_delta_ci95[0] <= paired_delta_ci95[1] <= 1)
+        feature_set = set(expected_features or [])
+        canary_ok = (isinstance(canary_aucs, dict) and bool(feature_set)
+                     and set(canary_aucs) == feature_set
+                     and all(np.isfinite(a) and 0 <= a <= .90 for a in canary_aucs.values()))
     except (TypeError, ValueError):
-        paired_win = False
+        paired_win = canary_ok = False
     holdout_ok = _valid_holdout(holdout) and _valid_holdout(incumbent)
+    checks = validator.get("checks", {}) if isinstance(validator, dict) else {}
+    format_ok = (isinstance(checks, dict) and REQUIRED_VALIDATOR_CHECKS.issubset(checks)
+                 and all(v is True for v in checks.values())
+                 and validator.get("all_checks_passed") is True
+                 and validator.get("organizer_template_authenticated") is True)
     gates = dict(
         lane=isinstance(lane, str) and bool(lane.strip()),
-        surface=surface_check.get('stage') == 'surface' and surface_check.get('passed') is True,
-        final=final_check.get('stage') == 'final' and final_check.get('passed') is True,
-        canaries=bool(aucs) and all(np.isfinite(a) and 0 <= a <= .90 for a in aucs),
+        surface=_gate_ok(surface_check, 'surface'), final=_gate_ok(final_check, 'final'),
+        canaries=bool(canary_ok),
         holdout=bool(same_evaluation is True and holdout_ok
                      and holdout['evaluator_version'] == incumbent['evaluator_version']
                      and holdout['n_withheld_positives'] == incumbent['n_withheld_positives']
-                     and holdout['dti'] > incumbent['dti']),
+                     and holdout.get('pooled_dti',holdout.get('dti')) > incumbent.get('pooled_dti',incumbent.get('dti'))),
         paired_improvement=paired_win,
-        format=isinstance(validator, dict)
-               and REQUIRED_VALIDATOR_CHECKS.issubset(validator)
-               and all(v is True for v in validator.values()),
+        format=bool(format_ok),
     )
     return dict(gates=gates, verdict='promote' if all(gates.values()) else 'negative',
                 selector_required=True, slot_used=False)

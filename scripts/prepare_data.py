@@ -70,9 +70,12 @@ def prepare() -> dict:
             )
 
     with rasterio.open(tmpl_path) as tmpl:
-        epsg = tmpl.crs.to_epsg()
+        epsg = tmpl.crs.to_epsg() if tmpl.crs else None
         if epsg != 32611:
             raise ValueError(f"Expected EPSG:32611, got {tmpl.crs}")
+        reference_crs, reference_transform = tmpl.crs, tmpl.transform
+        if tmpl.count != 1 or reference_transform != rasterio.transform.from_origin(243350, 4508550, 100, 100):
+            raise ValueError("Template band count or affine transform mismatch")
         shape_hw = (tmpl.height, tmpl.width)
         if shape_hw != (3730, 3292):
             raise ValueError(f"Expected shape (3730, 3292), got {shape_hw}")
@@ -81,9 +84,12 @@ def prepare() -> dict:
         foot = np.isfinite(foot_arr)
 
     with rasterio.open(lab_path) as lab_src:
-        if (lab_src.height, lab_src.width) != shape_hw:
-            raise ValueError("labels.tif shape mismatch")
+        if ((lab_src.height, lab_src.width) != shape_hw or lab_src.crs != reference_crs
+                or lab_src.transform != reference_transform or lab_src.count != 1):
+            raise ValueError("labels.tif band count, CRS, shape or transform mismatch")
         lab_raw = lab_src.read(1)
+        if not np.isfinite(lab_raw[foot]).all() or not np.isin(lab_raw[foot], (0, 1)).all():
+            raise ValueError("labels.tif must be finite binary inside the footprint")
         lab = (lab_raw == 1) & foot
 
     np.save(bands_dir / "_footprint.npy", foot)
@@ -94,8 +100,9 @@ def prepare() -> dict:
     any_sentinel_in_foot = np.zeros(shape_hw, dtype=bool)
 
     with rasterio.open(feat_path) as feat_src:
-        if (feat_src.height, feat_src.width) != shape_hw:
-            raise ValueError("training_features.tif shape mismatch")
+        if ((feat_src.height, feat_src.width) != shape_hw or feat_src.crs != reference_crs
+                or feat_src.transform != reference_transform):
+            raise ValueError("training_features.tif CRS, shape or transform mismatch")
         names = [feat_src.tags(i).get("band_name", f"band_{i}") for i in range(1, feat_src.count + 1)]
         if names != BASE_NAMES:
             raise ValueError(f"Unexpected band order: {names}")

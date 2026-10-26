@@ -4,18 +4,15 @@
 Delegates strictly to `gems32.submission` (zero private fork):
   - Enforces exact CRS (`EPSG:32611`), shape (`3730 x 3292`), and affine geotransform matching
     `sample_submission.tif`.
-  - Clips and verifies all predictions strictly inside `[0.0, 1.0]` with `0` NaNs anywhere in the
-    12,279,160-cell raster (`-zeros.tif`, `nodata=None`), preventing DrivenData's portal error
-    `Predicted values must be in range [0, 1]` (`IR-34-NODATA-01`).
-  - Masks known USGS/INGENIOUS catalogue traces (`labels.tif`) to `0.0` and builds a single-GeoTIFF `.zip`.
+  - Rejects (never clips or binarizes) predictions outside `[0.0, 1.0]` or nonfinite input.
+  - Requires zero outside the footprint and on the catalogue; validates the written zeros variant.
+  - Builds a single-GeoTIFF `.zip`. Local format validation does not prove portal acceptance.
 """
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import sys
-import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -42,7 +39,10 @@ def write_validated_submission(
     sample_tif = ddir / "sample_submission.tif"
     labels_tif = ddir / "labels.tif"
     with rasterio.open(sample_tif) as ds:
+        if ds.count != 1:
+            raise ValueError("submission template must have one band")
         foot = np.isfinite(ds.read(1))
+        sample_grid = (ds.shape, ds.crs, ds.transform)
     arr_in = np.asarray(mask_or_probs)
     if arr_in.shape != foot.shape:
         raise ValueError(f"Expected grid shape {foot.shape}, got {arr_in.shape}")
@@ -50,14 +50,19 @@ def write_validated_submission(
         if nk in candidate_meta and len(str(candidate_meta[nk])) > 140:
             raise ValueError(f"{nk} exceeds 140 characters ({len(str(candidate_meta[nk]))} chars)")
     with rasterio.open(labels_tif) as ds:
-        labels = (ds.read(1) > 0) & foot
+        if ds.count != 1 or (ds.shape, ds.crs, ds.transform) != sample_grid:
+            raise ValueError("label CRS/shape/transform/band count mismatch with template")
+        raw_labels = ds.read(1)
+        if not np.isfinite(raw_labels[foot]).all() or not np.isin(raw_labels[foot], (0, 1)).all():
+            raise ValueError("label data must be finite and binary inside the footprint")
+        labels = (raw_labels == 1) & foot
     ts = timestamp_tag or datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
     meta_full = {
-        "catalogue_hidden_mean": 0.0,
+        "catalogue_hidden_mean": None,
         "catalogue_hidden_per_quadrant": {},
-        "sgmc_prevalence_calibrated_dti": 0.0,
-        "drift_corrected_holdout_mean": 0.0,
+        "sgmc_prevalence_calibrated_dti": None,
+        "drift_corrected_holdout_mean": None,
         "drift_corrected_per_quadrant": {},
         "predicted_leaderboard_dti": None,
         "ei_drift_corrected": None,
@@ -66,7 +71,7 @@ def write_validated_submission(
     meta_full.update(candidate_meta)
 
     bundle = submission.write_submission_pair(
-        mask=(np.isfinite(arr_in) & (arr_in > 0)) & foot & ~labels,
+        mask=arr_in,
         foot=foot,
         labels=labels,
         template_tif=sample_tif,
@@ -75,16 +80,6 @@ def write_validated_submission(
         timestamp_tag=ts,
         candidate_meta=meta_full,
     )
-    zeros_path = out_dir / bundle["zeros_tif"]["filename"]
-    zip_path = zeros_path.with_suffix(".zip")
-    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as zf:
-        zf.write(zeros_path, arcname=zeros_path.name)
-    bundle["zeros_zip"] = {
-        "filename": zip_path.name,
-        "path": str(zip_path),
-        "size_bytes": zip_path.stat().st_size,
-        "sha256": hashlib.sha256(zip_path.read_bytes()).hexdigest(),
-    }
     return bundle
 
 

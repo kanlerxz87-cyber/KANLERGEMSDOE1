@@ -3,6 +3,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: "17 6 * * *"
 permissions:
   contents: read
   pages: write
@@ -18,6 +20,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Refresh the public leaderboard snapshot (fallback to dated snapshot)
+        run: python3 scripts/refresh_public_feed.py --output docs/feed.json
       - uses: actions/upload-pages-artifact@v3
         with:
           path: docs
