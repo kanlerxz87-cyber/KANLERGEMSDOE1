@@ -1,3 +1,5 @@
+> SUPERSEDED: this is an older session record. Read [the current audit](audit-20261026.md); artifacts now exist, but evidence is quarantined.
+
 # Three-pass implementation and review record
 
 **Review date:** 2026-10-26 UTC
