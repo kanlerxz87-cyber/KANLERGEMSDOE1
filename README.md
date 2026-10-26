@@ -94,3 +94,19 @@ Maximize P(Win). Own the Outcome.
 ## Archived session prompt
 
 The standing Arena prompt is in [`docs/ORIGINAL_PROMPT.md`](docs/ORIGINAL_PROMPT.md). Read it at the start of every session.
+
+---
+
+## Parallel lane MPLC (2026-10-26, this session) — 🔴 DO NOT SUBMIT
+
+Independent lane **MPLC**: multi-scale oriented log-Gabor **phase congruency** (RTP + isostatic
+gravity + detrended elevation; cross-source concordance) added to a 39-band HGB — untried in
+sibling repos (grep-verified). Full report: [`docs/mplc/index.html`](docs/mplc/index.html) ·
+hypotheses: [`docs/HYPOTHESES.md`](docs/HYPOTHESES.md) · run card: [`evidence/run_card.json`](evidence/run_card.json).
+
+| File | Evidence | Unique? | Submit? |
+|---|---|---|---|
+| [kanler-mplc-hgb-37654-20261026-0741963ae4e9-zeros.tif](docs/downloads/kanler-mplc-hgb-37654-20261026-0741963ae4e9-zeros.tif) | HOLDOUT-DTI 0.0894 [0.0757, 0.1028] vs control 0.0840, paired +0.0054 [+0.0004, +0.0108] (gems57-pooled-hide-v2, 11,318 withheld) · **not a live estimate** · SGMC proxy 0.0563 vs champion 0.0954 | YES vs discrete peers (max 3-px overlap 46.2%, \|ρ\| 0.126); lattice blanket 99.95% disclosed — no exemption claimed, consistent with the audit above | **NO — verdict negative, 0 slots spent** |
+
+Live score: **NOT ESTIMABLE** (no calibrated holdout→live mapping exists). All 9 focus-site
+scores (best: GEMSDOE32 0.2778) are OWNER-REPORTED nested H19-5 duplicates — never re-upload.

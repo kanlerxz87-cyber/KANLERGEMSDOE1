@@ -1,0 +1,118 @@
+{
+  "validator": {
+    "file": "/home/user/KANLERGEMSDOE1/docs/downloads/kanler-mplc-hgb-37654-20261026-0741963ae4e9-zeros.tif",
+    "bytes": 128469,
+    "sha256": "fe4b8d742c1b12f60727ae22d4ae2dd96e6bfcb76b7f35e985d0e707bb816db3",
+    "meta": {
+      "crs": "EPSG:32611",
+      "shape": [
+        3730,
+        3292
+      ],
+      "dtype": "float32",
+      "count": 1,
+      "nodata": null,
+      "transform": [
+        100.0,
+        0.0,
+        243350.0,
+        0.0,
+        -100.0,
+        4508550.0
+      ],
+      "profile_compress": "deflate"
+    },
+    "band_description": [
+      null
+    ],
+    "n_finite": 12279160,
+    "n_nan": 0,
+    "n_infinite": 0,
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.0030664964579045773,
+    "emitted_positive_pixels": 37654,
+    "checks": {
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "transform_matches_sample_submission": true,
+      "no_nan_anywhere": true,
+      "no_inf_anywhere": true,
+      "no_sentinel_values": true,
+      "range_0_1_guaranteed": true,
+      "min_ge_0": true,
+      "max_le_1": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_zero": true,
+      "zero_dots_on_mapped_catalogue": true
+    },
+    "all_checks_passed": true,
+    "validation_class": "local format/range preflight; not organizer acceptance or uniqueness clearance",
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_positive_pixels": 37654,
+    "footprint_fraction": 0.007286874781441169
+  },
+  "uniqueness_vs_registry": {
+    "champion_h33_b2_OWNER-REPORTED-0.2778": {
+      "dots": 37654,
+      "dot_overlap_3px_frac_of_mine": 0.33696287247038825,
+      "surface_spearman_sample400k": 0.05615522939362986,
+      "exact_dot_intersection": 940
+    },
+    "d28_OWNER-REPORTED-0.2600": {
+      "dots": 44090,
+      "dot_overlap_3px_frac_of_mine": 0.4060126414192383,
+      "surface_spearman_sample400k": 0.07300055365516676,
+      "exact_dot_intersection": 940
+    },
+    "d15_OWNER-REPORTED-0.2477": {
+      "dots": 60069,
+      "dot_overlap_3px_frac_of_mine": 0.42303606522547405,
+      "surface_spearman_sample400k": 0.08731809948377275,
+      "exact_dot_intersection": 1399
+    },
+    "h19_5_OWNER-REPORTED-0.1922": {
+      "dots": 121131,
+      "dot_overlap_3px_frac_of_mine": 0.447522175598874,
+      "surface_spearman_sample400k": 0.125818895363372,
+      "exact_dot_intersection": 2986
+    },
+    "h19_4_OWNER-REPORTED-0.1894": {
+      "dots": 123779,
+      "dot_overlap_3px_frac_of_mine": 0.4551973229935731,
+      "surface_spearman_sample400k": 0.1252026548796249,
+      "exact_dot_intersection": 2975
+    },
+    "h16_1_OWNER-REPORTED-0.1855": {
+      "dots": 123939,
+      "dot_overlap_3px_frac_of_mine": 0.46181016625059756,
+      "surface_spearman_sample400k": 0.1257608749764682,
+      "exact_dot_intersection": 3011
+    },
+    "gems27_topo_OWNER-REPORTED-0.2449": {
+      "dots": 61328,
+      "dot_overlap_3px_frac_of_mine": 0.437058479842779,
+      "surface_spearman_sample400k": 0.08851694312987633,
+      "exact_dot_intersection": 1433
+    },
+    "lattice_s5_blanket": {
+      "dots": 206895,
+      "dot_overlap_3px_frac_of_mine": 0.9995219631380464,
+      "surface_spearman_sample400k": -0.00023235081437461658,
+      "exact_dot_intersection": 1483
+    }
+  },
+  "sgmc_proxy_COMPUTED": {
+    "truth_sgmc_offcat_px": 62122,
+    "candidate_final_DTI_on_SGMC": 0.056277398276615105,
+    "champion_DTI_on_SGMC": 0.09538611460482532
+  },
+  "gates": {
+    "surface_abs_spearman_max_discrete_peers": 0.125818895363372,
+    "dot_overlap_max_discrete_peers": 0.46181016625059756,
+    "lattice_overlap_disclosed": 0.9995219631380464
+  }
+}
