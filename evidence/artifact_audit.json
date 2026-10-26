@@ -1,0 +1,62 @@
+{
+  "audit_version": "KANLER-STRICT-AUDIT-v1",
+  "artifacts": [
+    {
+      "file": "docs/downloads/kanlergemsdoe1-h1-iedr-s3p17-b2-32000-20261026T214518Z-fe519ae3-zeros.tif",
+      "sha256": "455c3a1780806718c881480228631046cb3090a4734fac54f398c97533a89d39",
+      "checks": {
+        "single_band": true,
+        "float32": true,
+        "no_nan_anywhere": true,
+        "values_in_0_1": true,
+        "nodata_none": true,
+        "match_historical_reference_grid": true,
+        "matches_recorded_sha256": true
+      },
+      "all_available_checks_pass": true,
+      "official_template_match": null,
+      "footprint_and_catalogue_checks": null,
+      "ok_to_submit": false
+    },
+    {
+      "file": "docs/downloads/kanlergemsdoe1-h2-htsi-s3p17-b2-32000-20261026T214518Z-571145eb-zeros.tif",
+      "sha256": "da8d6f42d95ca4a1b525745283f34a47e85d2daf195c08ff8d919003b27522ae",
+      "checks": {
+        "single_band": true,
+        "float32": true,
+        "no_nan_anywhere": true,
+        "values_in_0_1": true,
+        "nodata_none": true,
+        "match_historical_reference_grid": true,
+        "matches_recorded_sha256": true
+      },
+      "all_available_checks_pass": true,
+      "official_template_match": null,
+      "footprint_and_catalogue_checks": null,
+      "ok_to_submit": false
+    },
+    {
+      "file": "docs/downloads/kanlergemsdoe1-h3-condresid-s3p17-b2-32000-20261026T214518Z-42802022-zeros.tif",
+      "sha256": "e5ff0120380fa316ccfa63c27d5383de4d74f963419d41e2ea4418ad73b4c950",
+      "checks": {
+        "single_band": true,
+        "float32": true,
+        "no_nan_anywhere": true,
+        "values_in_0_1": true,
+        "nodata_none": true,
+        "match_historical_reference_grid": true,
+        "matches_recorded_sha256": true
+      },
+      "all_available_checks_pass": true,
+      "official_template_match": null,
+      "footprint_and_catalogue_checks": null,
+      "ok_to_submit": false
+    }
+  ],
+  "official_inputs_status": "UNAVAILABLE: GitHub API restoration returned HTTP 403 rate limit",
+  "reference_provenance": "Historical GEMSDOE32 raster only; NOT official template authentication",
+  "holdout_status": "QUARANTINED: full-catalogue placement; no admissible new HOLDOUT-DTI",
+  "uniqueness_status": "FAIL: archived >70% lattice overlap; no exemption permitted",
+  "promotion_authorized": false,
+  "experiments_run": 0
+}

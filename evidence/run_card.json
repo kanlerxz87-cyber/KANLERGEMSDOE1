@@ -1,0 +1,66 @@
+{
+  "status_update_20261026": {
+    "status": "SUPERSEDED / DUPLICATE / NOT PROMOTION EVIDENCE",
+    "reviewed_utc_date": "2026-10-26",
+    "correction": "The literal any-registry rule includes the spacing-5 lattice. The parallel MPLC artifact has 0.9995219631380464 directional 3-pixel overlap and therefore fails; no lattice exemption is authorized. Its reported per-fold holdout has not been independently replayed in this review. Local [0,1] validation does not prove portal acceptance.",
+    "current_audit": "docs/evidence/protocol_audit_20261026.json",
+    "ok_to_submit": false
+  },
+  "hypothesis": "MPLC: multi-scale (8/20/50px) oriented log-Gabor phase congruency on RTP, isostatic gravity and detrended elevation, plus cross-source PC concordance and RTP structure-tensor orientation coherence, added to a 39-band HGB, catches low-amplitude buried fault steps that amplitude-biased gradient stacks miss.",
+  "mechanism": "Contrast-invariant local-phase alignment across scales (Kovesi PC with frequency-spread weighting); dots emitted by dotted greedy max-cover on E[k], 37,654 budget, <=2px catalogue prune, visible faults masked pixel-exact.",
+  "named_non_fault_mimic": "Lithologic contacts, mafic dikes, paleo-shoreline risers, road/terrace edges are also phase-congruent steps; mitigated by cross-source concordance + supervised HGB, decided by holdout.",
+  "holdout": {
+    "class": "HOLDOUT-DTI",
+    "evaluator": "KANLER-HOLDOUT-v1 = vendor gems57-pooled-hide-v2 (whole <=12px segments, quadrant domains eroded 12px, seed 20, mode=all) + quadrant-blocked training + vendor pooled_summary paired 20km block bootstrap",
+    "withheld_positives": 11318,
+    "candidate_dti": 0.08943666741010366,
+    "candidate_ci95": [
+      0.07574434757919733,
+      0.10281578584733451
+    ],
+    "control_base_dti": 0.08399182101070962,
+    "paired_delta_vs_base": 0.005444846399394035,
+    "paired_delta_ci95": [
+      0.000394912540936851,
+      0.010769582636656472
+    ],
+    "champion_fixed_raster_dti_same_cells": 0.00439578938714301,
+    "champion_caveat": "Champion is a fixed raster built with the full catalogue; catalogue hide-and-recover is anti-aligned with its 2px prune (GEMSDOE31 disclosure). Its low value here is NOT evidence it would score low live, and beating it on this instrument is not a promotion argument.",
+    "exp3_budget_44090_dti": 0.0916,
+    "exp3_note": "Catalogue holdout prefers 44,090 dots; the only live (OWNER-REPORTED) budget ladder on the champion field prefers 37,654. Final file uses 37,654; conflict disclosed."
+  },
+  "sgmc_proxy_computed": {
+    "candidate_final": 0.056277398276615105,
+    "champion": 0.09538611460482532,
+    "truth_px": 62122,
+    "reading": "On off-catalogue USGS SGMC faults (>300m from catalogue) the candidate trails the champion. SGMC is pre-Quaternary-inclusive and is a proxy, not the hidden truth, but this regression blocks any claim of expected live superiority."
+  },
+  "leakage_canary": {
+    "mplc_auc_range": [
+      0.5063,
+      0.5277
+    ],
+    "max_two_sided_base_auc_deviation": 0.0716,
+    "flags_gt_0.90": [],
+    "verdict": "PASS"
+  },
+  "uniqueness": {
+    "surface_abs_spearman_max_discrete_peers": 0.125818895363372,
+    "dot_overlap_3px_max_discrete_peers": 0.46181016625059756,
+    "vs_champion_dot_overlap_3px": 0.33696287247038825,
+    "vs_champion_surface_spearman": 0.05615522939362986,
+    "lattice_s5_overlap_disclosed_IR_K1": 0.9995219631380464
+  },
+  "raster": {
+    "file": "kanler-mplc-hgb-37654-20261026-0741963ae4e9-zeros.tif",
+    "sha256": "fe4b8d742c1b12f60727ae22d4ae2dd96e6bfcb76b7f35e985d0e707bb816db3",
+    "dots": 37654
+  },
+  "validator": "vendor gems57 validate: all checks PASS (single band float32, 3730x3292, EPSG:32611, exact sample transform, no NaN/Inf anywhere, values {0,1} in [0,1], 0 outside footprint, 0 dots on catalogue)",
+  "submission_name": "kanler-mplc-hgb-37654-20261026-0741963ae4e9",
+  "submission_note_140": "KANLER MPLC phase-congruency HGB 37654d B2 | HOLDOUT-DTI 0.0894 vs 0.0840 | DO NOT SUBMIT",
+  "estimated_live_score": "NOT ESTIMABLE - no calibrated mapping from catalogue holdout or SGMC proxy to the hidden-fault leaderboard exists (GEMSDOE32 withdrew anchor-inversion; champion holdout/SGMC/live triples are mutually inconsistent). Any number would be a fabrication.",
+  "verdict": "negative",
+  "slots_spent": 0,
+  "experiments_used": 3
+}

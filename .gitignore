@@ -21,3 +21,5 @@ registry/rasters/
 .DS_Store
 .env
 GEMS_DATA_DIR
+
+data/cache/

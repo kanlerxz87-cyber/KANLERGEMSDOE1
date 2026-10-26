@@ -37,12 +37,12 @@ class SiteSafetyTests(unittest.TestCase):
         self.assertIn('99.5875%',html);self.assertIn('99.190625%',html)
         self.assertIn('not organizer-confirmed receipts',html)
     def test_no_contest_tiff_or_zip_download_links(self):
-        for path in (ROOT/'docs').glob('*.html'):
+        for path in (ROOT/'docs').rglob('*.html'):
             p=Links();p.feed(path.read_text())
             with self.subTest(page=path.name):
                 self.assertFalse(any(urlsplit(h).path.lower().endswith(('.tif','.tiff','.zip')) for h in p.hrefs))
     def test_all_local_html_links_resolve(self):
-        for path in (ROOT/'docs').glob('*.html'):
+        for path in (ROOT/'docs').rglob('*.html'):
             p=Links();p.feed(path.read_text())
             for href in p.hrefs:
                 parsed=urlsplit(href)
@@ -67,6 +67,16 @@ class SiteSafetyTests(unittest.TestCase):
     def test_root_pages_redirect_to_actual_pages(self):
         for name in ('index','executive-summary','hypotheses','sources'):
             self.assertIn('docs/'+name+'.html',(ROOT/(name+'.html')).read_text())
+    def test_parallel_archive_is_literal_duplicate(self):
+        page=self.html('mplc/index.html')
+        self.assertIn('NOT UNIQUE, DO NOT SUBMIT',page)
+        self.assertIn('99.9522%',page)
+        audit=json.loads((ROOT/'docs/evidence/protocol_audit_20261026.json').read_text())
+        parallel=audit['prior_parallel_artifacts']
+        self.assertEqual(len(parallel),1)
+        self.assertTrue(parallel[0]['lattice_duplicate'])
+        self.assertFalse(parallel[0]['ok_to_submit'])
+
     def test_historical_cards_carry_supersession(self):
         for path in (ROOT/'docs/evidence').glob('run_card_h*.json'):
             self.assertFalse(json.loads(path.read_text())['status_update_20261026']['ok_to_submit'])

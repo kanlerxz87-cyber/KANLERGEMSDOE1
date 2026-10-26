@@ -527,5 +527,13 @@
   ],
   "any_promote": false,
   "selector": "HOLD-DO-NOT-SUBMIT",
-  "note": "All three experiments are unique format-valid research artifacts. None authorized for DrivenData upload."
+  "note": "All three experiments are unique format-valid research artifacts. None authorized for DrivenData upload.",
+  "audit_status": "QUARANTINED_NOT_PROMOTION_EVIDENCE",
+  "audit_reasons": [
+    "IR-IEDR-OOF: full-catalogue exclusion applied before holdout scoring",
+    "IR-IEDR-UNIQ: prohibited lattice exemption in historical uniqueness gate",
+    "IR-IEDR-CANARY: feature AUC was catalogue-wide, not fold-local hide-and-recover"
+  ],
+  "ok_to_submit": false,
+  "promotion_authorized": false
 }

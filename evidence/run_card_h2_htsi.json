@@ -172,5 +172,12 @@
   "min_dist_px": 3.1622776601683795,
   "n_dots": 32000,
   "timestamp_utc": "20261026T214518Z",
-  "promote_withdrawn_reason": "Point HOLDOUT-DTI may exceed champion but 95% CI overlaps champion; SGMC raw trails champion 0.09606; protocol requires beat by >2 SE AND no SGMC regression. Selector step is separate. DO NOT SUBMIT."
+  "promote_withdrawn_reason": "Point HOLDOUT-DTI may exceed champion but 95% CI overlaps champion; SGMC raw trails champion 0.09606; protocol requires beat by >2 SE AND no SGMC regression. Selector step is separate. DO NOT SUBMIT.",
+  "audit_status": "QUARANTINED_NOT_PROMOTION_EVIDENCE",
+  "audit_reasons": [
+    "IR-IEDR-OOF: full-catalogue exclusion applied before holdout scoring",
+    "IR-IEDR-UNIQ: prohibited lattice exemption in historical uniqueness gate",
+    "IR-IEDR-CANARY: feature AUC was catalogue-wide, not fold-local hide-and-recover"
+  ],
+  "promotion_authorized": false
 }

@@ -132,7 +132,8 @@ def main() -> int:
         if len(paths) != 1:
             raise ValueError(f"Expected exactly one {code} research TIFF, found {len(paths)}")
         path = paths[0]
-        own = read_dots(path, foot, grid)
+        old_card = json.loads((ROOT / "evidence" / f"run_card_{code.replace('-', '_')}.json").read_text())
+        own = read_dots(path, foot, grid, expected_sha=old_card["raster_sha256"])
         validation = audit_geotiff(path, foot, labels, mode="zeros", template_tif=ddir / "sample_submission.tif")
         count = int(own.sum())
         overlap = float(near_witness[own].mean()) if count else None
@@ -150,6 +151,22 @@ def main() -> int:
             "admissible_holdout":"NOT AVAILABLE: prior final maps were built with full-catalogue exclusion",
             "ok_to_submit":False})
     h1 = candidates[0]
+    # A separate parallel lane may already be present on main. Inspect its
+    # historical bytes only; do not fit, emit, rerun, or enter that lane.
+    parallel = []
+    for path in sorted((ROOT / "docs/downloads").glob("kanler-mplc-*-zeros.tif")):
+        prior_card = json.loads((ROOT / "evidence/run_card.json").read_text())
+        if prior_card["raster"]["file"] != path.name:
+            raise ValueError("Parallel artifact does not match its historical card")
+        own = read_dots(path, foot, grid, expected_sha=prior_card["raster"]["sha256"])
+        validation = audit_geotiff(path, foot, labels, mode="zeros", template_tif=ddir / "sample_submission.tif")
+        overlap = float(near_witness[own].mean()) if own.any() else None
+        parallel.append({"id":"MPLC (parallel historical artifact)", "file":path.name,
+            "sha256":sha256_file(path), "dot_count":int(own.sum()), "validator":validation,
+            "literal_lattice_overlap":overlap, "lattice_spearman_final_dots":binary_rho(own,w,foot),
+            "lattice_duplicate":bool(overlap is not None and overlap > .70),
+            "surface_gate":"NOT INDEPENDENTLY REPLAYED", "holdout":"NOT INDEPENDENTLY REPLAYED",
+            "ok_to_submit":False})
     coverage = {"witness_file":witness["dest"], "witness_sha256":witness["sha256"],
                 "allowed_footprint_cells":int(allowed.sum()), "uncovered_allowed_cells":uncovered,
                 "fraction_allowed_within_3px":float(near_witness[allowed].mean()),
@@ -159,7 +176,8 @@ def main() -> int:
     review = {"reviewed_utc":now, "scope":"Nine pinned focus champions and one registered lattice; not a complete site-wide registry",
               "slots_used":0, "new_experiments":0, "new_rasters":0,
               "lattice_certificate":coverage, "nested_family":nested,
-              "focus_sites":focus_rows, "focus_matrix":focus_matrix, "candidates":candidates}
+              "focus_sites":focus_rows, "focus_matrix":focus_matrix, "candidates":candidates,
+              "prior_parallel_artifacts":parallel}
     out = ROOT / "evidence/protocol_audit_20261026.json"
     out.write_text(json.dumps(review,indent=2,allow_nan=False)+"\n")
     (ROOT/"docs/evidence").mkdir(parents=True,exist_ok=True)
