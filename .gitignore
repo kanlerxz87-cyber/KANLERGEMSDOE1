@@ -1,13 +1,23 @@
-# Python test/runtime artifacts
+# Python
 __pycache__/
 *.py[cod]
 .venv/
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
-# Competition data and generated rasters are not tracked by default
+# Competition data and generated rasters (restored locally)
 data/*.tif
 data/*.tiff
 data/*.zip
 data/raw/
 data/processed/
+data/raw_parts/
 .cache/
+registry/rasters/
+*.assembling
+
+# Secrets / OS
+.DS_Store
+.env
+GEMS_DATA_DIR

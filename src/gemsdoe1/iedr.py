@@ -1,0 +1,245 @@
+"""Lane L-IEDR-2026-10-26: Independent-Earthquake Dilatation Residual corridors.
+
+Unique method (not a re-thin of H19-5 / H33-2-B2):
+  rank pixels by independent-earthquake density ridges (INGENIOUS ieq, band 16)
+  gated by geodetic dilatation (band 8) and magnetic horizontal gradient (band 3),
+  then emit with field-ranked Poisson disk at min_dist = sqrt(10) px (~317 m),
+  B=2 catalogue collar. Spacing and ranking both differ from the champion's
+  raster-order D2.8 (sqrt(8) = 2.828 px) of the H19-5 scarp surface.
+
+Official 19-band names (GEMSDOE32 hypotheses-round6-20261026.md, cross-checked
+against feature statistics in this checkout):
+
+  1 mag_anom, 2 rtp, 3 tmi_hg, 4 geod_2ndinv, 5 iso_grav_anom_slope,
+  6 tc, 7 geod_shearrate, 8 geod_dilaterate, 9 tmi_vg, 10 deq_n100a15,
+  11 iso_grav_anom_vg, 12 det_elev, 13 iso_grav_anom, 14 tmi,
+  15 depth_to_base_surf, 16 ieq_n100a15, 17 cond_surf,
+  18 iso_grav_anom_hg, 19 det_elev_slope
+"""
+
+from __future__ import annotations
+
+import csv
+from pathlib import Path
+
+import numpy as np
+from scipy import ndimage
+
+NODATA = np.float32(-3.4028234663852886e38)
+BAND = {
+    "mag_anom": 1,
+    "rtp": 2,
+    "tmi_hg": 3,
+    "geod_2ndinv": 4,
+    "iso_grav_anom_slope": 5,
+    "tc": 6,
+    "geod_shearrate": 7,
+    "geod_dilaterate": 8,
+    "tmi_vg": 9,
+    "deq_n100a15": 10,
+    "iso_grav_anom_vg": 11,
+    "det_elev": 12,
+    "iso_grav_anom": 13,
+    "tmi": 14,
+    "depth_to_base_surf": 15,
+    "ieq_n100a15": 16,
+    "cond_surf": 17,
+    "iso_grav_anom_hg": 18,
+    "det_elev_slope": 19,
+}
+MIN_DIST_SQRT10 = float(np.sqrt(10.0))  # 3.16227766 px = 316 m; champion uses sqrt(8)=2.828
+
+
+def read_band(ds, band: int, foot: np.ndarray) -> np.ndarray:
+    raw = ds.read(band).astype(np.float32)
+    valid = np.isfinite(raw) & (raw > NODATA * np.float32(0.5)) & foot
+    filled = raw.copy()
+    if (~valid & foot).any():
+        _, idx = ndimage.distance_transform_edt(~valid, return_distances=True, return_indices=True)
+        bad = ~valid
+        filled[bad] = filled[idx[0][bad], idx[1][bad]]
+    return np.where(foot, filled, np.float32(0.0))
+
+
+def unit_field(a: np.ndarray, foot: np.ndarray) -> np.ndarray:
+    """Robust 2–98 percentile unit scaling on the footprint."""
+    v = a[foot]
+    lo, hi = np.percentile(v, 2.0), np.percentile(v, 98.0)
+    if not np.isfinite(lo) or not np.isfinite(hi) or hi <= lo:
+        out = np.zeros_like(a, dtype=np.float32)
+        return out
+    u = np.clip((a - lo) / (hi - lo), 0.0, 1.0).astype(np.float32)
+    return np.where(foot, u, np.float32(0.0))
+
+
+def hessian_ridge(a: np.ndarray, sigma: float) -> np.ndarray:
+    """Sato-style bright-ridge response (largest |eigenvalue| with ridge sign)."""
+    axx = ndimage.gaussian_filter(a, sigma, order=(0, 2), mode="nearest")
+    ayy = ndimage.gaussian_filter(a, sigma, order=(2, 0), mode="nearest")
+    axy = ndimage.gaussian_filter(a, sigma, order=(1, 1), mode="nearest")
+    tmp = np.sqrt(np.maximum(((axx - ayy) * 0.5) ** 2 + axy ** 2, 0.0))
+    l1 = (axx + ayy) * 0.5 + tmp
+    l2 = (axx + ayy) * 0.5 - tmp
+    big = np.where(np.abs(l1) >= np.abs(l2), l1, l2)
+    small = np.where(np.abs(l1) >= np.abs(l2), l2, l1)
+    return (-small * (big < 0).astype(np.float32)).astype(np.float32)
+
+
+def ranked_poisson(field: np.ndarray, allow: np.ndarray, min_dist: float, n_target: int) -> np.ndarray:
+    """Field-ranked Poisson-disk (highest field first). Distinct from raster-order dot_thin."""
+    f = np.where(allow, field, -np.inf).astype(np.float32)
+    flat = f.ravel()
+    finite = np.isfinite(flat) & (flat > 0)
+    n_fin = int(finite.sum())
+    if n_fin == 0 or n_target <= 0:
+        return np.zeros(field.shape, dtype=bool)
+    k = min(max(int(n_target) * 60, int(n_target)), n_fin)
+    # argpartition on a masked copy
+    work = np.where(finite, flat, -np.inf)
+    idx = np.argpartition(work, -k)[-k:]
+    idx = idx[np.argsort(-work[idx])]
+    H, W = field.shape
+    cell = max(1.0, float(min_dist))
+    r2 = float(min_dist) * float(min_dist)
+    grid: dict[tuple[int, int], list[tuple[int, int]]] = {}
+    out = np.zeros(field.shape, dtype=bool)
+    n = 0
+    for fi in idx:
+        if n >= n_target:
+            break
+        val = work[int(fi)]
+        if not np.isfinite(val) or val <= 0:
+            continue
+        y, x = divmod(int(fi), W)
+        cy, cx = int(y // cell), int(x // cell)
+        ok = True
+        for gy in range(cy - 2, cy + 3):
+            for gx in range(cx - 2, cx + 3):
+                for ky, kx in grid.get((gy, gx), ()):
+                    dy = y - ky
+                    dx = x - kx
+                    if dy * dy + dx * dx < r2:
+                        ok = False
+                        break
+                if not ok:
+                    break
+            if not ok:
+                break
+        if ok:
+            out[y, x] = True
+            grid.setdefault((cy, cx), []).append((y, x))
+            n += 1
+    return out
+
+
+def thermal_halo(well_csv: Path, shape: tuple[int, int], foot: np.ndarray, sigma: float = 3.0) -> np.ndarray:
+    """IDW-like gaussian halo from GDR well/spring temperatures. Never uses dist_known_fault_px."""
+    H, W = shape
+    acc = np.zeros((H, W), dtype=np.float32)
+    with well_csv.open(newline="") as fh:
+        for row in csv.DictReader(fh):
+            try:
+                r = int(float(row["row"]))
+                c = int(float(row["col"]))
+                t = float(row["temp_c"])
+            except (KeyError, TypeError, ValueError):
+                continue
+            if not (0 <= r < H and 0 <= c < W):
+                continue
+            if not np.isfinite(t) or t < 40.0:
+                continue
+            # excess temperature above a conservative ambient 15 C, clipped
+            acc[r, c] = max(acc[r, c], np.float32(min(t, 250.0) - 15.0))
+    if not acc.any():
+        return np.zeros((H, W), dtype=np.float32)
+    sm = ndimage.gaussian_filter(acc, sigma=sigma, mode="nearest")
+    return np.where(foot, sm, np.float32(0.0))
+
+
+def paleo_halo(zip_path: Path, transform, shape: tuple[int, int], foot: np.ndarray, sigma: float = 4.0) -> np.ndarray:
+    """Gaussian halo of INGENIOUS paleo-geothermal deposits (sinter/travertine) inside the footprint."""
+    import csv
+    import io
+    import zipfile
+
+    H, W = shape
+    acc = np.zeros((H, W), dtype=np.float32)
+    inv = ~transform
+    with zipfile.ZipFile(zip_path) as zf:
+        raw = zf.read("Paleo_geothermal_final.csv").decode("utf-8", "replace")
+    xs, ys = [], []
+    reader = csv.DictReader(io.StringIO(raw))
+    for rec in reader:
+        try:
+            lon = float(rec["Long_deg_NAD83"])
+            lat = float(rec["Lat_deg_NAD83"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        xs.append(lon)
+        ys.append(lat)
+    if not xs:
+        return acc
+    from rasterio.warp import transform as rio_transform
+
+    east, north = rio_transform("EPSG:4326", "EPSG:32611", xs, ys)
+    for e, n in zip(east, north):
+        c, r = inv * (e, n)
+        ri, ci = int(round(r)), int(round(c))
+        if 0 <= ri < H and 0 <= ci < W and foot[ri, ci]:
+            acc[ri, ci] = 1.0
+    if not acc.any():
+        return acc
+    sm = ndimage.gaussian_filter(acc, sigma=sigma, mode="nearest")
+    return np.where(foot, sm, np.float32(0.0))
+
+
+def build_iedr_surface(bands: dict[str, np.ndarray], foot: np.ndarray) -> np.ndarray:
+    """Exp 1 surface: independent-EQ ridge x dilatation x magnetic HGM (soft low-slope)."""
+    ieq = bands["ieq_n100a15"]
+    ridge = hessian_ridge(ndimage.gaussian_filter(ieq, 1.25, mode="nearest"), sigma=1.8)
+    u_ridge = unit_field(np.maximum(ridge, 0.0), foot)
+    u_ieq = unit_field(ieq, foot)
+    u_dil = unit_field(np.maximum(bands["geod_dilaterate"], 0.0), foot)
+    u_hgm = unit_field(bands["tmi_hg"], foot)
+    u_slope = unit_field(bands["det_elev_slope"], foot)
+    # soft basin/piedmont preference (not a hard gate — holdout catalogue is scarp-biased)
+    basin = (1.0 - 0.45 * u_slope).astype(np.float32)
+    surf = (0.55 * u_ridge + 0.45 * u_ieq) * (0.35 + 0.65 * u_dil) * (0.40 + 0.60 * u_hgm) * basin
+    return np.where(foot, surf.astype(np.float32), np.float32(0.0))
+
+
+def build_htsi_surface(
+    bands: dict[str, np.ndarray],
+    foot: np.ndarray,
+    well_csv: Path,
+    paleo_zip: Path,
+    transform,
+) -> np.ndarray:
+    """Exp 2 surface: thermal + paleo-sinter halo x independent EQ x dilatation."""
+    halo_t = thermal_halo(well_csv, foot.shape, foot, sigma=3.5)
+    halo_p = paleo_halo(paleo_zip, transform, foot.shape, foot, sigma=5.0)
+    u_t = unit_field(halo_t, foot)
+    u_p = unit_field(halo_p, foot)
+    u_ieq = unit_field(bands["ieq_n100a15"], foot)
+    u_dil = unit_field(np.maximum(bands["geod_dilaterate"], 0.0), foot)
+    u_cond = unit_field(bands["cond_surf"], foot)
+    surf = (0.50 * u_t + 0.20 * u_p + 0.30 * u_ieq) * (0.30 + 0.70 * u_dil) * (0.50 + 0.50 * u_cond)
+    return np.where(foot, surf.astype(np.float32), np.float32(0.0))
+
+
+def build_condresid_surface(bands: dict[str, np.ndarray], foot: np.ndarray) -> np.ndarray:
+    """Exp 3 surface: conductivity residual after linear nuisance fit on elevation+slope, then ridge."""
+    y = bands["cond_surf"][foot].astype(np.float64)
+    x1 = bands["det_elev"][foot].astype(np.float64)
+    x2 = bands["det_elev_slope"][foot].astype(np.float64)
+    X = np.column_stack([np.ones(y.size), x1, x2])
+    # ordinary least squares, no labels involved
+    coef, *_ = np.linalg.lstsq(X, y, rcond=None)
+    pred = coef[0] + coef[1] * bands["det_elev"] + coef[2] * bands["det_elev_slope"]
+    resid = (bands["cond_surf"] - pred).astype(np.float32)
+    ridge = hessian_ridge(ndimage.gaussian_filter(resid, 1.0, mode="nearest"), sigma=1.6)
+    u_r = unit_field(np.maximum(ridge, 0.0), foot)
+    u_abs = unit_field(np.abs(resid), foot)
+    u_dil = unit_field(np.maximum(bands["geod_dilaterate"], 0.0), foot)
+    surf = (0.65 * u_r + 0.35 * u_abs) * (0.40 + 0.60 * u_dil)
+    return np.where(foot, surf.astype(np.float32), np.float32(0.0))

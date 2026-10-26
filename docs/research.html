@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Why 0.2778 · KANLERGEMSDOE1</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header>
+  <div class="wrap" style="padding-bottom:0">
+    <div class="brand">KANLERGEMSDOE1</div>
+    <h1>Why GEMSDOE32 scored 0.2778 — and whether we can beat it</h1>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="executive-summary.html">Executive summary</a>
+      <a href="how-to-submit.html">How to submit</a>
+      <a href="hypotheses.html">Hypotheses</a>
+      <a href="research.html">Why 0.2778</a>
+      <a href="sources.html">Sources</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <div class="banner">
+    <strong>Short answer: 0.2778 is metric-optimal sparsification of a moderate scarp surface. We did not beat it on a defensible holdout this session.</strong>
+    <p>Live 0.2778 is OWNER-REPORT (no portal receipt in this checkout). Public competition high is 0.4437 (ORGANIZER-CONFIRMED snapshot).</p>
+  </div>
+
+  <h2>1. The metric, from the official page</h2>
+  <p>From <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/#mathematical-representation">DrivenData page 967</a>:</p>
+  <pre class="card mono" style="white-space:pre-wrap">k(d) = max(1 − d/R, 0), R = 300 m = 3 px
+TP_w = Σ_g max_{x: d(x,g)≤R} p(x) k(d(x,g))
+FP_w = Σ_{x: p(x)>0} p(x) [1 − max_g k(d(x,g))]
+FN_w = Σ_g [1 − max_x p(x) k] = |G| − TP_w
+DTI(0.2, 0.8) = TP_w / (TP_w + 0.2 FP_w + 0.8 FN_w)</pre>
+  <p>Known USGS/INGENIOUS faults are excluded from evaluation (organizer forum thread 11516, cited across GEMSDOE repos). Training on the public catalogue and emitting a halo around it is therefore a false-positive factory.</p>
+
+  <h2>2. Anatomy of the 0.2778 file (byte-level, this checkout)</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>File</th><th>Dots</th><th>OWNER-REPORT live</th><th>What changed</th></tr></thead>
+      <tbody>
+        <tr><td>H19-5 multiline corroborated</td><td>121,131</td><td>0.1922</td><td>Geological surface (openness / thermal / population vote)</td></tr>
+        <tr><td>dotted-h19-5-d2-8 (GEMSDOE25)</td><td>44,090</td><td>0.2600</td><td>Poisson disk min dist 2.828 px (√8)</td></tr>
+        <tr><td>h27-4-solo-d28 (GEMSDOE28/31)</td><td>40,199</td><td>0.2708</td><td>Remove dots with d(catalogue) ≤ 1 px</td></tr>
+        <tr><td>h33-2-b2 (GEMSDOE32)</td><td>37,654</td><td>0.2778</td><td>Remove additional dots with 1 &lt; d ≤ 2 px (−2,545)</td></tr>
+      </tbody>
+    </table>
+    <p>Measured in this checkout on the champion zeros file: 37,654 positive pixels, 0 on <code>existing_faults.tif</code> (60,988 catalogue cells), binary {0,1}, zeros outside the footprint, sha256 <code>c55bafc4…</code> as published by GEMSDOE32.</p>
+  </div>
+  <p>Two arithmetic levers, not two new maps: (1) stop paying 0.2 FP for overlapping 300 m disks along the same ridge; (2) stop paying 0.2 FP in the 0–200 m dead annulus around masked catalogue traces. Copying that recipe without a new ranking field is a lane collision (3-px overlap ≫ 70%).</p>
+
+  <h2>3. Can we score higher than 0.2778?</h2>
+  <p><b>Yes in principle, no with this session’s unique rasters.</b></p>
+  <ul>
+    <li>The public leaderboard is already at 0.4437. The GEMSDOE family is not the global ceiling.</li>
+    <li>Beating 0.2778 with a unique file requires a ranking field whose high-credit pixels are <em>not</em> the same scarp pixels H19-5 already found, packed with similar metric hygiene (sparse, off-catalogue, ~300 m spacing).</li>
+    <li>This session’s IEDR/HTSI fields are unique (18.9% / 18.7% 3-px overlap vs champion) and slightly above champion on HIDE-RECOVER-v3.0 <em>point</em> estimates (0.00617 / 0.00628 vs 0.00452) with overlapping 95% CIs, and they lose badly on off-catalogue SGMC (0.034 / 0.030 vs 0.096). That is not a promote.</li>
+    <li>Hide-and-recover of mapped scarps is a biased proxy for blind geothermal faults. A method that is right for the private test set can look worse on this holdout. We still will not spend a slot without a holdout win, because the alternative is lottery tickets.</li>
+  </ul>
+
+  <h2>4. What to try next (not this session — budget exhausted)</h2>
+  <ul>
+    <li>Per-cell OOF emission of IEDR (the 0.0992 champion number on GEMSDOE32-HOLDOUT-v3-visible-only is not comparable to our 0.0045 flat-mask HR).</li>
+    <li>Submodular 300 m cover on the IEDR surface instead of Poisson √10, still field-ranked, still unique spacing.</li>
+    <li>Do not mix IEDR dots back onto the H19-5 support; that will trip the 70% overlap gate.</li>
+  </ul>
+  <footer>Numbers: HOLDOUT-DTI unless marked OWNER-REPORT or ORGANIZER-CONFIRMED.</footer>
+</main>
+</body>
+</html>
