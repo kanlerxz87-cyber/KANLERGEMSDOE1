@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Official competition, data, map, and internal portfolio sources with verification status.">
+  <title>Sources and verification — KANLERGEMSDOE1</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="GEMS Research Desk home"><span class="brand-mark" aria-hidden="true">G</span><span>GEMS <span class="brand-light">Research Desk</span></span></a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html">Overview</a>
+        <a href="executive-summary.html">Executive summary</a>
+        <a href="hypotheses.html">Hypotheses</a>
+        <a class="active" href="sources.html" aria-current="page">Sources</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page-shell">
+    <section class="page-title">
+      <p class="eyebrow">Evidence register · link status is explicit</p>
+      <h1>Sources &amp; verification</h1>
+      <p>Links are provided for manual review, but this site distinguishes direct GitHub inspection from links that were supplied in the request and not fetched. No scientific-literature page was retrieved in this session; the candidate mechanisms are hypotheses, not literature conclusions.</p>
+    </section>
+
+    <section class="section-block">
+      <div class="table-wrap" role="region" aria-label="Sources and verification status" tabindex="0">
+        <table class="source-table">
+          <thead><tr><th scope="col">Source</th><th scope="col">Use</th><th scope="col">Verification in this session</th></tr></thead>
+          <tbody>
+            <tr>
+              <th scope="row"><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData competition rules</a></th>
+              <td>Competition rules and submission flow.</td>
+              <td>Link supplied by the user; not fetched here. The upload requirements quoted in the request are treated as user-provided context, not re-verified organizer text.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DrivenData problem description</a></th>
+              <td>Task overview and problem description.</td>
+              <td>Link supplied by the user; not fetched here.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/968/">DrivenData about page</a></th>
+              <td>Competition context and additional resources.</td>
+              <td>Link supplied by the user; not fetched here.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">DrivenData data page</a></th>
+              <td>Training features, labels, sample submission, and supporting data.</td>
+              <td>The request reports this page redirects to login. No authenticated download or local data is available in this checkout; not fetched here.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">DrivenData leaderboard</a></th>
+              <td>Live public leaderboard.</td>
+              <td>Not fetched. The request contains conflicting, undated top-score statements, so this project does not repeat or adopt a current value.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">NLR submission-rules PDF</a></th>
+              <td>Competition submission and rules document.</td>
+              <td>Link supplied by the user; not fetched here.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://github.com/drivendataorg/gems-prize-reference-solution">Organizer reference-solution repository</a></th>
+              <td>Reference model and setup instructions.</td>
+              <td>Inspected via GitHub API. The repository README instructs users to download challenge data into `data/`; its tree contains a notebook and environment files but no challenge rasters. This does not supply the missing local template or this project's requested shared holdout tools.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://www.dropbox.com/scl/fi/aemhtutjgcp6tr3tint94/GEMS_96647.pdf?rlkey=rek210cj2smnmzb8n0sla1vmd&amp;st=wz4kofki&amp;dl=0">User-supplied Dropbox copy of the rules PDF</a></th>
+              <td>Convenience mirror of the GEMS rules document.</td>
+              <td>User-supplied mirror, not an official host; not fetched or hash-verified. Prefer the NLR-hosted PDF above for authority.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://www.dropbox.com/scl/fi/6rgvnuady818ol8yqgis4/example_submission.tif?rlkey=kbykilvau066xuogoosbf4cq8&amp;st=8junzdyw&amp;dl=0">User-supplied example GeoTIFF mirror</a></th>
+              <td>Example file for format education only.</td>
+              <td>Not fetched, not hash-verified, and not known to be the authoritative sample template. Do not use it as a prediction or submission.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://www.dropbox.com/scl/fi/t7fyt03qdh9egyme0itwo/existing_faults.tif?rlkey=yiao96uluqdkipf0h5vju71jf&amp;st=rnino7ya&amp;dl=0">User-supplied existing-faults raster mirror</a></th>
+              <td>Potential reference input for mask / catalogue analysis.</td>
+              <td>Not fetched, not hash-verified, and not organizer-authenticated here.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://www.dropbox.com/scl/fi/3vz9o0wwavi26xaeoxlwr/gems-geodawn-numerical-features.tif?rlkey=je8d8fepqfbst9lnwsq9rkplu&amp;st=zj1lag1r&amp;dl=0">User-supplied GeoDAWN numerical-features mirror</a></th>
+              <td>Potential feature input for research.</td>
+              <td>Not fetched or hash-verified. It cannot replace the official sample template or the shared feature stack.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://www.dropbox.com/scl/fi/ig0mban712ns1atphgphe/Digital-elevation-model-links-JSON.pdf?rlkey=zm77f1vbtt2if8hlruymptnu3&amp;st=srhhir10&amp;dl=0">User-supplied DEM-link document mirror</a></th>
+              <td>Potential inventory of elevation-model links.</td>
+              <td>Not fetched or verified; no DEM was downloaded in this session.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN</a></th>
+              <td>Official survey context and geophysical data.</td>
+              <td>Link supplied by the user; not fetched because USGS is outside this session's network allowlist.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://gbcge.org/current-projects/ingenious/">INGENIOUS project</a></th>
+              <td>Geothermal project context and potential observations.</td>
+              <td>Link supplied by the user; not fetched.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://gdr.openei.org/submissions/1391">OpenEI Geothermal Data Repository submission 1391</a></th>
+              <td>GeoDAWN/INGENIOUS-related data referenced in the request.</td>
+              <td>Link supplied by the user; not fetched. No downloaded dataset is present here.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://epsg.io/32611">EPSG:32611</a></th>
+              <td>Coordinate reference identifier cited by prior submission records.</td>
+              <td>Link supplied by the user; not fetched. The target CRS must be taken from the official sample template, not assumed from this link alone.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://lpdaac.usgs.gov/products/ast_07v003/">USGS LP DAAC ASTER surface reflectance</a> and <a href="https://lpdaac.usgs.gov/products/ast_05v003/">ASTER surface emissivity</a></th>
+              <td>Proposed candidate source for spectral hydrothermal-alteration research.</td>
+              <td>Candidate links only; not fetched. Footprint coverage and product availability were not checked. The hypothesis is blocked, not declared viable.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://www.usgs.gov/landsat-missions/landsat-collection-2">USGS Landsat Collection 2</a></th>
+              <td>Proposed candidate source for persistent thermal/vegetation anomaly research.</td>
+              <td>Candidate link only; not fetched. Coverage and access were not checked. The hypothesis is blocked, not declared viable.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://ngmdb.usgs.gov/">USGS National Geologic Map Database</a></th>
+              <td>Proposed candidate source for digital geologic-unit contact topology.</td>
+              <td>Candidate link only; not fetched. Map scale and coverage over the complete footprint were not checked. The hypothesis is blocked, not declared viable.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://github.com/buffedlizard55-lab/GEMSDOE32/blob/aebe92f7c8a990f0e3443451b7a825d9afd6336b/docs/research/focus-sites-executive-summary.md">GEMSDOE32 nine-site portfolio report</a></th>
+              <td>Source for historical family/uniqueness claims and the explanation of the H33-2-B2 pruning lineage.</td>
+              <td>Inspected through GitHub API at the repository head observed in this session. It is a team-maintained report, not an organizer source. It states that historic score claims are owner-reported and lacks receipts linking them to exact TIFF hashes. This checkout did not re-run its raster audits.</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://github.com/buffedlizard55-lab/GEMSDOE32/blob/aebe92f7c8a990f0e3443451b7a825d9afd6336b/docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-audit.json">GEMSDOE32 H33-2-B2 audit record</a></th>
+              <td>Historic artifact metadata and prior internal checks.</td>
+              <td>Inspected via GitHub API. It describes the B=2 pruning and file-format checks, but its own note says “UNSCORED”; internal candidate/holdout estimates are not organizer scores.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <article class="panel panel-caution">
+        <p class="eyebrow">Interpretation policy</p>
+        <h2>Official source, project report, and local measurement are different evidence classes.</h2>
+        <ul class="check-list">
+          <li><strong>Official source:</strong> organizer, government, or standards body. A URL is not proof that the content was retrieved in this session.</li>
+          <li><strong>Project report:</strong> useful provenance and hypothesis evidence, but not an organizer receipt or independent scientific validation.</li>
+          <li><strong>Local measurement:</strong> must be reproduced against local bytes and include code, inputs, evaluator version, and uncertainty.</li>
+          <li><strong>Score:</strong> report only as `HOLDOUT-DTI` with evaluator, withheld positives, and 95% CI, or as `ORGANIZER-CONFIRMED` with a saved receipt bound to file hash.</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><p><strong>KANLERGEMSDOE1</strong> · Link audit status as of 2026-10-26 UTC.</p><div class="footer-links"><a href="README.md">Standing brief</a><a href="executive-summary.html">Executive summary</a></div></div>
+  </footer>
+</body>
+</html>

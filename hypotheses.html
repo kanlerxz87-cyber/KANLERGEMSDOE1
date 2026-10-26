@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A research-only slate of geothermal-structure hypotheses, mimics, data needs, and blockers.">
+  <title>Hypothesis slate — KANLERGEMSDOE1</title>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="GEMS Research Desk home"><span class="brand-mark" aria-hidden="true">G</span><span>GEMS <span class="brand-light">Research Desk</span></span></a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html">Overview</a>
+        <a href="executive-summary.html">Executive summary</a>
+        <a class="active" href="hypotheses.html" aria-current="page">Hypotheses</a>
+        <a href="sources.html">Sources</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page-shell">
+    <section class="page-title">
+      <p class="eyebrow">Research slate · not a submission plan</p>
+      <h1>Three candidate hypotheses</h1>
+      <p>These are qualitatively prioritized research ideas, not score forecasts. “Expected improvement” is deliberately not numeric: no candidate has a compliant holdout result, and none is approved for implementation in this checkout.</p>
+    </section>
+
+    <section class="release-banner release-banner-compact" role="alert">
+      <div class="release-icon" aria-hidden="true">!</div>
+      <div class="release-copy">
+        <p class="eyebrow eyebrow-stop">Execution status</p>
+        <h2>TOP CANDIDATE CANNOT BE VALIDATED HERE</h2>
+        <p>The shared cached feature stack, fold-aware evaluator, writer, competition inputs, reference grid, and registry are missing. The exact lane is also unspecified. Do not create a new raster until these blockers are resolved.</p>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="table-wrap" role="region" aria-label="Candidate hypotheses" tabindex="0">
+        <table class="hypothesis-table">
+          <thead>
+            <tr>
+              <th scope="col">Research priority</th>
+              <th scope="col">Layers and physical signature</th>
+              <th scope="col">Why it could reveal an uncatalogued structure</th>
+              <th scope="col">Difference from reviewed approaches</th>
+              <th scope="col">Named non-fault mimic</th>
+              <th scope="col">Official source / feasibility</th>
+              <th scope="col">Potential and cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><span class="priority priority-one">First to investigate</span><br>ASTER hydrothermal mineral alteration</th>
+              <td>ASTER Level-2 surface reflectance and surface emissivity; test continuum-removed Al-OH absorption in the SWIR and silica/quartz-related emissivity contrasts in the thermal bands. Target a spatially coherent alteration halo with a linear edge or corridor, not a single bright pixel.</td>
+              <td>Hydrothermal alteration can mark fluid pathways above a blind or poorly exposed conduit even where no mappable fault scarp exists. This is indirect evidence for structure, not a direct fault label.</td>
+              <td>Different sensor and physics from the reviewed DEM/LiDAR, potential-field, GeoDAWN radiometric, and point-temperature/paleo-geothermal approaches. ASTER is not named in the reviewed focus-site hypothesis slate; that is a limited search, not proof it was never tried elsewhere.</td>
+              <td>Host-rock mineralogy, clay-rich basin sediment, mine tailings, and exposed lithologic contacts can mimic alteration spectra.</td>
+              <td><a href="https://lpdaac.usgs.gov/products/ast_07v003/">USGS LP DAAC ASTER surface reflectance</a> and <a href="https://lpdaac.usgs.gov/products/ast_05v003/">ASTER surface emissivity</a>. Product coverage, licensing terms, footprint completeness, and access were not checked in this session; NASA/USGS hosts are outside the active network allowlist. <strong>Blocked; not yet viable.</strong></td>
+              <td><strong>Potential:</strong> high scientific relevance, unmeasured. <strong>Cost:</strong> high; scene selection, masking, co-registration, spectral preprocessing, and spatial validation.</td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="priority priority-two">Second</span><br>Persistent Landsat thermal–vegetation corridors</th>
+              <td>Landsat Collection 2 Level-2 surface temperature plus surface reflectance/vegetation indices over multiple seasons. Target a persistent, narrow thermal/moisture anomaly aligned across dates, after masking cloud, topographic illumination, and known roads/irrigation.</td>
+              <td>Permeable blind faults can focus warm groundwater and persistent soil-moisture or vegetation anomalies. Requiring temporal persistence could separate a stable fluid pathway from a one-date surface artifact.</td>
+              <td>Uses continuous multi-date satellite observations, rather than sparse 2-m probe points or mapped paleo-geothermal sites described in the reviewed GEMSDOE32 work. It is not the same as a single thermal layer.</td>
+              <td>Irrigation, canals, albedo changes, road/rail disturbance, playa brines, and terrain illumination can generate linear or persistent surface anomalies.</td>
+              <td><a href="https://www.usgs.gov/landsat-missions/landsat-collection-2">USGS Landsat Collection 2</a>. Coverage, usable acquisition density, and access were not checked in this session; the USGS host is outside the active network allowlist. <strong>Blocked; not yet viable.</strong></td>
+              <td><strong>Potential:</strong> medium to high, highly confounder-dependent and unmeasured. <strong>Cost:</strong> high; time-series compositing and careful spatial/seasonal controls.</td>
+            </tr>
+            <tr>
+              <th scope="row"><span class="priority priority-three">Third</span><br>Geologic-contact offset and termination network</th>
+              <td>USGS digital geologic map unit polygons/contact traces plus the existing DEM only for geometric context. Detect paired contact terminations or consistent offsets across adjacent units along a shared corridor; exclude mapped fault linework as an input.</td>
+              <td>Displaced stratigraphic contacts can preserve evidence for a structure hidden by subdued relief or omitted from a fault catalogue. The test would seek a cross-unit, geometrically consistent discontinuity rather than a generic lineament.</td>
+              <td>Targets topology and cross-unit displacement in mapped geology, unlike scarp/ridge detectors and pixelwise magnetic, gravity, or conductivity gradients. Its novelty and coverage have not been audited across all sibling sites.</td>
+              <td>Unconformities, facies boundaries, erosional channels, map-sheet seams, and cartographic generalization can resemble offsets.</td>
+              <td><a href="https://ngmdb.usgs.gov/">USGS National Geologic Map Database</a>. Digital map coverage and usable source scale for the full competition footprint were not checked in this session; the USGS host is outside the active network allowlist. <strong>Blocked; not yet viable.</strong></td>
+              <td><strong>Potential:</strong> moderate, uncertain because map coverage may be uneven. <strong>Cost:</strong> high; map harmonization, scale controls, topology, and provenance audit.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-block narrative-grid">
+      <article class="panel">
+        <p class="eyebrow">Prior work considered</p>
+        <h2>Avoid recycling known lanes</h2>
+        <p>The inspected GEMSDOE32 report documents multi-physics oriented lineaments, aligned drainage-valley chains, LiDAR scarplet chains, conductive/basement boundaries, and later thermal-probe, paleo-geothermal, road-suppression, magnetic-continuation, strain-coupling, and radiometric-zoning ideas. The nine-site portfolio report also describes a repeated H19-5 thinning/pruning family.</p>
+        <p class="small-note">These are team-maintained records, not independent scientific confirmation. The current KANLERGEMSDOE1 checkout contains no implementation or central experiment registry, so global “never tried” claims cannot be proven from this repository.</p>
+      </article>
+      <article class="panel panel-caution">
+        <p class="eyebrow">Mandatory validation order</p>
+        <h2>No experiment has started</h2>
+        <ol class="compact-list">
+          <li>Confirm the selected lane in one explicit method paragraph.</li>
+          <li>Restore the shared template, official input grid, cached feature stack, and full registry.</li>
+          <li>Preregister one candidate; run each input feature alone on the spatial holdout as a leakage canary.</li>
+          <li>Rebuild catalogue-derived layers from visible faults inside every fold; hide whole segments and buffer them.</li>
+          <li>Check candidate surfaces before placement and final dots after emission against every registry raster.</li>
+          <li>Only after a positive, fully documented holdout result may a separate selector consider a weekly slot.</li>
+        </ol>
+      </article>
+    </section>
+
+    <section class="callout callout-muted section-block">
+      <strong>Expected DTI improvement:</strong> not estimated. Qualitative research priority is not a score projection. No feature AUC, HOLDOUT-DTI, confidence interval, surface correlation, dot-overlap result, or raster hash exists for these candidates. The first candidate is therefore a hypothesis to preregister later—not a viable submission today.
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner"><p><strong>KANLERGEMSDOE1</strong> · Research slate only.</p><div class="footer-links"><a href="executive-summary.html">Executive summary</a><a href="sources.html">Source register</a></div></div>
+  </footer>
+</body>
+</html>
