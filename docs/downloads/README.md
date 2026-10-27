@@ -1,3 +1,5 @@
-# Historical artifacts only — DO NOT SUBMIT
+# No published TIFF is cleared for submission
 
-All TIFFs and ZIPs in this directory predate the 2026-10-26 retrospective review. H1/H2/H3 and the separately generated MPLC artifact fail the literal registry-lattice overlap limit; GEMSDOE32 is a previously submitted reference and also fails it. IEDR's global-mask holdout results are inadmissible; MPLC's per-fold provenance has not been independently replayed here. Audit JSONs retain historical values for provenance, with a supersession notice. See [the current run card](../evidence/current_run_card.json) and [audit](../evidence/protocol_audit_20261026.json). No file here is an authorized contest download.
+There is currently **no contest-ready download**. The former historical GeoTIFFs, ZIPs, and audit sidecars have been moved outside the GitHub Pages tree to [`evidence/quarantine_rasters/`](../../evidence/quarantine_rasters/) so an unapproved file cannot be fetched from a guessed `/downloads/...tif` URL. They are retained for reproducible research only and remain subject to the duplicate/holdout caveats in the [current negative run card](../evidence/current_run_card.json).
+
+A future artifact may be published here only after complete-registry surface and final-dot uniqueness, fold-local HOLDOUT-DTI and leakage gates, strict official-template validation, and a separate selector decision all pass. A local format pass alone is insufficient.

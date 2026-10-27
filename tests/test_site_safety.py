@@ -27,8 +27,35 @@ class SiteSafetyTests(unittest.TestCase):
         html=self.html('index.html')
         self.assertIn('STOP — NO RASTER IS CLEARED FOR SUBMISSION',html)
         self.assertIn('Submission download unavailable',html)
+        self.assertIn('submission-readiness.html',html)
         self.assertIn('99.39375%',html)
         parser=Links();parser.feed(html);self.assertTrue(parser.disabled)
+
+    def test_leaderboard_feed_never_claims_unverified_snapshot_is_current(self):
+        feed_data=json.loads((ROOT/'docs/feed.json').read_text())
+        self.assertEqual(feed_data['status'],'refresh_result_unverified')
+        self.assertEqual(feed_data['rank_one_public_dti'],0.4437)
+        self.assertEqual(feed_data['observed_utc'],'2026-10-26')
+        self.assertEqual(feed_data['last_refresh_attempt_utc'],'2026-10-27T12:07:26Z')
+        page=self.html('index.html')
+        self.assertIn('0.3195 and 0.4413',page)
+        js=(ROOT/'docs/assets/feed.js').read_text()
+        self.assertIn('not verifiable in this repository',js)
+        self.assertIn('textContent',js)
+
+    def test_prompt_archive_records_focus_reports_and_stop(self):
+        brief=(ROOT/'docs/ORIGINAL_PROMPT.md').read_text()
+        for token in ('GEMSDOE24','GEMSDOE32','0.2778','0.3195','0.4413','0.4437','70%','not a byte-for-byte transcript'):
+            with self.subTest(token=token):self.assertIn(token,brief)
+
+    def test_data_placement_receipt_discloses_owner_mirror_provenance(self):
+        receipt=json.loads((ROOT/'data/restore_receipt.json').read_text())
+        prepared=json.loads((ROOT/'data/prepared_manifest.json').read_text())
+        self.assertEqual(receipt['storage_root'],'data')
+        self.assertEqual(receipt['verified_files_count'],26)
+        self.assertIn('not authenticate',receipt['provenance_warning'].lower())
+        self.assertEqual(len(prepared['bands']),19)
+        self.assertEqual(prepared['counts']['footprint_valid_pixels'],5167373)
     def test_executive_covers_nine_sites_and_negative_findings(self):
         html=self.html('executive-summary.html')
         for site in ('GEMSDOE24','GEMSDOE25','GEMSDOE27','GEMSDOE28','GEMSDOE30','GEMSDOE31','GEMSDOE32','GEMSDOE33','GEMSDOE36'):
@@ -41,6 +68,9 @@ class SiteSafetyTests(unittest.TestCase):
             p=Links();p.feed(path.read_text())
             with self.subTest(page=path.name):
                 self.assertFalse(any(urlsplit(h).path.lower().endswith(('.tif','.tiff','.zip')) for h in p.hrefs))
+        self.assertFalse(list((ROOT/'docs').rglob('*.tif')))
+        self.assertFalse(list((ROOT/'docs').rglob('*.tiff')))
+        self.assertFalse(list((ROOT/'docs').rglob('*.zip')))
     def test_all_local_html_links_resolve(self):
         for path in (ROOT/'docs').rglob('*.html'):
             p=Links();p.feed(path.read_text())

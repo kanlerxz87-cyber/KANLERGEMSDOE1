@@ -1,19 +1,41 @@
 {
-  "reviewed_utc_date": "2026-10-26",
-  "banner": "STOP \u2014 DO NOT SUBMIT",
+  "reviewed_utc_date": "2026-10-27",
+  "banner": "STOP — DO NOT SUBMIT",
   "ok_to_submit": false,
   "verdict": "negative",
-  "reason": "Each previous IEDR candidate exceeds the literal 70% registry-lattice overlap; previous full-map holdouts and canaries are inadmissible. No surface-stage check or complete-registry pass was demonstrated.",
+  "reason": "The selected historical IEDR and MPLC rasters fail the literal registry-overlap rule; the historical IEDR full-map holdouts/canaries are inadmissible for promotion. The fresh review re-opened existing bytes only and created no candidate, experiment, or slot.",
   "current_card": "current_run_card.json",
-  "audit": "protocol_audit_20261026.json",
+  "audit": "protocol_audit_20261027.json",
+  "audit_scope": "Nine SHA-256-pinned focus references plus one spacing-5 lattice; this is not a complete registry or surface-stage audit.",
   "valid_holdout_dti": null,
-  "public_leaderboard_snapshot": {
-    "rank_one_public_dti": 0.4437,
-    "participant": "xiaofanhu",
-    "observed_date_utc": "2026-10-26",
-    "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
-    "scope": "organizer-published public board; not a candidate receipt"
+  "score_estimate": null,
+  "leaderboard_status": "UNVERIFIED",
+  "leaderboard_conflicting_reports": [
+    {
+      "value": 0.3195,
+      "evidence": "USER-REPORTED IN THE 2026-10-27 PROMPT; current status not independently verified"
+    },
+    {
+      "value": 0.4413,
+      "evidence": "USER-REPORTED IN THE 2026-10-27 PROMPT; current status not independently verified"
+    },
+    {
+      "value": 0.4437,
+      "observed_date_utc": "2026-10-26",
+      "participant": "xiaofanhu",
+      "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+      "evidence": "Dated repository snapshot; not a live value or submission receipt"
+    }
+  ],
+  "refresh_attempt": {
+    "workflow_run": "https://github.com/kanlerxz87-cyber/KANLERGEMSDOE1/actions/runs/40501284533",
+    "step_started_utc": "2026-10-27T12:07:26Z",
+    "step_completed": true,
+    "fetch_result_verified": false,
+    "note": "The GitHub Actions job API confirms the refresh step completed; its deployed artifact/log was not accessible in this review."
   },
   "new_experiments": 0,
-  "slots_used": 0
+  "new_rasters": 0,
+  "slots_used": 0,
+  "competition_data_provenance": "Pinned public GitHub owner mirrors were restored and prepared locally. Hashes establish mirror-byte identity, not organizer authenticity."
 }

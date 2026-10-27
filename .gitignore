@@ -13,6 +13,7 @@ data/*.zip
 data/raw/
 data/processed/
 data/raw_parts/
+data/focus/
 .cache/
 registry/rasters/
 *.assembling

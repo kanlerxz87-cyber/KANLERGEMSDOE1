@@ -128,7 +128,7 @@ def main() -> int:
 
     candidates = []
     for code in ("h1-iedr", "h2-htsi", "h3-condresid"):
-        paths = sorted((ROOT / "docs/downloads").glob(f"kanlergemsdoe1-{code}-*-zeros.tif"))
+        paths = sorted((ROOT / "evidence/quarantine_rasters").glob(f"kanlergemsdoe1-{code}-*-zeros.tif"))
         if len(paths) != 1:
             raise ValueError(f"Expected exactly one {code} research TIFF, found {len(paths)}")
         path = paths[0]
@@ -154,7 +154,7 @@ def main() -> int:
     # A separate parallel lane may already be present on main. Inspect its
     # historical bytes only; do not fit, emit, rerun, or enter that lane.
     parallel = []
-    for path in sorted((ROOT / "docs/downloads").glob("kanler-mplc-*-zeros.tif")):
+    for path in sorted((ROOT / "evidence/quarantine_rasters").glob("kanler-mplc-*-zeros.tif")):
         prior_card = json.loads((ROOT / "evidence/run_card.json").read_text())
         if prior_card["raster"]["file"] != path.name:
             raise ValueError("Parallel artifact does not match its historical card")
@@ -172,16 +172,18 @@ def main() -> int:
                 "fraction_allowed_within_3px":float(near_witness[allowed].mean()),
                 "minimum_possible_overlap_at_h1_budget":max(0.0, 1.0 - uncovered / h1["dot_count"]),
                 "note":"Pigeonhole lower bound applies only at the stated dot budget and allowed domain; it does not prove every nonempty map fails."}
-    now = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    reviewed_at = datetime.now(timezone.utc)
+    now = reviewed_at.isoformat(timespec="seconds")
     review = {"reviewed_utc":now, "scope":"Nine pinned focus champions and one registered lattice; not a complete site-wide registry",
               "slots_used":0, "new_experiments":0, "new_rasters":0,
               "lattice_certificate":coverage, "nested_family":nested,
               "focus_sites":focus_rows, "focus_matrix":focus_matrix, "candidates":candidates,
               "prior_parallel_artifacts":parallel}
-    out = ROOT / "evidence/protocol_audit_20261026.json"
+    audit_name = f"protocol_audit_{reviewed_at:%Y%m%d}.json"
+    out = ROOT / "evidence" / audit_name
     out.write_text(json.dumps(review,indent=2,allow_nan=False)+"\n")
     (ROOT/"docs/evidence").mkdir(parents=True,exist_ok=True)
-    shutil.copyfile(out, ROOT/"docs/evidence/protocol_audit_20261026.json")
+    shutil.copyfile(out, ROOT/"docs/evidence" / audit_name)
     old = json.loads((ROOT/"evidence/run_card_h1_iedr.json").read_text())
     card = {"hypothesis":"H1 IEDR — prior independent-earthquake-density / dilation / magnetic-gradient lane",
             "mechanism":"Historical raster ranked a seismicity-density, geodetic dilation and magnetic-gradient surface; spaced binary emission with a catalogue collar.",

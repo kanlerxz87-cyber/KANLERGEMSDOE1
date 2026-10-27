@@ -8,10 +8,25 @@ import csv
 import html
 import io
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SITES = tuple(f'GEMSDOE{x}' for x in (24, 25, 27, 28, 30, 31, 32, 33, 36))
+AUDIT_NAME = re.compile(r'^protocol_audit_(\d{8})\.json$')
+
+
+def latest_audit_path(root=ROOT):
+    """Return the newest date-stamped audit; never depend on a stale hard-coded day."""
+    candidates = []
+    evidence = Path(root) / 'evidence'
+    for path in evidence.iterdir():
+        match = AUDIT_NAME.fullmatch(path.name)
+        if match and path.is_file():
+            candidates.append((match.group(1), path))
+    if not candidates:
+        raise FileNotFoundError(f'No dated protocol audit in {evidence}')
+    return max(candidates, key=lambda item: item[0])[1]
 
 
 def rows_from_evidence(registry, audit):
@@ -51,7 +66,7 @@ def rows_from_evidence(registry, audit):
     return sorted(rows, key=lambda row: SITES.index(row['site']))
 
 
-def render(rows, reviewed_utc):
+def render(rows, reviewed_utc, audit_filename):
     stream = io.StringIO(newline='')
     writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator='\n')
     writer.writeheader()
@@ -72,7 +87,7 @@ def render(rows, reviewed_utc):
 <p>No unique, validated contest download or defensible score estimate is available. A local format pass is not a scientific promotion pass.</p></div>
 <p>Evidence date: {esc(reviewed_utc)}. This table is generated from the committed, pinned nine-site audit, not a new evaluation or a live site crawl. Latest review does not refresh these measurements.</p>
 <p>GEMSDOE32 has the highest <em>reported</em> historical score in this group; it is not a recommended submission. Overlap failure is not necessarily byte identity. A complete registry and pre-placement surface audit are still missing.</p>
-<p><a href="evidence/submission_readiness.csv" download>Download the nine-site readiness table (CSV)</a> · <a href="evidence/protocol_audit_20261026.json">Underlying audit</a> · <a href="evidence/current_run_card.json">Negative run card</a></p>
+<p><a href="evidence/submission_readiness.csv" download>Download the nine-site readiness table (CSV)</a> · <a href="evidence/{esc(audit_filename)}">Underlying audit</a> · <a href="evidence/current_run_card.json">Negative run card</a></p>
 <div class="table-wrap"><table><thead><tr><th>Site</th><th>Historical reference (NOT a download recommendation)</th><th>Historical score evidence</th><th>Estimated score</th><th>Unique?</th><th>Directional dot overlap</th><th>File to submit</th><th>OK to submit?</th></tr></thead><tbody>{table_rows}</tbody></table></div>
 <h2>Unblocking sequence — no automatic slot use</h2><ol>
 <li>Resolve the stopped lane and assign a specific method; the current request supplies no new single-method paragraph.</li>
@@ -89,9 +104,10 @@ def main():
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()
     registry = json.loads((ROOT / 'registry/focus_sites.json').read_text())
-    audit = json.loads((ROOT / 'evidence/protocol_audit_20261026.json').read_text())
+    audit_path = latest_audit_path(ROOT)
+    audit = json.loads(audit_path.read_text())
     rows = rows_from_evidence(registry, audit)
-    page, csv_text = render(rows, audit['reviewed_utc'])
+    page, csv_text = render(rows, audit['reviewed_utc'], audit_path.name)
     for path, content in ((ROOT / 'docs/submission-readiness.html', page),
                           (ROOT / 'docs/evidence/submission_readiness.csv', csv_text)):
         if args.check:

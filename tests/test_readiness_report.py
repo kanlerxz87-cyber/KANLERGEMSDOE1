@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import subprocess
 import sys
+import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,7 +17,8 @@ import build_readiness_report as report
 class ReadinessTests(unittest.TestCase):
     def setUp(self):
         self.registry = json.loads((ROOT / 'registry/focus_sites.json').read_text())
-        self.audit = json.loads((ROOT / 'evidence/protocol_audit_20261026.json').read_text())
+        self.audit_path = report.latest_audit_path(ROOT)
+        self.audit = json.loads(self.audit_path.read_text())
 
     def test_generated_reports_are_current(self):
         subprocess.run([sys.executable, str(ROOT / 'scripts/build_readiness_report.py'), '--check'], check=True)
@@ -24,7 +26,7 @@ class ReadinessTests(unittest.TestCase):
     def test_nine_rows_are_unambiguously_negative(self):
         rows = report.rows_from_evidence(self.registry, self.audit)
         self.assertEqual(tuple(r['site'] for r in rows), report.SITES)
-        page, csv_text = report.render(rows, self.audit['reviewed_utc'])
+        page, csv_text = report.render(rows, self.audit['reviewed_utc'], self.audit_path.name)
         self.assertEqual(len(list(csv.DictReader(io.StringIO(csv_text)))), 9)
         for row in rows:
             self.assertEqual(row['file_to_submit'], 'NONE')
@@ -50,6 +52,17 @@ class ReadinessTests(unittest.TestCase):
             broken['focus_sites'][0][key] = value
             with self.assertRaises(ValueError):
                 report.rows_from_evidence(self.registry, broken)
+
+    def test_latest_audit_uses_date_order_not_mtime(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            evidence = root / 'evidence'
+            evidence.mkdir()
+            newer = evidence / 'protocol_audit_20261027.json'
+            older = evidence / 'protocol_audit_20261026.json'
+            newer.touch()
+            older.touch()
+            self.assertEqual(report.latest_audit_path(root), newer)
 
     def test_invalid_overlap_and_changed_policy_require_review(self):
         for value in (float('nan'), float('inf'), -1, .70):

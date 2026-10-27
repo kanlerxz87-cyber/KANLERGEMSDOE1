@@ -1,4 +1,4 @@
-> **Historical MPLC plan, not current release evidence.** The resulting artifact overlaps the registered lattice by 99.9522%, violating the literal all-registry rule; that lane is stopped. Holdout provenance was not independently replayed in the present review. The ranking is historical and not an approved future experiment. See [the current audit](evidence/protocol_audit_20261026.json) and [research slate](hypotheses.html).
+> **Historical MPLC plan, not current release evidence.** The resulting artifact overlaps the registered lattice by 99.9522%, violating the literal all-registry rule; that lane is stopped. Holdout provenance was not independently replayed in the present review. The ranking is historical and not an approved future experiment. See [the latest audit](evidence/protocol_audit_20261027.json) and [research slate](hypotheses.html).
 
 # Ranked candidate hypotheses (pre-registered 2026-10-26, before any model fit in this repo)
 
