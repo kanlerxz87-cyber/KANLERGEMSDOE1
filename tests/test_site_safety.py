@@ -58,8 +58,10 @@ class SiteSafetyTests(unittest.TestCase):
         feed=json.loads((ROOT/'docs/feed.json').read_text())
         self.assertEqual(feed['rank_one_public_dti'],0.4544)
         self.assertEqual(feed['observed_utc'],'2026-10-27')
-        self.assertEqual(feed['status'],'manual_official_observation')
+        self.assertEqual(feed['status'],'stale_snapshot')
+        self.assertEqual(feed['refresh_message'].split(';')[0],'Automated deployment refresh returned ValueError')
         self.assertIn('0.4544',self.html('index.html'))
+        self.assertIn('null/NaN rule',self.html('index.html'))
         self.assertIn('leaderboard_observation_20261027.json',self.html('executive-summary.html'))
 
     def test_one_current_card_has_correction_and_hash(self):

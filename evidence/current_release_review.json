@@ -17,5 +17,11 @@
     "evidence": "docs/evidence/leaderboard_observation_20261027.json"
   },
   "new_experiments": 0,
-  "slots_used": 0
+  "slots_used": 0,
+  "leaderboard_feed_status": {
+    "status": "stale_snapshot",
+    "last_refresh_attempt_utc": "2026-10-27T17:12:09+00:00",
+    "result": "Refresh parser returned ValueError; dated official page observation retained; Pages deployment succeeded.",
+    "workflow_run": "https://github.com/kanlerxz87-cyber/KANLERGEMSDOE1/actions/runs/40548290863"
+  }
 }

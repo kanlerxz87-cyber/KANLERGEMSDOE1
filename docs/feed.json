@@ -1,9 +1,9 @@
 {
-  "status": "manual_official_observation",
+  "status": "stale_snapshot",
   "rank_one_public_dti": 0.4544,
   "observed_utc": "2026-10-27",
-  "last_refresh_attempt_utc": null,
-  "refresh_message": "Official public leaderboard read during review; user-provided 0.3195 conflicts and no cause is known.",
+  "last_refresh_attempt_utc": "2026-10-27T17:12:09+00:00",
+  "refresh_message": "Automated deployment refresh returned ValueError; retained dated official-page observation. Check the public leaderboard for current values.",
   "source_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
   "scope": "Official public leaderboard, not a receipt for a repository raster."
 }
