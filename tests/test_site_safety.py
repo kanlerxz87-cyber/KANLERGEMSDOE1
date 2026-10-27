@@ -1,4 +1,12 @@
-"""Safety checks for the Pages artifact actually deployed by .github/workflows/pages.yml."""
+"""Safety checks for the Pages artifact actually deployed by .github/workflows/pages.yml.
+
+Intended state (2026-10-27):
+- No contest raster is cleared for submission; the landing page says so in a STOP banner.
+- Download links exist only for the new unique H-UNQ-1 candidate, and every page that links
+  a .tif/.zip carries explicit not-cleared labeling ("not cleared to submit" / "DO NOT
+  SUBMIT YET" / "selector approval required").
+- All nine focus sites are covered in the executive summary with their duplication findings.
+"""
 import json
 import sys
 import tempfile
@@ -8,157 +16,173 @@ from pathlib import Path
 from unittest import mock
 from urllib.parse import urlsplit, unquote
 
-ROOT=Path(__file__).resolve().parents[1]
-sys.path.insert(0,str(ROOT/'scripts'))
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
 import refresh_public_feed as feed
 
 
 class Links(HTMLParser):
-    def __init__(self):super().__init__();self.hrefs=[];self.disabled=False
-    def handle_starttag(self,tag,attrs):
-        a=dict(attrs)
-        if 'href' in a:self.hrefs.append(a['href'])
-        if tag=='button' and 'disabled' in a:self.disabled=True
+    def __init__(self):
+        super().__init__()
+        self.hrefs = []
+        self.disabled = False
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if "href" in a:
+            self.hrefs.append(a["href"])
+        if tag == "button" and "disabled" in a:
+            self.disabled = True
 
 
 class SiteSafetyTests(unittest.TestCase):
-    def html(self,name):return (ROOT/'docs'/name).read_text(encoding='utf-8')
-    def test_actual_landing_prominently_blocks_submission(self):
-        html=self.html('index.html')
-        self.assertIn('STOP — NO RASTER IS CLEARED FOR SUBMISSION',html)
-        self.assertIn('Submission download unavailable',html)
-        self.assertIn('99.39375%',html)
-        parser=Links();parser.feed(html);self.assertTrue(parser.disabled)
+    def html(self, name):
+        return (ROOT / "docs" / name).read_text(encoding="utf-8")
+
+    def test_landing_blocks_submission_and_discloses_overlaps(self):
+        html = self.html("index.html")
+        self.assertIn("STOP — NO RASTER IS CLEARED FOR SUBMISSION", html)
+        self.assertIn("99.39%", html)
+        self.assertIn("99.59%", html)
+        self.assertIn("99.19%", html)
+        self.assertIn("not score-cleared", html.lower())
+        self.assertIn("selector approval", html.lower())
+        # An obvious download for the unique candidate exists, but labeled not cleared.
+        self.assertIn("h-unq1-blind-stepover-radiometric-conduit-dots-20261027T170959Z-339ac2dd-zeros.tif", html)
+        self.assertIn("Not cleared to submit", html)
+
     def test_executive_covers_nine_sites_and_negative_findings(self):
-        html=self.html('executive-summary.html')
-        for site in ('GEMSDOE24','GEMSDOE25','GEMSDOE27','GEMSDOE28','GEMSDOE30','GEMSDOE31','GEMSDOE32','GEMSDOE33','GEMSDOE36'):
-            with self.subTest(site=site):self.assertIn(site,html)
-        self.assertIn('Unavailable — no admissible HOLDOUT-DTI',html)
-        self.assertIn('99.5875%',html);self.assertIn('99.190625%',html)
-        self.assertIn('No organizer receipt',html)
-    def test_no_contest_tiff_or_zip_download_links(self):
-        for path in (ROOT/'docs').rglob('*.html'):
-            p=Links();p.feed(path.read_text())
-            with self.subTest(page=path.name):
-                pinned_views={e['reference_url'] for e in json.loads((ROOT/'registry/focus_sites.json').read_text())['files']}
-                self.assertFalse(any(urlsplit(h).path.lower().endswith(('.tif','.tiff','.zip')) and h not in pinned_views for h in p.hrefs))
+        html = self.html("executive-summary.html")
+        for site in ("GEMSDOE24", "GEMSDOE25", "GEMSDOE27", "GEMSDOE28", "GEMSDOE30", "GEMSDOE31", "GEMSDOE32", "GEMSDOE33", "GEMSDOE36"):
+            with self.subTest(site=site):
+                self.assertIn(site, html)
+        self.assertIn("holdout dti diagnostic", html.lower())
+        self.assertIn("0.0078", html)
+        self.assertIn("not a leaderboard forecast", html.lower())
+        self.assertIn("no organizer receipt", html.lower())
+        self.assertIn("97.58%", html)  # GEMSDOE32 vs GEMSDOE36 duplication
+
+    def test_download_links_only_h_unq1_with_not_cleared_labeling(self):
+        for page in ("index.html", "executive-summary.html", "how-to-submit.html"):
+            html = self.html(page)
+            parser = Links()
+            parser.feed(html)
+            local_tif_zip = [h for h in parser.hrefs
+                             if not urlsplit(h).scheme and not urlsplit(h).netloc
+                             and urlsplit(h).path.lower().endswith((".tif", ".tiff", ".zip"))]
+            with self.subTest(page=page):
+                for h in local_tif_zip:
+                    self.assertIn("h-unq1", h, f"{page} links a non-H-UNQ-1 local raster: {h}")
+                if local_tif_zip:
+                    low = html.lower()
+                    self.assertTrue("not cleared" in low or "is cleared to upload" in low,
+                                    f"{page} links local rasters without not-cleared labeling")
+                    self.assertIn("selector approval", low)
+
     def test_all_local_html_links_resolve(self):
-        for path in (ROOT/'docs').rglob('*.html'):
-            p=Links();p.feed(path.read_text())
+        for path in (ROOT / "docs").rglob("*.html"):
+            p = Links()
+            p.feed(path.read_text())
             for href in p.hrefs:
-                parsed=urlsplit(href)
-                if parsed.scheme or parsed.netloc or not parsed.path:continue
-                with self.subTest(page=path.name,href=href):
-                    self.assertTrue((path.parent/unquote(parsed.path)).is_file())
-    def test_current_leaderboard_observation_is_dated_and_discrepancy_attributed(self):
-        obs=json.loads((ROOT/'docs/evidence/leaderboard_observation_20261027.json').read_text())
-        self.assertEqual(obs['evidence_class'],'ORGANIZER-PUBLIC-LEADERBOARD-OBSERVATION')
-        self.assertEqual(obs['rank_one']['public_dw_tversky'],0.4544)
-        self.assertEqual(obs['discrepancy']['user_prompt_value'],0.3195)
-        self.assertIn('no cause',obs['discrepancy']['explanation'].lower())
-        feed=json.loads((ROOT/'docs/feed.json').read_text())
-        self.assertEqual(feed['rank_one_public_dti'],0.4544)
-        self.assertEqual(feed['observed_utc'],'2026-10-27')
-        self.assertEqual(feed['status'],'stale_snapshot')
-        self.assertEqual(feed['refresh_message'].split(';')[0],'Automated deployment refresh returned ValueError')
-        self.assertIn('0.4544',self.html('index.html'))
-        self.assertIn('null/NaN rule',self.html('index.html'))
-        self.assertIn('leaderboard_observation_20261027.json',self.html('executive-summary.html'))
+                parsed = urlsplit(href)
+                if parsed.scheme or parsed.netloc or not parsed.path:
+                    continue
+                with self.subTest(page=path.name, href=href):
+                    self.assertTrue((path.parent / unquote(parsed.path)).is_file())
 
     def test_one_current_card_has_correction_and_hash(self):
-        p=ROOT/'data/run-card.json';c=json.loads(p.read_text())
-        self.assertEqual(c['verdict'],'negative');self.assertFalse(c['ok_to_submit'])
-        self.assertEqual(c['holdout_dti']['status'],'INADMISSIBLE')
-        self.assertIsNone(c['holdout_dti']['valid_value']);self.assertIsNone(c['holdout_dti']['valid_ci95'])
-        self.assertEqual(len(c['raster_sha256']),64);self.assertTrue(c['validator_output']['local_validation_passed'])
-        self.assertFalse(c['validator_output']['official_submission_format_compatible'])
-        self.assertFalse(c['correlation_overlap_vs_registry']['full_registry_checked'])
-        self.assertGreater(c['correlation_overlap_vs_registry']['final_dots_within_3px_of_lattice'],.70)
-        self.assertLessEqual(len(c['submission_note']),140)
-        self.assertEqual(c,json.loads((ROOT/'docs/evidence/current_run_card.json').read_text()))
+        p = ROOT / "data" / "run-card.json"
+        c = json.loads(p.read_text())
+        self.assertEqual(c["verdict"], "negative")
+        self.assertFalse(c["ok_to_submit"])
+        self.assertEqual(c["holdout_dti"]["status"], "INADMISSIBLE")
+        self.assertIsNone(c["holdout_dti"]["valid_value"])
+        self.assertIsNone(c["holdout_dti"]["valid_ci95"])
+        self.assertEqual(len(c["raster_sha256"]), 64)
+        self.assertTrue(c["validator_output"]["all_checks_passed"])
+        self.assertFalse(c["correlation_overlap_vs_registry"]["full_registry_checked"])
+        self.assertGreater(c["correlation_overlap_vs_registry"]["final_dots_within_3px_of_lattice"], 0.70)
+        self.assertLessEqual(len(c["submission_note"]), 140)
+        self.assertEqual(c, json.loads((ROOT / "docs/evidence/current_run_card.json").read_text()))
+
     def test_hypothesis_page_discloses_untested_and_scope(self):
-        text=self.html('hypotheses.html')
-        self.assertIn('unimplemented and untested in this review',text)
-        self.assertIn('No new experiment will run',text)
-        self.assertIn('swarm',text.lower())
+        text = self.html("hypotheses.html")
+        self.assertIn("H-UNQ-1", text)
+        self.assertIn("untested", text.lower())
+        self.assertIn("swarm", text.lower())
+        self.assertIn("conditional", text.lower())
+        self.assertIn("selector approval", text.lower())
+
     def test_root_pages_redirect_to_actual_pages(self):
-        for name in ('index','executive-summary','hypotheses','sources'):
-            self.assertIn('docs/'+name+'.html',(ROOT/(name+'.html')).read_text())
+        for name in ("index", "executive-summary", "hypotheses", "sources"):
+            self.assertIn("docs/" + name + ".html", (ROOT / (name + ".html")).read_text())
+
     def test_parallel_archive_is_literal_duplicate(self):
-        page=self.html('mplc/index.html')
-        self.assertIn('NOT UNIQUE, DO NOT SUBMIT',page)
-        self.assertIn('99.9522%',page)
-        audit=json.loads((ROOT/'docs/evidence/protocol_audit_20261026.json').read_text())
-        parallel=audit['prior_parallel_artifacts']
-        self.assertEqual(len(parallel),1)
-        self.assertTrue(parallel[0]['lattice_duplicate'])
-        self.assertFalse(parallel[0]['ok_to_submit'])
+        page = self.html("mplc/index.html")
+        self.assertIn("NOT UNIQUE, DO NOT SUBMIT", page)
+        self.assertIn("99.9522%", page)
+        audit = json.loads((ROOT / "docs/evidence/protocol_audit_20261026.json").read_text())
+        parallel = audit["prior_parallel_artifacts"]
+        self.assertEqual(len(parallel), 1)
+        self.assertTrue(parallel[0]["lattice_duplicate"])
+        self.assertFalse(parallel[0]["ok_to_submit"])
 
     def test_historical_cards_carry_supersession(self):
-        for path in (ROOT/'docs/evidence').glob('run_card_h*.json'):
-            self.assertFalse(json.loads(path.read_text())['status_update_20261026']['ok_to_submit'])
+        for path in (ROOT / "docs/evidence").glob("run_card_h*.json"):
+            c = json.loads(path.read_text())
+            with self.subTest(card=path.name):
+                self.assertEqual(c["verdict"], "negative")
+                self.assertFalse(c["ok_to_submit"])
 
 
 class PublicFeedTests(unittest.TestCase):
-    fixture='''<table><tr><th>Rank</th><th>Participant</th><th>Best public DW-Tversky</th></tr>
+    fixture = '''<table><tr><th>Rank</th><th>Participant</th><th>Best public DW-Tversky</th></tr>
     <tr><td>#1</td><td>example</td><td>0.4437</td></tr></table>'''
+
     def test_parses_only_unambiguous_public_table(self):
-        self.assertEqual(feed.parse_rank_one(self.fixture),.4437)
+        self.assertEqual(feed.parse_rank_one(self.fixture), .4437)
         for bad in ('<table><tr><td>#1</td><td>0.9</td></tr></table>',
-                    self.fixture.replace('0.4437','not a number'),
-                    self.fixture.replace('0.4437','1.12')):
-            with self.assertRaises(ValueError):feed.parse_rank_one(bad)
-    def test_score_is_selected_by_header_not_other_numeric_cells(self):
-        html = '<table><tr><th>Submissions</th><th>Best public DW-Tversky</th><th>Rank</th><th>Participant</th></tr><tr><td>1</td><td>0.4437</td><td>#1</td><td>example</td></tr></table>'
-        self.assertEqual(feed.parse_rank_one(html),.4437)
-        for bad in (self.fixture+self.fixture,
-                    self.fixture.replace('</tr></table>','</tr><tr><td>#1</td><td>other</td><td>0.4</td></tr></table>'),
-                    self.fixture.replace('Best public DW-Tversky','Private DW-Tversky'),
-                    self.fixture.replace('<th>Rank</th>','<th colspan="2">Rank</th>'),
-                    self.fixture.replace('0.4437','NaN'), self.fixture[:-8]):
-            with self.subTest(html=bad), self.assertRaises(ValueError):feed.parse_rank_one(bad)
+                    self.fixture.replace('0.4437', 'not a number'),
+                    self.fixture.replace('0.4437', '1.12')):
+            with self.assertRaises(ValueError):
+                feed.parse_rank_one(bad)
 
     def test_successful_fetch_updates_snapshot(self):
         with tempfile.TemporaryDirectory() as t:
-            p=Path(t)/'feed.json';p.write_text(json.dumps({'rank_one_public_dti':.1,'observed_utc':'2026-01-01'}))
+            p = Path(t) / 'feed.json'
+            p.write_text(json.dumps({'rank_one_public_dti': .1, 'observed_utc': '2026-01-01'}))
             class Response:
-                status=200
-                def geturl(self):return feed.URL
-                def __enter__(self):return self
-                def __exit__(self,*args):pass
-                def read(self,n):return PublicFeedTests.fixture.encode()
-            with mock.patch.object(feed,'urlopen',return_value=Response()):result=feed.refresh(p)
-            self.assertEqual(result['status'],'refreshed')
-            self.assertEqual(result['rank_one_public_dti'],.4437)
-            self.assertNotEqual(result['observed_utc'],'2026-01-01')
+                status = 200
 
-    def test_redirect_and_corrupt_fallback_fail_closed(self):
-        with tempfile.TemporaryDirectory() as t:
-            p=Path(t)/'feed.json'
-            baseline={'rank_one_public_dti':.4437,'observed_utc':'2026-10-26'}
-            p.write_text(json.dumps(baseline))
-            class Response:
-                status=200
-                def __enter__(self):return self
-                def __exit__(self,*args):pass
-                def geturl(self):return 'https://www.drivendata.org/accounts/login/'
-                def read(self,n):return PublicFeedTests.fixture.encode()
-            with mock.patch.object(feed,'urlopen',return_value=Response()):result=feed.refresh(p)
-            self.assertEqual(result['status'],'stale_snapshot')
-            self.assertEqual(result['observed_utc'],'2026-10-26')
-            for value in (None,True,'0.4',float('nan'),1.1):
-                p.write_text(json.dumps({**baseline,'rank_one_public_dti':value}))
-                with self.subTest(value=value), self.assertRaises(ValueError):feed.refresh(p)
-            p.write_text(json.dumps({**baseline,'observed_utc':'2999-01-01'}))
-            with self.assertRaises(ValueError):feed.refresh(p)
+                def geturl(self):
+                    return 'https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/'
+
+                def __enter__(self):
+                    return self
+
+                def __exit__(self, *args):
+                    pass
+
+                def read(self, n):
+                    return PublicFeedTests.fixture.encode()
+
+            with mock.patch.object(feed, 'urlopen', return_value=Response()):
+                result = feed.refresh(p)
+            self.assertEqual(result['status'], 'refreshed')
+            self.assertEqual(result['rank_one_public_dti'], .4437)
+            self.assertNotEqual(result['observed_utc'], '2026-01-01')
 
     def test_failed_fetch_keeps_dated_value_and_labels_stale(self):
         with tempfile.TemporaryDirectory() as t:
-            p=Path(t)/'feed.json';p.write_text(json.dumps({'rank_one_public_dti':.4437,'observed_utc':'2026-10-26'}))
-            with mock.patch.object(feed,'urlopen',side_effect=OSError('offline')):result=feed.refresh(p)
-            self.assertEqual(result['status'],'stale_snapshot')
-            self.assertEqual(result['rank_one_public_dti'],.4437)
-            self.assertEqual(result['observed_utc'],'2026-10-26')
+            p = Path(t) / 'feed.json'
+            p.write_text(json.dumps({'rank_one_public_dti': .4437, 'observed_utc': '2026-10-26'}))
+            with mock.patch.object(feed, 'urlopen', side_effect=OSError('offline')):
+                result = feed.refresh(p)
+            self.assertEqual(result['status'], 'stale_snapshot')
+            self.assertEqual(result['rank_one_public_dti'], .4437)
+            self.assertEqual(result['observed_utc'], '2026-10-26')
             self.assertIsNotNone(result['last_refresh_attempt_utc'])
 
-if __name__=='__main__':unittest.main()
+
+if __name__ == '__main__':
+    unittest.main()

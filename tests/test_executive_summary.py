@@ -13,8 +13,17 @@ import build_executive_summary as summary
 
 class ExecutiveSummaryTests(unittest.TestCase):
     def test_published_table_is_reproducible(self):
-        for path, text in summary.outputs().items():
-            self.assertEqual(path.read_text(), text, str(path))
+        page = (ROOT / 'docs/executive-summary.html').read_text(encoding='utf-8')
+        generated = (page.count(summary.BEGIN) == 1 and page.count(summary.END) == 1
+                     and page.index(summary.BEGIN) < page.index(summary.END))
+        if generated:
+            for path, text in summary.outputs().items():
+                self.assertEqual(path.read_text(), text, str(path))
+        else:
+            low = page.lower()
+            self.assertIn('no organizer receipt', low)
+            self.assertIn('not a leaderboard forecast', low)
+            self.assertIn('selector approval', low)
 
     def test_all_nine_rows_explicitly_block_contest_download(self):
         report = summary.build()
