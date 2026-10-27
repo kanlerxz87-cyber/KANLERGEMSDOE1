@@ -49,12 +49,26 @@ class SiteSafetyTests(unittest.TestCase):
                 if parsed.scheme or parsed.netloc or not parsed.path:continue
                 with self.subTest(page=path.name,href=href):
                     self.assertTrue((path.parent/unquote(parsed.path)).is_file())
+    def test_current_leaderboard_observation_is_dated_and_discrepancy_attributed(self):
+        obs=json.loads((ROOT/'docs/evidence/leaderboard_observation_20261027.json').read_text())
+        self.assertEqual(obs['evidence_class'],'ORGANIZER-PUBLIC-LEADERBOARD-OBSERVATION')
+        self.assertEqual(obs['rank_one']['public_dw_tversky'],0.4544)
+        self.assertEqual(obs['discrepancy']['user_prompt_value'],0.3195)
+        self.assertIn('no cause',obs['discrepancy']['explanation'].lower())
+        feed=json.loads((ROOT/'docs/feed.json').read_text())
+        self.assertEqual(feed['rank_one_public_dti'],0.4544)
+        self.assertEqual(feed['observed_utc'],'2026-10-27')
+        self.assertEqual(feed['status'],'manual_official_observation')
+        self.assertIn('0.4544',self.html('index.html'))
+        self.assertIn('leaderboard_observation_20261027.json',self.html('executive-summary.html'))
+
     def test_one_current_card_has_correction_and_hash(self):
         p=ROOT/'data/run-card.json';c=json.loads(p.read_text())
         self.assertEqual(c['verdict'],'negative');self.assertFalse(c['ok_to_submit'])
         self.assertEqual(c['holdout_dti']['status'],'INADMISSIBLE')
         self.assertIsNone(c['holdout_dti']['valid_value']);self.assertIsNone(c['holdout_dti']['valid_ci95'])
-        self.assertEqual(len(c['raster_sha256']),64);self.assertTrue(c['validator_output']['all_checks_passed'])
+        self.assertEqual(len(c['raster_sha256']),64);self.assertTrue(c['validator_output']['local_validation_passed'])
+        self.assertFalse(c['validator_output']['official_submission_format_compatible'])
         self.assertFalse(c['correlation_overlap_vs_registry']['full_registry_checked'])
         self.assertGreater(c['correlation_overlap_vs_registry']['final_dots_within_3px_of_lattice'],.70)
         self.assertLessEqual(len(c['submission_note']),140)

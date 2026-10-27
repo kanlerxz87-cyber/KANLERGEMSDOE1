@@ -4,11 +4,9 @@ Fail-closed submission writing and local range validation. Local validation does
 prove organizer acceptance or that the reported portal error had a specific cause.
 Predictions must already be finite, in [0,1], zero outside the footprint and zero
 on mapped faults. No clipping, binarization, or silent repair is performed.
-The writer emits paired GeoTIFFs for each candidate:
-   - `-zeros.tif`: `0.0` outside footprint (`nodata=None`), so all 12,279,160 / 12,279,160 raster cells
-     satisfy `(arr >= 0.0) & (arr <= 1.0)` with zero NaNs anywhere.
-   - `-nan.tif`: `NaN` outside footprint (`nodata=np.nan`), matching the historical `*-nan.tif` convention
-     while guaranteeing zero NaNs or out-of-range values inside the 5,167,373-pixel footprint.
+The writer emits a zero-filled diagnostic GeoTIFF and an official-format candidate GeoTIFF:
+   - `-zeros.tif`: `0.0` outside footprint (`nodata=None`), useful for local full-array range diagnostics but **not compliant** with the official requirement that outside-bounds pixels be null/NaN.
+   - `-nan.tif`: `NaN` outside footprint (`nodata=np.nan`), with finite [0,1] predictions inside the footprint; this is the only file placed in the single-TIFF submission ZIP. Local checks still cannot guarantee portal acceptance.
 """
 
 from __future__ import annotations
@@ -195,7 +193,10 @@ def write_submission_pair(
 
     if any(not re.fullmatch(r"[A-Za-z0-9_-]+", part) for part in (prefix, slug, timestamp_tag)):
         raise ValueError("filename prefix, slug and timestamp must contain only letters, digits, _ or -")
-    zip_path = zeros_path.with_suffix(".zip")
+    # The official format requires null/NaN outside the submission bounds. Keep
+    # the zero-filled variant as a diagnostic only; the only submission ZIP
+    # must contain the NaN-outside GeoTIFF.
+    zip_path = nan_path.with_suffix(".zip")
     if zip_path.exists():
         raise FileExistsError("refusing to overwrite an existing submission ZIP")
     with rasterio.open(template_tif) as tpl:
@@ -231,19 +232,21 @@ def write_submission_pair(
         if not note_zeros.strip() or not note_nan.strip() or len(note_zeros) > 140 or len(note_nan) > 140:
             raise ValueError("formatted submission notes must have 1..140 characters")
         with zipfile.ZipFile(tmp_zip, "w") as archive:
-            info = zipfile.ZipInfo(zeros_name, date_time=(2026, 1, 1, 0, 0, 0))
+            info = zipfile.ZipInfo(nan_name, date_time=(2026, 1, 1, 0, 0, 0))
             info.compress_type = zipfile.ZIP_DEFLATED
-            archive.writestr(info, tmp_zeros.read_bytes(), compresslevel=9)
+            archive.writestr(info, tmp_nan.read_bytes(), compresslevel=9)
         with zipfile.ZipFile(tmp_zip) as archive:
-            if archive.namelist() != [zeros_name] or archive.read(zeros_name) != tmp_zeros.read_bytes():
-                raise IOError("single-TIFF ZIP roundtrip failed")
+            if archive.namelist() != [nan_name] or archive.read(nan_name) != tmp_nan.read_bytes():
+                raise IOError("single-TIFF submission ZIP roundtrip failed")
         bundle = {
             "candidate_id": candidate_meta["candidate_id"], "slug": slug, "content_digest8": digest8,
             "description": candidate_meta["description"],
             "submission_note_zeros": note_zeros, "submission_note_nan": note_nan,
             "zeros_tif": audit_zeros, "nan_tif": audit_nan,
-            "zeros_zip": {"filename": zip_path.name, "path": str(zip_path),
-                          "size_bytes": tmp_zip.stat().st_size, "sha256": sha256_file(tmp_zip)},
+            "submission_zip": {"filename": zip_path.name, "path": str(zip_path),
+                               "contains": nan_name,
+                               "size_bytes": tmp_zip.stat().st_size, "sha256": sha256_file(tmp_zip)},
+            "zeros_variant_warning": "Diagnostic only: zeros outside bounds do not meet the official null/NaN outside-bounds requirement.",
             "holdout_metrics": {key: candidate_meta[key] for key in (
                 "catalogue_hidden_mean", "catalogue_hidden_per_quadrant",
                 "sgmc_prevalence_calibrated_dti", "drift_corrected_holdout_mean",

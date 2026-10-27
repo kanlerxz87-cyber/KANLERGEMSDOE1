@@ -30,7 +30,7 @@
   },
   "raster_sha256": "455c3a1780806718c881480228631046cb3090a4734fac54f398c97533a89d39",
   "validator_output": {
-    "all_checks_passed": true,
+    "all_checks_passed": false,
     "checks": {
       "exact_reference_grid_match": true,
       "single_band": true,
@@ -63,7 +63,11 @@
     ],
     "in_footprint_min": 0.0,
     "in_footprint_max": 1.0,
-    "organizer_template_authenticated": false
+    "organizer_template_authenticated": false,
+    "local_validation_passed": true,
+    "official_outside_bounds_null_or_nan": false,
+    "official_submission_format_compatible": false,
+    "format_irregularity": "This historical -zeros.tif stores 0 outside bounds. The official problem page requires null/NaN outside bounds; this file is not format-cleared for submission."
   },
   "submission_name": "kanlergemsdoe1-h1-iedr-s3p17-b2-32000-20261026T214518Z-fe519ae3-zeros.tif",
   "submission_note": "Research only: IEDR prior artifact; literal registry duplicate; DO NOT SUBMIT.",

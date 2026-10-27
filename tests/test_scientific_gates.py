@@ -226,8 +226,14 @@ class SubmissionWriterTests(unittest.TestCase):
         self.assertTrue(bundle['nan_tif']['all_checks_passed'])
         with rasterio.open(self.out/bundle['zeros_tif']['filename']) as ds:
             self.assertIsNone(ds.nodata);np.testing.assert_array_equal(ds.read(1),self.a)
-        with zipfile.ZipFile(self.out/bundle['zeros_zip']['filename']) as z:
-            self.assertEqual(z.namelist(),[bundle['zeros_tif']['filename']])
+        self.assertIn('NaN',bundle['zeros_variant_warning'])
+        with zipfile.ZipFile(self.out/bundle['submission_zip']['filename']) as z:
+            self.assertEqual(z.namelist(),[bundle['nan_tif']['filename']])
+            zipped = z.read(bundle['nan_tif']['filename'])
+            with rasterio.MemoryFile(zipped) as mem:
+                with mem.open() as ds:
+                    self.assertTrue(np.isnan(ds.read(1)[~self.foot]).all())
+                    self.assertTrue(np.isfinite(ds.read(1)[self.foot]).all())
         self.assertEqual(len(list(self.out.iterdir())),4)
         with self.assertRaises(FileExistsError):self.write()
         self.assertEqual(len(list(self.out.iterdir())),4)
