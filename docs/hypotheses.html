@@ -1,52 +1,16 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ranked research slate · KANLER GEMS</title><link rel="stylesheet" href="assets/style.css"></head>
-<body><header><div class="wrap head"><p class="brand">KANLERGEMSDOE1 / DOE GEMS PRIZE / RESEARCH DESK</p><h1>Ranked research slate</h1><nav class="nav" aria-label="Primary"><a href="index.html">Status</a><a href="executive-summary.html">Executive summary</a><a href="research.html">Why 0.2778?</a><a href="hypotheses.html" aria-current="page">Research slate</a><a href="how-to-submit.html">Submission gate</a><a href="sources.html">Sources</a></nav></div></header>
-<main class="wrap"><div class="banner" role="status"><strong>STOP — NO RASTER IS CLEARED FOR SUBMISSION</strong><p>No new competition slot was spent. H-UNQ-1 below was implemented and measured as a diagnostic; its result is negative for score clearance. Remaining items are untried and ranked qualitatively, not by measured DTI.</p></div>
-
-<h2>1 · Implemented this review — H-UNQ-1 (measured, negative for score clearance)</h2>
-<div class="table-wrap"><table class="hypothesis-table">
-<thead><tr><th>Item</th><th>Layers &amp; transform</th><th>Hidden-fault rationale / named mimic</th><th>Result</th></tr></thead>
-<tbody>
-<tr><td><strong>H-UNQ-1 · blind stepover–radiometric conduit dots</strong> <span class="priority priority-one">implemented</span></td>
-<td>Off-catalogue USGS SGMC faults (&gt;300 m from catalogue, dilated 1 px); GeoDAWN radiometric K + TC (assumed band order per manifest); GDR 1391 hot springs/wells (temperature-weighted gaussian, σ=1.5 px) + Quaternary vents (2 px); LiDAR scarp max (small weight); TIGER road-distance penalty (0–250 m ramp); zeroed exactly on catalogue; NMS ≥ 2 px; cap 34,000 soft dots (value = surface, max 0.654).</td>
-<td>Blind faults missing from the USGS/INGENIOUS catalogue: structural discontinuities localize strain (Siler USGS 2023); blind Gabbs Valley system had no surface springs (Faulds et al. USGS 2019). Mimics: lithologic contacts, dikes, road/terrace edges, flight-line artifacts — mitigated by SGMC-trace nuclei + radiometric concurrence + road penalty, not eliminated.</td>
-<td class="bad">Format-valid, unique (ρ ≈ 0.0006 vs registry; ≤13.5% dots within 3 px). Holdout-DTI diagnostic 0.0078 [95% CI 0.0049–0.0107] on catalogue truth — low by design (dots avoid catalogue) and not a leaderboard forecast. <strong>Verdict: negative — not score-cleared.</strong> Card: <a href="evidence/run_card_h_unq1.json">run_card_h_unq1.json</a> · raster in <a href="executive-summary.html">downloads</a>.</td>
-</tr>
+<title>Research slate · KANLER GEMS</title><link rel="stylesheet" href="assets/style.css"></head>
+<body><header><div class="wrap head"><p class="brand">KANLERGEMSDOE1 / DOE GEMS PRIZE / RESEARCH DESK</p><h1>Research slate</h1><nav class="nav" aria-label="Primary"><a href="index.html">Status</a><a href="executive-summary.html">Executive summary</a><a href="research.html">Why 0.2778?</a><a href="hypotheses.html" aria-current="page">Research slate</a><a href="how-to-submit.html">Submission gate</a><a href="sources.html">Sources</a></nav></div></header>
+<main class="wrap">
+<p>Five hypotheses were <a href="research/preregistration-20261027.md">pre-registered on 2026-10-27</a> before any fit, ranked by expected DTI gain per cost and leakage risk. Rank 1 was run (3 experiments) and is <b>closed negative</b>; ranks 2–3 are runnable next lanes; ranks 4–5 need data this sandbox cannot download (named source + obtainability checked, per protocol). Nothing here spends a submission slot without beating HOLDOUT-DTI 0.1002 (paired CI &gt; 0) first.</p>
+<div class="table-wrap"><table><thead><tr><th>#</th><th>Hypothesis · layers → signature</th><th>Why catalogue-missing faults</th><th>Status / cost</th></tr></thead><tbody>
+<tr><td>1</td><td><b>CONCORD</b> — magnetics (rtp, tmi_hg) + gravity (iso_grav, hg) + topo/LiDAR scarp + radiometric K/Th edges + conductivity/basement-step → soft-min of ridge ranks, road veto</td><td>Buried piedmont steps deflect all surveys on one trace while staying invisible in each alone</td><td class="bad">TESTED → NEGATIVE (0.0518 vs 0.1002). Mimic: lithologic contacts/dikes. Learning: road veto harmed AUC; fixed weights too weak</td></tr>
+<tr><td>2</td><td><b>PU-HGB line learner</b> — 19 bands + derived ridge stack → gradient boosting with reliable negatives, spatially-blocked training, same thinning emission</td><td>Learns low-amplitude multivariate fault appearance that fixed fusion mis-weights</td><td class="warn">NEXT LANE (unimplemented). Mimic: catalogue-like halos. Prior fleet HGBs failed with blob features/top-k emission; line features + matched emission is the untested difference. Cost: medium</td></tr>
+<tr><td>3</td><td><b>TIPFIELD</b> — visible-fault endpoints → collinear continuation field gated by geophysics ranks</td><td>Organizers explicitly reward tip extensions/splays near known traces</td><td>Untested as a fold-local feature (tried fleet-wide only as placement). Highest leakage-canary risk. Mimic: chance-collinear erosional lineaments. Cost: low–medium</td></tr>
+<tr><td>4</td><td><b>Seismic lineaments</b> — individual USGS ComCat events with location-uncertainty ellipses → anisotropic alignment × magnetic strike</td><td>Active buried structures host aligned microseismicity without scarps; swarm counterfactual required</td><td>BLOCKED HERE: free official FDSN service (earthquake.usgs.gov/fdsnws/event/1) exists but is outside this sandbox's egress allowlist. Mimics: injection/mining swarms. Cost: high</td></tr>
+<tr><td>5</td><td><b>SGMC contact offsets</b> — USGS geologic contacts truncated/offset along lineaments</td><td>Pre-Quaternary faults absent from Qfaults still offset map units</td><td>BLOCKED HERE: contacts vector free via USGS NGMDB but not downloadable from this sandbox; SGMC faults raster stays reserved as the independent instrument. Mimic: depositional pinch-outs. Cost: medium</td></tr>
 </tbody></table></div>
-
-<h2>2 · Untried hypotheses, ranked by expected benefit and implementation cost</h2>
-<p>All are <strong>untested</strong>; ranking is scientific judgment, not a DTI forecast. None may spend a weekly slot without holdout validation, canary checks and selector approval.</p>
-<div class="table-wrap"><table class="hypothesis-table">
-<thead><tr><th>Rank / cost</th><th>Layers &amp; transform</th><th>Why it may catch a catalogue-missing fault</th><th>Novelty vs this repo; named non-fault mimic; data availability</th></tr></thead>
-<tbody>
-<tr><td><strong>1 · medium / low</strong></td>
-<td>INGENIOUS 2 m shallow temperature-probe array (GDR 1391; 2,782 in-footprint stations, T1m/T15m/T2m/F2mDAB); spatial gradient and residual-from-regional-trend transform; masked to footprint.</td>
-<td>Blind upflow warms shallow ground without surface springs; a probe anomaly with no mapped fault is a candidate hidden structure. Rank probes by anomaly residual, place dots at probe cells, sparse cap.</td>
-<td>Uses GDR 1391 probe CSV never used for dot placement in this repo. <strong>Mimic:</strong> near-surface climatic effects, shallow groundwater, sediment cover. Data: owner-mirrored ZIP restored locally (CC BY 4.0 via GDR 1391 attribution); ready to run.</td>
-</tr>
-<tr><td><strong>2 · medium / medium</strong></td>
-<td>GDR 1391 paleo-geothermal features (travertine, tufa, sinter, silica cement; 281 in footprint); proximity kernel; intersect with off-catalogue SGMC traces; radiometric K/TC boost.</td>
-<td>Fossil fluid pathways mark long-lived conduits where blind faults may still be active; deposit points without mapped faults are hidden-structure candidates.</td>
-<td>Paleo points are context only in existing implementations; never used as dot nuclei. <strong>Mimic:</strong> fossil (inactive) deposits, landslide silica, hot-spring remnants not on faults. Data: owner-mirrored ZIP restored locally; ready to run.</td>
-</tr>
-<tr><td><strong>3 · highest plausible / high (conditional)</strong></td>
-<td>USGS ComCat individual events with location uncertainty (FDSN); uncertainty-weighted anisotropic lineaments; require GeoDAWN tmi_hg / rtp magnetic-edge strike agreement; strain bands as context.</td>
-<td>Distributed seismicity can illuminate a buried active structure with no mapped scarp; location uncertainty sets minimum credible scale; strike agreement separates structure from noise.</td>
-<td>Refines the earlier proposed-but-unimplemented raw-event idea (H33-E) with uncertainty ellipses and orientation agreement. <strong>Mimic:</strong> injection/mining swarms, station geometry. <strong>Data:</strong> FDSN count query verified reachable via research tool; full event extraction not performed and shell network access to earthquake.usgs.gov is restricted — <strong>conditional, not ready to run</strong>.</td>
-</tr>
-<tr><td><strong>4 · medium / medium</strong></td>
-<td>Temporal stability vs swarm counterfactual: USGS events split into early/late windows; orientation fields compared; reward only recurrences present in both windows with adequate detection; contrast against a swarm-only null.</td>
-<td>Persistent alignments may distinguish long-lived structures from transient swarms that clustering methods would otherwise mark as faults.</td>
-<td>Differs from H32-B's gridded density difference: held-out temporal windows + explicit swarm counterfactual. <strong>Mimic:</strong> persistent injection, changing network sensitivity. Same conditional FDSN data constraint as #3.</td>
-</tr>
-<tr><td><strong>5 · exploratory / medium</strong></td>
-<td>Cached geophysical bands (ieq_n100a15, deq_n100a15, tmi_hg, rtp, geod_dilaterate) + mirrored LiDAR scarp stack; multiscale persistent scarp with explicit scarp-only control; seismic bands as weak gate only.</td>
-<td>Young subtle scarps may be absent from legacy maps; cross-scale persistence separates structure from erosional noise.</td>
-<td>Explicit seismic-context × scarp interaction differs from H1's seismicity-first ranking. <strong>Mimic:</strong> shorelines, roads, erosional terraces. Owner-mirrored bands available; original 1 m DEM link list still unavailable — coverage unverified.</td>
-</tr>
-</tbody></table></div>
-
-<div class="callout callout-muted"><strong>Required before any future trial:</strong> pre-register the single-lane assignment and complete registry; segment-level spatially buffered folds; catalogue-derived features and emissions built from visible faults only; per-feature held-out leakage canaries (AUC &gt; 0.90 = leakage until disproven); surface <em>and</em> final-dot uniqueness gates vs every registry raster; exact pooled HOLDOUT-DTI (α=0.2, β=0.8, 300 m triangular kernel) with 95% spatial cluster interval vs paired baseline; a selector — not the runner — decides any slot. Budget: ≤3 experiments or ≤2 hours per lane.</div>
-<p><a href="research/hypotheses-20261026.md">Detailed dated research note</a> · <a href="sources.html">Official sources and licenses</a></p>
-<footer>Review: 27 October 2026 UTC · No contest slot used in this review · <a href="sources.html">Evidence &amp; sources</a></footer></main></body></html>
+<p class="note">Earlier lanes in this repo (IEDR seismic-density residuals, MPLC phase congruency) remain stopped/negative with their own cards; the earthquake–strain slate of 2026-10-26 (<a href="research/hypotheses-20261026.md">hypotheses-20261026.md</a>) is superseded by the table above, which folds its ComCat idea in as rank 4 with an explicit swarm mimic and obtainability verdict.</p>
+<p class="note">Parallel-lane note (merged 2026-10-27): H-UNQ-1 SGMC-trace conduit dots remain <b>untested</b> on a fold-local instrument; any conditional revival must first pass per-feature withheld-fold canaries (including seismicity-swarm and lithologic-contact confounds) and obtain selector approval.</p>
+<footer>Updated: 27 October 2026 UTC · No contest slot used · <a href="sources.html">Evidence &amp; sources</a></footer></main></body></html>

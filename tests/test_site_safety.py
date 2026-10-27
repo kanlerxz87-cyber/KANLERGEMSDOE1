@@ -62,7 +62,12 @@ class SiteSafetyTests(unittest.TestCase):
         self.assertIn("no organizer receipt", html.lower())
         self.assertIn("97.58%", html)  # GEMSDOE32 vs GEMSDOE36 duplication
 
-    def test_download_links_only_h_unq1_with_not_cleared_labeling(self):
+    def test_download_links_only_known_research_lanes_with_negative_labeling(self):
+        # Merged 2026-10-27: two same-day lanes publish research rasters
+        # (H-UNQ-1 and KANLER-CONCORD/control). Every linked raster must
+        # belong to a lane whose run card verdict is negative, and the
+        # page must carry explicit do-not-submit / selector labeling.
+        allowed = ("h-unq1", "concord5", "h195field")
         for page in ("index.html", "executive-summary.html", "how-to-submit.html"):
             html = self.html(page)
             parser = Links()
@@ -72,12 +77,22 @@ class SiteSafetyTests(unittest.TestCase):
                              and urlsplit(h).path.lower().endswith((".tif", ".tiff", ".zip"))]
             with self.subTest(page=page):
                 for h in local_tif_zip:
-                    self.assertIn("h-unq1", h, f"{page} links a non-H-UNQ-1 local raster: {h}")
+                    self.assertTrue(any(a in h for a in allowed),
+                                    f"{page} links an unexpected local raster: {h}")
                 if local_tif_zip:
                     low = html.lower()
-                    self.assertTrue("not cleared" in low or "is cleared to upload" in low,
-                                    f"{page} links local rasters without not-cleared labeling")
-                    self.assertIn("selector approval", low)
+                    self.assertTrue("do not submit" in low or "not cleared" in low,
+                                    f"{page} links local rasters without negative labeling")
+                    self.assertIn("selector", low)
+
+    def test_concord_lane_card_is_negative_and_unique(self):
+        c = json.loads((ROOT / "docs/evidence/run_card_concord.json").read_text())
+        self.assertEqual(c["verdict"], "negative")
+        self.assertFalse(c["ok_to_submit"])
+        self.assertIn("CONCORD", c["hypothesis"])
+        self.assertLessEqual(len(c["submission_note"]), 140)
+        self.assertEqual(c["holdout_dti"]["n_withheld_positives"], 22232)
+        self.assertFalse(c["correlation_overlap_vs_registry"]["full_registry_checked"])
 
     def test_all_local_html_links_resolve(self):
         for path in (ROOT / "docs").rglob("*.html"):

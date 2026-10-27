@@ -1,0 +1,121 @@
+{
+  "candidate_id": "KANLER-CONCORD-EXP2-RESEARCH",
+  "slug": "concord5-b2-37654-research",
+  "content_digest8": "5dde8074",
+  "description": "EXP2 CONCORD full map; HOLDOUT-negative research artifact",
+  "submission_note_zeros": "RESEARCH ONLY concord5-b2 HR31=0.0518 NEGATIVE do-not-submit",
+  "submission_note_nan": "RESEARCH ONLY concord5-b2 HR31=0.0518 NEGATIVE do-not-submit",
+  "zeros_tif": {
+    "filename": "kanlergemsdoe1-concord5-b2-37654-research-20261027T171958Z-5dde8074-zeros.tif",
+    "size_bytes": 197050,
+    "sha256": "ed4359e4d70e153ac041692a958e6b5acf08111071f43fce0881818b2241f609",
+    "mode": "zeros",
+    "geometry_reference": "/home/user/KANLERGEMSDOE1/.cache/gems_data/sample_submission.tif",
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "nodata_repr": "None",
+    "emitted_positive_pixels": 37654,
+    "footprint_fraction": 0.007287,
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_finite_pixels": 5167373,
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 1.0,
+    "full_grid_finite_pixels": 12279160,
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "nodata_none_for_zeros": true,
+      "nodata_nan_for_nan": true,
+      "zero_on_catalogue_leakage": true,
+      "local_range_check": true
+    },
+    "all_checks_passed": true
+  },
+  "nan_tif": {
+    "filename": "kanlergemsdoe1-concord5-b2-37654-research-20261027T171958Z-5dde8074-nan.tif",
+    "size_bytes": 330961,
+    "sha256": "5dbcda95cecc8080de3e751e3b296a38638a1eff3e91406b6e319d55cbc970b1",
+    "mode": "nan",
+    "geometry_reference": "/home/user/KANLERGEMSDOE1/.cache/gems_data/sample_submission.tif",
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "nodata_repr": "nan",
+    "emitted_positive_pixels": 37654,
+    "footprint_fraction": 0.007287,
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_finite_pixels": 5167373,
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 1.0,
+    "full_grid_finite_pixels": 5167373,
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "nodata_none_for_zeros": true,
+      "nodata_nan_for_nan": true,
+      "zero_on_catalogue_leakage": true,
+      "local_range_check": true
+    },
+    "all_checks_passed": true
+  },
+  "zeros_zip": {
+    "filename": "kanlergemsdoe1-concord5-b2-37654-research-20261027T171958Z-5dde8074-zeros.zip",
+    "path": "/home/user/KANLERGEMSDOE1/docs/downloads/kanlergemsdoe1-concord5-b2-37654-research-20261027T171958Z-5dde8074-zeros.zip",
+    "size_bytes": 160423,
+    "sha256": "88cba3d847fbd29fcb2a2a385c05a303dc2f88f24fa58bbe10685725d4a51041"
+  },
+  "holdout_metrics": {
+    "catalogue_hidden_mean": 0.05177438449917344,
+    "catalogue_hidden_per_quadrant": {},
+    "sgmc_prevalence_calibrated_dti": null,
+    "drift_corrected_holdout_mean": null,
+    "drift_corrected_per_quadrant": {},
+    "predicted_leaderboard_dti": null,
+    "ei_drift_corrected": null,
+    "slot_decision": "HOLD-DO-NOT-SUBMIT"
+  },
+  "publication_warning": "Local format validity does not establish uniqueness, holdout quality or organizer acceptance."
+}
