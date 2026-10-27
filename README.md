@@ -2,6 +2,20 @@
 
 > **Standing instruction:** Read this README and [`docs/ORIGINAL_PROMPT.md`](docs/ORIGINAL_PROMPT.md) at the start of every session. Maximize P(Win). Own the Outcome.
 
+## 📋 Standing prompt (operative requirements, archive)
+
+Goal: place top of the DOE GEMS Prize leaderboard with a **genuinely unique, high-scoring, single-band GeoTIFF readily downloadable from a clean GitHub Pages executive summary**. Never manufacture a live-score prediction; never copy a previous submission except to learn.
+
+1. **Focus sites:** GEMSDOE24, 25, 27, 28, 30, 31, 32, 33, 36. Produce an executive summary that makes it obvious which submission is best, with a table listing: file to download, estimated score (labeled owner-report / HOLDOUT-DTI diagnostic / ORGANIZER-CONFIRMED receipt — never a bare projection), and whether it is unique vs the other GEMSDOE sites. All nine focus champions are near-duplicates of one nested dotted support; the highest owner-reported score is GEMSDOE32 h33-2-b2 at 0.2778 (no receipt).
+2. **Generate a unique TIF submission.** It must not duplicate any prior submission. The site must offer an obvious, easy download of the submission TIF, and state explicitly whether it is OK to download and submit.
+3. **Fix the `[0, 1]` problem:** predictions must be finite and in [0, 1] (the prior portal rejection was `Predicted values must be in range [0, 1]`). Use a zeros encoding (0 outside footprint, no NaNs anywhere) or verified NaN-outside convention; do not clip invalid input silently.
+4. **Submission identity:** unique file name plus a portal note ≤ 140 characters. Record the exact uploaded file hash, timestamp, and organizer submission-page receipt after any upload.
+5. **Validation gates:** exact CRS EPSG:32611, shape 3730 × 3292, 100 m geotransform matching the sample; single band float32; no NaN inside the footprint; values in [0, 1]; zero outside footprint; zero on the mapped catalogue. Local format validity ≠ organizer acceptance.
+6. **Scoring attribution:** label numbers HOLDOUT-DTI (evaluator version, withheld positives, 95% CI) or ORGANIZER-CONFIRMED (from a receipt). A projection is never a score.
+7. **Lane protocol:** stay in one method lane. Stop if Spearman ρ > 0.90 vs any registry raster, or > 70% of dots within 3 px of one registry raster (no lattice/density exemption). Hide whole fault segments with buffers; derive catalogue features from visible faults only; score pooled DTI (α=0.2, β=0.8, 300 m triangular kernel). Leakage canary: AUC > 0.90 on a single feature means leakage until disproven. Budget: ≤3 experiments or ≤2 hours; negative results are deliverables; a separate selector decides any slot.
+
+**Current state:** H-UNQ-1 (blind stepover–radiometric conduit dots, 34,000 dots) generated: format-valid, unique vs registry, holdout-DTI diagnostic 0.0078 [0.0049, 0.0107] — **negative, not score-cleared**. Download: `docs/downloads/gemsdoe32-h-unq1-blind-stepover-radiometric-conduit-dots-20261027T170959Z-339ac2dd-zeros.tif`.
+
 ## 🔴 STOP — no contest raster is cleared
 
 The prior IEDR lane is stopped. A reproducible audit found **99.39375%, 99.5875% and 99.190625%** of H1/H2/H3 dots within three pixels of a registered spacing-5 lattice, respectively. The user set a strict **>70% = duplicate and stop**, with no density or lattice exemption. A surface-stage check was not recorded. The prior full-map holdout leaked catalogue information through its emission mask, and the feature canaries were not verified on withheld-only folds. Those scores and uniqueness claims are **not promotion evidence**. No new candidate, experiment, or competition slot was created in this review.

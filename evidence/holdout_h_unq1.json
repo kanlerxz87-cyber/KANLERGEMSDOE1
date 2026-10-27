@@ -1,0 +1,127 @@
+{
+  "candidate_id": "H-UNQ-1",
+  "path": "docs/downloads/gemsdoe32-h-unq1-blind-stepover-radiometric-conduit-dots-20261027T170959Z-339ac2dd-zeros.npy",
+  "emitted_pixels": 34000,
+  "hide_and_recover": {
+    "candidate_id": "H-UNQ-1",
+    "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+    "score_label": "HOLDOUT-DTI",
+    "prediction_mode": "full_map_diagnostic_only",
+    "catalogue_feature_provenance_verified": false,
+    "promotion_evidence": false,
+    "provenance_warning": "Fold-local array inputs alone cannot prove visible-only feature construction; require an independent replay.",
+    "b_visible_px": 0.0,
+    "n_withheld_positives": 22232,
+    "n_spatial_clusters": 140,
+    "n_bootstrap_reps": 1000,
+    "pooled_dti": 0.007816093859656434,
+    "ci95_cluster_bootstrap": [
+      0.004881701753467668,
+      0.010662829439198005
+    ],
+    "fold_mean_dti": 0.006935274665308278,
+    "per_quadrant_dti": {
+      "NW": 0.004249313701186089,
+      "NE": 0.005403318552648763,
+      "SW": 0.004126322249951783,
+      "SE": 0.013962144157446479
+    },
+    "folds": {
+      "draw20_fold0": {
+        "dti": 0.0032171084274299996,
+        "coverage": 0.003769334186585045,
+        "tp": 7.203197630564022,
+        "fp": 3543.9395727334468,
+        "fn": 1903.796802369436,
+        "n_truth": 1911,
+        "emitted": 3549
+      },
+      "draw20_fold1": {
+        "dti": 0.005120708310797703,
+        "coverage": 0.00854120062620315,
+        "tp": 20.080362672203606,
+        "fp": 10182.936336425311,
+        "fn": 2330.9196373277964,
+        "n_truth": 2351,
+        "emitted": 10196
+      },
+      "draw20_fold2": {
+        "dti": 0.003955371017125277,
+        "coverage": 0.004256682235421245,
+        "tp": 15.68587403752729,
+        "fp": 5072.888954484648,
+        "fn": 3669.3141259624726,
+        "n_truth": 3685,
+        "emitted": 5082
+      },
+      "draw20_fold3": {
+        "dti": 0.009614114588726158,
+        "coverage": 0.015797809603993674,
+        "tp": 50.9479359728796,
+        "fp": 13545.478491387828,
+        "fn": 3174.05206402712,
+        "n_truth": 3225,
+        "emitted": 13571
+      },
+      "draw21_fold0": {
+        "dti": 0.005281518974942177,
+        "coverage": 0.006003532284736003,
+        "tp": 12.673456653077702,
+        "fp": 3541.2543300367797,
+        "fn": 2098.3265433469223,
+        "n_truth": 2111,
+        "emitted": 3549
+      },
+      "draw21_fold1": {
+        "dti": 0.005685928794499823,
+        "coverage": 0.009671143233883156,
+        "tp": 21.90513942474535,
+        "fp": 10180.681692417811,
+        "fn": 2243.0948605752546,
+        "n_truth": 2265,
+        "emitted": 10196
+      },
+      "draw21_fold2": {
+        "dti": 0.004297273482778289,
+        "coverage": 0.00465819057491435,
+        "tp": 16.69495502049303,
+        "fp": 5072.360359005439,
+        "fn": 3567.305044979507,
+        "n_truth": 3584,
+        "emitted": 5082
+      },
+      "draw21_fold3": {
+        "dti": 0.0183101737261668,
+        "coverage": 0.03073585993982116,
+        "tp": 95.2811658134456,
+        "fp": 13523.359410294437,
+        "fn": 3004.7188341865544,
+        "n_truth": 3100,
+        "emitted": 13571
+      }
+    }
+  },
+  "sgmc_off_catalogue": {
+    "candidate_id": "H-UNQ-1",
+    "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+    "score_label": "HOLDOUT-DTI",
+    "n_withheld_positives": 62703,
+    "n_spatial_clusters": 140,
+    "n_bootstrap_reps": 1000,
+    "sgmc_raw_pooled_dti": 0.5491996064132696,
+    "sgmc_raw_ci95": [
+      0.5367743713513073,
+      0.5588237802041219
+    ],
+    "sgmc_prevalence_calibrated_dti": 0.3984560632083807,
+    "sgmc_calibrated_ci95": [
+      0.37405910199356407,
+      0.4200796924663406
+    ]
+  },
+  "legacy_summary": {
+    "catalogue_hidden_mean": 0.006935274665308278,
+    "sgmc_prevalence_calibrated_dti": 0.398456063208381,
+    "drift_corrected_holdout_mean": 0.16101168208029348
+  }
+}
