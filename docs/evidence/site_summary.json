@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "scope": "Nine pinned historical champions, not an exhaustive current inventory of any site",
-  "raster_audit_reviewed_utc": "2026-10-27T17:16:53+00:00",
+  "raster_audit_reviewed_utc": "2026-10-27T17:15:49+00:00",
   "source_sha256": {
     "focus_manifest": "eb291b9e6e1a3b10ef9c09f583f2884309a77b8fdfa0f1b4a517fe00368b6c34",
-    "raster_audit": "33da0c30a3a32d3c2bb98965fe0d6a2a5c12bea7e49913a29ba43632b6b72b70",
-    "current_run_card": "0461093194ebc616367d273b7272270915ebc52b9e4c2134cc75810bb678d4bb",
+    "raster_audit": "dabab513b9514aa4d516abe8fdf810ea245dd7cc18c601632f4f222dd63a3bdb",
+    "current_run_card": "15bf026ec6b7e36d6fcb95abf7f23c693b5f8d32024fcafeeb05315a837b7399",
     "head_source_review": "f2dcd39f0216ff9535a309e1a700f0771ebdb3f8cd05111782be7c465fa001db"
   },
   "banner": "STOP \u2014 NO RASTER IS CLEARED FOR SUBMISSION",

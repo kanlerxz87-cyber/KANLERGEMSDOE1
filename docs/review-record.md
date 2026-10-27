@@ -1,35 +1,50 @@
-# Three-pass review record
+# Three-Pass Implementation & Verification Record (`2026-10-27 UTC`)
 
-**Date:** 2026-10-27 UTC (updating 2026-10-26 retrospective audit). **Outcome:** `CGJI-HTB` 3-experiment suite (`EXP1_CGJI_PHYS_NMS`, `EXP2_CGJI_OOF_HGB`, `EXP3_CGJI_EK_HYBRID`) implemented, verified fold-locally (`invariance_verified = True`), and GeoTIFF-validated (`15/15` checks passed); release-gate verdict remains `negative` (`ok_to_submit = False`, `selector_required = True`) under the literal zero-exemption spacing-5 calibration-lattice rule (`99.28%` overlap). No competition submission slot was consumed.
+**Repository:** `kanlerxz87-cyber/KANLERGEMSDOE1`  
+**Branch:** `arena/b23a6373-kanlergemsdoe1`  
+**Candidate:** `KANLER1-OCDA-MSCS-EXP3` (`docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.tif`, SHA-256 `ec9b920ac059518f0a2382f08cbe3bc2b6074d1a302e9f25cd8a79abd97c8564`)  
+**Release Gate Verdict:** `verdict: "negative"`, `ok_to_submit: false`, `slot_used: false` (`0` weekly DrivenData slots consumed)
 
-## Pass 1 — implement and verify the evidence
+---
 
-- Restored all 26 owner-mirrored files from pinned commits via `bash scripts/download_competition_data.sh` with size and SHA-256 verification (`data/restore_receipt.json`) and prepared the 19 sanitized input bands via `python scripts/prepare_data.py` (`data/prepared_manifest.json`: `5,167,373` footprint pixels, `60,988` positive catalogue pixels, `58,171` sentinel values sanitized to `NaN`).
-- Built and verified the 35-channel v2 feature stack (`gems32-structural-v2-principal-curvature`, SHA-256 `ec70d7eac8f19f6910b98342ad2eff571bbd9ef20c718eedd900e06ca4acc944`) in `.cache/gems_work/feature_stack.npy`.
-- Re-audited all nine pinned focus-site champions (`GEMSDOE24`..`GEMSDOE36`), proving their exact nested binary support relationships (`H19-5` `121,131` px $\supset$ `GEMSDOE24` `60,069` px $\supset$ `GEMSDOE25/30` `44,090` px `XOR=0` $\supset$ `GEMSDOE31` `40,199` px at $B=1$ $\supset$ `GEMSDOE32` `37,654` px at $B=2$) and evaluating the `D2.8` family fold-locally (`B=0: 0.096743 -> B=1: 0.098977 -> B=2: 0.099202` on `GEMSDOE32-HIDE-RECOVER-v3.1`).
-- Implemented `src/kanler/cgji.py` and `scripts/run_cgji_experiments.py` (`L-CGJI-HTB-2026-10-27`: *Gallardo–Meju Structural Cross-Gradient Collinearity + Piedmont Break-in-Slope Scarp Dipole + Hydrothermal Upflow Breach Detector* on a 1-px transverse Non-Maximum Suppressed crest skeleton) and executed all 3 experiments (`EXP1_CGJI_PHYS_NMS`, `EXP2_CGJI_OOF_HGB`, `EXP3_CGJI_EK_HYBRID`):
-  - `EXP1_CGJI_PHYS_NMS`: `HOLDOUT-DTI = 0.060929` `[0.049968, 0.073197]` (`GEMSDOE32-HIDE-RECOVER-v3.1`, `n=22,232`); **`HOLDOUT-DTI = 0.115633` `[0.097758, 0.134248]` (`GEMSDOE32-SGMC-CAL-v3.0`, `n=62,703`, #1 overall)**; 21-peer non-lattice max 3-px overlap `40.99% <= 70%` (`25.51%` vs `GEMSDOE32`).
-  - `EXP2_CGJI_OOF_HGB`: **`HOLDOUT-DTI = 0.099671` `[0.085008, 0.113669]` (`GEMSDOE32-HIDE-RECOVER-v3.1`, `n=22,232`, #1 overall vs `GEMSDOE32` `0.099202`)**; `0.083354` on SGMC v3.0; 21-peer non-lattice max 3-px overlap `58.70% <= 70%` (`45.28%` vs `GEMSDOE32`).
-  - `EXP3_CGJI_EK_HYBRID`: `HOLDOUT-DTI = 0.096477` `[0.082813, 0.110499]` on Hide-Recover v3.1; `0.092496` `[0.079882, 0.104520]` on SGMC v3.0; 21-peer non-lattice max 3-px overlap `57.35% <= 70%` (`43.77%` vs `GEMSDOE32`).
-- Emitted and validated the primary GeoTIFF bundle via `gems32.submission.write_submission_pair`: `submissions/cgji_htb_20261027/gemsdoe32-cgji-htb-exp2-oof-hgb-b2-20261027T013000Z-5214b9ec-zeros.tif` (`sha256 = 74035c67056f7727fb16c04b61446f32a2c729fcf5d711a3b666761e56fcbffe`, `15/15` checks passed).
+## Pass 1 — Implement & Verify End-to-End
 
-## Pass 2 — find and fix defects
+1. **Autonomous Data Restoration & Preparation:**
+   - Executed `bash scripts/download_competition_data.sh` (restored & SHA-256-verified all 26 core, external, and historical scored files) and `python scripts/prepare_data.py` (prepared 19 input bands + rebuilt 35-channel `gems32-structural-v2` feature stack).
+   - Restored the 9 focus rasters (`GEMSDOE24..36`) and pulled 16 SHA-256-pinned sibling/fleet rasters (`KANLERGEMSDOE2`, `KANLERGEMSDOE3`, `WBGGEMSDOE1..3`, `GEMSDOE70/73/76/91`) for a 42-raster uniqueness corpus.
+2. **Byte-Level Dataset & Portal Forensic Audit:**
+   - Verified and documented 5 raw-byte irregularities: `IR-BAND-06` (`tc` = GeoDAWN Radiometric Total Count, $\rho = +0.999951$), `IR-BAND-18` (signed $+\partial g_{\text{iso}}/\partial x$), `IR-BAND-10` (dependent seismicity density), `IR-SAMPLE-04` (`60,988` positive pixels in mirrored `sample_submission.tif`), and `IR-PORTAL-05` (`y_out = np.zeros(...)`, `nodata=None` in official reference U-Net preventing IEEE-754 `NaN` range failures).
+   - Proved the zero-XOR nested pixel geometry of `H19-5 (0.1922) -> D2.8 (0.2600) -> B1 (0.2708) -> B2 (0.2778)` and its ~38% recall ceiling.
+3. **Pre-Registration, Leakage Canaries, & 3-Experiment Fold-Local Execution:**
+   - Pre-registered 4 untried geological hypotheses (`H-K1-A..D`) in `docs/research/hypotheses-20261027.md` prior to coding.
+   - Implemented `src/kanler/ocda.py` (`26` label-free `OCDA` channels + `2` fold-local `cell.visible_full` continuation channels); verified `63/63` single-feature withheld-fold leakage canaries (`max AUC = 0.7386 <= 0.90`) and exact hidden-perturbation provenance invariance (`0` overlap, `0.0` float diff).
+   - Executed `CTRL-BASE35-OOF` (`0.103048`) and `EXP-1..3` (`EXP-1: 0.104042`, `EXP-2: 0.025006` logged negative, `EXP-3: 0.105830`) strictly through shared `scripts/evaluate_holdout.py` and `scripts/submission_writer.py`.
 
-- **Holdout & hidden-label invariance:** Fixed the prior full-catalogue collar leakage by enforcing strict out-of-quadrant training (`ctx.foot & (ctx.quad != cell.fold)`) on `cell.visible_full` only and fold-local visible-fault collar masking (`d_vis_full > 2.0`). Verified bit-for-bit hidden-label perturbation invariance (`max_abs_diff = 0`) and tested all 41 features individually on withheld folds (`max sym-AUC = 0.584624 <= 0.90` on `cgji_scarp_dipole`).
-- **Memory & dependency hardening:** Replaced `pyproj` usage with `rasterio.crs.CRS.from_wkt` and `rasterio.warp.transform` so zero external dependencies beyond `requirements.txt` are needed. Eliminated 3D memmap and 22-raster registry RAM spikes by extracting features only at the 1-px NMS crest (`653,976 x 40 float32 = 104 MB`) and streaming registry peers one file at a time (`< 600 MB` peak RSS).
-- **Autonomous data script & `.gitignore`:** Fixed `scripts/download_competition_data.sh` default target directory to `data/` so `bash scripts/download_competition_data.sh && python scripts/prepare_data.py` runs seamlessly out of the box, and added `data/focus/*.tif` to `.gitignore`.
-- **Uniqueness & release gate:** Proved that inside the 10-px eroded active evaluation domain (`4,992,922` pixels), **zero** off-label pixels lie outside 3 px of `13gems_20261001_r13-lattice-s5_v2_nan-outside.tif` (`100.0000%` coverage). Reported both the 21-peer non-lattice structural uniqueness pass (`58.70% <= 70%`) and the literal 22-peer lattice STOP (`99.28% > 70%`) side-by-side without silent exemptions.
+---
 
-## Pass 3 — full request recheck
+## Pass 2 — Review & Fix Bugs, Assumptions, and Edge Cases
 
-| Request | Result and limitation |
-|---|---|
-| Unique, high-scoring TIFF with easy contest download | **Generated, validated (`15/15` checks), and staged in `submissions/cgji_htb_20261027/`; direct contest download remains locked under literal lattice gate.** Passes all 21 non-lattice structural/focus peers (`max overlap = 58.70% <= 70%`, `45.28%` vs `GEMSDOE32`), achieves fold-local `HOLDOUT-DTI = 0.099671` (Hide-Recover v3.1) and `0.115633` (SGMC v3.0 on Exp 1), and awaits selector review for the calibration-lattice exemption. |
-| Test the strongest new hypothesis before a slot | **Completed (`L-CGJI-HTB-2026-10-27`, 3 experiments).** Five differentiated geological hypotheses ranked (`H1: CGJI-HTB` executed; `H2: PBTD`, `H3: CSFD`, `H4: RMWD`, `H5: USGS-3DEP-QF` specified with exact formulas and official free sources). No live slot consumed. |
-| Nine-site executive summary | **Provided with attribution & fold-local OOF/SGMC scores.** Owner-reported scores, pinned file names/hashes, exact nested support relationships, and all 81 directional pair checks are disclosed in `README.md` and `docs/executive-summary.html`. |
-| Explain `GEMSDOE32` `0.2778` | **Mathematical proof & fold-local OOF ablation provided.** Proved `GEMSDOE32 = D2.8 \ {d <= 2 px}` (`XOR = 0`) and verified fold-local OOF progression `B=0 (0.096743) -> B=1 (0.098977) -> B=2 (0.099202) -> CGJI-HTB Exp 2 (0.099671)`. |
-| Score and 95% uncertainty | **Provided with exact protocol labels.** Every metric is labeled `HOLDOUT-DTI` with evaluator version (`GEMSDOE32-HIDE-RECOVER-v3.1`, `n=22,232`; `GEMSDOE32-SGMC-CAL-v3.0`, `n=62,703`) and 95% spatial cluster-bootstrap CI. |
-| Automatic format checks and rejection guidance | **Implemented and verified (`15/15` checks passed).** Both `-zeros.tif` (`0.0` outside footprint, `nodata=None`, 100% of `12,279,160` cells in `[0,1]`) and `-nan.tif` (`NaN` outside footprint, `nodata=nan`) are validated and documented in `docs/how-to-submit.html`. |
-| Official sources and feed | **Sources cited; daily feed parser tested.** Official DrivenData, USGS, and DOE GDR sources linked in `docs/sources.html` and `registry/sources_verified.json`. |
-| Prompt archive / three passes | **Provided in `README.md`, `docs/ORIGINAL_PROMPT.md`, and this document.** |
-| PR / merge and hosted Pages | **Executed on branch `arena/b7b3cad0-kanlergemsdoe1` and merged via `gh pr merge`.** |
+1. **`float32` Right/Bottom Boundary Rounding in `sample_bilinear_offset`:**
+   - *Bug caught:* `np.float32(3292 - 1.0001)` rounded to `3291.0` in 24-bit float32 significand, causing `x0 + 1 == 3292` `IndexError`.
+   - *Fix:* Replaced with `np.nextafter(np.float32(W - 1), np.float32(0.0))`, explicit `np.minimum(x0, W - 2)`, convex weight clamping `np.clip(wx, 0.0, 1.0)`, and explicit `H >= 2, W >= 2` shape validation.
+2. **Positive-Unlabeled Split-Inversion Theorem (`EXP-2 -> EXP-3`):**
+   - *Bug/assumption caught:* Zeroing `fold_vis_tip_continuation` and `fold_vis_stepover_relay_bridge` on `visible_mask` while training a PU classifier with `y = visible_mask` caused every positive training sample to have value `0.0`, inverting tree splits (`0.104042 -> 0.025006`).
+   - *Fix:* Decoupled Stage-1 geophysical `OCDA` likelihood from Stage-2 logistic calibration fit strictly on 20% inner-withheld training-quadrant fault segments (`w_tip ≈ +2.47, w_relay ≈ +0.45`), raising `HIDE-RECOVER-v3.1` to `0.105830` (`+27.3%` in SW Walker Lane).
+3. **Submodular Heap Pool Sizing & `min_dist_px == 0` Self-Blocking:**
+   - *Edge case caught:* Small candidate pools (`pool_mult=6`) starved `ctrl_base35_oof` on wide un-thinned blobs, and `min_dist_px=0` did not set `blk_disk[0, 0] = True`.
+   - *Fix:* Passed `cell.active_sub` with `pool_mult=26..28` so 100% of fold budgets fill cleanly, and set `blk_disk[r_blk, r_blk] = True` unconditionally.
+4. **Memory-Safe Streaming Registry Uniqueness & `affine` Matmul Deprecation:**
+   - *Bug caught:* Holding all 42 `3730x3292` float32 rasters simultaneously (`2.58 GB`) triggered container OOM on the zero-swap `3.8 GiB` host; `inv * (e, n)` emitted `PendingDeprecationWarning`.
+   - *Fix:* Precomputed candidate rank vector once and streamed the 42 peers one-by-one (`< 300 MB` RSS, `49 s` runtime); replaced `inv * (e, n)` with `rasterio.transform.rowcol`; added outside-footprint zero validation to `evaluate_holdout.py --sgmc-map`.
+
+---
+
+## Pass 3 — Full Re-Check Against Original Prompt & Protocol
+
+- **Protocol Rule 1 (Lane & Uniqueness):** Single lane `H-K1-A (OCDA-MSCS)` enforced; both pre-placement continuous surface (`max |Spearman| = 0.0785` vs discrete detectors; `0.3227` across all 42) and post-placement dots (`max 3-px = 52.33% <= 70%` across all 40 discrete detectors; `99.9363%` vs space-filling `r13-lattice-s5_v2` explicitly flagged) verified in `evidence/ocda_uniqueness_and_gate.json`.
+- **Protocol Rule 2 (Reuse, Don't Rebuild):** Shared `gems32.features.load_checked`, `scripts/evaluate_holdout.py`, and `scripts/submission_writer.py` called directly; `--sgmc-map` added cleanly in shared `scripts/evaluate_holdout.py`.
+- **Protocol Rule 3 (Strict Score Labeling):** Every local score labeled `HOLDOUT-DTI` with evaluator version, `N`, and 95% CI; historical site reports labeled `USER/OWNER-REPORT`; zero unlabeled forecasts.
+- **Protocol Rule 4 (Leakage Canary):** All 63 features tested individually on withheld folds (`max AUC = 0.7386 <= 0.90`).
+- **Protocol Rule 5 (Run Card):** Synchronized JSON Run Card written to `evidence/run_card.json`, `data/run-card.json`, and `docs/evidence/current_run_card.json`.
+- **Protocol Rule 6 (Budget):** Exactly `3 / 3` experiments executed well within `< 2` hours; `0` weekly competition slots consumed.
+- **UI/UX, Standing Prompt & Tests:** Standing prompt stored verbatim in `README.md` and `docs/ORIGINAL_PROMPT.md`; all 6 GitHub Pages subpages + 6 root redirects verified; all 35 automated unit tests passing (`0` failures).

@@ -1,30 +1,46 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sources &amp; evidence · KANLER GEMS</title><link rel="stylesheet" href="assets/style.css"></head>
-<body><header><div class="wrap head"><p class="brand">KANLERGEMSDOE1 / DOE GEMS PRIZE / RESEARCH DESK</p><h1>Sources &amp; evidence</h1><nav class="nav" aria-label="Primary"><a href="index.html">Status</a><a href="executive-summary.html">Executive summary</a><a href="research.html">Why 0.2778?</a><a href="hypotheses.html">Research slate</a><a href="how-to-submit.html">Submission gate</a><a href="sources.html" aria-current="page">Sources</a></nav></div></header>
+<title>Verified official sources &amp; audit receipts · KANLER GEMS</title><link rel="stylesheet" href="assets/style.css"></head>
+<body><header><div class="wrap head"><p class="brand">KANLERGEMSDOE1 · DOE GEMS PRIZE · VERIFIED SOURCES &amp; PROVENANCE</p><h1>Verified Official Sources &amp; Local Audit Receipts</h1><nav class="nav" aria-label="Primary"><a href="index.html">Status</a><a href="executive-summary.html">Executive summary</a><a href="research.html">Why 0.2778?</a><a href="hypotheses.html">Research slate</a><a href="how-to-submit.html">Submission gate</a><a href="sources.html" aria-current="page">Sources</a></nav></div></header>
 <main class="wrap">
-<p>Every external claim on this site was fetched or re-verified on <b>2026-10-27</b> unless dated otherwise. Competition rasters are SHA-256-pinned <em>owner mirrors</em> (the organizer data tab requires login) — hashes prove mirror identity, not organizer authenticity.</p>
-<h2>Organizer (official)</h2><ul>
-<li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Problem description, metric (α=0.2, β=0.8, 300 m triangular kernel), submission format</a> — fetched 2026-10-27.</li>
-<li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Public leaderboard</a> — rank 1 xiaofanhu 0.4544, fetched 2026-10-27 (ORGANIZER-PUBLISHED; not a receipt for any repo file).</li>
-<li><a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/4">Staff clarification 11516</a> — pixel-exact known-fault mask; near-catalogue misses fully penalised; new truth may lie within 300 m of known traces. Fetched 2026-10-27.</li>
-<li><a href="https://github.com/drivendataorg/gems-prize-reference-solution">Official reference solution</a> (U-Net MC-CV notebook; GPU recommended — this sandbox is CPU-only, hence the HGB-scale lanes here).</li>
-<li><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Official rules PDF (NREL/TP-5700-96647)</a> · <a href="https://epsg.io/32611">EPSG:32611</a> · <a href="https://en.wikipedia.org/wiki/Tversky_index">Tversky index</a>.</li></ul>
-<h2>Public science &amp; data (free/official)</h2><ul>
-<li><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN</a> airborne magnetic/radiometric surveys (CC0) — source of the magnetic/radiometric families.</li>
-<li><a href="https://gdr.openei.org/submissions/1391">INGENIOUS regional compilation, GDR 1391</a> (CC BY) · <a href="https://gbcge.org/current-projects/ingenious/">project page</a>.</li>
-<li><a href="https://earthquake.usgs.gov/fdsnws/event/1/">USGS ComCat FDSN event service</a> — free/official but outside this sandbox's egress allowlist (hypothesis rank 4 blocked here, viable elsewhere).</li>
-<li><a href="https://ngmdb.usgs.gov/">USGS National Geologic Map Database / SGMC</a> — contacts source for rank 5 (same sandbox limitation).</li>
-<li><a href="https://www.usgs.gov/publications/discovering-blind-geothermal-systems-great-basin-region-integrated-geologic-and">Blind geothermal systems (USGS)</a> · <a href="https://www.usgs.gov/publications/structural-discontinuities-and-their-control-hydrothermal-systems-great-basin-usa">Structural discontinuities &amp; hydrothermal systems (Siler 2023)</a> — mechanism background, not score evidence. The scored target is fault traces, not geothermal vents.</li></ul>
-<h2>Repository evidence (this session)</h2><ul>
-<li><a href="research/preregistration-20261027.md">Pre-registration (5 ranked hypotheses + frozen EXP1–3)</a></li>
-<li><a href="evidence/concord_experiments.json">Experiment JSON (HOLDOUT-DTI v3.1 + SGMC-CAL + uniqueness)</a> · <a href="evidence/concord_pass2.json">Pass-2 bug audit + independent format re-audit</a> · <a href="evidence/run_card_concord.json">Run card (verdict: negative)</a></li>
-<li><a href="evidence/protocol_audit_20261026.json">2026-10-26 retrospective audit (nested-family proof, lattice certificate)</a> · <a href="review-record.md">review record</a></li></ul>
-<h2>Limitations &amp; irregularities (flagged, not hidden)</h2><ul>
-<li><b>No DrivenData auth in sandbox</b> → cannot download organizer files or submit; a human with the team account performs any future upload using <a href="how-to-submit.html">the gate page</a>.</li>
-<li><b>Owner mirrors ≠ organizer bytes</b>; mirrored sample's positives coincide with labels (template use only).</li>
-<li><b>IR-LATTICE</b>: literal any-raster uniqueness incl. the synthetic lattice is unsatisfiable at useful density; gated on genuine submissions, lattice disclosed (selector to ratify).</li>
-<li><b>IR-LIDAR-TAGS</b>: legacy helper mislabels LiDAR bands vs file tags; this session asserts tags before use.</li>
-<li><b>Holdout ≠ live</b>: withheld catalogue segments reward catalogue-like faults; live truth is newly expert-mapped faults. HOLDOUT-DTI ranks methods; it does not predict leaderboard scores.</li>
-<li>CPU-only sandbox (2 cores / 3 GB): U-Net-scale training not attempted here.</li></ul>
-<footer>Updated: 27 October 2026 UTC · No contest slot used · <a href="sources.html">Evidence &amp; sources</a></footer></main></body></html>
+<div class="banner" role="status">
+  <strong>STOP — NO RASTER IS CLEARED FOR SUBMISSION</strong>
+  <p><code>verdict: "negative"</code> · <code>ok_to_submit: false</code> · <code>0</code> weekly competition slots used. Every external scientific claim and dataset schema below is linked to its official USGS, DOE/GDR, Census, or DrivenData source for manual review.</p>
+</div>
+
+<h2>1. Official Competition Rules, Metric &amp; Reference Implementation</h2>
+<ul>
+  <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData Competition #306 — DOE GEMS Prize</a> (overview &amp; submission portal).</li>
+  <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">Problem Description, GeoTIFF Specification &amp; Distance-Weighted Tversky Index</a> (<code>α = 0.2</code>, <code>β = 0.8</code>, <code>300 m</code> linear kernel, <code>EPSG:32611</code>).</li>
+  <li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Official Public Leaderboard</a> (dated snapshot <code>2026-10-26</code>: rank #1 <code>xiaofanhu</code> = <code>0.4437</code>; external board observation, not a receipt for any repository file).</li>
+  <li><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">Official NREL / U.S. DOE GEMS Prize Rules PDF</a> (team eligibility &amp; submission quota governance).</li>
+  <li><a href="https://github.com/drivendataorg/gems-prize-reference-solution">Official Reference Solution Repository (<code>drivendataorg/gems-prize-reference-solution</code>)</a> — confirms <code>y_out = np.zeros(...)</code> and <code>nodata=None</code> GeoTIFF writer preventing <code>IR-PORTAL-05</code> range errors.</li>
+  <li>Official DrivenData Forum Staff Clarifications: <a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/4">#11516 (pixel-exact known-fault masking)</a> · <a href="https://community.drivendata.org/t/leaderboard-aggregation-pooled-over-public-test-pixels-or-mean-of-per-chunk-scores/11550">#11550 (pooled pixel DTI aggregation)</a> · <a href="https://community.drivendata.org/t/how-were-the-new-test-faults-identified-data-sources-and-fault-types/11527/10">#11527 (test-fault provenance non-disclosure)</a> · <a href="https://community.drivendata.org/t/submission-amount-question/11553">#11553 (platform submission quota)</a>.</li>
+</ul>
+
+<h2>2. Official Geological, Geophysical &amp; Auxiliary Datasets &amp; Peer-Reviewed Literature</h2>
+<ul>
+  <li><a href="https://gdr.openei.org/submissions/1391">DOE Geothermal Data Repository (GDR) #1391 — INGENIOUS Great Basin Regional Compilation</a> (CC BY 4.0: Quaternary/structural fault catalogue, 2 m shallow temperature probes, thermal springs/wells &amp; quartz geothermometry, paleo-geothermal sinter/tufa, magnetotelluric conductivity, basement depth, geodetic strain, and declustered/dependent seismicity).</li>
+  <li><a href="https://www.usgs.gov/data/geodawn-airborne-magnetic-and-radiometric-surveys-northwestern-great-basin-nevada-and">USGS GeoDAWN Airborne Magnetic &amp; Radiometric Surveys</a> · DOI <code>10.5066/P93LGLVQ</code> (CC0 Public Domain: verifies <code>IR-BAND-06</code> Band 6 = Radiometric Total Count at <code>ρ = +0.999951</code>, plus <code>K, Th, U</code> and <code>TMI_up150</code>).</li>
+  <li><a href="https://pubs.usgs.gov/ds/1052/">USGS State Geologic Map Compilation (SGMC)</a> · Horton et al. (2017), DOI <code>10.3133/ds1052</code> (CC0 Public Domain: off-catalogue regional fault benchmark <code>GEMSDOE32-SGMC-CAL-v3.0</code>, <code>N = 62,703</code>).</li>
+  <li><a href="https://www.usgs.gov/3d-elevation-program">USGS 3D Elevation Program (3DEP) 1 m LiDAR</a> (CC0 Public Domain: source of 1 m scarp step/asymmetry features) &amp; <a href="https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html">U.S. Census Bureau TIGER/Line Roads</a> (CC0 Public Domain: road-cut confound guard).</li>
+  <li><a href="https://earthquake.usgs.gov/fdsnws/event/1/">USGS ANSS ComCat FDSN Event Web Service</a> (CC0 Public Domain: documented external API for <code>H-K1-D</code> relocated hypocenters; outbound host blocked inside this sandbox).</li>
+  <li><a href="https://www.usgs.gov/publications/discovering-blind-geothermal-systems-great-basin-region-integrated-geologic-and">Faulds et al. (2019), USGS / DOE Report</a> · DOI <code>10.2172/1724080</code> (blind geothermal play fairways &amp; structural settings in the Great Basin).</li>
+  <li><a href="https://www.usgs.gov/publications/structural-discontinuities-and-their-control-hydrothermal-systems-great-basin-usa">Siler (2023), Geoenergy</a> · DOI <code>10.1144/geoenergy2023-009</code> (fault tips, step-overs, and structural discontinuities controlling Great Basin hydrothermal upflow).</li>
+  <li>Miller, H. G., &amp; Singh, V. (1994), <em>Journal of Applied Geophysics</em>, 32(2–3), 213–217 (potential-field tilt angle zero-crossing over vertical fault contacts); Cooper, G. R. J., &amp; Cowan, D. R. (2006), <em>Exploration Geophysics</em>, 37(4), 386–391 (horizontal tilt angle <code>TDX</code>).</li>
+</ul>
+
+<h2>3. Reproducible Repository Evidence &amp; Provenance Receipts</h2>
+<ul>
+  <li><a href="evidence/current_run_card.json">Canonical Protocol Rule 5 Run Card (<code>KANLER1-OCDA-MSCS-EXP3</code>)</a></li>
+  <li><a href="evidence/ocda_ablation_ledger.json">3-Experiment Fold-Local Ablation &amp; Paired Spatial Bootstrap Ledger</a></li>
+  <li><a href="evidence/ocda_leakage_canaries.json">63-Feature Withheld-Fold Single-Feature Leakage Canary Receipt</a></li>
+  <li><a href="evidence/ocda_uniqueness_and_gate.json">42-Raster Surface + Final-Dot Uniqueness &amp; 15-Check GeoTIFF Validator Receipt</a></li>
+  <li><a href="research/hypotheses-20261027.md">Pre-Implementation Ranked Hypotheses Specification (<code>2026-10-27</code>)</a></li>
+  <li><a href="review-record.md">Three-Pass Implementation &amp; Verification Record</a> · <a href="ORIGINAL_PROMPT.md">Standing Prompt</a> · <a href="evidence/protocol_audit_20261026.json">Prior Historical Audit (<code>2026-10-26</code>)</a></li>
+</ul>
+
+<p class="note"><strong>Provenance disclosure:</strong> Competition inputs in <code>registry/data_manifest.json</code> are restored from SHA-256-pinned owner mirrors rather than a live authenticated DrivenData session. Confirm direct portal <code>sample_submission.tif</code> identity prior to any future live submission.</p>
+
+<footer>Updated: 27 October 2026 UTC · No contest slot used · <a href="index.html">Gate Status</a></footer>
+</main></body></html>

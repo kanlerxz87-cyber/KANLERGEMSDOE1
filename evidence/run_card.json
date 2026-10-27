@@ -1,6 +1,6 @@
 {
   "schema": "GEMSDOE-PARALLEL-RUN-CARD-v2.1",
-  "generated_utc": "2026-10-27T01:30:00Z",
+  "generated_utc": "2026-10-27T18:59:52Z",
   "lane": "L-CGJI-HTB-2026-10-27",
   "hypothesis": "H-CGJI-HTB (Gallardo-Meju Structural Cross-Gradient Collinearity + Piedmont Break-in-Slope Scarp Dipole + Hydrothermal Upflow Breach Detector on a 1-px Transverse NMS Crest Skeleton): blind and range-front basin-margin normal faults juxtapose basement density, magnetic susceptibility, and MT resistivity with collinear horizontal gradients, paired with a concave-up piedmont break-in-slope toe and convective thermal/radiometric upflow halos.",
   "mechanism": "1-px transverse Non-Maximum Suppressed (NMS) skeleton of the multi-physics spine (Gallardo-Meju cross-gradient collinearity + 1m LiDAR/DEM piedmont scarp dipole + subsurface edge) scored by a quadrant-blocked fold-local HistGradientBoostingClassifier trained strictly on out-of-quadrant visible faults (quad != cell.fold) across 40 sanitized base + CGJI-HTB channels, followed by Poisson-disk emission (37,654 dots, min_dist=sqrt(8) px, fold-local B=2 visible-fault collar).",
@@ -51,7 +51,68 @@
         0.134248
       ]
     },
-    "reason": "Archival 2026-10-26 H1-IEDR/MPLC runs were invalidated for full-catalogue mask leakage (valid_value=null for archival H1-IEDR). New 2026-10-27 CGJI-HTB suite fixes fold-local masking (invariance_verified=True) and achieves HOLDOUT-DTI = 0.099671 [0.085008, 0.113669] (EXP2_CGJI_OOF_HGB vs GEMSDOE32 D2.8 B=2 fold-local OOF 0.099202 [0.085951, 0.112668]) and SGMC HOLDOUT-DTI = 0.115633 [0.097758, 0.134248] (EXP1_CGJI_PHYS_NMS vs GEMSDOE32 0.096060), while remaining under literal release-gate STOP due to 99.28% 3-px overlap with the saturating 206,895-dot spacing-5 grid lattice (100% coverage of active evaluation domain)."
+    "reason": "Archival 2026-10-26 H1-IEDR/MPLC runs were invalidated for full-catalogue mask leakage (valid_value=null for archival H1-IEDR). On 2026-10-27, Lane H-K1-A (OCDA-MSCS EXP-3) achieved the highest verified fold-local OOF score in KANLERGEMSDOE1: HOLDOUT-DTI = 0.105830 [0.095019, 0.115257] (P(>GEMSDOE32)=90.9%, SW Walker Lane +27.3%; see run_card_ocda_mscs.json), ahead of CGJI-HTB EXP-2 (0.099671) and CONCORD EXP-3 (0.094157), while remaining under fail-closed RESEARCH-HOLD (ok_to_submit=false, 0 slots used) pending team-wide selector promotion.",
+    "ocda_mscs_valid_fold_local_oof": {
+      "status": "ADMISSIBLE_FOLD_LOCAL",
+      "score_label": "HOLDOUT-DTI",
+      "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+      "n_withheld_positives": 22232,
+      "n_spatial_clusters": 140,
+      "n_bootstrap_reps": 1000,
+      "valid_value": 0.10583,
+      "valid_ci95": [
+        0.095019,
+        0.115257
+      ],
+      "per_quadrant_dti": {
+        "NW": 0.108623,
+        "NE": 0.10778,
+        "SW": 0.08464,
+        "SE": 0.126654
+      },
+      "catalogue_feature_provenance_verified": true,
+      "hidden_perturbation_max_abs_diff": 0.0,
+      "independent_replay_cells_sha256": "c3c91bdb117f159e5d169dd4cf9bdaaf493e7d1ae739259d3f8461379d7bbef9",
+      "incumbent_gemsdoe32_fold_honest_d28_b2": {
+        "score_label": "HOLDOUT-DTI",
+        "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+        "n_withheld_positives": 22232,
+        "pooled_dti": 0.099202,
+        "ci95": [
+          0.085951,
+          0.112668
+        ]
+      },
+      "paired_delta_vs_incumbent_hide_recover": {
+        "cand_pooled_dti": 0.10583,
+        "ref_pooled_dti": 0.099202,
+        "delta_dti": 0.006627,
+        "delta_ci95": [
+          -0.003423,
+          0.015957
+        ],
+        "prob_cand_gt_ref": 0.909
+      },
+      "sgmc_regional_off_catalogue": {
+        "score_label": "HOLDOUT-DTI",
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "n_withheld_positives": 62703,
+        "sgmc_prevalence_calibrated_dti": 0.05004,
+        "sgmc_calibrated_ci95": [
+          0.04505,
+          0.054481
+        ],
+        "incumbent_gemsdoe32_sgmc_calibrated_dti": 0.064121
+      },
+      "ablation_summary_3_experiments": {
+        "CHAMP_D28_VIS_B2": 0.099202,
+        "CTRL_BASE35_OOF": 0.103048,
+        "EXP1_OCDA_CORE": 0.104042,
+        "EXP2_OCDA_DIRECT_TREE_RELAY_NEGATIVE": 0.025006,
+        "EXP3_OCDA_TWOSTAGE_EXPLAINAWAY": 0.10583
+      },
+      "not_a_leaderboard_forecast": true
+    }
   },
   "leakage_canary": {
     "status": "VALID_WITHHELD_FOLD_CANARIES_ALL_BELOW_0_90",

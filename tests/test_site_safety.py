@@ -2,11 +2,11 @@
 
 Intended state (2026-10-27):
 - No contest raster is cleared for submission; the landing page says so in a STOP banner.
-- Download links exist only for the new unique H-UNQ-1 candidate, and every page that links
-  a .tif/.zip carries explicit not-cleared labeling ("not cleared to submit" / "DO NOT
-  SUBMIT YET" / "selector approval required").
+- Download links exist only for known 2026-10-27 research-hold lanes (OCDA-MSCS, H-UNQ-1,
+  CONCORD), and every page that links a .tif/.zip carries explicit not-cleared labeling.
 - All nine focus sites are covered in the executive summary with their duplication findings.
 """
+import hashlib
 import json
 import sys
 import tempfile
@@ -47,7 +47,7 @@ class SiteSafetyTests(unittest.TestCase):
         self.assertIn("99.19%", html)
         self.assertIn("not score-cleared", html.lower())
         self.assertIn("selector approval", html.lower())
-        # An obvious download for the unique candidate exists, but labeled not cleared.
+        self.assertIn("gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.tif", html)
         self.assertIn("h-unq1-blind-stepover-radiometric-conduit-dots-20261027T170959Z-339ac2dd-zeros.tif", html)
         self.assertIn("Not cleared to submit", html)
 
@@ -58,16 +58,13 @@ class SiteSafetyTests(unittest.TestCase):
                 self.assertIn(site, html)
         self.assertIn("holdout dti diagnostic", html.lower())
         self.assertIn("0.0078", html)
+        self.assertIn("0.105830", html)
         self.assertIn("not a leaderboard forecast", html.lower())
         self.assertIn("no organizer receipt", html.lower())
-        self.assertIn("97.58%", html)  # GEMSDOE32 vs GEMSDOE36 duplication
+        self.assertIn("97.58%", html)
 
     def test_download_links_only_known_research_lanes_with_negative_labeling(self):
-        # Merged 2026-10-27: two same-day lanes publish research rasters
-        # (H-UNQ-1 and KANLER-CONCORD/control). Every linked raster must
-        # belong to a lane whose run card verdict is negative, and the
-        # page must carry explicit do-not-submit / selector labeling.
-        allowed = ("h-unq1", "concord5", "h195field")
+        allowed = ("ocda-mscs", "h-unq1", "concord5", "h195field")
         for page in ("index.html", "executive-summary.html", "how-to-submit.html"):
             html = self.html(page)
             parser = Links()
@@ -94,6 +91,27 @@ class SiteSafetyTests(unittest.TestCase):
         self.assertEqual(c["holdout_dti"]["n_withheld_positives"], 22232)
         self.assertFalse(c["correlation_overlap_vs_registry"]["full_registry_checked"])
 
+    def test_ocda_mscs_lane_card_is_negative_admissible_and_unique(self):
+        c = json.loads((ROOT / "docs/evidence/run_card_ocda_mscs.json").read_text())
+        self.assertEqual(c, json.loads((ROOT / "evidence/run_card_ocda_mscs.json").read_text()))
+        self.assertEqual(c["verdict"], "negative")
+        self.assertFalse(c["ok_to_submit"])
+        self.assertFalse(c["slot_used"])
+        self.assertEqual(c["holdout_dti"]["status"], "ADMISSIBLE_FOLD_LOCAL")
+        self.assertEqual(c["holdout_dti"]["score_label"], "HOLDOUT-DTI")
+        self.assertEqual(c["holdout_dti"]["n_withheld_positives"], 22232)
+        val = c["holdout_dti"]["valid_value"]
+        ci = c["holdout_dti"]["valid_ci95"]
+        self.assertTrue(0.0 < ci[0] <= val <= ci[1] < 1.0)
+        self.assertTrue(c["validator_output"]["all_checks_passed"])
+        self.assertTrue(c["validator_output_nan"]["all_checks_passed"])
+        self.assertEqual(hashlib.sha256((ROOT / c["raster_path_zeros"]).read_bytes()).hexdigest(), c["raster_sha256"])
+        self.assertEqual(hashlib.sha256((ROOT / c["raster_path_nan"]).read_bytes()).hexdigest(), c["raster_sha256_nan"])
+        self.assertTrue(c["correlation_overlap_vs_registry"]["discrete_detectors_surface_passed"])
+        self.assertTrue(c["correlation_overlap_vs_registry"]["discrete_detectors_final_passed"])
+        self.assertLessEqual(c["correlation_overlap_vs_registry"]["max_within_3px_vs_discrete_detectors"], 0.70)
+        self.assertLessEqual(len(c["submission_note"]), 140)
+
     def test_all_local_html_links_resolve(self):
         for path in (ROOT / "docs").rglob("*.html"):
             p = Links()
@@ -113,15 +131,18 @@ class SiteSafetyTests(unittest.TestCase):
         self.assertEqual(c["holdout_dti"]["status"], "INADMISSIBLE")
         self.assertIsNone(c["holdout_dti"]["valid_value"])
         self.assertIsNone(c["holdout_dti"]["valid_ci95"])
+        self.assertIn("ocda_mscs_valid_fold_local_oof", c["holdout_dti"])
         self.assertEqual(len(c["raster_sha256"]), 64)
         self.assertTrue(c["validator_output"]["all_checks_passed"])
         self.assertFalse(c["correlation_overlap_vs_registry"]["full_registry_checked"])
         self.assertGreater(c["correlation_overlap_vs_registry"]["final_dots_within_3px_of_lattice"], 0.70)
         self.assertLessEqual(len(c["submission_note"]), 140)
         self.assertEqual(c, json.loads((ROOT / "docs/evidence/current_run_card.json").read_text()))
+        self.assertEqual(c, json.loads((ROOT / "evidence/run_card.json").read_text()))
 
     def test_hypothesis_page_discloses_untested_and_scope(self):
         text = self.html("hypotheses.html")
+        self.assertIn("H-K1-A", text)
         self.assertIn("H-UNQ-1", text)
         self.assertIn("untested", text.lower())
         self.assertIn("swarm", text.lower())
@@ -129,7 +150,7 @@ class SiteSafetyTests(unittest.TestCase):
         self.assertIn("selector approval", text.lower())
 
     def test_root_pages_redirect_to_actual_pages(self):
-        for name in ("index", "executive-summary", "hypotheses", "sources"):
+        for name in ("index", "executive-summary", "hypotheses", "sources", "research", "how-to-submit"):
             self.assertIn("docs/" + name + ".html", (ROOT / (name + ".html")).read_text())
 
     def test_parallel_archive_is_literal_duplicate(self):

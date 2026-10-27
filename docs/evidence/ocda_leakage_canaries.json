@@ -1,0 +1,541 @@
+{
+  "evaluated_utc": "2026-10-27T17:29:50Z",
+  "scope": "Strict withheld-fold positives vs active negatives across all 8 PreparedCells (GEMSDOE32-HIDE-RECOVER-v3.1)",
+  "n_withheld_positive_evaluations": 22232,
+  "n_active_negative_evaluations": 88928,
+  "total_features_tested": 63,
+  "threshold_symmetric_auc": 0.9,
+  "n_flagged": 0,
+  "passed": true,
+  "max_symmetric_auc": 0.738633,
+  "max_feature": "fold_vis_stepover_relay_bridge",
+  "top_12_features": [
+    {
+      "group": "ocda_fold_visible_only",
+      "name": "fold_vis_stepover_relay_bridge",
+      "raw_auc": 0.738633,
+      "symmetric_auc": 0.738633,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_fold_visible_only",
+      "name": "fold_vis_tip_continuation",
+      "raw_auc": 0.729549,
+      "symmetric_auc": 0.729549,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_piedmont_slope_dipole_400m",
+      "raw_auc": 0.636474,
+      "symmetric_auc": 0.636474,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_piedmont_slope_dipole_800m",
+      "raw_auc": 0.622663,
+      "symmetric_auc": 0.622663,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_elev_step_curv_toe",
+      "raw_auc": 0.589191,
+      "symmetric_auc": 0.589191,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "curv_s2",
+      "raw_auc": 0.580203,
+      "symmetric_auc": 0.580203,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "curv_s1",
+      "raw_auc": 0.565668,
+      "symmetric_auc": 0.565668,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "strike_cos",
+      "raw_auc": 0.562689,
+      "symmetric_auc": 0.562689,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "coherence_s2",
+      "raw_auc": 0.558705,
+      "symmetric_auc": 0.558705,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "relief5",
+      "raw_auc": 0.558648,
+      "symmetric_auc": 0.558648,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_lidar_face_dipole",
+      "raw_auc": 0.552476,
+      "symmetric_auc": 0.552476,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band19",
+      "raw_auc": 0.55189,
+      "symmetric_auc": 0.55189,
+      "leakage_flag_gt_0p90": false
+    }
+  ],
+  "features": [
+    {
+      "group": "shared_v2",
+      "name": "band01",
+      "raw_auc": 0.483962,
+      "symmetric_auc": 0.516038,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band02",
+      "raw_auc": 0.518444,
+      "symmetric_auc": 0.518444,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band03",
+      "raw_auc": 0.501509,
+      "symmetric_auc": 0.501509,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band04",
+      "raw_auc": 0.503356,
+      "symmetric_auc": 0.503356,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band05",
+      "raw_auc": 0.531039,
+      "symmetric_auc": 0.531039,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band06",
+      "raw_auc": 0.452785,
+      "symmetric_auc": 0.547215,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band07",
+      "raw_auc": 0.505794,
+      "symmetric_auc": 0.505794,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band08",
+      "raw_auc": 0.515287,
+      "symmetric_auc": 0.515287,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band09",
+      "raw_auc": 0.501041,
+      "symmetric_auc": 0.501041,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band10",
+      "raw_auc": 0.503146,
+      "symmetric_auc": 0.503146,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band11",
+      "raw_auc": 0.533548,
+      "symmetric_auc": 0.533548,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band12",
+      "raw_auc": 0.494275,
+      "symmetric_auc": 0.505725,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band13",
+      "raw_auc": 0.491016,
+      "symmetric_auc": 0.508984,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band14",
+      "raw_auc": 0.49374,
+      "symmetric_auc": 0.50626,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band15",
+      "raw_auc": 0.495011,
+      "symmetric_auc": 0.504989,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band16",
+      "raw_auc": 0.518727,
+      "symmetric_auc": 0.518727,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band17",
+      "raw_auc": 0.499399,
+      "symmetric_auc": 0.500601,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band18",
+      "raw_auc": 0.495653,
+      "symmetric_auc": 0.504347,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band19",
+      "raw_auc": 0.55189,
+      "symmetric_auc": 0.55189,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "curv_s1",
+      "raw_auc": 0.565668,
+      "symmetric_auc": 0.565668,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "curv_s2",
+      "raw_auc": 0.580203,
+      "symmetric_auc": 0.580203,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "ridge_s1",
+      "raw_auc": 0.470858,
+      "symmetric_auc": 0.529142,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "ridge_s2",
+      "raw_auc": 0.46724,
+      "symmetric_auc": 0.53276,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "ridge_s3",
+      "raw_auc": 0.462734,
+      "symmetric_auc": 0.537266,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "relief5",
+      "raw_auc": 0.558648,
+      "symmetric_auc": 0.558648,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "tophat2",
+      "raw_auc": 0.476272,
+      "symmetric_auc": 0.523728,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "tmi_edge",
+      "raw_auc": 0.501089,
+      "symmetric_auc": 0.501089,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "rtp_edge",
+      "raw_auc": 0.504999,
+      "symmetric_auc": 0.504999,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "grav_edge",
+      "raw_auc": 0.533684,
+      "symmetric_auc": 0.533684,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "cond_edge",
+      "raw_auc": 0.495863,
+      "symmetric_auc": 0.504137,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "depth_grad",
+      "raw_auc": 0.526371,
+      "symmetric_auc": 0.526371,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "coherence_s2",
+      "raw_auc": 0.558705,
+      "symmetric_auc": 0.558705,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "strike_cos",
+      "raw_auc": 0.562689,
+      "symmetric_auc": 0.562689,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "strike_sin",
+      "raw_auc": 0.541453,
+      "symmetric_auc": 0.541453,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "footprint",
+      "raw_auc": 0.5,
+      "symmetric_auc": 0.5,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_piedmont_slope_dipole_400m",
+      "raw_auc": 0.636474,
+      "symmetric_auc": 0.636474,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_piedmont_slope_dipole_800m",
+      "raw_auc": 0.622663,
+      "symmetric_auc": 0.622663,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_elev_step_curv_toe",
+      "raw_auc": 0.589191,
+      "symmetric_auc": 0.589191,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_axial_ridge_persistence",
+      "raw_auc": 0.505624,
+      "symmetric_auc": 0.505624,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_local_elev_pct_2p5km",
+      "raw_auc": 0.469016,
+      "symmetric_auc": 0.530984,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_slope_prominence_800m",
+      "raw_auc": 0.505408,
+      "symmetric_auc": 0.505408,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_halfgraben_grav_dipole_600m",
+      "raw_auc": 0.53258,
+      "symmetric_auc": 0.53258,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_basement_step_dipole_600m",
+      "raw_auc": 0.534046,
+      "symmetric_auc": 0.534046,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_copolar_halfgraben_index",
+      "raw_auc": 0.490823,
+      "symmetric_auc": 0.509177,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_mt_cond_dipole_500m",
+      "raw_auc": 0.496494,
+      "symmetric_auc": 0.503506,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_grav_ew_polarity_grad",
+      "raw_auc": 0.537344,
+      "symmetric_auc": 0.537344,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_true_mag_tilt_zero_crest",
+      "raw_auc": 0.503586,
+      "symmetric_auc": 0.503586,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_cooper_tdx_mag",
+      "raw_auc": 0.502698,
+      "symmetric_auc": 0.502698,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_tmi_up150_persistence",
+      "raw_auc": 0.503597,
+      "symmetric_auc": 0.503597,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_true_grav_tilt_zero_crest",
+      "raw_auc": 0.521785,
+      "symmetric_auc": 0.521785,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_axial_potfield_persistence",
+      "raw_auc": 0.518221,
+      "symmetric_auc": 0.518221,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_lidar_scarp_debiased",
+      "raw_auc": 0.545155,
+      "symmetric_auc": 0.545155,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_lidar_face_dipole",
+      "raw_auc": 0.552476,
+      "symmetric_auc": 0.552476,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_contour_orthogonality",
+      "raw_auc": 0.51123,
+      "symmetric_auc": 0.51123,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_road_confound_guard",
+      "raw_auc": 0.514396,
+      "symmetric_auc": 0.514396,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_lidar_valid_flag",
+      "raw_auc": 0.503604,
+      "symmetric_auc": 0.503604,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_k_th_alteration_excess",
+      "raw_auc": 0.464974,
+      "symmetric_auc": 0.535026,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_probe_2m_f2mdab_halo",
+      "raw_auc": 0.518704,
+      "symmetric_auc": 0.518704,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_hydrothermal_vent_sinter_halo",
+      "raw_auc": 0.480062,
+      "symmetric_auc": 0.519938,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_strain_dilation_strike_compat",
+      "raw_auc": 0.525273,
+      "symmetric_auc": 0.525273,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_free",
+      "name": "ocda_multiphysics_strike_concordance",
+      "raw_auc": 0.497246,
+      "symmetric_auc": 0.502754,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_fold_visible_only",
+      "name": "fold_vis_tip_continuation",
+      "raw_auc": 0.729549,
+      "symmetric_auc": 0.729549,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "ocda_fold_visible_only",
+      "name": "fold_vis_stepover_relay_bridge",
+      "raw_auc": 0.738633,
+      "symmetric_auc": 0.738633,
+      "leakage_flag_gt_0p90": false
+    }
+  ]
+}
