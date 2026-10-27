@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_utc": "2026-10-26T22:04:13.621011+00:00",
+  "generated_utc": "2026-10-27T17:04:50.224580+00:00",
   "group": "all",
   "verified_files_count": 26,
   "storage_root": ".cache/gems_data",
@@ -19,7 +19,7 @@
       "id": "labels",
       "dest": "labels.tif",
       "group": "core",
-      "status": "present",
+      "status": "restored",
       "bytes": 425830,
       "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
       "provenance": "hash-pinned owner mirror; not organizer-authenticated"
@@ -37,7 +37,7 @@
       "id": "sample_submission",
       "dest": "sample_submission.tif",
       "group": "core",
-      "status": "present",
+      "status": "restored",
       "bytes": 1599597,
       "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
       "provenance": "hash-pinned owner mirror; not organizer-authenticated"
@@ -73,7 +73,7 @@
       "id": "ext_derived_sgmc_faults_100m_u8",
       "dest": "external/derived_sgmc_faults_100m_u8.tif",
       "group": "external",
-      "status": "present",
+      "status": "restored",
       "bytes": 198602,
       "sha256": "643cbe992ef4ba37588fb469163ed8291e3ceb23d6c1f78a3cfaa462430c2da0",
       "provenance": "hash-pinned owner mirror; not organizer-authenticated"
@@ -154,7 +154,7 @@
       "id": "calib_13gems_20261001_r13-lattice-s5_v2_nan-ou",
       "dest": "scored/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
       "group": "scored",
-      "status": "present",
+      "status": "restored",
       "bytes": 1706456,
       "sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
       "provenance": "hash-pinned owner mirror; not organizer-authenticated"

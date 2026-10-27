@@ -1,5 +1,5 @@
 {
-  "reviewed_utc_date": "2026-10-26",
+  "reviewed_utc_date": "2026-10-27",
   "banner": "STOP \u2014 DO NOT SUBMIT",
   "ok_to_submit": false,
   "verdict": "negative",
@@ -15,5 +15,7 @@
     "scope": "organizer-published public board; not a candidate receipt"
   },
   "new_experiments": 0,
-  "slots_used": 0
+  "slots_used": 0,
+  "follow_through": "../review-20261027.md",
+  "generated_site_summary": "site_summary.json"
 }

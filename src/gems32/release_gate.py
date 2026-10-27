@@ -94,21 +94,40 @@ def _valid_holdout(result):
             and result.get("catalogue_feature_provenance_verified") is True
             and isinstance(replay_hash, str) and re.fullmatch(r"[0-9a-f]{64}", replay_hash)
             and isinstance(n, int) and not isinstance(n, bool) and n > 0
-            and len(ci) == 2 and np.isfinite([dti, *ci]).all()
-            and 0 <= ci[0] <= dti <= ci[1] <= 1
+            and len(ci) == 2 and all(_real(v, 0, 1) for v in (dti, *ci))
+            and ci[0] <= dti <= ci[1]
         )
     except (KeyError, TypeError, ValueError):
         return False
 
 
+def _real(value, lo, hi):
+    return (not isinstance(value, (bool, np.bool_)) and isinstance(value, (float, int, np.floating, np.integer))
+            and np.isfinite(value) and lo <= value <= hi)
+
+
 def _gate_ok(result, stage):
+    """Recheck raw measurements, not just a caller-supplied ``passed`` flag."""
     if not isinstance(result, dict) or result.get("stage") != stage:
         return False
     rows = result.get("comparisons")
-    return bool(result.get("inventory_complete") is True and result.get("passed") is True
-                and isinstance(rows, list) and rows
-                and all(isinstance(r, dict) and r.get("measurable") is True
-                        and r.get("duplicate") is False for r in rows))
+    if not (result.get("inventory_complete") is True and result.get("passed") is True
+            and result.get("stop") is False and isinstance(rows, list) and rows):
+        return False
+    names = []
+    for row in rows:
+        if not isinstance(row, dict):
+            return False
+        name = row.get("registry")
+        if not isinstance(name, str) or not name.strip():
+            return False
+        names.append(name)
+        if not (row.get("measurable") is True and row.get("duplicate") is False
+                and _real(row.get("spearman_surface"), -1, .90)
+                and _real(row.get("spearman_support"), -1, .90)
+                and _real(row.get("within_3px_fraction"), 0, .70)):
+            return False
+    return len(set(names)) == len(names)
 
 
 def promotion_decision(*, lane, surface_check, final_check, canary_aucs,
@@ -116,19 +135,19 @@ def promotion_decision(*, lane, surface_check, final_check, canary_aucs,
                        paired_delta_ci95=None, expected_features=None):
     """Return a recommendation only, never select a real slot.
 
-    Missing registry coverage, a missing feature canary, unverified fold-local
-    replay, an unauthenticated sample, or a paired CI touching zero blocks it.
+    Missing registry coverage, a missing/symmetric-AUC-failed feature canary, unverified fold-local
+    replay, differing evaluation-design hashes, an unauthenticated sample, or a paired CI touching zero blocks it.
     Even a promote result requires a separate selector and organizer quota check.
     """
     try:
         paired_win = bool(paired_delta_ci95 is not None
                           and len(paired_delta_ci95) == 2
-                          and np.isfinite(paired_delta_ci95).all()
+                          and all(_real(v, 0, 1) for v in paired_delta_ci95)
                           and 0 < paired_delta_ci95[0] <= paired_delta_ci95[1] <= 1)
         feature_set = set(expected_features or [])
         canary_ok = (isinstance(canary_aucs, dict) and bool(feature_set)
                      and set(canary_aucs) == feature_set
-                     and all(np.isfinite(a) and 0 <= a <= .90 for a in canary_aucs.values()))
+                     and all(_real(a, .10, .90) for a in canary_aucs.values()))
     except (TypeError, ValueError):
         paired_win = canary_ok = False
     holdout_ok = _valid_holdout(holdout) and _valid_holdout(incumbent)
@@ -140,10 +159,16 @@ def promotion_decision(*, lane, surface_check, final_check, canary_aucs,
     gates = dict(
         lane=isinstance(lane, str) and bool(lane.strip()),
         surface=_gate_ok(surface_check, 'surface'), final=_gate_ok(final_check, 'final'),
+        same_registry=bool(_gate_ok(surface_check, 'surface') and _gate_ok(final_check, 'final')
+                           and {r['registry'] for r in surface_check['comparisons']}
+                           == {r['registry'] for r in final_check['comparisons']}),
         canaries=bool(canary_ok),
         holdout=bool(same_evaluation is True and holdout_ok
                      and holdout['evaluator_version'] == incumbent['evaluator_version']
                      and holdout['n_withheld_positives'] == incumbent['n_withheld_positives']
+                     and isinstance(holdout.get('evaluation_design_sha256'), str)
+                     and re.fullmatch(r'[0-9a-f]{64}', holdout['evaluation_design_sha256']) is not None
+                     and holdout['evaluation_design_sha256'] == incumbent.get('evaluation_design_sha256')
                      and holdout.get('pooled_dti',holdout.get('dti')) > incumbent.get('pooled_dti',incumbent.get('dti'))),
         paired_improvement=paired_win,
         format=bool(format_ok),
