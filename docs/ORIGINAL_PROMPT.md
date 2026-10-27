@@ -1,6 +1,6 @@
 # Standing request and protocol — reconstructed archive
 
-**Read on every session.** This is a reconstruction of the consequential user requirements retained in the session memory, **not** a verbatim copy of the original prompt, whose full text is not available here. A parallel lane's earlier [prompt-in-substance archive](mplc/ORIGINAL_PROMPT_MPLC.md) preserves additional details, but also does not reproduce the full original or the roughly 90 listed historical scores. Later user instructions can add or amend it. Maximize P(Win); Own the Outcome.
+**Read on every session, together with the [full request received 2026-10-27](REQUEST_20261027.md).** This is a reconstruction of the consequential user requirements retained in the session memory, **not** a verbatim copy of the original prompt, whose full text is not available here. A parallel lane's earlier [prompt-in-substance archive](mplc/ORIGINAL_PROMPT_MPLC.md) preserves additional details, but also does not reproduce the full original or the roughly 90 listed historical scores. Later user instructions can add or amend it. Maximize P(Win); Own the Outcome.
 
 ## Objective and deliverables
 

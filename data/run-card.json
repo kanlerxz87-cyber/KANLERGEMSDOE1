@@ -1,111 +1,81 @@
 {
-  "lane": "KANLER-CONCORD (2026-10-27 session)",
-  "hypothesis": "CONCORD: coincident ridge/edge percentile ranks across five independent physics families (magnetics, gravity, topography+LiDAR scarp, radiometric alteration edges, subsurface conductivity/basement step), fused by soft-min (0.7 geometric-mean + 0.3 mean) with a road-distance veto, emitted by value-ordered 2.83px thinning at 37,654 dots, recover buried piedmont faults that are weak in every single survey.",
-  "mechanism": "A basement step under fan alluvium deflects gravity, magnetics, conductivity and fan slope on one trace while producing no scarp; AND-fusion promotes coincident micro-edges and demotes single-survey (already-mapped, high-contrast) sources. No catalogue-derived feature enters the surface.",
-  "named_non_fault_mimic": "Lithologic contacts and mafic dikes (also coincident multi-family edges); roads/terraces/shorelines (road veto tested; Pass-2 diagnostic shows the veto harmed withheld AUC 0.568->0.542, i.e. roads track range-front fault corridors).",
+  "hypothesis": "H1 IEDR \u2014 prior independent-earthquake-density / dilation / magnetic-gradient lane",
+  "mechanism": "Historical raster ranked a seismicity-density, geodetic dilation and magnetic-gradient surface; spaced binary emission with a catalogue collar.",
+  "named_non_fault_process": "Earthquake swarms induced by geothermal injection or mining; geological contacts can also create magnetic edges.",
   "holdout_dti": {
-    "evidence_class": "HOLDOUT-DTI",
-    "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
-    "n_withheld_positives": 22232,
-    "n_bootstrap": 1000,
-    "candidate_EXP2_pooled_dti": 0.05177438449917344,
-    "candidate_EXP2_ci95": [
-      0.04429722782459135,
-      0.05953786178344628
-    ],
-    "control_EXP1_h195field_pooled_dti": 0.10018513335161372,
-    "control_EXP1_ci95": [
-      0.08693455371053699,
-      0.11375645860599068
-    ],
-    "paired_EXP2_minus_EXP1": {
-      "delta_pooled": -0.04841074885244028,
-      "delta_ci95": [
-        -0.06251314589995924,
-        -0.03410393182510542
-      ],
-      "p_delta_gt_0": 0.0
+    "status": "INADMISSIBLE",
+    "reason": "The archived full map was built with the complete catalogue; no fold-local emission provenance. Canary tested all labels, not withheld-only.",
+    "archived_diagnostic": {
+      "evidence_class": "HOLDOUT-DTI (invalid for promotion)",
+      "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.0",
+      "n_withheld_positives": 22232,
+      "value": 0.006168701520087212,
+      "ci95": [
+        0.004257781467839945,
+        0.008568349046095498
+      ]
     },
-    "EXP3_gated_vs_B2_paired": {
-      "delta_pooled": -0.006028299984456129,
-      "delta_ci95": [
-        -0.009706877342737915,
-        -0.002989043768950658
-      ],
-      "p_delta_gt_0": 0.0
-    },
-    "status": "VALID-MEASUREMENT-NEGATIVE-RESULT"
-  },
-  "sgmc_independent_instrument": {
-    "evidence_class": "HOLDOUT-DTI",
-    "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
-    "concord_full_cal": 0.06695938775055603,
-    "champion_static_cal": 0.0641209376417646,
-    "note": "CONCORD edges SGMC but primary hide-recover failed decisively; SGMC cannot override (pre-registered)."
-  },
-  "leakage_canaries_symmetric_auc": {
-    "mag": 0.5198318015698092,
-    "grav": 0.52703841740884,
-    "topo": 0.5479024488912378,
-    "rad": 0.5220379419305505,
-    "sub": 0.5200017106535624,
-    "concord_surface": 0.5418917514731019
+    "valid_value": null,
+    "valid_ci95": null
   },
   "correlation_overlap_vs_registry": {
-    "scope": "9 pinned focus champions + 12 scored detectors + 4 repo historical candidates, SHA-deduped (22 genuine checked); NOT fleet-wide",
-    "full_registry_checked": false,
-    "surface_worst_abs_spearman_genuine": {
-      "value": 0.07028477315737729,
-      "vs": "gemsdoe-ens12-adopted-7f00890a.tif",
-      "limit": 0.9
-    },
-    "dots_worst_overlap_3px_genuine": {
-      "value": 0.46042917087162055,
-      "vs": "8GEMSDOE_Hedge-v2_submission.tif",
-      "limit": 0.7
-    },
-    "vs_champion_GEMSDOE32": {
-      "spearman": 0.033688894610379626,
-      "dots_within_3px": 0.28799065172358845
-    },
-    "lattice_diagnostic_only": {
-      "dots_within_3px": 0.9984596590003718,
-      "ir": "IR-LATTICE: synthetic spacing-5 lattice 3px halo covers 99.87% of eligible domain (champion itself 99.9%); literal inclusion makes uniqueness impossible for any useful-density map. Reported transparently; gated on genuine submissions. Selector must ratify scope."
-    },
-    "unique_vs_genuine_registry": true
+    "scope": "Nine pinned focus champions and one registered lattice; not a complete site-wide registry",
+    "surface_pre_placement": "NOT RECORDED; FAIL CLOSED",
+    "final_dots_spearman_vs_lattice": -0.0003301565638120439,
+    "final_dots_within_3px_of_lattice": 0.9939375,
+    "duplicate_threshold": 0.7,
+    "literal_uniqueness": "FAIL; STOP",
+    "all_focus_champions_pass_final_dot_comparisons": true,
+    "full_registry_checked": false
   },
-  "raster_sha256": "ed4359e4d70e153ac041692a958e6b5acf08111071f43fce0881818b2241f609",
+  "raster_sha256": "455c3a1780806718c881480228631046cb3090a4734fac54f398c97533a89d39",
   "validator_output": {
     "all_checks_passed": true,
-    "min": 0.0,
-    "max": 1.0,
-    "dots": 37654,
-    "sha256": "ed4359e4d70e153ac041692a958e6b5acf08111071f43fce0881818b2241f609",
-    "foot_finite": 5167373,
-    "foot_nan": 0,
-    "foot_min": 0.0,
-    "foot_max": 1.0,
-    "full_min": 0.0,
-    "full_max": 1.0,
-    "sentinel_lt_-1e30_anywhere": false
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "nodata_none_for_zeros": true,
+      "nodata_nan_for_nan": true,
+      "zero_on_catalogue_leakage": true,
+      "local_range_check": true
+    },
+    "shape": [
+      3730,
+      3292
+    ],
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 1.0,
+    "local_validation_passed": true,
+    "official_outside_bounds_null_or_nan": false,
+    "official_submission_format_compatible": false,
+    "format_irregularity": "This historical -zeros.tif stores 0 outside bounds. The official problem page requires null/NaN outside bounds; this file is not format-cleared for submission.",
+    "organizer_template_authenticated": false
   },
-  "submission_name": "kanlergemsdoe1-concord5-b2-37654-research-20261027T171958Z-5dde8074-zeros.tif",
-  "submission_note": "RESEARCH ONLY concord5-b2 HR31=0.0518 NEGATIVE do-not-submit",
-  "note_n_chars": 60,
-  "projection_NOT_a_score": {
-    "point": 0.1436,
-    "method": "0.2778 (USER/OWNER-REPORT anchor) x EXP2/EXP1 HOLDOUT-DTI ratio 0.517",
-    "use": "ranking only; holdout population != live new-fault population"
-  },
-  "irregularities": [
-    "IR-LATTICE (above).",
-    "IR-LIDAR-TAGS: legacy h33/hypotheses lidar composite mislabels bands 2/5 vs file tags (step_max is band 3); CONCORD uses tag-verified bands with an assert. Historical outputs built on the mislabeled composite are unaffected here but flagged.",
-    "IR-SAMPLE-MIRROR: mirrored sample_submission positives coincide with labels (60,988) contrary to official all-zero description; used as grid/footprint template only. Competition bytes are owner mirrors, not organizer-authenticated.",
-    "IR-BUDGET-STARVE: EXP1 control pool (H19-5 support + B2) could not reach density budget in NE/SE cells (e.g. 7,223/7,889) nor full-map (36,388/37,654) under prune-then-thin; control still doubled candidate DTI, so the negative is conservative."
-  ],
-  "experiments_used": "3 of 3 (EXP1 control, EXP2 candidate, EXP3 emission factor); Pass-2 AUC diagnostics created no candidate",
-  "slots_used": 0,
+  "submission_name": "kanlergemsdoe1-h1-iedr-s3p17-b2-32000-20261026T214518Z-fe519ae3-zeros.tif",
+  "submission_note": "Research only: IEDR prior artifact; literal registry duplicate; DO NOT SUBMIT.",
   "verdict": "negative",
   "ok_to_submit": false,
-  "selector_action": "Do not submit any file from this lane. Next lane: pre-registered rank-2 PU-HGB line learner (docs/research/preregistration-20261027.md), dropping the road veto and learning family weights with spatial blocks."
+  "selector_required": true,
+  "new_experiments": 0,
+  "new_rasters": 0,
+  "slots_used": 0,
+  "reviewed_utc": "2026-10-27T17:16:53+00:00"
 }

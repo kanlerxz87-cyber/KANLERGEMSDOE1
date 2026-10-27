@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "reviewed_utc": "2026-10-27T00:00:00+00:00",
+  "status": "NEGATIVE — FORMAT-VALID AND UNIQUE, NOT SCORE-CLEARED",
+  "ok_to_submit": false,
+  "selector_required": true,
+  "new_experiments": 1,
+  "new_rasters": 1,
+  "slots_used": 0,
+  "hypothesis": "H-UNQ-1 blind stepover-radiometric conduit dots: place sparse soft dots on off-catalogue USGS SGMC geologic-map faults (>300 m from the mapped catalogue, dilated 1 px), boosted where GeoDAWN radiometric K/TC anomaly is high, corroborated by GDR 1391 geothermal wells/springs (temperature-weighted) and Quaternary vents, slight LiDAR-scarp context, distance penalty to TIGER roads (road edges mimic scarps); zeroed exactly on the mapped catalogue; non-maximum suppressed at >= 2 px; capped at 34,000 dots (champion budget class). Targets hidden faults missing from the USGS/INGENIOUS catalogue rather than re-dotting the D2.x family every champion reuses.",
+  "mechanism": "DTI (alpha=0.2, beta=0.8, 300 m triangular kernel) rewards predictions within 300 m of truth and penalizes false-positive mass. Champion scores (0.26-0.2778 owner-reported) came from sparsifying one nested dotted support (H19-5 121,131 px -> D2.8 44,090 px -> B=1 40,199 px -> B=2 37,654 px = h33-2-b2), which cuts redundant FP mass. H-UNQ-1 keeps the sparse-dot FP control but moves the nuclei off-catalogue onto blind-structure evidence, so it captures truth pixels the dotted family cannot reach while staying below the 70%/0.90 duplication thresholds.",
+  "named_non_fault_mimic": "Lithologic contacts, mafic dikes, shoreline/terrace risers, road edges and magnetic flight-line artifacts can all look like fault or alteration signatures. Mitigations: require off-catalogue SGMC-trace nuclei, concurrence with radiometric K/TC anomaly, well/vent corroboration, and a road-distance penalty; none of these remove the mimic risk entirely.",
+  "holdout_dti": {
+    "evidence_class": "HOLDOUT-DTI (diagnostic full-map only; NOT promotion evidence, NOT organizer-confirmed)",
+    "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1 (GEMSDOE32-HOLDOUT-v3-visible-gated for cells)",
+    "n_withheld_positives": 22232,
+    "n_cells": 8,
+    "pooled_dti": 0.007816093859656434,
+    "ci95": [0.004881701753467668, 0.010662829439198005],
+    "fold_mean_dti": 0.006935274665308278,
+    "per_quadrant_dti": {"NW": 0.004249313701186089, "NE": 0.005403318552648763, "SW": 0.004126322249951783, "SE": 0.013962144157446479},
+    "reading": "Catalogue-truth holdout is low by design: H-UNQ-1 dots avoid the mapped catalogue entirely and target off-catalogue blind faults, so they recover few withheld catalogue segments. This number does NOT predict the leaderboard (hidden truth is new expert-labelled faults, not the catalogue). No organizer forecast is made.",
+    "sgmc_off_catalogue_diagnostic": {
+      "n_withheld_positives": 62703,
+      "raw_pooled_dti": 0.5491996064132696,
+      "raw_ci95": [0.5367743713513073, 0.5588237802041219],
+      "prevalence_calibrated_dti": 0.3984560632083807,
+      "reading": "Self-referential by construction (dot nuclei are drawn from off-catalogue SGMC traces); disclosed as circular, not treated as evidence of hidden-fault recovery."
+    }
+  },
+  "leakage_canary": {
+    "note": "Per-feature AUC canaries were not rerun for H-UNQ-1 because the catalogue holdout is diagnostic-only and the SGMC number is self-referential. Any future promotion attempt must run per-feature withheld-fold canaries; AUC > 0.90 on a single feature means leakage until disproven."
+  },
+  "correlation_overlap_vs_registry": {
+    "scope": "Two pinned registry rasters (champion_h33_b2_02778.tif = GEMSDOE32 h33-2-b2, d28_02600.tif = D2.8 family); full nine-focus replay pending local copies of all nine focus TIFFs.",
+    "surface_pre_placement": "NOT RECORDED (projection surface not stored); dot-stage check below.",
+    "final_dots": {
+      "vs_champion_h33": {"spearman_binary": 0.000597941965244145, "cand_dots_within_3px_of_ref": 0.13491262548467625, "ref_dots_within_3px_of_cand": 0.15320588235294116, "identical_support": false},
+      "vs_d28": {"spearman_binary": -0.0005231208993682298, "cand_dots_within_3px_of_ref": 0.1250170106600136, "ref_dots_within_3px_of_cand": 0.16026470588235294, "identical_support": false}
+    },
+    "duplicate_threshold": {"spearman_rho": 0.90, "dots_within_3px_fraction": 0.70},
+    "literal_uniqueness": "PASS vs both registry rasters (rho << 0.90; 12.5-13.5% << 70%). Not a complete-registry certificate."
+  },
+  "raster_sha256": {
+    "zeros_tif": "df92cfc2a5341623ecb1f1a71f21ca77e5754b65391344440e16e62bef5251d0",
+    "nan_tif": "f634f30f9a9c7971ee9ceb37dcb56f18300e7f36d1f33338f6fefc9207f3f8a3",
+    "zeros_zip": "e3261dd2ed7897705b1fe121c266af1239cdfe835e0739f3461191cf88a5c273"
+  },
+  "validator_output": {
+    "all_checks_passed": true,
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "nodata_none_for_zeros": true,
+      "nodata_nan_for_nan": true,
+      "zero_on_catalogue_leakage": true,
+      "local_range_check": true
+    },
+    "shape": [3730, 3292],
+    "crs": "EPSG:32611",
+    "transform": [100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0],
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 0.6539629697799683,
+    "emitted_positive_pixels": 34000,
+    "on_catalogue_positive_pixels": 0,
+    "footprint_fraction": 0.00658,
+    "organizer_template_authenticated": false,
+    "reading": "The -zeros encoding has 0.0 outside the footprint and no NaNs anywhere, so the full grid is finite in [0,1] - this addresses the prior 'Predicted values must be in range [0, 1]' portal rejection at format level. Local validation is not organizer acceptance."
+  },
+  "submission_name": "gemsdoe32-h-unq1-blind-stepover-radiometric-conduit-dots-20261027T170959Z-339ac2dd-zeros.tif",
+  "submission_note": "Unique blind stepover-radiometric conduit dots; off-catalogue SGMC traces; holdout diagnostic only; selector review first",
+  "note_length_chars": 121,
+  "estimated_leaderboard_score": null,
+  "score_evidence": "No organizer submission-page receipt exists. HOLDOUT-DTI diagnostic 0.0078 (95% CI [0.0049, 0.0107]) on the restored owner label mirror is diagnostic only and does not forecast the leaderboard. Any published leaderboard number would be a fabrication.",
+  "verdict": "negative",
+  "data_provenance": "Competition grids restored from SHA-256-pinned owner mirrors (data/restore_receipt.json); not organizer-authenticated. External layers: USGS GeoDAWN (DOI 10.5066/P93LGLVQ, CC0), GDR 1391 INGENIOUS (CC BY 4.0), US Census TIGER/Line 2024 (public domain)."
+}

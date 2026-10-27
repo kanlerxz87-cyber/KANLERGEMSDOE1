@@ -13,3 +13,5 @@ Evidence: [`../evidence/current_run_card.json`](../evidence/current_run_card.jso
 authorized for a DrivenData slot. A future cleared file will be announced by
 a green banner on the status page plus a `promote` run card — never by
 filename alone.
+
+| `gemsdoe32-h-unq1-blind-stepover-radiometric-conduit-dots-20261027T170959Z-339ac2dd-zeros.tif` (+ `-nan.tif`, `-zeros.zip`, `-audit.json`) | **DO NOT SUBMIT** | Parallel-lane H-UNQ-1 (merged 2026-10-27): format-valid, unique vs 2 references; evidence = full-map diagnostic 0.0078 + self-referential SGMC number — negative, 0 slots. |

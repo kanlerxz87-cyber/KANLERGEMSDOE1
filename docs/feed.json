@@ -1,10 +1,9 @@
 {
-  "status": "dated_snapshot",
+  "status": "stale_snapshot",
   "rank_one_public_dti": 0.4544,
-  "rank_one_team": "xiaofanhu",
   "observed_utc": "2026-10-27",
-  "last_refresh_attempt_utc": "2026-10-27",
-  "refresh_message": "Fetched from the official public leaderboard in-session 2026-10-27; Pages workflow attempts daily refresh with dated-snapshot fallback.",
+  "last_refresh_attempt_utc": "2026-10-27T17:12:09+00:00",
+  "refresh_message": "Automated deployment refresh returned ValueError; retained dated official-page observation. Check the public leaderboard for current values.",
   "source_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
   "scope": "Official public leaderboard, not a receipt for a repository raster."
 }
