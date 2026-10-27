@@ -5,8 +5,8 @@ Delegates strictly to `gems32.submission` (zero private fork):
   - Enforces exact CRS (`EPSG:32611`), shape (`3730 x 3292`), and affine geotransform matching
     `sample_submission.tif`.
   - Rejects (never clips or binarizes) predictions outside `[0.0, 1.0]` or nonfinite input.
-  - Requires zero outside the footprint and on the catalogue; validates the written zeros variant.
-  - Builds a single-GeoTIFF `.zip`. Local format validation does not prove portal acceptance.
+  - Requires zero on the catalogue; the input array uses zero outside the footprint as an internal sentinel.
+  - Writes a zero-outside diagnostic TIFF and a NaN-outside candidate TIFF; the single-GeoTIFF `.zip` contains only the NaN-outside TIFF, matching the official outside-bounds requirement. Local validation does not prove portal acceptance.
 """
 from __future__ import annotations
 
