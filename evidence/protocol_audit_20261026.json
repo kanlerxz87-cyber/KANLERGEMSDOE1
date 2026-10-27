@@ -1,5 +1,5 @@
 {
-  "reviewed_utc": "2026-10-27T17:06:39+00:00",
+  "reviewed_utc": "2026-10-27T17:16:53+00:00",
   "scope": "Nine pinned focus champions and one registered lattice; not a complete site-wide registry",
   "slots_used": 0,
   "new_experiments": 0,
@@ -689,7 +689,10 @@
           "zero_on_catalogue_leakage": true,
           "local_range_check": true
         },
-        "all_checks_passed": true
+        "all_checks_passed": true,
+        "local_validation_passed": true,
+        "official_outside_bounds_null_or_nan": false,
+        "official_submission_format_compatible": false
       },
       "literal_lattice_overlap": 0.9939375,
       "lattice_spearman_final_dots": -0.0003301565638120439,
@@ -806,7 +809,10 @@
           "zero_on_catalogue_leakage": true,
           "local_range_check": true
         },
-        "all_checks_passed": true
+        "all_checks_passed": true,
+        "local_validation_passed": true,
+        "official_outside_bounds_null_or_nan": false,
+        "official_submission_format_compatible": false
       },
       "literal_lattice_overlap": 0.995875,
       "lattice_spearman_final_dots": 0.00024864526666216536,
@@ -923,7 +929,10 @@
           "zero_on_catalogue_leakage": true,
           "local_range_check": true
         },
-        "all_checks_passed": true
+        "all_checks_passed": true,
+        "local_validation_passed": true,
+        "official_outside_bounds_null_or_nan": false,
+        "official_submission_format_compatible": false
       },
       "literal_lattice_overlap": 0.99190625,
       "lattice_spearman_final_dots": 3.474024235647932e-05,
@@ -1042,7 +1051,10 @@
           "zero_on_catalogue_leakage": true,
           "local_range_check": true
         },
-        "all_checks_passed": true
+        "all_checks_passed": true,
+        "local_validation_passed": true,
+        "official_outside_bounds_null_or_nan": false,
+        "official_submission_format_compatible": false
       },
       "literal_lattice_overlap": 0.9995219631380464,
       "lattice_spearman_final_dots": -0.0002857147937689918,

@@ -155,7 +155,9 @@ def promotion_decision(*, lane, surface_check, final_check, canary_aucs,
     format_ok = (isinstance(checks, dict) and REQUIRED_VALIDATOR_CHECKS.issubset(checks)
                  and all(v is True for v in checks.values())
                  and validator.get("all_checks_passed") is True
-                 and validator.get("organizer_template_authenticated") is True)
+                 and validator.get("organizer_template_authenticated") is True
+                 and validator.get("official_outside_bounds_null_or_nan") is True
+                 and validator.get("official_submission_format_compatible") is True)
     gates = dict(
         lane=isinstance(lane, str) and bool(lane.strip()),
         surface=_gate_ok(surface_check, 'surface'), final=_gate_ok(final_check, 'final'),

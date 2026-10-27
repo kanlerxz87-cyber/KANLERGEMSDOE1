@@ -185,7 +185,8 @@ class ReleaseGateTests(unittest.TestCase):
                'evaluation_design_sha256':'b'*64,'n_withheld_positives':10,'pooled_dti':.2,'ci95_cluster_bootstrap':[.1,.3]}
         old={**score,'pooled_dti':.1,'ci95_cluster_bootstrap':[.05,.15]}
         validator={'checks':{k:True for k in REQUIRED_VALIDATOR_CHECKS},
-                   'all_checks_passed':True,'organizer_template_authenticated':True}
+                   'all_checks_passed':True,'organizer_template_authenticated':True,
+                   'official_outside_bounds_null_or_nan':True,'official_submission_format_compatible':True}
         kwargs=dict(lane='test',surface_check=surf,final_check=final,canary_aucs={'feature':.6},
                     holdout=score,incumbent=old,same_evaluation=True,validator=validator,
                     paired_delta_ci95=[.01,.1],expected_features=['feature'])
@@ -196,6 +197,8 @@ class ReleaseGateTests(unittest.TestCase):
         self.assertEqual(promotion_decision(**{**kwargs,'validator':{**validator,'organizer_template_authenticated':False}})['verdict'],'negative')
         self.assertEqual(promotion_decision(**{**kwargs,'surface_check':{**surf,'inventory_complete':False}})['verdict'],'negative')
         self.assertTrue(promotion_decision(**kwargs)['selector_required'])
+        for field in ('official_outside_bounds_null_or_nan','official_submission_format_compatible'):
+            self.assertEqual(promotion_decision(**{**kwargs,'validator':{**validator,field:False}})['verdict'],'negative')
         # AUC inversion is just as suspicious as AUC > .90; do not trust flags.
         for auc in (.01, .91, True, float('nan')):
             self.assertEqual(promotion_decision(**{**kwargs,'canary_aucs':{'feature':auc}})['verdict'],'negative')
@@ -240,10 +243,19 @@ class SubmissionWriterTests(unittest.TestCase):
         import zipfile
         bundle=self.write(); self.assertTrue(bundle['zeros_tif']['all_checks_passed'])
         self.assertTrue(bundle['nan_tif']['all_checks_passed'])
+        self.assertFalse(bundle['zeros_tif']['official_submission_format_compatible'])
+        self.assertTrue(bundle['nan_tif']['official_submission_format_compatible'])
+        self.assertTrue(bundle['nan_tif']['official_outside_bounds_null_or_nan'])
         with rasterio.open(self.out/bundle['zeros_tif']['filename']) as ds:
             self.assertIsNone(ds.nodata);np.testing.assert_array_equal(ds.read(1),self.a)
-        with zipfile.ZipFile(self.out/bundle['zeros_zip']['filename']) as z:
-            self.assertEqual(z.namelist(),[bundle['zeros_tif']['filename']])
+        self.assertIn('NaN',bundle['zeros_variant_warning'])
+        with zipfile.ZipFile(self.out/bundle['submission_zip']['filename']) as z:
+            self.assertEqual(z.namelist(),[bundle['nan_tif']['filename']])
+            zipped = z.read(bundle['nan_tif']['filename'])
+            with rasterio.MemoryFile(zipped) as mem:
+                with mem.open() as ds:
+                    self.assertTrue(np.isnan(ds.read(1)[~self.foot]).all())
+                    self.assertTrue(np.isfinite(ds.read(1)[self.foot]).all())
         self.assertEqual(len(list(self.out.iterdir())),4)
         with self.assertRaises(FileExistsError):self.write()
         self.assertEqual(len(list(self.out.iterdir())),4)
