@@ -51,7 +51,10 @@
       "zero_on_catalogue_leakage": true,
       "local_range_check": true
     },
-    "all_checks_passed": true
+    "all_checks_passed": true,
+    "local_validation_passed": true,
+    "official_outside_bounds_null_or_nan": false,
+    "official_submission_format_compatible": false
   },
   "nan_tif": {
     "filename": "gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-nan.tif",
@@ -99,14 +102,19 @@
       "zero_on_catalogue_leakage": true,
       "local_range_check": true
     },
-    "all_checks_passed": true
+    "all_checks_passed": true,
+    "local_validation_passed": true,
+    "official_outside_bounds_null_or_nan": true,
+    "official_submission_format_compatible": true
   },
-  "zeros_zip": {
-    "filename": "gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.zip",
-    "path": "/home/user/KANLERGEMSDOE1/docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.zip",
-    "size_bytes": 190956,
-    "sha256": "d7059ad6ce392b468286fbc0abbd30fae23b1cb79cae77b72955cef8fd8e86f5"
+  "submission_zip": {
+    "filename": "gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-nan.zip",
+    "path": "/home/user/KANLERGEMSDOE1/docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-nan.zip",
+    "contains": "gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-nan.tif",
+    "size_bytes": 238657,
+    "sha256": "22bd458502eda3e0a098ade606d81861c59f185a3745fb7371bcd2dfa6d5d3c7"
   },
+  "zeros_variant_warning": "Diagnostic only: zeros outside bounds do not meet the official null/NaN outside-bounds requirement.",
   "holdout_metrics": {
     "catalogue_hidden_mean": null,
     "catalogue_hidden_per_quadrant": {},

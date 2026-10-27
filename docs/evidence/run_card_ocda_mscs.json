@@ -1,0 +1,273 @@
+{
+  "schema": "GEMS-PARALLEL-RUN-CARD-v2.1",
+  "card_id": "KANLER1-OCDA-MSCS-EXP3-20261027",
+  "generated_utc": "2026-10-27T18:59:52Z",
+  "branch": "arena/b23a6373-kanlergemsdoe1",
+  "lane": "H-K1-A (OCDA-MSCS)",
+  "experiments_used": 3,
+  "max_experiments_budget": 3,
+  "slot_used": false,
+  "ok_to_submit": false,
+  "verdict": "negative",
+  "hypothesis": "H-K1-A (OCDA-MSCS \u2014 Offset-Coupled Dip-Asymmetry & Multi-Sensor Concordant Skeleton + 300 m Submodular CELF Packing): Moderately dipping (45-65 deg) Great Basin normal faults project subsurface density, magnetic, and MT resistivity interfaces 400-1500 m laterally into the hanging-wall basin relative to surface scarp breaks and footwall hydrothermal upflow.",
+  "mechanism": "Vectorized bilinear offset-gathering along hanging-wall unit normal n_hat_HW across 19 competition bands + USGS 2 m probes/sinter vents (26 label-free OCDA channels), combined with Two-Stage Positive-Unlabeled HistGradientBoosting + fold-local tip/step-over logistic calibration (fit strictly on 20% inner-withheld training segments) and lazy CELF greedy submodular maximization of the exact 300 m competition DTI triangular kernel (min_dist=2.83 px, fold-local visible collar B=2 px, 37,654 dots).",
+  "named_non_fault_process": "Miocene-Pliocene tabular basalt mesa / caldera-rim cliffs, Pleistocene pluvial shoreline berms (Lakes Lahontan & Bonneville), and unfaulted alluvial-fan apron coalescences \u2014 suppressed via footwall-only plateau penalty and horizontal gravity-magnetic cross-gradient concordance.",
+  "holdout_dti": {
+    "status": "ADMISSIBLE_FOLD_LOCAL",
+    "score_label": "HOLDOUT-DTI",
+    "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+    "n_withheld_positives": 22232,
+    "n_spatial_clusters": 140,
+    "n_bootstrap_reps": 1000,
+    "valid_value": 0.10583,
+    "valid_ci95": [
+      0.095019,
+      0.115257
+    ],
+    "per_quadrant_dti": {
+      "NW": 0.108623,
+      "NE": 0.10778,
+      "SW": 0.08464,
+      "SE": 0.126654
+    },
+    "catalogue_feature_provenance_verified": true,
+    "hidden_perturbation_max_abs_diff": 0.0,
+    "independent_replay_cells_sha256": "c3c91bdb117f159e5d169dd4cf9bdaaf493e7d1ae739259d3f8461379d7bbef9",
+    "incumbent_gemsdoe32_fold_honest_d28_b2": {
+      "score_label": "HOLDOUT-DTI",
+      "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+      "n_withheld_positives": 22232,
+      "pooled_dti": 0.099202,
+      "ci95": [
+        0.085951,
+        0.112668
+      ]
+    },
+    "paired_delta_vs_incumbent_hide_recover": {
+      "cand_pooled_dti": 0.10583,
+      "ref_pooled_dti": 0.099202,
+      "delta_dti": 0.006627,
+      "delta_ci95": [
+        -0.003423,
+        0.015957
+      ],
+      "prob_cand_gt_ref": 0.909
+    },
+    "sgmc_regional_off_catalogue": {
+      "score_label": "HOLDOUT-DTI",
+      "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+      "n_withheld_positives": 62703,
+      "sgmc_prevalence_calibrated_dti": 0.05004,
+      "sgmc_calibrated_ci95": [
+        0.04505,
+        0.054481
+      ],
+      "incumbent_gemsdoe32_sgmc_calibrated_dti": 0.064121
+    },
+    "ablation_summary_3_experiments": {
+      "CHAMP_D28_VIS_B2": 0.099202,
+      "CTRL_BASE35_OOF": 0.103048,
+      "EXP1_OCDA_CORE": 0.104042,
+      "EXP2_OCDA_DIRECT_TREE_RELAY_NEGATIVE": 0.025006,
+      "EXP3_OCDA_TWOSTAGE_EXPLAINAWAY": 0.10583
+    },
+    "not_a_leaderboard_forecast": true
+  },
+  "leakage_canary": {
+    "rule": "single_feature_withheld_fold_auc_le_0.90",
+    "total_features_tested": 63,
+    "max_symmetric_auc": 0.738633,
+    "n_flagged_gt_0.90": 0,
+    "passed": true
+  },
+  "correlation_overlap_vs_registry": {
+    "rule": "Spearman |rho| <= 0.90 BEFORE placement AND directional <=3-px dot overlap <= 0.70 AFTER placement",
+    "full_registry_checked": false,
+    "n_total_audited_rasters": 46,
+    "n_discrete_fault_detector_peers": 43,
+    "discrete_detectors_surface_passed": true,
+    "discrete_detectors_final_passed": true,
+    "max_abs_spearman_vs_discrete_detectors": 0.078475,
+    "max_within_3px_vs_discrete_detectors": 0.523334,
+    "final_dots_within_3px_of_lattice": 0.999363,
+    "null_calibrated_two_phase_verdict": "PASS",
+    "key_peer_comparisons": [
+      {
+        "registry": "scored_12:gems10-h25-ctx-ridge-20260927T232947704150Z-6452ae1d00",
+        "spearman_surface": 0.06020101026516323,
+        "spearman_support": 0.011705933077073384,
+        "within_3px_fraction": 0.5233339530930436,
+        "duplicate": false,
+        "measurable": true
+      },
+      {
+        "registry": "scored_12:gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00",
+        "spearman_surface": 0.032785333415414016,
+        "spearman_support": 0.006751124342531279,
+        "within_3px_fraction": 0.5029615660442508,
+        "duplicate": false,
+        "measurable": true
+      },
+      {
+        "registry": "scored_12:8GEMSDOE_Hedge-v2_submission",
+        "spearman_surface": 0.04425441188420953,
+        "spearman_support": 0.00783510750994197,
+        "within_3px_fraction": 0.5004913809131717,
+        "duplicate": false,
+        "measurable": true
+      },
+      {
+        "registry": "scored_12:gemsdoe-ens12-adopted-7f00890a",
+        "spearman_surface": 0.07705409207287138,
+        "spearman_support": 0.01396290934477765,
+        "within_3px_fraction": 0.4506892613349624,
+        "duplicate": false,
+        "measurable": true
+      },
+      {
+        "registry": "scored_12:gems16-h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan",
+        "spearman_surface": 0.07601232577859052,
+        "spearman_support": 0.010945912938592782,
+        "within_3px_fraction": 0.37788520279423093,
+        "duplicate": false,
+        "measurable": true
+      },
+      {
+        "registry": "scored_12:gems19-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan",
+        "spearman_surface": 0.07826619512217159,
+        "spearman_support": 0.010776697577111076,
+        "within_3px_fraction": 0.37546813992403516,
+        "duplicate": false,
+        "measurable": true
+      },
+      {
+        "registry": "scored_12:gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan",
+        "spearman_surface": 0.07847497960737744,
+        "spearman_support": 0.011406746831479507,
+        "within_3px_fraction": 0.3670748227044543,
+        "duplicate": false,
+        "measurable": true
+      },
+      {
+        "registry": "focus_9:GEMSDOE27",
+        "spearman_surface": 0.0507541192154248,
+        "spearman_support": 0.006769542382734452,
+        "within_3px_fraction": 0.34981008791734175,
+        "duplicate": false,
+        "measurable": true
+      }
+    ]
+  },
+  "raster_path_nan": "docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-nan.tif",
+  "raster_sha256_nan": "06ccd852475120cbdff86732252478096c821babe6e608aae9e66945cc7c4bb2",
+  "raster_path_zeros": "docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.tif",
+  "raster_sha256": "ec9b920ac059518f0a2382f08cbe3bc2b6074d1a302e9f25cd8a79abd97c8564",
+  "submission_zip_path": "docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-nan.zip",
+  "submission_zip_sha256": "22bd458502eda3e0a098ade606d81861c59f185a3745fb7371bcd2dfa6d5d3c7",
+  "validator_output_nan": {
+    "filename": "gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-nan.tif",
+    "size_bytes": 360003,
+    "sha256": "06ccd852475120cbdff86732252478096c821babe6e608aae9e66945cc7c4bb2",
+    "mode": "nan",
+    "geometry_reference": "/home/user/KANLERGEMSDOE1/.cache/gems_data/sample_submission.tif",
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "nodata_repr": "nan",
+    "emitted_positive_pixels": 37649,
+    "footprint_fraction": 0.007286,
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_finite_pixels": 5167373,
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 1.0,
+    "full_grid_finite_pixels": 5167373,
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "nodata_none_for_zeros": true,
+      "nodata_nan_for_nan": true,
+      "zero_on_catalogue_leakage": true,
+      "local_range_check": true
+    },
+    "all_checks_passed": true,
+    "local_validation_passed": true,
+    "official_outside_bounds_null_or_nan": true,
+    "official_submission_format_compatible": true
+  },
+  "validator_output": {
+    "filename": "gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.tif",
+    "size_bytes": 222879,
+    "sha256": "ec9b920ac059518f0a2382f08cbe3bc2b6074d1a302e9f25cd8a79abd97c8564",
+    "mode": "zeros",
+    "geometry_reference": "/home/user/KANLERGEMSDOE1/.cache/gems_data/sample_submission.tif",
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "nodata_repr": "None",
+    "emitted_positive_pixels": 37649,
+    "footprint_fraction": 0.007286,
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_finite_pixels": 5167373,
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 1.0,
+    "full_grid_finite_pixels": 12279160,
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "nodata_none_for_zeros": true,
+      "nodata_nan_for_nan": true,
+      "zero_on_catalogue_leakage": true,
+      "local_range_check": true
+    },
+    "all_checks_passed": true,
+    "local_validation_passed": true,
+    "official_outside_bounds_null_or_nan": false,
+    "official_submission_format_compatible": false
+  },
+  "submission_name": "gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-nan.tif",
+  "submission_name_zeros_diagnostic": "gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.tif",
+  "submission_note": "KANLER1 OCDA-MSCS Exp3 OOF PU-HGB+300mCELF 37654d [RESEARCH-HOLD]",
+  "submission_note_length": 65
+}

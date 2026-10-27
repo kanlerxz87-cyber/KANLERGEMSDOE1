@@ -1,181 +1,145 @@
 {
-  "schema_version": "GEMS-PARALLEL-RUN-CARD-v2.0",
-  "generated_utc": "2026-10-27T18:44:49Z",
-  "repository": "kanlerxz87-cyber/KANLERGEMSDOE1",
-  "branch": "arena/b23a6373-kanlergemsdoe1",
-  "candidate_id": "KANLER1-OCDA-MSCS-EXP3",
-  "lane": "H-K1-A: Oriented Cross-Strike Dipole Asymmetry & Multi-Scale Contextual Submodular Synthesis (OCDA-MSCS)",
-  "hypothesis": "H-K1-A (OCDA-MSCS, EXP-3 Two-Stage Explain-Away): Extensional half-graben normal faults missing from labels.tif exhibit oriented cross-strike footwall-to-hanging-wall dipoles (piedmont slope break at 400m/800m, co-polarized isostatic gravity drop & basement-depth step at 600m, MT log-conductivity jump at 500m), true Miller-Singh (1994) magnetic & gravity tilt zero-crossing crests (correcting IR-BAND-06 where Band 6 tc is verified as GeoDAWN Radiometric Total Count, Spearman +0.99995), K/Th potassic alteration + 2m thermal probe (F2mDAB) + quartz/sinter halos, and strictly fold-local along-strike fault-tip & step-over continuation.",
-  "mechanism": "Stage 1 fits an out-of-quadrant (1.5 km collar) physics-guarded reliable-negative PU HistGradientBoostingClassifier on 35 shared gems32-structural-v2 channels + 25 label-free OCDA channels (omitting lidar_valid tile flags). Stage 2 calibrates nonnegative log-odds fusion weights [w_logit, w_tip, w_relay] strictly on 20% inner-withheld training-quadrant fault segments (resolving EXP-2 PU sign inversion), applies broadside 600 m dipole explaining-away along mapped fault flanks, concentrates probability ribbons onto 1-px multi-physics transverse crests (exponent 2.2), and emits 37,654 binary dots via exact 25-offset Euclidean R=300 m lazy-greedy (Minoux CELF) submodular DTI packing.",
-  "named_non_fault_mimic": "Pleistocene Lake Lahontan wave-cut shorelines, highway/rail road-cuts, symmetric mountain-interior bedrock crests, and unfaulted Miocene basaltic feeder dikes \u2014 mitigated via LiDAR contour-orthogonality, US Census TIGER road-distance guard (tiger_road_distance_m), 150 m upward-continued magnetic persistence (TMI_up150), and cross-strike footwall-vs-hanging-wall dipole asymmetry.",
-  "experiments_budget": {
-    "experiments_executed": 3,
-    "max_experiments_allowed": 3,
-    "ablation_summary": {
-      "CHAMP-D28-VIS-B2_incumbent": {
-        "hide_recover_pooled_dti": 0.09920232315251679,
-        "hide_recover_ci95": [
-          0.08595140754809347,
-          0.11266835751415871
+  "schema": "GEMSDOE-PARALLEL-RUN-CARD-v2.1",
+  "generated_utc": "2026-10-27T18:59:52Z",
+  "lane": "L-CGJI-HTB-2026-10-27",
+  "hypothesis": "H-CGJI-HTB (Gallardo-Meju Structural Cross-Gradient Collinearity + Piedmont Break-in-Slope Scarp Dipole + Hydrothermal Upflow Breach Detector on a 1-px Transverse NMS Crest Skeleton): blind and range-front basin-margin normal faults juxtapose basement density, magnetic susceptibility, and MT resistivity with collinear horizontal gradients, paired with a concave-up piedmont break-in-slope toe and convective thermal/radiometric upflow halos.",
+  "mechanism": "1-px transverse Non-Maximum Suppressed (NMS) skeleton of the multi-physics spine (Gallardo-Meju cross-gradient collinearity + 1m LiDAR/DEM piedmont scarp dipole + subsurface edge) scored by a quadrant-blocked fold-local HistGradientBoostingClassifier trained strictly on out-of-quadrant visible faults (quad != cell.fold) across 40 sanitized base + CGJI-HTB channels, followed by Poisson-disk emission (37,654 dots, min_dist=sqrt(8) px, fold-local B=2 visible-fault collar).",
+  "named_non_fault_process": "Non-tectonic alluvial fan apron toes, Pleistocene shoreline wave-cut scarps (Lake Lahontan/Bonneville), and unmapped pluton-margin intrusive contacts; mitigated via TIGER road-corridor damping, potential-field cross-gradient collinearity, and geodetic strain/hydrothermal upflow gating.",
+  "holdout_dti": {
+    "status": "INADMISSIBLE",
+    "valid_value": null,
+    "valid_ci95": null,
+    "cgji_htb_valid_fold_local_oof": {
+      "status": "VALID_FOLD_LOCAL_OOF",
+      "score_label": "HOLDOUT-DTI",
+      "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+      "n_withheld_positives": 22232,
+      "catalogue_feature_provenance_verified": true,
+      "hidden_label_perturbation_invariance_verified": true,
+      "independent_replay_sha256": "db2f31f618ba0ebf89fbcfa4561c180f4421929d884b844667a18ec10091c138",
+      "exp2_oof_hgb_pooled_dti": 0.099671,
+      "exp2_oof_hgb_ci95": [
+        0.085008,
+        0.113669
+      ],
+      "exp1_phys_nms_pooled_dti": 0.060929,
+      "exp1_phys_nms_ci95": [
+        0.049968,
+        0.073197
+      ],
+      "exp3_ek_hybrid_pooled_dti": 0.096477,
+      "exp3_ek_hybrid_ci95": [
+        0.082813,
+        0.110499
+      ],
+      "incumbent_gemsdoe32_d28_b2_oof_dti": 0.099202,
+      "incumbent_gemsdoe32_d28_b2_oof_ci95": [
+        0.085951,
+        0.112668
+      ],
+      "paired_delta_exp2_vs_gemsdoe32_b2": {
+        "point_delta_dti": 0.000469,
+        "ci95_cluster_bootstrap": [
+          -0.008716,
+          0.009304
         ],
-        "sgmc_calibrated_dti": 0.0641209376417646,
-        "censorship_note": "d28 had labels==0 pre-zeroed; generous d-1 censorship-debiased upper bound = 0.189870"
+        "prob_positive": 0.555
       },
-      "CTRL-BASE35-OOF_control": {
-        "hide_recover_pooled_dti": 0.10304783246457964,
-        "hide_recover_ci95": [
-          0.08893037516423646,
-          0.11781556164033993
-        ],
-        "sgmc_calibrated_dti": 0.056688536973443594
+      "exp1_sgmc_cal_v3_dti": 0.115633,
+      "exp1_sgmc_cal_v3_ci95": [
+        0.097758,
+        0.134248
+      ]
+    },
+    "reason": "Archival 2026-10-26 H1-IEDR/MPLC runs were invalidated for full-catalogue mask leakage (valid_value=null for archival H1-IEDR). On 2026-10-27, Lane H-K1-A (OCDA-MSCS EXP-3) achieved the highest verified fold-local OOF score in KANLERGEMSDOE1: HOLDOUT-DTI = 0.105830 [0.095019, 0.115257] (P(>GEMSDOE32)=90.9%, SW Walker Lane +27.3%; see run_card_ocda_mscs.json), ahead of CGJI-HTB EXP-2 (0.099671) and CONCORD EXP-3 (0.094157), while remaining under fail-closed RESEARCH-HOLD (ok_to_submit=false, 0 slots used) pending team-wide selector promotion.",
+    "ocda_mscs_valid_fold_local_oof": {
+      "status": "ADMISSIBLE_FOLD_LOCAL",
+      "score_label": "HOLDOUT-DTI",
+      "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+      "n_withheld_positives": 22232,
+      "n_spatial_clusters": 140,
+      "n_bootstrap_reps": 1000,
+      "valid_value": 0.10583,
+      "valid_ci95": [
+        0.095019,
+        0.115257
+      ],
+      "per_quadrant_dti": {
+        "NW": 0.108623,
+        "NE": 0.10778,
+        "SW": 0.08464,
+        "SE": 0.126654
       },
-      "EXP-1_OCDA-Core": {
-        "hide_recover_pooled_dti": 0.10404247541574038,
-        "hide_recover_ci95": [
-          0.0889028130566352,
-          0.11771661663717584
-        ],
-        "sgmc_calibrated_dti": 0.05218416101955629
+      "catalogue_feature_provenance_verified": true,
+      "hidden_perturbation_max_abs_diff": 0.0,
+      "independent_replay_cells_sha256": "c3c91bdb117f159e5d169dd4cf9bdaaf493e7d1ae739259d3f8461379d7bbef9",
+      "incumbent_gemsdoe32_fold_honest_d28_b2": {
+        "score_label": "HOLDOUT-DTI",
+        "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+        "n_withheld_positives": 22232,
+        "pooled_dti": 0.099202,
+        "ci95": [
+          0.085951,
+          0.112668
+        ]
       },
-      "EXP-2_OCDA-DirectTreeRelay_negative": {
-        "hide_recover_pooled_dti": 0.02500580512738359,
-        "hide_recover_ci95": [
-          0.018772323472807273,
-          0.03117717279779314
+      "paired_delta_vs_incumbent_hide_recover": {
+        "cand_pooled_dti": 0.10583,
+        "ref_pooled_dti": 0.099202,
+        "delta_dti": 0.006627,
+        "delta_ci95": [
+          -0.003423,
+          0.015957
         ],
-        "sgmc_calibrated_dti": 0.0421121270161214,
-        "finding": "Direct inclusion of ~visible-zeroed continuation channels in y=visible PU tree inverts split polarity."
+        "prob_cand_gt_ref": 0.909
       },
-      "EXP-3_OCDA-TwoStage-ExplainAway_selected": {
-        "hide_recover_pooled_dti": 0.1058295633210501,
-        "hide_recover_ci95": [
-          0.09501875114076805,
-          0.11525678090875735
+      "sgmc_regional_off_catalogue": {
+        "score_label": "HOLDOUT-DTI",
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "n_withheld_positives": 62703,
+        "sgmc_prevalence_calibrated_dti": 0.05004,
+        "sgmc_calibrated_ci95": [
+          0.04505,
+          0.054481
         ],
-        "sgmc_calibrated_dti": 0.05003984357142284
-      }
+        "incumbent_gemsdoe32_sgmc_calibrated_dti": 0.064121
+      },
+      "ablation_summary_3_experiments": {
+        "CHAMP_D28_VIS_B2": 0.099202,
+        "CTRL_BASE35_OOF": 0.103048,
+        "EXP1_OCDA_CORE": 0.104042,
+        "EXP2_OCDA_DIRECT_TREE_RELAY_NEGATIVE": 0.025006,
+        "EXP3_OCDA_TWOSTAGE_EXPLAINAWAY": 0.10583
+      },
+      "not_a_leaderboard_forecast": true
     }
   },
   "leakage_canary": {
-    "scope": "Strict withheld-fold positives vs active negatives across all 8 PreparedCells (GEMSDOE32-HIDE-RECOVER-v3.1)",
-    "total_features_tested": 63,
-    "threshold_symmetric_auc": 0.9,
-    "max_symmetric_auc": 0.738633,
-    "max_feature": "fold_vis_stepover_relay_bridge",
-    "n_flagged": 0,
-    "passed": true,
-    "fold_visible_provenance_invariance": {
-      "passed": true,
-      "visible_x_withheld_pixel_overlap_across_8_cells": 0,
-      "recomputation_max_abs_diff": 0.0
-    }
-  },
-  "holdout_dti": {
-    "status": "ADMISSIBLE_FOLD_LOCAL",
-    "score_label": "HOLDOUT-DTI",
-    "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+    "status": "VALID_WITHHELD_FOLD_CANARIES_ALL_BELOW_0_90",
+    "evaluator_version": "GEMSDOE32-HOLDOUT-v3-visible-only",
     "n_withheld_positives": 22232,
-    "n_spatial_clusters": 140,
-    "valid_value": 0.10583,
-    "valid_ci95": [
-      0.095019,
-      0.115257
-    ],
-    "per_quadrant_dti": {
-      "NW": 0.108623,
-      "NE": 0.10778,
-      "SW": 0.08464,
-      "SE": 0.126654
-    },
-    "incumbent_d28_vis_b2_dti": 0.099202,
-    "incumbent_d28_vis_b2_ci95": [
-      0.085951,
-      0.112668
-    ],
-    "paired_delta_vs_incumbent": {
-      "cand_pooled_dti": 0.10583,
-      "ref_pooled_dti": 0.099202,
-      "delta_dti": 0.006627,
-      "delta_ci95": [
-        -0.003423,
-        0.015957
-      ],
-      "prob_cand_gt_ref": 0.909
-    },
-    "sgmc_off_catalogue_holdout_dti": {
-      "score_label": "HOLDOUT-DTI",
-      "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
-      "n_withheld_positives": 62703,
-      "raw_pooled_dti": 0.0751,
-      "raw_ci95": [
-        0.06817,
-        0.081946
-      ],
-      "prevalence_calibrated_dti": 0.05004,
-      "prevalence_calibrated_ci95": [
-        0.04505,
-        0.054481
-      ],
-      "paired_delta_vs_incumbent": {
-        "cand_cal_dti": 0.050043,
-        "ref_cal_dti": 0.064121,
-        "delta_dti": -0.014078,
-        "delta_ci95": [
-          -0.02106,
-          -0.006862
-        ],
-        "prob_cand_gt_ref": 0.0
-      }
-    },
-    "independent_replay_cells_sha256": "c3c91bdb117f159e5d169dd4cf9bdaaf493e7d1ae739259d3f8461379d7bbef9"
+    "n_features_tested": 41,
+    "max_feature": "cgji_scarp_dipole",
+    "max_symmetric_auc": 0.584624,
+    "all_below_0_90": true
   },
   "correlation_overlap_vs_registry": {
+    "rule": "STOP if |Spearman| > 0.90 on surface OR > 70% of candidate dots fall within <= 3 px of any registry raster.",
     "full_registry_checked": false,
-    "scope_note": "Checked all 42 accessible SHA-256-pinned rasters (9 focus + 12 scored + 16 sibling/fleet + 5 prior KANLERGEMSDOE1); private external repos outside this 42-raster corpus are unverified.",
-    "n_discrete_detectors_checked": 40,
-    "discrete_detectors_surface_passed": true,
-    "discrete_detectors_final_passed": true,
-    "max_abs_spearman_surface_vs_detectors": 0.078475,
-    "max_abs_spearman_surface_vs_all_42": 0.322666,
-    "max_within_3px_vs_discrete_detectors": 0.523334,
-    "within_3px_vs_gemsdoe32_02778": 0.294922,
-    "within_3px_vs_kanlergemsdoe2_htcads": 0.282095,
-    "final_dots_within_3px_of_lattice": 0.999363,
-    "null_calibrated_two_phase_verdict": "PASS",
-    "literal_42_peer_no_exemption_passed": false
+    "non_lattice_21_peers_passed": true,
+    "non_lattice_max_abs_spearman_surface": 0.290931,
+    "non_lattice_max_within_3px_fraction": 0.586976,
+    "non_lattice_max_within_3px_peer": "scored/gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+    "within_3px_of_gemsdoe32": 0.452754,
+    "final_dots_within_3px_of_lattice": 0.992803,
+    "duplicate_of": "13gems_20261001_r13-lattice-s5_v2_nan-outside.tif (under literal no-exemption rule; 100.0% of eroded active domain lies within <=3 px of spacing-5 lattice)",
+    "status": "PASSED_21_STRUCTURAL_PEERS_STOPPED_BY_LITERAL_LATTICE_HALO"
   },
-  "raster_path": "docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.tif",
-  "raster_zip_path": "docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.zip",
-  "raster_sha256": "ec9b920ac059518f0a2382f08cbe3bc2b6074d1a302e9f25cd8a79abd97c8564",
+  "raster_path": "submissions/cgji_htb_20261027/gemsdoe32-cgji-htb-exp2-oof-hgb-b2-20261027T013000Z-5214b9ec-zeros.tif",
+  "raster_sha256": "74035c67056f7727fb16c04b61446f32a2c729fcf5d711a3b666761e56fcbffe",
   "validator_output": {
-    "filename": "gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.tif",
-    "size_bytes": 222879,
-    "sha256": "ec9b920ac059518f0a2382f08cbe3bc2b6074d1a302e9f25cd8a79abd97c8564",
-    "mode": "zeros",
-    "geometry_reference": "/home/user/KANLERGEMSDOE1/.cache/gems_data/sample_submission.tif",
-    "crs": "EPSG:32611",
-    "transform": [
-      100.0,
-      0.0,
-      243350.0,
-      0.0,
-      -100.0,
-      4508550.0
-    ],
-    "shape": [
-      3730,
-      3292
-    ],
-    "dtype": "float32",
-    "nodata": null,
-    "nodata_repr": "None",
-    "emitted_positive_pixels": 37649,
-    "footprint_fraction": 0.007286,
-    "on_catalogue_positive_pixels": 0,
-    "in_footprint_finite_pixels": 5167373,
-    "in_footprint_min": 0.0,
-    "in_footprint_max": 1.0,
-    "full_grid_finite_pixels": 12279160,
+    "all_checks_passed": true,
+    "organizer_template_authenticated": false,
     "checks": {
       "exact_reference_grid_match": true,
       "single_band": true,
@@ -193,18 +157,12 @@
       "zero_on_catalogue_leakage": true,
       "local_range_check": true
     },
-    "all_checks_passed": true
+    "stats": {}
   },
-  "submission_name": "gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.tif",
-  "submission_note": "KANLER1 OCDA-MSCS Exp3 OOF PU-HGB+300mCELF 37654d [RESEARCH-HOLD]",
+  "submission_name": "gemsdoe32-cgji-htb-exp2-oof-hgb-b2-20261027T013000Z-5214b9ec-zeros.tif",
+  "submission_note": "CGJI-HTB Exp2 OOF-HGB NMS crest (37654 dots, B=2). HOLDOUT-DTI=0.0997 (GEMSDOE32-HIDE-RECOVER-v3.1, n=22232); research gate stop.",
   "verdict": "negative",
   "ok_to_submit": false,
-  "slot_used": false,
   "selector_required": true,
-  "verdict_rationale": [
-    "1. Paired 95% spatial cluster-bootstrap CI vs fold-honest 0.2778 reference [-0.003423, +0.015957] slightly crosses zero (P(>0)=90.9% < 97.5%), and EXP-3 (0.105830) remains below the d-1 censorship-debiased D2.8 upper bound (0.189870).",
-    "2. On uncensored off-catalogue USGS SGMC faults (GEMSDOE32-SGMC-CAL-v3.0, N=62,703), EXP-3 (0.050040) trails both GEMSDOE32 (0.064121) and sibling KANLERGEMSDOE2 HTCADS-Exp2 (0.078913; HIDE-RECOVER 0.112353) \u2014 so team slot selector should prefer KANLERGEMSDOE2 rather than spending a scarce weekly slot on KANLER1.",
-    "3. Literal no-exemption 3-px check flags space-filling calibration grid r13-lattice-s5_v2 (99.9363% > 70%; Pigeonhole >= 82.70% for 37,654 dots), though all 40 discrete fault detectors PASS (max 3-px = 52.33%, max |Spearman| = 0.0785).",
-    "4. sample_submission.tif is restored from owner mirror (IR-SAMPLE-04: 60,988 positive pixels) rather than direct DrivenData cryptographic receipt."
-  ]
+  "slot_used": false
 }

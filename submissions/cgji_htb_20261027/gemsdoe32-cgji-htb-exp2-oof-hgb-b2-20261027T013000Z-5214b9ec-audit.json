@@ -1,0 +1,126 @@
+{
+  "candidate_id": "kanler-cgji-htb-exp2-oof-hgb-b2",
+  "slug": "cgji-htb-exp2-oof-hgb-b2",
+  "content_digest8": "5214b9ec",
+  "description": "Exp 2 \u2014 Quadrant-Blocked Fold-Local OOF HistGradientBoosting on 40-Channel CGJI-HTB Stack over NMS Crest",
+  "submission_note_zeros": "CGJI-HTB Exp2 OOF-HGB NMS crest (37654 dots, B=2). HOLDOUT-DTI=0.0997 (GEMSDOE32-HIDE-RECOVER-v3.1, n=22232); research gate stop.",
+  "submission_note_nan": "CGJI-HTB Exp2 OOF-HGB NMS crest NaN-outside (37654 dots, B=2). HOLDOUT-DTI=0.0997 (GEMSDOE32-HIDE-RECOVER-v3.1, n=22232).",
+  "zeros_tif": {
+    "filename": "gemsdoe32-cgji-htb-exp2-oof-hgb-b2-20261027T013000Z-5214b9ec-zeros.tif",
+    "size_bytes": 209216,
+    "sha256": "74035c67056f7727fb16c04b61446f32a2c729fcf5d711a3b666761e56fcbffe",
+    "mode": "zeros",
+    "geometry_reference": "data/sample_submission.tif",
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "nodata_repr": "None",
+    "emitted_positive_pixels": 37654,
+    "footprint_fraction": 0.007287,
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_finite_pixels": 5167373,
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 1.0,
+    "full_grid_finite_pixels": 12279160,
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "nodata_none_for_zeros": true,
+      "nodata_nan_for_nan": true,
+      "zero_on_catalogue_leakage": true,
+      "local_range_check": true
+    },
+    "all_checks_passed": true
+  },
+  "nan_tif": {
+    "filename": "gemsdoe32-cgji-htb-exp2-oof-hgb-b2-20261027T013000Z-5214b9ec-nan.tif",
+    "size_bytes": 345819,
+    "sha256": "8c5db6b033576adab601393320ab789dbe290490fa67a12efd9d23659655eb11",
+    "mode": "nan",
+    "geometry_reference": "data/sample_submission.tif",
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "nodata_repr": "nan",
+    "emitted_positive_pixels": 37654,
+    "footprint_fraction": 0.007287,
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_finite_pixels": 5167373,
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 1.0,
+    "full_grid_finite_pixels": 5167373,
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "nodata_none_for_zeros": true,
+      "nodata_nan_for_nan": true,
+      "zero_on_catalogue_leakage": true,
+      "local_range_check": true
+    },
+    "all_checks_passed": true
+  },
+  "zeros_zip": {
+    "filename": "gemsdoe32-cgji-htb-exp2-oof-hgb-b2-20261027T013000Z-5214b9ec-zeros.zip",
+    "path": "submissions/cgji_htb_20261027/gemsdoe32-cgji-htb-exp2-oof-hgb-b2-20261027T013000Z-5214b9ec-zeros.zip",
+    "size_bytes": 175639,
+    "sha256": "4d57290085a61cb2335beeae6434062f4e3ca211c1279c9553068dd250ffab93"
+  },
+  "holdout_metrics": {
+    "catalogue_hidden_mean": 0.099671,
+    "catalogue_hidden_per_quadrant": {
+      "NW": 0.103804,
+      "NE": 0.12308,
+      "SW": 0.060998,
+      "SE": 0.125405
+    },
+    "sgmc_prevalence_calibrated_dti": 0.083354,
+    "drift_corrected_holdout_mean": 0.055584,
+    "drift_corrected_per_quadrant": null,
+    "predicted_leaderboard_dti": null,
+    "ei_drift_corrected": null,
+    "slot_decision": "do-not-submit-literal-lattice-gate"
+  },
+  "publication_warning": "Local format validity does not establish uniqueness, holdout quality or organizer acceptance."
+}

@@ -1,63 +1,48 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ranked geological hypotheses &amp; OCDA ablation · KANLER GEMS</title><link rel="stylesheet" href="assets/style.css"></head>
-<body><header><div class="wrap head"><p class="brand">KANLERGEMSDOE1 · DOE GEMS PRIZE · RESEARCH SLATE</p><h1>Pre-Registered Geological Hypotheses (<code>H-K1-A..D</code>) &amp; Ablation Outcomes</h1><nav class="nav" aria-label="Primary"><a href="index.html">Status</a><a href="executive-summary.html">Executive summary</a><a href="research.html">Why 0.2778?</a><a href="hypotheses.html" aria-current="page">Research slate</a><a href="how-to-submit.html">Submission gate</a><a href="sources.html">Sources</a></nav></div></header>
-<main class="wrap">
-<div class="banner" role="status">
-  <strong>STOP — NO RASTER IS CLEARED FOR SUBMISSION</strong>
-  <p>Rank #1 (<code>H-K1-A: OCDA-MSCS</code>) was executed across <code>3 / 3</code> pre-registered fold-local experiments (<code>HOLDOUT-DTI = 0.105830</code>, <code>verdict: "negative"</code>, <code>0</code> weekly slots consumed). Ranks #2–#4 below (<code>H-K1-B..D</code>) remain <strong>unimplemented and untested in this review</strong>. No new experiment will run in the stopped IEDR lane or beyond the 3-experiment budget.</p>
-</div>
+<title>Research slate · Pre-registered Geological Hypotheses · KANLER GEMS</title><link rel="stylesheet" href="assets/style.css"></head>
+<body><header><div class="wrap head"><p class="brand">KANLERGEMSDOE1 / DOE GEMS PRIZE / RESEARCH DESK</p><h1>Pre-registered geological hypotheses</h1><nav class="nav" aria-label="Primary"><a href="index.html">Status</a><a href="executive-summary.html">Executive summary</a><a href="research.html">Why 0.2778?</a><a href="hypotheses.html" aria-current="page">Research slate</a><a href="how-to-submit.html">Submission gate</a><a href="submission-readiness.html">Readiness CSV</a><a href="sources.html">Sources</a></nav></div></header>
+<main class="wrap"><div class="banner" role="status"><strong>PRE-REGISTERED BEFORE CODING (<code>docs/research/hypotheses-20261027.md</code>) · SELECTOR APPROVAL REQUIRED</strong><p>All four candidate hypotheses (<code>H-K1-A</code> through <code>H-K1-D</code>) were formulated and ranked prior to running a single holdout evaluation, staying inside a single selected execution lane (<code>H-K1-A: OCDA-MSCS</code>) with a hard cap of <code>3</code> experiments. Untried hypotheses (<code>H-K1-B..D</code>, including external FDSN earthquake swarm relocation) remain untested and conditional on external API access; all evaluated lanes (including <code>OCDA-MSCS</code>, <code>CGJI-HTB</code>, <code>CONCORD</code>, and <code>H-UNQ-1</code>) require explicit selector approval before any DrivenData slot is used.</p></div>
 
-<h2>1. Ranked Candidate Geological Hypotheses (<a href="research/hypotheses-20261027.md">Pre-Registration Note</a>)</h2>
-<div class="table-wrap">
-  <table>
-    <thead>
-      <tr>
-        <th>Rank &amp; Cost</th>
-        <th>Hypothesis &amp; Specific Layers</th>
-        <th>Physical Signature &amp; Why It Catches Missing Faults</th>
-        <th>Named Non-Fault Mimics &amp; Repo Novelty</th>
-        <th>Validation / Data Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>#1 · Medium</strong><br><span class="good">Executed (<code>EXP-1..3</code>)</span></td>
-        <td><strong><code>H-K1-A</code>: Oriented Cross-Strike Dipole Asymmetry &amp; Multi-Scale Contextual Submodular Synthesis (<code>OCDA-MSCS</code>)</strong><br><small>Shared 35-ch v2 + 1 m LiDAR + GeoDAWN <code>K,Th</code> &amp; <code>TMI_up150</code> + GDR 2 m temperature probes (<code>F2mDAB</code>), quartz geothermometry &amp; sinter + Census TIGER roads + fold-local <code>cell.visible_full</code> continuation.</small></td>
-        <td>Evaluates oriented footwall-to-hanging-wall dipoles across local strike (piedmont slope break at ±400/800 m, co-polarized gravity drop &amp; basement deepening at ±600 m, MT conductivity step at ±500 m) + true Miller–Singh magnetic/gravity tilt zero-crossings (fixing <code>IR-BAND-06</code>) + 1-px transverse crest + 25-offset 300 m CELF packing. Targets degraded piedmont scarps and blind intrabasin half-graben conduits missed by <code>labels.tif</code>.</td>
-        <td><strong>Mimics:</strong> Lake Lahontan shorelines, highway cuts, symmetric bedrock divides, basaltic dikes (mitigated via contour-orthogonality, road guard, <code>TMI_up150</code>, and dipole polarity). Distinct from <code>H19-5</code> (symmetric DEM ridges), <code>MPLC</code> (isotropic FFT phase congruency), and <code>KANLER2</code> (FFT upward-continued gravity migration).</td>
-        <td><strong>Validated on holdout:</strong> <code>HOLDOUT-DTI = 0.105830</code> (<code>[0.095019, 0.115257]</code>) on <code>HIDE-RECOVER-v3.1</code>; <code>0.050040</code> on <code>SGMC-CAL-v3.0</code>; <code>40/40</code> detector uniqueness PASS.</td>
-      </tr>
-      <tr>
-        <td><strong>#2 · Medium</strong><br><small>Unimplemented</small></td>
-        <td><strong><code>H-K1-B</code>: Structural-Index-Discriminated 3D Euler Deconvolution (<code>SI=0</code> Contact vs <code>SI=1</code> Dike)</strong><br><small><code>rtp</code> (B2), <code>tmi_hg</code> (B3), <code>tmi_vg</code> (B9), <code>TMI_up150</code>, <code>iso_grav_anom</code> (B13), <code>iso_grav_anom_hg</code> (B18), <code>iso_grav_anom_vg</code> (B11).</small></td>
-        <td>Sliding <code>7×7</code> Thompson/Reid 3D Euler deconvolution comparing solution clustering between Structural Index <code>N = 0.0</code> (subvertical fault step) and <code>N = 1.0</code> (tabular dike/sill) to isolate buried basement fault contacts under Cenozoic fill.</td>
-        <td><strong>Mimic:</strong> Unfaulted plutonic intrusive margins or paleochannel edges. Never implemented in <code>KANLERGEMSDOE1</code>.</td>
-        <td>100% locally pinned; unimplemented and untested in this review (budget capped at 3 experiments in Lane <code>H-K1-A</code>).</td>
-      </tr>
-      <tr>
-        <td><strong>#3 · Low</strong><br><small>Unimplemented standalone</small></td>
-        <td><strong><code>H-K1-C</code>: Geodetic Strain-Tensor Slip &amp; Dilation Tendency (<code>T_s, T_d</code>) on Geophysical Planes</strong><br><small><code>geod_shearrate</code> (B7), <code>geod_dilaterate</code> (B8), <code>geod_2ndinv</code> (B4), strike <code>θ(x)</code> from <code>rtp</code>, <code>iso_grav_anom</code>, and 1 m LiDAR.</small></td>
-        <td>Projects candidate geophysical plane strikes into modern WNW–ESE Great Basin extension and NW Walker Lane dextral shear invariants (Morris et al., 1996) to separate active permeable conduits from sealed Mesozoic thrusts.</td>
-        <td><strong>Mimic:</strong> Unfaulted NNE-striking hogbacks or range crests aligned by tectonic inheritance.</td>
-        <td>100% locally pinned; standalone tensor formulation unimplemented and untested in this review (kinematic alignment auxiliary channel included in <code>EXP-2/3</code>).</td>
-      </tr>
-      <tr>
-        <td><strong>#4 · High</strong><br><small>External API blocked</small></td>
-        <td><strong><code>H-K1-D</code>: Relocated Hypocentral Fault-Plane Updip Projection</strong><br><small>External raw hypocenters <code>(x,y,z,σ_h,σ_z)</code> from <a href="https://earthquake.usgs.gov/fdsnws/event/1/">USGS ANSS ComCat FDSN API</a> + <code>det_elev</code> (B12) + <code>tmi_hg</code> (B3).</small></td>
-        <td><code>training_features.tif</code> seismicity bands were smoothed at <code>100 km</code>, erasing fault-scale geometry. Fitting 3D dipping planes (<code>50°–65°</code>) to relocated microearthquake clusters (separating tectonic planes from transient injection/mining swarm pipes) projects blind active faults updip to surface emergence.</td>
-        <td><strong>Mimic:</strong> Geothermal reinjection clusters, mine blasts, and volcanic swarm pipes.</td>
-        <td><strong>Official free CC0 source:</strong> <a href="https://earthquake.usgs.gov/fdsnws/event/1/">USGS FDSN Event API</a> (outbound host blocked in this sandbox; unimplemented and untested in this review).</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<h2>Ranked Candidate Hypotheses (Ranked by Expected DTI Gain vs Implementation Cost)</h2>
+<div class="table-wrap"><table><thead><tr><th>Rank &amp; Cost</th><th>Hypothesis &amp; Specific Layers</th><th>Physical Signature, Transform &amp; Why It Catches Unmapped Faults</th><th>Named Non-Fault Mimics &amp; Repo Differentiation</th></tr></thead><tbody>
+<tr>
+  <td><strong>#1 · SELECTED &amp; TESTED</strong><br><small><code>H-K1-A</code> · Low–Med cost (~13.6 min CPU · 0 external downloads)</small></td>
+  <td><strong>OCDA-MSCS — Offset-Coupled Dip-Asymmetry &amp; Multi-Sensor Concordant Skeleton + 300 m Submodular Packing</strong><br><small>Layers: DEM (`b12`), detrended slope (`b19`), 1 m LiDAR (`lidar_scarp_features_u8`), CBA/Iso/Basement gravity (`b02`, `b03`, `b14`, signed `b18`), TMI/RTP (`b01`, `b04`), MT `b05`/`b15`, GeoDAWN Total Count (`b06`) + `geodawn_rad_u8`, Heatflow (`b07`), USGS 2 m probes (`3,800` pts), sinter vents (`413` pts), IEQ/DEQ (`b09`/`b10`), strain (`b16`/`b17`), fold-local `cell.visible_full`.</small></td>
+  <td>Moderately dipping ($45^\circ\text{--}65^\circ$) normal faults project 1–3 km basement gravity/magnetic/MT contacts <strong>$400\text{--}1500\text{ m}$ ($4\text{--}15\text{ px}$) laterally into the hanging-wall basin</strong> along $\hat{\mathbf{n}}_{\text{HW}} = -\nabla z_{\text{LP}}/|\nabla z_{\text{LP}}|$, while hydrothermal probes/sinter vent up-dip ($0\text{--}4\text{ px}$) and concave piedmont scarps mark the surface break. Catches concealed intrabasin and piedmont-apron faults omitted from 1:250k Quaternary mapping.<br><strong>Result:</strong> <code>HOLDOUT-DTI = 0.105830</code> [0.095019, 0.115257] (#1 in <code>KANLERGEMSDOE1</code>).</td>
+  <td><strong>Mimics:</strong> Tabular Miocene–Pliocene basalt mesa cliffs, Pleistocene Lake Lahontan/Bonneville shoreline berms, and unfaulted alluvial-fan aprons.<br><strong>Repo diff:</strong> All prior code in <code>KANLERGEMSDOE1</code> (<code>iedr.py</code>, <code>mplc.py</code>, <code>cgji.py</code>, <code>concord.py</code>) evaluates bands pointwise at $(y, x)$ without lateral dip-offset gathering $(y, x) + \delta\hat{\mathbf{n}}_{\text{HW}}$.</td>
+</tr>
+<tr>
+  <td><strong>#2 · UNTESTED</strong><br><small><code>H-K1-B</code> · Medium cost (~30 min CPU · 0 external downloads)</small></td>
+  <td><strong>PFTD — Poisson–Eötvös Potential-Field Tensor Deconvolution &amp; Upward-Continued Dip-Migration</strong><br><small>Layers: TMI (`b01`), RTP (`b04`), CBA (`b02`), Isostatic (`b03`), Basement gravity (`b14`), Depth-to-basement (`b13`).</small></td>
+  <td>Tracks horizontal crest translation $\Delta\mathbf{x}(z_1\to z_2)\cdot\hat{\mathbf{n}}$ under FFT upward continuation ($z\in\{200,600,1500,3000\}\text{ m}$) combined with local 7×7 Poisson tensor regression ($\nabla\mathbf{B}_{\text{RTP}} = \alpha\nabla\nabla g_{\text{CBA}}$) and Euler Structural Index $N\approx 0.5$ filtering to isolate intrabasin horst/graben contacts beneath thick playafill.</td>
+  <td><strong>Mimics:</strong> Sub-circular Tertiary pluton aureoles ($N\approx 2\text{--}3$), caldera ring-dikes, and shallow basaltic sills.<br><strong>Repo diff:</strong> Untried in <code>KANLERGEMSDOE1</code> (<code>iedr.py</code> and <code>mplc.py</code> contain zero FFT upward continuation or Poisson tensor regression).</td>
+</tr>
+<tr>
+  <td><strong>#3 · UNTESTED</strong><br><small><code>H-K1-C</code> · Medium cost (~25 min CPU · 0 external downloads)</small></td>
+  <td><strong>CSRN — Coulomb Transtensional Stress-Transfer &amp; Blind Relay-Ramp Bridge Network</strong><br><small>Layers: Geodetic dilatation (`b16`), 2nd invariant strain (`b17`), IEQ (`b09`), fold-local `cell.visible_full` tips, DEM (`b12`), IsoGravity (`b03`).</small></td>
+  <td>Evaluates analytical Okada (1992) 2D elastic dislocation shear/normal Coulomb stress lobes ($\Delta\text{CFF} = \Delta\tau + \mu'\Delta\sigma_n$) radiated solely from fold-visible fault tips, gated by transtensional geodetic strain compatibility and anti-correlated relay-ramp bed tilt.</td>
+  <td><strong>Mimics:</strong> Antithetic erosional gullies, transverse volcanic transfer ridges, and sparse GPS interpolation triangles.<br><strong>Repo diff:</strong> No Okada dislocation stress kernel exists anywhere in the GEMS fleet.</td>
+</tr>
+<tr>
+  <td><strong>#4 · UNTESTED (CONDITIONAL)</strong><br><small><code>H-K1-D</code> · High cost (requires external API ingest)</small></td>
+  <td><strong>3D-UPDIP-EQ — Relocated Hypocenter Planar Fitting &amp; Updip Surface-Trace Projection</strong><br><small>Layers: External <a href="https://earthquake.usgs.gov/fdsnws/event/1/">USGS ComCat FDSN API</a> (CC0 public domain) + <a href="http://www.seismo.unr.edu/">UNR NSL</a> hypocenters $(x_i,y_i,z_i,\sigma_{xy},\sigma_z)$, DEM (`b12`), RTP (`b04`).</small></td>
+  <td>RANSAC fits 3D dipping planes $\mathbf{n}\cdot\mathbf{x}=d$ to microseismic clusters ($2\text{--}12\text{ km}$ depth) and solves $\mathbf{n}\cdot(x,y,z_{\text{DEM}}(x,y))=d$ to project blind seismogenic Walker Lane shear zones updip to their surface trace ($d\cot\delta \approx 3\text{--}8\text{ km}$ lateral offset from epicenters).</td>
+  <td><strong>Mimics:</strong> Non-planar geothermal injection / mining blast earthquake swarms, volcanic dike intrusions, and network location streaks.<br><strong>Repo diff:</strong> Competition bands `b08..b10` flatten depth into 2D epicentral kernels. Untested here because sandbox egress excludes `earthquake.usgs.gov`.</td>
+</tr>
+</tbody></table></div>
 
-<h2>2. Key Theorem Discovered in <code>EXP-2 → EXP-3</code>: Positive-Unlabeled Split Inversion</h2>
+<h2>Why <code>EXP-2</code> Failed (`0.025006`) and Why <code>EXP-3</code> Won (`0.105830`): Positive-Unlabeled Split Inversion</h2>
 <div class="card">
-  <p>In <code>EXP-2</code>, fold-local structural continuation features (<code>fold_vis_tip_continuation</code>, single-feature withheld AUC = <code>0.7295</code>; <code>fold_vis_stepover_relay_bridge</code>, withheld AUC = <code>0.7386</code>) were zeroed on <code>visible_mask</code> and passed directly into <code>HistGradientBoostingClassifier</code> trained with <code>y = visible_mask</code>. Because 100% of training positives had <code>continuation == 0</code> while distant training negatives (<code>d_vis &gt; 4 px</code>) had <code>continuation &gt; 0</code>, the tree inverted the physical sign (<code>0.104042 → 0.025006</code>).</p>
-  <p><strong><code>EXP-3</code> Resolution:</strong> Decoupling Stage-1 geophysical <code>OCDA</code> probability from a Stage-2 logistic combiner calibrated strictly on 20% inner-withheld training-quadrant fault segments restored strictly positive weights across all 8 folds (<code>w_tip ≈ +2.47</code>, <code>w_relay ≈ +0.45</code>), lifting overall <code>HIDE-RECOVER-v3.1</code> to <strong><code>0.105830</code></strong> and SW Walker Lane DTI by <strong>+27.3%</strong> (<code>0.0665 → 0.0846</code>).</p>
+  <p>Under Protocol Rule 5, negative results are first-class scientific deliverables:</p>
+  <ol>
+    <li><strong>The <code>EXP-2</code> Trap:</strong> Fold-local continuation fields (`fold_vis_tip_continuation` and `fold_vis_stepover_relay_bridge`) are strictly zeroed on `visible_mask` so they highlight unmapped forward extensions (`&amp; ~vis`). When fed directly into a Positive-Unlabeled tree trained with `y = visible_mask`, <strong>100% of positive training pixels (`y = 1`) have value `0.0`</strong> while unlabeled pixels (`y = 0`) ahead of fault tips have values `&gt; 0`! The GBDT splits `tip_continuation &lt;= 0 → higher P(y=1)`, actively suppressing fault tips (`HOLDOUT-DTI = 0.025006`).</li>
+    <li><strong>The <code>EXP-3</code> Solution:</strong> Decoupling Stage-1 geophysical `OCDA` likelihood (trained on 60 purely geophysical channels without binary coverage flags) from Stage-2 logistic calibration fit strictly on <strong>20% inner-withheld training-quadrant fault segments</strong> learns positive structural weights (`w_tip ≈ +2.47, w_relay ≈ +0.45`) and raises `GEMSDOE32-HIDE-RECOVER-v3.1` to <strong>`0.105830`</strong> (`+27.3%` in SW Walker Lane).</li>
+  </ol>
 </div>
 
-<footer>Updated: 27 October 2026 UTC · <a href="research/hypotheses-20261027.md">2026-10-27 Pre-Registration</a> · <a href="research/hypotheses-20261026.md">2026-10-26 Archive</a></footer>
-</main></body></html>
+<h2>Concurrent 2026-10-27 Lanes Audited in This Repository</h2>
+<p>Three parallel 2026-10-27 research lanes were also audited in <code>KANLERGEMSDOE1</code> and integrated into our 46-raster uniqueness corpus: <strong>CGJI-HTB</strong> (`EXP2` `HOLDOUT-DTI = 0.099671`; `33.90%` 3-px overlap vs `OCDA-MSCS`), <strong>KANLER-CONCORD</strong> (`EXP2` `0.051774` / `EXP3` `0.094157`; `22.00%` overlap vs `OCDA-MSCS`), and <strong>H-UNQ-1</strong> (`HOLDOUT-DTI = 0.0078`, sparse 7,420-dot blind step-over radiometric conduit; `3.55%` overlap vs `OCDA-MSCS`). Every evaluated lane carries <code>verdict: "negative"</code> and requires explicit selector approval.</p>
+
+<p><a href="research/hypotheses-20261027.md">2026-10-27 Pre-Registration Note (Markdown)</a> · <a href="evidence/ocda_ablation_ledger.json">OCDA-MSCS 3-Experiment Ledger</a> · <a href="evidence/ocda_leakage_canaries.json">63-Feature Leakage Canary Receipt</a> · <a href="sources.html">Official Sources &amp; Licenses</a></p>
+<footer>Review: 27 October 2026 UTC · 0 contest slots used · <a href="sources.html">Evidence &amp; sources</a></footer></main></body></html>

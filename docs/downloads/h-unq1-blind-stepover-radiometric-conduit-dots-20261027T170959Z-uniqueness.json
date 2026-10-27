@@ -1,0 +1,80 @@
+{
+  "candidate_id": "H-UNQ-1",
+  "hypothesis": "H-UNQ-1 blind stepover-radiometric conduit dots (untried)",
+  "generated_utc": "20261027T170959Z",
+  "n_dots": 34000,
+  "footprint_px": 5167373,
+  "catalogue_px": 60988,
+  "sha256_zeros": "df92cfc2a5341623ecb1f1a71f21ca77e5754b65391344440e16e62bef5251d0",
+  "sha256_nan": "f634f30f9a9c7971ee9ceb37dcb56f18300e7f36d1f33338f6fefc9207f3f8a3",
+  "format_audit_zeros": {
+    "filename": "gemsdoe32-h-unq1-blind-stepover-radiometric-conduit-dots-20261027T170959Z-339ac2dd-zeros.tif",
+    "size_bytes": 433656,
+    "sha256": "df92cfc2a5341623ecb1f1a71f21ca77e5754b65391344440e16e62bef5251d0",
+    "mode": "zeros",
+    "geometry_reference": "/home/user/KANLERGEMSDOE1/.cache/gems_data/sample_submission.tif",
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "nodata_repr": "None",
+    "emitted_positive_pixels": 34000,
+    "footprint_fraction": 0.00658,
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_finite_pixels": 5167373,
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 0.6539629697799683,
+    "full_grid_finite_pixels": 12279160,
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "nodata_none_for_zeros": true,
+      "nodata_nan_for_nan": true,
+      "zero_on_catalogue_leakage": true,
+      "local_range_check": true
+    },
+    "all_checks_passed": true
+  },
+  "registry_overlap": [
+    {
+      "file": "champion_h33_b2_02778.tif",
+      "ref_dots": 37654,
+      "spearman_binary": 0.000597941965244145,
+      "cand_dots_within_3px_of_ref": 0.13491262548467625,
+      "ref_dots_within_3px_of_cand": 0.15320588235294116,
+      "identical_support": false
+    },
+    {
+      "file": "d28_02600.tif",
+      "ref_dots": 44090,
+      "spearman_binary": -0.0005231208993682298,
+      "cand_dots_within_3px_of_ref": 0.1250170106600136,
+      "ref_dots_within_3px_of_cand": 0.16026470588235295,
+      "identical_support": false
+    }
+  ],
+  "wells": 8718,
+  "vents": 21,
+  "max_dots": 34000,
+  "nms_radius_px": 2
+}

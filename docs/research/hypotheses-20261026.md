@@ -40,3 +40,23 @@ earthquake density with strain; that combination alone is **not** a new hypothes
   baseline, and check the surface and final dots against **every** registered raster.
   A complete inventory and an explicit policy for density-saturating registry maps
   are required; this session may not silently exempt them.
+
+---
+
+## Addendum — 2026-10-27 Execution (`L-CGJI-HTB-2026-10-27`) & Expanded Multi-Physics Slate
+
+In the 2026-10-27 session, we rebuilt the verified 35-channel v2 feature stack (`gems32-structural-v2-principal-curvature`, SHA-256 `ec70d7eac8f19f6910b98342ad2eff571bbd9ef20c718eedd900e06ca4acc944`) and executed the 3-experiment **CGJI-HTB** lane (`src/kanler/cgji.py`, `scripts/run_cgji_experiments.py`) with strict fold-local visible-only masking (`invariance_verified = True`, `max_abs_diff = 0`) and 41/41 feature leakage canaries (`max sym-AUC = 0.584624 <= 0.90`):
+
+1. **`EXP1_CGJI_PHYS_NMS`** (Label-free Gallardo–Meju Cross-Gradient Collinearity + Piedmont Break-in-Slope Scarp Dipole + Hydrothermal Upflow Breach on a 1-px transverse NMS crest skeleton):
+   - `HOLDOUT-DTI = 0.060929` (`95% CI [0.049968, 0.073197]`, `GEMSDOE32-HIDE-RECOVER-v3.1`, `n_withheld_positives = 22,232`).
+   - **`HOLDOUT-DTI = 0.115633` (`95% CI [0.097758, 0.134248]`, `GEMSDOE32-SGMC-CAL-v3.0`, `n_withheld_positives = 62,703`)** — #1 highest SGMC regional lithological contact score (vs `GEMSDOE32` `0.096060`).
+   - Non-lattice 21-peer uniqueness: `max 3-px overlap = 40.99% <= 70%` (`25.51%` vs `GEMSDOE32`), `|Spearman| <= 0.2939 <= 0.90`.
+2. **`EXP2_CGJI_OOF_HGB`** (Quadrant-blocked fold-local `HistGradientBoostingClassifier` on the 40-channel `CGJI-HTB` + v2 stack over the NMS crest):
+   - **`HOLDOUT-DTI = 0.099671` (`95% CI [0.085008, 0.113669]`, `GEMSDOE32-HIDE-RECOVER-v3.1`, `n_withheld_positives = 22,232`)** — #1 highest clean fold-local hide-and-recover score (vs `GEMSDOE32` `D2.8 B=2` fold-local OOF `0.099202`, `95% CI [0.085951, 0.112668]`).
+   - `HOLDOUT-DTI = 0.083354` (`95% CI [0.072470, 0.093394]`, `GEMSDOE32-SGMC-CAL-v3.0`, `n_withheld_positives = 62,703`).
+   - Non-lattice 21-peer uniqueness: `max 3-px overlap = 58.70% <= 70%` (`45.28%` vs `GEMSDOE32`), `|Spearman| <= 0.2909 <= 0.90`.
+3. **`EXP3_CGJI_EK_HYBRID`** (Expected-300m-kernel-credit crest-coherent hybrid):
+   - `HOLDOUT-DTI = 0.096477` (`95% CI [0.082813, 0.110499]`, `GEMSDOE32-HIDE-RECOVER-v3.1`); `HOLDOUT-DTI = 0.092496` (`95% CI [0.079882, 0.104520]`, `GEMSDOE32-SGMC-CAL-v3.0`).
+   - Non-lattice 21-peer uniqueness: `max 3-px overlap = 57.35% <= 70%` (`43.77%` vs `GEMSDOE32`), `|Spearman| <= 0.2887 <= 0.90`.
+
+See [`docs/HYPOTHESES.md`](../HYPOTHESES.md) and [`evidence/cgji_htb_experiments_20261027.json`](../evidence/cgji_htb_experiments_20261027.json) for full specifications of the 5-hypothesis slate (`H1: CGJI-HTB`, `H2: PBTD`, `H3: CSFD`, `H4: RMWD`, `H5: USGS-3DEP-QF`).

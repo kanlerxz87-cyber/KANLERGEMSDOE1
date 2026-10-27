@@ -71,20 +71,21 @@ def main() -> int:
     )
     zeros_tif = downloads_dir / bundle["zeros_tif"]["filename"]
     nan_tif = downloads_dir / bundle["nan_tif"]["filename"]
-    # Keep only the recommended all-finite `-zeros.tif`, `.zip`, and `-audit.json` in tracked `docs/downloads/`
-    # to avoid unnecessary binary bloat and prevent accidental `-nan.tif` portal range errors (IR-PORTAL-05).
-    if nan_tif.is_file():
-        nan_tif.unlink()
 
-    # Re-verify standalone automated 15-check GeoTIFF audit on the written `-zeros.tif`
+    # Re-verify standalone automated 15-check GeoTIFF audit on BOTH `-nan.tif` (official null/NaN outside bounds)
+    # and `-zeros.tif` (reference U-Net all-finite diagnostic)
+    geo_audit_nan = submission.audit_geotiff(
+        nan_tif, foot, labels, mode="nan", template_tif=ddir / "sample_submission.tif"
+    )
     geo_audit = submission.audit_geotiff(
         zeros_tif, foot, labels, mode="zeros", template_tif=ddir / "sample_submission.tif"
     )
-    assert geo_audit["all_checks_passed"] is True, f"GeoTIFF validation failed: {geo_audit}"
+    assert geo_audit_nan["all_checks_passed"] is True, f"GeoTIFF NaN validation failed: {geo_audit_nan}"
+    assert geo_audit["all_checks_passed"] is True, f"GeoTIFF zeros validation failed: {geo_audit}"
 
     # 2. Construct pre-placement local-peak preview support (top 37,654 5x5 local maxima of continuous surface)
     from scipy.ndimage import maximum_filter
-    allowed_prev = foot & (~labels) & (di_cat := (surf > 0)) & (surf >= maximum_filter(surf, size=5))
+    allowed_prev = foot & (~labels) & (surf > 0) & (surf >= maximum_filter(surf, size=5))
     ay, ax = np.nonzero(allowed_prev)
     s_vals = surf[ay, ax]
     k_top = min(int(dots.sum()), int(s_vals.size))
@@ -92,7 +93,7 @@ def main() -> int:
     preview_dots = np.zeros(foot.shape, dtype=bool)
     preview_dots[ay[top_idx], ax[top_idx]] = True
 
-    # 3. Assemble complete 42-raster reference corpus (9 focus + 12 scored + 16 sibling/fleet peers + 5 prior local)
+    # 3. Assemble complete 46-raster reference corpus (9 focus + 12 scored + 16 sibling/fleet + 9 prior/concurrent KANLER1)
     ref_paths: list[tuple[str, str, Path]] = []
     for p in sorted((ddir / "focus").glob("*.tif")):
         ref_paths.append(("focus_9", p.stem, p))
@@ -103,7 +104,9 @@ def main() -> int:
     for p in sorted(downloads_dir.glob("*-zeros.tif")):
         if p.resolve() == zeros_tif.resolve():
             continue
-        ref_paths.append(("kanler1_prior_5", p.stem, p))
+        ref_paths.append(("kanler1_prior_and_concurrent", p.stem, p))
+    for p in sorted((ROOT / "submissions").rglob("*-zeros.tif")):
+        ref_paths.append(("kanler1_prior_and_concurrent", p.stem, p))
 
     print(f"[AUDIT] Streaming {len(ref_paths)} reference rasters one-by-one (<300 MB RAM)...")
     from scipy.ndimage import binary_dilation
@@ -294,13 +297,17 @@ def main() -> int:
         "evaluated_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "elapsed_seconds": round(time.time() - t0, 2),
         "candidate_id": "KANLER1-OCDA-MSCS-EXP3",
-        "submission_filename": zeros_tif.name,
-        "submission_zip": bundle["zeros_zip"]["filename"],
+        "submission_filename_nan": nan_tif.name,
+        "submission_filename_zeros": zeros_tif.name,
+        "submission_zip": bundle["submission_zip"]["filename"],
         "submission_note": note,
         "submission_note_length": len(note),
-        "raster_sha256": geo_audit["sha256"],
+        "raster_sha256_nan": geo_audit_nan["sha256"],
+        "raster_sha256_zeros": geo_audit["sha256"],
+        "submission_zip_sha256": bundle["submission_zip"]["sha256"],
         "independent_replay_cells_sha256": replay_sha256,
-        "geotiff_validator": geo_audit,
+        "geotiff_validator_nan": geo_audit_nan,
+        "geotiff_validator_zeros": geo_audit,
         "discrete_detector_uniqueness_40_peers": {
             "n_discrete_detectors": len(final_det_rows),
             "surface_stage_passed": surf_det["passed"],

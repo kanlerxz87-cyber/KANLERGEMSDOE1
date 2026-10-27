@@ -176,15 +176,17 @@ class ReleaseGateTests(unittest.TestCase):
         d=np.zeros_like(f);d[0,0]=1;o=np.zeros_like(f);o[9,9]=1
         with self.assertRaises(ValueError):
             compare_registry(s,d.astype(float)*np.nan,f,{'r':(s,o)},inventory_complete=True)
-        surf={'stage':'surface','passed':True,'inventory_complete':True,
-              'comparisons':[{'measurable':True,'duplicate':False}]}
+        surf={'stage':'surface','passed':True,'inventory_complete':True,'stop':False,
+              'comparisons':[{'registry':'test-peer','measurable':True,'duplicate':False,
+                              'spearman_surface':.2,'spearman_support':.1,'within_3px_fraction':.3}]}
         final={**surf,'stage':'final'}
         score={'score_label':'HOLDOUT-DTI','evaluator_version':'test-v1',
                'catalogue_feature_provenance_verified':True,'independent_replay_sha256':'a'*64,
-               'n_withheld_positives':10,'pooled_dti':.2,'ci95_cluster_bootstrap':[.1,.3]}
+               'evaluation_design_sha256':'b'*64,'n_withheld_positives':10,'pooled_dti':.2,'ci95_cluster_bootstrap':[.1,.3]}
         old={**score,'pooled_dti':.1,'ci95_cluster_bootstrap':[.05,.15]}
         validator={'checks':{k:True for k in REQUIRED_VALIDATOR_CHECKS},
-                   'all_checks_passed':True,'organizer_template_authenticated':True}
+                   'all_checks_passed':True,'organizer_template_authenticated':True,
+                   'official_outside_bounds_null_or_nan':True,'official_submission_format_compatible':True}
         kwargs=dict(lane='test',surface_check=surf,final_check=final,canary_aucs={'feature':.6},
                     holdout=score,incumbent=old,same_evaluation=True,validator=validator,
                     paired_delta_ci95=[.01,.1],expected_features=['feature'])
@@ -195,6 +197,23 @@ class ReleaseGateTests(unittest.TestCase):
         self.assertEqual(promotion_decision(**{**kwargs,'validator':{**validator,'organizer_template_authenticated':False}})['verdict'],'negative')
         self.assertEqual(promotion_decision(**{**kwargs,'surface_check':{**surf,'inventory_complete':False}})['verdict'],'negative')
         self.assertTrue(promotion_decision(**kwargs)['selector_required'])
+        for field in ('official_outside_bounds_null_or_nan','official_submission_format_compatible'):
+            self.assertEqual(promotion_decision(**{**kwargs,'validator':{**validator,field:False}})['verdict'],'negative')
+        # AUC inversion is just as suspicious as AUC > .90; do not trust flags.
+        for auc in (.01, .91, True, float('nan')):
+            self.assertEqual(promotion_decision(**{**kwargs,'canary_aucs':{'feature':auc}})['verdict'],'negative')
+        for key, value in (('spearman_surface',.91),('spearman_support',.91),
+                           ('within_3px_fraction',.71),('within_3px_fraction',True)):
+            dishonest={**surf,'comparisons':[{**surf['comparisons'][0],key:value}]}
+            self.assertEqual(promotion_decision(**{**kwargs,'surface_check':dishonest})['verdict'],'negative')
+        changed={**score,'evaluation_design_sha256':'c'*64}
+        missing={k:v for k,v in score.items() if k!='evaluation_design_sha256'}
+        for result in (changed,missing):
+            self.assertEqual(promotion_decision(**{**kwargs,'holdout':result})['verdict'],'negative')
+        other_registry={**final,'comparisons':[{**final['comparisons'][0],'registry':'different'}]}
+        self.assertEqual(promotion_decision(**{**kwargs,'final_check':other_registry})['verdict'],'negative')
+        self.assertFalse(promotion_decision(**kwargs)['slot_used'])
+
 
 
 class SubmissionWriterTests(unittest.TestCase):
@@ -224,10 +243,19 @@ class SubmissionWriterTests(unittest.TestCase):
         import zipfile
         bundle=self.write(); self.assertTrue(bundle['zeros_tif']['all_checks_passed'])
         self.assertTrue(bundle['nan_tif']['all_checks_passed'])
+        self.assertFalse(bundle['zeros_tif']['official_submission_format_compatible'])
+        self.assertTrue(bundle['nan_tif']['official_submission_format_compatible'])
+        self.assertTrue(bundle['nan_tif']['official_outside_bounds_null_or_nan'])
         with rasterio.open(self.out/bundle['zeros_tif']['filename']) as ds:
             self.assertIsNone(ds.nodata);np.testing.assert_array_equal(ds.read(1),self.a)
-        with zipfile.ZipFile(self.out/bundle['zeros_zip']['filename']) as z:
-            self.assertEqual(z.namelist(),[bundle['zeros_tif']['filename']])
+        self.assertIn('NaN',bundle['zeros_variant_warning'])
+        with zipfile.ZipFile(self.out/bundle['submission_zip']['filename']) as z:
+            self.assertEqual(z.namelist(),[bundle['nan_tif']['filename']])
+            zipped = z.read(bundle['nan_tif']['filename'])
+            with rasterio.MemoryFile(zipped) as mem:
+                with mem.open() as ds:
+                    self.assertTrue(np.isnan(ds.read(1)[~self.foot]).all())
+                    self.assertTrue(np.isfinite(ds.read(1)[self.foot]).all())
         self.assertEqual(len(list(self.out.iterdir())),4)
         with self.assertRaises(FileExistsError):self.write()
         self.assertEqual(len(list(self.out.iterdir())),4)
@@ -269,6 +297,8 @@ class RestoreTests(unittest.TestCase):
         import hashlib
         sys.path.insert(0,str(ROOT/'scripts'))
         import restore_data
+        for unsafe_repo in ('../bad','good/..','/bad','-bad/repo'):
+            self.assertIsNone(restore_data.REPO_RE.fullmatch(unsafe_repo))
         with tempfile.TemporaryDirectory() as temp:
             root=Path(temp)/'root';root.mkdir()
             class Fetch:
@@ -284,5 +314,48 @@ class RestoreTests(unittest.TestCase):
             with self.assertRaises(ValueError):restore_data.restore_entry(bad,root,Fetch())
             self.assertFalse((root/'dir/bad.bin').exists())
             self.assertFalse((root/'dir/bad.bin.assembling').exists())
+
+
+class CgjiUnitTests(unittest.TestCase):
+    def test_cross_gradient_collinearity_peaks_on_parallel_steps(self):
+        from kanler.cgji import cross_gradient_collinearity
+        y, x = np.mgrid[0:64, 0:64].astype(np.float32)
+        foot = np.ones((64, 64), dtype=bool)
+        u = np.tanh((x - 32.0) / 2.5).astype(np.float32)
+        v_par = np.tanh((x - 32.0) / 2.5).astype(np.float32)
+        v_orth = np.tanh((y - 32.0) / 2.5).astype(np.float32)
+        col_par, dis_par = cross_gradient_collinearity(u, v_par, foot, sigma=1.2)
+        col_orth, dis_orth = cross_gradient_collinearity(u, v_orth, foot, sigma=1.2)
+        self.assertGreater(float(col_par[32, 32]), 0.85)
+        self.assertLess(float(dis_par[32, 32]), 0.05)
+        self.assertLess(float(col_orth[32, 32]), 0.05)
+        self.assertGreater(float(dis_orth[32, 32]), 0.85)
+
+    def test_cgji_suite_receipt_and_run_card_consistency(self):
+        suite_path = ROOT / "evidence" / "cgji_htb_experiments_20261027.json"
+        card_path = ROOT / "data" / "run-card.json"
+        self.assertTrue(suite_path.is_file())
+        self.assertTrue(card_path.is_file())
+        suite = json.loads(suite_path.read_text(encoding="utf-8"))
+        card = json.loads(card_path.read_text(encoding="utf-8"))
+        self.assertTrue(suite["invariance_verification"]["invariance_verified"])
+        self.assertEqual(suite["invariance_verification"]["max_abs_diff"], 0)
+        self.assertTrue(suite["leakage_canary_report"]["all_below_0_90"])
+        self.assertLessEqual(suite["leakage_canary_report"]["max_symmetric_auc"], 0.90)
+        for exp_id in ("EXP1_CGJI_PHYS_NMS", "EXP2_CGJI_OOF_HGB", "EXP3_CGJI_EK_HYBRID"):
+            exp = suite["experiments"][exp_id]
+            self.assertEqual(exp["n_dots_full"], 37654)
+            self.assertTrue(exp["uniqueness_non_lattice_21_peers"]["passed"])
+            self.assertLessEqual(exp["uniqueness_non_lattice_21_peers"]["max_within_3px_fraction"], 0.70)
+            self.assertLessEqual(exp["uniqueness_non_lattice_21_peers"]["max_abs_spearman_surface"], 0.90)
+        exp2_dti = suite["experiments"]["EXP2_CGJI_OOF_HGB"]["hide_and_recover_holdout"]["pooled_dti"]
+        inc_dti = suite["fold_local_d28_baselines"]["GEMSDOE32_D28_B2"]["pooled_dti"]
+        self.assertGreater(exp2_dti, inc_dti)
+        exp1_sgmc = suite["experiments"]["EXP1_CGJI_PHYS_NMS"]["sgmc_calibration_holdout"]["sgmc_raw_pooled_dti"]
+        self.assertGreater(exp1_sgmc, 0.11)
+        self.assertEqual(
+            card["holdout_dti"]["cgji_htb_valid_fold_local_oof"]["exp2_oof_hgb_pooled_dti"],
+            exp2_dti,
+        )
 
 if __name__=='__main__':unittest.main()

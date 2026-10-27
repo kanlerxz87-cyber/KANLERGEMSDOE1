@@ -1,0 +1,30 @@
+{
+  "checked_utc_date": "2026-10-27",
+  "source_type": "Official organizer GitHub repository; not a competition submission receipt",
+  "repository": "drivendataorg/gems-prize-reference-solution",
+  "commit": "aebe92f7c8a990f0e3443451b7a825d9afd6336b",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "cfa4d55559c9128313beb9417eae7e0a94c31677132afb1120f9e86222804239",
+      "bytes": 2367,
+      "url": "https://github.com/drivendataorg/gems-prize-reference-solution/blob/aebe92f7c8a990f0e3443451b7a825d9afd6336b/README.md"
+    },
+    {
+      "path": "unet-mc-cv-reference-solution.ipynb",
+      "sha256": "1a7622732ba00f67237058bc0efe79b45ba4e87c449fc9c1e5d6ea659de92ca0",
+      "bytes": 1578736,
+      "url": "https://github.com/drivendataorg/gems-prize-reference-solution/blob/aebe92f7c8a990f0e3443451b7a825d9afd6336b/unet-mc-cv-reference-solution.ipynb"
+    }
+  ],
+  "verified_claims": [
+    "The reference task is geological fault detection using a U-Net ensemble, not direct geothermal vent classification.",
+    "The reference training loss uses alpha=0.2 and beta=0.8.",
+    "CPU-only installation and execution are supported; a GPU accelerates training but is not a prerequisite for every method.",
+    "The reference README instructs users to download competition data separately."
+  ],
+  "limits": [
+    "This notebook is not the official distance-weighted metric evaluator. Its ordinary Tversky training loss does not independently verify the 300 m scoring kernel.",
+    "No new organizer data, rules PDF, private labels, current leaderboard or candidate submission receipt was fetched from DrivenData in this restricted environment."
+  ]
+}
