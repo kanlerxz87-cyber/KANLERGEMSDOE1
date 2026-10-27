@@ -63,6 +63,10 @@
     ],
     "in_footprint_min": 0.0,
     "in_footprint_max": 1.0,
+    "local_validation_passed": true,
+    "official_outside_bounds_null_or_nan": false,
+    "official_submission_format_compatible": false,
+    "format_irregularity": "This historical -zeros.tif stores 0 outside bounds. The official problem page requires null/NaN outside bounds; this file is not format-cleared for submission.",
     "organizer_template_authenticated": false
   },
   "submission_name": "kanlergemsdoe1-h1-iedr-s3p17-b2-32000-20261026T214518Z-fe519ae3-zeros.tif",
@@ -73,5 +77,5 @@
   "new_experiments": 0,
   "new_rasters": 0,
   "slots_used": 0,
-  "reviewed_utc": "2026-10-26T22:31:20+00:00"
+  "reviewed_utc": "2026-10-27T17:16:53+00:00"
 }

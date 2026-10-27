@@ -1,0 +1,25 @@
+name: scientific-and-publication-gates
+on:
+  pull_request:
+  workflow_dispatch:
+  push:
+    branches: [main, 'arena/**']
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Shared scientific gates and publication safety
+        run: python -m unittest discover -s tests -v
+      - name: Verify generated nine-site readiness table
+        run: python scripts/build_readiness_report.py --check
+      - name: Verify generated executive summary and pinned evidence hashes
+        run: python scripts/build_executive_summary.py --check

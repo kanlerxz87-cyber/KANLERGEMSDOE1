@@ -154,6 +154,9 @@ class PublicFeedTests(unittest.TestCase):
             class Response:
                 status = 200
 
+                def geturl(self):
+                    return 'https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/'
+
                 def __enter__(self):
                     return self
 
