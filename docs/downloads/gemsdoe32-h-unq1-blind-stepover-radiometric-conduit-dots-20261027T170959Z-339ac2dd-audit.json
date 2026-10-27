@@ -1,0 +1,121 @@
+{
+  "candidate_id": "H-UNQ-1",
+  "slug": "h-unq1-blind-stepover-radiometric-conduit-dots",
+  "content_digest8": "339ac2dd",
+  "description": "H-UNQ-1 unique blind stepover-radiometric conduit dots",
+  "submission_note_zeros": "Unique blind stepover-radiometric conduit dots; off-catalogue SGMC traces; holdout diagnostic only; selector review first",
+  "submission_note_nan": "Unique blind stepover-radiometric conduit dots; off-catalogue SGMC traces; holdout diagnostic only; selector review first",
+  "zeros_tif": {
+    "filename": "gemsdoe32-h-unq1-blind-stepover-radiometric-conduit-dots-20261027T170959Z-339ac2dd-zeros.tif",
+    "size_bytes": 433656,
+    "sha256": "df92cfc2a5341623ecb1f1a71f21ca77e5754b65391344440e16e62bef5251d0",
+    "mode": "zeros",
+    "geometry_reference": "/home/user/KANLERGEMSDOE1/.cache/gems_data/sample_submission.tif",
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "nodata_repr": "None",
+    "emitted_positive_pixels": 34000,
+    "footprint_fraction": 0.00658,
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_finite_pixels": 5167373,
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 0.6539629697799683,
+    "full_grid_finite_pixels": 12279160,
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "nodata_none_for_zeros": true,
+      "nodata_nan_for_nan": true,
+      "zero_on_catalogue_leakage": true,
+      "local_range_check": true
+    },
+    "all_checks_passed": true
+  },
+  "nan_tif": {
+    "filename": "gemsdoe32-h-unq1-blind-stepover-radiometric-conduit-dots-20261027T170959Z-339ac2dd-nan.tif",
+    "size_bytes": 569346,
+    "sha256": "f634f30f9a9c7971ee9ceb37dcb56f18300e7f36d1f33338f6fefc9207f3f8a3",
+    "mode": "nan",
+    "geometry_reference": "/home/user/KANLERGEMSDOE1/.cache/gems_data/sample_submission.tif",
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "nodata_repr": "nan",
+    "emitted_positive_pixels": 34000,
+    "footprint_fraction": 0.00658,
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_finite_pixels": 5167373,
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 0.6539629697799683,
+    "full_grid_finite_pixels": 5167373,
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "nodata_none_for_zeros": true,
+      "nodata_nan_for_nan": true,
+      "zero_on_catalogue_leakage": true,
+      "local_range_check": true
+    },
+    "all_checks_passed": true
+  },
+  "zeros_zip": {
+    "filename": "gemsdoe32-h-unq1-blind-stepover-radiometric-conduit-dots-20261027T170959Z-339ac2dd-zeros.zip",
+    "path": "/home/user/KANLERGEMSDOE1/docs/downloads/gemsdoe32-h-unq1-blind-stepover-radiometric-conduit-dots-20261027T170959Z-339ac2dd-zeros.zip",
+    "size_bytes": 396649,
+    "sha256": "e3261dd2ed7897705b1fe121c266af1239cdfe835e0739f3461191cf88a5c273"
+  },
+  "holdout_metrics": {
+    "catalogue_hidden_mean": null,
+    "catalogue_hidden_per_quadrant": {},
+    "sgmc_prevalence_calibrated_dti": null,
+    "drift_corrected_holdout_mean": null,
+    "drift_corrected_per_quadrant": {},
+    "predicted_leaderboard_dti": null,
+    "ei_drift_corrected": null,
+    "slot_decision": "HOLD-DO-NOT-SUBMIT"
+  },
+  "publication_warning": "Local format validity does not establish uniqueness, holdout quality or organizer acceptance."
+}

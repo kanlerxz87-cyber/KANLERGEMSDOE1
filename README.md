@@ -1,6 +1,8 @@
 # KANLERGEMSDOE1 · DOE GEMS Prize Research & Multi-Physics Fault Discovery
 
-> **Standing instruction:** Read this README and [`docs/ORIGINAL_PROMPT.md`](docs/ORIGINAL_PROMPT.md) at the start of every session. Maximize P(Win). Own the Outcome.
+> **Standing instruction:** Read this README, [`docs/ORIGINAL_PROMPT_20261027.md`](docs/ORIGINAL_PROMPT_20261027.md) (this session's full brief) and [`docs/research/preregistration-20261027.md`](docs/research/preregistration-20261027.md) at the start of every session.
+>
+> **Core Values — Maximize P(Win):** in every decision, weigh tradeoffs and risk and choose the path that maximizes the probability of winning; set aside emotions and make the tough call. **Own the Outcome:** own results end to end, act without waiting for permission, treat failure and success as signals, stay accountable to the final outcome. Applied here: a unique, format-valid candidate that *loses* its holdout is published as a negative result — never renamed, never submitted.
 
 ## 🔴 Literal Release-Gate Status (`release_gate.py`) & 2026-10-27 `CGJI-HTB` Suite Summary
 
@@ -49,7 +51,7 @@ Live scores below are `USER/OWNER-REPORTS` (not organizer-confirmed submission-p
 
 ---
 
-## Non-negotiable protocol
+## Non-negotiable protocol (parallel-run)
 
 1. Stay in the assigned method lane. Before placement, compare the continuous surface **and preregistered preview support** to every registry raster; repeat on final dots. Stop if Spearman ρ > 0.90 or >70% of candidate dots/support lie within 3 pixels of any reference. Missing inventory, undefined measurements, missing surface evidence, or any duplicate fail closed. **No lattice, calibration, sparse or dense exemption is authorized.**
 2. Reuse the shared cached feature stack, [`scripts/evaluate_holdout.py`](scripts/evaluate_holdout.py) and [`scripts/submission_writer.py`](scripts/submission_writer.py). Fix shared code once, not in a private fork. Hide whole fault segments in spatially buffered blocks; derive *every* catalogue-based feature and placement gate from that fold's visible faults only. Mask visible faults pixel-exactly and calculate pooled DTI with α=0.2, β=0.8, and a 300 m triangular kernel.

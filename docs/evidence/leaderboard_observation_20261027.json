@@ -1,0 +1,16 @@
+{
+  "evidence_class": "ORGANIZER-PUBLIC-LEADERBOARD-OBSERVATION",
+  "source_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+  "observed_utc_date": "2026-10-27",
+  "method": "Read the public leaderboard page with the page retrieval tool; rank-one row showed xiaofanhu, 0.4544 public DW-Tversky.",
+  "rank_one": {
+    "rank": 1,
+    "participant": "xiaofanhu",
+    "public_dw_tversky": 0.4544
+  },
+  "scope": "A public leaderboard observation as of the review date; not an organizer submission-page receipt and not evidence that any file in this repository earned this score.",
+  "discrepancy": {
+    "user_prompt_value": 0.3195,
+    "explanation": "The user-provided 0.3195 value differs from the rank-one 0.4544 shown on the official public leaderboard during this review. No cause for the discrepancy has been established. Preserve both with attribution; do not treat either as the score of a repository artifact."
+  }
+}

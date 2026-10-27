@@ -1,5 +1,5 @@
 {
-  "reviewed_utc_date": "2026-10-26",
+  "reviewed_utc_date": "2026-10-27",
   "banner": "STOP \u2014 DO NOT SUBMIT",
   "ok_to_submit": false,
   "verdict": "negative",
@@ -8,12 +8,20 @@
   "audit": "protocol_audit_20261026.json",
   "valid_holdout_dti": null,
   "public_leaderboard_snapshot": {
-    "rank_one_public_dti": 0.4437,
+    "rank_one_public_dti": 0.4544,
     "participant": "xiaofanhu",
-    "observed_date_utc": "2026-10-26",
+    "observed_date_utc": "2026-10-27",
     "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
-    "scope": "organizer-published public board; not a candidate receipt"
+    "scope": "Official public board observed during review; not a receipt for any candidate file.",
+    "discrepancy": "User prompt states 0.3195; official public page showed 0.4544. Cause unknown.",
+    "evidence": "docs/evidence/leaderboard_observation_20261027.json"
   },
   "new_experiments": 0,
-  "slots_used": 0
+  "slots_used": 0,
+  "leaderboard_feed_status": {
+    "status": "stale_snapshot",
+    "last_refresh_attempt_utc": "2026-10-27T17:12:09+00:00",
+    "result": "Refresh parser returned ValueError; dated official page observation retained; Pages deployment succeeded.",
+    "workflow_run": "https://github.com/kanlerxz87-cyber/KANLERGEMSDOE1/actions/runs/40548290863"
+  }
 }

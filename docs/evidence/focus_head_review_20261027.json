@@ -1,0 +1,161 @@
+{
+  "checked_utc_date": "2026-10-27",
+  "sources": [
+    {
+      "site": "GEMSDOE24",
+      "head_commit": "81598cc3e704ec8ef81b8bd21b5be5221de98857",
+      "homepage_source_url": "https://github.com/buffedlizard55-lab/GEMSDOE24/blob/81598cc3e704ec8ef81b8bd21b5be5221de98857/index.html",
+      "homepage_bytes": 193593,
+      "homepage_sha256": "fc59135604c3a1207bd4dc522a42e38d64e65f4788a88cad49ce463daf64676b",
+      "reported_historical_value_occurs_in_source": true,
+      "reference_path": "docs/downloads/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+      "reference_sha256_at_head": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+      "reference_matches_pinned_bytes": true,
+      "scope": "Source-text/byte checks only; no organizer receipt, exhaustive inventory or new score",
+      "owner_status_excerpt": "Current review: no submission-authorized TIFF.",
+      "review_interpretation": "Source explicitly blocks submission; current research artifacts were not replayed here."
+    },
+    {
+      "site": "GEMSDOE25",
+      "head_commit": "5a60fb475b7171af93cfce795abe6d96c4021ea2",
+      "homepage_source_url": "https://github.com/buffedlizard55-lab/GEMSDOE25/blob/5a60fb475b7171af93cfce795abe6d96c4021ea2/index.html",
+      "homepage_bytes": 82787,
+      "homepage_sha256": "4b0baf00a67f6f4bb22fb90457e1f7d9588eb26a21d7b458d27f31a26d0f55d7",
+      "reported_historical_value_occurs_in_source": true,
+      "reference_path": "docs/downloads/gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+      "reference_sha256_at_head": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+      "reference_matches_pinned_bytes": true,
+      "scope": "Source-text/byte checks only; no organizer receipt, exhaustive inventory or new score",
+      "owner_status_excerpt": "COMPETITION-READY TIF: NO · OK TO SUBMIT: NO — DO NOT SUBMIT",
+      "review_interpretation": "Source reports cache preflight and historical lane blockers; no approval inherited."
+    },
+    {
+      "site": "GEMSDOE27",
+      "head_commit": "4d39bbf92edd51fdf47004df5873793a035592e5",
+      "homepage_source_url": "https://github.com/buffedlizard55-lab/GEMSDOE27/blob/4d39bbf92edd51fdf47004df5873793a035592e5/index.html",
+      "homepage_bytes": 51421,
+      "homepage_sha256": "65fd2f9f03a8eb09f03952c349dd4e9caa775c45a0c1cb7573329c38bf8122e6",
+      "reported_historical_value_occurs_in_source": true,
+      "reference_path": "docs/downloads/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+      "reference_sha256_at_head": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+      "reference_matches_pinned_bytes": true,
+      "scope": "Source-text/byte checks only; no organizer receipt, exhaustive inventory or new score",
+      "owner_status_excerpt": "NOT AUTHORIZED FOR A WEEKLY SLOT: evidence PASS is not selector approval.",
+      "review_interpretation": "Source distinguishes evidence checks from the separate selector."
+    },
+    {
+      "site": "GEMSDOE28",
+      "head_commit": "67dbdf4da84fc92a98dd9644ab816ed18ae36bcc",
+      "homepage_source_url": "https://github.com/buffedlizard55-lab/GEMSDOE28/blob/67dbdf4da84fc92a98dd9644ab816ed18ae36bcc/index.html",
+      "homepage_bytes": 19854,
+      "homepage_sha256": "c76389af74a4d7af4b799b04f48ee54dc17219d58fd4033b09139d0943adf42d",
+      "reported_historical_value_occurs_in_source": true,
+      "reference_path": "docs/downloads/gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif",
+      "reference_sha256_at_head": "5556aa1438fd67376b60d5ffc99228ec09dcc11a8408298a743ccb88d6163641",
+      "reference_matches_pinned_bytes": true,
+      "scope": "Source-text/byte checks only; no organizer receipt, exhaustive inventory or new score",
+      "owner_status_excerpt": "OK TO SUBMIT: SELECTOR CHECKLIST REQUIRED — NO SLOT SPENT",
+      "review_interpretation": "Conditional owner recommendation is not an allocated slot or our full-registry pass."
+    },
+    {
+      "site": "GEMSDOE30",
+      "head_commit": "3c3d7255fdbb3a94375eff086522463a8eaca449",
+      "homepage_source_url": "https://github.com/buffedlizard55-lab/GEMSDOE30/blob/3c3d7255fdbb3a94375eff086522463a8eaca449/index.html",
+      "homepage_bytes": 19723,
+      "homepage_sha256": "2a4297f0e16ae56ab51093aa71be854dde911df57d850dd795400d53d32202e2",
+      "reported_historical_value_occurs_in_source": false,
+      "reference_path": "docs/downloads/gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif",
+      "reference_sha256_at_head": "8cf893ead5667df21d3288a9968c35fd5385c425b029d82ee71d311715b129fd",
+      "reference_matches_pinned_bytes": true,
+      "scope": "Source-text/byte checks only; no organizer receipt, exhaustive inventory or new score",
+      "owner_status_excerpt": "OK to download: YES. OK to submit: NO.",
+      "review_interpretation": "Research-only owner verdict; no current CSR-1 scientific replay performed here."
+    },
+    {
+      "site": "GEMSDOE31",
+      "head_commit": "abd9a45cc7adf046d7d3829eb6e8c980943f462d",
+      "homepage_source_url": "https://github.com/buffedlizard55-lab/GEMSDOE31/blob/abd9a45cc7adf046d7d3829eb6e8c980943f462d/docs/index.html",
+      "homepage_bytes": 113181,
+      "homepage_sha256": "b9a0f43b977dee5cac999712eb11f8091c5892d474eab267b97644cde2dda038",
+      "reported_historical_value_occurs_in_source": true,
+      "reference_path": "docs/downloads/gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif",
+      "reference_sha256_at_head": "07b6db440535404bb41ec8ddc797713e200d308e3da35937393efde5eb84bc40",
+      "reference_matches_pinned_bytes": true,
+      "scope": "Source-text/byte checks only; no organizer receipt, exhaustive inventory or new score",
+      "owner_status_excerpt": "Research download available. Submission blocked.",
+      "review_interpretation": "Source reports a literal registry STOP; historical projections are not new evidence."
+    },
+    {
+      "site": "GEMSDOE32",
+      "head_commit": "1398109a23f04a2ace71c1bd2f527cfba87860b5",
+      "homepage_source_url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/1398109a23f04a2ace71c1bd2f527cfba87860b5/docs/index.html",
+      "homepage_bytes": 89090,
+      "homepage_sha256": "eea555a7b460234e73f122a155a6368e9f6afd85520e143787c3d2b3d932454d",
+      "reported_historical_value_occurs_in_source": true,
+      "reference_path": "docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+      "reference_sha256_at_head": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "reference_matches_pinned_bytes": true,
+      "scope": "Source-text/byte checks only; no organizer receipt, exhaustive inventory or new score",
+      "owner_status_excerpt": "DO NOT SUBMIT — no upload authorized",
+      "review_interpretation": "Source reports newer proxy improvements but still blocks upload; old evaluator claims are not our corrected holdout."
+    },
+    {
+      "site": "GEMSDOE33",
+      "head_commit": "122e2240a835c9c84831943ee3489dbb48fd6e85",
+      "homepage_source_url": "https://github.com/buffedlizard55-lab/GEMSDOE33/blob/122e2240a835c9c84831943ee3489dbb48fd6e85/index.html",
+      "homepage_bytes": 190,
+      "homepage_sha256": "8adf6a087f93f378de538d8908b52745cb59409ea5ace9f811278ce9a1548848",
+      "reported_historical_value_occurs_in_source": false,
+      "reference_path": "docs/downloads/GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif",
+      "reference_sha256_at_head": "87f857d505e23247e991ccfab2cbe9f49a04df4f9c8028dce7ea261554690757",
+      "reference_matches_pinned_bytes": true,
+      "scope": "Source-text/byte checks only; no organizer receipt, exhaustive inventory or new score",
+      "redirect_target_source": {
+        "url": "https://github.com/buffedlizard55-lab/GEMSDOE33/blob/122e2240a835c9c84831943ee3489dbb48fd6e85/docs/index.html",
+        "bytes": 27689,
+        "sha256": "4d38543a47c78b200ecaba0c0bb2758866ab09e7afdabf92dc25ea45f9785be1",
+        "reported_historical_value_occurs_in_source": false
+      },
+      "owner_status_excerpt": "OK TO SUBMIT: NO (verdict: negative)",
+      "review_interpretation": "Source reports a negative holdout comparison, not a leaderboard forecast."
+    },
+    {
+      "site": "GEMSDOE36",
+      "head_commit": "61783525af4aa6dcf8da0bc68b06fa38b89ed27a",
+      "homepage_source_url": "https://github.com/buffedlizard55-lab/GEMSDOE36/blob/61783525af4aa6dcf8da0bc68b06fa38b89ed27a/docs/index.html",
+      "homepage_bytes": 30836,
+      "homepage_sha256": "0c9c0bae44c342deb775cc132abc2d51f0319ed63eccfbaeed4af5b49488ca88",
+      "reported_historical_value_occurs_in_source": true,
+      "reference_path": "docs/downloads/gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif",
+      "reference_sha256_at_head": "e15891020b9c57056ac7fa874a5e506fbd6ed9314a4ea8e73af0753887a3708a",
+      "reference_matches_pinned_bytes": true,
+      "scope": "Source-text/byte checks only; no organizer receipt, exhaustive inventory or new score",
+      "owner_status_excerpt": "OK TO SUBMIT — passed every preregistered automated gate (spend ONE weekly slot on this file).",
+      "review_interpretation": "Owner upload recommendation only. Not independently replayed or approved by this session; do not inherit it."
+    }
+  ],
+  "scope": "Nine latest HEAD homepages and the pinned reference path at each HEAD. Owner content is not organizer confirmation.",
+  "ok_to_submit": false,
+  "irregularities": [
+    {
+      "site": "GEMSDOE24",
+      "type": "OWNER-DECLARED INTEGRITY WARNING",
+      "finding": "Homepage says VENT is quarantined because historical C2ST/novelty fallback values were fabricated. This is a source self-disclosure, not an independently replayed finding here; do not reuse those claims."
+    },
+    {
+      "site": "GEMSDOE25",
+      "type": "CONFLICT WITH MEASURED SUPPORT",
+      "finding": "Homepage describes GEMSDOE28 rung30 and GEMSDOE31 solo references as exact-mask duplicates. That does not describe the pinned artifacts used here: 37,660 and 40,199 positive cells, respectively, with unequal support. Path/variant differences would need reconciliation before adopting the owner wording."
+    },
+    {
+      "site": "GEMSDOE36",
+      "type": "UNVERIFIED APPROVAL AND PORTAL GUARANTEE",
+      "finding": "Homepage instructs spending a slot and guarantees the range error cannot trigger. This session has neither replayed the newer KPL-36 evidence nor obtained organizer acceptance; owner wording is not a selector decision or acceptance guarantee."
+    },
+    {
+      "site": "GEMSDOE30",
+      "type": "HISTORICAL VALUE NOT IN REVIEWED HOMEPAGE",
+      "finding": "The reported historical value string 0.2600 was not present in the reviewed homepage text. Absence of that string does not disprove the user report or bind a score to a file."
+    }
+  ]
+}
