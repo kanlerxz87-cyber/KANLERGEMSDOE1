@@ -25,22 +25,25 @@ class SiteSafetyTests(unittest.TestCase):
     def html(self,name):return (ROOT/'docs'/name).read_text(encoding='utf-8')
     def test_actual_landing_prominently_blocks_submission(self):
         html=self.html('index.html')
-        self.assertIn('STOP — NO RASTER IS CLEARED FOR SUBMISSION',html)
-        self.assertIn('Submission download unavailable',html)
-        self.assertIn('99.39375%',html)
+        self.assertIn('DO NOT SUBMIT',html)
+        self.assertIn('VERDICT: NEGATIVE',html)
+        self.assertIn('0.0518',html);self.assertIn('0.1002',html)
         parser=Links();parser.feed(html);self.assertTrue(parser.disabled)
     def test_executive_covers_nine_sites_and_negative_findings(self):
         html=self.html('executive-summary.html')
         for site in ('GEMSDOE24','GEMSDOE25','GEMSDOE27','GEMSDOE28','GEMSDOE30','GEMSDOE31','GEMSDOE32','GEMSDOE33','GEMSDOE36'):
             with self.subTest(site=site):self.assertIn(site,html)
-        self.assertIn('Unavailable — no admissible HOLDOUT-DTI',html)
-        self.assertIn('99.5875%',html);self.assertIn('99.190625%',html)
-        self.assertIn('not organizer-confirmed receipts',html)
+        self.assertIn('HOLDOUT-DTI',html);self.assertIn('0.1002',html);self.assertIn('0.0518',html)
+        self.assertIn('PROJECTION',html);self.assertIn('never a score',html)
+        self.assertIn('not organizer-confirmed receipts',html);self.assertIn('BEST FILE TO SUBMIT TODAY: NONE',html)
     def test_no_contest_tiff_or_zip_download_links(self):
+        # Research GeoTIFF links are allowed ONLY on pages that carry an
+        # unmistakable DO NOT SUBMIT verdict for them.
         for path in (ROOT/'docs').rglob('*.html'):
-            p=Links();p.feed(path.read_text())
+            text=path.read_text();p=Links();p.feed(text)
+            has_tif=any(urlsplit(h).path.lower().endswith(('.tif','.tiff','.zip')) for h in p.hrefs)
             with self.subTest(page=path.name):
-                self.assertFalse(any(urlsplit(h).path.lower().endswith(('.tif','.tiff','.zip')) for h in p.hrefs))
+                if has_tif:self.assertIn('DO NOT SUBMIT',text)
     def test_all_local_html_links_resolve(self):
         for path in (ROOT/'docs').rglob('*.html'):
             p=Links();p.feed(path.read_text())
@@ -52,17 +55,19 @@ class SiteSafetyTests(unittest.TestCase):
     def test_one_current_card_has_correction_and_hash(self):
         p=ROOT/'data/run-card.json';c=json.loads(p.read_text())
         self.assertEqual(c['verdict'],'negative');self.assertFalse(c['ok_to_submit'])
-        self.assertEqual(c['holdout_dti']['status'],'INADMISSIBLE')
-        self.assertIsNone(c['holdout_dti']['valid_value']);self.assertIsNone(c['holdout_dti']['valid_ci95'])
+        self.assertEqual(c['holdout_dti']['status'],'VALID-MEASUREMENT-NEGATIVE-RESULT')
+        self.assertLess(c['holdout_dti']['candidate_EXP2_pooled_dti'],c['holdout_dti']['control_EXP1_h195field_pooled_dti'])
+        self.assertLess(c['holdout_dti']['paired_EXP2_minus_EXP1']['delta_ci95'][1],0)
         self.assertEqual(len(c['raster_sha256']),64);self.assertTrue(c['validator_output']['all_checks_passed'])
         self.assertFalse(c['correlation_overlap_vs_registry']['full_registry_checked'])
-        self.assertGreater(c['correlation_overlap_vs_registry']['final_dots_within_3px_of_lattice'],.70)
+        self.assertGreater(c['correlation_overlap_vs_registry']['lattice_diagnostic_only']['dots_within_3px'],.70)
+        self.assertLessEqual(c['correlation_overlap_vs_registry']['dots_worst_overlap_3px_genuine']['value'],.70)
         self.assertLessEqual(len(c['submission_note']),140)
         self.assertEqual(c,json.loads((ROOT/'docs/evidence/current_run_card.json').read_text()))
     def test_hypothesis_page_discloses_untested_and_scope(self):
         text=self.html('hypotheses.html')
-        self.assertIn('unimplemented and untested in this review',text)
-        self.assertIn('No new experiment will run',text)
+        self.assertIn('NEXT LANE',text);self.assertIn('BLOCKED HERE',text)
+        self.assertIn('closed negative',text)
         self.assertIn('swarm',text.lower())
     def test_root_pages_redirect_to_actual_pages(self):
         for name in ('index','executive-summary','hypotheses','sources'):

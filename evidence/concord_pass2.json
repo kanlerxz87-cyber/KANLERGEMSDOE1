@@ -1,0 +1,82 @@
+{
+  "pass": 2,
+  "purpose": "bug audit + diagnostics; NOT a new experiment",
+  "rank01_max_abs_err_vs_scipy": 8.79590500435512e-09,
+  "thin_synthetic": {
+    "info": {
+      "pool_px": 90000,
+      "n_target": 2000,
+      "accepted": 2000,
+      "pool_mult_used": 4
+    },
+    "n": 2000,
+    "min_nn_dist": 3.0,
+    "mean_field_dots": 0.9863382577896118,
+    "mean_field_all": 0.4997471272945404
+  },
+  "auc_diagnostics_NOT_candidates": {
+    "mean_fusion_DIAGNOSTIC": 0.5632396432132362,
+    "geomean_only_DIAGNOSTIC": 0.5677611893891688,
+    "topo_only_DIAGNOSTIC": 0.5479024488912378,
+    "max_fusion_DIAGNOSTIC": 0.5111730122496102
+  },
+  "concord_research_bundle": {
+    "zeros": "kanlergemsdoe1-concord5-b2-37654-research-20261027T171958Z-5dde8074-zeros.tif",
+    "sha256": "ed4359e4d70e153ac041692a958e6b5acf08111071f43fce0881818b2241f609",
+    "emit_info": {
+      "pool_px": 4862825,
+      "n_target": 37654,
+      "accepted": 37654,
+      "pool_mult_used": 8
+    }
+  },
+  "independent_reaudit": {
+    "concord_research": {
+      "all_checks_passed": true,
+      "min": 0.0,
+      "max": 1.0,
+      "dots": 37654,
+      "sha256": "ed4359e4d70e153ac041692a958e6b5acf08111071f43fce0881818b2241f609",
+      "foot_finite": 5167373,
+      "foot_nan": 0,
+      "foot_min": 0.0,
+      "foot_max": 1.0,
+      "full_min": 0.0,
+      "full_max": 1.0,
+      "sentinel_lt_-1e30_anywhere": false
+    },
+    "h195_control": {
+      "all_checks_passed": true,
+      "min": 0.0,
+      "max": 1.0,
+      "dots": 36388,
+      "sha256": "bafc1f55d75ac9cb2dc2cd60f04734fc860f8cc2b151c9ec234914bb75df72f4",
+      "foot_finite": 5167373,
+      "foot_nan": 0,
+      "foot_min": 0.0,
+      "foot_max": 1.0,
+      "full_min": 0.0,
+      "full_max": 1.0,
+      "sentinel_lt_-1e30_anywhere": false
+    },
+    "champion_h33": {
+      "all_checks_passed": true,
+      "min": 0.0,
+      "max": 1.0,
+      "dots": 37654,
+      "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "foot_finite": 5167373,
+      "foot_nan": 0,
+      "foot_min": 0.0,
+      "foot_max": 1.0,
+      "full_min": 0.0,
+      "full_max": 1.0,
+      "sentinel_lt_-1e30_anywhere": false
+    }
+  },
+  "lidar_valid_px_of_footprint": {
+    "valid_px": 3894460,
+    "footprint_px": 5167373,
+    "fraction_of_footprint": 0.7536634185300732
+  }
+}
