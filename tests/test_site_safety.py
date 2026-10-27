@@ -35,12 +35,13 @@ class SiteSafetyTests(unittest.TestCase):
             with self.subTest(site=site):self.assertIn(site,html)
         self.assertIn('Unavailable — no admissible HOLDOUT-DTI',html)
         self.assertIn('99.5875%',html);self.assertIn('99.190625%',html)
-        self.assertIn('not organizer-confirmed receipts',html)
+        self.assertIn('No organizer receipt',html)
     def test_no_contest_tiff_or_zip_download_links(self):
         for path in (ROOT/'docs').rglob('*.html'):
             p=Links();p.feed(path.read_text())
             with self.subTest(page=path.name):
-                self.assertFalse(any(urlsplit(h).path.lower().endswith(('.tif','.tiff','.zip')) for h in p.hrefs))
+                pinned_views={e['reference_url'] for e in json.loads((ROOT/'registry/focus_sites.json').read_text())['files']}
+                self.assertFalse(any(urlsplit(h).path.lower().endswith(('.tif','.tiff','.zip')) and h not in pinned_views for h in p.hrefs))
     def test_all_local_html_links_resolve(self):
         for path in (ROOT/'docs').rglob('*.html'):
             p=Links();p.feed(path.read_text())
@@ -107,11 +108,22 @@ class PublicFeedTests(unittest.TestCase):
                     self.fixture.replace('0.4437','not a number'),
                     self.fixture.replace('0.4437','1.12')):
             with self.assertRaises(ValueError):feed.parse_rank_one(bad)
+    def test_score_is_selected_by_header_not_other_numeric_cells(self):
+        html = '<table><tr><th>Submissions</th><th>Best public DW-Tversky</th><th>Rank</th><th>Participant</th></tr><tr><td>1</td><td>0.4437</td><td>#1</td><td>example</td></tr></table>'
+        self.assertEqual(feed.parse_rank_one(html),.4437)
+        for bad in (self.fixture+self.fixture,
+                    self.fixture.replace('</tr></table>','</tr><tr><td>#1</td><td>other</td><td>0.4</td></tr></table>'),
+                    self.fixture.replace('Best public DW-Tversky','Private DW-Tversky'),
+                    self.fixture.replace('<th>Rank</th>','<th colspan="2">Rank</th>'),
+                    self.fixture.replace('0.4437','NaN'), self.fixture[:-8]):
+            with self.subTest(html=bad), self.assertRaises(ValueError):feed.parse_rank_one(bad)
+
     def test_successful_fetch_updates_snapshot(self):
         with tempfile.TemporaryDirectory() as t:
             p=Path(t)/'feed.json';p.write_text(json.dumps({'rank_one_public_dti':.1,'observed_utc':'2026-01-01'}))
             class Response:
                 status=200
+                def geturl(self):return feed.URL
                 def __enter__(self):return self
                 def __exit__(self,*args):pass
                 def read(self,n):return PublicFeedTests.fixture.encode()
@@ -119,6 +131,26 @@ class PublicFeedTests(unittest.TestCase):
             self.assertEqual(result['status'],'refreshed')
             self.assertEqual(result['rank_one_public_dti'],.4437)
             self.assertNotEqual(result['observed_utc'],'2026-01-01')
+
+    def test_redirect_and_corrupt_fallback_fail_closed(self):
+        with tempfile.TemporaryDirectory() as t:
+            p=Path(t)/'feed.json'
+            baseline={'rank_one_public_dti':.4437,'observed_utc':'2026-10-26'}
+            p.write_text(json.dumps(baseline))
+            class Response:
+                status=200
+                def __enter__(self):return self
+                def __exit__(self,*args):pass
+                def geturl(self):return 'https://www.drivendata.org/accounts/login/'
+                def read(self,n):return PublicFeedTests.fixture.encode()
+            with mock.patch.object(feed,'urlopen',return_value=Response()):result=feed.refresh(p)
+            self.assertEqual(result['status'],'stale_snapshot')
+            self.assertEqual(result['observed_utc'],'2026-10-26')
+            for value in (None,True,'0.4',float('nan'),1.1):
+                p.write_text(json.dumps({**baseline,'rank_one_public_dti':value}))
+                with self.subTest(value=value), self.assertRaises(ValueError):feed.refresh(p)
+            p.write_text(json.dumps({**baseline,'observed_utc':'2999-01-01'}))
+            with self.assertRaises(ValueError):feed.refresh(p)
 
     def test_failed_fetch_keeps_dated_value_and_labels_stale(self):
         with tempfile.TemporaryDirectory() as t:

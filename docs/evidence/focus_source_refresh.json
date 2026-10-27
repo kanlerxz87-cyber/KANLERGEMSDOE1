@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "last_refresh_attempt_utc": "2026-10-27T17:10:10+00:00",
+  "scope": "Public repository HEAD observations only; not current scores, TIFF verification, or complete registry inventory",
+  "sources": [
+    {
+      "site": "GEMSDOE24",
+      "repo": "buffedlizard55-lab/GEMSDOE24",
+      "pinned_artifact_commit": "5cfab74597cd1d0a271e4640b4cc34511e56ca59",
+      "observed_head_commit": "81598cc3e704ec8ef81b8bd21b5be5221de98857",
+      "observed_utc": "2026-10-27T17:10:10+00:00",
+      "head_url": "https://github.com/buffedlizard55-lab/GEMSDOE24/commit/81598cc3e704ec8ef81b8bd21b5be5221de98857",
+      "status": "HEAD_DIFFERS_FROM_PIN",
+      "artifact_at_head_verified": false,
+      "complete_registry_inventory": false,
+      "last_refresh_attempt_utc": "2026-10-27T17:10:10+00:00"
+    },
+    {
+      "site": "GEMSDOE25",
+      "repo": "buffedlizard55-lab/GEMSDOE25",
+      "pinned_artifact_commit": "bfb2dfdbdf1b87d67afc6facd422180f56ebc455",
+      "observed_head_commit": "5a60fb475b7171af93cfce795abe6d96c4021ea2",
+      "observed_utc": "2026-10-27T17:10:11+00:00",
+      "head_url": "https://github.com/buffedlizard55-lab/GEMSDOE25/commit/5a60fb475b7171af93cfce795abe6d96c4021ea2",
+      "status": "HEAD_DIFFERS_FROM_PIN",
+      "artifact_at_head_verified": false,
+      "complete_registry_inventory": false,
+      "last_refresh_attempt_utc": "2026-10-27T17:10:10+00:00"
+    },
+    {
+      "site": "GEMSDOE27",
+      "repo": "buffedlizard55-lab/GEMSDOE27",
+      "pinned_artifact_commit": "f1e32af867d9cf0081af20866c8241ec8678a432",
+      "observed_head_commit": "4d39bbf92edd51fdf47004df5873793a035592e5",
+      "observed_utc": "2026-10-27T17:10:11+00:00",
+      "head_url": "https://github.com/buffedlizard55-lab/GEMSDOE27/commit/4d39bbf92edd51fdf47004df5873793a035592e5",
+      "status": "HEAD_DIFFERS_FROM_PIN",
+      "artifact_at_head_verified": false,
+      "complete_registry_inventory": false,
+      "last_refresh_attempt_utc": "2026-10-27T17:10:10+00:00"
+    },
+    {
+      "site": "GEMSDOE28",
+      "repo": "buffedlizard55-lab/GEMSDOE28",
+      "pinned_artifact_commit": "9c1be21e8f1be707347f737e42abf62ea669c819",
+      "observed_head_commit": "67dbdf4da84fc92a98dd9644ab816ed18ae36bcc",
+      "observed_utc": "2026-10-27T17:10:12+00:00",
+      "head_url": "https://github.com/buffedlizard55-lab/GEMSDOE28/commit/67dbdf4da84fc92a98dd9644ab816ed18ae36bcc",
+      "status": "HEAD_DIFFERS_FROM_PIN",
+      "artifact_at_head_verified": false,
+      "complete_registry_inventory": false,
+      "last_refresh_attempt_utc": "2026-10-27T17:10:10+00:00"
+    },
+    {
+      "site": "GEMSDOE30",
+      "repo": "buffedlizard55-lab/GEMSDOE30",
+      "pinned_artifact_commit": "35ce8911e2c3287eed973eacd12c252e8cb3f34c",
+      "observed_head_commit": "3c3d7255fdbb3a94375eff086522463a8eaca449",
+      "observed_utc": "2026-10-27T17:10:12+00:00",
+      "head_url": "https://github.com/buffedlizard55-lab/GEMSDOE30/commit/3c3d7255fdbb3a94375eff086522463a8eaca449",
+      "status": "HEAD_DIFFERS_FROM_PIN",
+      "artifact_at_head_verified": false,
+      "complete_registry_inventory": false,
+      "last_refresh_attempt_utc": "2026-10-27T17:10:10+00:00"
+    },
+    {
+      "site": "GEMSDOE31",
+      "repo": "buffedlizard55-lab/GEMSDOE31",
+      "pinned_artifact_commit": "78f9bf3ae82e5c78ca348aa37c0660c339e72f0e",
+      "observed_head_commit": "abd9a45cc7adf046d7d3829eb6e8c980943f462d",
+      "observed_utc": "2026-10-27T17:10:12+00:00",
+      "head_url": "https://github.com/buffedlizard55-lab/GEMSDOE31/commit/abd9a45cc7adf046d7d3829eb6e8c980943f462d",
+      "status": "HEAD_DIFFERS_FROM_PIN",
+      "artifact_at_head_verified": false,
+      "complete_registry_inventory": false,
+      "last_refresh_attempt_utc": "2026-10-27T17:10:10+00:00"
+    },
+    {
+      "site": "GEMSDOE32",
+      "repo": "buffedlizard55-lab/GEMSDOE32",
+      "pinned_artifact_commit": "8953b986b2ce6eb5ee8b7eda23fe3ad529720986",
+      "observed_head_commit": "1398109a23f04a2ace71c1bd2f527cfba87860b5",
+      "observed_utc": "2026-10-27T17:10:13+00:00",
+      "head_url": "https://github.com/buffedlizard55-lab/GEMSDOE32/commit/1398109a23f04a2ace71c1bd2f527cfba87860b5",
+      "status": "HEAD_DIFFERS_FROM_PIN",
+      "artifact_at_head_verified": false,
+      "complete_registry_inventory": false,
+      "last_refresh_attempt_utc": "2026-10-27T17:10:10+00:00"
+    },
+    {
+      "site": "GEMSDOE33",
+      "repo": "buffedlizard55-lab/GEMSDOE33",
+      "pinned_artifact_commit": "a24fb7c5031ee08b12440af4593057858fecef8e",
+      "observed_head_commit": "122e2240a835c9c84831943ee3489dbb48fd6e85",
+      "observed_utc": "2026-10-27T17:10:13+00:00",
+      "head_url": "https://github.com/buffedlizard55-lab/GEMSDOE33/commit/122e2240a835c9c84831943ee3489dbb48fd6e85",
+      "status": "HEAD_DIFFERS_FROM_PIN",
+      "artifact_at_head_verified": false,
+      "complete_registry_inventory": false,
+      "last_refresh_attempt_utc": "2026-10-27T17:10:10+00:00"
+    },
+    {
+      "site": "GEMSDOE36",
+      "repo": "buffedlizard55-lab/GEMSDOE36",
+      "pinned_artifact_commit": "b90418f852615aa0974cf9a53b92fa569ed133fc",
+      "observed_head_commit": "61783525af4aa6dcf8da0bc68b06fa38b89ed27a",
+      "observed_utc": "2026-10-27T17:10:14+00:00",
+      "head_url": "https://github.com/buffedlizard55-lab/GEMSDOE36/commit/61783525af4aa6dcf8da0bc68b06fa38b89ed27a",
+      "status": "HEAD_DIFFERS_FROM_PIN",
+      "artifact_at_head_verified": false,
+      "complete_registry_inventory": false,
+      "last_refresh_attempt_utc": "2026-10-27T17:10:10+00:00"
+    }
+  ],
+  "ok_to_submit": false
+}

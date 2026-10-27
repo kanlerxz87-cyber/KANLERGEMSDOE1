@@ -23,5 +23,7 @@
     "last_refresh_attempt_utc": "2026-10-27T17:12:09+00:00",
     "result": "Refresh parser returned ValueError; dated official page observation retained; Pages deployment succeeded.",
     "workflow_run": "https://github.com/kanlerxz87-cyber/KANLERGEMSDOE1/actions/runs/40548290863"
-  }
+  },
+  "follow_through": "../review-20261027.md",
+  "generated_site_summary": "site_summary.json"
 }

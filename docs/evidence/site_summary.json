@@ -1,0 +1,333 @@
+{
+  "schema_version": 1,
+  "scope": "Nine pinned historical champions, not an exhaustive current inventory of any site",
+  "raster_audit_reviewed_utc": "2026-10-27T17:16:53+00:00",
+  "source_sha256": {
+    "focus_manifest": "eb291b9e6e1a3b10ef9c09f583f2884309a77b8fdfa0f1b4a517fe00368b6c34",
+    "raster_audit": "33da0c30a3a32d3c2bb98965fe0d6a2a5c12bea7e49913a29ba43632b6b72b70",
+    "current_run_card": "0461093194ebc616367d273b7272270915ebc52b9e4c2134cc75810bb678d4bb",
+    "head_source_review": "f2dcd39f0216ff9535a309e1a700f0771ebdb3f8cd05111782be7c465fa001db"
+  },
+  "banner": "STOP \u2014 NO RASTER IS CLEARED FOR SUBMISSION",
+  "highest_user_report": {
+    "site": "GEMSDOE32",
+    "value": 0.2778,
+    "evidence_class": "USER/OWNER-REPORT; not organizer-confirmed; not a recommendation"
+  },
+  "rows": [
+    {
+      "site": "GEMSDOE24",
+      "reference_filename": "gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+      "owner_homepage_review": {
+        "excerpt": "Current review: no submission-authorized TIFF.",
+        "source_url": "https://github.com/buffedlizard55-lab/GEMSDOE24/blob/81598cc3e704ec8ef81b8bd21b5be5221de98857/index.html",
+        "source_commit": "81598cc3e704ec8ef81b8bd21b5be5221de98857",
+        "reference_bytes_unchanged_at_reviewed_head": true,
+        "interpretation": "Source explicitly blocks submission; current research artifacts were not replayed here.",
+        "organizer_confirmed": false
+      },
+      "reference_url": "https://github.com/buffedlizard55-lab/GEMSDOE24/blob/5cfab74597cd1d0a271e4640b4cc34511e56ca59/docs/downloads/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+      "raster_sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+      "positive_pixels": 60069,
+      "reported_score": 0.2477,
+      "score_evidence": "USER/OWNER-REPORT; no submission-page receipt",
+      "estimated_leaderboard_score": null,
+      "holdout_dti": {
+        "value": null,
+        "ci95": null,
+        "evaluator_version": null,
+        "n_withheld_positives": null,
+        "status": "UNAVAILABLE: no admissible fold-local replay"
+      },
+      "worst_other_focus_overlap_3px": 1.0,
+      "worst_other_focus_peer": "GEMSDOE30",
+      "identical_support_peers": [],
+      "unique_in_nine_champion_subset": false,
+      "full_registry_checked": false,
+      "surface_gate": "NOT REPLAYED",
+      "ok_to_download_and_submit": false,
+      "contest_download": null,
+      "verdict": "DO NOT SUBMIT: duplicate"
+    },
+    {
+      "site": "GEMSDOE25",
+      "reference_filename": "gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+      "owner_homepage_review": {
+        "excerpt": "COMPETITION-READY TIF: NO \u00b7 OK TO SUBMIT: NO \u2014 DO NOT SUBMIT",
+        "source_url": "https://github.com/buffedlizard55-lab/GEMSDOE25/blob/5a60fb475b7171af93cfce795abe6d96c4021ea2/index.html",
+        "source_commit": "5a60fb475b7171af93cfce795abe6d96c4021ea2",
+        "reference_bytes_unchanged_at_reviewed_head": true,
+        "interpretation": "Source reports cache preflight and historical lane blockers; no approval inherited.",
+        "organizer_confirmed": false
+      },
+      "reference_url": "https://github.com/buffedlizard55-lab/GEMSDOE25/blob/bfb2dfdbdf1b87d67afc6facd422180f56ebc455/docs/downloads/gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+      "raster_sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+      "positive_pixels": 44090,
+      "reported_score": 0.26,
+      "score_evidence": "USER/OWNER-REPORT; no submission-page receipt",
+      "estimated_leaderboard_score": null,
+      "holdout_dti": {
+        "value": null,
+        "ci95": null,
+        "evaluator_version": null,
+        "n_withheld_positives": null,
+        "status": "UNAVAILABLE: no admissible fold-local replay"
+      },
+      "worst_other_focus_overlap_3px": 1.0,
+      "worst_other_focus_peer": "GEMSDOE30",
+      "identical_support_peers": [
+        "GEMSDOE30"
+      ],
+      "unique_in_nine_champion_subset": false,
+      "full_registry_checked": false,
+      "surface_gate": "NOT REPLAYED",
+      "ok_to_download_and_submit": false,
+      "contest_download": null,
+      "verdict": "DO NOT SUBMIT: duplicate"
+    },
+    {
+      "site": "GEMSDOE27",
+      "reference_filename": "gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+      "owner_homepage_review": {
+        "excerpt": "NOT AUTHORIZED FOR A WEEKLY SLOT: evidence PASS is not selector approval.",
+        "source_url": "https://github.com/buffedlizard55-lab/GEMSDOE27/blob/4d39bbf92edd51fdf47004df5873793a035592e5/index.html",
+        "source_commit": "4d39bbf92edd51fdf47004df5873793a035592e5",
+        "reference_bytes_unchanged_at_reviewed_head": true,
+        "interpretation": "Source distinguishes evidence checks from the separate selector.",
+        "organizer_confirmed": false
+      },
+      "reference_url": "https://github.com/buffedlizard55-lab/GEMSDOE27/blob/f1e32af867d9cf0081af20866c8241ec8678a432/docs/downloads/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+      "raster_sha256": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+      "positive_pixels": 61328,
+      "reported_score": 0.2449,
+      "score_evidence": "USER/OWNER-REPORT; no submission-page receipt",
+      "estimated_leaderboard_score": null,
+      "holdout_dti": {
+        "value": null,
+        "ci95": null,
+        "evaluator_version": null,
+        "n_withheld_positives": null,
+        "status": "UNAVAILABLE: no admissible fold-local replay"
+      },
+      "worst_other_focus_overlap_3px": 0.9801884946517089,
+      "worst_other_focus_peer": "GEMSDOE24",
+      "identical_support_peers": [],
+      "unique_in_nine_champion_subset": false,
+      "full_registry_checked": false,
+      "surface_gate": "NOT REPLAYED",
+      "ok_to_download_and_submit": false,
+      "contest_download": null,
+      "verdict": "DO NOT SUBMIT: duplicate"
+    },
+    {
+      "site": "GEMSDOE28",
+      "reference_filename": "gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif",
+      "owner_homepage_review": {
+        "excerpt": "OK TO SUBMIT: SELECTOR CHECKLIST REQUIRED \u2014 NO SLOT SPENT",
+        "source_url": "https://github.com/buffedlizard55-lab/GEMSDOE28/blob/67dbdf4da84fc92a98dd9644ab816ed18ae36bcc/index.html",
+        "source_commit": "67dbdf4da84fc92a98dd9644ab816ed18ae36bcc",
+        "reference_bytes_unchanged_at_reviewed_head": true,
+        "interpretation": "Conditional owner recommendation is not an allocated slot or our full-registry pass.",
+        "organizer_confirmed": false
+      },
+      "reference_url": "https://github.com/buffedlizard55-lab/GEMSDOE28/blob/9c1be21e8f1be707347f737e42abf62ea669c819/docs/downloads/gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif",
+      "raster_sha256": "5556aa1438fd67376b60d5ffc99228ec09dcc11a8408298a743ccb88d6163641",
+      "positive_pixels": 37660,
+      "reported_score": 0.271,
+      "score_evidence": "USER/OWNER-REPORT; no submission-page receipt",
+      "estimated_leaderboard_score": null,
+      "holdout_dti": {
+        "value": null,
+        "ci95": null,
+        "evaluator_version": null,
+        "n_withheld_positives": null,
+        "status": "UNAVAILABLE: no admissible fold-local replay"
+      },
+      "worst_other_focus_overlap_3px": 1.0,
+      "worst_other_focus_peer": "GEMSDOE30",
+      "identical_support_peers": [],
+      "unique_in_nine_champion_subset": false,
+      "full_registry_checked": false,
+      "surface_gate": "NOT REPLAYED",
+      "ok_to_download_and_submit": false,
+      "contest_download": null,
+      "verdict": "DO NOT SUBMIT: duplicate"
+    },
+    {
+      "site": "GEMSDOE30",
+      "reference_filename": "gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif",
+      "owner_homepage_review": {
+        "excerpt": "OK to download: YES. OK to submit: NO.",
+        "source_url": "https://github.com/buffedlizard55-lab/GEMSDOE30/blob/3c3d7255fdbb3a94375eff086522463a8eaca449/index.html",
+        "source_commit": "3c3d7255fdbb3a94375eff086522463a8eaca449",
+        "reference_bytes_unchanged_at_reviewed_head": true,
+        "interpretation": "Research-only owner verdict; no current CSR-1 scientific replay performed here.",
+        "organizer_confirmed": false
+      },
+      "reference_url": "https://github.com/buffedlizard55-lab/GEMSDOE30/blob/35ce8911e2c3287eed973eacd12c252e8cb3f34c/docs/downloads/gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif",
+      "raster_sha256": "8cf893ead5667df21d3288a9968c35fd5385c425b029d82ee71d311715b129fd",
+      "positive_pixels": 44090,
+      "reported_score": 0.26,
+      "score_evidence": "USER/OWNER-REPORT; no submission-page receipt",
+      "estimated_leaderboard_score": null,
+      "holdout_dti": {
+        "value": null,
+        "ci95": null,
+        "evaluator_version": null,
+        "n_withheld_positives": null,
+        "status": "UNAVAILABLE: no admissible fold-local replay"
+      },
+      "worst_other_focus_overlap_3px": 1.0,
+      "worst_other_focus_peer": "GEMSDOE27",
+      "identical_support_peers": [
+        "GEMSDOE25"
+      ],
+      "unique_in_nine_champion_subset": false,
+      "full_registry_checked": false,
+      "surface_gate": "NOT REPLAYED",
+      "ok_to_download_and_submit": false,
+      "contest_download": null,
+      "verdict": "DO NOT SUBMIT: duplicate"
+    },
+    {
+      "site": "GEMSDOE31",
+      "reference_filename": "gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif",
+      "owner_homepage_review": {
+        "excerpt": "Research download available. Submission blocked.",
+        "source_url": "https://github.com/buffedlizard55-lab/GEMSDOE31/blob/abd9a45cc7adf046d7d3829eb6e8c980943f462d/docs/index.html",
+        "source_commit": "abd9a45cc7adf046d7d3829eb6e8c980943f462d",
+        "reference_bytes_unchanged_at_reviewed_head": true,
+        "interpretation": "Source reports a literal registry STOP; historical projections are not new evidence.",
+        "organizer_confirmed": false
+      },
+      "reference_url": "https://github.com/buffedlizard55-lab/GEMSDOE31/blob/78f9bf3ae82e5c78ca348aa37c0660c339e72f0e/docs/downloads/gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif",
+      "raster_sha256": "07b6db440535404bb41ec8ddc797713e200d308e3da35937393efde5eb84bc40",
+      "positive_pixels": 40199,
+      "reported_score": 0.2708,
+      "score_evidence": "USER/OWNER-REPORT; no submission-page receipt",
+      "estimated_leaderboard_score": null,
+      "holdout_dti": {
+        "value": null,
+        "ci95": null,
+        "evaluator_version": null,
+        "n_withheld_positives": null,
+        "status": "UNAVAILABLE: no admissible fold-local replay"
+      },
+      "worst_other_focus_overlap_3px": 1.0,
+      "worst_other_focus_peer": "GEMSDOE30",
+      "identical_support_peers": [],
+      "unique_in_nine_champion_subset": false,
+      "full_registry_checked": false,
+      "surface_gate": "NOT REPLAYED",
+      "ok_to_download_and_submit": false,
+      "contest_download": null,
+      "verdict": "DO NOT SUBMIT: duplicate"
+    },
+    {
+      "site": "GEMSDOE32",
+      "reference_filename": "gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+      "owner_homepage_review": {
+        "excerpt": "DO NOT SUBMIT \u2014 no upload authorized",
+        "source_url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/1398109a23f04a2ace71c1bd2f527cfba87860b5/docs/index.html",
+        "source_commit": "1398109a23f04a2ace71c1bd2f527cfba87860b5",
+        "reference_bytes_unchanged_at_reviewed_head": true,
+        "interpretation": "Source reports newer proxy improvements but still blocks upload; old evaluator claims are not our corrected holdout.",
+        "organizer_confirmed": false
+      },
+      "reference_url": "https://github.com/buffedlizard55-lab/GEMSDOE32/blob/8953b986b2ce6eb5ee8b7eda23fe3ad529720986/docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+      "raster_sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "positive_pixels": 37654,
+      "reported_score": 0.2778,
+      "score_evidence": "USER/OWNER-REPORT; no submission-page receipt",
+      "estimated_leaderboard_score": null,
+      "holdout_dti": {
+        "value": null,
+        "ci95": null,
+        "evaluator_version": null,
+        "n_withheld_positives": null,
+        "status": "UNAVAILABLE: no admissible fold-local replay"
+      },
+      "worst_other_focus_overlap_3px": 1.0,
+      "worst_other_focus_peer": "GEMSDOE36",
+      "identical_support_peers": [],
+      "unique_in_nine_champion_subset": false,
+      "full_registry_checked": false,
+      "surface_gate": "NOT REPLAYED",
+      "ok_to_download_and_submit": false,
+      "contest_download": null,
+      "verdict": "DO NOT SUBMIT: duplicate"
+    },
+    {
+      "site": "GEMSDOE33",
+      "reference_filename": "GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif",
+      "owner_homepage_review": {
+        "excerpt": "OK TO SUBMIT: NO (verdict: negative)",
+        "source_url": "https://github.com/buffedlizard55-lab/GEMSDOE33/blob/122e2240a835c9c84831943ee3489dbb48fd6e85/docs/index.html",
+        "source_commit": "122e2240a835c9c84831943ee3489dbb48fd6e85",
+        "reference_bytes_unchanged_at_reviewed_head": true,
+        "interpretation": "Source reports a negative holdout comparison, not a leaderboard forecast.",
+        "organizer_confirmed": false
+      },
+      "reference_url": "https://github.com/buffedlizard55-lab/GEMSDOE33/blob/a24fb7c5031ee08b12440af4593057858fecef8e/docs/downloads/GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif",
+      "raster_sha256": "87f857d505e23247e991ccfab2cbe9f49a04df4f9c8028dce7ea261554690757",
+      "positive_pixels": 41865,
+      "reported_score": 0.2632,
+      "score_evidence": "USER/OWNER-REPORT; no submission-page receipt",
+      "estimated_leaderboard_score": null,
+      "holdout_dti": {
+        "value": null,
+        "ci95": null,
+        "evaluator_version": null,
+        "n_withheld_positives": null,
+        "status": "UNAVAILABLE: no admissible fold-local replay"
+      },
+      "worst_other_focus_overlap_3px": 0.9970858712528365,
+      "worst_other_focus_peer": "GEMSDOE27",
+      "identical_support_peers": [],
+      "unique_in_nine_champion_subset": false,
+      "full_registry_checked": false,
+      "surface_gate": "NOT REPLAYED",
+      "ok_to_download_and_submit": false,
+      "contest_download": null,
+      "verdict": "DO NOT SUBMIT: duplicate"
+    },
+    {
+      "site": "GEMSDOE36",
+      "reference_filename": "gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif",
+      "owner_homepage_review": {
+        "excerpt": "OK TO SUBMIT \u2014 passed every preregistered automated gate (spend ONE weekly slot on this file).",
+        "source_url": "https://github.com/buffedlizard55-lab/GEMSDOE36/blob/61783525af4aa6dcf8da0bc68b06fa38b89ed27a/docs/index.html",
+        "source_commit": "61783525af4aa6dcf8da0bc68b06fa38b89ed27a",
+        "reference_bytes_unchanged_at_reviewed_head": true,
+        "interpretation": "Owner upload recommendation only. Not independently replayed or approved by this session; do not inherit it.",
+        "organizer_confirmed": false
+      },
+      "reference_url": "https://github.com/buffedlizard55-lab/GEMSDOE36/blob/b90418f852615aa0974cf9a53b92fa569ed133fc/docs/downloads/gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif",
+      "raster_sha256": "e15891020b9c57056ac7fa874a5e506fbd6ed9314a4ea8e73af0753887a3708a",
+      "positive_pixels": 38854,
+      "reported_score": 0.275,
+      "score_evidence": "USER/OWNER-REPORT; no submission-page receipt",
+      "estimated_leaderboard_score": null,
+      "holdout_dti": {
+        "value": null,
+        "ci95": null,
+        "evaluator_version": null,
+        "n_withheld_positives": null,
+        "status": "UNAVAILABLE: no admissible fold-local replay"
+      },
+      "worst_other_focus_overlap_3px": 0.9757811293560509,
+      "worst_other_focus_peer": "GEMSDOE27",
+      "identical_support_peers": [],
+      "unique_in_nine_champion_subset": false,
+      "full_registry_checked": false,
+      "surface_gate": "NOT REPLAYED",
+      "ok_to_download_and_submit": false,
+      "contest_download": null,
+      "verdict": "DO NOT SUBMIT: duplicate"
+    }
+  ],
+  "new_experiments": 0,
+  "slots_used": 0,
+  "selector_required": true,
+  "ok_to_submit": false
+}

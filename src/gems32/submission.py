@@ -43,7 +43,11 @@ def audit_geotiff(
     mode: str = "zeros",
     template_tif: Path | None = None,
 ) -> dict:
-    """Strict 12-point DrivenData submission validator audit."""
+    """Local geometry/range/encoding audit, not organizer acceptance.
+
+    ``all_checks_passed`` is local to the requested encoding. A zero-outside
+    diagnostic may pass locally but is never official-format compatible.
+    """
     if mode not in {"zeros", "nan"}:
         raise ValueError("mode must be zeros or nan")
     # Legacy callers use the documented historical grid. Writers must use the actual template.
@@ -138,6 +142,9 @@ def audit_geotiff(
         "full_grid_finite_pixels": int(np.isfinite(arr).sum()),
         "checks": checks,
         "all_checks_passed": all_passed,
+        "local_validation_passed": all_passed,
+        "official_outside_bounds_null_or_nan": bool(mode == "nan" and out_foot_ok),
+        "official_submission_format_compatible": bool(all_passed and mode == "nan" and out_foot_ok),
     }
 
 

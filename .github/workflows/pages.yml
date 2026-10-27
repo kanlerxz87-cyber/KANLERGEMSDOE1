@@ -20,8 +20,16 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Verify executive evidence before publication
+        run: |
+          python3 scripts/build_executive_summary.py --check
+          python3 scripts/build_readiness_report.py --check
       - name: Refresh the public leaderboard snapshot (fallback to dated snapshot)
         run: python3 scripts/refresh_public_feed.py --output docs/feed.json
+      - name: Observe focus-source freshness (not scores or a complete registry)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/refresh_focus_sources.py
       - uses: actions/upload-pages-artifact@v3
         with:
           path: docs
