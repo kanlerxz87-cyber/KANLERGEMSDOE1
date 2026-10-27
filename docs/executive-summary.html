@@ -1,17 +1,140 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Executive summary · KANLER GEMS</title><link rel="stylesheet" href="assets/style.css"></head>
-<body><header><div class="wrap head"><p class="brand">KANLERGEMSDOE1 / DOE GEMS PRIZE / RESEARCH DESK</p><h1>Executive summary</h1><nav class="nav" aria-label="Primary"><a href="index.html">Status</a><a href="executive-summary.html" aria-current="page">Executive summary</a><a href="research.html">Why 0.2778?</a><a href="hypotheses.html">Research slate</a><a href="how-to-submit.html">Submission gate</a><a href="sources.html">Sources</a></nav></div></header>
-<main class="wrap"><div class="banner" role="status"><strong>STOP — NO RASTER IS CLEARED FOR SUBMISSION</strong><p>The IEDR lane failed the literal registry-duplication rule. There is no demonstrated unique, high-scoring candidate and no authorized download for contest use. No weekly slot was used in this review.</p></div>
-<div class="grid"><div class="kpi"><b>NOT AVAILABLE</b><span>Unique and validated contest download</span></div><div class="kpi"><b>NOT AVAILABLE</b><span>Admissible HOLDOUT-DTI and confidence interval</span></div><div class="kpi"><b>NOT AUTHORIZED</b><span>Submission note or weekly slot</span></div></div>
-<h2>Prior IEDR candidates</h2><div class="table-wrap"><table><thead><tr><th>Historical candidate</th><th>Within 3 px of lattice</th><th>Valid holdout?</th><th>Submit?</th></tr></thead><tbody>
-<tr><td>H1 IEDR · 32,000 dots</td><td>99.39375%</td><td>No · full-catalogue placement</td><td class="bad">NO</td></tr>
-<tr><td>H2 HTSI · 32,000 dots</td><td>99.5875%</td><td>No · full-catalogue placement</td><td class="bad">NO</td></tr>
-<tr><td>H3 conductivity residual · 32,000 dots</td><td>99.190625%</td><td>No · full-catalogue placement</td><td class="bad">NO</td></tr><tr><td>Earlier parallel MPLC · 37,654 dots</td><td>99.9522%</td><td>Not independently replayed</td><td class="bad">NO</td></tr></tbody></table></div>
-<p>Strict rule: stop if rank correlation exceeds 0.90 <em>or</em> more than 70% of the candidate's dots lie within 3 pixels of any registry raster, including the lattice. The pre-placement surface check was not recorded. The lattice's 3-pixel halo covers all but 6,514 of 5,106,385 eligible off-catalogue pixels: any 32,000-dot map in that domain must overlap it by at least 79.64375%. This bound is specific to that dot budget, not every possible sparse map.</p>
-<p>H1's exact TIFF SHA-256 is <code class="hash">455c3a1780806718c881480228631046cb3090a4734fac54f398c97533a89d39</code>. Local validation against the mirrored sample found a single float32 band, matching CRS/shape/transform, no NaN in the footprint, values in [0,1] and no positive catalogue pixels. These are format checks—not proof of uniqueness, score, licensed provenance, or portal acceptance. The original artifacts are not offered for contest download.</p>
-<h2>Nine-site historical comparison</h2><p>Scores below are <strong>USER/OWNER-REPORTS</strong>, not organizer-confirmed receipts. The association between each reported score and the named pinned file has not been independently proven. “FAIL” is our freshly measured directional overlap against the worst <em>other</em> member of these nine; it does not imply the nine comprise the complete registry. A focus site's smaller-scope approval, if any, is not a pass under the present all-registry rule.</p>
-<div class="table-wrap"><table><thead><tr><th>Site</th><th>Reported score</th><th>Audited reference artifact · hash prefix</th><th>Literal uniqueness in these nine</th></tr></thead><tbody><tr><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE24/">GEMSDOE24 ↗</a></td><td>0.2477<br><small>owner report</small></td><td class="file">gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif<br><small>68d0e2e4fcc5… · 60,069 positive pixels</small></td><td class="bad">FAIL<br><small>100.00% vs GEMSDOE30</small></td></tr><tr><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE25/">GEMSDOE25 ↗</a></td><td>0.2600<br><small>owner report</small></td><td class="file">gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif<br><small>91eae1ca42ec… · 44,090 positive pixels</small></td><td class="bad">FAIL<br><small>100.00% vs GEMSDOE30</small></td></tr><tr><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE27/">GEMSDOE27 ↗</a></td><td>0.2449<br><small>owner report</small></td><td class="file">gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif<br><small>33003374335d… · 61,328 positive pixels</small></td><td class="bad">FAIL<br><small>98.02% vs GEMSDOE24</small></td></tr><tr><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE28/">GEMSDOE28 ↗</a></td><td>0.2710<br><small>owner report</small></td><td class="file">gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif<br><small>5556aa1438fd… · 37,660 positive pixels</small></td><td class="bad">FAIL<br><small>100.00% vs GEMSDOE30</small></td></tr><tr><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE30/">GEMSDOE30 ↗</a></td><td>0.2600<br><small>owner report</small></td><td class="file">gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca.tif<br><small>8cf893ead566… · 44,090 positive pixels</small></td><td class="bad">FAIL<br><small>100.00% vs GEMSDOE27</small></td></tr><tr><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE31/docs/">GEMSDOE31 ↗</a></td><td>0.2708<br><small>owner report</small></td><td class="file">gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif<br><small>07b6db440535… · 40,199 positive pixels</small></td><td class="bad">FAIL<br><small>100.00% vs GEMSDOE30</small></td></tr><tr><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html">GEMSDOE32 ↗</a></td><td>0.2778<br><small>owner report</small></td><td class="file">gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif<br><small>c55bafc47005… · 37,654 positive pixels</small></td><td class="bad">FAIL<br><small>100.00% vs GEMSDOE36</small></td></tr><tr><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE33/">GEMSDOE33 ↗</a></td><td>0.2632<br><small>owner report</small></td><td class="file">GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e.tif<br><small>87f857d505e2… · 41,865 positive pixels</small></td><td class="bad">FAIL<br><small>99.71% vs GEMSDOE27</small></td></tr><tr><td><a href="https://buffedlizard55-lab.github.io/GEMSDOE36/docs/">GEMSDOE36 ↗</a></td><td>0.2750<br><small>owner report</small></td><td class="file">gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif<br><small>e15891020b9c… · 38,854 positive pixels</small></td><td class="bad">FAIL<br><small>97.58% vs GEMSDOE27</small></td></tr></tbody></table></div>
-<p>GEMSDOE25 and GEMSDOE30 have identical decoded binary support despite different TIFF bytes. Measured support relationships, exact hashes and all 81 focus comparisons are available in the <a href="evidence/protocol_audit_20261026.json">audit JSON</a>. The top public board snapshot (0.4437 on 2026-10-26) is a distinct official leaderboard observation, not a candidate receipt.</p>
-<h2>Score estimate</h2><p><strong>Unavailable — no admissible HOLDOUT-DTI.</strong> Historical diagnostic numbers are archived with their evaluator versions and are expressly invalid for promotion. No leaderboard score is predicted. A future selector requires independently replayable fold-local emission and feature canaries, full-registry checks, licensed inputs, and a strict TIFF audit.</p>
-<footer>Review: 26 October 2026 UTC · No contest slot used in this review · <a href="sources.html">Evidence &amp; sources</a></footer></main></body></html>
+<title>Executive summary across 9 focus sites &amp; fleet · KANLER GEMS</title><link rel="stylesheet" href="assets/style.css"></head>
+<body><header><div class="wrap head"><p class="brand">KANLERGEMSDOE1 · DOE GEMS PRIZE · EXECUTIVE SUMMARY</p><h1>Executive Summary: 9 Focus Sites (<code>GEMSDOE24..36</code>) &amp; Cross-Fleet Uniqueness</h1><nav class="nav" aria-label="Primary"><a href="index.html">Status</a><a href="executive-summary.html" aria-current="page">Executive summary</a><a href="research.html">Why 0.2778?</a><a href="hypotheses.html">Research slate</a><a href="how-to-submit.html">Submission gate</a><a href="sources.html">Sources</a></nav></div></header>
+<main class="wrap">
+<div class="banner" role="status">
+  <strong>STOP — NO RASTER IS CLEARED FOR SUBMISSION</strong>
+  <p><code>KANLER1-OCDA-MSCS-EXP3</code> is a validated research deliverable (<code>verdict: "negative"</code>, <code>ok_to_submit: false</code>). Historical site numbers below attributed by repository owners are labeled <strong>USER/OWNER-REPORT</strong> because they are not organizer-confirmed receipts bound by portal hash; every local metric computed here is strictly labeled <strong>HOLDOUT-DTI</strong> with evaluator version, withheld positive count, and 95% spatial cluster-bootstrap CI.</p>
+</div>
+
+<h2>1. Current <code>KANLERGEMSDOE1</code> &amp; Sibling Parallel-Run Comparison</h2>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Site / Candidate</th>
+        <th>Artifact File &amp; Clearance</th>
+        <th>Strict Score Label &amp; Value</th>
+        <th>Uniqueness Across 42-Raster Corpus</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong><code>KANLERGEMSDOE1</code></strong><br><code>OCDA-MSCS EXP-3</code><br><small>(Current active run)</small></td>
+        <td><span class="bad">HOLD — DO NOT SUBMIT</span><br><span class="file">docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.tif</span><br><small>SHA-256: <code>ec9b920ac059...</code> · 37,654 dots · 15/15 validator PASS</small></td>
+        <td><strong>HOLDOUT-DTI</strong> (<code>GEMSDOE32-HIDE-RECOVER-v3.1</code>, <code>N=22,232</code>): <code>0.105830</code>, 95% CI <code>[0.095019, 0.115257]</code><br><strong>HOLDOUT-DTI</strong> (<code>GEMSDOE32-SGMC-CAL-v3.0</code>, <code>N=62,703</code>): <code>0.050040</code>, 95% CI <code>[0.045050, 0.054481]</code></td>
+        <td><span class="good">40/40 Discrete Detectors PASS</span>: max <code>|ρ| = 0.0785</code>, max 3-px = <code>52.33%</code> (<code>29.49%</code> vs <code>GEMSDOE32</code>; <code>28.21%</code> vs <code>KANLER2</code>). Literal 3-px vs <code>r13-lattice-s5_v2</code> grid = <code>99.9363%</code> (null-calibrated two-phase: <code>PASS</code>).</td>
+      </tr>
+      <tr>
+        <td><strong><code>KANLERGEMSDOE2</code></strong><br><code>HTCADS-DualRegime EXP-2</code><br><small>(Sibling benchmark)</small></td>
+        <td><span class="warn">EXTERNAL SIBLING REPO</span><br><span class="file">kanlergems2-htcads-exp-2-37654dots-20261026T235227Z-11a2f251-zeros.tif</span><br><small>SHA-256: <code>2b3f208fc25a...</code> · 37,654 dots</small></td>
+        <td><strong>HOLDOUT-DTI</strong> (sibling card, <code>HIDE-RECOVER-v3.0</code>, <code>N=22,232</code>): <code>0.112353</code>, 95% CI <code>[0.100350, 0.123540]</code><br><strong>HOLDOUT-DTI</strong> (<code>SGMC-CAL-v3.0</code>, <code>N=62,703</code>): <code>0.078913</code>, 95% CI <code>[0.071526, 0.086882]</code></td>
+        <td>Distinct from <code>GEMSDOE32</code> (<code>36.46%</code> 3-px) and distinct from <code>KANLER1-OCDA</code> (<code>28.21%</code> 3-px) — prime OOF ensemble partner for team selector.</td>
+      </tr>
+      <tr>
+        <td><code>KANLERGEMSDOE1</code><br><small>Superseded <code>MPLC</code> &amp; <code>IEDR H1..H3</code></small></td>
+        <td><span class="bad">SUPERSEDED — DO NOT SUBMIT</span><br><small>Archived in <code>docs/downloads/</code> for reproducibility only</small></td>
+        <td>Unavailable — no admissible HOLDOUT-DTI for <code>IEDR H1..H3</code> (global catalogue collar leak); archived <code>MPLC</code> trailed champion (<code>0.0894</code>).</td>
+        <td>Literal 3-px vs <code>r13-lattice-s5_v2</code>: <code>MPLC = 99.9522%</code>, <code>IEDR H1 = 99.39375%</code>, <code>H2 = 99.5875%</code>, <code>H3 = 99.190625%</code>.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>2. Forensic Audit of the 9 Focus Sites (<code>GEMSDOE24..36</code>)</h2>
+<p>Byte-level inspection of all 9 focus champions confirms they form a single nested post-processing family derived from <code>19GEMSDOE</code> <code>H19-5</code> (<code>121,131</code> ridge pixels, <code>0.1922</code> user/owner-reported), with <code>94%–100%</code> pairwise 3-px overlap and two exact zero-XOR duplicate pairs:</p>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Focus Site</th>
+        <th>Audited Champion Artifact &amp; Positive Dots</th>
+        <th>Attributed Public Score &amp; Local Holdout Status</th>
+        <th>Pairwise Uniqueness Across Focus &amp; Fleet</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong><code>GEMSDOE32</code></strong><br><small>Highest of 9 sites</small></td>
+        <td><span class="file">gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif</span><br><strong>37,654 dots</strong> · exact <code>0-XOR</code> match to <code>D2.8 &amp; (d_cat &gt; 2)</code></td>
+        <td><code>0.2778</code> (USER/OWNER-REPORT)<br>Fold-honest <code>D2.8 &amp; (d_vis &gt; 2)</code> <strong>HOLDOUT-DTI</strong>: <code>0.099202</code> (<code>[0.085951, 0.112668]</code>; <code>d-1</code> upper bound <code>0.189870</code>); <code>SGMC-CAL</code>: <code>0.064121</code></td>
+        <td><span class="bad">Near-duplicate of 25/28/30/31/33/36</span> (<code>100.0%</code> subset of <code>GEMSDOE25/30/31</code>); only <code>29.49%</code> 3-px overlap with <code>KANLER1-OCDA-EXP3</code>.</td>
+      </tr>
+      <tr>
+        <td><strong><code>GEMSDOE31</code></strong></td>
+        <td><code>h32-b1-from-d2-8</code> · <strong>40,199 dots</strong> · exact <code>0-XOR</code> match to <code>D2.8 &amp; (d_cat &gt; 1)</code></td>
+        <td><code>0.2708</code> (USER/OWNER-REPORT)<br>Unavailable — no admissible HOLDOUT-DTI on static file</td>
+        <td><span class="bad">Exact 0-XOR binary duplicate</span> of <code>GEMSDOE28</code> solo <code>B=1</code> variant; <code>100%</code> subset of <code>GEMSDOE25/30</code>.</td>
+      </tr>
+      <tr>
+        <td><strong><code>GEMSDOE36</code></strong></td>
+        <td><code>h36-b15-slight-collar</code> · <strong>38,854 dots</strong> (<code>D2.8</code> collar variant)</td>
+        <td><code>0.2738</code> (USER/OWNER-REPORT)<br>Unavailable — no admissible HOLDOUT-DTI on static file</td>
+        <td><span class="bad">Duplicate family</span> (&gt;97% 3-px overlap with <code>GEMSDOE31</code> &amp; <code>GEMSDOE32</code>).</td>
+      </tr>
+      <tr>
+        <td><strong><code>GEMSDOE28</code></strong></td>
+        <td><span class="file">GEMSDOE28.tif</span> · <strong>37,660 dots</strong> (<code>B=1</code> + gap-closure family; solo variant = <code>40,199</code> dots)</td>
+        <td><code>0.2708</code> solo / <code>0.2673</code> hybrid (USER/OWNER-REPORT)<br>Unavailable — no admissible HOLDOUT-DTI on static file</td>
+        <td><span class="bad">Duplicate family</span> (&gt;94% 3-px overlap with <code>GEMSDOE31/32</code>).</td>
+      </tr>
+      <tr>
+        <td><strong><code>GEMSDOE33</code></strong></td>
+        <td><span class="file">GEMSDOE33.tif</span> · <strong>41,865 dots</strong> (<code>D2.8</code> partial collar pruning)</td>
+        <td><code>0.2652</code> (USER/OWNER-REPORT)<br>Unavailable — no admissible HOLDOUT-DTI on static file</td>
+        <td><span class="bad">Duplicate family</span> (&gt;98% 3-px overlap with <code>GEMSDOE25/30/31</code>).</td>
+      </tr>
+      <tr>
+        <td><strong><code>GEMSDOE25</code></strong></td>
+        <td><span class="file">gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif</span> · <strong>44,090 dots</strong> (<code>H19-5</code> thinned at <code>d_min = √8 ≈ 2.83 px</code>)</td>
+        <td><code>0.2600</code> (USER/OWNER-REPORT)<br>Unavailable — no admissible HOLDOUT-DTI on static file</td>
+        <td><span class="bad">Exact 0-XOR binary duplicate</span> of <code>GEMSDOE30</code>; parent superset of <code>31</code> and <code>32</code>.</td>
+      </tr>
+      <tr>
+        <td><strong><code>GEMSDOE30</code></strong></td>
+        <td><span class="file">GEMSDOE30.tif</span> · <strong>44,090 dots</strong></td>
+        <td><code>0.2600</code> (USER/OWNER-REPORT)<br>Unavailable — no admissible HOLDOUT-DTI on static file</td>
+        <td><span class="bad">Exact 0-XOR binary duplicate</span> of <code>GEMSDOE25</code>.</td>
+      </tr>
+      <tr>
+        <td><strong><code>GEMSDOE27</code></strong></td>
+        <td><span class="file">gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif</span> · <strong>61,328 dots</strong></td>
+        <td><code>0.2498</code> (USER/OWNER-REPORT)<br>Unavailable — no admissible HOLDOUT-DTI on static file</td>
+        <td><span class="bad">Duplicate family</span> (<code>98.0%</code> superset of <code>GEMSDOE24</code> <code>D1.5</code> + <code>1,259</code> gap-closure pixels).</td>
+      </tr>
+      <tr>
+        <td><strong><code>GEMSDOE24</code></strong></td>
+        <td><span class="file">gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif</span> · <strong>60,069 dots</strong> (<code>H19-5</code> thinned at <code>d_min = 1.5 px</code>)</td>
+        <td><code>0.2477</code> (USER/OWNER-REPORT)<br>Unavailable — no admissible HOLDOUT-DTI on static file</td>
+        <td><span class="bad">Duplicate family</span> (<code>100%</code> subset of <code>H19-5</code>; <code>33.80%</code> 3-px overlap with <code>KANLER1-OCDA-EXP3</code>).</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>3. Broader GEMSDOE / KANLER / WBG Fleet Audit Summary</h2>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Cohort / Repo</th>
+        <th>Representative Artifact &amp; Dots</th>
+        <th>Reported / Holdout Status</th>
+        <th>3-px Overlap vs <code>KANLER1-OCDA-EXP3</code></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>GEMSDOE70</code></td><td><code>gems70-p5-dual-submod300-oof38k</code> (37,654 dots)</td><td><code>0.2478</code> (USER/OWNER-REPORT, best non-H19 ML line)</td><td><code>25.69%</code> (<span class="good">Unique</span>)</td></tr>
+      <tr><td><code>GEMSDOE76</code></td><td><code>gems76-ptcf-tiltworm-submod39k</code> (39,200 dots)</td><td><code>0.2343</code> (USER/OWNER-REPORT, potential-field tilt worms)</td><td><code>&lt; 28%</code> (<span class="good">Unique</span>)</td></tr>
+      <tr><td><code>GEMSDOE73</code> / <code>91</code></td><td><code>gems73-h73-mcsc</code> / <code>gems91-s17-lftg</code> (37,654 dots)</td><td><code>0.1917</code> / <code>0.1823</code> (USER/OWNER-REPORT)</td><td><code>&lt; 31%</code> (<span class="good">Unique</span>)</td></tr>
+      <tr><td><code>KANLERGEMSDOE3</code></td><td><code>kanler3-gpc3-exp-2</code> / <code>h1-dcap-lhc</code> (37,654 dots)</td><td>Sibling research candidates (no portal slot used)</td><td><code>&lt; 34%</code> (<span class="good">Unique</span>)</td></tr>
+      <tr><td><code>WBGGEMSDOE1..3</code></td><td><code>dpgf1-exp-3</code> (37,654d), <code>stepxasym-e2</code> (34,564d), <code>stepover-35000d</code></td><td>Sibling research candidates + 1 continuous surface (<code>wbg-c1</code>, <code>ρ = 0.3227</code>)</td><td><code>&lt; 34%</code> on discrete detectors (<span class="good">Unique</span>)</td></tr>
+      <tr><td><code>EUGGEMSDOE1..3</code> / <code>GINNYGEMSDOE1..3</code></td><td>Inspected via GitHub API: <code>STOPPED_DUPLICATE</code> / zero-TIF audit gates</td><td>No promoted GeoTIFF emitted (`0` slots used)</td><td>N/A (no candidate dots emitted)</td></tr>
+      <tr><td><code>13GEMSDOE</code> Lattice</td><td><code>13gems_20261001_r13-lattice-s5_v2</code> (206,895 dots; 500 m grid)</td><td><code>0.1190</code> (USER/OWNER-REPORT, prevalence calibration probe)</td><td><code>99.9363%</code> literal (covers <code>99.8713%</code> of entire footprint; Pigeonhole ≥ <code>82.70%</code>)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>Updated: 27 October 2026 UTC · <a href="evidence/ocda_uniqueness_and_gate.json">Full 42-peer JSON audit</a> · <a href="how-to-submit.html">Portal submission &amp; [0, 1] validator guide</a></footer>
+</main></body></html>

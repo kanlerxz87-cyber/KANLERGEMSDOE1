@@ -1,12 +1,106 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Fault discovery, honestly measured · KANLER GEMS</title><link rel="stylesheet" href="assets/style.css"></head>
-<body><header><div class="wrap head"><p class="brand">KANLERGEMSDOE1 / DOE GEMS PRIZE / RESEARCH DESK</p><h1>Fault discovery, honestly measured</h1><nav class="nav" aria-label="Primary"><a href="index.html" aria-current="page">Status</a><a href="executive-summary.html">Executive summary</a><a href="research.html">Why 0.2778?</a><a href="hypotheses.html">Research slate</a><a href="how-to-submit.html">Submission gate</a><a href="sources.html">Sources</a></nav></div></header>
-<main class="wrap"><div class="banner" role="status"><strong>STOP — NO RASTER IS CLEARED FOR SUBMISSION</strong><p>The IEDR lane failed the literal registry-duplication rule. There is no demonstrated unique, high-scoring candidate and no authorized download for contest use. No weekly slot was used in this review.</p></div>
-<div class="grid"><div class="kpi"><b>99.39%</b><span>H1 dots within 3 pixels of a registered spacing-5 lattice · limit 70%</span></div><div class="kpi"><b>Unavailable</b><span>Admissible HOLDOUT-DTI for this candidate · not a live-score estimate</span></div><div class="kpi"><b>0.2778</b><span>GEMSDOE32 h33-2-b2 · owner-reported, not receipt-confirmed</span></div><div class="kpi"><b>0</b><span>New experiments or competition submissions in this review</span></div></div>
-<h2>What changed</h2><p>A byte-level audit independently checked the three earlier IEDR files. H1, H2 and H3 overlap the registered lattice by <strong>99.39375%, 99.5875% and 99.190625%</strong>, respectively. The protocol does not exempt calibration rasters. H1's overlap with each of the nine named champions is lower, but passing that subset cannot undo the lattice failure or certify the entire registry.</p>
-<p>Those files are retained only as historical research artifacts. Their prior full-map holdouts used the full fault catalogue when placing dots, and their canaries did not establish withheld-fold-only provenance. <strong>They are not valid promotion evidence.</strong> A separate earlier <a href="mplc/index.html">MPLC artifact</a> also overlaps the lattice by 99.9522% and is stopped; its fold provenance was not independently replayed here. Our local format checks pass against a pinned owner mirror; that is not organizer authentication or a portal-acceptance guarantee.</p>
-<div class="card actions"><a class="dl" href="executive-summary.html">Open executive summary</a><a class="dl ghost" href="evidence/current_run_card.json">View negative JSON card</a><button disabled aria-disabled="true">Submission download unavailable</button></div>
-<h2>Public information feed</h2><div class="card"><p id="leaderboard-feed">Snapshot: rank 1 public DTI 0.4437, observed 2026-10-26. Open the official leaderboard for current results. This is not a receipt for a repository raster.</p><p><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">Official public leaderboard ↗</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">Competition updates ↗</a> · <a href="https://community.drivendata.org/">Organizer discussion ↗</a></p><p class="note">Pages deployment is configured to try a daily public-board refresh. If the fetch or parser fails, the feed keeps and labels the older dated snapshot. Deployment and external availability are not guaranteed.</p></div>
-<h2>Read the evidence</h2><p><a href="research.html">The likely geometry behind 0.2778</a> · <a href="hypotheses.html">Four untested, differentiated research directions</a> · <a href="how-to-submit.html">Fail-closed upload checklist</a> · <a href="evidence/protocol_audit_20261026.json">Reproducible retrospective audit</a></p>
-<footer>Review: 26 October 2026 UTC · No contest slot used in this review · <a href="sources.html">Evidence &amp; sources</a></footer></main><script src="assets/feed.js" defer></script></body></html>
+<title>Gate Status &amp; OCDA-MSCS Run Card · KANLER GEMS</title><link rel="stylesheet" href="assets/style.css"></head>
+<body><header><div class="wrap head"><p class="brand">KANLERGEMSDOE1 · DOE GEMS PRIZE · RESEARCH &amp; VALIDATION DESK</p><h1>Submission Gate Status &amp; Lane H-K1-A (<code>OCDA-MSCS</code>) Run Card</h1><nav class="nav" aria-label="Primary"><a href="index.html" aria-current="page">Status</a><a href="executive-summary.html">Executive summary</a><a href="research.html">Why 0.2778?</a><a href="hypotheses.html">Research slate</a><a href="how-to-submit.html">Submission gate</a><a href="sources.html">Sources</a></nav></div></header>
+<main class="wrap">
+<div class="banner" role="status">
+  <strong>STOP — NO RASTER IS CLEARED FOR SUBMISSION</strong>
+  <p><code>verdict: "negative"</code> · <code>ok_to_submit: false</code> · <strong>0 weekly DrivenData slots consumed.</strong> Lane <code>H-K1-A (OCDA-MSCS, EXP-3)</code> produced a 15/15 format-validated, detector-unique GeoTIFF (<code>HOLDOUT-DTI = 0.105830</code> vs fold-honest <code>0.2778</code> reference <code>0.099202</code>), but fails the fail-closed promotion gate on paired two-sided 95% CI (<code>[-0.003423, +0.015957]</code>), off-catalogue USGS SGMC generalization (<code>0.050040</code> vs <code>0.064121</code> and sibling <code>KANLERGEMSDOE2</code> <code>0.078913</code>), literal no-exemption 3-px overlap with the <code>r13-lattice-s5_v2</code> space-filling calibration grid (<code>99.9363%</code>; historical <code>IEDR H1</code> was <code>99.39375%</code>), and owner-mirrored template provenance. Under <em>Maximize P(Win)</em>, live team slots are reserved for the cross-repo selector.</p>
+</div>
+
+<div class="card">
+  <div class="actions">
+    <button type="button" disabled>Submission download unavailable — verdict: negative (Research / Selector Hold)</button>
+    <a class="dl ghost" href="evidence/current_run_card.json">Canonical JSON Run Card</a>
+    <a class="dl ghost" href="evidence/ocda_ablation_ledger.json">3-Experiment Ablation Ledger</a>
+    <a class="dl ghost" href="evidence/ocda_uniqueness_and_gate.json">42-Peer Uniqueness Receipt</a>
+    <a class="dl ghost" href="executive-summary.html">9-Site + Fleet Executive Table</a>
+  </div>
+  <p class="note">Live contest links to <code>.tif</code> and <code>.zip</code> artifacts are intentionally disabled on public HTML pages whenever <code>ok_to_submit</code> is <code>false</code> so a research raster cannot be uploaded by mistake.</p>
+</div>
+
+<div class="grid">
+  <div class="kpi"><b>0.105830</b><span><code>HOLDOUT-DTI</code> · <code>GEMSDOE32-HIDE-RECOVER-v3.1</code><br><code>N = 22,232</code> · 95% CI <code>[0.095019, 0.115257]</code></span></div>
+  <div class="kpi"><b>+0.006627 (P = 90.9%)</b><span>Paired gain vs fold-honest <code>0.2778</code> ref (<code>0.099202</code>)<br>Paired 95% CI <code>[-0.003423, +0.015957]</code></span></div>
+  <div class="kpi"><b>40 / 40 PASS</b><span>Discrete fault detectors (<code>max |ρ| = 0.0785</code>, <code>max 3px = 52.33%</code>)<br><code>29.49%</code> vs <code>GEMSDOE32</code> · <code>28.21%</code> vs <code>KANLER2</code></span></div>
+  <div class="kpi"><b>15 / 15 PASS</b><span>Automated GeoTIFF validator · <code>EPSG:32611</code> · <code>3730×3292</code><br><code>12,279,160</code> finite cells in <code>[0.0, 1.0]</code> · <code>0</code> NaNs</span></div>
+</div>
+
+<h2>1. Current Validated Research Artifact (<code>KANLER1-OCDA-MSCS-EXP3</code>)</h2>
+<div class="card">
+  <table>
+    <tbody>
+      <tr><th>Portal Clearance</th><td><span class="bad">HOLD — DO NOT SUBMIT TO PORTAL</span> (<code>verdict: "negative"</code>, <code>ok_to_submit: false</code>, <code>selector_required: true</code>)</td></tr>
+      <tr><th>Unique Submission Filename</th><td class="file">docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.tif</td></tr>
+      <tr><th>Single-GeoTIFF Archive</th><td class="file">docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.zip</td></tr>
+      <tr><th>GeoTIFF SHA-256</th><td><code class="hash">ec9b920ac059518f0a2382f08cbe3bc2b6074d1a302e9f25cd8a79abd97c8564</code></td></tr>
+      <tr><th>DrivenData Note (<code>65 / 140</code> chars)</th><td><code>KANLER1 OCDA-MSCS Exp3 OOF PU-HGB+300mCELF 37654d [RESEARCH-HOLD]</code></td></tr>
+      <tr><th>Grid &amp; Value Compliance</th><td>Single-band <code>float32</code> · <code>EPSG:32611</code> · <code>3730 × 3292</code> · transform <code>[100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0]</code> · <code>nodata=None</code> · <code>37,654</code> binary dots · <code>0</code> on-catalogue positives · <code>0</code> NaN/Inf across all <code>12,279,160</code> cells (immune to <code>IR-PORTAL-05</code> range error).</td></tr>
+      <tr><th>Leakage Canary (<a href="evidence/ocda_leakage_canaries.json">receipt</a>)</th><td><span class="good">PASS (63 / 63 features ≤ 0.90)</span> · max symmetric withheld-fold AUC = <code>0.738633</code> (<code>fold_vis_stepover_relay_bridge</code>); top label-free channel = <code>ocda_piedmont_slope_dipole_400m</code> (<code>0.636474</code> vs best baseline v2 channel <code>curv_s2 = 0.580203</code>). Hidden-perturbation invariance: <code>0</code> overlap, <code>0.0</code> float diff.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>2. Pre-Registered 3-Experiment Fold-Local Ablation (<code>3 / 3</code> Budget Used)</h2>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Variant</th>
+        <th>Slot</th>
+        <th>Dots</th>
+        <th><code>HOLDOUT-DTI</code> · <code>GEMSDOE32-HIDE-RECOVER-v3.1</code><br><small><code>N = 22,232</code> withheld positives · 95% cluster CI</small></th>
+        <th><code>HOLDOUT-DTI</code> · <code>GEMSDOE32-SGMC-CAL-v3.0</code><br><small><code>N = 62,703</code> off-catalogue SGMC · calibrated 95% CI</small></th>
+        <th>Scientific Verdict</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>CHAMP-D28-VIS-B2</code><br><small>Fold-honest <code>0.2778</code> ref</small></td>
+        <td>Ctrl 0</td>
+        <td>37,654</td>
+        <td><code>0.099202</code> · <code>[0.085951, 0.112668]</code><br><small><code>d-1</code> censorship-debiased bound: <code>0.189870</code></small></td>
+        <td><code>0.064121</code> · <code>[0.056730, 0.071649]</code><br><small>raw pooled: <code>0.096060</code></small></td>
+        <td>Incumbent <code>D2.8 &amp; (d_vis &gt; 2)</code> benchmark</td>
+      </tr>
+      <tr>
+        <td><code>CTRL-BASE35-OOF</code></td>
+        <td>Ctrl 1</td>
+        <td>37,654</td>
+        <td><code>0.103048</code> · <code>[0.088930, 0.117816]</code></td>
+        <td><code>0.056689</code> · <code>[0.048475, 0.063744]</code></td>
+        <td>Plain out-of-quadrant HGB on 35 shared v2 channels</td>
+      </tr>
+      <tr>
+        <td><code>EXP-1</code> · <code>OCDA-Core</code></td>
+        <td>1 / 3</td>
+        <td>37,654</td>
+        <td><code>0.104042</code> · <code>[0.088903, 0.117717]</code></td>
+        <td><code>0.052184</code> · <code>[0.046648, 0.057227]</code></td>
+        <td>Label-free cross-strike dipoles + true tilt zero-crossings + PU guard + 1-px crest + 300 m CELF</td>
+      </tr>
+      <tr>
+        <td><code>EXP-2</code> · <code>OCDA-DirectTreeRelay</code></td>
+        <td>2 / 3</td>
+        <td>37,654</td>
+        <td><span class="bad"><code>0.025006</code></span> · <code>[0.018772, 0.031177]</code></td>
+        <td><span class="bad"><code>0.042112</code></span> · <code>[0.031166, 0.052978]</code></td>
+        <td>Logged negative: feeding <code>~visible</code>-zeroed continuation directly into <code>y=visible</code> PU HGB inverts split polarity</td>
+      </tr>
+      <tr>
+        <td><strong><code>EXP-3</code> · <code>OCDA-TwoStage-ExplainAway</code></strong></td>
+        <td><strong>3 / 3</strong></td>
+        <td><strong>37,654</strong></td>
+        <td><span class="good"><code>0.105830</code></span> · <code>[0.095019, 0.115257]</code><br><small>SW Walker Lane fold: <code>0.0665 → 0.0846</code> (+27.3%)</small></td>
+        <td><span class="warn"><code>0.050040</code></span> · <code>[0.045050, 0.054481]</code><br><small>raw pooled: <code>0.075100</code></small></td>
+        <td>Two-stage inner-withheld log-odds fusion + 600 m broadside dipole explaining-away + sharp 1-px crest; held for cross-repo ensemble selector</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>3. Public Leaderboard Reference Snapshot (<a href="feed.json"><code>docs/feed.json</code></a>)</h2>
+<p class="note">Official public leaderboard (<a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">DrivenData #306</a>, dated snapshot <code>2026-10-26</code>): rank #1 = <code>0.4437</code> (<code>xiaofanhu</code>). This is an external public board observation, never a receipt for any raster in this repository.</p>
+
+<footer>Updated: 27 October 2026 UTC · Branch <code>arena/b23a6373-kanlergemsdoe1</code> · 0 contest slots used · <a href="sources.html">Verified official sources &amp; receipts</a></footer>
+</main></body></html>

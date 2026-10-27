@@ -1,66 +1,210 @@
 {
-  "status_update_20261026": {
-    "status": "SUPERSEDED / DUPLICATE / NOT PROMOTION EVIDENCE",
-    "reviewed_utc_date": "2026-10-26",
-    "correction": "The literal any-registry rule includes the spacing-5 lattice. The parallel MPLC artifact has 0.9995219631380464 directional 3-pixel overlap and therefore fails; no lattice exemption is authorized. Its reported per-fold holdout has not been independently replayed in this review. Local [0,1] validation does not prove portal acceptance.",
-    "current_audit": "docs/evidence/protocol_audit_20261026.json",
-    "ok_to_submit": false
-  },
-  "hypothesis": "MPLC: multi-scale (8/20/50px) oriented log-Gabor phase congruency on RTP, isostatic gravity and detrended elevation, plus cross-source PC concordance and RTP structure-tensor orientation coherence, added to a 39-band HGB, catches low-amplitude buried fault steps that amplitude-biased gradient stacks miss.",
-  "mechanism": "Contrast-invariant local-phase alignment across scales (Kovesi PC with frequency-spread weighting); dots emitted by dotted greedy max-cover on E[k], 37,654 budget, <=2px catalogue prune, visible faults masked pixel-exact.",
-  "named_non_fault_mimic": "Lithologic contacts, mafic dikes, paleo-shoreline risers, road/terrace edges are also phase-congruent steps; mitigated by cross-source concordance + supervised HGB, decided by holdout.",
-  "holdout": {
-    "class": "HOLDOUT-DTI",
-    "evaluator": "KANLER-HOLDOUT-v1 = vendor gems57-pooled-hide-v2 (whole <=12px segments, quadrant domains eroded 12px, seed 20, mode=all) + quadrant-blocked training + vendor pooled_summary paired 20km block bootstrap",
-    "withheld_positives": 11318,
-    "candidate_dti": 0.08943666741010366,
-    "candidate_ci95": [
-      0.07574434757919733,
-      0.10281578584733451
-    ],
-    "control_base_dti": 0.08399182101070962,
-    "paired_delta_vs_base": 0.005444846399394035,
-    "paired_delta_ci95": [
-      0.000394912540936851,
-      0.010769582636656472
-    ],
-    "champion_fixed_raster_dti_same_cells": 0.00439578938714301,
-    "champion_caveat": "Champion is a fixed raster built with the full catalogue; catalogue hide-and-recover is anti-aligned with its 2px prune (GEMSDOE31 disclosure). Its low value here is NOT evidence it would score low live, and beating it on this instrument is not a promotion argument.",
-    "exp3_budget_44090_dti": 0.0916,
-    "exp3_note": "Catalogue holdout prefers 44,090 dots; the only live (OWNER-REPORTED) budget ladder on the champion field prefers 37,654. Final file uses 37,654; conflict disclosed."
-  },
-  "sgmc_proxy_computed": {
-    "candidate_final": 0.056277398276615105,
-    "champion": 0.09538611460482532,
-    "truth_px": 62122,
-    "reading": "On off-catalogue USGS SGMC faults (>300m from catalogue) the candidate trails the champion. SGMC is pre-Quaternary-inclusive and is a proxy, not the hidden truth, but this regression blocks any claim of expected live superiority."
+  "schema_version": "GEMS-PARALLEL-RUN-CARD-v2.0",
+  "generated_utc": "2026-10-27T18:44:49Z",
+  "repository": "kanlerxz87-cyber/KANLERGEMSDOE1",
+  "branch": "arena/b23a6373-kanlergemsdoe1",
+  "candidate_id": "KANLER1-OCDA-MSCS-EXP3",
+  "lane": "H-K1-A: Oriented Cross-Strike Dipole Asymmetry & Multi-Scale Contextual Submodular Synthesis (OCDA-MSCS)",
+  "hypothesis": "H-K1-A (OCDA-MSCS, EXP-3 Two-Stage Explain-Away): Extensional half-graben normal faults missing from labels.tif exhibit oriented cross-strike footwall-to-hanging-wall dipoles (piedmont slope break at 400m/800m, co-polarized isostatic gravity drop & basement-depth step at 600m, MT log-conductivity jump at 500m), true Miller-Singh (1994) magnetic & gravity tilt zero-crossing crests (correcting IR-BAND-06 where Band 6 tc is verified as GeoDAWN Radiometric Total Count, Spearman +0.99995), K/Th potassic alteration + 2m thermal probe (F2mDAB) + quartz/sinter halos, and strictly fold-local along-strike fault-tip & step-over continuation.",
+  "mechanism": "Stage 1 fits an out-of-quadrant (1.5 km collar) physics-guarded reliable-negative PU HistGradientBoostingClassifier on 35 shared gems32-structural-v2 channels + 25 label-free OCDA channels (omitting lidar_valid tile flags). Stage 2 calibrates nonnegative log-odds fusion weights [w_logit, w_tip, w_relay] strictly on 20% inner-withheld training-quadrant fault segments (resolving EXP-2 PU sign inversion), applies broadside 600 m dipole explaining-away along mapped fault flanks, concentrates probability ribbons onto 1-px multi-physics transverse crests (exponent 2.2), and emits 37,654 binary dots via exact 25-offset Euclidean R=300 m lazy-greedy (Minoux CELF) submodular DTI packing.",
+  "named_non_fault_mimic": "Pleistocene Lake Lahontan wave-cut shorelines, highway/rail road-cuts, symmetric mountain-interior bedrock crests, and unfaulted Miocene basaltic feeder dikes \u2014 mitigated via LiDAR contour-orthogonality, US Census TIGER road-distance guard (tiger_road_distance_m), 150 m upward-continued magnetic persistence (TMI_up150), and cross-strike footwall-vs-hanging-wall dipole asymmetry.",
+  "experiments_budget": {
+    "experiments_executed": 3,
+    "max_experiments_allowed": 3,
+    "ablation_summary": {
+      "CHAMP-D28-VIS-B2_incumbent": {
+        "hide_recover_pooled_dti": 0.09920232315251679,
+        "hide_recover_ci95": [
+          0.08595140754809347,
+          0.11266835751415871
+        ],
+        "sgmc_calibrated_dti": 0.0641209376417646,
+        "censorship_note": "d28 had labels==0 pre-zeroed; generous d-1 censorship-debiased upper bound = 0.189870"
+      },
+      "CTRL-BASE35-OOF_control": {
+        "hide_recover_pooled_dti": 0.10304783246457964,
+        "hide_recover_ci95": [
+          0.08893037516423646,
+          0.11781556164033993
+        ],
+        "sgmc_calibrated_dti": 0.056688536973443594
+      },
+      "EXP-1_OCDA-Core": {
+        "hide_recover_pooled_dti": 0.10404247541574038,
+        "hide_recover_ci95": [
+          0.0889028130566352,
+          0.11771661663717584
+        ],
+        "sgmc_calibrated_dti": 0.05218416101955629
+      },
+      "EXP-2_OCDA-DirectTreeRelay_negative": {
+        "hide_recover_pooled_dti": 0.02500580512738359,
+        "hide_recover_ci95": [
+          0.018772323472807273,
+          0.03117717279779314
+        ],
+        "sgmc_calibrated_dti": 0.0421121270161214,
+        "finding": "Direct inclusion of ~visible-zeroed continuation channels in y=visible PU tree inverts split polarity."
+      },
+      "EXP-3_OCDA-TwoStage-ExplainAway_selected": {
+        "hide_recover_pooled_dti": 0.1058295633210501,
+        "hide_recover_ci95": [
+          0.09501875114076805,
+          0.11525678090875735
+        ],
+        "sgmc_calibrated_dti": 0.05003984357142284
+      }
+    }
   },
   "leakage_canary": {
-    "mplc_auc_range": [
-      0.5063,
-      0.5277
+    "scope": "Strict withheld-fold positives vs active negatives across all 8 PreparedCells (GEMSDOE32-HIDE-RECOVER-v3.1)",
+    "total_features_tested": 63,
+    "threshold_symmetric_auc": 0.9,
+    "max_symmetric_auc": 0.738633,
+    "max_feature": "fold_vis_stepover_relay_bridge",
+    "n_flagged": 0,
+    "passed": true,
+    "fold_visible_provenance_invariance": {
+      "passed": true,
+      "visible_x_withheld_pixel_overlap_across_8_cells": 0,
+      "recomputation_max_abs_diff": 0.0
+    }
+  },
+  "holdout_dti": {
+    "status": "ADMISSIBLE_FOLD_LOCAL",
+    "score_label": "HOLDOUT-DTI",
+    "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+    "n_withheld_positives": 22232,
+    "n_spatial_clusters": 140,
+    "valid_value": 0.10583,
+    "valid_ci95": [
+      0.095019,
+      0.115257
     ],
-    "max_two_sided_base_auc_deviation": 0.0716,
-    "flags_gt_0.90": [],
-    "verdict": "PASS"
+    "per_quadrant_dti": {
+      "NW": 0.108623,
+      "NE": 0.10778,
+      "SW": 0.08464,
+      "SE": 0.126654
+    },
+    "incumbent_d28_vis_b2_dti": 0.099202,
+    "incumbent_d28_vis_b2_ci95": [
+      0.085951,
+      0.112668
+    ],
+    "paired_delta_vs_incumbent": {
+      "cand_pooled_dti": 0.10583,
+      "ref_pooled_dti": 0.099202,
+      "delta_dti": 0.006627,
+      "delta_ci95": [
+        -0.003423,
+        0.015957
+      ],
+      "prob_cand_gt_ref": 0.909
+    },
+    "sgmc_off_catalogue_holdout_dti": {
+      "score_label": "HOLDOUT-DTI",
+      "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+      "n_withheld_positives": 62703,
+      "raw_pooled_dti": 0.0751,
+      "raw_ci95": [
+        0.06817,
+        0.081946
+      ],
+      "prevalence_calibrated_dti": 0.05004,
+      "prevalence_calibrated_ci95": [
+        0.04505,
+        0.054481
+      ],
+      "paired_delta_vs_incumbent": {
+        "cand_cal_dti": 0.050043,
+        "ref_cal_dti": 0.064121,
+        "delta_dti": -0.014078,
+        "delta_ci95": [
+          -0.02106,
+          -0.006862
+        ],
+        "prob_cand_gt_ref": 0.0
+      }
+    },
+    "independent_replay_cells_sha256": "c3c91bdb117f159e5d169dd4cf9bdaaf493e7d1ae739259d3f8461379d7bbef9"
   },
-  "uniqueness": {
-    "surface_abs_spearman_max_discrete_peers": 0.125818895363372,
-    "dot_overlap_3px_max_discrete_peers": 0.46181016625059756,
-    "vs_champion_dot_overlap_3px": 0.33696287247038825,
-    "vs_champion_surface_spearman": 0.05615522939362986,
-    "lattice_s5_overlap_disclosed_IR_K1": 0.9995219631380464
+  "correlation_overlap_vs_registry": {
+    "full_registry_checked": false,
+    "scope_note": "Checked all 42 accessible SHA-256-pinned rasters (9 focus + 12 scored + 16 sibling/fleet + 5 prior KANLERGEMSDOE1); private external repos outside this 42-raster corpus are unverified.",
+    "n_discrete_detectors_checked": 40,
+    "discrete_detectors_surface_passed": true,
+    "discrete_detectors_final_passed": true,
+    "max_abs_spearman_surface_vs_detectors": 0.078475,
+    "max_abs_spearman_surface_vs_all_42": 0.322666,
+    "max_within_3px_vs_discrete_detectors": 0.523334,
+    "within_3px_vs_gemsdoe32_02778": 0.294922,
+    "within_3px_vs_kanlergemsdoe2_htcads": 0.282095,
+    "final_dots_within_3px_of_lattice": 0.999363,
+    "null_calibrated_two_phase_verdict": "PASS",
+    "literal_42_peer_no_exemption_passed": false
   },
-  "raster": {
-    "file": "kanler-mplc-hgb-37654-20261026-0741963ae4e9-zeros.tif",
-    "sha256": "fe4b8d742c1b12f60727ae22d4ae2dd96e6bfcb76b7f35e985d0e707bb816db3",
-    "dots": 37654
+  "raster_path": "docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.tif",
+  "raster_zip_path": "docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.zip",
+  "raster_sha256": "ec9b920ac059518f0a2382f08cbe3bc2b6074d1a302e9f25cd8a79abd97c8564",
+  "validator_output": {
+    "filename": "gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.tif",
+    "size_bytes": 222879,
+    "sha256": "ec9b920ac059518f0a2382f08cbe3bc2b6074d1a302e9f25cd8a79abd97c8564",
+    "mode": "zeros",
+    "geometry_reference": "/home/user/KANLERGEMSDOE1/.cache/gems_data/sample_submission.tif",
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "nodata_repr": "None",
+    "emitted_positive_pixels": 37649,
+    "footprint_fraction": 0.007286,
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_finite_pixels": 5167373,
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 1.0,
+    "full_grid_finite_pixels": 12279160,
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "nodata_none_for_zeros": true,
+      "nodata_nan_for_nan": true,
+      "zero_on_catalogue_leakage": true,
+      "local_range_check": true
+    },
+    "all_checks_passed": true
   },
-  "validator": "vendor gems57 validate: all checks PASS (single band float32, 3730x3292, EPSG:32611, exact sample transform, no NaN/Inf anywhere, values {0,1} in [0,1], 0 outside footprint, 0 dots on catalogue)",
-  "submission_name": "kanler-mplc-hgb-37654-20261026-0741963ae4e9",
-  "submission_note_140": "KANLER MPLC phase-congruency HGB 37654d B2 | HOLDOUT-DTI 0.0894 vs 0.0840 | DO NOT SUBMIT",
-  "estimated_live_score": "NOT ESTIMABLE - no calibrated mapping from catalogue holdout or SGMC proxy to the hidden-fault leaderboard exists (GEMSDOE32 withdrew anchor-inversion; champion holdout/SGMC/live triples are mutually inconsistent). Any number would be a fabrication.",
+  "submission_name": "gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.tif",
+  "submission_note": "KANLER1 OCDA-MSCS Exp3 OOF PU-HGB+300mCELF 37654d [RESEARCH-HOLD]",
   "verdict": "negative",
-  "slots_spent": 0,
-  "experiments_used": 3
+  "ok_to_submit": false,
+  "slot_used": false,
+  "selector_required": true,
+  "verdict_rationale": [
+    "1. Paired 95% spatial cluster-bootstrap CI vs fold-honest 0.2778 reference [-0.003423, +0.015957] slightly crosses zero (P(>0)=90.9% < 97.5%), and EXP-3 (0.105830) remains below the d-1 censorship-debiased D2.8 upper bound (0.189870).",
+    "2. On uncensored off-catalogue USGS SGMC faults (GEMSDOE32-SGMC-CAL-v3.0, N=62,703), EXP-3 (0.050040) trails both GEMSDOE32 (0.064121) and sibling KANLERGEMSDOE2 HTCADS-Exp2 (0.078913; HIDE-RECOVER 0.112353) \u2014 so team slot selector should prefer KANLERGEMSDOE2 rather than spending a scarce weekly slot on KANLER1.",
+    "3. Literal no-exemption 3-px check flags space-filling calibration grid r13-lattice-s5_v2 (99.9363% > 70%; Pigeonhole >= 82.70% for 37,654 dots), though all 40 discrete fault detectors PASS (max 3-px = 52.33%, max |Spearman| = 0.0785).",
+    "4. sample_submission.tif is restored from owner mirror (IR-SAMPLE-04: 60,988 positive pixels) rather than direct DrivenData cryptographic receipt."
+  ]
 }

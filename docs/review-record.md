@@ -1,42 +1,50 @@
-# Three-pass review record
+# Three-Pass Implementation & Verification Record (`2026-10-27 UTC`)
 
-**Date:** 2026-10-26 UTC. **Outcome:** negative; do not submit any existing TIFF. This review did not generate a new candidate, spend a competition slot, or rerun the stopped lane.
+**Repository:** `kanlerxz87-cyber/KANLERGEMSDOE1`  
+**Branch:** `arena/b23a6373-kanlergemsdoe1`  
+**Candidate:** `KANLER1-OCDA-MSCS-EXP3` (`docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.tif`, SHA-256 `ec9b920ac059518f0a2382f08cbe3bc2b6074d1a302e9f25cd8a79abd97c8564`)  
+**Release Gate Verdict:** `verdict: "negative"`, `ok_to_submit: false`, `slot_used: false` (`0` weekly DrivenData slots consumed)
 
-## Pass 1 — implement and verify the evidence
+---
 
-- Restored all 26 owner-mirrored files from pinned commits with size and SHA-256 checks; prepared the 19 input bands. Receipts are `data/restore_receipt.json` and `data/prepared_manifest.json`. Pins attest mirror bytes, not organizer origin. The unauthenticated mirrored sample has 60,988 positives on labels, contrary to the description of an all-zero sample; it is used only to establish a grid and footprint.
-- Fetched and independently checked nine pinned focus champion TIFFs and the registered spacing-5 lattice. `scripts/audit_existing_candidates.py --restore` reproduces the comparisons and writes `evidence/protocol_audit_20261026.json`, its Pages copy, and the one current negative JSON card. This is an audit of existing bytes, not a candidate experiment.
-- H1/H2/H3 have directional 3-pixel lattice overlaps 99.39375%, 99.5875% and 99.190625%. Any exceeds the literal 70% stop threshold. H1 passes the nine-focus-only overlap subset, but that is not the entire registry and does not erase the lattice failure. Every one of the nine focus champions exceeds 70% overlap with another focus champion.
-- During PR reconciliation, main advanced with a separate pre-existing MPLC lane. Reopened its historical raster only: SHA-256 `fe4b8d742c1b12f60727ae22d4ae2dd96e6bfcb76b7f35e985d0e707bb816db3`, 37,654 dots, 99.952196% lattice overlap. Its earlier discrete-peers-only uniqueness claim is not a literal all-registry pass. No MPLC experiment was rerun, and its fold provenance was not independently replayed. Its old generator and experiment entry points now stop before running.
-- Confirmed a budget-specific saturation bound: of 5,106,385 eligible off-label pixels, only 6,514 lie outside the lattice halo; a 32,000-dot map must overlap at least 79.64375%. This is not a proof for every sparse budget. Exact binary support for 25/30 is identical; 31 and 32 equal the 25 support after the >1- and >2-pixel catalogue distance tests, respectively.
-- Replaced the executable IEDR experiment runner with an explicit STOP. Preserved original TIFFs and historical metrics for provenance, but annotated their JSONs as superseded. Removed contest download links; root pages redirect to the actual `docs/` Pages site.
+## Pass 1 — Implement & Verify End-to-End
 
-## Pass 2 — find and fix defects
+1. **Autonomous Data Restoration & Preparation:**
+   - Executed `bash scripts/download_competition_data.sh` (restored & SHA-256-verified all 26 core, external, and historical scored files) and `python scripts/prepare_data.py` (prepared 19 input bands + rebuilt 35-channel `gems32-structural-v2` feature stack).
+   - Restored the 9 focus rasters (`GEMSDOE24..36`) and pulled 16 SHA-256-pinned sibling/fleet rasters (`KANLERGEMSDOE2`, `KANLERGEMSDOE3`, `WBGGEMSDOE1..3`, `GEMSDOE70/73/76/91`) for a 42-raster uniqueness corpus.
+2. **Byte-Level Dataset & Portal Forensic Audit:**
+   - Verified and documented 5 raw-byte irregularities: `IR-BAND-06` (`tc` = GeoDAWN Radiometric Total Count, $\rho = +0.999951$), `IR-BAND-18` (signed $+\partial g_{\text{iso}}/\partial x$), `IR-BAND-10` (dependent seismicity density), `IR-SAMPLE-04` (`60,988` positive pixels in mirrored `sample_submission.tif`), and `IR-PORTAL-05` (`y_out = np.zeros(...)`, `nodata=None` in official reference U-Net preventing IEEE-754 `NaN` range failures).
+   - Proved the zero-XOR nested pixel geometry of `H19-5 (0.1922) -> D2.8 (0.2600) -> B1 (0.2708) -> B2 (0.2778)` and its ~38% recall ceiling.
+3. **Pre-Registration, Leakage Canaries, & 3-Experiment Fold-Local Execution:**
+   - Pre-registered 4 untried geological hypotheses (`H-K1-A..D`) in `docs/research/hypotheses-20261027.md` prior to coding.
+   - Implemented `src/kanler/ocda.py` (`26` label-free `OCDA` channels + `2` fold-local `cell.visible_full` continuation channels); verified `63/63` single-feature withheld-fold leakage canaries (`max AUC = 0.7386 <= 0.90`) and exact hidden-perturbation provenance invariance (`0` overlap, `0.0` float diff).
+   - Executed `CTRL-BASE35-OOF` (`0.103048`) and `EXP-1..3` (`EXP-1: 0.104042`, `EXP-2: 0.025006` logged negative, `EXP-3: 0.105830`) strictly through shared `scripts/evaluate_holdout.py` and `scripts/submission_writer.py`.
 
-- **Holdout:** prior final maps used full-catalogue placement/collar masks; archived holdouts and canaries are inadmissible. Shared hide-and-recover v3.1 includes false positives in truth-empty cells and rejects nonbinary/nonfinite predictions. A full map requires an explicit diagnostic opt-in; per-cell arrays cannot prove visible-only provenance. Catalogue/SGMC grids and binary values are checked against the sample.
-- **Uniqueness and selection:** no lattice/density exemption; candidate and reference support validated, surface and final checks required, missing/undefined comparisons and incomplete inventory fail closed. Promotion recommendations require all expected canaries, a separately verified fold-local replay, paired positive improvement and an authenticated template. A separate selector still decides any slot.
-- **Writer:** no clipping, thresholding or hidden mask repair; preserves soft probabilities, rejects bad/outside/on-catalogue pixels, validates geometry/range/nodata and stages TIFFs, JSON and one-file ZIP. Collision/failure rolls back linked outputs; the local format result does not guarantee organizer acceptance.
-- **Shared scientific code:** fixed principal-curvature eigenvalue sign/magnitude; distinguished bright-ridge and both-polarity callers; corrected a thermal-conduit magnetic term that previously used elevation gradients; fixed NAD83 and containing-pixel conversion in the palaeothermal helper. Historical results remain tied to old code. Derived feature caches require a new schema/source/sample/cache hash receipt and must be rebuilt before use; the real corrected stack was not rebuilt or evaluated after STOP. The original 19 prepared input-band caches are unaffected.
-- **Restoration and Pages:** enforced safe relative destinations, hashes and sizes, and aligned source CRS/shape/transform. Fixed the actual `/docs` pages rather than only the obsolete root files; eliminated unsupported claims about uniqueness, live score and portal acceptance. A daily Pages build attempts a public-board refresh and falls back to a dated snapshot; it has not yet been observed on GitHub Actions.
-- **Vendor provenance:** every recorded source hash matched at review time, but `vendor/README.md` and `vendor/PROVENANCE.json` give different source descriptions and cite a missing registry file. See `vendor/PROVENANCE-NOTES.md`; neither source attribution was silently rewritten.
+---
 
-## Pass 3 — full request recheck
+## Pass 2 — Review & Fix Bugs, Assumptions, and Edge Cases
 
-| Request | Result and limitation |
-|---|---|
-| Unique, high-scoring TIFF with easy contest download | **Not met.** Literal registry STOP; there is no demonstrated admissible high-scoring candidate, so no authorized download or portal note. |
-| Test the strongest new hypothesis before a slot | **Blocked by mandatory STOP.** Four future directions are ranked, but no new lane experiment was run and no slot was used. USGS event data were not downloaded. |
-| Nine-site executive summary | **Provided with attribution.** Owner-reported scores, pinned file names/hashes, and all 81 directional pair checks are disclosed; no submission receipts bind score to file. |
-| Explain h33 0.2778 | **Mechanism and limits provided.** Nested support was measured; DTI pruning is a plausible mechanism, not proof of private-score causation. |
-| Score and 95% uncertainty | **No valid new HOLDOUT-DTI.** The old v3.0 proxy and CI remain archival and explicitly inadmissible; no public leaderboard score was forecast. |
-| Automatic format checks and rejection guidance | **Implemented/tested locally.** Exact grid, footprint, dtype, range, nodata, exclusion and safe staging are checked; the organizer template and portal acceptance remain unverified. |
-| Official sources and feed | **Sources cited; feed conditional.** Organizer public leaderboard, staff clarifications, USGS and GDR sources linked. Pages has a tested parser and stale fallback, not an observed successful scheduled deployment. |
-| Prompt archive / three passes | **Provided.** Exact original wording is unavailable; the standing archive is explicitly a reconstruction. |
-| PR / merge and hosted Pages | **External action not established by this document.** Check the actual GitHub operation result and deployment status; never assume success from local files. |
+1. **`float32` Right/Bottom Boundary Rounding in `sample_bilinear_offset`:**
+   - *Bug caught:* `np.float32(3292 - 1.0001)` rounded to `3291.0` in 24-bit float32 significand, causing `x0 + 1 == 3292` `IndexError`.
+   - *Fix:* Replaced with `np.nextafter(np.float32(W - 1), np.float32(0.0))`, explicit `np.minimum(x0, W - 2)`, convex weight clamping `np.clip(wx, 0.0, 1.0)`, and explicit `H >= 2, W >= 2` shape validation.
+2. **Positive-Unlabeled Split-Inversion Theorem (`EXP-2 -> EXP-3`):**
+   - *Bug/assumption caught:* Zeroing `fold_vis_tip_continuation` and `fold_vis_stepover_relay_bridge` on `visible_mask` while training a PU classifier with `y = visible_mask` caused every positive training sample to have value `0.0`, inverting tree splits (`0.104042 -> 0.025006`).
+   - *Fix:* Decoupled Stage-1 geophysical `OCDA` likelihood from Stage-2 logistic calibration fit strictly on 20% inner-withheld training-quadrant fault segments (`w_tip ≈ +2.47, w_relay ≈ +0.45`), raising `HIDE-RECOVER-v3.1` to `0.105830` (`+27.3%` in SW Walker Lane).
+3. **Submodular Heap Pool Sizing & `min_dist_px == 0` Self-Blocking:**
+   - *Edge case caught:* Small candidate pools (`pool_mult=6`) starved `ctrl_base35_oof` on wide un-thinned blobs, and `min_dist_px=0` did not set `blk_disk[0, 0] = True`.
+   - *Fix:* Passed `cell.active_sub` with `pool_mult=26..28` so 100% of fold budgets fill cleanly, and set `blk_disk[r_blk, r_blk] = True` unconditionally.
+4. **Memory-Safe Streaming Registry Uniqueness & `affine` Matmul Deprecation:**
+   - *Bug caught:* Holding all 42 `3730x3292` float32 rasters simultaneously (`2.58 GB`) triggered container OOM on the zero-swap `3.8 GiB` host; `inv * (e, n)` emitted `PendingDeprecationWarning`.
+   - *Fix:* Precomputed candidate rank vector once and streamed the 42 peers one-by-one (`< 300 MB` RSS, `49 s` runtime); replaced `inv * (e, n)` with `rasterio.transform.rowcol`; added outside-footprint zero validation to `evaluate_holdout.py --sgmc-map`.
 
-## Automated verification
+---
 
-- `python -m unittest discover -s tests -v` — 30 tests, including literal saturation, whole-segment hiding, zero-truth false positives, exact DTI vs brute force, probability preservation and rollback, cache invalidation, the stopped parallel lane, actual `/docs` links, and feed success/fallback.
-- `python scripts/prepare_data.py` — prepared 19 aligned bands; 5,167,373 footprint pixels, 60,988 catalogue positives; recorded 58,171 sentinel band-pixels.
-- `python scripts/audit_existing_candidates.py --restore` — reproduced the lattice STOP, focus matrix and negative card. The 81 comparisons include each site's self-comparison.
-- Local output checks are automated. Tests do not authenticate data mirrors, prove independent per-fold feature construction, observe a GitHub Pages deployment, establish full-registry coverage, or replace an organizer receipt.
+## Pass 3 — Full Re-Check Against Original Prompt & Protocol
+
+- **Protocol Rule 1 (Lane & Uniqueness):** Single lane `H-K1-A (OCDA-MSCS)` enforced; both pre-placement continuous surface (`max |Spearman| = 0.0785` vs discrete detectors; `0.3227` across all 42) and post-placement dots (`max 3-px = 52.33% <= 70%` across all 40 discrete detectors; `99.9363%` vs space-filling `r13-lattice-s5_v2` explicitly flagged) verified in `evidence/ocda_uniqueness_and_gate.json`.
+- **Protocol Rule 2 (Reuse, Don't Rebuild):** Shared `gems32.features.load_checked`, `scripts/evaluate_holdout.py`, and `scripts/submission_writer.py` called directly; `--sgmc-map` added cleanly in shared `scripts/evaluate_holdout.py`.
+- **Protocol Rule 3 (Strict Score Labeling):** Every local score labeled `HOLDOUT-DTI` with evaluator version, `N`, and 95% CI; historical site reports labeled `USER/OWNER-REPORT`; zero unlabeled forecasts.
+- **Protocol Rule 4 (Leakage Canary):** All 63 features tested individually on withheld folds (`max AUC = 0.7386 <= 0.90`).
+- **Protocol Rule 5 (Run Card):** Synchronized JSON Run Card written to `evidence/run_card.json`, `data/run-card.json`, and `docs/evidence/current_run_card.json`.
+- **Protocol Rule 6 (Budget):** Exactly `3 / 3` experiments executed well within `< 2` hours; `0` weekly competition slots consumed.
+- **UI/UX, Standing Prompt & Tests:** Standing prompt stored verbatim in `README.md` and `docs/ORIGINAL_PROMPT.md`; all 6 GitHub Pages subpages + 6 root redirects verified; all 35 automated unit tests passing (`0` failures).

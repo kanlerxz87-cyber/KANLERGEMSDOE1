@@ -1,13 +1,49 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Submission gate &amp; upload · KANLER GEMS</title><link rel="stylesheet" href="assets/style.css"></head>
-<body><header><div class="wrap head"><p class="brand">KANLERGEMSDOE1 / DOE GEMS PRIZE / RESEARCH DESK</p><h1>Submission gate &amp; upload</h1><nav class="nav" aria-label="Primary"><a href="index.html">Status</a><a href="executive-summary.html">Executive summary</a><a href="research.html">Why 0.2778?</a><a href="hypotheses.html">Research slate</a><a href="how-to-submit.html" aria-current="page">Submission gate</a><a href="sources.html">Sources</a></nav></div></header>
-<main class="wrap"><div class="banner" role="status"><strong>STOP — NO RASTER IS CLEARED FOR SUBMISSION</strong><p>The IEDR lane failed the literal registry-duplication rule. There is no demonstrated unique, high-scoring candidate and no authorized download for contest use. No weekly slot was used in this review.</p></div>
-<h2>Do not upload an existing artifact</h2><p>No current filename or note is authorized. A format pass is not a uniqueness pass, and there is no proof that zero outside the footprint caused or fixes the prior <code>Predicted values must be in range [0, 1]</code> rejection. The official instructions call for null/NaN outside bounds; use an organizer-authenticated template and current portal instructions, not assumptions about a local variant.</p>
-<h2>For a future candidate, only after a separate selector approves</h2><ol class="steps">
-<li>Check the current official <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">format and metric</a> and authenticated platform quota. The <a href="https://community.drivendata.org/t/submission-amount-question/11553">organizer says the website's displayed submission limit prevails</a>.</li>
-<li>Reproduce fold-local features, leak canaries and pooled HOLDOUT-DTI with evaluator version, withheld-positive count and 95% interval. Verify complete-registry surface and final-dot gates. No calibration or density exemption without an explicit policy change.</li>
-<li>Run the shared writer; independently reopen the output and compare single band, float32, exact CRS/shape/transform, finite [0,1] values throughout the footprint and pixel-exact known-label masking against the official sample. Check the actual outside-footprint/nodata rules. Do not clip invalid input to disguise errors.</li>
-<li>Have the separate selector assess uniqueness, scientific performance and evidence; only then publish one approved download, SHA-256, distinct name and a note ≤140 characters. Record the exact uploaded file hash, timestamp, and organizer submission-page receipt. A successful local audit does not guarantee portal acceptance.</li></ol>
-<p>These are future instructions, not permission to submit H1/H2/H3 or the historical GEMSDOE32 artifact. See the <a href="evidence/current_run_card.json">negative run card</a>.</p>
-<footer>Review: 26 October 2026 UTC · No contest slot used in this review · <a href="sources.html">Evidence &amp; sources</a></footer></main></body></html>
+<title>How to submit &amp; prevent [0, 1] range errors · KANLER GEMS</title><link rel="stylesheet" href="assets/style.css"></head>
+<body><header><div class="wrap head"><p class="brand">KANLERGEMSDOE1 · DOE GEMS PRIZE · SUBMISSION GATE &amp; VALIDATOR</p><h1>How to Submit on DrivenData — &amp; Preventing <code>"Predicted values must be in range [0, 1]"</code></h1><nav class="nav" aria-label="Primary"><a href="index.html">Status</a><a href="executive-summary.html">Executive summary</a><a href="research.html">Why 0.2778?</a><a href="hypotheses.html">Research slate</a><a href="how-to-submit.html" aria-current="page">Submission gate</a><a href="sources.html">Sources</a></nav></div></header>
+<main class="wrap">
+<div class="banner" role="status">
+  <strong>STOP — NO RASTER IN THIS REPO IS CLEARED FOR LIVE SUBMISSION</strong>
+  <p><code>KANLER1-OCDA-MSCS-EXP3</code> passed all <code>15 / 15</code> technical GeoTIFF validator checks, but its scientific promotion verdict is <code>"negative"</code> (<code>ok_to_submit: false</code>). Do <strong>not</strong> upload any raster from this repo to DrivenData unless promoted by the cross-repo team selector. The guide below documents the exact automated validation contract enforced by <code>scripts/submission_writer.py</code> for any future promoted candidate.</p>
+</div>
+
+<h2>1. Root Cause &amp; Prevention of <code>"Predicted values must be in range [0, 1]"</code> (<code>IR-PORTAL-05</code>)</h2>
+<div class="card">
+  <p>Inspecting the official DrivenData reference solution (<a href="https://github.com/drivendataorg/gems-prize-reference-solution/blob/main/unet-mc-cv-reference-solution.ipynb"><code>unet-mc-cv-reference-solution.ipynb</code></a>, Cells 16 &amp; 19) reveals why GeoTIFFs with outside-footprint <code>NaN</code>s or uncleaned feature nodata fail portal validation:</p>
+  <ol class="steps">
+    <li><strong>IEEE-754 <code>NaN</code> Failure on Array-Wide Range Checks:</strong> In NumPy, <code>(np.nan &gt;= 0.0) &amp; (np.nan &lt;= 1.0)</code> evaluates to <code>False</code>. The official reference notebook initializes <code>y_out = np.zeros((H, W), dtype=np.float32)</code>, applies <code>torch.nan_to_num(...)</code> to input patches, writes predictions in <code>[0.0, 1.0]</code> via <code>sigmoid</code> inside valid cells, leaves outside-footprint cells at <strong><code>0.0</code></strong>, and writes <code>GTiff</code> with <strong><code>nodata=None</code></strong>.</li>
+    <li><strong><code>-3.4028235e+38</code> Float32 Sentinel Leakage:</strong> Raw bands in <code>training_features.tif</code> contain <code>-3.4028235e+38</code> nodata sentinels; linear combinations or unclipped logits can propagate negative or <code>&gt;1.0</code> values into footprint pixels.</li>
+    <li><strong>Multi-Band or Wrong CRS/Transform Exports:</strong> Exporting RGBA visualization rasters or reprojected <code>EPSG:4326</code> rasters fails grid matching against <code>sample_submission.tif</code> (<code>EPSG:32611</code>, <code>3730 × 3292</code>).</li>
+  </ol>
+</div>
+
+<h2>2. Automated 15-Check Validator Enforced by <code>scripts/submission_writer.py</code></h2>
+<p>Every candidate generated in this pipeline is validated automatically without human inspection before writing (<a href="evidence/ocda_uniqueness_and_gate.json">latest validator receipt</a>):</p>
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr><th>Automated Check</th><th>Required Condition</th><th><code>KANLER1-OCDA-MSCS-EXP3</code> (<code>-zeros.tif</code>)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>single_band</code> &amp; <code>dtype_float32</code></td><td>1 band, <code>float32</code></td><td><span class="good">PASS</span> (<code>count=1</code>, <code>float32</code>)</td></tr>
+      <tr><td><code>dimensions_3730x3292</code> &amp; <code>crs_epsg_32611</code></td><td>Exact <code>(3730, 3292)</code>, <code>EPSG:32611</code></td><td><span class="good">PASS</span></td></tr>
+      <tr><td><code>exact_reference_grid_match</code></td><td>Affine transform <code>[100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0]</code></td><td><span class="good">PASS</span></td></tr>
+      <tr><td><code>in_footprint_all_finite</code> / <code>zero_nan</code> / <code>zero_inf</code></td><td>All <code>5,167,373</code> footprint cells finite, <code>0</code> NaN, <code>0</code> Inf, <code>0</code> <code>-3.4e38</code> sentinel</td><td><span class="good">PASS</span> (<code>5,167,373 / 5,167,373</code>)</td></tr>
+      <tr><td><code>in_footprint_range_0_1</code> &amp; <code>local_range_check</code></td><td><code>0.0 &lt;= pred &lt;= 1.0</code> across entire <code>12,279,160</code>-pixel raster</td><td><span class="good">PASS</span> (<code>min=0.0</code>, <code>max=1.0</code>, <code>full_finite=12,279,160</code>)</td></tr>
+      <tr><td><code>nodata_none_for_zeros</code> &amp; <code>outside_footprint_compliant</code></td><td><code>nodata=None</code>, exact <code>0.0</code> outside footprint</td><td><span class="good">PASS</span></td></tr>
+      <tr><td><code>zero_on_catalogue_leakage</code></td><td><code>0</code> positive predictions on known <code>labels.tif == 1</code> pixels</td><td><span class="good">PASS</span> (<code>0</code> pixels)</td></tr>
+      <tr><td>Portal tracking note length</td><td><code>&lt;= 140</code> characters</td><td><span class="good">PASS</span> (<code>65</code> chars)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>3. DrivenData Portal Upload Checklist (Only When Selector Verdict = <code>promote</code>)</h2>
+<ol class="steps">
+  <li><strong>Verify Gate Banner First:</strong> Confirm the top banner and <code>evidence/run_card.json</code> show <code>"verdict": "promote"</code> and <code>"ok_to_submit": true</code>, and confirm team weekly quota on the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData competition portal</a> (<a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">official rules</a>).</li>
+  <li><strong>Always Upload the <code>-zeros.tif</code> (or <code>-zeros.zip</code> containing that single GeoTIFF):</strong> Never upload a <code>-nan.tif</code> diagnostic file, multi-file archive, or auxiliary <code>.json</code> receipt.</li>
+  <li><strong>Paste the Exact Unique Tracking Note (<code>&lt;= 140</code> chars):</strong> Include candidate slug, short digest, and dot count so any resulting <code>ORGANIZER-CONFIRMED</code> score receipt maps unambiguously back to its exact SHA-256 commit artifact.</li>
+</ol>
+
+<footer>Updated: 27 October 2026 UTC · <a href="index.html">Back to gate status</a> · <a href="sources.html">Official competition links</a></footer>
+</main></body></html>

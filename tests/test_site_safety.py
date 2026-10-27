@@ -50,22 +50,34 @@ class SiteSafetyTests(unittest.TestCase):
                 with self.subTest(page=path.name,href=href):
                     self.assertTrue((path.parent/unquote(parsed.path)).is_file())
     def test_one_current_card_has_correction_and_hash(self):
+        import hashlib
         p=ROOT/'data/run-card.json';c=json.loads(p.read_text())
-        self.assertEqual(c['verdict'],'negative');self.assertFalse(c['ok_to_submit'])
-        self.assertEqual(c['holdout_dti']['status'],'INADMISSIBLE')
-        self.assertIsNone(c['holdout_dti']['valid_value']);self.assertIsNone(c['holdout_dti']['valid_ci95'])
+        self.assertEqual(c['verdict'],'negative');self.assertFalse(c['ok_to_submit']);self.assertFalse(c['slot_used'])
+        self.assertEqual(c['holdout_dti']['status'],'ADMISSIBLE_FOLD_LOCAL')
+        self.assertEqual(c['holdout_dti']['score_label'],'HOLDOUT-DTI')
+        self.assertEqual(c['holdout_dti']['evaluator_version'],'GEMSDOE32-HIDE-RECOVER-v3.1')
+        self.assertEqual(c['holdout_dti']['n_withheld_positives'],22232)
+        val=c['holdout_dti']['valid_value'];ci=c['holdout_dti']['valid_ci95']
+        self.assertTrue(0.0 < ci[0] <= val <= ci[1] < 1.0)
         self.assertEqual(len(c['raster_sha256']),64);self.assertTrue(c['validator_output']['all_checks_passed'])
+        tif_path=ROOT/c['raster_path']
+        self.assertTrue(tif_path.is_file())
+        self.assertEqual(hashlib.sha256(tif_path.read_bytes()).hexdigest(),c['raster_sha256'])
         self.assertFalse(c['correlation_overlap_vs_registry']['full_registry_checked'])
+        self.assertTrue(c['correlation_overlap_vs_registry']['discrete_detectors_surface_passed'])
+        self.assertTrue(c['correlation_overlap_vs_registry']['discrete_detectors_final_passed'])
+        self.assertLessEqual(c['correlation_overlap_vs_registry']['max_within_3px_vs_discrete_detectors'],.70)
         self.assertGreater(c['correlation_overlap_vs_registry']['final_dots_within_3px_of_lattice'],.70)
         self.assertLessEqual(len(c['submission_note']),140)
         self.assertEqual(c,json.loads((ROOT/'docs/evidence/current_run_card.json').read_text()))
+        self.assertEqual(c,json.loads((ROOT/'evidence/run_card.json').read_text()))
     def test_hypothesis_page_discloses_untested_and_scope(self):
         text=self.html('hypotheses.html')
         self.assertIn('unimplemented and untested in this review',text)
         self.assertIn('No new experiment will run',text)
         self.assertIn('swarm',text.lower())
     def test_root_pages_redirect_to_actual_pages(self):
-        for name in ('index','executive-summary','hypotheses','sources'):
+        for name in ('index','executive-summary','hypotheses','sources','research','how-to-submit'):
             self.assertIn('docs/'+name+'.html',(ROOT/(name+'.html')).read_text())
     def test_parallel_archive_is_literal_duplicate(self):
         page=self.html('mplc/index.html')
