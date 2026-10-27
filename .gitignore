@@ -10,6 +10,7 @@ __pycache__/
 data/*.tif
 data/*.tiff
 data/*.zip
+data/focus/*.tif
 data/raw/
 data/processed/
 data/raw_parts/
