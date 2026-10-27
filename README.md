@@ -2,6 +2,12 @@
 
 > **Standing instruction:** Read this README and [`docs/ORIGINAL_PROMPT.md`](docs/ORIGINAL_PROMPT.md) at the start of every session. Maximize P(Win). Own the Outcome.
 
+## Latest review — 27 October 2026 UTC
+
+Read the standing prompt above before any work. The renewed request does not supply a new single-method lane or rescind the duplicate STOP. No new experiment is authorized in this review. The [explicit nine-site readiness table](docs/submission-readiness.html) and [CSV](docs/evidence/submission_readiness.csv) now list historical file, reported result, unavailable estimate, overlap failure, and **file to submit: NONE** for every site. Rebuild with `python scripts/build_readiness_report.py`; verify committed output with `--check`. This is a reproducible presentation of dated evidence, not a fresh raster audit.
+
+Core values remain **Maximize P(Win)** and **Own the Outcome**: prefer a verified negative result to an invented score or duplicate upload. The competition predicts fault traces, not geothermal vents directly. The prompt’s 0.3195 and 0.4413 leaderboard claims conflict in date/scope; neither is treated as a current verified target. Review and limitations: [2026-10-27 three-pass record](docs/review-20261027.md).
+
 ## 🔴 STOP — no contest raster is cleared
 
 The prior IEDR lane is stopped. A reproducible audit found **99.39375%, 99.5875% and 99.190625%** of H1/H2/H3 dots within three pixels of a registered spacing-5 lattice, respectively. The user set a strict **>70% = duplicate and stop**, with no density or lattice exemption. A surface-stage check was not recorded. The prior full-map holdout leaked catalogue information through its emission mask, and the feature canaries were not verified on withheld-only folds. Those scores and uniqueness claims are **not promotion evidence**. No new candidate, experiment, or competition slot was created in this review.
