@@ -1,5 +1,5 @@
 {
-  "reviewed_utc": "2026-10-26T22:31:20+00:00",
+  "reviewed_utc": "2026-10-27T17:15:49+00:00",
   "scope": "Nine pinned focus champions and one registered lattice; not a complete site-wide registry",
   "slots_used": 0,
   "new_experiments": 0,
@@ -648,7 +648,7 @@
         "size_bytes": 159972,
         "sha256": "455c3a1780806718c881480228631046cb3090a4734fac54f398c97533a89d39",
         "mode": "zeros",
-        "geometry_reference": "/home/user/KANLERGEMSDOE1/.cache/gems_data/sample_submission.tif",
+        "geometry_reference": "data/sample_submission.tif",
         "crs": "EPSG:32611",
         "transform": [
           100.0,
@@ -765,7 +765,7 @@
         "size_bytes": 140721,
         "sha256": "da8d6f42d95ca4a1b525745283f34a47e85d2daf195c08ff8d919003b27522ae",
         "mode": "zeros",
-        "geometry_reference": "/home/user/KANLERGEMSDOE1/.cache/gems_data/sample_submission.tif",
+        "geometry_reference": "data/sample_submission.tif",
         "crs": "EPSG:32611",
         "transform": [
           100.0,
@@ -882,7 +882,7 @@
         "size_bytes": 178610,
         "sha256": "e5ff0120380fa316ccfa63c27d5383de4d74f963419d41e2ea4418ad73b4c950",
         "mode": "zeros",
-        "geometry_reference": "/home/user/KANLERGEMSDOE1/.cache/gems_data/sample_submission.tif",
+        "geometry_reference": "data/sample_submission.tif",
         "crs": "EPSG:32611",
         "transform": [
           100.0,
@@ -1001,7 +1001,7 @@
         "size_bytes": 128469,
         "sha256": "fe4b8d742c1b12f60727ae22d4ae2dd96e6bfcb76b7f35e985d0e707bb816db3",
         "mode": "zeros",
-        "geometry_reference": "/home/user/KANLERGEMSDOE1/.cache/gems_data/sample_submission.tif",
+        "geometry_reference": "data/sample_submission.tif",
         "crs": "EPSG:32611",
         "transform": [
           100.0,

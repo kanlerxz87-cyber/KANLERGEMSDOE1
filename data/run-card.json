@@ -1,36 +1,84 @@
 {
-  "hypothesis": "H1 IEDR \u2014 prior independent-earthquake-density / dilation / magnetic-gradient lane",
-  "mechanism": "Historical raster ranked a seismicity-density, geodetic dilation and magnetic-gradient surface; spaced binary emission with a catalogue collar.",
-  "named_non_fault_process": "Earthquake swarms induced by geothermal injection or mining; geological contacts can also create magnetic edges.",
+  "schema": "GEMSDOE-PARALLEL-RUN-CARD-v2.1",
+  "generated_utc": "2026-10-27T01:30:00Z",
+  "lane": "L-CGJI-HTB-2026-10-27",
+  "hypothesis": "H-CGJI-HTB (Gallardo-Meju Structural Cross-Gradient Collinearity + Piedmont Break-in-Slope Scarp Dipole + Hydrothermal Upflow Breach Detector on a 1-px Transverse NMS Crest Skeleton): blind and range-front basin-margin normal faults juxtapose basement density, magnetic susceptibility, and MT resistivity with collinear horizontal gradients, paired with a concave-up piedmont break-in-slope toe and convective thermal/radiometric upflow halos.",
+  "mechanism": "1-px transverse Non-Maximum Suppressed (NMS) skeleton of the multi-physics spine (Gallardo-Meju cross-gradient collinearity + 1m LiDAR/DEM piedmont scarp dipole + subsurface edge) scored by a quadrant-blocked fold-local HistGradientBoostingClassifier trained strictly on out-of-quadrant visible faults (quad != cell.fold) across 40 sanitized base + CGJI-HTB channels, followed by Poisson-disk emission (37,654 dots, min_dist=sqrt(8) px, fold-local B=2 visible-fault collar).",
+  "named_non_fault_process": "Non-tectonic alluvial fan apron toes, Pleistocene shoreline wave-cut scarps (Lake Lahontan/Bonneville), and unmapped pluton-margin intrusive contacts; mitigated via TIGER road-corridor damping, potential-field cross-gradient collinearity, and geodetic strain/hydrothermal upflow gating.",
   "holdout_dti": {
     "status": "INADMISSIBLE",
-    "reason": "The archived full map was built with the complete catalogue; no fold-local emission provenance. Canary tested all labels, not withheld-only.",
-    "archived_diagnostic": {
-      "evidence_class": "HOLDOUT-DTI (invalid for promotion)",
-      "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.0",
+    "valid_value": null,
+    "valid_ci95": null,
+    "cgji_htb_valid_fold_local_oof": {
+      "status": "VALID_FOLD_LOCAL_OOF",
+      "score_label": "HOLDOUT-DTI",
+      "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
       "n_withheld_positives": 22232,
-      "value": 0.006168701520087212,
-      "ci95": [
-        0.004257781467839945,
-        0.008568349046095498
+      "catalogue_feature_provenance_verified": true,
+      "hidden_label_perturbation_invariance_verified": true,
+      "independent_replay_sha256": "db2f31f618ba0ebf89fbcfa4561c180f4421929d884b844667a18ec10091c138",
+      "exp2_oof_hgb_pooled_dti": 0.099671,
+      "exp2_oof_hgb_ci95": [
+        0.085008,
+        0.113669
+      ],
+      "exp1_phys_nms_pooled_dti": 0.060929,
+      "exp1_phys_nms_ci95": [
+        0.049968,
+        0.073197
+      ],
+      "exp3_ek_hybrid_pooled_dti": 0.096477,
+      "exp3_ek_hybrid_ci95": [
+        0.082813,
+        0.110499
+      ],
+      "incumbent_gemsdoe32_d28_b2_oof_dti": 0.099202,
+      "incumbent_gemsdoe32_d28_b2_oof_ci95": [
+        0.085951,
+        0.112668
+      ],
+      "paired_delta_exp2_vs_gemsdoe32_b2": {
+        "point_delta_dti": 0.000469,
+        "ci95_cluster_bootstrap": [
+          -0.008716,
+          0.009304
+        ],
+        "prob_positive": 0.555
+      },
+      "exp1_sgmc_cal_v3_dti": 0.115633,
+      "exp1_sgmc_cal_v3_ci95": [
+        0.097758,
+        0.134248
       ]
     },
-    "valid_value": null,
-    "valid_ci95": null
+    "reason": "Archival 2026-10-26 H1-IEDR/MPLC runs were invalidated for full-catalogue mask leakage (valid_value=null for archival H1-IEDR). New 2026-10-27 CGJI-HTB suite fixes fold-local masking (invariance_verified=True) and achieves HOLDOUT-DTI = 0.099671 [0.085008, 0.113669] (EXP2_CGJI_OOF_HGB vs GEMSDOE32 D2.8 B=2 fold-local OOF 0.099202 [0.085951, 0.112668]) and SGMC HOLDOUT-DTI = 0.115633 [0.097758, 0.134248] (EXP1_CGJI_PHYS_NMS vs GEMSDOE32 0.096060), while remaining under literal release-gate STOP due to 99.28% 3-px overlap with the saturating 206,895-dot spacing-5 grid lattice (100% coverage of active evaluation domain)."
+  },
+  "leakage_canary": {
+    "status": "VALID_WITHHELD_FOLD_CANARIES_ALL_BELOW_0_90",
+    "evaluator_version": "GEMSDOE32-HOLDOUT-v3-visible-only",
+    "n_withheld_positives": 22232,
+    "n_features_tested": 41,
+    "max_feature": "cgji_scarp_dipole",
+    "max_symmetric_auc": 0.584624,
+    "all_below_0_90": true
   },
   "correlation_overlap_vs_registry": {
-    "scope": "Nine pinned focus champions and one registered lattice; not a complete site-wide registry",
-    "surface_pre_placement": "NOT RECORDED; FAIL CLOSED",
-    "final_dots_spearman_vs_lattice": -0.0003301565638120439,
-    "final_dots_within_3px_of_lattice": 0.9939375,
-    "duplicate_threshold": 0.7,
-    "literal_uniqueness": "FAIL; STOP",
-    "all_focus_champions_pass_final_dot_comparisons": true,
-    "full_registry_checked": false
+    "rule": "STOP if |Spearman| > 0.90 on surface OR > 70% of candidate dots fall within <= 3 px of any registry raster.",
+    "full_registry_checked": false,
+    "non_lattice_21_peers_passed": true,
+    "non_lattice_max_abs_spearman_surface": 0.290931,
+    "non_lattice_max_within_3px_fraction": 0.586976,
+    "non_lattice_max_within_3px_peer": "scored/gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+    "within_3px_of_gemsdoe32": 0.452754,
+    "final_dots_within_3px_of_lattice": 0.992803,
+    "duplicate_of": "13gems_20261001_r13-lattice-s5_v2_nan-outside.tif (under literal no-exemption rule; 100.0% of eroded active domain lies within <=3 px of spacing-5 lattice)",
+    "status": "PASSED_21_STRUCTURAL_PEERS_STOPPED_BY_LITERAL_LATTICE_HALO"
   },
-  "raster_sha256": "455c3a1780806718c881480228631046cb3090a4734fac54f398c97533a89d39",
+  "raster_path": "submissions/cgji_htb_20261027/gemsdoe32-cgji-htb-exp2-oof-hgb-b2-20261027T013000Z-5214b9ec-zeros.tif",
+  "raster_sha256": "74035c67056f7727fb16c04b61446f32a2c729fcf5d711a3b666761e56fcbffe",
   "validator_output": {
     "all_checks_passed": true,
+    "organizer_template_authenticated": false,
     "checks": {
       "exact_reference_grid_match": true,
       "single_band": true,
@@ -48,30 +96,12 @@
       "zero_on_catalogue_leakage": true,
       "local_range_check": true
     },
-    "shape": [
-      3730,
-      3292
-    ],
-    "crs": "EPSG:32611",
-    "transform": [
-      100.0,
-      0.0,
-      243350.0,
-      0.0,
-      -100.0,
-      4508550.0
-    ],
-    "in_footprint_min": 0.0,
-    "in_footprint_max": 1.0,
-    "organizer_template_authenticated": false
+    "stats": {}
   },
-  "submission_name": "kanlergemsdoe1-h1-iedr-s3p17-b2-32000-20261026T214518Z-fe519ae3-zeros.tif",
-  "submission_note": "Research only: IEDR prior artifact; literal registry duplicate; DO NOT SUBMIT.",
+  "submission_name": "gemsdoe32-cgji-htb-exp2-oof-hgb-b2-20261027T013000Z-5214b9ec-zeros.tif",
+  "submission_note": "CGJI-HTB Exp2 OOF-HGB NMS crest (37654 dots, B=2). HOLDOUT-DTI=0.0997 (GEMSDOE32-HIDE-RECOVER-v3.1, n=22232); research gate stop.",
   "verdict": "negative",
   "ok_to_submit": false,
   "selector_required": true,
-  "new_experiments": 0,
-  "new_rasters": 0,
-  "slots_used": 0,
-  "reviewed_utc": "2026-10-26T22:31:20+00:00"
+  "slot_used": false
 }

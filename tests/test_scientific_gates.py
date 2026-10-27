@@ -285,4 +285,47 @@ class RestoreTests(unittest.TestCase):
             self.assertFalse((root/'dir/bad.bin').exists())
             self.assertFalse((root/'dir/bad.bin.assembling').exists())
 
+
+class CgjiUnitTests(unittest.TestCase):
+    def test_cross_gradient_collinearity_peaks_on_parallel_steps(self):
+        from kanler.cgji import cross_gradient_collinearity
+        y, x = np.mgrid[0:64, 0:64].astype(np.float32)
+        foot = np.ones((64, 64), dtype=bool)
+        u = np.tanh((x - 32.0) / 2.5).astype(np.float32)
+        v_par = np.tanh((x - 32.0) / 2.5).astype(np.float32)
+        v_orth = np.tanh((y - 32.0) / 2.5).astype(np.float32)
+        col_par, dis_par = cross_gradient_collinearity(u, v_par, foot, sigma=1.2)
+        col_orth, dis_orth = cross_gradient_collinearity(u, v_orth, foot, sigma=1.2)
+        self.assertGreater(float(col_par[32, 32]), 0.85)
+        self.assertLess(float(dis_par[32, 32]), 0.05)
+        self.assertLess(float(col_orth[32, 32]), 0.05)
+        self.assertGreater(float(dis_orth[32, 32]), 0.85)
+
+    def test_cgji_suite_receipt_and_run_card_consistency(self):
+        suite_path = ROOT / "evidence" / "cgji_htb_experiments_20261027.json"
+        card_path = ROOT / "data" / "run-card.json"
+        self.assertTrue(suite_path.is_file())
+        self.assertTrue(card_path.is_file())
+        suite = json.loads(suite_path.read_text(encoding="utf-8"))
+        card = json.loads(card_path.read_text(encoding="utf-8"))
+        self.assertTrue(suite["invariance_verification"]["invariance_verified"])
+        self.assertEqual(suite["invariance_verification"]["max_abs_diff"], 0)
+        self.assertTrue(suite["leakage_canary_report"]["all_below_0_90"])
+        self.assertLessEqual(suite["leakage_canary_report"]["max_symmetric_auc"], 0.90)
+        for exp_id in ("EXP1_CGJI_PHYS_NMS", "EXP2_CGJI_OOF_HGB", "EXP3_CGJI_EK_HYBRID"):
+            exp = suite["experiments"][exp_id]
+            self.assertEqual(exp["n_dots_full"], 37654)
+            self.assertTrue(exp["uniqueness_non_lattice_21_peers"]["passed"])
+            self.assertLessEqual(exp["uniqueness_non_lattice_21_peers"]["max_within_3px_fraction"], 0.70)
+            self.assertLessEqual(exp["uniqueness_non_lattice_21_peers"]["max_abs_spearman_surface"], 0.90)
+        exp2_dti = suite["experiments"]["EXP2_CGJI_OOF_HGB"]["hide_and_recover_holdout"]["pooled_dti"]
+        inc_dti = suite["fold_local_d28_baselines"]["GEMSDOE32_D28_B2"]["pooled_dti"]
+        self.assertGreater(exp2_dti, inc_dti)
+        exp1_sgmc = suite["experiments"]["EXP1_CGJI_PHYS_NMS"]["sgmc_calibration_holdout"]["sgmc_raw_pooled_dti"]
+        self.assertGreater(exp1_sgmc, 0.11)
+        self.assertEqual(
+            card["holdout_dti"]["cgji_htb_valid_fold_local_oof"]["exp2_oof_hgb_pooled_dti"],
+            exp2_dti,
+        )
+
 if __name__=='__main__':unittest.main()
