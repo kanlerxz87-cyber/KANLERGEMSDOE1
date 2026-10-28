@@ -1,6 +1,6 @@
 # KANLERGEMSDOE1 — GEMS fault discovery research
 
-**STOP: no raster is cleared for submission.** No unique, high-scoring TIFF or reliable leaderboard prediction has been established in this review. [Executive summary](docs/executive-summary.html) · [Submission guide](docs/how-to-submit.html) · [Latest review](docs/review-20261028.md) · [Research slate](docs/research/hypotheses-20261026.md)
+**STOP: no raster is cleared for submission.** No unique, high-scoring TIFF or reliable leaderboard prediction has been established in this review. [Executive summary](docs/executive-summary.html) · [Submission guide](docs/how-to-submit.html) · [Latest review](docs/review-20261028.md) · [Independent artifact audit](docs/audit-20261028.md) · [Research slate](docs/research/hypotheses-20261026.md)
 
 Read the standing operating requirements below and the latest review at the start of work. Maximize P(Win): conserve slots when evidence is weak. Own the Outcome: report failed gates and missing data instead of manufacturing a result.
 
