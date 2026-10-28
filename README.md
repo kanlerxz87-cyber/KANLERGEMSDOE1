@@ -8,7 +8,13 @@ End-to-end geological feature engineering, fold-local hide-and-recover evaluatio
 
 ---
 
-## 0. Current Portal Clearance Banner (Unmistakable Gate Verdict)
+## 0. Session start: read the standing prompt and current review
+
+Before further project work, reread [`docs/ORIGINAL_PROMPT.md`](docs/ORIGINAL_PROMPT.md), [`docs/ORIGINAL_PROMPT_20261027.md`](docs/ORIGINAL_PROMPT_20261027.md), the active lane/run card, and the latest review linked from the [executive summary](docs/executive-summary.html). The standing rules are: reuse the shared cache/evaluator/writer; stay in the assigned single-method lane; at most three experiments or two hours; stop on surface correlation above 0.90 or >70% of dots within 3 px of a registered raster; label every score by evidence class; never treat an estimate as a score; do not use a submission slot without a separate selector decision.
+
+The [2026-10-28 requested-site scorecard](docs/focus-sites-review-20261028.html) incorporates the scores supplied in the latest request for GEMSDOE24/25/27/28/30/31/32/33/36. It labels those historical scores as USER/OWNER-REPORT, records unavailability of a valid site-specific estimate, and authorizes **no download or submission**. This request contains inconsistent leaderboard maxima (0.3195 and 0.4413); neither is freshly confirmed. Do not silently refresh or promote stale values.
+
+## 0.1 Current Portal Clearance Banner (Unmistakable Gate Verdict)
 
 > **STOP — NO RASTER IN `KANLERGEMSDOE1` IS CLEARED FOR LIVE DRIVENDATA PORTAL SUBMISSION (`verdict: "negative"`, `ok_to_submit: false`, `0` weekly slots consumed).**
 >

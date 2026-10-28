@@ -138,7 +138,10 @@ def build(root=ROOT):
 
 
 def render(report):
-    parts = [BEGIN, '<h2>Which file should I download and submit?</h2>',
+    parts = [BEGIN,
+             '<h2>Latest requested-site scorecard (2026-10-28)</h2>',
+             '<p><strong>Best reported history: GEMSDOE32, 0.2778 (user/owner report, not an organizer receipt). No file is cleared to submit.</strong> The requested-site scorecard includes every requested site\'s reported maximum, additional scores supplied for that site, provenance limits, and prior champion-raster overlap warnings. <a href="focus-sites-review-20261028.html">Open the nine-site focus review ↗</a>.</p>',
+             '<h2>Which file should I download and submit?</h2>',
              '<p><strong>None is cleared.</strong> This table is generated from the pinned nine-site manifest and raster audit, not inferred from filenames or site marketing. “Estimated score” is unavailable in every row; a reported leaderboard value is not a forecast. No eligible new TIFF was generated after the mandatory lane STOP.</p>',
              '<div class="table-wrap"><table><caption>Submission decision · nine historical references</caption><thead><tr><th>Site</th><th>Reference file (research evidence only)</th><th>Reported score · evidence</th><th>Estimated score / valid HOLDOUT-DTI</th><th>Unique vs other eight champions?</th><th>Download and submit?</th></tr></thead><tbody>']
     for row in report["rows"]:
