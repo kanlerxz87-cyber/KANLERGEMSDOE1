@@ -241,3 +241,12 @@ class PublicFeedTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+class SubmissionGuideRegressionTests(unittest.TestCase):
+    def test_guide_does_not_infer_portal_acceptance_or_root_cause(self):
+        html = (ROOT / "docs/how-to-submit.html").read_text(encoding="utf-8")
+        self.assertIn("File to submit: <strong>NONE</strong>", html)
+        self.assertIn("exact cause is <strong>unknown</strong>", html)
+        self.assertIn("do not submit any historical research tiff", html.lower())
+        self.assertNotIn("Always Upload the", html)
+        self.assertNotIn("reveals why GeoTIFFs", html)
