@@ -1,10 +1,12 @@
-# `KANLERGEMSDOE1` — DOE GEMS Prize Research, Fold-Local Validation, Uniqueness & Submission Gate System
+# `KANLERGEMSDOE1` — DOE GEMS Prize Research, Fold-Local Validation, Registry Uniqueness & Submission Gate System
 
 [![Competition](https://img.shields.io/badge/DrivenData-DOE_GEMS_Prize_(306)-d08a4c)](https://www.drivendata.org/competitions/306/competition-doe-gems/)
 [![Gate Status](https://img.shields.io/badge/Portal_Clearance-STOP_/_RESEARCH--HOLD_(verdict:_negative)-ff5d6c)](#4-run-card--slot-clearance-status)
 [![Tests](https://img.shields.io/badge/Automated_Gate_Tests-Passing-3dcc8a)](#8-autonomous-reproduction-commands)
 
-End-to-end geological feature engineering, fold-local hide-and-recover evaluation, 42-peer uniqueness auditing, automated 15-check GeoTIFF validation, and fail-closed GitHub Pages desk (`docs/`) for the [**DOE Geothermal Exploration Machine Learning (GEMS) Prize**](https://www.drivendata.org/competitions/306/competition-doe-gems/).
+End-to-end geological feature engineering, fold-local hide-and-recover evaluation, registry uniqueness auditing, automated GeoTIFF validation, and a fail-closed GitHub Pages research desk (`docs/`) for the [**DOE Geothermal Exploration Machine Learning (GEMS) Prize**](https://www.drivendata.org/competitions/306/competition-doe-gems/).
+
+> **Mandatory session startup:** Before changing code, read this README, [`docs/ORIGINAL_PROMPT.md`](docs/ORIGINAL_PROMPT.md), [`docs/REQUEST_20261027.md`](docs/REQUEST_20261027.md), and [`evidence/current_run_card.json`](evidence/current_run_card.json). These contain the standing user requirements, current lane/evidence and hard stop conditions. Treat every future prompt as additional constraints; preserve the literal registry thresholds, 3-experiment cap, fail-closed selector, and score-evidence labels. If a new request conflicts with a gate, stop and document the conflict instead of publishing a misleading download button.
 
 ---
 
@@ -12,18 +14,18 @@ End-to-end geological feature engineering, fold-local hide-and-recover evaluatio
 
 > **STOP — NO RASTER IN `KANLERGEMSDOE1` IS CLEARED FOR LIVE DRIVENDATA PORTAL SUBMISSION (`verdict: "negative"`, `ok_to_submit: false`, `0` weekly slots consumed).**
 >
-> - **Validated Research GeoTIFF Generated:** `docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.tif` (`SHA-256: ec9b920ac059518f0a2382f08cbe3bc2b6074d1a302e9f25cd8a79abd97c8564`, `37,654` binary dots, `EPSG:32611`, `3730 x 3292`, all `12,279,160` cells finite in `[0.0, 1.0]`, `15/15` automated GeoTIFF format checks passed, portal tracking note `65/140` chars: `KANLER1 OCDA-MSCS Exp3 OOF PU-HGB+300mCELF 37654d [RESEARCH-HOLD]`).
+> - **Research-only TIFF pair exists; neither is cleared for upload.** The NaN-outside ZIP has local grid/range-format checks, while its paired zero-outside TIFF is diagnostic only. The zero-outside artifact does not satisfy the audited outside-footprint null/NaN representation check. The ZIP also fails strict final-dot uniqueness against the spacing-5 registry raster (`99.9363%` within 3 px, above the `70%` stop rule). Do not download either file for contest submission. Evidence: [`docs/evidence/ocda_uniqueness_and_gate.json`](docs/evidence/ocda_uniqueness_and_gate.json).
 > - **Why `verdict` is `"negative"` (Applying Arena Core Value *"Maximize P(Win)"*):**
->   1. **Primary Spatially-Blocked Holdout (`GEMSDOE32-HIDE-RECOVER-v3.1`, `N = 22,232`):** `EXP-3 (OCDA-MSCS)` achieves **`HOLDOUT-DTI = 0.105830`** (`95% CI [0.095019, 0.115257]`), improving over the raw fold-honest `0.2778` reference (`0.099202`, `95% CI [0.085951, 0.112668]`) by `+0.006627` (`P(>0) = 90.9%`) and over prior `KANLERGEMSDOE1` candidates (`MPLC: 0.0894`, `IEDR: 0.0686`) by `+18.4%` to `+54.3%`. However, the paired 95% cluster-bootstrap CI `[-0.003423, +0.015957]` slightly crosses zero at two-sided 95%, and `0.105830` remains below `D2.8`'s censorship-debiased upper bound (`0.189870`).
->   2. **Off-Catalogue Regional Fault Benchmark (`GEMSDOE32-SGMC-CAL-v3.0`, `N = 62,703`):** `EXP-3` scores **`HOLDOUT-DTI = 0.050040`** (`95% CI [0.045050, 0.054481]`, `raw = 0.075100`), trailing both `GEMSDOE32` (`0.064121`, `raw = 0.096060`) and sibling `KANLERGEMSDOE2` `HTCADS-DualRegime` (`HIDE-RECOVER = 0.112353`, `SGMC-CAL = 0.078913`). Under a 3-submissions/week team quota ([official rules PDF](https://docs.nlr.gov/docs/fy26osti/96647.pdf)), **Maximize P(Win)** routes any live team slot to `KANLERGEMSDOE2` (or an OOF rank-blend of `KANLER1-OCDA` + `KANLER2-HTCADS`, which have only `28.21%` 3-px dot overlap!) rather than spending a slot on `KANLER1` alone.
->   3. **Uniqueness Gate (`40/40` Discrete Fault Detectors PASS; Literal Space-Filling Grid Flagged):** Against all **40 discrete fault-detector rasters** (`GEMSDOE24..36`, `GEMSDOE70/73/76/91`, `KANLERGEMSDOE1..3`, `WBGGEMSDOE1..3`, `8/9/10/16/19/24/27/ens12`), `EXP-3` **PASSES** both pre-placement surface (`max |Spearman| = 0.0785 <= 0.90`) and post-placement dot overlap (`max 3-px = 52.33% <= 70.0%`; only **`29.49%`** vs `GEMSDOE32` and **`28.21%`** vs `KANLERGEMSDOE2`). Under `release_gate.py`'s literal *no-density-exemption* check, the `206,895`-dot 500 m statewide calibration grid `r13-lattice-s5_v2` (whose 3-px buffer covers `99.8713%` of the footprint; Pigeonhole lower bound `>= 82.70%`) registers `99.9363% > 70%`.
+>   1. **Spatially-blocked holdout (`GEMSDOE32-HIDE-RECOVER-v3.1`, `N=22,232` withheld positives):** OCDA-MSCS EXP-3 records **`HOLDOUT-DTI = 0.105830`** (95% CI `[0.095019, 0.115257]`) against the fold-local D28 reference's **`HOLDOUT-DTI = 0.099202`** (95% CI `[0.085951, 0.112668]`). The paired 95% cluster-bootstrap delta interval `[-0.003423, +0.015957]` crosses zero. The `0.2778` for GEMSDOE32 is only a USER/OWNER-REPORT with no receipt and is not directly comparable to this internal holdout or a forecast; this research candidate has not demonstrated a higher contest score.
+>   2. **Off-catalogue regional benchmark (`GEMSDOE32-SGMC-CAL-v3.0`, `N=62,703` positives):** OCDA-MSCS EXP-3 has **`HOLDOUT-DTI = 0.050040`** (calibrated 95% CI `[0.045050, 0.054481]`; raw DTI `0.075100`). This regional result is not a leaderboard prediction. Any sibling comparison is contextual only, not a selector decision.
+>   3. **Uniqueness gate:** The 43 discrete-detector subset passes its recorded comparisons (`max 3-px overlap = 52.33%`); that subset is incomplete for the literal rule. Across 46 audited rasters, the candidate is within 3 px of the spacing-5 lattice for `99.9363%` of dots and of a dense WBG raster for `100%`; both exceed the `70%` limit. The candidate fails full-registry uniqueness and must stop.
 
 ---
 
 ## 1. Arena Core Values Applied
 
-- **Maximize P(Win):** With strictly capped weekly submission quotas, P(Win) is maximized by **ruthless out-of-fold empirical calibration and cross-repo portfolio selection**, never by pushing an under-calibrated raster onto a live slot. By auditing all 42 accessible fleet rasters, proving `OCDA-MSCS` explores `70.51%` non-overlapping structural terrain relative to `GEMSDOE32` (`29.49%` 3-px overlap) and `71.79%` non-overlapping terrain relative to `KANLERGEMSDOE2` (`28.21%` 3-px overlap), and diagnosing the exact Positive-Unlabeled split-inversion theorem in `EXP-2`, this repo contributes genuine orthogonal signal to the team selector while preserving 100% of weekly submission capacity.
-- **Own the Outcome:** Every step—data restoration (`download_competition_data.sh`), 19-band + 35-channel + 26-channel `OCDA` preparation (`prepare_data.py` & `src/kanler/ocda.py`), byte-level verification of all 5 dataset/portal irregularities, 63-feature withheld-fold leakage canaries, fold-local 8-cell evaluation (`evaluate_holdout.py`), 15-check GeoTIFF generation (`submission_writer.py`), 42-peer uniqueness auditing (`audit_ocda_candidate.py`), GitHub Pages UI (`docs/`), and automated unit tests (`tests/`)—runs end-to-end autonomously with zero human-in-the-loop assumptions.
+- **Maximize P(Win):** With strictly capped weekly submission quotas, P(Win) is maximized by **ruthless out-of-fold empirical calibration and cross-repo portfolio selection**, never by pushing an under-calibrated raster onto a live slot. By auditing a 46-raster comparison set (not a complete fleet inventory), documenting partial structural overlap with `GEMSDOE32` and `KANLERGEMSDOE2`, and diagnosing the Positive-Unlabeled split-inversion failure in `EXP-2`, this repo preserves the weekly submission capacity. The literal full-registry gate still fails for OCDA-MSCS; no candidate is promoted.
+- **Own the Outcome:** Every step—data restoration (`download_competition_data.sh`), 19-band + 35-channel + 26-channel `OCDA` preparation (`prepare_data.py` & `src/kanler/ocda.py`), byte-level verification of all 5 dataset/portal irregularities, 63-feature withheld-fold leakage canaries, fold-local 8-cell evaluation (`evaluate_holdout.py`), 15-check GeoTIFF generation (`submission_writer.py`), registry-wide uniqueness auditing (`audit_ocda_candidate.py`), GitHub Pages UI (`docs/`), and automated unit tests (`tests/`)—runs end-to-end autonomously with zero human-in-the-loop assumptions.
 
 ---
 
@@ -33,7 +35,7 @@ End-to-end geological feature engineering, fold-local hide-and-recover evaluatio
 2. **`IR-BAND-18` (`iso_grav_anom_hg` Signed East–West Polarity):** Band 5 (`iso_grav_anom_slope`) is unsigned $\|\nabla g_{\text{iso}}\|$ ($\rho = +0.9561$), whereas Band 18 (`[-15.44, +12.86]`) is the *signed* east-west derivative $+\partial g_{\text{iso}}/\partial x$ ($\rho = +0.9450$), encoding east- vs. west-dipping half-graben polarity.
 3. **`IR-BAND-10` (`deq_n100a15` Dependent-Seismicity Density, Not Distance):** Tagged `"Distance to earthquake"`, Band 10 correlates positively ($\rho = +0.8404$) with Band 16 (`ieq_n100a15`) and spikes to `4.96e6` in swarm clusters because in INGENIOUS (`GDR #1391`) `deq` is *dependent* (clustered) earthquake density.
 4. **`IR-SAMPLE-04` (`sample_submission.tif` Positive Pixels):** The owner-mirrored `sample_submission.tif` contains `60,988` `1.0` pixels identical to `labels.tif` (`5,167,373` finite footprint pixels, `7,111,787` outside-footprint `NaN`s). It is used solely for grid geometry and footprint masking.
-5. **`IR-PORTAL-05` (`Predicted values must be in range [0, 1]` Root Cause):** Official [`drivendataorg/gems-prize-reference-solution/unet-mc-cv-reference-solution.ipynb`](https://github.com/drivendataorg/gems-prize-reference-solution/blob/main/unet-mc-cv-reference-solution.ipynb) (Cells 16 & 19) initializes `y_out = np.zeros(...)`, applies `torch.nan_to_num`, and writes `GTiff` with `nodata=None` (`12,279,160` finite cells in `[0.0, 1.0]`). Array-wide `(pred >= 0) & (pred <= 1)` checks evaluate IEEE-754 `NaN` to `False`, rejecting `-nan.tif` uploads; `submission_writer.py` validates and packages the all-finite `-zeros.tif` (`0` NaNs across all `12,279,160` cells).
+5. **`IR-PORTAL-05` (Reported portal range error; exact cause unverified):** The user's error was `Predicted values must be in range [0, 1]`, but the attempted upload's bytes and portal receipt are not available, so this repo cannot identify the exact offending cells or prove the cause. The official [`drivendataorg/gems-prize-reference-solution` notebook](https://github.com/drivendataorg/gems-prize-reference-solution/blob/main/unet-mc-cv-reference-solution.ipynb) writes finite zero predictions outside its valid area and applies `torch.nan_to_num`; that example is useful but does not establish how the portal treats every NaN-outside raster. Our shared writer rejects nonfinite or out-of-range predictions inside the footprint. The NaN-outside ZIP and zero-outside diagnostic must not be conflated; neither candidate is presently authorized for upload.
 
 ---
 
@@ -55,7 +57,9 @@ All 63 features passed single-feature withheld-fold leakage canaries (`max symme
 | `CTRL-BASE35-OOF` | Control | `37,654` | `0.103048` (`[0.088930, 0.117816]`) | `0.056689` (`[0.048475, 0.063744]`; raw `0.084969`) | Plain OOF HGB on 35 shared v2 channels |
 | **`EXP-1` (`OCDA-Core`)** | **1 / 3** | `37,654` | **`0.104042`** (`[0.088903, 0.117717]`) | `0.052184` (`[0.046648, 0.057227]`; raw `0.078310`) | Pure label-free `OCDA` cross-strike dipoles + true tilt zero-crossings + PU guard + 1-px crest + 300 m CELF |
 | **`EXP-2` (`OCDA-DirectTreeRelay`)** | **2 / 3** | `37,654` | `0.025006` (`[0.018772, 0.031177]`) *(logged negative)* | `0.042112` (`[0.031166, 0.052978]`; raw `0.063292`) | **PU Split-Inversion Proof:** `~visible`-zeroed continuation fields fed directly into `y=visible` HGB invert split sign |
-| **`EXP-3` (`OCDA-TwoStage-ExplainAway`)** | **3 / 3** | `37,654` | **`0.105830`** (`[0.095019, 0.115257]`, `P(>Champ)=90.9%`) | `0.050040` (`[0.045050, 0.054481]`; raw `0.075100`) | **Selected `KANLER1` Research Artifact:** Two-stage inner-withheld log-odds fusion + 600 m broadside dipole explaining-away + sharp 1-px crest (`+27.3%` in SW Walker Lane quadrant) |
+| **`EXP-3` (`OCDA-TwoStage-ExplainAway`)** | **3 / 3** | `37,654` target | **`0.105830`** (`[0.095019, 0.115257]`, `P(>Champ)=90.9%`) | `0.050040` (`[0.045050, 0.054481]`; raw `0.075100`) | **Selected `KANLER1` Research Artifact:** Two-stage inner-withheld log-odds fusion + 600 m broadside dipole explaining-away + sharp 1-px crest (`+27.3%` in SW Walker Lane quadrant) |
+
+**Artifact irregularity:** the archived OCDA NaN-outside and zero-outside TIFFs each contain `37,649` positive cells per their byte-level audit/direct read, not `37,654`. The five-pixel count mismatch with the declared target is unresolved; the `HOLDOUT-DTI` result must not be presented as a verified score for the archived TIFF bytes.
 
 ---
 
@@ -88,7 +92,7 @@ bash scripts/download_competition_data.sh
 # 2. Execute pre-registered Lane H-K1-A (OCDA-MSCS) OOF experiments + shared holdout evaluation
 .venv/bin/python scripts/run_ocda_lane.py
 
-# 3. Emit validated GeoTIFF bundle + run 42-peer uniqueness & fail-closed release gate audit
+# 3. Audit the existing research GeoTIFF bundle + run the strict registry uniqueness/release gate
 .venv/bin/python scripts/audit_ocda_candidate.py
 
 # 4. Run full automated scientific, GeoTIFF validator, uniqueness, and GitHub Pages safety test suite
@@ -98,6 +102,10 @@ bash scripts/download_competition_data.sh
 ---
 
 ## 7. Standing Prompt Reference (Stored Verbatim in `README.md` & `docs/ORIGINAL_PROMPT.md`)
+
+### Current focus-site and session-start requirements
+
+For every session, read this README, [`docs/ORIGINAL_PROMPT.md`](docs/ORIGINAL_PROMPT.md), [`docs/REQUEST_20261027.md`](docs/REQUEST_20261027.md), and the current run card before acting. Focus the comparison on GEMSDOE24, GEMSDOE25, GEMSDOE27, GEMSDOE28, GEMSDOE30, GEMSDOE31, GEMSDOE32, GEMSDOE33, and GEMSDOE36. Distinguish user/owner score reports from `HOLDOUT-DTI` and organizer receipts; do not invent leaderboard estimates. Keep the exact any-registry uniqueness gate and stop on a violation. No TIFF is cleared in this review; the extant OCDA research candidate overlaps the spacing-5 registry raster by 99.9363% of dots within 3 px, above the 70% limit. Do not make a new file or consume a submission slot unless a future, explicitly assigned lane passes every gate and the separate selector approves.
 
 <details>
 <summary><strong>Click to expand full verbatim prompt governing this repository</strong></summary>
