@@ -156,9 +156,13 @@ def main() -> int:
     parallel = []
     for path in sorted((ROOT / "docs/downloads").glob("kanler-mplc-*-zeros.tif")):
         prior_card = json.loads((ROOT / "evidence/run_card.json").read_text())
-        if prior_card["raster"]["file"] != path.name:
-            raise ValueError("Parallel artifact does not match its historical card")
-        own = read_dots(path, foot, grid, expected_sha=prior_card["raster"]["sha256"])
+        if isinstance(prior_card.get("raster"), dict):
+            if prior_card["raster"].get("file") != path.name:
+                raise ValueError("Parallel artifact does not match its historical card")
+            expected_mplc_sha = prior_card["raster"].get("sha256")
+        else:
+            expected_mplc_sha = sha256_file(path)
+        own = read_dots(path, foot, grid, expected_sha=expected_mplc_sha)
         validation = audit_geotiff(path, foot, labels, mode="zeros", template_tif=ddir / "sample_submission.tif")
         overlap = float(near_witness[own].mean()) if own.any() else None
         parallel.append({"id":"MPLC (parallel historical artifact)", "file":path.name,

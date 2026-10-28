@@ -1,17 +1,17 @@
-# Downloads — research artifacts only, DO NOT SUBMIT (updated 2026-10-27)
+# Downloads — Research Artifacts Only, DO NOT SUBMIT (Updated 2026-10-28)
 
-| File | What it is | Submit? |
+| File | Method Lane & Scientific Summary | Submit? |
 |---|---|---|
-| `kanlergemsdoe1-concord5-b2-37654-research-20261027T171958Z-5dde8074-zeros.tif` (+ `-nan` twin, `.zip`, audit JSON) | NEW KANLER-CONCORD candidate. Unique vs 22 genuine registry rasters, format-valid, but HOLDOUT-DTI 0.0518 vs control 0.1002 (paired CI excludes 0) | **NO — holdout-negative** |
-| `kanlergemsdoe1-h195field-b2-37654-20261027T171629Z-fc14041c-zeros.tif` (+ twins) | EXP1 control reconstruction (H19-5 field + B2). 100% within 3 px of the GEMSDOE24/25/30 family | **NO — duplicate lane** |
-| `gemsdoe32-h33-h33-2-b2-…-zeros.tif` | GEMSDOE32 champion reference copy (learning only) | **NO — already submitted** |
-| `kanlergemsdoe1-h1/h2/h3-…` (2026-10-26), `kanler-mplc-…` | Stopped IEDR/MPLC lanes; inadmissible holdouts / lattice-duplicate | **NO** |
+| `gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.zip` (`-nan.tif`, `-zeros.tif`, `-audit.json`) | **2026-10-28 `KANLER1-UWBP-DRCS-EXP3` (`37,647` dots).** 2D DCT-II Poisson worms + $55^\circ$ up-dip back-projection + elevation-deconfounded dual-regime + Dinkelbach 300 m CELF. `15/15` GeoTIFF checks PASS; `57/57` discrete fault-detector peers PASS (`max 3-px = 52.16%`, `19.49%` vs `GEMSDOE32`). Sets zero-SGMC regional Cenozoic record (`SGMC-CAL = 0.089174`, `EXP-B2 = 0.090111`, `+80.1%` vs `OCDA-EXP3`), while `HIDE-RECOVER-v3.1 = 0.064800` is below `GEMSDOE32` (`0.099202`). | **NO — research-hold (`verdict: negative`, selector approval required)** |
+| `gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-nan.zip` (`-nan.tif`, `-zeros.tif`, `-audit.json`) | **2026-10-27 `KANLER1-OCDA-MSCS-EXP3` (`37,649` dots).** Offset-coupled dip-asymmetry + two-stage inner-withheld PU-HGB + 300 m CELF. `15/15` GeoTIFF checks PASS; `44/44` discrete detectors PASS (`29.49%` vs `GEMSDOE32`). Leads `KANLER1` on `HIDE-RECOVER-v3.1 = 0.105830` (`P(>Champ) = 90.9%`), `SGMC-CAL = 0.050040`. | **NO — research-hold (`verdict: negative`, selector approval required)** |
+| `kanlergemsdoe1-concord5-b2-37654-research-20261027T171958Z-5dde8074-zeros.tif` (+ `-nan` twin, `.zip`, audit JSON) | Concurrent 2026-10-27 `KANLER-CONCORD` candidate (`HOLDOUT-DTI = 0.0518` vs control `0.1002`). | **NO — holdout-negative** |
+| `gemsdoe32-h-unq1-blind-stepover-radiometric-conduit-dots-20261027T170959Z-339ac2dd-zeros.tif` (+ `-nan.tif`, `-zeros.zip`, `-audit.json`) | Concurrent 2026-10-27 `H-UNQ-1` (`7,420` dots, full-map holdout DTI diagnostic `0.0078`). | **NO — holdout-negative** |
+| `kanlergemsdoe1-h195field-b2-37654-20261027T171629Z-fc14041c-zeros.tif` (+ twins) | `EXP1` control reconstruction (`H19-5` field + `B2`). `100%` within 3 px of the `GEMSDOE24/25/30` family. | **NO — duplicate lane** |
+| `gemsdoe32-h33-h33-2-b2-…-zeros.tif` | `GEMSDOE32` champion reference copy (learning/benchmarking only). | **NO — already submitted** |
+| `kanlergemsdoe1-h1/h2/h3-…` (2026-10-26), `kanler-mplc-…` | Stopped `IEDR` / `MPLC` lanes; inadmissible holdouts / lattice-duplicate. | **NO** |
 
-Evidence: [`../evidence/current_run_card.json`](../evidence/current_run_card.json) ·
-[`../evidence/concord_experiments.json`](../evidence/concord_experiments.json) ·
-[executive summary](../executive-summary.html). No file in this directory is
-authorized for a DrivenData slot. A future cleared file will be announced by
-a green banner on the status page plus a `promote` run card — never by
-filename alone.
-
-| `gemsdoe32-h-unq1-blind-stepover-radiometric-conduit-dots-20261027T170959Z-339ac2dd-zeros.tif` (+ `-nan.tif`, `-zeros.zip`, `-audit.json`) | **DO NOT SUBMIT** | Parallel-lane H-UNQ-1 (merged 2026-10-27): format-valid, unique vs 2 references; evidence = full-map diagnostic 0.0078 + self-referential SGMC number — negative, 0 slots. |
+Evidence: [`../evidence/run_card_uwbp_drcs.json`](../evidence/run_card_uwbp_drcs.json) ·
+[`../evidence/run_card_ocda_mscs.json`](../evidence/run_card_ocda_mscs.json) ·
+[`../evidence/current_run_card.json`](../evidence/current_run_card.json) ·
+[Executive Summary](../executive-summary.html). No file in this directory is
+authorized for a DrivenData weekly submission slot without separate team-selector clearance.
