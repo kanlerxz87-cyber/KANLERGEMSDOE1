@@ -1,0 +1,80 @@
+{
+  "checked_utc": "2026-10-28T16:45:02Z",
+  "sampler_fix": "0.5px dense segment walk (src/kanler/upflow.py)",
+  "exp1_v1_HR": 0.04475579176479706,
+  "exp1_v2_HR": 0.044412631345582064,
+  "delta_HR": -0.0003431604192149981,
+  "exp1_v1_SGMC": 0.04454130973300081,
+  "exp1_v2_SGMC": 0.04432976880569954,
+  "delta_SGMC": -0.00021154092730126667,
+  "v1_ci95": [
+    0.03667192314686706,
+    0.05289032735526492
+  ],
+  "v2_within_v1_ci": true,
+  "champion_HR": 0.099202,
+  "conclusion_stable": true,
+  "stack_channel_diffs": {
+    "upflow_spring_hot_idw": {
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "frac_changed": 0.0
+    },
+    "upflow_spring_hot_density": {
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "frac_changed": 0.0
+    },
+    "upflow_quartz_geotherm_idw": {
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "frac_changed": 0.0
+    },
+    "upflow_probe_dab_idw": {
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "frac_changed": 0.0
+    },
+    "upflow_thermal_grad_ridge": {
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "frac_changed": 0.0
+    },
+    "upflow_spring_corridor": {
+      "max_abs_diff": 0.3850662112236023,
+      "mean_abs_diff": 0.0006162954377941787,
+      "frac_changed": 0.025691778007896855
+    },
+    "upflow_sinter_corridor": {
+      "max_abs_diff": 0.5574376583099365,
+      "mean_abs_diff": 0.00014243091573007405,
+      "frac_changed": 0.005862940414791036
+    },
+    "upflow_vent_corridor": {
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "frac_changed": 0.0
+    },
+    "upflow_qfault_corridor": {
+      "max_abs_diff": 0.5242077112197876,
+      "mean_abs_diff": 0.0004804533382412046,
+      "frac_changed": 0.04226035163321866
+    },
+    "upflow_edge_concord": {
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "frac_changed": 0.0
+    },
+    "upflow_align_edge_inter": {
+      "max_abs_diff": 0.25386473536491394,
+      "mean_abs_diff": 0.00012752741167787462,
+      "frac_changed": 0.05920513189196909
+    },
+    "upflow_road_damp": {
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "frac_changed": 0.0
+    }
+  },
+  "wall_seconds": 90.62
+}

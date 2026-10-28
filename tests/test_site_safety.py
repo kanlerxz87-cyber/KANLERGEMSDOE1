@@ -67,8 +67,27 @@ class SiteSafetyTests(unittest.TestCase):
         self.assertIn("no organizer receipt", html.lower())
         self.assertIn("97.58%", html)
 
+    def test_requested_site_scorecard_is_provenance_labeled_and_fail_closed(self):
+        page = self.html("focus-sites-review-20261028.html")
+        card = json.loads((ROOT / "docs/evidence/review_run_card_20261028.json").read_text())
+        for site in ("GEMSDOE24", "GEMSDOE25", "GEMSDOE27", "GEMSDOE28", "GEMSDOE30", "GEMSDOE31", "GEMSDOE32", "GEMSDOE33", "GEMSDOE36"):
+            with self.subTest(site=site):
+                self.assertIn(site, page)
+        for value in ("0.2477", "0.2600", "0.2449", "0.2710", "0.2708", "0.2778", "0.2632", "0.2750"):
+            self.assertIn(value, page)
+        self.assertIn("not organizer receipts", page.lower())
+        self.assertIn("FAIL", page)
+        self.assertIn("no file is cleared to download and submit", page.lower())
+        self.assertFalse(card["ok_to_download_and_submit"])
+        self.assertEqual(card["verdict"], "negative")
+        self.assertEqual(card["holdout_dti"]["label"], "HOLDOUT-DTI (historical evidence; not freshly rerun and not a leaderboard estimate)")
+        self.assertEqual(card["validator_output"]["shape"], [3730, 3292])
+        self.assertFalse(card["validator_output"]["organizer_template_authenticated"])
+        self.assertGreater(card["correlation_overlap_vs_registry"]["literal_lattice_overlap_within_3px"], .70)
+        self.assertLessEqual(card["submission_note_characters"], 140)
+
     def test_download_links_only_known_research_lanes_with_negative_labeling(self):
-        allowed = ("uwbp-drcs", "ocda-mscs", "h-unq1", "concord5", "h195field")
+        allowed = ("uwbp-drcs", "ocda-mscs", "h-unq1", "concord5", "h195field", "upflow")
         for page in ("index.html", "executive-summary.html", "how-to-submit.html"):
             html = self.html(page)
             parser = Links()
@@ -256,3 +275,12 @@ class PublicFeedTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+class SubmissionGuideRegressionTests(unittest.TestCase):
+    def test_guide_does_not_infer_portal_acceptance_or_root_cause(self):
+        html = (ROOT / "docs/how-to-submit.html").read_text(encoding="utf-8")
+        self.assertIn("File to submit: <strong>NONE</strong>", html)
+        self.assertIn("exact cause is <strong>unknown</strong>", html)
+        self.assertIn("do not submit any historical research tiff", html.lower())
+        self.assertNotIn("Always Upload the", html)
+        self.assertNotIn("reveals why GeoTIFFs", html)

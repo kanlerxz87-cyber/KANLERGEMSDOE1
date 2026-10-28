@@ -1,0 +1,450 @@
+{
+  "evaluated_utc": "2026-10-28T16:26:53Z",
+  "scope": "Strict withheld-fold positives vs active negatives across all 8 PreparedCells (GEMSDOE32-HIDE-RECOVER-v3.1)",
+  "n_withheld_positive_evaluations": 22232,
+  "n_active_negative_evaluations": 88928,
+  "total_features_tested": 50,
+  "threshold_symmetric_auc": 0.9,
+  "n_flagged": 0,
+  "passed": true,
+  "max_symmetric_auc": 0.741218,
+  "max_feature": "fold_vis_d_vis",
+  "top_12_features": [
+    {
+      "group": "upflow_fold_visible_only",
+      "name": "fold_vis_d_vis",
+      "raw_auc": 0.258782,
+      "symmetric_auc": 0.741218,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "upflow_fold_visible_only",
+      "name": "fold_vis_align_far",
+      "raw_auc": 0.416186,
+      "symmetric_auc": 0.583814,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "upflow_fold_visible_only",
+      "name": "fold_vis_thermal_far",
+      "raw_auc": 0.416186,
+      "symmetric_auc": 0.583814,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "curv_s2",
+      "raw_auc": 0.580781,
+      "symmetric_auc": 0.580781,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "upflow_free",
+      "name": "upflow_qfault_corridor",
+      "raw_auc": 0.572854,
+      "symmetric_auc": 0.572854,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "upflow_free",
+      "name": "upflow_align_edge_inter",
+      "raw_auc": 0.571618,
+      "symmetric_auc": 0.571618,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "curv_s1",
+      "raw_auc": 0.565423,
+      "symmetric_auc": 0.565423,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "strike_cos",
+      "raw_auc": 0.563682,
+      "symmetric_auc": 0.563682,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "coherence_s2",
+      "raw_auc": 0.561038,
+      "symmetric_auc": 0.561038,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "relief5",
+      "raw_auc": 0.556751,
+      "symmetric_auc": 0.556751,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band19",
+      "raw_auc": 0.549397,
+      "symmetric_auc": 0.549397,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band06",
+      "raw_auc": 0.45341,
+      "symmetric_auc": 0.54659,
+      "leakage_flag_gt_0p90": false
+    }
+  ],
+  "features": [
+    {
+      "group": "upflow_fold_visible_only",
+      "name": "fold_vis_d_vis",
+      "raw_auc": 0.258782,
+      "symmetric_auc": 0.741218,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "upflow_fold_visible_only",
+      "name": "fold_vis_align_far",
+      "raw_auc": 0.416186,
+      "symmetric_auc": 0.583814,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "upflow_fold_visible_only",
+      "name": "fold_vis_thermal_far",
+      "raw_auc": 0.416186,
+      "symmetric_auc": 0.583814,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "curv_s2",
+      "raw_auc": 0.580781,
+      "symmetric_auc": 0.580781,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "upflow_free",
+      "name": "upflow_qfault_corridor",
+      "raw_auc": 0.572854,
+      "symmetric_auc": 0.572854,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "upflow_free",
+      "name": "upflow_align_edge_inter",
+      "raw_auc": 0.571618,
+      "symmetric_auc": 0.571618,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "curv_s1",
+      "raw_auc": 0.565423,
+      "symmetric_auc": 0.565423,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "strike_cos",
+      "raw_auc": 0.563682,
+      "symmetric_auc": 0.563682,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "coherence_s2",
+      "raw_auc": 0.561038,
+      "symmetric_auc": 0.561038,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "relief5",
+      "raw_auc": 0.556751,
+      "symmetric_auc": 0.556751,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band19",
+      "raw_auc": 0.549397,
+      "symmetric_auc": 0.549397,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band06",
+      "raw_auc": 0.45341,
+      "symmetric_auc": 0.54659,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "strike_sin",
+      "raw_auc": 0.543183,
+      "symmetric_auc": 0.543183,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "ridge_s3",
+      "raw_auc": 0.461833,
+      "symmetric_auc": 0.538167,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "grav_edge",
+      "raw_auc": 0.536624,
+      "symmetric_auc": 0.536624,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band11",
+      "raw_auc": 0.534335,
+      "symmetric_auc": 0.534335,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band05",
+      "raw_auc": 0.534327,
+      "symmetric_auc": 0.534327,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "ridge_s2",
+      "raw_auc": 0.466241,
+      "symmetric_auc": 0.533759,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "ridge_s1",
+      "raw_auc": 0.470106,
+      "symmetric_auc": 0.529894,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "depth_grad",
+      "raw_auc": 0.529583,
+      "symmetric_auc": 0.529583,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "tophat2",
+      "raw_auc": 0.474199,
+      "symmetric_auc": 0.525801,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "upflow_free",
+      "name": "upflow_spring_hot_idw",
+      "raw_auc": 0.481598,
+      "symmetric_auc": 0.518402,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band02",
+      "raw_auc": 0.518041,
+      "symmetric_auc": 0.518041,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band16",
+      "raw_auc": 0.518012,
+      "symmetric_auc": 0.518012,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "upflow_free",
+      "name": "upflow_probe_dab_idw",
+      "raw_auc": 0.517214,
+      "symmetric_auc": 0.517214,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band01",
+      "raw_auc": 0.482964,
+      "symmetric_auc": 0.517036,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band08",
+      "raw_auc": 0.51566,
+      "symmetric_auc": 0.51566,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "upflow_free",
+      "name": "upflow_road_damp",
+      "raw_auc": 0.486908,
+      "symmetric_auc": 0.513092,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band13",
+      "raw_auc": 0.490414,
+      "symmetric_auc": 0.509586,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band12",
+      "raw_auc": 0.491511,
+      "symmetric_auc": 0.508489,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "upflow_free",
+      "name": "upflow_quartz_geotherm_idw",
+      "raw_auc": 0.508293,
+      "symmetric_auc": 0.508293,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band14",
+      "raw_auc": 0.492271,
+      "symmetric_auc": 0.507729,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "rtp_edge",
+      "raw_auc": 0.506061,
+      "symmetric_auc": 0.506061,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "cond_edge",
+      "raw_auc": 0.494619,
+      "symmetric_auc": 0.505381,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band07",
+      "raw_auc": 0.505167,
+      "symmetric_auc": 0.505167,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "upflow_free",
+      "name": "upflow_edge_concord",
+      "raw_auc": 0.503239,
+      "symmetric_auc": 0.503239,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band15",
+      "raw_auc": 0.497268,
+      "symmetric_auc": 0.502732,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band03",
+      "raw_auc": 0.502711,
+      "symmetric_auc": 0.502711,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "upflow_free",
+      "name": "upflow_sinter_corridor",
+      "raw_auc": 0.502621,
+      "symmetric_auc": 0.502621,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band04",
+      "raw_auc": 0.502414,
+      "symmetric_auc": 0.502414,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "tmi_edge",
+      "raw_auc": 0.50219,
+      "symmetric_auc": 0.50219,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band10",
+      "raw_auc": 0.502019,
+      "symmetric_auc": 0.502019,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "upflow_free",
+      "name": "upflow_spring_hot_density",
+      "raw_auc": 0.501873,
+      "symmetric_auc": 0.501873,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "upflow_free",
+      "name": "upflow_spring_corridor",
+      "raw_auc": 0.501714,
+      "symmetric_auc": 0.501714,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band17",
+      "raw_auc": 0.498518,
+      "symmetric_auc": 0.501482,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band18",
+      "raw_auc": 0.49888,
+      "symmetric_auc": 0.50112,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "band09",
+      "raw_auc": 0.500506,
+      "symmetric_auc": 0.500506,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "upflow_free",
+      "name": "upflow_thermal_grad_ridge",
+      "raw_auc": 0.500406,
+      "symmetric_auc": 0.500406,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "shared_v2",
+      "name": "footprint",
+      "raw_auc": 0.5,
+      "symmetric_auc": 0.5,
+      "leakage_flag_gt_0p90": false
+    },
+    {
+      "group": "upflow_free",
+      "name": "upflow_vent_corridor",
+      "raw_auc": 0.5,
+      "symmetric_auc": 0.5,
+      "leakage_flag_gt_0p90": false
+    }
+  ]
+}
