@@ -41,6 +41,35 @@
   </ol>
 </div>
 
+<h2>2026-10-28 Lane H-K1-B (GEOALIGN-UPFLOW) Slate — Pre-Registered, 3/3 Experiments Run, Triple Negative, 0 Slots Spent</h2>
+<div class="table-wrap"><table><thead><tr><th>Rank &amp; Slot</th><th>Hypothesis &amp; Layers</th><th>Signature &amp; Result</th><th>Mimics &amp; Differentiation</th></tr></thead><tbody>
+<tr>
+  <td><strong>#1 · TESTED (EXP-1)</strong><br><small><code>H-K1B-1 ALIGN-CORRIDOR</code> · unsupervised</small></td>
+  <td><strong>Anisotropic geothermal-alignment corridors</strong><br><small>Layers: hot wellsprings (T≥32 °C, 4,368), quartz geothermometer, 2 m probes (F2mDAB, 3,439 in-grid), paleo sinter/travertine (281), vents (21), QFaults (376), RTP/gravity strike + edges.</small></td>
+  <td>Strike-projected (±1–2 km) corridors ∩ potential-field edges + thermal-gradient (plume-margin) NMS crest.<br><strong>Result: <code>HOLDOUT-DTI = 0.044756</code> — negative.</strong></td>
+  <td><strong>Mimics:</strong> fan toes, playa margins, pumping noise (quartz + edge-∩ + road damping).<br><strong>Diff:</strong> anisotropic corridors vs OCDA isotropic halos.</td>
+</tr>
+<tr>
+  <td><strong>#2 · TESTED (EXP-2)</strong><br><small><code>H-K1B-2 OOF-FUSION</code> · supervised</small></td>
+  <td><strong>OOF PU-HGB fusion (shared35 + 12 upflow + 3 fold-visible)</strong><br><small>Same fold-local protocol as OCDA EXP-1; disjoint feature lane.</small></td>
+  <td>Best of lane: <strong><code>HOLDOUT-DTI = 0.057717</code> [0.0497, 0.0648]</strong>, SGMC-cal <code>0.045464</code> — still below champion <code>0.099202</code> (paired P=0.0). <strong>Negative; staged as research-only unique artifact.</strong></td>
+  <td><strong>Diff:</strong> far-field dots (p50 22.5 px) miss withheld-catalogue and SGMC faults alike; canaries predicted it (best label-free AUC 0.573).</td>
+</tr>
+<tr>
+  <td><strong>#3 · TESTED (EXP-3)</strong><br><small><code>H-K1B-3 TWOSTAGE-ALIGN</code> · two-stage</small></td>
+  <td><strong>Fixed-weight fusion of EXP-2 posterior + inner-withheld label-free logistic</strong><br><small>Inner 20% component-hide calibration; flank explaining-away; sharp crest; anisotropic collar.</small></td>
+  <td><strong><code>HOLDOUT-DTI = 0.052512</code> — negative.</strong> Inner weights trusted align_far (w up to +6.47) but it did not transfer.</td>
+  <td><strong>Lesson:</strong> upflow-alignment signal is too diffuse at 100 m to beat topographic-ridge support; lane closed.</td>
+</tr>
+<tr>
+  <td><strong>#4–5 · UNTESTED (BACKUP)</strong><br><small><code>H-K1B-4/5</code> · conditional</small></td>
+  <td><strong>Shoreline-confound FP model; FFT worm persistence + QFaults tip fans</strong><br><small>Needs level-datum audit; overlaps GEMSDOE73 idea family.</small></td>
+  <td>Not run: lane budget spent; expected gain below the OCDA EXP-3 bar (<code>0.105830</code>).</td>
+  <td>Retained as future lanes only with fresh pre-registration.</td>
+</tr>
+</tbody></table></div>
+<p>Pre-registration: <a href="research/hypotheses-upflow-20261028.md">hypotheses-upflow-20261028.md</a> · Ledger: <a href="evidence/upflow_ablation_ledger.json">upflow_ablation_ledger.json</a> · Swarm-relocation external-data lane (<code>H-K1-D</code>) remains untested and conditional on FDSN access, which sandbox egress blocks.</p>
+
 <h2>Concurrent 2026-10-27 Lanes Audited in This Repository</h2>
 <p>Three parallel 2026-10-27 research lanes were also audited in <code>KANLERGEMSDOE1</code> and integrated into our 46-raster uniqueness corpus: <strong>CGJI-HTB</strong> (`EXP2` `HOLDOUT-DTI = 0.099671`; `33.90%` 3-px overlap vs `OCDA-MSCS`), <strong>KANLER-CONCORD</strong> (`EXP2` `0.051774` / `EXP3` `0.094157`; `22.00%` overlap vs `OCDA-MSCS`), and <strong>H-UNQ-1</strong> (`HOLDOUT-DTI = 0.0078`, sparse 7,420-dot blind step-over radiometric conduit; `3.55%` overlap vs `OCDA-MSCS`). Every evaluated lane carries <code>verdict: "negative"</code> and requires explicit selector approval.</p>
 

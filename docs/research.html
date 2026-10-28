@@ -8,6 +8,17 @@
   <p><code>0.2778</code> is a <strong>USER/OWNER-REPORT</strong> attributed to <code>GEMSDOE32</code> (no portal receipt hash attached). Below is the exact pixel-level mathematical proof of the <code>H19-5 → D2.8 → B1 → B2</code> chain, why re-thinning <code>H19-5</code> hits a hard ~38% recall ceiling, and the five raw-byte irregularities verified on the competition inputs.</p>
 </div>
 
+<h2>0. 2026-10-28 Independent Re-Verification (New Measurements)</h2>
+<div class="card">
+  <p>All nine focus rasters were re-fetched and SHA-256-verified today (<a href="evidence/focus_forensics_20261028.json"><code>focus_forensics_20261028.json</code></a>); every byte matches the pinned manifest. New pixel-exact confirmations:</p>
+  <ul>
+    <li><code>GEMSDOE25 == GEMSDOE30</code> bit-identical positive masks (<code>0-XOR</code>): the two <code>0.2600</code> reports are one raster scored twice — report self-consistency, not two results.</li>
+    <li><code>GEMSDOE32 ⊂ GEMSDOE31 ⊂ GEMSDOE25</code> strict nesting (XOR <code>2,545</code> / <code>3,891</code>); <code>GEMSDOE32 ⊂ GEMSDOE36</code> with XOR <code>1,200</code> — the champion plus 1,200 grafted dots scores <code>0.2750</code> (−0.0028 graft penalty).</li>
+    <li>Reported scores rise at every controlled nested step (<code>G27⊃G24</code>, <code>G25/G30⊃G31⊃G32</code>, <code>G36⊃G32</code>): the FP-denominator dose–response predicted by the Tversky algebra below. Off-chain <code>G28</code> (37,660 dots, <code>0.2710</code>) still lands on the sparse-is-better trend.</li>
+    <li>Full PhD treatment: repo <code>knowledge/05_why_02778_phd_20261028.md</code> (reviewers: <a href="https://github.com/kanlerxz87-cyber/KANLERGEMSDOE1/blob/main/knowledge/05_why_02778_phd_20261028.md">GitHub mirror</a>).</li>
+  </ul>
+</div>
+
 <h2>1. Exact Tversky Decomposition of <code>H19-5 (0.1922) → D2.8 (0.2600) → B1 (0.2708) → B2 (0.2778)</code></h2>
 <p>The <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">official Distance-Weighted Tversky Index</a> uses <code>α = 0.2</code>, <code>β = 0.8</code>, and a <code>300 m</code> (<code>3 px</code>) linear decay kernel <code>k(d) = max(1 − d/3, 0)</code>:</p>
 <div class="card">

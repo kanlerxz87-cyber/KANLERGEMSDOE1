@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "generated_utc": "2026-10-28T16:16:08.212455+00:00",
+  "group": "core",
+  "verified_files_count": 4,
+  "storage_root": ".cache/gems_data",
+  "provenance_warning": "Owner-hosted mirrors; hashes do not authenticate the organizer's files.",
+  "files": [
+    {
+      "id": "training_features",
+      "dest": "training_features.tif",
+      "group": "core",
+      "status": "restored",
+      "bytes": 418912844,
+      "sha256": "4371c82e3b8339b807bdffcf4ef59a225520fe2988d521be208ae33743123bc5",
+      "provenance": "hash-pinned owner mirror; not organizer-authenticated"
+    },
+    {
+      "id": "labels",
+      "dest": "labels.tif",
+      "group": "core",
+      "status": "restored",
+      "bytes": 425830,
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+      "provenance": "hash-pinned owner mirror; not organizer-authenticated"
+    },
+    {
+      "id": "existing_faults",
+      "dest": "existing_faults.tif",
+      "group": "core",
+      "status": "restored",
+      "bytes": 425830,
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+      "provenance": "hash-pinned owner mirror; not organizer-authenticated"
+    },
+    {
+      "id": "sample_submission",
+      "dest": "sample_submission.tif",
+      "group": "core",
+      "status": "restored",
+      "bytes": 1599597,
+      "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "provenance": "hash-pinned owner mirror; not organizer-authenticated"
+    }
+  ]
+}
