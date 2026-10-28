@@ -13,6 +13,12 @@ Read the standing operating requirements below and the latest review at the star
 * Data restored from pinned third-party mirrors are not proof of organizer origin or license eligibility. Current sandbox restrictions block direct access to DrivenData, Dropbox and USGS. Training is not universally GPU-only; the [official reference repository](https://github.com/drivendataorg/gems-prize-reference-solution) describes CPU use too.
 * The dated prior claims and experiment receipts are archival, not newly verified by this review. See [the archived README](docs/archive/readme-20261027.md) and [prior review](docs/review-20261027.md).
 
+## Session-start checklist
+
+Before further project work, reread [`docs/ORIGINAL_PROMPT.md`](docs/ORIGINAL_PROMPT.md), [`docs/ORIGINAL_PROMPT_20261027.md`](docs/ORIGINAL_PROMPT_20261027.md), the active lane/run card, and the latest review linked from the [executive summary](docs/executive-summary.html). Stay in the assigned single-method lane; reuse the shared cache/evaluator/writer; stop after at most three experiments or two hours; stop on surface correlation above 0.90 or more than 70% dot overlap within 3 px of any registered raster; label every score by evidence class; never present an estimate as a score; do not use a submission slot without the separate selector decision.
+
+The [2026-10-28 requested-site scorecard](docs/focus-sites-review-20261028.html) transcribes the latest supplied scores for GEMSDOE24/25/27/28/30/31/32/33/36, labels them USER/OWNER-REPORT, records that valid site-specific estimates are unavailable, and authorizes **no download or submission**. Conflicting leaderboard values in the request (0.3195 and 0.4413) are not freshly confirmed.
+
 ## Verify locally
 
 ```bash
