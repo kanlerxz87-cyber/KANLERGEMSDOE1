@@ -64,7 +64,7 @@ class SiteSafetyTests(unittest.TestCase):
         self.assertIn("97.58%", html)
 
     def test_download_links_only_known_research_lanes_with_negative_labeling(self):
-        allowed = ("ocda-mscs", "h-unq1", "concord5", "h195field")
+        allowed = ("ocda-mscs", "h-unq1", "concord5", "h195field", "upflow")
         for page in ("index.html", "executive-summary.html", "how-to-submit.html"):
             html = self.html(page)
             parser = Links()

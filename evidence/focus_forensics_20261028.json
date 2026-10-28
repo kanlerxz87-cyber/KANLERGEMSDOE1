@@ -1,0 +1,258 @@
+{
+  "info": {
+    "GEMSDOE24": {
+      "sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+      "bytes": 1632732,
+      "grid_match": true,
+      "n_ones": 60069,
+      "n_finite": 5167373,
+      "outside_footprint": "nan",
+      "on_catalogue": 0,
+      "d_cat_le1": 5355,
+      "d_cat_le2": 8769,
+      "reported": 0.2477
+    },
+    "GEMSDOE25": {
+      "sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+      "bytes": 1603424,
+      "grid_match": true,
+      "n_ones": 44090,
+      "n_finite": 5167373,
+      "outside_footprint": "nan",
+      "on_catalogue": 0,
+      "d_cat_le1": 3891,
+      "d_cat_le2": 6436,
+      "reported": 0.26
+    },
+    "GEMSDOE27": {
+      "sha256": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+      "bytes": 1635084,
+      "grid_match": true,
+      "n_ones": 61328,
+      "n_finite": 5167373,
+      "outside_footprint": "nan",
+      "on_catalogue": 0,
+      "d_cat_le1": 5413,
+      "d_cat_le2": 8875,
+      "reported": 0.2449
+    },
+    "GEMSDOE28": {
+      "sha256": "5556aa1438fd67376b60d5ffc99228ec09dcc11a8408298a743ccb88d6163641",
+      "bytes": 1590848,
+      "grid_match": true,
+      "n_ones": 37660,
+      "n_finite": 5167373,
+      "outside_footprint": "nan",
+      "on_catalogue": 0,
+      "d_cat_le1": 0,
+      "d_cat_le2": 2353,
+      "reported": 0.271
+    },
+    "GEMSDOE30": {
+      "sha256": "8cf893ead5667df21d3288a9968c35fd5385c425b029d82ee71d311715b129fd",
+      "bytes": 806758,
+      "grid_match": true,
+      "n_ones": 44090,
+      "n_finite": 12279160,
+      "outside_footprint": "zeros",
+      "on_catalogue": 0,
+      "d_cat_le1": 3891,
+      "d_cat_le2": 6436,
+      "reported": 0.26
+    },
+    "GEMSDOE31": {
+      "sha256": "07b6db440535404bb41ec8ddc797713e200d308e3da35937393efde5eb84bc40",
+      "bytes": 199214,
+      "grid_match": true,
+      "n_ones": 40199,
+      "n_finite": 5167373,
+      "outside_footprint": "nan",
+      "on_catalogue": 0,
+      "d_cat_le1": 0,
+      "d_cat_le2": 2545,
+      "reported": 0.2708
+    },
+    "GEMSDOE32": {
+      "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "bytes": 219065,
+      "grid_match": true,
+      "n_ones": 37654,
+      "n_finite": 12279160,
+      "outside_footprint": "zeros",
+      "on_catalogue": 0,
+      "d_cat_le1": 0,
+      "d_cat_le2": 0,
+      "reported": 0.2778
+    },
+    "GEMSDOE33": {
+      "sha256": "87f857d505e23247e991ccfab2cbe9f49a04df4f9c8028dce7ea261554690757",
+      "bytes": 917544,
+      "grid_match": true,
+      "n_ones": 41865,
+      "n_finite": 12279160,
+      "outside_footprint": "zeros",
+      "on_catalogue": 0,
+      "d_cat_le1": 1377,
+      "d_cat_le2": 3894,
+      "reported": 0.2632
+    },
+    "GEMSDOE36": {
+      "sha256": "e15891020b9c57056ac7fa874a5e506fbd6ed9314a4ea8e73af0753887a3708a",
+      "bytes": 318190,
+      "grid_match": true,
+      "n_ones": 38854,
+      "n_finite": 12279160,
+      "outside_footprint": "zeros",
+      "on_catalogue": 0,
+      "d_cat_le1": 0,
+      "d_cat_le2": 0,
+      "reported": 0.275
+    }
+  },
+  "pairs": {
+    "GEMSDOE24__GEMSDOE25": {
+      "xor": 44461,
+      "jaccard": 0.4017
+    },
+    "GEMSDOE24__GEMSDOE27": {
+      "xor": 1259,
+      "jaccard": 0.9795
+    },
+    "GEMSDOE24__GEMSDOE28": {
+      "xor": 46859,
+      "jaccard": 0.3518
+    },
+    "GEMSDOE24__GEMSDOE30": {
+      "xor": 44461,
+      "jaccard": 0.4017
+    },
+    "GEMSDOE24__GEMSDOE31": {
+      "xor": 46150,
+      "jaccard": 0.3696
+    },
+    "GEMSDOE24__GEMSDOE32": {
+      "xor": 46689,
+      "jaccard": 0.3534
+    },
+    "GEMSDOE24__GEMSDOE33": {
+      "xor": 44812,
+      "jaccard": 0.3893
+    },
+    "GEMSDOE24__GEMSDOE36": {
+      "xor": 47887,
+      "jaccard": 0.3476
+    },
+    "GEMSDOE25__GEMSDOE27": {
+      "xor": 45720,
+      "jaccard": 0.395
+    },
+    "GEMSDOE25__GEMSDOE28": {
+      "xor": 26044,
+      "jaccard": 0.5168
+    },
+    "GEMSDOE25__GEMSDOE30": {
+      "xor": 0,
+      "jaccard": 1.0
+    },
+    "GEMSDOE25__GEMSDOE31": {
+      "xor": 3891,
+      "jaccard": 0.9117
+    },
+    "GEMSDOE25__GEMSDOE32": {
+      "xor": 6436,
+      "jaccard": 0.854
+    },
+    "GEMSDOE25__GEMSDOE33": {
+      "xor": 16253,
+      "jaccard": 0.682
+    },
+    "GEMSDOE25__GEMSDOE36": {
+      "xor": 7636,
+      "jaccard": 0.8314
+    },
+    "GEMSDOE27__GEMSDOE28": {
+      "xor": 48118,
+      "jaccard": 0.3458
+    },
+    "GEMSDOE27__GEMSDOE30": {
+      "xor": 45720,
+      "jaccard": 0.395
+    },
+    "GEMSDOE27__GEMSDOE31": {
+      "xor": 47409,
+      "jaccard": 0.3634
+    },
+    "GEMSDOE27__GEMSDOE32": {
+      "xor": 47948,
+      "jaccard": 0.3473
+    },
+    "GEMSDOE27__GEMSDOE33": {
+      "xor": 46071,
+      "jaccard": 0.3827
+    },
+    "GEMSDOE27__GEMSDOE36": {
+      "xor": 49144,
+      "jaccard": 0.3418
+    },
+    "GEMSDOE28__GEMSDOE30": {
+      "xor": 26044,
+      "jaccard": 0.5168
+    },
+    "GEMSDOE28__GEMSDOE31": {
+      "xor": 22153,
+      "jaccard": 0.557
+    },
+    "GEMSDOE28__GEMSDOE32": {
+      "xor": 22818,
+      "jaccard": 0.535
+    },
+    "GEMSDOE28__GEMSDOE33": {
+      "xor": 24311,
+      "jaccard": 0.5317
+    },
+    "GEMSDOE28__GEMSDOE36": {
+      "xor": 24018,
+      "jaccard": 0.5222
+    },
+    "GEMSDOE30__GEMSDOE31": {
+      "xor": 3891,
+      "jaccard": 0.9117
+    },
+    "GEMSDOE30__GEMSDOE32": {
+      "xor": 6436,
+      "jaccard": 0.854
+    },
+    "GEMSDOE30__GEMSDOE33": {
+      "xor": 16253,
+      "jaccard": 0.682
+    },
+    "GEMSDOE30__GEMSDOE36": {
+      "xor": 7636,
+      "jaccard": 0.8314
+    },
+    "GEMSDOE31__GEMSDOE32": {
+      "xor": 2545,
+      "jaccard": 0.9367
+    },
+    "GEMSDOE31__GEMSDOE33": {
+      "xor": 14724,
+      "jaccard": 0.6957
+    },
+    "GEMSDOE31__GEMSDOE36": {
+      "xor": 3745,
+      "jaccard": 0.9095
+    },
+    "GEMSDOE32__GEMSDOE33": {
+      "xor": 16291,
+      "jaccard": 0.6599
+    },
+    "GEMSDOE32__GEMSDOE36": {
+      "xor": 1200,
+      "jaccard": 0.9691
+    },
+    "GEMSDOE33__GEMSDOE36": {
+      "xor": 17491,
+      "jaccard": 0.6438
+    }
+  }
+}

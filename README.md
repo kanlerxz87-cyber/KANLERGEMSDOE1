@@ -8,6 +8,41 @@ End-to-end geological feature engineering, fold-local hide-and-recover evaluatio
 
 ---
 
+## 2026-10-28 Session (Lane H-K1-B GEOALIGN-UPFLOW + Nine-Site Executive Audit) — read first
+
+> **STOP — still no raster cleared (`verdict: "negative"`, `0` slots spent).** New unique
+> research artifact `KANLER1-UPFLOW-EXP2`
+> (`docs/downloads/gemsdoe32-kanler1-upflow-exp2-37654d-20261028T163730Z-76525b8c-zeros.tif`,
+> SHA-256 `4761c508790d…`, 37,654 dots, 15/15 format checks): ✅ OK TO DOWNLOAD for
+> research · 🛑 NOT OK TO SUBMIT — best `HOLDOUT-DTI = 0.057717` [0.0497, 0.0648] vs
+> champion `0.099202` (paired Δ −0.0415, P=0.0), SGMC-cal `0.0455` vs `0.0641`. All 3
+> pre-registered experiments negative; 50/50 canaries pass; 29/29 discrete-detector
+> uniqueness pass (14.19% vs GEMSDOE32). Run card: `evidence/run_card_upflow.json`.
+> Repo best remains `OCDA-MSCS EXP-3` (`0.105830`, likewise on research hold).
+
+**Standing session directives ( distilled from the standing project prompt; full
+9-site score ledger lives in `docs/ORIGINAL_PROMPT_20261027.md`):** (1) every
+submission TIF must be unique (lane rule: surface |ρ| ≤ 0.90 AND ≤70% dots within
+3 px of any registry raster) and pass the automated 15-check validator — no human
+inspector; (2) every number is labeled `HOLDOUT-DTI` (evaluator + N + CI) or
+`ORGANIZER-CONFIRMED` — a projection is never a score, leaderboard estimates stay
+`NOT ESTIMABLE`; (3) ≤3 experiments per lane, leakage canary per feature (AUC ≤ 0.90),
+fold-local training only; (4) verify line-by-line from official sources with links,
+no hallucinations, flag irregularities; (5) work in 3 passes, then PR + merge to
+`main`. Core values: **Maximize P(Win)** (conserve weekly slots for calibrated,
+selector-approved entries) and **Own the Outcome** (negative results are deliverables).
+
+**This session delivered:** 9-site pixel-exact re-forensics
+(`evidence/focus_forensics_20261028.json`, `knowledge/04_*`, `knowledge/05_*`);
+Lane H-K1-B code (`src/kanler/upflow.py`, `scripts/run_upflow_lane.py`,
+`scripts/audit_upflow_candidate.py`, `tests/test_upflow_lane.py`); the staged unique
+artifact + run card; site updates (status, executive summary, hypotheses, research,
+submission gate); review record `docs/review-record-20261028.md`; EXP-1-only v2
+sampler sensitivity check (`scripts/run_upflow_v2check.py`,
+`evidence/upflow_v2_sensitivity.json`: ΔHR −0.00034, conclusion stable).
+
+---
+
 ## 0. Current Portal Clearance Banner (Unmistakable Gate Verdict)
 
 > **STOP — NO RASTER IN `KANLERGEMSDOE1` IS CLEARED FOR LIVE DRIVENDATA PORTAL SUBMISSION (`verdict: "negative"`, `ok_to_submit: false`, `0` weekly slots consumed).**
