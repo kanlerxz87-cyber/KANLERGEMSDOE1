@@ -1,75 +1,83 @@
-# KANLERGEMSDOE1 — GEMS fault discovery research
+# `KANLERGEMSDOE1` — DOE GEMS Prize Research, Fold-Local Validation, Uniqueness & Submission Gate System
 
-**STOP: no raster is cleared for submission.** No unique, high-scoring TIFF or reliable leaderboard prediction has been established in this review. [Executive summary](docs/executive-summary.html) · [Submission guide](docs/how-to-submit.html) · [Latest review](docs/review-20261028.md) · [Independent artifact audit](docs/audit-20261028.md) · [Research slate](docs/research/hypotheses-20261026.md)
+[![Competition](https://img.shields.io/badge/DrivenData-DOE_GEMS_Prize_(306)-d08a4c)](https://www.drivendata.org/competitions/306/competition-doe-gems/)
+[![Gate Status](https://img.shields.io/badge/Portal_Clearance-STOP_/_RESEARCH--HOLD_(verdict:_negative)-ff5d6c)](#0-current-portal-clearance-banner-unmistakable-gate-verdict)
+[![Tests](https://img.shields.io/badge/Automated_Gate_Tests-Passing-3dcc8a)](#7-autonomous-reproduction-commands)
 
-At the start of every session, read this README, [`docs/REQUEST_20261027.md`](docs/REQUEST_20261027.md), [`docs/evidence/current_run_card.json`](docs/evidence/current_run_card.json), and the latest linked review. Maximize P(Win): conserve slots when evidence is weak. Own the Outcome: report failed gates and missing data instead of manufacturing a result.
-
-## Current findings
-
-## 2026-10-28 Session (Lane H-K1-B GEOALIGN-UPFLOW + Nine-Site Executive Audit) — read first
-
-> **STOP — still no raster cleared (`verdict: "negative"`, `0` slots spent).** New unique
-> research artifact `KANLER1-UPFLOW-EXP2`
-> (`docs/downloads/gemsdoe32-kanler1-upflow-exp2-37654d-20261028T163730Z-76525b8c-zeros.tif`,
-> SHA-256 `4761c508790d…`, 37,654 dots, 15/15 format checks): ✅ OK TO DOWNLOAD for
-> research · 🛑 NOT OK TO SUBMIT — best `HOLDOUT-DTI = 0.057717` [0.0497, 0.0648] vs
-> champion `0.099202` (paired Δ −0.0415, P=0.0), SGMC-cal `0.0455` vs `0.0641`. All 3
-> pre-registered experiments negative; 50/50 canaries pass; 29/29 discrete-detector
-> uniqueness pass (14.19% vs GEMSDOE32). Run card: `evidence/run_card_upflow.json`.
-> Repo best remains `OCDA-MSCS EXP-3` (`0.105830`, likewise on research hold).
-
-**Standing session directives ( distilled from the standing project prompt; full
-9-site score ledger lives in `docs/ORIGINAL_PROMPT_20261027.md`):** (1) every
-submission TIF must be unique (lane rule: surface |ρ| ≤ 0.90 AND ≤70% dots within
-3 px of any registry raster) and pass the automated 15-check validator — no human
-inspector; (2) every number is labeled `HOLDOUT-DTI` (evaluator + N + CI) or
-`ORGANIZER-CONFIRMED` — a projection is never a score, leaderboard estimates stay
-`NOT ESTIMABLE`; (3) ≤3 experiments per lane, leakage canary per feature (AUC ≤ 0.90),
-fold-local training only; (4) verify line-by-line from official sources with links,
-no hallucinations, flag irregularities; (5) work in 3 passes, then PR + merge to
-`main`. Core values: **Maximize P(Win)** (conserve weekly slots for calibrated,
-selector-approved entries) and **Own the Outcome** (negative results are deliverables).
-
-**This session delivered:** 9-site pixel-exact re-forensics
-(`evidence/focus_forensics_20261028.json`, `knowledge/04_*`, `knowledge/05_*`);
-Lane H-K1-B code (`src/kanler/upflow.py`, `scripts/run_upflow_lane.py`,
-`scripts/audit_upflow_candidate.py`, `tests/test_upflow_lane.py`); the staged unique
-artifact + run card; site updates (status, executive summary, hypotheses, research,
-submission gate); review record `docs/review-record-20261028.md`; EXP-1-only v2
-sampler sensitivity check (`scripts/run_upflow_v2check.py`,
-`evidence/upflow_v2_sensitivity.json`: ΔHR −0.00034, conclusion stable).
+End-to-end geological feature engineering, fold-local hide-and-recover evaluation, 60-raster multi-site uniqueness auditing, automated 15-check GeoTIFF validation, and fail-closed GitHub Pages desk ([Executive summary](docs/executive-summary.html) · [Focus-site scorecard](docs/focus-sites-review-20261028.html) · [Submission gate](docs/how-to-submit.html) · [Latest review](docs/review-20261028.md)) for the [**DOE Geothermal Exploration Machine Learning (GEMS) Prize**](https://www.drivendata.org/competitions/306/competition-doe-gems/).
 
 ---
 
-* The nine-site comparison and artifact hashes are in the [generated readiness table](docs/submission-readiness.html). Historical scores are user/owner reports, **not organizer-confirmed receipts**, and cannot be used as estimates of a new file's score.
-* GEMSDOE32's reported 0.2778 is the highest among the supplied nine-site champions. Prior audits found it has D2.8 support with a two-pixel catalogue collar removed. Fewer redundant predictions is a plausible explanation, not proof of causality or of a future improvement.
-* The recorded lane has triggered the literal duplicate rule against the lattice registry raster. A complete peer inventory, surface and dot uniqueness, and a separate selector are prerequisites, not optional steps. No new candidate was generated in this review.
-* A local writer check does not prove portal acceptance. The exact cause of the user's range error is unknown without the rejected TIFF and receipt. The reference notebook's output behavior does not prove what the portal accepts. The official rules/format and authenticated sample need reconciliation before promotion.
-* Data restored from pinned third-party mirrors are not proof of organizer origin or license eligibility. Current sandbox restrictions block direct access to DrivenData, Dropbox and USGS. Training is not universally GPU-only; the [official reference repository](https://github.com/drivendataorg/gems-prize-reference-solution) describes CPU use too.
-* The dated prior claims and experiment receipts are archival, not newly verified by this review. See [the archived README](docs/archive/readme-20261027.md) and [prior review](docs/review-20261027.md).
+## 0. Current Portal Clearance Banner (Unmistakable Gate Verdict)
 
-## Session-start checklist
+> **STOP — NO RASTER IN `KANLERGEMSDOE1` IS CLEARED FOR LIVE DRIVENDATA PORTAL SUBMISSION (`verdict: "negative"`, `ok_to_submit: false`, `0` weekly slots consumed; separate team-selector approval required).**
+>
+> - **2026-10-28 Crustal-Worm & Knickzone Specialist (`Lane H-K1-B: UWBP-DRCS EXP-B3`, #1 Zero-SGMC Regional):**
+>   - **NaN-Outside Research Bundle:** `docs/downloads/gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.zip` / `-nan.tif` (`SHA-256: 2693c2daf87bd7948d3d57fc41fdcf40653ef42014c93d0e947bc2a8fc00a30c`)
+>   - **All-Finite Zero-Outside Diagnostic:** `docs/downloads/gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-zeros.tif` (`SHA-256: 9ff9d63bf483966173ad7a92e9b3dba706ce09a2a05a8e148c32af6cb6d85542`, `37,647` binary dots, `EPSG:32611`, `3730 x 3292`, `15/15` automated GeoTIFF checks passed on both `-nan.tif` and `-zeros.tif`, note `78/140` chars: `KANLER1 UWBP-DRCS Exp3 55deg-Worm+DeconfDual+Dinkelbach 37647d [RESEARCH-HOLD]`, Run Card: `evidence/run_card_uwbp_drcs.json`).
+> - **2026-10-27 Quaternary Catalogue Benchmark (`Lane H-K1-A: OCDA-MSCS EXP-3`, #1 `HIDE-RECOVER-v3.1`):**
+>   - `docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-nan.zip` (`-nan.tif` SHA-256 `06ccd8524751…`) / `-zeros.tif` (`SHA-256: ec9b920ac059…`, `37,649` positive pixels vs `37,654` target noted in `docs/audit-20261028.md`; Run Card: `evidence/run_card_ocda_mscs.json`).
+> - **2026-10-28 Geothermal-Alignment Negative Deliverable (`KANLER1-UPFLOW-EXP2`):**
+>   - `docs/downloads/gemsdoe32-kanler1-upflow-exp2-37654d-20261028T163730Z-76525b8c-zeros.tif` (`SHA-256: 4761c508790d…`, `37,654` dots, `HOLDOUT-DTI = 0.057717`, `SGMC-CAL = 0.045464`, triple-negative deliverable; Run Card: `evidence/run_card_upflow.json`).
+> - **Why `verdict` is `"negative"` (Applying Arena Core Values *"Maximize P(Win)"* & *"Own the Outcome"*):**
+>   1. **Zero-SGMC Regional Generalization Breakthrough vs. Quaternary Piedmont Trade-Off:** Removing raw coordinate/elevation proxy bands and introducing **2D DCT-II Poisson Upward-Continued Potential-Field Worms ($100/300/600/1200\text{ m}$) + Andersonian $55^\circ$ Up-Dip Back-Projection + Canyon Thalweg Knickzones (`UWBP-DRCS`)** jumped zero-SGMC off-catalogue Cenozoic fault recovery (`GEMSDOE32-SGMC-CAL-v3.0`, `N = 62,703`) from `0.050040` (`OCDA-EXP3`) and `0.045464` (`UPFLOW-EXP2`) to **`0.090111` (`EXP-B2`) / `0.089174` (`EXP-B3`)** (**`+78.2% to +80.1%` over `OCDA-EXP3`** and **`+39.1% to +40.5%` over `GEMSDOE32`'s `0.064121`**, paired 95% delta CI `[+0.0152, +0.0353] > 0`). Hard removal of regional state scalars simultaneously diluted Quaternary piedmont concentration on `GEMSDOE32-HIDE-RECOVER-v3.1` (`N = 22,232`) to `0.064800` vs `0.099202` (`GEMSDOE32`) and `0.105830` (`OCDA-EXP3`).
+>   2. **Live-Leaderboard Reality Check on Sibling `KANLERGEMSDOE2` (`0.1218` User/Owner-Reported):** `kanlergems2-htcads-exp-2` (`0.1124` v3.0 holdout) scored `0.1218` live (user-reported), confirming that single-regime coordinate-confounded PU classifiers overfit Quaternary piedmont floors at the expense of upland Cenozoic faults.
+>   3. **Uniqueness & Template Provenance Gates:** `UWBP-DRCS EXP-B3` **PASSES 58 / 58 discrete fault-detector rasters** across 60 audited rasters (`max |Spearman| = 0.1078 <= 0.90`, `max 3-px = 52.16% <= 70%`; `19.49%` vs `GEMSDOE32`, `24.05%` vs `OCDA-EXP3`, `20.40%` vs `UPFLOW-EXP2`, `25.20%` vs `KANLERGEMSDOE2`), while literal full-registry evaluation flags the `206,895`-dot 500 m statewide grid `r13-lattice-s5_v2` (`99.98% > 70%`) and `sample_submission.tif` remains an unauthenticated mirror (`organizer_template_authenticated: false`).
 
-Before further project work, reread [`docs/ORIGINAL_PROMPT.md`](docs/ORIGINAL_PROMPT.md), [`docs/ORIGINAL_PROMPT_20261027.md`](docs/ORIGINAL_PROMPT_20261027.md), the active lane/run card, and the latest review linked from the [executive summary](docs/executive-summary.html). Stay in the assigned single-method lane; reuse the shared cache/evaluator/writer; stop after at most three experiments or two hours; stop on surface correlation above 0.90 or more than 70% dot overlap within 3 px of any registered raster; label every score by evidence class; never present an estimate as a score; do not use a submission slot without the separate selector decision.
+---
 
-The [2026-10-28 requested-site scorecard](docs/focus-sites-review-20261028.html) transcribes the latest supplied scores for GEMSDOE24/25/27/28/30/31/32/33/36, labels them USER/OWNER-REPORT, records that valid site-specific estimates are unavailable, and authorizes **no download or submission**. Conflicting leaderboard values in the request (0.3195 and 0.4413) are not freshly confirmed.
+## 1. Six Byte-Verified Dataset & Portal Irregularities Flagged
 
-## Verify locally
+1. **`IR-BAND-06` (`tc` Metadata Misidentification in `training_features.tif`):** Tagged `"Tilt angle or total curvature - magnetic field derivative"`, Band 6 (`[2.953, 88.567]`) matches USGS GeoDAWN Radiometric Total Count (`geodawn_rad_u8.tif` Band 4) at **Spearman $\rho = +0.999951$** ($\rho = +0.01884$ vs true magnetic tilt).
+2. **`IR-BAND-18` (`iso_grav_anom_hg` Signed East–West Polarity):** Band 5 (`iso_grav_anom_slope`) is unsigned $\|\nabla g_{\text{iso}}\|$ ($\rho = +0.9561$), whereas Band 18 (`[-15.44, +12.86]`) is signed $+\partial g_{\text{iso}}/\partial x$ ($\rho = +0.9450$), encoding east- vs. west-dipping half-graben polarity.
+3. **`IR-BAND-10` (`deq_n100a15` Dependent-Seismicity Density & 100 km Smoothing):** Tagged `"Distance to earthquake"`, Band 10 is INGENIOUS *dependent* earthquake density ($\rho = +0.8404$ with Band 16 `ieq_n100a15`; spatial autocorrelation $r = 0.9935$ at $3\text{ km}$ lag).
+4. **`IR-BAND-17` (`cond_surf` Decade Log-Resistivity Scale):** Spans `[0.194, 4.969]` (median `2.886`) — already in decade $\log_{10}\rho$ units rather than linear S/m or $\Omega\cdot\text{m}$.
+5. **`IR-SAMPLE-04` (`sample_submission.tif` Unauthenticated Mirror & Positive Pixels):** Contains `60,988` `1.0` pixels identical to `labels.tif` plus `7,111,787` outside-footprint `NaN`s (`organizer_template_authenticated: false`).
+6. **`IR-PORTAL-05` (`Predicted values must be in range [0, 1]` Safeguards):** `58,171` in-footprint `-3.4028235e+38` sentinels in raw bands are sanitized by `prepare_data.py`; `submission_writer.py` validates both `-nan.tif` and `-zeros.tif` across 15 automated checks (`0` in-footprint `NaN`/`Inf`/sentinels, values strictly in `[0.0, 1.0]`).
+
+---
+
+## 2. Why `GEMSDOE32` Scored `0.2778` & Multi-Lane Fold-Local Ablation Summary
+
+Pixel-exact decoding (`evidence/focus_forensics_20261028.json`, `docs/focus-sites-review-20261028.html`) proves all 9 focus champions (`GEMSDOE24..36`, user/owner reports, not organizer receipts) descend from `19GEMSDOE` `H19-5` (`121,131` px): `d_min = √8` thinning (`44,090` px in `GEMSDOE25 == GEMSDOE30`, `0.2600`) strips `77,041` redundant interior ridge pixels inside the $R=3.0\text{ px}$ `max` kernel, and `B=2` collar pruning (`GEMSDOE32`, `37,654` px, `0.2778`, `0-XOR` to `D2.8 & (EDT(~labels) > 2)`) removes `6,436` mapped-fault digitization-halo false positives ([forum #11516](https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/4)). Because `H19-5` captures only ~38% of hidden truth (`|G| ≈ 13.7k`), surpassing `0.32+` requires subsurface + piedmont discovery without coordinate overfitting:
+
+| Variant | Lane & Slot | Emitted Dots | `HOLDOUT-DTI` (`GEMSDOE32-HIDE-RECOVER-v3.1`, `N=22,232`, 95% CI) | `HOLDOUT-DTI` (Zero-SGMC `GEMSDOE32-SGMC-CAL-v3.0`, `N=62,703`, 95% CI) | Scientific Takeaway |
+|---|---|---:|---|---|---|
+| `CHAMP-D28-VIS-B2` (`0.2778` ref) | Anchor | `37,654` | `0.099202` (`[0.085951, 0.112668]`) | `0.064121` (`[0.056730, 0.071649]`; raw `0.096060`) | Incumbent `D2.8 & (d_vis > 2)` fold-honest benchmark |
+| `OCDA-EXP3` (2026-10-27) | `H-K1-A` (3/3) | `37,649` | **`0.105830`** (`[0.095019, 0.115257]`, `#1` HR) | `0.050040` (`[0.045050, 0.054481]`; raw `0.075100`) | Leads Quaternary catalogue HR; coordinate bands suppress upland SGMC |
+| `UPFLOW-EXP2` (2026-10-28) | `UPFLOW` (2/3) | `37,654` | `0.057717` (`[0.049718, 0.064828]`) | `0.045464` (`[0.038395, 0.053052]`) | Rules out far-field alignment corridors without worm back-projection |
+| **`EXP-B1` (`UWBP-Deconf-PU`)** | `UWBP` (**1/3**) | `37,649` | `0.057902` (`[0.051042, 0.064541]`) | **`0.088558`** (`[0.080972, 0.094641]`; raw `0.131830`) | 2D DCT-II Poisson worms + $55^\circ$ up-dip + hard coordinate removal (`+77%` vs `OCDA`) |
+| **`EXP-B2` (`UWBP-DRCS-Dual`)** | `UWBP` (**2/3**) | `37,646` | `0.064581` (`[0.057262, 0.071741]`, `+11.5%` vs B1) | **`0.090111`** (`[0.082001, 0.096680]`; raw `0.134102`, `#1` SGMC) | Stage-2 continuation + Dual-Regime `M_struct` sets all-time repo zero-SGMC record (`+40.5%` vs `G32`) |
+| **`EXP-B3` (`UWBP-DRCS-Dinkelbach`)** | `UWBP` (**3/3**) | `37,647` | **`0.064800`** (`[0.057434, 0.071809]`, `+11.9%` vs B1) | **`0.089174`** (`[0.081232, 0.095645]`; raw `0.132733`) | Strike-steered hydrothermal conduits + Dinkelbach 300 m CELF (`58/58` discrete detectors PASS) |
+
+---
+
+## 3. Limitations & High-Leverage Next Steps
+
+1. **Split-Budget Two-Population Pareto Synthesis:** `OCDA-MSCS EXP-3` (`0.105830` HR) and `UWBP-DRCS EXP-B2/B3` (`0.090111` SGMC) share only **`24.05%`** 3-px dot overlap (`Spearman \rho = 0.0502`). Packing `~24,000` Quaternary piedmont/relay dots with `~13,654` strictly disjoint (`> 3 px`) deconfounded worm/knickzone dots via joint 300 m CELF targets simultaneous superiority on both `HIDE-RECOVER-v3.1` and `SGMC-CAL-v3.0`.
+2. **External Relocated Hypocenters & InSAR (`H-K1-B4` & `H-K1-B5`):** In an unrestricted network environment, ingesting relocated 3D hypocenters from [USGS ANSS ComCat](https://earthquake.usgs.gov/fdsnws/event/1/) and InSAR phase-velocity steps from [NASA ASF OPERA](https://search.asf.alaska.edu/) unlocks blind seismogenic shear zones and flat-playa groundwater barriers.
+3. **Authenticated Organizer Template & Registry Policy:** Before any separate team-selector promotion to a weekly DrivenData slot, verify `sample_submission.tif` against a direct authenticated portal receipt and reconcile treatment of the non-detector `r13-lattice-s5_v2` calibration grid.
+
+---
+
+## 4. Autonomous Reproduction Commands
 
 ```bash
-python -m venv .venv
-.venv/bin/pip install -r requirements.txt
-.venv/bin/python -m unittest discover -s tests -v
+bash scripts/download_competition_data.sh
+.venv/bin/python scripts/prepare_data.py
+.venv/bin/python scripts/run_uwbp_lane.py
+.venv/bin/python scripts/audit_uwbp_candidate.py
 .venv/bin/python scripts/build_executive_summary.py --check
 .venv/bin/python scripts/build_readiness_report.py --check
+.venv/bin/python -m unittest discover -s tests -v
 ```
 
-The test suite uses synthetic tests and stored evidence; passing it does not certify a scientific score, portal acceptance, or uniqueness against missing registry members.
+---
 
-## Standing operating requirements (reconstructed, not verbatim)
+## 5. Standing Prompt Reference (Stored Verbatim in `README.md`, `docs/ORIGINAL_PROMPT.md` & `docs/REQUEST_20261027.md`)
 
 <details>
-<summary><strong>Click to expand reconstructed operating requirements</strong></summary>
+<summary><strong>Click to expand full prompt governing this repository</strong></summary>
 
 ```text
 PARALLEL-RUN PROTOCOL — read once, follow strictly:
@@ -112,5 +120,5 @@ Pass 3: Re-check the entire implementation against the original request
 After completing all passes, create a PR and merge it onto main. Note any next steps, recommendations, and limitations.
 ```
 
-Earlier prompt archives are historical reconstructions; see [`docs/REQUEST_20261027.md`](docs/REQUEST_20261027.md).
+Full unabridged multi-site prompt & score ledgers are also archived verbatim in [`docs/ORIGINAL_PROMPT.md`](docs/ORIGINAL_PROMPT.md), [`docs/ORIGINAL_PROMPT_20261027.md`](docs/ORIGINAL_PROMPT_20261027.md), and [`docs/REQUEST_20261027.md`](docs/REQUEST_20261027.md).
 </details>

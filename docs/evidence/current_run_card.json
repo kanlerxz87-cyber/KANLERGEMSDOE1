@@ -1,6 +1,6 @@
 {
   "schema": "GEMSDOE-PARALLEL-RUN-CARD-v2.1",
-  "generated_utc": "2026-10-27T18:59:52Z",
+  "generated_utc": "2026-10-28T17:29:04Z",
   "lane": "L-CGJI-HTB-2026-10-27",
   "hypothesis": "H-CGJI-HTB (Gallardo-Meju Structural Cross-Gradient Collinearity + Piedmont Break-in-Slope Scarp Dipole + Hydrothermal Upflow Breach Detector on a 1-px Transverse NMS Crest Skeleton): blind and range-front basin-margin normal faults juxtapose basement density, magnetic susceptibility, and MT resistivity with collinear horizontal gradients, paired with a concave-up piedmont break-in-slope toe and convective thermal/radiometric upflow halos.",
   "mechanism": "1-px transverse Non-Maximum Suppressed (NMS) skeleton of the multi-physics spine (Gallardo-Meju cross-gradient collinearity + 1m LiDAR/DEM piedmont scarp dipole + subsurface edge) scored by a quadrant-blocked fold-local HistGradientBoostingClassifier trained strictly on out-of-quadrant visible faults (quad != cell.fold) across 40 sanitized base + CGJI-HTB channels, followed by Poisson-disk emission (37,654 dots, min_dist=sqrt(8) px, fold-local B=2 visible-fault collar).",
@@ -51,7 +51,7 @@
         0.134248
       ]
     },
-    "reason": "Archival 2026-10-26 H1-IEDR/MPLC runs were invalidated for full-catalogue mask leakage (valid_value=null for archival H1-IEDR). On 2026-10-27, Lane H-K1-A (OCDA-MSCS EXP-3) achieved the highest verified fold-local OOF score in KANLERGEMSDOE1: HOLDOUT-DTI = 0.105830 [0.095019, 0.115257] (P(>GEMSDOE32)=90.9%, SW Walker Lane +27.3%; see run_card_ocda_mscs.json), ahead of CGJI-HTB EXP-2 (0.099671) and CONCORD EXP-3 (0.094157), while remaining under fail-closed RESEARCH-HOLD (ok_to_submit=false, 0 slots used) pending team-wide selector promotion.",
+    "reason": "Archival 2026-10-26 H1-IEDR/MPLC runs were invalidated for full-catalogue mask leakage (valid_value=null for archival H1-IEDR). Two complementary fold-local zero-SGMC lanes are now audited under fail-closed RESEARCH-HOLD (ok_to_submit=false, 0 slots used): (1) Lane H-K1-A (OCDA-MSCS EXP-3, run_card_ocda_mscs.json) leads on Quaternary catalogue HIDE-RECOVER-v3.1 = 0.105830 [0.095019, 0.115257] (vs GEMSDOE32 0.099202; SGMC-CAL = 0.050040); and (2) Lane H-K1-B (UWBP-DRCS EXP-B2/B3, run_card_uwbp_drcs.json) removes coordinate/elevation proxy memorization and adds 2D DCT-II Poisson worm 55-deg up-dip back-projection, jumping zero-SGMC off-catalogue Cenozoic fault recovery to SGMC-CAL-v3.0 = 0.090111 (EXP-B2) / 0.089174 (EXP-B3, +78.2% over OCDA-EXP3 and +39.1% over GEMSDOE32 0.064121; HIDE-RECOVER-v3.1 = 0.064800). Neither lane alone satisfies all promotion_decision gates without team-wide selector authorization.",
     "ocda_mscs_valid_fold_local_oof": {
       "status": "ADMISSIBLE_FOLD_LOCAL",
       "score_label": "HOLDOUT-DTI",
@@ -110,6 +110,100 @@
         "EXP1_OCDA_CORE": 0.104042,
         "EXP2_OCDA_DIRECT_TREE_RELAY_NEGATIVE": 0.025006,
         "EXP3_OCDA_TWOSTAGE_EXPLAINAWAY": 0.10583
+      },
+      "not_a_leaderboard_forecast": true
+    },
+    "uwbp_drcs_valid_fold_local_oof": {
+      "status": "ADMISSIBLE_FOLD_LOCAL",
+      "score_label": "HOLDOUT-DTI",
+      "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+      "n_withheld_positives": 22232,
+      "n_spatial_clusters": 140,
+      "n_bootstrap_reps": 1000,
+      "valid_value": 0.0648,
+      "valid_ci95": [
+        0.057434,
+        0.071809
+      ],
+      "per_quadrant_dti": {
+        "NW": 0.071193,
+        "NE": 0.050045,
+        "SW": 0.067283,
+        "SE": 0.070487
+      },
+      "catalogue_feature_provenance_verified": true,
+      "hidden_perturbation_max_abs_diff": 0.0,
+      "independent_replay_cells_sha256": "717b790d2754e640cb1d5653c22071263ebb0cf4b115d9d15f0e50f3dd79afa2",
+      "incumbent_gemsdoe32_fold_honest_d28_b2": {
+        "score_label": "HOLDOUT-DTI",
+        "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+        "n_withheld_positives": 22232,
+        "pooled_dti": 0.099202,
+        "ci95": [
+          0.085951,
+          0.112668
+        ]
+      },
+      "paired_delta_vs_incumbent_hide_recover": {
+        "cand_pooled_dti": 0.0648,
+        "ref_pooled_dti": 0.099202,
+        "delta_dti": -0.034402,
+        "delta_ci95": [
+          -0.046523,
+          -0.02187
+        ],
+        "prob_cand_gt_ref": 0.0
+      },
+      "sgmc_regional_off_catalogue": {
+        "score_label": "HOLDOUT-DTI",
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "n_withheld_positives": 62703,
+        "zero_sgmc_in_training_and_inference": true,
+        "exp_b3_sgmc_prevalence_calibrated_dti": 0.089174,
+        "exp_b3_sgmc_calibrated_ci95": [
+          0.081232,
+          0.095645
+        ],
+        "exp_b3_sgmc_raw_pooled_dti": 0.132733,
+        "exp_b2_sgmc_prevalence_calibrated_dti": 0.090111,
+        "exp_b2_sgmc_calibrated_ci95": [
+          0.082001,
+          0.09668
+        ],
+        "incumbent_gemsdoe32_sgmc_calibrated_dti": 0.064121,
+        "prior_ocda_exp3_sgmc_calibrated_dti": 0.05004,
+        "paired_delta_vs_gemsdoe32_sgmc_calibrated": {
+          "cand_cal_dti": 0.089182,
+          "ref_cal_dti": 0.064121,
+          "delta_dti": 0.025061,
+          "delta_ci95": [
+            0.015189,
+            0.034401
+          ],
+          "prob_cand_gt_ref": 1.0
+        }
+      },
+      "ablation_summary_3_experiments": {
+        "CHAMP_D28_VIS_B2": {
+          "hide_recover_dti": 0.099202,
+          "sgmc_cal_dti": 0.064121
+        },
+        "OCDA_EXP3_PRIOR": {
+          "hide_recover_dti": 0.10583,
+          "sgmc_cal_dti": 0.05004
+        },
+        "EXP_B1_UWBP_DECONF_PU": {
+          "hide_recover_dti": 0.057902,
+          "sgmc_cal_dti": 0.088558
+        },
+        "EXP_B2_UWBP_DRCS_DUAL": {
+          "hide_recover_dti": 0.064581,
+          "sgmc_cal_dti": 0.090111
+        },
+        "EXP_B3_UWBP_DRCS_DINKELBACH": {
+          "hide_recover_dti": 0.0648,
+          "sgmc_cal_dti": 0.089174
+        }
       },
       "not_a_leaderboard_forecast": true
     }

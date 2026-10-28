@@ -47,6 +47,7 @@ class SiteSafetyTests(unittest.TestCase):
         self.assertIn("99.19%", html)
         self.assertIn("not score-cleared", html.lower())
         self.assertIn("selector approval", html.lower())
+        self.assertIn("gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.zip", html)
         self.assertIn("gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.tif", html)
         self.assertIn("h-unq1-blind-stepover-radiometric-conduit-dots-20261027T170959Z-339ac2dd-zeros.tif", html)
         self.assertIn("Not cleared to submit", html)
@@ -59,6 +60,9 @@ class SiteSafetyTests(unittest.TestCase):
         self.assertIn("holdout dti diagnostic", html.lower())
         self.assertIn("0.0078", html)
         self.assertIn("0.105830", html)
+        self.assertIn("0.090111", html)
+        self.assertIn("0.089174", html)
+        self.assertIn("0.1218", html)
         self.assertIn("not a leaderboard forecast", html.lower())
         self.assertIn("no organizer receipt", html.lower())
         self.assertIn("97.58%", html)
@@ -83,7 +87,7 @@ class SiteSafetyTests(unittest.TestCase):
         self.assertLessEqual(card["submission_note_characters"], 140)
 
     def test_download_links_only_known_research_lanes_with_negative_labeling(self):
-        allowed = ("ocda-mscs", "h-unq1", "concord5", "h195field", "upflow")
+        allowed = ("uwbp-drcs", "ocda-mscs", "h-unq1", "concord5", "h195field", "upflow")
         for page in ("index.html", "executive-summary.html", "how-to-submit.html"):
             html = self.html(page)
             parser = Links()
@@ -129,6 +133,36 @@ class SiteSafetyTests(unittest.TestCase):
         self.assertTrue(c["correlation_overlap_vs_registry"]["discrete_detectors_surface_passed"])
         self.assertTrue(c["correlation_overlap_vs_registry"]["discrete_detectors_final_passed"])
         self.assertLessEqual(c["correlation_overlap_vs_registry"]["max_within_3px_vs_discrete_detectors"], 0.70)
+        self.assertLessEqual(len(c["submission_note"]), 140)
+
+    def test_uwbp_drcs_lane_card_is_negative_admissible_and_unique(self):
+        c = json.loads((ROOT / "docs/evidence/run_card_uwbp_drcs.json").read_text())
+        self.assertEqual(c, json.loads((ROOT / "evidence/run_card_uwbp_drcs.json").read_text()))
+        self.assertEqual(c["verdict"], "negative")
+        self.assertFalse(c["ok_to_submit"])
+        self.assertFalse(c["slot_used"])
+        self.assertEqual(c["holdout_dti"]["status"], "ADMISSIBLE_FOLD_LOCAL")
+        self.assertEqual(c["holdout_dti"]["score_label"], "HOLDOUT-DTI")
+        self.assertEqual(c["holdout_dti"]["n_withheld_positives"], 22232)
+        val = c["holdout_dti"]["valid_value"]
+        ci = c["holdout_dti"]["valid_ci95"]
+        self.assertTrue(0.0 < ci[0] <= val <= ci[1] < 1.0)
+        sgmc = c["holdout_dti"]["sgmc_regional_off_catalogue"]
+        self.assertEqual(sgmc["score_label"], "HOLDOUT-DTI")
+        self.assertTrue(sgmc["zero_sgmc_in_training_and_inference"])
+        self.assertTrue(0.08 < sgmc["exp_b3_sgmc_calibrated_ci95"][0] <= sgmc["exp_b3_sgmc_prevalence_calibrated_dti"] <= sgmc["exp_b3_sgmc_calibrated_ci95"][1] < 0.12)
+        self.assertTrue(c["validator_output"]["all_checks_passed"])
+        self.assertTrue(c["validator_output_nan"]["all_checks_passed"])
+        self.assertEqual(hashlib.sha256((ROOT / c["raster_path"]).read_bytes()).hexdigest(), c["raster_sha256"])
+        self.assertEqual(hashlib.sha256((ROOT / c["raster_path_nan"]).read_bytes()).hexdigest(), c["raster_sha256_nan"])
+        self.assertEqual(hashlib.sha256((ROOT / c["submission_zip"]).read_bytes()).hexdigest(), c["submission_zip_sha256"])
+        u = c["correlation_overlap_vs_registry"]
+        self.assertEqual(u["n_total_audited_rasters"], 59)
+        self.assertEqual(u["n_discrete_fault_detector_peers"], 57)
+        self.assertTrue(u["discrete_detectors_surface_passed"])
+        self.assertTrue(u["discrete_detectors_final_passed"])
+        self.assertLessEqual(u["max_abs_spearman_vs_discrete_detectors"], 0.90)
+        self.assertLessEqual(u["max_within_3px_vs_discrete_detectors"], 0.70)
         self.assertLessEqual(len(c["submission_note"]), 140)
 
     def test_all_local_html_links_resolve(self):
