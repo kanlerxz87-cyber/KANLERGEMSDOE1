@@ -1,0 +1,69 @@
+{
+  "schema": "GEMSDOE-PARALLEL-RUN-CARD-v2.1",
+  "reviewed_utc": "2026-10-28",
+  "review_kind": "repository review only; no experiment or raster generation performed",
+  "lane": "H-K1-A (OCDA-MSCS), prior 2026-10-27 lane; three-experiment budget already consumed",
+  "hypothesis": "Moderately dipping Great Basin normal faults may create lateral offsets between surface breaks and subsurface density, magnetic, and MT interfaces, potentially producing a concordant hanging-wall structural signature.",
+  "mechanism": "Previously tested OCDA-MSCS feature stack with fold-local two-stage PU-HGB and inner-withheld tip/step-over calibration, then greedy CELF placement under the 300 m distance kernel and fold-local visible-fault B=2 collar. This review did not rerun the method.",
+  "named_non_fault_process": "Pleistocene pluvial shoreline berms (Lakes Lahontan and Bonneville), basalt mesa or caldera-rim cliffs, and coalescing unfaulted alluvial-fan aprons.",
+  "holdout_dti": {
+    "label": "HOLDOUT-DTI (historical evidence; not freshly rerun and not a leaderboard estimate)",
+    "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+    "n_withheld_positives": 22232,
+    "value": 0.10583,
+    "ci95": [0.095019, 0.115257],
+    "evidence_file": "docs/evidence/run_card_ocda_mscs.json",
+    "incumbent_historical_holdout_dti": {
+      "label": "HOLDOUT-DTI",
+      "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+      "n_withheld_positives": 22232,
+      "value": 0.099202,
+      "ci95": [0.085951, 0.112668]
+    },
+    "paired_candidate_minus_incumbent_ci95": [-0.003423, 0.015957],
+    "not_a_leaderboard_forecast": true
+  },
+  "feature_canaries": {
+    "label": "HOLDOUT-DTI leakage canary evidence",
+    "historical_evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+    "features_tested": 63,
+    "maximum_symmetric_auc": 0.738633,
+    "threshold": 0.90,
+    "all_below_threshold": true,
+    "freshly_rerun": false
+  },
+  "correlation_overlap_vs_registry": {
+    "rule": "Stop if absolute pre-placement Spearman rho > 0.90 OR >70% of candidate dots are within 3 px of a registry raster.",
+    "scope": "Historical partial registry, not exhaustive; prior lane audit",
+    "max_abs_spearman_vs_43_discrete_detectors": 0.078475,
+    "max_within_3px_vs_43_discrete_detectors": 0.523334,
+    "surface_and_dot_gate_against_discrete_detectors": "PASS in historical audit",
+    "literal_lattice_overlap_within_3px": 0.999363,
+    "lattice_gate": "FAIL; exceeds 0.70 STOP threshold",
+    "result": "candidate fails mandatory uniqueness under the literal registry rule"
+  },
+  "raster": {
+    "file": "docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-nan.tif",
+    "sha256": "06ccd852475120cbdff86732252478096c821babe6e608aae9e66945cc7c4bb2"
+  },
+  "validator_output": {
+    "evidence_file": "docs/evidence/ocda_uniqueness_and_gate.json",
+    "freshly_rerun": false,
+    "no_nan_inside_footprint": true,
+    "values_in_0_1_inside_footprint": true,
+    "crs": "EPSG:32611",
+    "shape": [3730, 3292],
+    "transform": [100.0, 0.0, 243350.0, 0.0, -100.0, 4508550.0],
+    "local_format_check": "PASS historically",
+    "official_outside_footprint_null_or_nan_check": "PASS historically for this -nan.tif artifact",
+    "organizer_template_authenticated": false
+  },
+  "submission_name": "gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-nan.tif",
+  "submission_note": "OCDA-MSCS Exp3 OOF PU-HGB+300mCELF, 37654 dots; RESEARCH-HOLD",
+  "submission_note_characters": 61,
+  "verdict": "negative",
+  "ok_to_download_and_submit": false,
+  "slot_used": false,
+  "experiments_run_this_review": 0,
+  "remaining_work": "Resolve lane authorization and complete the full registry/provenance checks before any new experiment. Do not place this raster in a contest slot."
+}
