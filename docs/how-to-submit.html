@@ -1,28 +1,15 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Submission instructions &amp; automated gate · KANLER GEMS</title><link rel="stylesheet" href="assets/style.css"></head>
-<body><header><div class="wrap head"><p class="brand">KANLERGEMSDOE1 · DOE GEMS PRIZE · SUBMISSION GATE</p><h1>How to submit — and avoid invalid prediction values</h1><nav class="nav" aria-label="Primary"><a href="index.html">Status</a><a href="executive-summary.html">Executive summary</a><a href="research.html">Why 0.2778?</a><a href="hypotheses.html">Research slate</a><a href="how-to-submit.html" aria-current="page">Submission gate</a><a href="submission-readiness.html">Readiness CSV</a><a href="sources.html">Sources</a></nav></div></header>
-<main class="wrap">
-<div class="banner" role="status"><strong>STOP — NO FILE IS CLEARED FOR LIVE SUBMISSION</strong>
-<p><strong>There is no approved “download and submit” TIFF today.</strong> The newest candidate is research-only: although its NaN-outside ZIP passes local CRS/shape/transform and range checks, the strict uniqueness gate fails against the registry's spacing-5 lattice (<code>99.9363%</code> of emitted dots are within 3 px, above the <code>70%</code> stop threshold). Do not upload it or any other artifact. No competition slot has been used.</p></div>
-
-<h2>When a candidate is eventually promoted</h2>
+<title>Submission guide · KANLER GEMS</title><link rel="stylesheet" href="assets/style.css"></head>
+<body><header><div class="wrap head"><p class="brand">KANLERGEMSDOE1 / DOE GEMS PRIZE</p><h1>How to submit</h1><nav class="nav" aria-label="Primary"><a href="index.html">Status</a><a href="executive-summary.html">Executive summary</a><a href="hypotheses.html">Research slate</a><a href="how-to-submit.html" aria-current="page">Submission guide</a><a href="sources.html">Sources</a></nav></div></header>
+<main class="wrap"><div class="banner" role="status"><strong>STOP — NO RASTER IN THIS REPO IS CLEARED FOR LIVE SUBMISSION</strong><p>File to submit: <strong>NONE</strong>. The recorded candidate fails the literal registry uniqueness rule and has not been selected for a slot. Technical validation alone is not approval. See the <a href="submission-readiness.html">nine-site readiness table</a>.</p></div>
+<h2>Once a candidate has actually been cleared</h2>
 <ol class="steps">
-<li>On this site's executive summary, verify the current banner explicitly says <code>OK TO SUBMIT</code>, and the selected candidate's run card says <code>"verdict": "promote"</code> and <code>"ok_to_submit": true</code>. A format pass alone is not promotion.</li>
-<li>Use only the exact single-band GeoTIFF (or ZIP containing exactly one GeoTIFF) specified in that promotion record. Confirm it matches the official sample's CRS, dimensions, and affine transform. Do not use a similarly named diagnostic TIFF.</li>
-<li>Before upload, ensure every prediction value within the valid footprint is finite and in <code>[0,1]</code>. NaN, infinity, nodata sentinels, logits, and values outside that interval inside the footprint can trigger <code>Predicted values must be in range [0, 1]</code>. The shared writer rejects invalid inputs rather than silently clipping them.</li>
-<li>Respect the sample's outside-footprint representation and the competition's format instructions. This repo emits a NaN-outside candidate ZIP and a zero-outside diagnostic TIFF; they are not interchangeable. Local validation is not proof of DrivenData acceptance, and no candidate here has a portal receipt.</li>
-<li>Only after the separate team selector approves a slot, open the official <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">competition submission page</a>, choose <em>New submission</em>, attach that exact file, and enter the run-card note (maximum 140 characters). Keep the submission receipt; only it can support an <code>ORGANIZER-CONFIRMED</code> score claim.</li>
+<li>Verify the separately issued selector decision, the final file SHA-256, full registry comparisons at the surface and dot stages, holdout evidence and validator receipt. Confirm the current quota on the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">competition portal</a>. A historical research card is not selector approval.</li>
+<li>Compare the file against the authenticated competition template and current <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">submission format</a>. The submission page describes a single-band GeoTIFF or a ZIP containing one GeoTIFF, with matching CRS, shape and transform. Values within the footprint must be finite and between 0 and 1. Confirm the current official outside-footprint/nodata requirement; the local mirror and reference notebook do not establish portal acceptance.</li>
+<li>On the New submission page, choose the selected file. Paste the unique note from that file's run card (at most 140 characters), then submit only if all gates still pass. Record the displayed receipt and score with the exact hash; no score is organizer-confirmed without that receipt.</li>
 </ol>
-
-<h2>What has been validated locally (not upload authorization)</h2>
-<p>The archived OCDA-MSCS Exp 3 NaN-outside ZIP records one band, <code>float32</code>, <code>EPSG:32611</code>, shape <code>3730 × 3292</code>, matching affine transform, no NaN/Inf inside the footprint, and values in <code>[0,1]</code>. The matching zero-outside <code>.tif</code> is explicitly a diagnostic variant; its outside-footprint encoding differs from the NaN-outside ZIP. These checks address file integrity and the reported range error only. They do not authenticate the sample template, establish score, clear uniqueness, or authorize a slot.</p>
-<p>Evidence: <a href="evidence/run_card_ocda_mscs.json">OCDA-MSCS run card</a> · <a href="downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-audit.json">local artifact audit</a> · <a href="evidence/current_run_card.json">current negative run card</a> · <a href="evidence/submission_readiness.csv">nine-site readiness table</a>.</p>
-
-<h2>Official references</h2>
-<ul><li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">DrivenData competition overview and submission portal</a></li>
-<li><a href="https://www.drivendata.org/competitions/306/competition-doe-gems/data/">Competition data page</a> (login may be required)</li>
-<li><a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">GEMS competition rules PDF</a></li>
-<li><a href="https://github.com/drivendataorg/gems-prize-reference-solution">Organizer reference-solution repository</a></li></ul>
-<footer>Evidence last audited 27 October 2026 UTC; status reviewed in this session 28 October 2026 UTC. A local check is not organizer confirmation. · <a href="executive-summary.html">Back to executive summary</a></footer>
-</main></body></html>
+<h2>Investigating the reported range error</h2>
+<p>The exact cause is <strong>unknown</strong> without the rejected file and portal receipt. Out-of-range values, infinity, nodata sentinels and NaNs in scored pixels are possible causes, not diagnoses. Run the shared <code>scripts/submission_writer.py</code> checks on a candidate and compare its footprint and metadata with an authenticated template. Do not assume that replacing nodata with zeros is accepted: the <a href="https://github.com/drivendataorg/gems-prize-reference-solution">reference solution</a> is an example, not the portal validator. Local checks cannot guarantee an upload succeeds.</p>
+<p>Until the format, uniqueness and selector gates are resolved, <strong>do not submit any historical research TIFF</strong>. <a href="review-20261028.md">Read the review and limitations</a>.</p>
+<footer>Review: 28 October 2026 UTC · <a href="sources.html">Official sources</a></footer></main></body></html>
