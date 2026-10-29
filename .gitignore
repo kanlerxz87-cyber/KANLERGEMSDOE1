@@ -24,3 +24,4 @@ registry/rasters/
 GEMS_DATA_DIR
 
 data/cache/
+data/sites/

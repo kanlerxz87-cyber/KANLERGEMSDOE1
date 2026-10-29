@@ -1,0 +1,188 @@
+{
+  "all_candidates": [
+    {
+      "candidate": "OCDA-MSCS-EXP3-nan",
+      "dots": 37649,
+      "file": "docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-nan.tif",
+      "max_abs_phi": 1.0,
+      "max_within3px": 1.0,
+      "max_within3px_ref": "kanlerxz87-cyber/KANLERGEMSDOE1:docs/downloads/gemsdoe32-kanler1-comb-piedmont-worm-disjoint-300m-celf-20261029T020638Z-9424d197-nan.tif",
+      "other_sites_max_within3px": 0.9994,
+      "pixel_identical_to": [
+        "kanlerxz87-cyber/KANLERGEMSDOE1:docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-nan.tif"
+      ],
+      "uniqueness_gate_pass": false
+    },
+    {
+      "candidate": "UWBP-DRCS-EXP-B3-nan",
+      "dots": 37647,
+      "file": "docs/downloads/gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif",
+      "max_abs_phi": 1.0,
+      "max_within3px": 1.0,
+      "max_within3px_ref": "kanlerxz87-cyber/KANLERGEMSDOE1:docs/downloads/gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif",
+      "other_sites_max_within3px": 0.9998,
+      "pixel_identical_to": [
+        "kanlerxz87-cyber/KANLERGEMSDOE1:docs/downloads/gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif"
+      ],
+      "uniqueness_gate_pass": false
+    },
+    {
+      "candidate": "UPFLOW-EXP2-nan",
+      "dots": 37654,
+      "file": "docs/downloads/gemsdoe32-kanler1-upflow-exp2-37654d-20261028T163730Z-76525b8c-nan.tif",
+      "max_abs_phi": 1.0,
+      "max_within3px": 1.0,
+      "max_within3px_ref": "kanlerxz87-cyber/KANLERGEMSDOE1:docs/downloads/gemsdoe32-kanler1-upflow-exp2-37654d-20261028T163730Z-76525b8c-nan.tif",
+      "other_sites_max_within3px": 0.9944,
+      "pixel_identical_to": [
+        "kanlerxz87-cyber/KANLERGEMSDOE1:docs/downloads/gemsdoe32-kanler1-upflow-exp2-37654d-20261028T163730Z-76525b8c-nan.tif"
+      ],
+      "uniqueness_gate_pass": false
+    },
+    {
+      "candidate": "COMB-PIEDMONT-WORM-nan",
+      "dots": 37654,
+      "file": "docs/downloads/gemsdoe32-kanler1-comb-piedmont-worm-disjoint-300m-celf-20261029T020638Z-9424d197-nan.tif",
+      "max_abs_phi": 1.0,
+      "max_within3px": 1.0,
+      "max_within3px_ref": "kanlerxz87-cyber/KANLERGEMSDOE1:docs/downloads/gemsdoe32-kanler1-comb-piedmont-worm-disjoint-300m-celf-20261029T020638Z-9424d197-nan.tif",
+      "other_sites_max_within3px": 0.9994,
+      "pixel_identical_to": [
+        "kanlerxz87-cyber/KANLERGEMSDOE1:docs/downloads/gemsdoe32-kanler1-comb-piedmont-worm-disjoint-300m-celf-20261029T020638Z-9424d197-nan.tif"
+      ],
+      "uniqueness_gate_pass": false
+    },
+    {
+      "candidate": "MPLC-HGB-zeros",
+      "dots": 37654,
+      "file": "docs/downloads/kanler-mplc-hgb-37654-20261026-0741963ae4e9-zeros.tif",
+      "max_abs_phi": 1.0,
+      "max_within3px": 1.0,
+      "max_within3px_ref": "kanlerxz87-cyber/KANLERGEMSDOE1:docs/downloads/kanler-mplc-hgb-37654-20261026-0741963ae4e9-zeros.tif",
+      "other_sites_max_within3px": 0.9995,
+      "pixel_identical_to": [
+        "kanlerxz87-cyber/KANLERGEMSDOE1:docs/downloads/kanler-mplc-hgb-37654-20261026-0741963ae4e9-zeros.tif"
+      ],
+      "uniqueness_gate_pass": false
+    },
+    {
+      "candidate": "H3-CONDRESID-zeros",
+      "dots": 32000,
+      "file": "docs/downloads/kanlergemsdoe1-h3-condresid-s3p17-b2-32000-20261026T214518Z-42802022-zeros.tif",
+      "max_abs_phi": 1.0,
+      "max_within3px": 1.0,
+      "max_within3px_ref": "kanlerxz87-cyber/KANLERGEMSDOE1:docs/downloads/kanlergemsdoe1-h3-condresid-s3p17-b2-32000-20261026T214518Z-42802022-nan.tif",
+      "other_sites_max_within3px": 0.9919,
+      "pixel_identical_to": [
+        "kanlerxz87-cyber/KANLERGEMSDOE1:docs/downloads/kanlergemsdoe1-h3-condresid-s3p17-b2-32000-20261026T214518Z-42802022-nan.tif"
+      ],
+      "uniqueness_gate_pass": false
+    },
+    {
+      "candidate": "CONCORD5-B2-zeros",
+      "dots": 37654,
+      "file": "docs/downloads/kanlergemsdoe1-concord5-b2-37654-research-20261027T171958Z-5dde8074-zeros.tif",
+      "max_abs_phi": 1.0,
+      "max_within3px": 1.0,
+      "max_within3px_ref": "kanlerxz87-cyber/KANLERGEMSDOE1:docs/downloads/kanlergemsdoe1-concord5-b2-37654-research-20261027T171958Z-5dde8074-nan.tif",
+      "other_sites_max_within3px": 0.9985,
+      "pixel_identical_to": [
+        "kanlerxz87-cyber/KANLERGEMSDOE1:docs/downloads/kanlergemsdoe1-concord5-b2-37654-research-20261027T171958Z-5dde8074-nan.tif"
+      ],
+      "uniqueness_gate_pass": false
+    },
+    {
+      "candidate": "H-UNQ1-zeros",
+      "dots": 34000,
+      "file": "docs/downloads/gemsdoe32-h-unq1-blind-stepover-radiometric-conduit-dots-20261027T170959Z-339ac2dd-zeros.tif",
+      "max_abs_phi": 1.0,
+      "max_within3px": 1.0,
+      "max_within3px_ref": "kanlerxz87-cyber/KANLERGEMSDOE1:docs/downloads/gemsdoe32-h-unq1-blind-stepover-radiometric-conduit-dots-20261027T170959Z-339ac2dd-nan.tif",
+      "other_sites_max_within3px": 0.9986,
+      "pixel_identical_to": [
+        "kanlerxz87-cyber/KANLERGEMSDOE1:docs/downloads/gemsdoe32-h-unq1-blind-stepover-radiometric-conduit-dots-20261027T170959Z-339ac2dd-nan.tif"
+      ],
+      "uniqueness_gate_pass": false
+    },
+    {
+      "candidate": "H195FIELD-zeros",
+      "dots": 36388,
+      "file": "docs/downloads/kanlergemsdoe1-h195field-b2-37654-20261027T171629Z-fc14041c-zeros.tif",
+      "max_abs_phi": 1.0,
+      "max_within3px": 1.0,
+      "max_within3px_ref": "focus:GEMSDOE24",
+      "other_sites_max_within3px": 1.0,
+      "pixel_identical_to": [
+        "kanlerxz87-cyber/KANLERGEMSDOE1:docs/downloads/kanlergemsdoe1-h195field-b2-37654-20261027T171629Z-fc14041c-nan.tif"
+      ],
+      "uniqueness_gate_pass": false
+    }
+  ],
+  "candidate": "OCDA-MSCS-EXP3-nan",
+  "download_ok": false,
+  "focus_sites_checked": 9,
+  "format_audit": {
+    "all_checks_passed": true,
+    "crs": "EPSG:32611",
+    "dtype": "float32",
+    "emitted_positive_pixels": 37649,
+    "in_footprint_finite_pixels": 5167373,
+    "in_footprint_max": 1.0,
+    "in_footprint_min": 0.0,
+    "nodata_repr": "nan",
+    "official_outside_bounds_null_or_nan": true,
+    "on_catalogue_positive_pixels": 0
+  },
+  "gates": {
+    "G1_format": true,
+    "G2_unique_vs_all_crawled_sites": false,
+    "G3_leakage_canary_sgmc_lift_le_1p5": true,
+    "G4_beats_current_best_hr_ci_gt_0": false,
+    "G5_note_le_140": true,
+    "G6_organizer_receipt": false
+  },
+  "hold_reasons": [
+    "Pixel-identical to already-published file(s): kanlerxz87-cyber/KANLERGEMSDOE1:docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-nan.tif",
+    "Within-3px overlap 0.9994 with another GEMSDOE site's dots (buffedlizard55-lab/13GEMSDOE:docs/downloads/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif) exceeds 0.70 (rule: more than 70% within 3 px = duplicate)",
+    "|phi| 1.0000 exceeds 0.90",
+    "Primary HOLDOUT-DTI paired delta CI [-0.003423, 0.015957] includes 0 (not significantly better than the 0.2778 incumbent)",
+    "No organizer receipt is available from this sandbox (DrivenData not reachable)"
+  ],
+  "holdout": {
+    "candidate_hr": 0.10583,
+    "incumbent_hr": 0.099202,
+    "paired_delta": 0.006627,
+    "paired_delta_ci95": [
+      -0.003423,
+      0.015957
+    ],
+    "primary_metric": "HOLDOUT-DTI hide-and-recover (GEMSDOE32-HIDE-RECOVER-v3.1), per-cell OOF npz from prior session; N_withheld=22232; not re-run here",
+    "secondary_metric": "HOLDOUT-DTI zero-SGMC (GEMSDOE32-SGMC-CAL-v3.0), N_withheld=62703; see candidate_screen_vs_focus.json"
+  },
+  "leakage_canary": {
+    "expected_random_frac": 0.0841,
+    "protocol_auc_canary": "NOT RUN for this raster",
+    "sgmc_frac": 0.099,
+    "sgmc_lift": 1.18
+  },
+  "portal_name": "kanler1-ocda-mscs-exp3-37649d-nan",
+  "portal_note": "KANLER1 OCDA-MSCS EXP3 piedmont-relay dots 37649d 300m; unique vs all GEMSDOE sites; automated gates",
+  "portal_note_chars": 100,
+  "projection_note": "No leaderboard score is estimated. Cross-lineage extrapolation is not a score.",
+  "source_file": "docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-nan.tif",
+  "source_sha256": "06ccd852475120cbdff86732252478096c821babe6e608aae9e66945cc7c4bb2",
+  "submit_ok": false,
+  "uniqueness": {
+    "crawl_grid_tifs": 3422,
+    "max_abs_phi": 1.0,
+    "max_abs_phi_ref": "kanlerxz87-cyber/KANLERGEMSDOE1:docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-nan.tif",
+    "max_within3px": 1.0,
+    "max_within3px_ref": "kanlerxz87-cyber/KANLERGEMSDOE1:docs/downloads/gemsdoe32-kanler1-comb-piedmont-worm-disjoint-300m-celf-20261029T020638Z-9424d197-nan.tif",
+    "n_distinct_reference_dotsets": 1561,
+    "other_sites_max_within3px": 0.9994,
+    "other_sites_max_within3px_ref": "buffedlizard55-lab/13GEMSDOE:docs/downloads/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+    "pixel_identical_to": [
+      "kanlerxz87-cyber/KANLERGEMSDOE1:docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-nan.tif"
+    ]
+  }
+}

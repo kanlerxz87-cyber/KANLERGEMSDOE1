@@ -1,0 +1,114 @@
+{
+  "truth_mask": "SGMC off-catalogue (derived_sgmc_faults_100m_u8, >NEAR_LABEL_PX from labels, on footprint)",
+  "rows": [
+    {
+      "file": "docs/downloads/gemsdoe32-h-unq1-blind-stepover-radiometric-conduit-dots-20261027T170959Z-339ac2dd-zeros.tif",
+      "dots": 34000,
+      "sgmc_canary_frac": 0.5958,
+      "expected_random_frac": 0.0843,
+      "lift": 7.07,
+      "canary_flag": true,
+      "dot_mask_sha256_16": "fd3e78096043cd0f"
+    },
+    {
+      "file": "docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+      "dots": 37654,
+      "sgmc_canary_frac": 0.1328,
+      "expected_random_frac": 0.0846,
+      "lift": 1.57,
+      "canary_flag": true,
+      "dot_mask_sha256_16": "e5eb6e7e40d5ed94"
+    },
+    {
+      "file": "docs/downloads/gemsdoe32-kanler1-comb-piedmont-worm-disjoint-300m-celf-20261029T020638Z-9424d197-zeros.tif",
+      "dots": 37654,
+      "sgmc_canary_frac": 0.099,
+      "expected_random_frac": 0.084,
+      "lift": 1.18,
+      "canary_flag": false,
+      "dot_mask_sha256_16": "9424d19752efa894"
+    },
+    {
+      "file": "docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.tif",
+      "dots": 37649,
+      "sgmc_canary_frac": 0.099,
+      "expected_random_frac": 0.0841,
+      "lift": 1.18,
+      "canary_flag": false,
+      "dot_mask_sha256_16": "1db32b55b167c505"
+    },
+    {
+      "file": "docs/downloads/gemsdoe32-kanler1-upflow-exp2-37654d-20261028T163730Z-76525b8c-zeros.tif",
+      "dots": 37654,
+      "sgmc_canary_frac": 0.0774,
+      "expected_random_frac": 0.0835,
+      "lift": 0.93,
+      "canary_flag": false,
+      "dot_mask_sha256_16": "76525b8cbf005d36"
+    },
+    {
+      "file": "docs/downloads/gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-zeros.tif",
+      "dots": 37647,
+      "sgmc_canary_frac": 0.1464,
+      "expected_random_frac": 0.0852,
+      "lift": 1.72,
+      "canary_flag": true,
+      "dot_mask_sha256_16": "6e01786ec76b0d7c"
+    },
+    {
+      "file": "docs/downloads/kanler-mplc-hgb-37654-20261026-0741963ae4e9-zeros.tif",
+      "dots": 37654,
+      "sgmc_canary_frac": 0.1084,
+      "expected_random_frac": 0.0843,
+      "lift": 1.28,
+      "canary_flag": false,
+      "dot_mask_sha256_16": "2b6f393bdf23316f"
+    },
+    {
+      "file": "docs/downloads/kanlergemsdoe1-concord5-b2-37654-research-20261027T171958Z-5dde8074-zeros.tif",
+      "dots": 37654,
+      "sgmc_canary_frac": 0.1397,
+      "expected_random_frac": 0.0845,
+      "lift": 1.65,
+      "canary_flag": true,
+      "dot_mask_sha256_16": "5dde807405367f77"
+    },
+    {
+      "file": "docs/downloads/kanlergemsdoe1-h1-iedr-s3p17-b2-32000-20261026T214518Z-fe519ae3-zeros.tif",
+      "dots": 32000,
+      "sgmc_canary_frac": 0.054,
+      "expected_random_frac": 0.0839,
+      "lift": 0.64,
+      "canary_flag": false,
+      "dot_mask_sha256_16": "fe519ae3aadb4af5"
+    },
+    {
+      "file": "docs/downloads/kanlergemsdoe1-h195field-b2-37654-20261027T171629Z-fc14041c-zeros.tif",
+      "dots": 36388,
+      "sgmc_canary_frac": 0.1322,
+      "expected_random_frac": 0.0842,
+      "lift": 1.57,
+      "canary_flag": true,
+      "dot_mask_sha256_16": "fc14041ccd1e1ed1"
+    },
+    {
+      "file": "docs/downloads/kanlergemsdoe1-h2-htsi-s3p17-b2-32000-20261026T214518Z-571145eb-zeros.tif",
+      "dots": 32000,
+      "sgmc_canary_frac": 0.052,
+      "expected_random_frac": 0.0846,
+      "lift": 0.61,
+      "canary_flag": false,
+      "dot_mask_sha256_16": "571145eb99914fd3"
+    },
+    {
+      "file": "docs/downloads/kanlergemsdoe1-h3-condresid-s3p17-b2-32000-20261026T214518Z-42802022-zeros.tif",
+      "dots": 32000,
+      "sgmc_canary_frac": 0.0947,
+      "expected_random_frac": 0.0846,
+      "lift": 1.12,
+      "canary_flag": false,
+      "dot_mask_sha256_16": "42802022af2b5467"
+    }
+  ],
+  "pixel_identical_groups": []
+}

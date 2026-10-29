@@ -8,6 +8,33 @@ End-to-end geological feature engineering, fold-local hide-and-recover evaluatio
 
 ---
 
+## START HERE — Submission Desk (updated 2026-10-29)
+
+**Go to [`docs/submit.html`](docs/submit.html)** — it shows, in one place, the single file to download, whether it is OK to submit, the portal name and note, the gate results, the nine focus sites, and the irregularities flagged for review.
+
+- **Download (current file):** `docs/submit/kanler1-ocda-mscs-exp3-37649d-nan.tif` (single-band GeoTIFF, EPSG:32611, 3730×3292, NaN outside footprint, values in [0, 1]).
+- **Submit verdict:** the desk states the verdict computed from the gates, not a hand-written opinion. Machine-readable evidence: `docs/evidence/submit_verdict.json`.
+- **Scores:** every number is labelled either `HOLDOUT-DTI` (with evaluator version, N withheld, and 95% CI) or `USER/OWNER-REPORT` (from the prompt). No leaderboard score is estimated for the candidate file.
+- **Next lanes (proposed, not validated):** `docs/research/hypotheses-20261029-next-lanes.md`.
+- **Rebuild everything from evidence:**
+
+```bash
+bash scripts/download_competition_data.sh        # SHA-pinned owner mirrors (not organizer-authenticated)
+.venv/bin/python scripts/fetch_focus_tifs.py      # 9 focus TIFs from pinned GitHub commits
+.venv/bin/python scripts/audit_focus_submissions.py
+.venv/bin/python scripts/screen_candidates_vs_focus.py
+.venv/bin/python scripts/leakage_canary_sgmc.py
+.venv/bin/python scripts/crawl_gemsdoe_sites.py   # every listed GEMSDOE repo (git, read-only)
+.venv/bin/python scripts/uniqueness_vs_all_sites.py
+.venv/bin/python scripts/build_submit_desk.py      # writes docs/submit.html + docs/evidence/submit_verdict.json
+.venv/bin/python scripts/build_submit_desk.py --check
+.venv/bin/python -m unittest discover -s tests -v
+```
+
+> Section 0 below is the **2026-10-28 historical banner**. It is superseded by the submission desk. Its statements about which rasters were cleared are kept for the audit trail.
+
+---
+
 ## 0. Current Portal Clearance Banner (Unmistakable Gate Verdict)
 
 > **STOP — NO RASTER IN `KANLERGEMSDOE1` IS CLEARED FOR LIVE DRIVENDATA PORTAL SUBMISSION (`verdict: "negative"`, `ok_to_submit: false`, `0` weekly slots consumed; separate team-selector approval required).**
