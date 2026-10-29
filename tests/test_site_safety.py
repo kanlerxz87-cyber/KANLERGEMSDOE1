@@ -87,7 +87,7 @@ class SiteSafetyTests(unittest.TestCase):
         self.assertLessEqual(card["submission_note_characters"], 140)
 
     def test_download_links_only_known_research_lanes_with_negative_labeling(self):
-        allowed = ("uwbp-drcs", "ocda-mscs", "h-unq1", "concord5", "h195field", "upflow")
+        allowed = ("uwbp-drcs", "ocda-mscs", "h-unq1", "concord5", "h195field", "upflow", "comb-piedmont-worm")
         for page in ("index.html", "executive-summary.html", "how-to-submit.html"):
             html = self.html(page)
             parser = Links()

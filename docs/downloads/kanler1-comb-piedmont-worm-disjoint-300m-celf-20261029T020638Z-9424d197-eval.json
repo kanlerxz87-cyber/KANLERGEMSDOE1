@@ -1,0 +1,127 @@
+{
+  "candidate_id": "KANLER1-COMB-PIEDMONT-WORM",
+  "path": "docs/downloads/gemsdoe32-kanler1-comb-piedmont-worm-disjoint-300m-celf-20261029T020638Z-9424d197-zeros.tif",
+  "emitted_pixels": 37654,
+  "hide_and_recover": {
+    "candidate_id": "KANLER1-COMB-PIEDMONT-WORM",
+    "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+    "score_label": "HOLDOUT-DTI",
+    "prediction_mode": "full_map_diagnostic_only",
+    "catalogue_feature_provenance_verified": false,
+    "promotion_evidence": false,
+    "provenance_warning": "Fold-local array inputs alone cannot prove visible-only feature construction; require an independent replay.",
+    "b_visible_px": 0.0,
+    "n_withheld_positives": 22232,
+    "n_spatial_clusters": 140,
+    "n_bootstrap_reps": 1000,
+    "pooled_dti": 0.009019278254815594,
+    "ci95_cluster_bootstrap": [
+      0.00774597038837732,
+      0.010284870370812629
+    ],
+    "fold_mean_dti": 0.00890536414278885,
+    "per_quadrant_dti": {
+      "NW": 0.008165466020952462,
+      "NE": 0.009649112214012687,
+      "SW": 0.010413410446020125,
+      "SE": 0.007393467890170118
+    },
+    "folds": {
+      "draw20_fold0": {
+        "dti": 0.008227654982705048,
+        "coverage": 0.013060983164242883,
+        "tp": 24.95953882686815,
+        "fp": 7499.1162247621305,
+        "fn": 1886.040461173132,
+        "n_truth": 1911,
+        "emitted": 7516
+      },
+      "draw20_fold1": {
+        "dti": 0.01004972215217881,
+        "coverage": 0.014347509855128492,
+        "tp": 33.730995669407086,
+        "fp": 7344.322855488108,
+        "fn": 2317.269004330593,
+        "n_truth": 2351,
+        "emitted": 7368
+      },
+      "draw20_fold2": {
+        "dti": 0.010421071349447409,
+        "coverage": 0.015088229344100429,
+        "tp": 55.60012513301008,
+        "fp": 11881.179674459447,
+        "fn": 3629.39987486699,
+        "n_truth": 3685,
+        "emitted": 11914
+      },
+      "draw20_fold3": {
+        "dti": 0.009008057716136855,
+        "coverage": 0.012006795251609722,
+        "tp": 38.72191468644135,
+        "fp": 8554.21025041041,
+        "fn": 3186.2780853135587,
+        "n_truth": 3225,
+        "emitted": 8579
+      },
+      "draw21_fold0": {
+        "dti": 0.008103277059199875,
+        "coverage": 0.012259648539472449,
+        "tp": 25.88011806682634,
+        "fp": 7499.040775143852,
+        "fn": 2085.1198819331735,
+        "n_truth": 2111,
+        "emitted": 7516
+      },
+      "draw21_fold1": {
+        "dti": 0.009248502275846567,
+        "coverage": 0.01342534047500908,
+        "tp": 30.408396175895565,
+        "fp": 7349.224351339487,
+        "fn": 2234.5916038241044,
+        "n_truth": 2265,
+        "emitted": 7368
+      },
+      "draw21_fold2": {
+        "dti": 0.01040574954259284,
+        "coverage": 0.015255462653657282,
+        "tp": 54.6755781507077,
+        "fp": 11881.135946290407,
+        "fn": 3529.3244218492923,
+        "n_truth": 3584,
+        "emitted": 11914
+      },
+      "draw21_fold3": {
+        "dti": 0.005778878064203382,
+        "coverage": 0.007824528216238925,
+        "tp": 24.25603747034067,
+        "fp": 8562.549014354503,
+        "fn": 3075.7439625296593,
+        "n_truth": 3100,
+        "emitted": 8579
+      }
+    }
+  },
+  "sgmc_off_catalogue": {
+    "candidate_id": "KANLER1-COMB-PIEDMONT-WORM",
+    "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+    "score_label": "HOLDOUT-DTI",
+    "n_withheld_positives": 62703,
+    "n_spatial_clusters": 140,
+    "n_bootstrap_reps": 1000,
+    "sgmc_raw_pooled_dti": 0.07510044954697903,
+    "sgmc_raw_ci95": [
+      0.06816947139043912,
+      0.08194724408720126
+    ],
+    "sgmc_prevalence_calibrated_dti": 0.05003984357142284,
+    "sgmc_calibrated_ci95": [
+      0.04505283662023321,
+      0.05447857077180193
+    ]
+  },
+  "legacy_summary": {
+    "catalogue_hidden_mean": 0.00890536414278885,
+    "sgmc_prevalence_calibrated_dti": 0.05003984357142286,
+    "drift_corrected_holdout_mean": 0.054668065721265244
+  }
+}

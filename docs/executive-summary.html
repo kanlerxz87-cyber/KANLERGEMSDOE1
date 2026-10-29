@@ -52,6 +52,51 @@
 <p><a href="evidence/focus_head_review_20261027.json">Source byte hashes and flagged irregularities</a>. A peer site’s upload permission is not inherited by this project.</p>
 <!-- END GENERATED FOCUS SUMMARY -->
 
+<h2>New Unique Candidate: KANLER1 H-COMB-1 (Disjoint OCDA Piedmont + UWBP Blind-Worm Dots)</h2>
+<div class="card">
+  <p><strong>Why this candidate exists:</strong> All nine owner-reported focus champions (GEMSDOE 24/25/27/28/30/31/32/33/36) derive from ONE nested H19-5 dotted support (D2.8 thinning → B=2 collar pruning = 37,654 px; GEMSDOE32 reported 0.2778) and are near-duplicates of each other (~100% within 3-px pairwise). H-COMB-1 is the first submission in the nine-site subset that is <strong>not</strong> an H19-5 derivative: it combines two complementary, non-H19-5 populations — Quaternary piedmont/relay dots from KANLER1-OCDA-MSCS-EXP-3 and strictly disjoint (&gt;3 px) off-catalogue blind-worm/knickzone dots from KANLER1-UWBP-DRCS-EXP-B3 — jointly packed to the 37,654-dot champion budget.</p>
+</div>
+
+<div class="table-wrap"><table><caption>H-COMB-1 · download, estimated score, uniqueness</caption><thead><tr><th>File to download (official encoding)</th><th>Estimated score (labeling)</th><th>Unique vs nine focus champions?</th><th>Download &amp; submit?</th></tr></thead><tbody>
+<tr>
+<td class="file">
+  <strong>Official submission ZIP (single -nan.tif):</strong><br>
+  <a href="downloads/gemsdoe32-kanler1-comb-piedmont-worm-disjoint-300m-celf-20261029T020638Z-9424d197-nan.zip">
+    <code>gemsdoe32-kanler1-comb-piedmont-worm-disjoint-300m-celf-20261029T020638Z-9424d197-nan.zip</code>
+  </a><br>
+  <strong>GeoTIFF inside ZIP:</strong> <code>gemsdoe32-kanler1-comb-piedmont-worm-disjoint-300m-celf-20261029T020638Z-9424d197-nan.tif</code><br>
+  <strong>SHA-256 (ZIP):</strong> <code>d905f8ad0025efee5bfeddd8a26c7fd3885c084b62342ea7754ebf9c017bbbc8</code><br>
+  <strong>SHA-256 (TIF):</strong> <code>1cec2ec6381eb0cb9cd879332aaa0d963e72dccfafe8b1ed338dcd0d0cfbe14c</code><br>
+  <small>37,654 binary dots · EPSG:32611 · 3730 × 3292 · 100 m geotransform · NaN outside footprint · values in [0,1] · 0 on mapped catalogue · 15/15 automated GeoTIFF checks PASSED</small>
+</td>
+<td>
+  <strong>HOLDOUT-DTI = 0.009019</strong> (GEMSDOE32-HIDE-RECOVER-v3.1, N=22,232 withheld positives, 95% CI [0.007746, 0.010285]) — full-map diagnostic only, not fold-local, not organizer-confirmed, <strong>not a leaderboard forecast</strong>.<br>
+  <strong>SGMC-CAL = 0.050040</strong> (zero-SGMC off-catalogue, N=62,703, 95% CI [0.045053, 0.054479]) — full-map diagnostic only.<br>
+  <small>No projection is written as a score. Leaderboard score can only be confirmed by the DrivenData organizer after submission.</small>
+</td>
+<td class="ok">
+  <strong>UNIQUE — PASS</strong><br>
+  <small>max 3-px overlap vs any registry/scored reference = 36.56% (≤70%) · max \|Spearman\| = 0.0140 (≤0.90) · not identical to any reference support · all nine focus champions are ~100% within 3-px of each other; H-COMB-1 shares only 36.56% max with the closest reference.</small>
+</td>
+<td class="bad">
+  <strong>RESEARCH-HOLD — DO NOT SUBMIT YET</strong><br>
+  <small><code>verdict: negative</code> · <code>ok_to_submit: false</code> · 0 weekly slots used · pending separate team-selector approval and authenticated competition template. Format is valid and uniqueness is confirmed; scientific holdout evidence is pending independent fold-local replay.</small>
+</td>
+</tr>
+</tbody></table></div>
+
+<p><strong>Submission note (≤140 chars, for the DrivenData portal):</strong> <code>KANLER1 disjoint OCDA piedmont + UWBP blind-worm dots, 300m CELF, unique vs nine H19-5 focus champions [RESEARCH-HOLD]</code> (128 chars).</p>
+
+<h2>How to Download and Submit (once selector-cleared)</h2>
+<ol>
+  <li><strong>Download</strong> the <code>-nan.zip</code> file linked above (contains the single official-format <code>-nan.tif</code> with NaN outside the submission bounds).</li>
+  <li>On the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/submissions/">DrivenData submission page</a>, upload the ZIP (or the single GeoTIFF).</li>
+  <li>Paste the tracking note above (≤140 characters) into the <strong>Note</strong> field.</li>
+  <li>Confirm <code>verdict == "promote"</code> and <code>ok_to_submit == true</code> from the separate team selector <strong>before</strong> uploading; verify remaining weekly slots on the portal.</li>
+  <li>Archive the organizer submission receipt before labeling any score <code>ORGANIZER-CONFIRMED</code>.</li>
+</ol>
+<p class="note"><strong>Why the “Predicted values must be in range [0, 1]” error cannot occur with this file:</strong> <code>submission_writer.py</code> rejects (never clips) any prediction outside <code>[0.0, 1.0]</code>, any non-finite value inside the footprint, and any non-zero value outside the footprint or on the mapped catalogue. Both <code>-zeros.tif</code> and <code>-nan.tif</code pass all 15 automated checks locally. The official submission uses <code>-nan.tif</code> (NaN outside bounds), which matches the organizer's outside-footprint nodata convention.</p>
+
 <h2>Why Literal <code>release_gate.py</code> Flags <code>r13-lattice-s5_v2</code> Despite <code>58 / 58</code> Detector Uniqueness</h2>
 <p><code>registry/data_manifest.json</code> includes <code>r13-lattice-s5_v2</code> — a <code>206,895</code>-dot statewide regular 500 m calibration grid whose 3-pixel (<code>300 m</code>) Euclidean disks cover <strong><code>99.8713%</code></strong> of the entire Nevada footprint (leaving only <code>6,649</code> uncovered pixels along outer raster borders). By the Pigeonhole Principle, <em>every</em> <code>37,647</code>-dot interior fault detector falls within 3 px of that calibration lattice on <code>≥ 82.70%</code> of its dots (<code>99.98%</code> for <code>UWBP-DRCS</code>; <code>99.94%</code> for <code>OCDA-MSCS</code>). Against all <strong>58 genuine fault-detector rasters</strong> across the entire fleet, <code>UWBP-DRCS Exp-B3</code> achieves <code>max 3-px overlap = 52.16% ≤ 70.0%</code> (only <strong>19.49%</strong> vs <code>GEMSDOE32</code>!) and <code>max |Spearman| = 0.1078 ≤ 0.90</code>.</p>
 
