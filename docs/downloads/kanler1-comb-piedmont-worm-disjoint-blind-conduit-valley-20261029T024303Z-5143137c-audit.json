@@ -1,0 +1,20 @@
+{
+  "candidate_id": "KANLER1-H33DB-BLIND-CONDUIT-VALLEY",
+  "hypothesis": "H-K1-C: blind Cenozoic/Quaternary normal faults and relay ramps absent from the USGS/INGENIOUS catalogue express as (i) collinear chains of deflected drainage valleys (DEM Hessian valley skeleton x 16-direction collinearity vote) and/or (ii) long, straight, orientation-coherent conductivity and basement-depth steps (gradient magnitude x directional coherence). Neither surface is distance-to-catalogue, so they target the hidden fault class rather than mapped faults.",
+  "generated_utc": "20261029T024303Z",
+  "n_dots": 40303,
+  "target_dots": 37654,
+  "footprint_px": 5167373,
+  "catalogue_px": 60988,
+  "sha256_zeros": "1f9ca170944915e908e95add3a0c26a044cfb3008f823a1550972985b7a1dbe4",
+  "sha256_nan": "0be0f384e3334bb664d7c2141fdf64972f647e2208b2bca80f6d4d7824a5b83e",
+  "submission_zip_sha256": "6ded391502670bd9fc6eeba6a1898a90678755a489a7948f394c23389f4db170",
+  "format_all_checks_passed": true,
+  "official_submission_format_compatible": true,
+  "unique_vs_all_references": true,
+  "max_within_3px_overlap_vs_any_reference": 0.982632,
+  "max_abs_spearman_vs_any_reference": 0.013512,
+  "holdout_diagnostic_dti": 0.023626,
+  "ok_to_submit": false,
+  "verdict": "RESEARCH-HOLD: format-valid and unique; NOT organizer-confirmed; pending separate selector approval and authenticated template."
+}
