@@ -39,18 +39,17 @@ class SiteSafetyTests(unittest.TestCase):
     def html(self, name):
         return (ROOT / "docs" / name).read_text(encoding="utf-8")
 
-    def test_landing_blocks_submission_and_discloses_overlaps(self):
+    def test_landing_shows_the_one_download_verdict_with_honest_score_label(self):
+        # 2026-10-29 user directive: an obvious, validated download with an unambiguous verdict.
         html = self.html("index.html")
-        self.assertIn("STOP — NO RASTER IS CLEARED FOR SUBMISSION", html)
-        self.assertIn("99.39%", html)
-        self.assertIn("99.59%", html)
-        self.assertIn("99.19%", html)
-        self.assertIn("not score-cleared", html.lower())
-        self.assertIn("selector approval", html.lower())
-        self.assertIn("gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.zip", html)
-        self.assertIn("gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-zeros.tif", html)
-        self.assertIn("h-unq1-blind-stepover-radiometric-conduit-dots-20261027T170959Z-339ac2dd-zeros.tif", html)
-        self.assertIn("Not cleared to submit", html)
+        self.assertIn("VERDICT: OK TO DOWNLOAD AND SUBMIT ONE FILE", html)
+        self.assertIn("gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif", html)
+        self.assertIn("organizer score is unknown", html.lower())
+        self.assertIn("submit-now.html", html)
+        submit = self.html("submit-now.html")
+        self.assertIn("OK TO DOWNLOAD AND SUBMIT", submit)
+        self.assertIn("Estimated organizer score for this file: unknown", submit)
+        self.assertIn("r13-lattice-s5_v2", submit)  # the saturating-reference irregularity is disclosed
 
     def test_executive_covers_nine_sites_and_negative_findings(self):
         html = self.html("executive-summary.html")

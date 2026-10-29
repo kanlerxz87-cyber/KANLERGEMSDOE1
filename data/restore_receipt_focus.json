@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "files": [
+    {
+      "site": "GEMSDOE24",
+      "dest": "data/focus/GEMSDOE24.tif",
+      "sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+      "bytes": 1632732,
+      "reported_score": 0.2477,
+      "score_evidence": "USER/OWNER-REPORT; no submission-page receipt",
+      "status": "verified"
+    },
+    {
+      "site": "GEMSDOE25",
+      "dest": "data/focus/GEMSDOE25.tif",
+      "sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+      "bytes": 1603424,
+      "reported_score": 0.26,
+      "score_evidence": "USER/OWNER-REPORT; no submission-page receipt",
+      "status": "verified"
+    },
+    {
+      "site": "GEMSDOE27",
+      "dest": "data/focus/GEMSDOE27.tif",
+      "sha256": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+      "bytes": 1635084,
+      "reported_score": 0.2449,
+      "score_evidence": "USER/OWNER-REPORT; no submission-page receipt",
+      "status": "verified"
+    },
+    {
+      "site": "GEMSDOE28",
+      "dest": "data/focus/GEMSDOE28.tif",
+      "sha256": "5556aa1438fd67376b60d5ffc99228ec09dcc11a8408298a743ccb88d6163641",
+      "bytes": 1590848,
+      "reported_score": 0.271,
+      "score_evidence": "USER/OWNER-REPORT; no submission-page receipt",
+      "status": "verified"
+    },
+    {
+      "site": "GEMSDOE30",
+      "dest": "data/focus/GEMSDOE30.tif",
+      "sha256": "8cf893ead5667df21d3288a9968c35fd5385c425b029d82ee71d311715b129fd",
+      "bytes": 806758,
+      "reported_score": 0.26,
+      "score_evidence": "USER/OWNER-REPORT; no submission-page receipt",
+      "status": "verified"
+    },
+    {
+      "site": "GEMSDOE31",
+      "dest": "data/focus/GEMSDOE31.tif",
+      "sha256": "07b6db440535404bb41ec8ddc797713e200d308e3da35937393efde5eb84bc40",
+      "bytes": 199214,
+      "reported_score": 0.2708,
+      "score_evidence": "USER/OWNER-REPORT; no submission-page receipt",
+      "status": "verified"
+    },
+    {
+      "site": "GEMSDOE32",
+      "dest": "data/focus/GEMSDOE32.tif",
+      "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "bytes": 219065,
+      "reported_score": 0.2778,
+      "score_evidence": "USER/OWNER-REPORT; no submission-page receipt",
+      "status": "verified"
+    },
+    {
+      "site": "GEMSDOE33",
+      "dest": "data/focus/GEMSDOE33.tif",
+      "sha256": "87f857d505e23247e991ccfab2cbe9f49a04df4f9c8028dce7ea261554690757",
+      "bytes": 917544,
+      "reported_score": 0.2632,
+      "score_evidence": "USER/OWNER-REPORT; no submission-page receipt",
+      "status": "verified"
+    },
+    {
+      "site": "GEMSDOE36",
+      "dest": "data/focus/GEMSDOE36.tif",
+      "sha256": "e15891020b9c57056ac7fa874a5e506fbd6ed9314a4ea8e73af0753887a3708a",
+      "bytes": 318190,
+      "reported_score": 0.275,
+      "score_evidence": "USER/OWNER-REPORT; no submission-page receipt",
+      "status": "verified"
+    }
+  ],
+  "provenance_warning": "Owner-hosted mirrors; hashes do not authenticate the organizer's files."
+}

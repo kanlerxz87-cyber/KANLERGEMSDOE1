@@ -1,0 +1,184 @@
+{
+  "schema": "candidate-scoreboard/v1",
+  "generated_by": "scripts/build_candidate_scoreboard.py",
+  "fit": {
+    "model": "organizer_score ~ a + b * SGMC_CAL",
+    "n": 12,
+    "pearson_r": 0.9882,
+    "intercept": -0.05499235480655467,
+    "slope": 5.157768979699519,
+    "residual_sd": 0.01193900813816533,
+    "x_range": [
+      0.013741311094760528,
+      0.0641209376417646
+    ],
+    "excluded": [
+      "13GEMSDOE r13-lattice (206,895 dots; space-filling, different density regime)"
+    ]
+  },
+  "rows": [
+    {
+      "candidate": "KANLER1-UWBP-DRCS-EXP3 (EXP-B3)",
+      "file": "docs/downloads/gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif",
+      "dots": 37647,
+      "sgmc_cal_holdout_dti": {
+        "value": 0.0891815454781798,
+        "ci95": [
+          0.08124636388710722,
+          0.09565071208767431
+        ],
+        "n_withheld_positives": 62703,
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "label": "HOLDOUT-DTI (re-run this session; full-map diagnostic)"
+      },
+      "hide_recover_fold_local": {
+        "value": 0.0648,
+        "ci95": [
+          0.057434,
+          0.071809
+        ],
+        "n": 22232,
+        "source": "evidence/run_card_uwbp_drcs.json (fold-local, admissible)",
+        "label": "HOLDOUT-DTI (REPO-REPORTED, not re-run)"
+      },
+      "organizer_projection": {
+        "value": 0.405,
+        "band_1sigma": [
+          0.3888,
+          0.4211
+        ],
+        "n_fit_points": 12,
+        "within_fitted_sgmc_range": false,
+        "label": "PROJECTION - linear extrapolation from USER-REPORTED points; NOT a score"
+      }
+    },
+    {
+      "candidate": "KANLER1-COMB-PIEDMONT-WORM (2026-10-29)",
+      "file": "docs/downloads/gemsdoe32-kanler1-comb-piedmont-worm-disjoint-300m-celf-20261029T020638Z-9424d197-nan.tif",
+      "dots": 37654,
+      "sgmc_cal_holdout_dti": {
+        "value": 0.05003984357142284,
+        "ci95": [
+          0.04505283662023321,
+          0.05447857077180193
+        ],
+        "n_withheld_positives": 62703,
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "label": "HOLDOUT-DTI (re-run this session; full-map diagnostic)"
+      },
+      "hide_recover_fold_local": null,
+      "organizer_projection": {
+        "value": 0.2031,
+        "band_1sigma": [
+          0.1907,
+          0.2155
+        ],
+        "n_fit_points": 12,
+        "within_fitted_sgmc_range": true,
+        "label": "PROJECTION - linear extrapolation from USER-REPORTED points; NOT a score"
+      }
+    },
+    {
+      "candidate": "KANLER1-OCDA-MSCS-EXP3",
+      "file": "docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-nan.tif",
+      "dots": 37649,
+      "sgmc_cal_holdout_dti": {
+        "value": 0.050042673463156606,
+        "ci95": [
+          0.04505343036170846,
+          0.05448427097899313
+        ],
+        "n_withheld_positives": 62703,
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "label": "HOLDOUT-DTI (re-run this session; full-map diagnostic)"
+      },
+      "hide_recover_fold_local": {
+        "value": 0.10583,
+        "ci95": [
+          0.095019,
+          0.115257
+        ],
+        "n": 22232,
+        "source": "README.md section 2 / audit-20261028.md (fold-local)",
+        "label": "HOLDOUT-DTI (REPO-REPORTED, not re-run)"
+      },
+      "organizer_projection": {
+        "value": 0.2031,
+        "band_1sigma": [
+          0.1907,
+          0.2155
+        ],
+        "n_fit_points": 12,
+        "within_fitted_sgmc_range": true,
+        "label": "PROJECTION - linear extrapolation from USER-REPORTED points; NOT a score"
+      }
+    },
+    {
+      "candidate": "KANLER1-UPFLOW-EXP2",
+      "file": "docs/downloads/gemsdoe32-kanler1-upflow-exp2-37654d-20261028T163730Z-76525b8c-nan.tif",
+      "dots": 37654,
+      "sgmc_cal_holdout_dti": {
+        "value": 0.04546373591010389,
+        "ci95": [
+          0.03839526871336097,
+          0.0530515337907708
+        ],
+        "n_withheld_positives": 62703,
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "label": "HOLDOUT-DTI (re-run this session; full-map diagnostic)"
+      },
+      "hide_recover_fold_local": {
+        "value": 0.057717,
+        "ci95": [
+          0.049718,
+          0.064828
+        ],
+        "n": 22232,
+        "source": "README.md section 2 (fold-local)",
+        "label": "HOLDOUT-DTI (REPO-REPORTED, not re-run)"
+      },
+      "organizer_projection": {
+        "value": 0.1795,
+        "band_1sigma": [
+          0.1671,
+          0.1919
+        ],
+        "n_fit_points": 12,
+        "within_fitted_sgmc_range": true,
+        "label": "PROJECTION - linear extrapolation from USER-REPORTED points; NOT a score"
+      }
+    },
+    {
+      "candidate": "KANLER-CGJI-HTB-EXP2",
+      "file": "submissions/cgji_htb_20261027/gemsdoe32-cgji-htb-exp2-oof-hgb-b2-20261027T013000Z-5214b9ec-nan.tif",
+      "dots": 37654,
+      "sgmc_cal_holdout_dti": {
+        "value": 0.05558389072875989,
+        "ci95": [
+          0.048256173004731444,
+          0.06219649298918183
+        ],
+        "n_withheld_positives": 62703,
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "label": "HOLDOUT-DTI (re-run this session; full-map diagnostic)"
+      },
+      "hide_recover_fold_local": {
+        "value": 0.0997,
+        "ci95": null,
+        "n": 22232,
+        "source": "submissions/cgji_htb_20261027 audit note",
+        "label": "HOLDOUT-DTI (REPO-REPORTED, not re-run)"
+      },
+      "organizer_projection": {
+        "value": 0.2317,
+        "band_1sigma": [
+          0.2191,
+          0.2443
+        ],
+        "n_fit_points": 12,
+        "within_fitted_sgmc_range": true,
+        "label": "PROJECTION - linear extrapolation from USER-REPORTED points; NOT a score"
+      }
+    }
+  ]
+}
