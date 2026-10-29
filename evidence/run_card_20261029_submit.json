@@ -1,0 +1,71 @@
+{
+  "schema": "GEMS-PARALLEL-RUN-CARD-v2.1",
+  "card_id": "KANLER1-UWBP-DRCS-EXP3-SUBMIT-20261029",
+  "generated_by": "scripts/build_submit_page.py",
+  "lane": "H-K1-B (UWBP-DRCS) - file re-validated and audited; no new experiment",
+  "experiments_used_this_session": 2,
+  "experiments_note": "1) proxy-vs-organizer calibration, 2) candidate scoreboard + uniqueness audit (validation only)",
+  "hypothesis": "2D DCT-II Poisson worm back-projection at 55-degree dip plus elevation-deconfounded dual-regime and Dinkelbach 300 m packing yields off-catalogue (SGMC) fault dots that the organizer's new-fault labels reward.",
+  "mechanism": "Upward-continued potential-field worms (100/300/600/1200 m) back-projected up-dip; coordinate/elevation proxies removed; cost-sensitive submodular packing at 300 m.",
+  "named_non_fault_process": "Pluton contacts, paleoshoreline benches, TIGER highway cuts, playa margins (per lane run card).",
+  "holdout_dti": {
+    "sgmc_cal": {
+      "value": 0.0891815454781798,
+      "ci95": [
+        0.08124636388710722,
+        0.09565071208767431
+      ],
+      "n_withheld_positives": 62703,
+      "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+      "label": "HOLDOUT-DTI (re-run this session)"
+    },
+    "hide_recover": {
+      "value": 0.0648,
+      "ci95": [
+        0.057434,
+        0.071809
+      ],
+      "n_withheld_positives": 22232,
+      "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+      "label": "HOLDOUT-DTI (fold-local, lane run card)"
+    }
+  },
+  "leakage_canary": {
+    "status": "from lane run card (evidence/run_card_uwbp_drcs.json)",
+    "note": "no new canary run this session"
+  },
+  "correlation_overlap_vs_registry": {
+    "reference_count": 23,
+    "literal_rule_passed": false,
+    "detector_only_rule_passed": true,
+    "worst_non_space_filling_within_3px": 0.3383270911360799,
+    "worst_non_space_filling_reference": "data/scored/8GEMSDOE_Hedge-v2_submission.tif",
+    "worst_abs_spearman": 0.006360862042577283
+  },
+  "raster_sha256_nan": "2693c2daf87bd7948d3d57fc41fdcf40653ef42014c93d0e947bc2a8fc00a30c",
+  "submission_zip_sha256_nan": "7248e2fee1e73dd57ebcd47ce9aec27e81dd8ee566667bb3c2abec9332dd85f8",
+  "validator_output": {
+    "file": "evidence/validation_gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.json",
+    "all_passed": true
+  },
+  "submission_name": "kanler1-uwbp-drcs-exp3-37647d-nan",
+  "submission_note": "KANLER1 UWBP-DRCS EXP3 worm+Dinkelbach 37647 dots NaN-outside; SGMC-CAL proxy 0.0892 (not organizer score)",
+  "submission_note_characters": 106,
+  "organizer_estimate": {
+    "value": null,
+    "status": "UNKNOWN",
+    "projection_not_a_score": {
+      "value": 0.405,
+      "band_1sigma": [
+        0.3888,
+        0.4211
+      ],
+      "n_fit_points": 12,
+      "within_fitted_sgmc_range": false,
+      "label": "PROJECTION - linear extrapolation from USER-REPORTED points; NOT a score"
+    }
+  },
+  "ok_to_download_and_submit": true,
+  "verdict": "promote-to-download (automated gates PASS); score unverified",
+  "uploaded_by_agent": false
+}
