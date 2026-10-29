@@ -4,7 +4,7 @@
 [![Gate Status](https://img.shields.io/badge/Portal_Clearance-STOP_/_RESEARCH--HOLD_(verdict:_negative)-ff5d6c)](#0-current-portal-clearance-banner-unmistakable-gate-verdict)
 [![Tests](https://img.shields.io/badge/Automated_Gate_Tests-Passing-3dcc8a)](#7-autonomous-reproduction-commands)
 
-End-to-end geological feature engineering, fold-local hide-and-recover evaluation, 60-raster multi-site uniqueness auditing, automated 15-check GeoTIFF validation, and fail-closed GitHub Pages desk ([Executive summary](docs/executive-summary.html) · [Focus-site scorecard](docs/focus-sites-review-20261028.html) · [Submission gate](docs/how-to-submit.html) · [Latest review](docs/review-20261028.md)) for the [**DOE Geothermal Exploration Machine Learning (GEMS) Prize**](https://www.drivendata.org/competitions/306/competition-doe-gems/).
+End-to-end geological feature engineering, fold-local hide-and-recover evaluation, 60-raster multi-site uniqueness auditing, automated 15-check GeoTIFF validation, and fail-closed GitHub Pages desk ([Executive summary](docs/executive-summary.html) · [Focus-site scorecard](docs/focus-sites-review-20261028.html) · [Submission gate](docs/how-to-submit.html) · [Latest review](docs/review-20261029.md)) for the [**DOE Geothermal Exploration Machine Learning (GEMS) Prize**](https://www.drivendata.org/competitions/306/competition-doe-gems/).
 
 ---
 
