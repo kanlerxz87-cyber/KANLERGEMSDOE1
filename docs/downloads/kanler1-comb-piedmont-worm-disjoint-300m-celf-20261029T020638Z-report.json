@@ -1,0 +1,238 @@
+{
+  "candidate_id": "KANLER1-COMB-PIEDMONT-WORM",
+  "hypothesis": "H-COMB-1 disjoint OCDA piedmont + UWBP blind-worm dots (untried)",
+  "generated_utc": "20261029T020638Z",
+  "n_dots": 37654,
+  "footprint_px": 5167373,
+  "catalogue_px": 60988,
+  "ocda_dots": 37649,
+  "uwbp_dots_input": 37647,
+  "disjoint_uwbp_dots": 28593,
+  "sha256_zeros": "cf56b5ce5b23b7af107d4f296105ca10e9ee3a33f486dc2f2651ebbc6f06ef81",
+  "sha256_nan": "1cec2ec6381eb0cb9cd879332aaa0d963e72dccfafe8b1ed338dcd0d0cfbe14c",
+  "submission_zip_sha256": "d905f8ad0025efee5bfeddd8a26c7fd3885c084b62342ea7754ebf9c017bbbc8",
+  "format_audit_zeros": {
+    "filename": "gemsdoe32-kanler1-comb-piedmont-worm-disjoint-300m-celf-20261029T020638Z-9424d197-zeros.tif",
+    "size_bytes": 222896,
+    "sha256": "cf56b5ce5b23b7af107d4f296105ca10e9ee3a33f486dc2f2651ebbc6f06ef81",
+    "mode": "zeros",
+    "geometry_reference": "/home/user/KANLERGEMSDOE1/data/sample_submission.tif",
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "nodata_repr": "None",
+    "emitted_positive_pixels": 37654,
+    "footprint_fraction": 0.007287,
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_finite_pixels": 5167373,
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 1.0,
+    "full_grid_finite_pixels": 12279160,
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "nodata_none_for_zeros": true,
+      "nodata_nan_for_nan": true,
+      "zero_on_catalogue_leakage": true,
+      "local_range_check": true
+    },
+    "all_checks_passed": true,
+    "local_validation_passed": true,
+    "official_outside_bounds_null_or_nan": false,
+    "official_submission_format_compatible": false
+  },
+  "format_audit_nan": {
+    "filename": "gemsdoe32-kanler1-comb-piedmont-worm-disjoint-300m-celf-20261029T020638Z-9424d197-nan.tif",
+    "size_bytes": 360023,
+    "sha256": "1cec2ec6381eb0cb9cd879332aaa0d963e72dccfafe8b1ed338dcd0d0cfbe14c",
+    "mode": "nan",
+    "geometry_reference": "/home/user/KANLERGEMSDOE1/data/sample_submission.tif",
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "nodata_repr": "nan",
+    "emitted_positive_pixels": 37654,
+    "footprint_fraction": 0.007287,
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_finite_pixels": 5167373,
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 1.0,
+    "full_grid_finite_pixels": 5167373,
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "nodata_none_for_zeros": true,
+      "nodata_nan_for_nan": true,
+      "zero_on_catalogue_leakage": true,
+      "local_range_check": true
+    },
+    "all_checks_passed": true,
+    "local_validation_passed": true,
+    "official_outside_bounds_null_or_nan": true,
+    "official_submission_format_compatible": true
+  },
+  "format_all_checks_passed": true,
+  "registry_overlap": [
+    {
+      "group": "registry",
+      "file": "champion_h33_b2_02778.tif",
+      "ref_dots": 37654,
+      "spearman_binary": 0.005367096211477885,
+      "cand_dots_within_3px_of_ref": 0.3482764115366229,
+      "identical_support": false
+    },
+    {
+      "group": "registry",
+      "file": "d28_02600.tif",
+      "ref_dots": 44090,
+      "spearman_binary": 0.004050227923988205,
+      "cand_dots_within_3px_of_ref": 0.3381492401905194,
+      "identical_support": false
+    },
+    {
+      "group": "scored",
+      "file": "13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+      "ref_dots": 206895,
+      "spearman_binary": 0.0001553113142680247,
+      "cand_dots_within_3px_of_ref": 0.1779066676333406,
+      "identical_support": false
+    },
+    {
+      "group": "scored",
+      "file": "8GEMSDOE_Hedge-v2_submission.tif",
+      "ref_dots": 227507,
+      "spearman_binary": 0.007832149602625363,
+      "cand_dots_within_3px_of_ref": 0.28741533227549043,
+      "identical_support": false
+    },
+    {
+      "group": "scored",
+      "file": "gems10-h25-ctx-ridge-20260927T232947704150Z-6452ae1d00.tif",
+      "ref_dots": 174232,
+      "spearman_binary": 0.011703036377003383,
+      "cand_dots_within_3px_of_ref": 0.34584921254419393,
+      "identical_support": false
+    },
+    {
+      "group": "scored",
+      "file": "gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+      "ref_dots": 69281,
+      "spearman_binary": 0.006749353147166968,
+      "cand_dots_within_3px_of_ref": 0.3229601189359276,
+      "identical_support": false
+    },
+    {
+      "group": "scored",
+      "file": "gems16-h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan.tif",
+      "ref_dots": 123939,
+      "spearman_binary": 0.010943408065723165,
+      "cand_dots_within_3px_of_ref": 0.35614294128563245,
+      "identical_support": false
+    },
+    {
+      "group": "scored",
+      "file": "gems19-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan.tif",
+      "ref_dots": 123779,
+      "spearman_binary": 0.010774205036852787,
+      "cand_dots_within_3px_of_ref": 0.3611032566105721,
+      "identical_support": false
+    },
+    {
+      "group": "scored",
+      "file": "gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan.tif",
+      "ref_dots": 121131,
+      "spearman_binary": 0.011404232395003325,
+      "cand_dots_within_3px_of_ref": 0.36555464744780447,
+      "identical_support": false
+    },
+    {
+      "group": "scored",
+      "file": "gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+      "ref_dots": 60069,
+      "spearman_binary": 0.006225666384269241,
+      "cand_dots_within_3px_of_ref": 0.3475003745692454,
+      "identical_support": false
+    },
+    {
+      "group": "scored",
+      "file": "gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+      "ref_dots": 44090,
+      "spearman_binary": 0.004050227923988205,
+      "cand_dots_within_3px_of_ref": 0.3381492401905194,
+      "identical_support": false
+    },
+    {
+      "group": "scored",
+      "file": "gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+      "ref_dots": 61328,
+      "spearman_binary": 0.006767849386904341,
+      "cand_dots_within_3px_of_ref": 0.34969345160448734,
+      "identical_support": false
+    },
+    {
+      "group": "scored",
+      "file": "gemsdoe-ens12-adopted-7f00890a.tif",
+      "ref_dots": 172974,
+      "spearman_binary": 0.013959871842659573,
+      "cand_dots_within_3px_of_ref": 0.3425774971961104,
+      "identical_support": false
+    },
+    {
+      "group": "scored",
+      "file": "gemsdoe9-PLACEHOLDER-2314b599.tif",
+      "ref_dots": 147684,
+      "spearman_binary": 0.002196445339516114,
+      "cand_dots_within_3px_of_ref": 0.20627149860512986,
+      "identical_support": false
+    }
+  ],
+  "max_within_3px_overlap_vs_any_reference": 0.365555,
+  "max_abs_spearman_vs_any_reference": 0.01396,
+  "unique_vs_all_references": true,
+  "max_dots": 37654,
+  "disjoint_radius_px": 3.0,
+  "ok_to_submit": false,
+  "verdict": "RESEARCH-HOLD: format-valid and unique; pending selector approval and authenticated template"
+}
