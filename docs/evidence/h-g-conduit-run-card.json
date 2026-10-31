@@ -1,0 +1,102 @@
+{
+  "schema": "GEMS-PARALLEL-RUN-CARD-v2.1",
+  "card_id": "KANLER1-H-GEO-CONDUIT-20261031",
+  "generated_by": "scripts/generate_hydrothermal_conduit_submission.py + scripts/evaluate_holdout.py + scripts/validate_submission_file.py",
+  "lane": "H-K1-B-family adjunct experiment (geothermal-conduit blind-fault hypothesis), outside the UWBP/OCDA/CGJI lanes",
+  "experiments_used_this_session": 1,
+  "experiments_note": "H-GEO-CONDUIT: generate + format-validate + uniqueness-audit + holdout-diagnose one candidate; no weekly slot touched",
+  "hypothesis": "Blind intrabasin faults beneath Quaternary valley fill are absent from the USGS/INGENIOUS mapped catalogue but localize upward hydrothermal flow: warm GDR springs/wells, Quaternary vents, and GeoDAWN potassium/total-count radiometric enrichment mark their concealed traces. Dots placed on this surface therefore target the off-catalogue hidden-fault class the organizer scores (known faults are masked pixel-exact), not the mapped faults in labels.tif.",
+  "mechanism": "Surface = 0.35*GeoDAWN(K+TC radiometric anomaly, percentile-scaled) + 0.25*GDR well/spring temperature (90 C scale, Gaussian sigma 1.5 px) + 0.10*vent proximity (2 px dilation), slight TIGER-road edge penalty; zeroed exactly on labels.tif catalogue and outside footprint; NMS >= 2 px; binary dots capped at 37,654; official NaN-outside float32 GeoTIFF encoding.",
+  "named_non_fault_process": "Felsic tuff/ash-flow contacts, playa margins, Lake Lahontan shoreline benches, and highway/road cuts can mimic radiometric or thermal anomalies; mitigated by road penalty, vent corroboration, and zeroing on mapped faults.",
+  "holdout_dti": {
+    "sgmc_cal": {
+      "value": 0.03259371220002364,
+      "ci95": [
+        0.020316906961965864,
+        0.04602782261641207
+      ],
+      "n_withheld_positives": 62703,
+      "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+      "label": "HOLDOUT-DTI (full-map diagnostic; NOT fold-local; not promotion evidence)",
+      "raw_pooled_dti": 0.04909562906299028,
+      "raw_ci95": [
+        0.030082811935912546,
+        0.07105108779230612
+      ]
+    },
+    "hide_recover": {
+      "value": 0.02798862583321834,
+      "ci95": [
+        0.018681566330295545,
+        0.037733743228042876
+      ],
+      "n_withheld_positives": 22232,
+      "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+      "label": "HOLDOUT-DTI (full-map diagnostic; NOT fold-local; not promotion evidence)"
+    }
+  },
+  "leakage_canary": {
+    "status": "PASS - no leakage signal",
+    "detail": "Single-feature full-map diagnostics (rule 4): radiometric-only HR 0.02136 / SGMC-CAL 0.02899; wells-only HR 0.00454 / SGMC-CAL 0.00206; vents-only HR ~0.00003 / SGMC-CAL 0.0; combined HR 0.02799 / SGMC-CAL 0.03259. All far below the 0.90 leakage threshold; radiometric K+TC drives the surface, wells add little, vents almost nothing."
+  },
+  "correlation_overlap_vs_registry": {
+    "reference_count": 13,
+    "literal_rule_passed": false,
+    "detector_only_rule_passed": true,
+    "literal_failing_references": [
+      "data/scored/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif"
+    ],
+    "note": "The r13 lattice covers 99.87% of the footprint within 3 px, so every candidate fails the literal rule against it (project convention: exclude space-filling references from the detector-only decision and disclose).",
+    "worst_non_space_filling_within_3px": 0.1925426249535242,
+    "worst_non_space_filling_reference": "data/scored/gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+    "worst_abs_spearman": 0.011920548139656826,
+    "worst_abs_spearman_reference": "data/scored/8GEMSDOE_Hedge-v2_submission.tif",
+    "vs_GEMSDOE32_champion_ref": {
+      "within_3px": 0.06307430817443034,
+      "spearman": -0.00506639668713487
+    }
+  },
+  "raster_sha256_nan": "0d386e7267169b68a592cdc1e22c6edeb5c705a321053f7f508e8a5e8436d31d",
+  "raster_sha256_zeros": "c92547080a1e9738ad4baf8acc3ca1c4f666261d9af1806f6f8b775399f2580c",
+  "submission_zip_sha256": "9db99055a5106a4e3bb41e9143d1cd020cdd9e5f66ae92c1af220722f429d132",
+  "validator_output": {
+    "file": "evidence/validation_gemsdoe32-h-geo-conduit-wells-vents-radiometric-300m-dots-20261031T003904Z-6e23b6aa-nan.json",
+    "all_passed": true,
+    "values_in_0_1_inside_footprint": true,
+    "no_nan_inf_inside_footprint": true,
+    "outside_footprint_is_nan": true,
+    "footprint_identical_to_template": true,
+    "crs_epsg_32611": true,
+    "shape_3730x3292": true,
+    "transform_matches_template": true
+  },
+  "submission_name": "kanler1-h-geo-conduit-6e23b6aa-nan",
+  "submission_note": "KANLER1 H-GEO-CONDUIT: springs+vents+GeoDAWN K/TC radiometric conduit dots; off-catalogue blind faults [RESEARCH-HOLD]",
+  "submission_note_characters": 118,
+  "organizer_estimate": {
+    "value": null,
+    "status": "UNKNOWN",
+    "note": "No projection is written as a score; the holdout is negative vs benchmarks"
+  },
+  "comparison_benchmarks": {
+    "UWBP_DRCs_EXP_B3": {
+      "hide_recover": 0.0648,
+      "sgmc_cal": 0.089174
+    },
+    "GEMSDOE32_champion_D28_B2_ref_user_reported_organizer": "0.2778 (USER/OWNER-REPORT, no receipt)",
+    "GEMSDOE32_champion_ref_local_holdout": {
+      "hide_recover": 0.099202,
+      "sgmc_cal": 0.064121
+    }
+  },
+  "ok_to_download": true,
+  "ok_to_submit": false,
+  "verdict": "negative",
+  "uploaded_by_agent": false,
+  "files": {
+    "nan_tif": "docs/downloads/gemsdoe32-h-geo-conduit-wells-vents-radiometric-300m-dots-20261031T003904Z-6e23b6aa-nan.tif",
+    "zeros_tif": "docs/downloads/gemsdoe32-h-geo-conduit-wells-vents-radiometric-300m-dots-20261031T003904Z-6e23b6aa-zeros.tif",
+    "zip": "docs/downloads/gemsdoe32-h-geo-conduit-wells-vents-radiometric-300m-dots-20261031T003904Z-6e23b6aa-nan.zip",
+    "audit": "docs/downloads/h-geo-conduit-wells-vents-radiometric-300m-dots-20261031T003904Z-audit.json"
+  }
+}

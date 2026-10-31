@@ -9,8 +9,10 @@
 | `kanlergemsdoe1-h195field-b2-37654-20261027T171629Z-fc14041c-zeros.tif` (+ twins) | `EXP1` control reconstruction (`H19-5` field + `B2`). `100%` within 3 px of the `GEMSDOE24/25/30` family. | **NO — duplicate lane** |
 | `gemsdoe32-h33-h33-2-b2-…-zeros.tif` | `GEMSDOE32` champion reference copy (learning/benchmarking only). | **NO — already submitted** |
 | `kanlergemsdoe1-h1/h2/h3-…` (2026-10-26), `kanler-mplc-…` | Stopped `IEDR` / `MPLC` lanes; inadmissible holdouts / lattice-duplicate. | **NO** |
+| `gemsdoe32-h-geo-conduit-wells-vents-radiometric-300m-dots-20261031T003904Z-6e23b6aa-nan.zip` (`-nan.tif`, `-zeros.tif`, `-audit.json`) | **2026-10-31 `KANLER1-H-GEO-CONDUIT` (`37,654` dots).** Blind hydrothermal conduit hypothesis: warm GDR springs/wells + Quaternary vents + GeoDAWN K/TC radiometric anomaly, zeroed on the mapped catalogue. `10/10` GeoTIFF checks PASS; detector-only uniqueness PASS vs 13 local references. Full-map holdout diagnostic NEGATIVE (HIDE-RECOVER 0.0280, SGMC-CAL 0.0326 vs UWBP-DRCS EXP-B3 0.0648/0.0892). **NO — documented negative deliverable; do not submit.** |
 
 Evidence: [`../evidence/run_card_uwbp_drcs.json`](../evidence/run_card_uwbp_drcs.json) ·
+[`../evidence/h-g-conduit-run-card.json`](../evidence/h-g-conduit-run-card.json) ·
 [`../evidence/run_card_ocda_mscs.json`](../evidence/run_card_ocda_mscs.json) ·
 [`../evidence/current_run_card.json`](../evidence/current_run_card.json) ·
 [Executive Summary](../executive-summary.html). No file in this directory is

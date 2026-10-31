@@ -1,0 +1,29 @@
+{
+  "schema": "submission-file-validation/v1",
+  "file": "docs/downloads/gemsdoe32-h-geo-conduit-wells-vents-radiometric-300m-dots-20261031T003904Z-6e23b6aa-nan.tif",
+  "tif_member": "gemsdoe32-h-geo-conduit-wells-vents-radiometric-300m-dots-20261031T003904Z-6e23b6aa-nan.tif",
+  "tif": {
+    "checks": {
+      "driver_GTiff": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "crs_epsg_32611": true,
+      "shape_3730x3292": true,
+      "transform_matches_template": true,
+      "no_nan_or_inf_inside_footprint": true,
+      "values_in_0_1_inside_footprint": true,
+      "outside_footprint_is_nan": true,
+      "footprint_identical_to_template": true
+    },
+    "all_passed": true,
+    "nodata_tag": "nan",
+    "positive_pixels_inside_footprint": 37654,
+    "min_inside": 0.0,
+    "max_inside": 0.4312008023262024,
+    "distinct_values_inside": 1631,
+    "sha256": "0d386e7267169b68a592cdc1e22c6edeb5c705a321053f7f508e8a5e8436d31d",
+    "bytes": 593001
+  },
+  "all_passed": true,
+  "verdict": "PASS: automated official-format validation"
+}

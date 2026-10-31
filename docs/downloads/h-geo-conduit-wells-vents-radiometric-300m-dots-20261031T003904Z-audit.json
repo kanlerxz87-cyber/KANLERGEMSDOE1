@@ -1,0 +1,355 @@
+{
+  "candidate_id": "H-GEO-CONDUIT",
+  "hypothesis": "H-GEO-CONDUIT blind hydrothermal conduit dots (untried in this repo; tested 2026-10-31, NEGATIVE)",
+  "generated_utc": "20261031T003904Z",
+  "n_dots": 37654,
+  "footprint_px": 5167373,
+  "catalogue_px": 60988,
+  "wells": 8718,
+  "vents": 21,
+  "sha256_zeros": "c92547080a1e9738ad4baf8acc3ca1c4f666261d9af1806f6f8b775399f2580c",
+  "sha256_nan": "0d386e7267169b68a592cdc1e22c6edeb5c705a321053f7f508e8a5e8436d31d",
+  "submission_zip_sha256": "9db99055a5106a4e3bb41e9143d1cd020cdd9e5f66ae92c1af220722f429d132",
+  "format_audit_zeros": {
+    "filename": "gemsdoe32-h-geo-conduit-wells-vents-radiometric-300m-dots-20261031T003904Z-6e23b6aa-zeros.tif",
+    "size_bytes": 460856,
+    "sha256": "c92547080a1e9738ad4baf8acc3ca1c4f666261d9af1806f6f8b775399f2580c",
+    "mode": "zeros",
+    "geometry_reference": "/home/user/KANLERGEMSDOE1/data/sample_submission.tif",
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "nodata_repr": "None",
+    "emitted_positive_pixels": 37654,
+    "footprint_fraction": 0.007287,
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_finite_pixels": 5167373,
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 0.4312008023262024,
+    "full_grid_finite_pixels": 12279160,
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "nodata_none_for_zeros": true,
+      "nodata_nan_for_nan": true,
+      "zero_on_catalogue_leakage": true,
+      "local_range_check": true
+    },
+    "all_checks_passed": true,
+    "local_validation_passed": true,
+    "official_outside_bounds_null_or_nan": false,
+    "official_submission_format_compatible": false
+  },
+  "format_audit_nan": {
+    "filename": "gemsdoe32-h-geo-conduit-wells-vents-radiometric-300m-dots-20261031T003904Z-6e23b6aa-nan.tif",
+    "size_bytes": 593001,
+    "sha256": "0d386e7267169b68a592cdc1e22c6edeb5c705a321053f7f508e8a5e8436d31d",
+    "mode": "nan",
+    "geometry_reference": "/home/user/KANLERGEMSDOE1/data/sample_submission.tif",
+    "crs": "EPSG:32611",
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "shape": [
+      3730,
+      3292
+    ],
+    "dtype": "float32",
+    "nodata": null,
+    "nodata_repr": "nan",
+    "emitted_positive_pixels": 37654,
+    "footprint_fraction": 0.007287,
+    "on_catalogue_positive_pixels": 0,
+    "in_footprint_finite_pixels": 5167373,
+    "in_footprint_min": 0.0,
+    "in_footprint_max": 0.4312008023262024,
+    "full_grid_finite_pixels": 5167373,
+    "checks": {
+      "exact_reference_grid_match": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "dimensions_3730x3292": true,
+      "crs_epsg_32611": true,
+      "in_footprint_all_finite": true,
+      "in_footprint_zero_nan": true,
+      "in_footprint_zero_inf": true,
+      "in_footprint_zero_sentinel": true,
+      "in_footprint_range_0_1": true,
+      "outside_footprint_compliant": true,
+      "nodata_none_for_zeros": true,
+      "nodata_nan_for_nan": true,
+      "zero_on_catalogue_leakage": true,
+      "local_range_check": true
+    },
+    "all_checks_passed": true,
+    "local_validation_passed": true,
+    "official_outside_bounds_null_or_nan": true,
+    "official_submission_format_compatible": true
+  },
+  "independent_validator": {
+    "file": "evidence/validation_gemsdoe32-h-geo-conduit-wells-vents-radiometric-300m-dots-20261031T003904Z-6e23b6aa-nan.json",
+    "all_passed": true,
+    "sha256": "0d386e7267169b68a592cdc1e22c6edeb5c705a321053f7f508e8a5e8436d31d",
+    "positive_pixels_inside_footprint": 37654,
+    "min_inside": 0.0,
+    "max_inside": 0.4312008023262024,
+    "verdict": "PASS: automated official-format validation (values in [0,1], NaN outside footprint)"
+  },
+  "format_all_checks_passed": true,
+  "registry_and_scored_overlap": [
+    {
+      "file": "data/registry_rasters/champion_h33_b2_02778.tif",
+      "ref_dots": 37654,
+      "spearman_binary": -0.00506639668713487,
+      "cand_dots_within_3px_of_ref": 0.06307430817443034,
+      "identical_support": false,
+      "ref_footprint_coverage_3px": 0.1509
+    },
+    {
+      "file": "data/registry_rasters/d28_02600.tif",
+      "ref_dots": 44090,
+      "spearman_binary": -0.005597784393773503,
+      "cand_dots_within_3px_of_ref": 0.07069634036224572,
+      "identical_support": false,
+      "ref_footprint_coverage_3px": 0.1719
+    },
+    {
+      "file": "data/scored/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+      "ref_dots": 206895,
+      "spearman_binary": -0.00019286719207698832,
+      "cand_dots_within_3px_of_ref": 0.9974504700695809,
+      "identical_support": false,
+      "ref_footprint_coverage_3px": 0.9987
+    },
+    {
+      "file": "data/scored/8GEMSDOE_Hedge-v2_submission.tif",
+      "ref_dots": 227507,
+      "spearman_binary": -0.011920548139656826,
+      "cand_dots_within_3px_of_ref": 0.16016890635789027,
+      "identical_support": false,
+      "ref_footprint_coverage_3px": 0.2836
+    },
+    {
+      "file": "data/scored/gems10-h25-ctx-ridge-20260927T232947704150Z-6452ae1d00.tif",
+      "ref_dots": 174232,
+      "spearman_binary": -0.006865143537597097,
+      "cand_dots_within_3px_of_ref": 0.1797949753014288,
+      "identical_support": false,
+      "ref_footprint_coverage_3px": 0.2631
+    },
+    {
+      "file": "data/scored/gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+      "ref_dots": 69281,
+      "spearman_binary": -0.004349277991003462,
+      "cand_dots_within_3px_of_ref": 0.1925426249535242,
+      "identical_support": false,
+      "ref_footprint_coverage_3px": 0.272
+    },
+    {
+      "file": "data/scored/gems16-h16-1-topo-geophys-baseline-ridges-20260930-df20f65e-nan.tif",
+      "ref_dots": 123939,
+      "spearman_binary": -0.009564179096094007,
+      "cand_dots_within_3px_of_ref": 0.0920486535295055,
+      "identical_support": false,
+      "ref_footprint_coverage_3px": 0.2086
+    },
+    {
+      "file": "data/scored/gems19-h19-4-multiline-corroborated-openness-thermal-pop-20260930-691e4dfa-nan.tif",
+      "ref_dots": 123779,
+      "spearman_binary": -0.009567738040686415,
+      "cand_dots_within_3px_of_ref": 0.08878206830615605,
+      "identical_support": false,
+      "ref_footprint_coverage_3px": 0.2036
+    },
+    {
+      "file": "data/scored/gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan.tif",
+      "ref_dots": 121131,
+      "spearman_binary": -0.009258726378121486,
+      "cand_dots_within_3px_of_ref": 0.08293939554894567,
+      "identical_support": false,
+      "ref_footprint_coverage_3px": 0.1961
+    },
+    {
+      "file": "data/scored/gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif",
+      "ref_dots": 60069,
+      "spearman_binary": -0.006149896575348091,
+      "cand_dots_within_3px_of_ref": 0.0744675200509906,
+      "identical_support": false,
+      "ref_footprint_coverage_3px": 0.1808
+    },
+    {
+      "file": "data/scored/gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+      "ref_dots": 44090,
+      "spearman_binary": -0.005597784393773503,
+      "cand_dots_within_3px_of_ref": 0.07069634036224572,
+      "identical_support": false,
+      "ref_footprint_coverage_3px": 0.1719
+    },
+    {
+      "file": "data/scored/gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif",
+      "ref_dots": 61328,
+      "spearman_binary": -0.0061118646092061255,
+      "cand_dots_within_3px_of_ref": 0.0784511605672704,
+      "identical_support": false,
+      "ref_footprint_coverage_3px": 0.1852
+    },
+    {
+      "file": "data/scored/gemsdoe-ens12-adopted-7f00890a.tif",
+      "ref_dots": 172974,
+      "spearman_binary": -0.008569513975254555,
+      "cand_dots_within_3px_of_ref": 0.12394433526318585,
+      "identical_support": false,
+      "ref_footprint_coverage_3px": 0.2429
+    },
+    {
+      "file": "data/scored/gemsdoe9-PLACEHOLDER-2314b599.tif",
+      "ref_dots": 147684,
+      "spearman_binary": 0.0006123900895184467,
+      "cand_dots_within_3px_of_ref": 0.06440218834652361,
+      "identical_support": false,
+      "ref_footprint_coverage_3px": 0.0629
+    }
+  ],
+  "literal_rule_passed": false,
+  "literal_failing_references": [
+    "data/scored/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif"
+  ],
+  "detector_only_rule_passed": true,
+  "space_filling_references_coverage_ge_70pct": [
+    {
+      "reference": "data/scored/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+      "footprint_coverage_3px": 0.998713,
+      "within_3px": 0.9974504700695809
+    }
+  ],
+  "max_non_space_filling_within_3px": 0.1925426249535242,
+  "max_non_space_filling_within_3px_reference": "data/scored/gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+  "max_abs_spearman_non_space_filling": 0.011920548139656826,
+  "max_abs_spearman_reference": "data/scored/8GEMSDOE_Hedge-v2_submission.tif",
+  "top3_non_space_filling": [
+    {
+      "reference": "data/scored/gems10-h28-dotted-ridge-20260928T020256236880Z-6452ae1d00.tif",
+      "within_3px": 0.1925,
+      "spearman": -0.004349277991003462
+    },
+    {
+      "reference": "data/scored/gems10-h25-ctx-ridge-20260927T232947704150Z-6452ae1d00.tif",
+      "within_3px": 0.1798,
+      "spearman": -0.006865143537597097
+    },
+    {
+      "reference": "data/scored/8GEMSDOE_Hedge-v2_submission.tif",
+      "within_3px": 0.1602,
+      "spearman": -0.011920548139656826
+    }
+  ],
+  "unique_vs_local_references": true,
+  "leakage_canary_single_feature_holdout_dti_full_map_diagnostic": {
+    "note": "Protocol rule 4: test each feature alone; AUC/DTI above 0.90 would indicate leakage. All single features are far below 0.90; no leakage signal. Radiometric (K+TC) dominates the combined surface.",
+    "RAD_only": {
+      "hide_recover_dti": 0.02136,
+      "sgmc_cal_dti": 0.02899
+    },
+    "WELLS_only": {
+      "hide_recover_dti": 0.00454,
+      "sgmc_cal_dti": 0.00206
+    },
+    "VENTS_only": {
+      "hide_recover_dti": 3e-05,
+      "sgmc_cal_dti": 0.0
+    },
+    "RAD_plus_WELLS": {
+      "hide_recover_dti": 0.02164,
+      "sgmc_cal_dti": 0.02895
+    },
+    "COMBINED": {
+      "hide_recover_dti": 0.02798862583321834,
+      "sgmc_cal_dti": 0.03259371220002364
+    }
+  },
+  "holdout_dti": {
+    "hide_recover": {
+      "value": 0.02798862583321834,
+      "ci95": [
+        0.018681566330295545,
+        0.037733743228042876
+      ],
+      "n_withheld_positives": 22232,
+      "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+      "label": "HOLDOUT-DTI (full-map diagnostic; NOT fold-local; not promotion evidence)"
+    },
+    "sgmc_cal": {
+      "value": 0.03259371220002364,
+      "ci95": [
+        0.020316906961965864,
+        0.04602782261641207
+      ],
+      "n_withheld_positives": 62703,
+      "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+      "label": "HOLDOUT-DTI (full-map diagnostic; NOT fold-local; not promotion evidence)",
+      "raw_pooled_dti": 0.04909562906299028,
+      "raw_ci95": [
+        0.030082811935912546,
+        0.07105108779230612
+      ]
+    },
+    "benchmarks": {
+      "UWBP_DRCs_EXP_B3": {
+        "hide_recover": 0.0648,
+        "hide_recover_ci95": [
+          0.057434,
+          0.071809
+        ],
+        "sgmc_cal": 0.089174,
+        "sgmc_cal_ci95": [
+          0.081232,
+          0.095645
+        ]
+      },
+      "GEMSDOE32_champion_D28_B2_ref": {
+        "hide_recover": 0.099202,
+        "hide_recover_ci95": [
+          0.085951,
+          0.112668
+        ],
+        "sgmc_cal": 0.064121,
+        "sgmc_cal_ci95": [
+          0.05673,
+          0.071649
+        ]
+      }
+    }
+  },
+  "verdict": "NEGATIVE - do not submit",
+  "verdict_reason": "H-GEO-CONDUIT full-map diagnostics (HIDE-RECOVER 0.0280; SGMC-CAL 0.0326) are below both the UWBP-DRCS EXP-B3 lane (0.0648 / 0.0892) and the GEMSDOE32 champion reference (0.0992 / 0.0641). Format-valid and locally unique, but holdout-negative; kept as a documented negative deliverable. Not recommended for any weekly contest slot.",
+  "ok_to_download": true,
+  "ok_to_submit": false,
+  "max_dots": 37654,
+  "nms_radius_px": 2
+}
