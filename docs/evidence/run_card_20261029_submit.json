@@ -65,7 +65,8 @@
       "label": "PROJECTION - linear extrapolation from USER-REPORTED points; NOT a score"
     }
   },
-  "ok_to_download_and_submit": true,
-  "verdict": "promote-to-download (automated gates PASS); score unverified",
-  "uploaded_by_agent": false
+  "ok_to_download_and_submit": false,
+  "verdict": "negative / superseded; no file cleared",
+  "uploaded_by_agent": false,
+  "release_status_note": "Superseded by docs/review-20261031.md: full-registry check incomplete; legacy detector-only recommendation withdrawn."
 }
