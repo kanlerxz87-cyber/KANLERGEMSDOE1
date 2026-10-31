@@ -4,7 +4,7 @@
 [![Download Verdict](https://img.shields.io/badge/Download_verdict-OK_for_one_file_(see_submit--now)-3dcc8a)](docs/submit-now.html)
 [![Tests](https://img.shields.io/badge/Automated_Gate_Tests-Passing-3dcc8a)](#7-autonomous-reproduction-commands)
 
-End-to-end geological feature engineering, fold-local hide-and-recover evaluation, 60-raster multi-site uniqueness auditing, automated 15-check GeoTIFF validation, and fail-closed GitHub Pages desk ([Executive summary](docs/executive-summary.html) · [Focus-site scorecard](docs/focus-sites-review-20261028.html) · [Submission gate](docs/how-to-submit.html) · [Latest review](docs/review-20261029.md) · [Prior review](docs/review-20261028.md)) for the [**DOE Geothermal Exploration Machine Learning (GEMS) Prize**](https://www.drivendata.org/competitions/306/competition-doe-gems/).
+End-to-end geological feature engineering, fold-local hide-and-recover evaluation, 60-raster multi-site uniqueness auditing, automated 15-check GeoTIFF validation, and fail-closed GitHub Pages desk ([Executive summary](docs/executive-summary.html) · [Focus-site scorecard](docs/focus-sites-review-20261028.html) · [Submission gate](docs/how-to-submit.html) · [Latest review](docs/review-20261031.md) · [Prior review](docs/review-20261028.md)) for the [**DOE Geothermal Exploration Machine Learning (GEMS) Prize**](https://www.drivendata.org/competitions/306/competition-doe-gems/).
 
 **Project-start rule:** At the start of every research or implementation session, read this standing prompt section and the latest dated review linked above. The full original request is archived verbatim in [`docs/ORIGINAL_PROMPT.md`](docs/ORIGINAL_PROMPT.md) and [`docs/REQUEST_20261027.md`](docs/REQUEST_20261027.md). Treat their constraints as active; report conflicts and evidence limitations instead of relaxing gates.
 
@@ -12,7 +12,11 @@ End-to-end geological feature engineering, fold-local hide-and-recover evaluatio
 
 ## 0. START HERE — Download verdict (2026-10-29)
 
-> **VERDICT: OK TO DOWNLOAD AND SUBMIT ONE FILE — [`docs/submit-now.html`](docs/submit-now.html).**
+> **VERDICT (updated 2026-10-31): DOWNLOAD IS FORMAT-VALID · SUBMISSION IS ON HOLD — [`docs/submit-now.html`](docs/submit-now.html).**
+>
+> - **Why the hold:** the 2026-10-31 label-integrity check found `labels.tif` and `existing_faults.tif` byte-identical in the restored owner mirror (60,988 positives each; `evidence/label_integrity_20261031.json`). The local holdout is therefore invalid until the organizer download is compared. The only holdout evidence for this file (HIDE-RECOVER `0.0648`) is also below the champion (`0.0992`).
+> - **What still holds:** the file passes the official-format validator and the detector-only uniqueness audit vs all 23 restored references (worst non-lattice 3-px overlap `33.83%`, max `|ρ| = 0.0064`).
+> - **Do not submit** until the team resolves the label blocker and clears the file. The organizer score is unknown.
 >
 > - **File:** [`docs/downloads/gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif`](docs/downloads/gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif) (NaN-outside, single-band float32 GeoTIFF, EPSG:32611, 3730 × 3292, values in [0, 1]; SHA-256 `2693c2daf87bd7948d3d57fc41fdcf40653ef42014c93d0e947bc2a8fc00a30c`).
 > - **Automated gates (no human inspector):** official-format validator PASS ([`evidence/validation_…-nan.json`](evidence/)); detector-only uniqueness audit PASS against 23 local reference rasters ([`evidence/uniqueness_audit_20261029.json`](evidence/uniqueness_audit_20261029.json)).

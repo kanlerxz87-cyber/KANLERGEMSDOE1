@@ -113,7 +113,7 @@ def champion_sgmc() -> float:
 def verdict_for(row: dict, is_recommended: bool) -> str:
     if not (row["uniq"]["detector_only_rule_passed"] and row["row"]["file"].endswith("-nan.tif")):
         return "DO NOT SUBMIT"
-    return "RECOMMENDED - download and submit" if is_recommended else "ALTERNATE - not recommended"
+    return "HOLD - format-valid file; do NOT submit yet" if is_recommended else "ALTERNATE - not recommended"
 
 
 def build_html(g: dict) -> str:
@@ -148,6 +148,7 @@ def build_html(g: dict) -> str:
 
     link_html = "".join(f"<li><a href=\"{esc(u)}\">{esc(t)}</a></li>" for t, u in LINKS)
     irregular = [
+        "<strong>BLOCKER: labels.tif and existing_faults.tif are byte-identical.</strong> Both hash to <code>7ba308cc…4093</code> with 60,988 positive pixels, and the mirror's sample_submission.tif has the same 60,988 ones (<code>evidence/label_integrity_20261031.json</code>, produced by <code>scripts/check_label_integrity.py</code>). The catalogue faults and the withheld truth should differ, so any hide-and-recover holdout built on this mirror is invalid until the organizer download confirms the two files.",
         "<strong>Competition data provenance.</strong> <code>training_features.tif</code>, <code>labels.tif</code> and <code>sample_submission.tif</code> were restored from hash-pinned <em>owner-hosted GitHub mirrors</em> (<code>registry/data_manifest.json</code>), not from DrivenData. Hashes prove mirror consistency only. Please compare the SHA-256 values against your own authenticated DrivenData download before relying on any local number.",
         "<strong>Uniqueness rule is saturated by the <code>r13-lattice-s5_v2</code> reference.</strong> Its 3-px footprint coverage is " + f"{coverage_of_lattice(g):.2%}" + ", so a dot inside the footprint is within 3 px of it almost by chance. Under the literal rule every candidate fails against it, including all earlier candidates. We therefore report a literal result and a detector-only result that excludes references covering at least 70% of the footprint. This exclusion is our own decision, not an official rule (the official page gives only the metric and format). <strong>Decision needed from the team.</strong>",
         "<strong>Holdout proxies disagree.</strong> The fold-local HIDE-RECOVER score for this file is " + f"{hr['value']:.4f}" + ", below the champion's repo-reported 0.099202, while SGMC-CAL is " + f"{sg['value']:.4f}" + " (above the champion's " + f"{champion_sgmc():.6f}" + "). The HIDE-RECOVER task recovers <em>catalogue</em> faults, which the official scorer masks out (staff reply, link above), so SGMC is the closer analogue. This is a reasoned choice, not a verified result.",
@@ -170,8 +171,8 @@ def build_html(g: dict) -> str:
 <nav class="nav" aria-label="Primary"><a href="submit-now.html" aria-current="page">Download &amp; submit</a><a href="index.html">Status</a><a href="executive-summary.html">Executive summary</a><a href="how-to-submit.html">How to submit</a><a href="sources.html">Sources</a></nav></div></header>
 <main class="wrap">
 <div class="banner" role="status" style="border-color:#3dcc8a">
-<strong>VERDICT: OK TO DOWNLOAD AND SUBMIT <code>{esc(dl_name)}</code></strong>
-<p>This file passes every automated gate: official format, independent validator, and the detector-only uniqueness audit against {g['uniq']['reference_count']} local reference rasters (<a href="#irregularities">irregularities below</a>). The <strong>organizer score is unknown</strong>. No human inspection is required. The file was not uploaded by the agent. The portal upload is your action, and the weekly cap is shown on the DrivenData submission page.</p>
+<strong>DOWNLOAD: FORMAT-VALID. SUBMIT: ON HOLD for <code>{esc(dl_name)}</code></strong>
+<p><strong>Download:</strong> passes the automated official-format validator and the detector-only uniqueness audit against {g['uniq']['reference_count']} local reference rasters. <strong>Submit:</strong> NOT CLEARED. The local holdout is invalid because <code>labels.tif</code> and <code>existing_faults.tif</code> are byte-identical in the restored mirror (see <a href="#irregularities">irregularities</a>), and this file's only holdout evidence is below the champion's. The <strong>organizer score is unknown</strong>. The agent did not upload anything; any portal upload is your decision, subject to the weekly cap on the DrivenData submission page.</p>
 </div>
 
 <h2>1. Download</h2>
@@ -193,6 +194,7 @@ def build_html(g: dict) -> str:
 <h2>3. Steps</h2>
 <ol>
 <li>Click the download button above and keep the file unchanged (do not rename it or re-save it).</li>
+<li><strong>Do not submit yet.</strong> Hold until the labels-integrity blocker is resolved and the team clears the file (see section 4 irregularities).</li>
 <li>Open the DrivenData submission page and choose <strong>File to submit</strong> → the .tif above.</li>
 <li>Paste the name and note from section 2.</li>
 <li>Check the weekly cap shown on the submission page before submitting. This page cannot see it.</li>
@@ -246,8 +248,8 @@ def exec_block(g: dict) -> str:
             f"<td>{'YES (detector-only)' if u['detector_only_rule_passed'] else 'NO'}</td>"
             f"<td><strong>{esc(verdict_for(item, is_rec))}</strong></td></tr>"
         )
-    return (EX_BEGIN + "<section><h2>Which file to download and submit (2026-10-29)</h2>"
-            "<p>Estimated organizer score for the recommended file is <strong>unknown</strong>; see "
+    return (EX_BEGIN + "<section><h2>Which file to download and submit (updated 2026-10-31)</h2>"
+            "<p><strong>Download: format-valid. Submit: HOLD</strong> (labels-integrity blocker). Estimated organizer score is <strong>unknown</strong>; see "
             "<a href=\"submit-now.html\">Download &amp; submit</a> for steps, portal name/note, irregularities and sources.</p>"
             "<table><thead><tr><th>File to download</th><th>SGMC-CAL HOLDOUT-DTI (re-run)</th><th>Organizer estimate</th>"
             "<th>Unique (local registry, detector-only)</th><th>Verdict</th></tr></thead><tbody>"
@@ -300,8 +302,9 @@ def build_card(g: dict) -> dict:
         "submission_note": SUBMISSION_NOTE,
         "submission_note_characters": len(SUBMISSION_NOTE),
         "organizer_estimate": {"value": None, "status": "UNKNOWN", "projection_not_a_score": rr["organizer_projection"]},
-        "ok_to_download_and_submit": True,
-        "verdict": "promote-to-download (automated gates PASS); score unverified",
+        "ok_to_download": True,
+        "ok_to_submit": False,
+        "verdict": "HOLD: format-valid and detector-unique; holdout invalid (labels == existing_faults in mirror); score unverified; do not submit",
         "uploaded_by_agent": False,
     }
 

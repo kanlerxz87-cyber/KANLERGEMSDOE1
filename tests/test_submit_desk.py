@@ -55,7 +55,8 @@ class EvidenceTests(unittest.TestCase):
         card = load("evidence/run_card_20261029_submit.json")
         self.assertIsNone(card["organizer_estimate"]["value"])
         self.assertEqual(card["organizer_estimate"]["status"], "UNKNOWN")
-        self.assertTrue(card["ok_to_download_and_submit"])
+        self.assertTrue(card["ok_to_download"])
+        self.assertFalse(card["ok_to_submit"])  # 2026-10-31: submission on hold (labels-integrity blocker)
         self.assertFalse(card["uploaded_by_agent"])
         self.assertLessEqual(card["submission_note_characters"], 140)
 
