@@ -21,6 +21,8 @@ End-to-end geological feature engineering, fold-local hide-and-recover evaluatio
 
 > - **Additional blocker (2026-10-31, supplementary):** [`docs/review-20261031-labels.md`](docs/review-20261031-labels.md) and `evidence/label_integrity_20261031.json` show `labels.tif` and `existing_faults.tif` are byte-identical in the restored owner mirror (60,988 positives each). The official page describes the test labels as *new* faults, so any holdout built on this mirror is invalid until the organizer download is compared.
 
+> - **Nine-site table, KANLER1 candidate status (HOLD), and dilation experiment (negative as a download):** [`docs/review-20261031-nine-site-dilation.md`](docs/review-20261031-nine-site-dilation.md). Shared-tool fix today: `scripts/evaluate_holdout.py` now accepts the official NaN-outside format in its diagnostic path.
+
 ## 1. Six Byte-Verified Dataset & Portal Irregularities Flagged
 
 1. **`IR-BAND-06` (`tc` Metadata Misidentification in `training_features.tif`):** Tagged `"Tilt angle or total curvature - magnetic field derivative"`, Band 6 (`[2.953, 88.567]`) matches USGS GeoDAWN Radiometric Total Count (`geodawn_rad_u8.tif` Band 4) at **Spearman $\rho = +0.999951$** ($\rho = +0.01884$ vs true magnetic tilt).
