@@ -1,0 +1,119 @@
+{
+  "schema": "GEMSDOE-PARALLEL-RUN-CARD-v2.1",
+  "card_id": "X1-SPACING-SWEEP-20261031",
+  "generated_utc": "2026-10-31T00:45:47Z",
+  "branch": "arena/a79bc593-kanlergemsdoe1",
+  "lane": "X1 (spacing sweep of the GEMSDOE32 champion rule). New this session; not one of the lanes listed in run_card_uwbp_drcs.json.",
+  "experiments_used": 1,
+  "max_experiments_budget": 3,
+  "slot_used": false,
+  "ok_to_submit": false,
+  "verdict": "negative",
+  "hypothesis": "H-X1: For the GEMSDOE32 champion rule (H19-5 support, raster-order Euclidean thinning, visible-only collar d_vis>2), the holdout pooled DTI depends on the thinning spacing, so a spacing other than the incumbent 2.83 px may raise the HOLDOUT-DTI.",
+  "mechanism": "Spacing trades coverage (more dots within 3 px of hidden truth, TP up) against false-positive mass (more dots, FP up at weight 0.2). The official alpha=0.2, beta=0.8 Tversky makes coverage cheap, so the optimum sits at the spacing where extra dots stop adding max-credit.",
+  "named_non_fault_process": "Carried over from docs/evidence/current_run_card.json (field named_non_fault_process: alluvial-fan apron toes, Pleistocene shoreline wave-cut scarps of Lake Lahontan/Bonneville, and unmapped pluton-margin intrusive contacts). X1 does not test these mimics; its canary is the random-placement baseline recorded below.",
+  "holdout_dti": {
+    "status": "HOLDOUT-DTI (fold-local per-cell npz through shared evaluate_holdout.evaluate_path)",
+    "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+    "n_withheld_positives": 22232,
+    "arms": {
+      "owner_d28_exact": {
+        "pooled_dti": 0.099202,
+        "ci95": [
+          0.085951,
+          0.112668
+        ],
+        "dots_after_gate": 37654
+      },
+      "owner_d15_exact": {
+        "pooled_dti": 0.097204,
+        "ci95": [
+          0.084114,
+          0.111066
+        ],
+        "dots_after_gate": 51300
+      },
+      "ctrl_d2828_reimpl": {
+        "pooled_dti": 0.099611,
+        "ci95": [
+          0.086462,
+          0.112536
+        ],
+        "dots_after_gate": 37843
+      },
+      "d3p0": {
+        "pooled_dti": 0.098601,
+        "ci95": [
+          0.085639,
+          0.111559
+        ],
+        "dots_after_gate": 33325
+      },
+      "d3p2": {
+        "pooled_dti": 0.096565,
+        "ci95": [
+          0.08389,
+          0.109004
+        ],
+        "dots_after_gate": 30059
+      },
+      "d3p6": {
+        "pooled_dti": 0.096565,
+        "ci95": [
+          0.08389,
+          0.109004
+        ],
+        "dots_after_gate": 30059
+      },
+      "d4p0": {
+        "pooled_dti": 0.093427,
+        "ci95": [
+          0.081316,
+          0.105352
+        ],
+        "dots_after_gate": 26603
+      }
+    },
+    "canary_random_same_count": {
+      "pooled_dti": 0.047237,
+      "ci95": [
+        0.043343,
+        0.050838
+      ]
+    },
+    "reproduction_check": "owner_d28_exact pooled_dti 0.099202 and CI [0.085951, 0.112668] equal the recorded CHAMP-D28-VIS-B2 values in docs/evidence/run_card_uwbp_drcs.json (exact match to 6 dp)."
+  },
+  "leakage_canary": {
+    "random_placement_same_count_HOLDOUT_DTI": 0.047237,
+    "finding": "EXPECTATION WRONG (pre-registered expectation was near zero). A random placement with the same dot count scores about 47% of the champion on this surrogate, so the hide-recover metric is dominated by coverage at this density. This is recorded as a defect of the surrogate, not a pass.",
+    "auc_canary": "not computed; no classifier feature in this experiment"
+  },
+  "correlation_overlap_vs_registry": {
+    "rule": "duplicate if within-3px > 70% vs any registry raster (protocol rule 1)",
+    "arms_within3px_vs_champion_full_map": {
+      "owner_d28_exact": 1.0,
+      "owner_d15_exact": 0.9937,
+      "ctrl_d2828_reimpl": 0.9976,
+      "d3p0": 0.9955,
+      "d3p2": 0.9952,
+      "d3p6": 0.9952,
+      "d4p0": 0.9954
+    },
+    "result": "every treatment arm is a duplicate of the champion lineage (>70%); therefore no arm may be emitted as a submission under rule 1"
+  },
+  "raster_sha256": null,
+  "raster_note": "No submission raster was produced by this experiment. Its per-arm npz caches are in the gitignored work directory.",
+  "validator_output": null,
+  "submission_name": null,
+  "submission_note": null,
+  "submission_note_length": 0,
+  "source_evidence": "docs/evidence/exp_x1_spacing_sweep_20261031.json",
+  "script": "scripts/run_spacing_sweep_experiment.py",
+  "limitations": [
+    "Arms are a sweep on the holdout: selection on the holdout is optimistic and cannot be used as a score.",
+    "The H19-5 support itself was produced by the owner. Whether it used hidden holdout segments is NOT verified here (see irregularity log IR-X1-01).",
+    "dot_thin uses integer squared offsets, so spacings 3.2 and 3.6 select identical pixels (identical results).",
+    "The shared harness reproduces the recorded champion exactly, but the holdout correlates with organizer scores at rho = -0.10 in the calibration file (fold-local vs diagnostic mismatch is noted there)."
+  ],
+  "promotion_gate_literal": "FAIL (duplicate of champion lineage; no unique file)"
+}

@@ -12,7 +12,11 @@ End-to-end geological feature engineering, fold-local hide-and-recover evaluatio
 
 ## 0. START HERE — Download verdict (2026-10-29)
 
-> **VERDICT: OK TO DOWNLOAD AND SUBMIT ONE FILE — [`docs/submit-now.html`](docs/submit-now.html).**
+> **UPDATED 2026-10-31 — READ THIS FIRST: [Executive summary](docs/executive-summary-20261031.html).**
+> **DOWNLOAD: OK — one unique, format-valid file** (`docs/downloads/gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif`, SHA-256 `2693c2da…a30c`).
+> **SUBMIT: NOT WITHOUT SELECTOR SIGN-OFF.** The lane's own run card (`docs/evidence/run_card_uwbp_drcs.json`) says `verdict: negative`, `ok_to_submit: false`. Its hide-recover holdout (0.0648) is below the champion's (0.0992). Organizer score: unknown. The 2026-10-29 "OK to submit" wording below is superseded (see IR-01 in `docs/evidence/irregularity_log_20261031.json`).
+> **Nothing on this site beats 0.2778 with evidence yet.** The only projection (≈0.25, 95% PI 0.06–0.44) is not a score.
+> Previous verdict (superseded): [`docs/submit-now.html`](docs/submit-now.html).
 >
 > - **File:** [`docs/downloads/gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif`](docs/downloads/gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif) (NaN-outside, single-band float32 GeoTIFF, EPSG:32611, 3730 × 3292, values in [0, 1]; SHA-256 `2693c2daf87bd7948d3d57fc41fdcf40653ef42014c93d0e947bc2a8fc00a30c`).
 > - **Automated gates (no human inspector):** official-format validator PASS ([`evidence/validation_…-nan.json`](evidence/)); detector-only uniqueness audit PASS against 23 local reference rasters ([`evidence/uniqueness_audit_20261029.json`](evidence/uniqueness_audit_20261029.json)).

@@ -1,0 +1,111 @@
+{
+  "schema": "irregularity-log/v1",
+  "date": "2026-10-31",
+  "purpose": "Items that a human reviewer must look at before anything is uploaded or cited. Each item names the evidence file or public URL to check. Nothing here was resolved by the agent unless the 'status' says so.",
+  "items": [
+    {
+      "id": "IR-01",
+      "severity": "HIGH",
+      "title": "Repo verdicts contradict each other on whether the recommended file may be submitted",
+      "detail": "README section 0 and docs/index.html say 'OK TO DOWNLOAD AND SUBMIT ONE FILE' for the UWBP-DRCS-EXP3 nan.tif. The same lane's run card (docs/evidence/run_card_uwbp_drcs.json) says verdict 'negative', ok_to_submit false, slot_used false, and its promotion gates are holdout=false, paired_improvement=false, surface=false, final=false, same_registry=false, format=false (the format gate was false on 2026-10-28 even though the validator passes today).",
+      "evidence": ["docs/evidence/run_card_uwbp_drcs.json", "README.md section 0", "docs/index.html banner"],
+      "status": "OPEN - owner decision required; this session corrects the top banner to say download-only until selector sign-off"
+    },
+    {
+      "id": "IR-02",
+      "severity": "HIGH",
+      "title": "User-quoted leaderboard figures do not match the public leaderboard",
+      "detail": "The request quotes 0.4413 as the leaderboard high and 0.3195 as the 'highest right now'. The public DrivenData leaderboard fetched 2026-10-31 shows #1 xiaofanhu 0.4544, #2 cfld__ 0.3925, #3 Batik Shirt Brothers 0.3917 (column: best public DW-Tversky, public test set). Neither quoted figure appears. The site list's highest focus-site value is 0.2778 (GEMSDOE32, USER-REPORTED).",
+      "evidence": ["https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/", "docs/evidence/leaderboard_snapshot_20261029.json"],
+      "status": "OPEN - the user's figures are not treated as leaderboard facts"
+    },
+    {
+      "id": "IR-03",
+      "severity": "HIGH",
+      "title": "Holdout surrogate does not rank organizer scores",
+      "detail": "docs/evidence/proxy_vs_organizer_calibration.json: Spearman organizer vs hide-recover = -0.10 (p=0.74); organizer vs SGMC-CAL = +0.58 (p=0.039), n=13 with duplicated rasters. The hide-recover column in that file uses the diagnostic full-map path, which the evaluator itself labels 'not promotion evidence', so the -0.10 is a weak test of the fold-local metric; the SGMC-CAL correlation rests on 13 non-independent points.",
+      "evidence": ["docs/evidence/proxy_vs_organizer_calibration.json", "docs/evidence/organizer_projection_20261031.json"],
+      "status": "OPEN - no proxy in the repo is validated against organizer receipts"
+    },
+    {
+      "id": "IR-04",
+      "severity": "HIGH",
+      "title": "Random placement scores about half the champion on the hide-recover surrogate",
+      "detail": "Experiment X1 canary: random dots with the same count (41,696 pre-gate) score HOLDOUT-DTI 0.047237 (CI 0.043343-0.050838) versus 0.099202 for the champion. The pre-registered expectation was near zero; it was wrong. The surrogate is coverage-dominated at this density.",
+      "evidence": ["docs/evidence/exp_x1_spacing_sweep_20261031.json", "docs/evidence/run_card_x1_spacing_20261031.json"],
+      "status": "RECORDED - surrogate defect; any future canary must use this baseline"
+    },
+    {
+      "id": "IR-05",
+      "severity": "MEDIUM",
+      "title": "Fold-honest label for the champion control depends on an unverified owner surface",
+      "detail": "The control 'CHAMP-D28-VIS-B2' is labelled fold-honest, but it is built from the owner's H19-5 surface (data/scored/gems19-h19-5-...-nan.tif, 121,131 px). The repo verified fold-locality for its own lane only. Whether the owner's H19-5 surface used withheld holdout segments is NOT verified.",
+      "evidence": ["scripts/run_uwbp_lane.py (champ_cells construction)", "docs/evidence/exp_x1_spacing_sweep_20261031.json"],
+      "status": "OPEN - needs the owner's H19-5 build log"
+    },
+    {
+      "id": "IR-06",
+      "severity": "MEDIUM",
+      "title": "Uniqueness: literal rule fails against one saturating reference",
+      "detail": "Literal rule (within-3px <= 70% vs every reference) fails for the UWBP file only against data/scored/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif, whose 3-px footprint coverage is 99.87%, so it cannot discriminate. Detector-only rule passes against all 23 references, including the nine focus sites (max within-3px 0.338, against 8GEMSDOE Hedge-v2).",
+      "evidence": ["evidence/uniqueness_audit_20261029.json", "docs/evidence/focus_site_table_20261031.json"],
+      "status": "OPEN - team must decide whether to exempt the lattice reference (README open decision)"
+    },
+    {
+      "id": "IR-07",
+      "severity": "MEDIUM",
+      "title": "Template labelled 'total absence' contains the label positives",
+      "detail": "The official problem page says 'A sample submission that predicts total fault absence is provided'. data/sample_submission.tif contains 60,988 pixels equal to 1 inside the footprint, identical to data/labels.tif positives (checked 2026-10-31). The template is therefore not an absence-only file; the repo uses it only for grid, CRS, transform and footprint.",
+      "evidence": ["https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/", "data/sample_submission.tif", "data/labels.tif"],
+      "status": "RECORDED - do not treat the template as a null prediction"
+    },
+    {
+      "id": "IR-08",
+      "severity": "MEDIUM",
+      "title": "Two focus sites carry the same dot count and score but different bytes",
+      "detail": "GEMSDOE25 and GEMSDOE30 both list 0.2600 and both have 44,090 dots, but their SHA-256 values differ (91eae1ca... vs 8cf893ea...). Their pixel overlap was not computed in this session.",
+      "evidence": ["registry/focus_sites.json", "docs/evidence/organizer_projection_20261031.json"],
+      "status": "OPEN - check overlap before treating them as independent"
+    },
+    {
+      "id": "IR-09",
+      "severity": "MEDIUM",
+      "title": "Training inputs come from owner mirrors, not the organizer",
+      "detail": "data/training_features.tif, labels.tif and sample_submission.tif were restored from pinned GitHub owner mirrors, not from DrivenData (login required). The restore receipt says 'hash-pinned owner mirror; not organizer-authenticated'. Hashes prove consistency with the owner mirror only.",
+      "evidence": ["data/restore_receipt.json", "scripts/restore_data.py"],
+      "status": "OPEN - authenticated download needed from the DrivenData data page"
+    },
+    {
+      "id": "IR-10",
+      "severity": "MEDIUM",
+      "title": "Portal range error: how to avoid it",
+      "detail": "The portal rejected an earlier file with 'Predicted values must be in range [0, 1]'. The official rules say values must be float32 in [0, 1] with null or NaN outside bounds. The UWBP -nan.tif is float32, nodata tag nan, values {0, 1} inside the footprint and NaN outside (validator PASS, 2026-10-31). Upload the -nan.tif, not the -zeros.tif diagnostic.",
+      "evidence": ["docs/evidence/validation_gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.json", "https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/"],
+      "status": "RESOLVED IN FILE - portal behaviour itself not observed by the agent"
+    },
+    {
+      "id": "IR-11",
+      "severity": "LOW",
+      "title": "Spacing arms 3.2 and 3.6 are identical",
+      "detail": "emitter.dot_thin uses integer squared offsets, so min_dist 3.2 and 3.6 select the same pixels (30,059 dots, identical scores). The effective spacings are sqrt(8), 3, sqrt(10), 4, not continuous values.",
+      "evidence": ["src/gems32/emitter.py", "docs/evidence/exp_x1_spacing_sweep_20261031.json"],
+      "status": "RECORDED"
+    },
+    {
+      "id": "IR-12",
+      "severity": "LOW",
+      "title": "Reimplemented spacing control is not byte-identical to the owner file",
+      "detail": "dot_thin at 2.828 gives 44,271 pre-gate pixels versus 44,090 in the owner file (100% of owner pixels inside 3 px of the reimplementation). The owner file is used for all reproduction claims.",
+      "evidence": ["docs/evidence/exp_x1_spacing_sweep_20261031.json (control_check)"],
+      "status": "RECORDED"
+    },
+    {
+      "id": "IR-13",
+      "severity": "LOW",
+      "title": "Forum citation not re-fetched",
+      "detail": "The repo cites DrivenData forum thread 11516 on known-fault masking. It was not fetched in this session, so the masking claim is carried over from the repo and not re-verified.",
+      "evidence": ["https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/4"],
+      "status": "OPEN - manual check"
+    }
+  ]
+}

@@ -42,7 +42,11 @@ class SiteSafetyTests(unittest.TestCase):
     def test_landing_shows_the_one_download_verdict_with_honest_score_label(self):
         # 2026-10-29 user directive: an obvious, validated download with an unambiguous verdict.
         html = self.html("index.html")
-        self.assertIn("VERDICT: OK TO DOWNLOAD AND SUBMIT ONE FILE", html)
+        # 2026-10-31 correction: the run card (verdict negative, ok_to_submit false) contradicts the
+        # 2026-10-29 "OK TO SUBMIT" wording, so the landing page now separates download from submit.
+        self.assertIn("DOWNLOAD OK", html)
+        self.assertIn("SUBMIT ONLY WITH SELECTOR SIGN-OFF", html)
+        self.assertIn("executive-summary-20261031.html", html)
         self.assertIn("gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif", html)
         self.assertIn("organizer score is unknown", html.lower())
         self.assertIn("submit-now.html", html)

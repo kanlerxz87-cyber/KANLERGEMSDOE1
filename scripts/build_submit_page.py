@@ -170,6 +170,7 @@ def build_html(g: dict) -> str:
 <nav class="nav" aria-label="Primary"><a href="submit-now.html" aria-current="page">Download &amp; submit</a><a href="index.html">Status</a><a href="executive-summary.html">Executive summary</a><a href="how-to-submit.html">How to submit</a><a href="sources.html">Sources</a></nav></div></header>
 <main class="wrap">
 <div class="banner" role="status" style="border-color:#3dcc8a">
+<p class="banner" role="status" style="border-color:#e0a030"><strong>SUPERSEDED 2026-10-31.</strong> This 2026-10-29 verdict is no longer current. The same lane's run card marks this file <code>verdict: negative</code> and <code>ok_to_submit: false</code>. Download is OK; submission needs selector sign-off. See the <a href="executive-summary-20261031.html">executive summary</a>.</p>
 <strong>VERDICT: OK TO DOWNLOAD AND SUBMIT <code>{esc(dl_name)}</code></strong>
 <p>This file passes every automated gate: official format, independent validator, and the detector-only uniqueness audit against {g['uniq']['reference_count']} local reference rasters (<a href="#irregularities">irregularities below</a>). The <strong>organizer score is unknown</strong>. No human inspection is required. The file was not uploaded by the agent. The portal upload is your action, and the weekly cap is shown on the DrivenData submission page.</p>
 </div>
