@@ -1,18 +1,16 @@
 (function () {
   const target = document.getElementById("leaderboard-feed");
   if (!target) return;
-  fetch("feed.json", {cache:"no-store"}).then(function (response) {
+  fetch("feed.json", { cache: "no-store" }).then(function (response) {
     if (!response.ok) throw new Error("feed unavailable");
     return response.json();
   }).then(function (data) {
-    const score = data.rank_one_public_dti;
-    if (typeof score !== "number" || !Number.isFinite(score) || score < 0 || score > 1) throw new Error("invalid score");
-    const observed = new Date(data.observed_utc);
-    const ageHours = (Date.now() - observed.getTime()) / 3600000;
-    const freshness = !Number.isFinite(ageHours) || ageHours < 0 || ageHours > 48 || data.status !== "refreshed"
-      ? "Dated snapshot — check the official board." : "Recently refreshed snapshot.";
-    target.textContent = "Rank 1 public DTI " + score.toFixed(4) + " · observed " + data.observed_utc + ". " + freshness + " Not a receipt for any repository raster.";
+    const stamp = typeof data.observed_utc === "string" ? data.observed_utc : "unknown date";
+    const isFresh = data.status === "refreshed";
+    target.textContent = isFresh
+      ? "Public leaderboard snapshot refreshed on " + stamp + ". Open the official leaderboard for rank and score details; this is not a receipt for a repository raster."
+      : "Stale public leaderboard snapshot observed on " + stamp + ". Open the official leaderboard for live values; this is not a receipt for a repository raster.";
   }).catch(function () {
-    target.textContent = "Feed unavailable. Open the official leaderboard for current values.";
+    target.textContent = "Feed unavailable. Open the official leaderboard for live values. No repository submission receipt is recorded here.";
   });
 }());

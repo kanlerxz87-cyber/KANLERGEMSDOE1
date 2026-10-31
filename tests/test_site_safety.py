@@ -39,32 +39,35 @@ class SiteSafetyTests(unittest.TestCase):
     def html(self, name):
         return (ROOT / "docs" / name).read_text(encoding="utf-8")
 
-    def test_landing_shows_the_one_download_verdict_with_honest_score_label(self):
-        # 2026-10-29 user directive: an obvious, validated download with an unambiguous verdict.
+    def test_landing_and_submission_page_fail_closed(self):
         html = self.html("index.html")
-        self.assertIn("VERDICT: OK TO DOWNLOAD AND SUBMIT ONE FILE", html)
-        self.assertIn("gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif", html)
-        self.assertIn("organizer score is unknown", html.lower())
+        self.assertIn("STOP — NO TIFF IS CLEARED TO DOWNLOAD AND SUBMIT", html)
+        self.assertIn("USER/OWNER-REPORT", html)
         self.assertIn("submit-now.html", html)
+        self.assertIn("leaderboard-feed", html)
+        self.assertNotIn("VERDICT: OK TO DOWNLOAD AND SUBMIT", html)
+        feed_script = (ROOT / "docs/assets/feed.js").read_text()
+        self.assertIn("Stale public leaderboard snapshot", feed_script)
+        self.assertNotIn("score.toFixed", feed_script)
         submit = self.html("submit-now.html")
-        self.assertIn("OK TO DOWNLOAD AND SUBMIT", submit)
-        self.assertIn("Estimated organizer score for this file: unknown", submit)
-        self.assertIn("r13-lattice-s5_v2", submit)  # the saturating-reference irregularity is disclosed
+        self.assertIn("STOP — NO TIFF IS CLEARED TO DOWNLOAD AND SUBMIT", submit)
+        self.assertIn("NEGATIVE / DO NOT SUBMIT", submit)
+        self.assertIn("r13-lattice-s5_v2", submit)
+        self.assertNotIn("Download the .tif", submit)
 
     def test_executive_covers_nine_sites_and_negative_findings(self):
         html = self.html("executive-summary.html")
         for site in ("GEMSDOE24", "GEMSDOE25", "GEMSDOE27", "GEMSDOE28", "GEMSDOE30", "GEMSDOE31", "GEMSDOE32", "GEMSDOE33", "GEMSDOE36"):
             with self.subTest(site=site):
                 self.assertIn(site, html)
-        self.assertIn("holdout dti diagnostic", html.lower())
-        self.assertIn("0.0078", html)
-        self.assertIn("0.105830", html)
-        self.assertIn("0.090111", html)
-        self.assertIn("0.089174", html)
-        self.assertIn("0.1218", html)
-        self.assertIn("not a leaderboard forecast", html.lower())
-        self.assertIn("no organizer receipt", html.lower())
-        self.assertIn("97.58%", html)
+        self.assertIn("0.2778", html)
+        self.assertIn("USER/OWNER-REPORT", html)
+        self.assertIn("Estimated score", html)
+        self.assertIn("Unavailable", html)
+        self.assertIn("100.00% within 3 px", html)
+        self.assertIn("NO", html)
+        self.assertIn("No file is cleared to submit", html)
+        self.assertIn("five-pixel discrepancy", html)
 
     def test_requested_site_scorecard_is_provenance_labeled_and_fail_closed(self):
         page = self.html("focus-sites-review-20261028.html")

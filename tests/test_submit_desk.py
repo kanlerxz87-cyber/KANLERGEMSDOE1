@@ -26,7 +26,7 @@ def load(rel):
 
 
 class EvidenceTests(unittest.TestCase):
-    def test_recommended_file_and_zip_exist_and_hash_to_validator_record(self):
+    def test_research_file_and_zip_exist_and_hash_to_validator_record(self):
         val = load(f"evidence/validation_{STEM}.json")
         self.assertTrue(val["all_passed"])
         self.assertEqual(hashlib.sha256(TIF.read_bytes()).hexdigest(), val["tif"]["sha256"])
@@ -34,7 +34,7 @@ class EvidenceTests(unittest.TestCase):
             self.assertEqual(zf.namelist(), [f"{STEM}.tif"])
             self.assertEqual(hashlib.sha256(zf.read(f"{STEM}.tif")).hexdigest(), val["tif"]["sha256"])
 
-    def test_uniqueness_is_detector_only_pass_with_literal_failure_disclosed(self):
+    def test_literal_uniqueness_failure_blocks_submission_even_if_detector_only_passes(self):
         audit = load("evidence/uniqueness_audit_20261029.json")
         self.assertGreaterEqual(audit["reference_count"], 20)
         row = next(v for v in audit["candidates"].values() if v["file"].endswith(f"{STEM}.tif"))
@@ -45,19 +45,20 @@ class EvidenceTests(unittest.TestCase):
         self.assertFalse(row["literal_rule_passed"])
         self.assertTrue(any("r13" in r for r in row["literal_failing_references"]))
 
-    def test_projection_rows_are_labelled_and_never_called_scores(self):
-        sb = load("evidence/candidate_scoreboard_20261029.json")
-        for r in sb["rows"]:
-            with self.subTest(candidate=r["candidate"]):
-                self.assertIn("PROJECTION", r["organizer_projection"]["label"])
-                self.assertIn("NOT a score", r["organizer_projection"]["label"])
-                self.assertIn("HOLDOUT-DTI", r["sgmc_cal_holdout_dti"]["label"])
+    def test_run_card_reports_metrics_and_withholds_organizer_estimate(self):
         card = load("evidence/run_card_20261029_submit.json")
-        self.assertIsNone(card["organizer_estimate"]["value"])
-        self.assertEqual(card["organizer_estimate"]["status"], "UNKNOWN")
-        self.assertTrue(card["ok_to_download_and_submit"])
-        self.assertFalse(card["uploaded_by_agent"])
+        for metric in (card["holdout_dti"]["hide_recover"], card["holdout_dti"]["sgmc_cal"]):
+            self.assertEqual(metric["label"], "HOLDOUT-DTI")
+            self.assertIn("evaluator_version", metric)
+            self.assertGreater(metric["n_withheld_positives"], 0)
+            self.assertEqual(len(metric["ci95"]), 2)
+        self.assertFalse(card["ok_to_download_and_submit"])
+        self.assertEqual(card["verdict"], "negative")
+        self.assertIsNone(card["organizer_confirmed_score"])
+        self.assertIsNone(card["organizer_score_estimate"])
         self.assertLessEqual(card["submission_note_characters"], 140)
+        self.assertFalse(card["correlation_overlap_vs_registry"]["literal_surface_gate_passed"])
+        self.assertFalse(card["correlation_overlap_vs_registry"]["literal_final_dot_gate_passed"])
 
     def test_published_evidence_copies_match_canonical_files(self):
         for name in ("validation_" + STEM + ".json", "uniqueness_audit_20261029.json",
@@ -72,11 +73,15 @@ class EvidenceTests(unittest.TestCase):
                              capture_output=True, text=True, cwd=ROOT)
         self.assertEqual(out.returncode, 0, out.stdout + out.stderr)
 
-    def test_portal_note_is_within_limit(self):
-        html = (ROOT / "docs" / "submit-now.html").read_text()
-        m = re.search(r"<tr><th>Note</th><td><code>([^<]+)</code>", html)
-        self.assertIsNotNone(m)
-        self.assertLessEqual(len(m.group(1)), 140)
+    def test_readiness_page_fails_closed_and_never_offers_submit_download(self):
+        page = (ROOT / "docs" / "submit-now.html").read_text()
+        self.assertIn("STOP — NO TIFF IS CLEARED TO DOWNLOAD AND SUBMIT", page)
+        self.assertIn("NEGATIVE / DO NOT SUBMIT", page)
+        self.assertNotIn("Download the .tif", page)
+        self.assertNotIn("VERDICT: OK TO DOWNLOAD AND SUBMIT", page)
+        card = load("evidence/run_card_20261029_submit.json")
+        self.assertLessEqual(len(card["submission_note"]), 140)
+        self.assertIn("[RESEARCH-HOLD]", card["submission_note"])
 
 
 class RasterTests(unittest.TestCase):

@@ -24,6 +24,7 @@ jobs:
         run: |
           python3 scripts/build_executive_summary.py --check
           python3 scripts/build_readiness_report.py --check
+          python3 scripts/build_submit_page.py --check
       - name: Refresh the public leaderboard snapshot (fallback to dated snapshot)
         run: python3 scripts/refresh_public_feed.py --output docs/feed.json
       - name: Observe focus-source freshness (not scores or a complete registry)

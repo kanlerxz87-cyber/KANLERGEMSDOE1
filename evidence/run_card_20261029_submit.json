@@ -1,71 +1,78 @@
 {
-  "schema": "GEMS-PARALLEL-RUN-CARD-v2.1",
-  "card_id": "KANLER1-UWBP-DRCS-EXP3-SUBMIT-20261029",
-  "generated_by": "scripts/build_submit_page.py",
-  "lane": "H-K1-B (UWBP-DRCS) - file re-validated and audited; no new experiment",
-  "experiments_used_this_session": 2,
-  "experiments_note": "1) proxy-vs-organizer calibration, 2) candidate scoreboard + uniqueness audit (validation only)",
-  "hypothesis": "2D DCT-II Poisson worm back-projection at 55-degree dip plus elevation-deconfounded dual-regime and Dinkelbach 300 m packing yields off-catalogue (SGMC) fault dots that the organizer's new-fault labels reward.",
-  "mechanism": "Upward-continued potential-field worms (100/300/600/1200 m) back-projected up-dip; coordinate/elevation proxies removed; cost-sensitive submodular packing at 300 m.",
-  "named_non_fault_process": "Pluton contacts, paleoshoreline benches, TIGER highway cuts, playa margins (per lane run card).",
+  "schema": "GEMS-PARALLEL-RUN-CARD-v2.2",
+  "review_date_utc": "2026-10-31",
+  "lane": "H-K1-B (UWBP-DRCS), previously executed; no experiment run in this review",
+  "hypothesis": "H-K1-B (UWBP-DRCS \u2014 2D DCT-II Poisson Upward-Continued Worm Back-Projection & Elevation-Deconfounded Dual-Regime Crustal-Hydrothermal Submodular Synthesis): Dipping (~55 deg) Basin-and-Range normal faults project buried gravity, RTP magnetic, and MT resistivity steps laterally into the hanging-wall basin by Z_b * cot(55 deg) (400-1,100 m), while raw regional elevation/coordinate proxy bands cause PU trees to memorize Quaternary basin floors and misclassify upland Cenozoic bedrock faults as y = 0.",
+  "mechanism": "Exact 2D DCT-II Neumann-boundary Poisson upward continuation (100, 300, 600, 1200 m) + Andersonian 55-deg up-dip surface back-projection + cross-canyon thalweg knickzone/spur-saddle chains + strike-steered hydrothermal smectite-margin/magnetite-bleaching conduits (18 new UWBP channels; 57 strictly local/scale-free Stage-1 channels with all raw coordinate/elevation proxy bands excluded), fused out-of-quadrant via Stage-2 inner-withheld continuation calibration + Dual-Regime M_struct synthesis + cost-sensitive Dinkelbach 300 m submodular CELF packing (37,647 dots).",
+  "named_non_fault_process": "Vertical Mesozoic granodiorite pluton contacts (symmetric across upward-continuation altitudes), contour-parallel Lake Lahontan/Bonneville paleoshoreline benches & horizontal basalt caprock ledges (suppressed via 800 m contour cross-cutting index), US Census TIGER highway cuts, and circular evaporite playas (rejected via RTP linear coherence + lateral smectite-margin gating).",
   "holdout_dti": {
-    "sgmc_cal": {
-      "value": 0.0891815454781798,
-      "ci95": [
-        0.08124636388710722,
-        0.09565071208767431
-      ],
-      "n_withheld_positives": 62703,
-      "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
-      "label": "HOLDOUT-DTI (re-run this session)"
-    },
     "hide_recover": {
+      "label": "HOLDOUT-DTI",
+      "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+      "n_withheld_positives": 22232,
       "value": 0.0648,
       "ci95": [
         0.057434,
         0.071809
       ],
-      "n_withheld_positives": 22232,
-      "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
-      "label": "HOLDOUT-DTI (fold-local, lane run card)"
+      "status": "historical lane evidence; not rerun in this review"
+    },
+    "sgmc_cal": {
+      "label": "HOLDOUT-DTI",
+      "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+      "n_withheld_positives": 62703,
+      "value": 0.089174,
+      "ci95": [
+        0.081232,
+        0.095645
+      ],
+      "status": "historical lane evidence; not rerun in this review"
     }
   },
-  "leakage_canary": {
-    "status": "from lane run card (evidence/run_card_uwbp_drcs.json)",
-    "note": "no new canary run this session"
+  "comparison": {
+    "benchmark_hide_recover": {
+      "label": "HOLDOUT-DTI",
+      "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+      "n_withheld_positives": 22232,
+      "value": 0.099202,
+      "ci95": [
+        0.085951,
+        0.112668
+      ]
+    },
+    "paired_delta_ci95": [
+      -0.046523,
+      -0.02187
+    ],
+    "note": "UWBP-DRCS is below the D2.8/B2 hide-and-recover benchmark; no improvement claim."
   },
   "correlation_overlap_vs_registry": {
-    "reference_count": 23,
-    "literal_rule_passed": false,
-    "detector_only_rule_passed": true,
-    "worst_non_space_filling_within_3px": 0.3383270911360799,
-    "worst_non_space_filling_reference": "data/scored/8GEMSDOE_Hedge-v2_submission.tif",
-    "worst_abs_spearman": 0.006360862042577283
+    "registry_rasters_checked": 59,
+    "literal_surface_gate_passed": false,
+    "literal_final_dot_gate_passed": false,
+    "max_abs_surface_spearman": 0.107809,
+    "lattice_overlap_fraction": 0.9997609371264643,
+    "duplicate_verdict": "DUPLICATE",
+    "full_fleet_complete": false
   },
-  "raster_sha256_nan": "2693c2daf87bd7948d3d57fc41fdcf40653ef42014c93d0e947bc2a8fc00a30c",
-  "submission_zip_sha256_nan": "7248e2fee1e73dd57ebcd47ce9aec27e81dd8ee566667bb3c2abec9332dd85f8",
+  "raster_sha256": "2693c2daf87bd7948d3d57fc41fdcf40653ef42014c93d0e947bc2a8fc00a30c",
   "validator_output": {
-    "file": "evidence/validation_gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.json",
-    "all_passed": true
+    "local_format_validator_passed": true,
+    "single_band_float32": true,
+    "no_nan_inside_footprint": true,
+    "values_in_0_1": true,
+    "crs_shape_transform_match_local_template": true,
+    "template_authenticated_by_organizer": false,
+    "qualification": "format preflight only; not authorization or organizer acceptance"
   },
   "submission_name": "kanler1-uwbp-drcs-exp3-37647d-nan",
-  "submission_note": "KANLER1 UWBP-DRCS EXP3 worm+Dinkelbach 37647 dots NaN-outside; SGMC-CAL proxy 0.0892 (not organizer score)",
-  "submission_note_characters": 106,
-  "organizer_estimate": {
-    "value": null,
-    "status": "UNKNOWN",
-    "projection_not_a_score": {
-      "value": 0.405,
-      "band_1sigma": [
-        0.3888,
-        0.4211
-      ],
-      "n_fit_points": 12,
-      "within_fitted_sgmc_range": false,
-      "label": "PROJECTION - linear extrapolation from USER-REPORTED points; NOT a score"
-    }
-  },
-  "ok_to_download_and_submit": true,
-  "verdict": "promote-to-download (automated gates PASS); score unverified",
-  "uploaded_by_agent": false
+  "submission_note": "KANLER1 UWBP-DRCS Exp3 55deg-Worm+DeconfDual+Dinkelbach 37647d [RESEARCH-HOLD]",
+  "submission_note_characters": 78,
+  "organizer_confirmed_score": null,
+  "organizer_score_estimate": null,
+  "verdict": "negative",
+  "ok_to_download_and_submit": false,
+  "reason": "Literal uniqueness gate fails; full registry is incomplete; candidate does not beat the best hide-and-recover holdout; organizer template provenance is unauthenticated.",
+  "weekly_slots_used": 0,
+  "new_experiments_this_review": 0
 }

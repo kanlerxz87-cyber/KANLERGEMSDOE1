@@ -22,10 +22,11 @@ class ResearchArtifactTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d, self.assertRaises(FileNotFoundError):
             check(Path(d))
 
-    def test_page_does_not_assign_zero_hash_to_nan_tiff(self):
+    def test_landing_does_not_offer_any_historical_tiff_as_submit_ready(self):
         html = (ROOT / 'docs/index.html').read_text()
-        self.assertIn('06ccd852475120cbdff86732252478096c821babe6e608aae9e66945cc7c4bb2', html)
-        self.assertIn('final OCDA TIFF has 37,649', html)
+        self.assertIn('STOP — NO TIFF IS CLEARED TO DOWNLOAD AND SUBMIT', html)
+        self.assertNotIn('06ccd852475120cbdff86732252478096c821babe6e608aae9e66945cc7c4bb2', html)
+        self.assertNotIn('VERDICT: OK TO DOWNLOAD AND SUBMIT', html)
 
 
 if __name__ == '__main__':
