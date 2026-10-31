@@ -65,7 +65,7 @@
       "label": "PROJECTION - linear extrapolation from USER-REPORTED points; NOT a score"
     }
   },
-  "ok_to_download_and_submit": true,
-  "verdict": "promote-to-download (automated gates PASS); score unverified",
+  "ok_to_download_and_submit": false,
+  "verdict": "negative (literal all-registry uniqueness gate fails; no submission cleared)",
   "uploaded_by_agent": false
 }

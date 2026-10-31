@@ -39,17 +39,16 @@ class SiteSafetyTests(unittest.TestCase):
     def html(self, name):
         return (ROOT / "docs" / name).read_text(encoding="utf-8")
 
-    def test_landing_shows_the_one_download_verdict_with_honest_score_label(self):
-        # 2026-10-29 user directive: an obvious, validated download with an unambiguous verdict.
+    def test_landing_and_submit_page_fail_closed_on_current_registry_gate(self):
         html = self.html("index.html")
-        self.assertIn("VERDICT: OK TO DOWNLOAD AND SUBMIT ONE FILE", html)
-        self.assertIn("gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif", html)
-        self.assertIn("organizer score is unknown", html.lower())
-        self.assertIn("submit-now.html", html)
+        self.assertIn("VERDICT: STOP", html)
+        self.assertIn("NO FILE IS CLEARED", html)
+        self.assertIn("review-20261031.md", html)
         submit = self.html("submit-now.html")
-        self.assertIn("OK TO DOWNLOAD AND SUBMIT", submit)
-        self.assertIn("Estimated organizer score for this file: unknown", submit)
-        self.assertIn("r13-lattice-s5_v2", submit)  # the saturating-reference irregularity is disclosed
+        self.assertIn("VERDICT: STOP", submit)
+        self.assertIn("DO NOT DOWNLOAD FOR CONTEST SUBMISSION", submit)
+        self.assertIn("r13-lattice-s5_v2", submit)
+        self.assertNotIn("VERDICT: OK TO DOWNLOAD AND SUBMIT", submit)
 
     def test_executive_covers_nine_sites_and_negative_findings(self):
         html = self.html("executive-summary.html")

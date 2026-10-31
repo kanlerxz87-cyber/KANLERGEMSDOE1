@@ -111,9 +111,9 @@ def champion_sgmc() -> float:
 
 
 def verdict_for(row: dict, is_recommended: bool) -> str:
-    if not (row["uniq"]["detector_only_rule_passed"] and row["row"]["file"].endswith("-nan.tif")):
-        return "DO NOT SUBMIT"
-    return "RECOMMENDED - download and submit" if is_recommended else "ALTERNATE - not recommended"
+    # Candidate cards currently fail the literal all-registry promotion gate.
+    # A detector-only pass or format-valid TIFF is never sufficient for release.
+    return "DO NOT SUBMIT — RESEARCH HOLD"
 
 
 def build_html(g: dict) -> str:
@@ -169,13 +169,13 @@ def build_html(g: dict) -> str:
 <body><header><div class="wrap head"><p class="brand">KANLERGEMSDOE1 / DOE GEMS PRIZE / SUBMISSION DESK</p><h1>Download &amp; submit</h1>
 <nav class="nav" aria-label="Primary"><a href="submit-now.html" aria-current="page">Download &amp; submit</a><a href="index.html">Status</a><a href="executive-summary.html">Executive summary</a><a href="how-to-submit.html">How to submit</a><a href="sources.html">Sources</a></nav></div></header>
 <main class="wrap">
-<div class="banner" role="status" style="border-color:#3dcc8a">
-<strong>VERDICT: OK TO DOWNLOAD AND SUBMIT <code>{esc(dl_name)}</code></strong>
-<p>This file passes every automated gate: official format, independent validator, and the detector-only uniqueness audit against {g['uniq']['reference_count']} local reference rasters (<a href="#irregularities">irregularities below</a>). The <strong>organizer score is unknown</strong>. No human inspection is required. The file was not uploaded by the agent. The portal upload is your action, and the weekly cap is shown on the DrivenData submission page.</p>
+<div class="banner" role="alert" style="border-color:#d9534f">
+<strong>VERDICT: STOP — DO NOT DOWNLOAD FOR CONTEST SUBMISSION</strong>
+<p>This historical research file is <strong>not cleared</strong>. The latest candidate run-card records a negative verdict, and literal registry comparisons trigger the spacing-5 lattice overlap threshold; complete all-registry clearance is not established. Local format validation does not override these failures. No organizer score is known and no slot has been used. See <a href="review-20261031.md">the dated review</a> before any future selector decision.</p>
 </div>
 
-<h2>1. Download</h2>
-<p><a class="dl" href="downloads/{esc(dl_name)}">Download the .tif (recommended, {v['bytes']:,} bytes)</a> &nbsp; <a class="dl ghost" href="downloads/{esc(RECOMMENDED_STEM)}.zip">or the .zip (contains the same .tif)</a></p>
+<h2>1. Research artifact (not a contest download)</h2>
+<p>This archived TIFF is linked for reproducibility only. <strong>Do not upload it.</strong> It is not approved by the promotion selector and fails the current literal uniqueness gate. There is no cleared submission file to download.</p>
 <table><tbody>
 <tr><th>File</th><td><code>{esc(dl_name)}</code></td></tr>
 <tr><th>SHA-256 (validated bytes)</th><td><code>{esc(v['sha256'])}</code></td></tr>
@@ -239,18 +239,18 @@ def exec_block(g: dict) -> str:
         is_rec = r["file"].endswith(RECOMMENDED_NAME)
         p = r["organizer_projection"]
         trs.append(
-            "<tr" + (' style="background:#e8f7ef"' if is_rec else "") + ">"
-            f"<td>{file_cell(r['file'], code=True)}</td>"
-            f"<td>{r['sgmc_cal_holdout_dti']['value']:.4f}</td>"
-            f"<td>{p['value']:.3f} <small>PROJECTION, not a score</small></td>"
-            f"<td>{'YES (detector-only)' if u['detector_only_rule_passed'] else 'NO'}</td>"
+            "<tr>"
+            f"<td>{file_cell(r['file'], code=True)} <small>research artifact</small></td>"
+            f"<td>HOLDOUT-DTI: {r['sgmc_cal_holdout_dti']['value']:.4f} <small>(SGMC-CAL re-run; see run card for evaluator and CI)</small></td>"
+            f"<td>{p['value']:.3f} <small>PROJECTION only; not a score or reliable forecast</small></td>"
+            f"<td>Detector-only: {'pass' if u['detector_only_rule_passed'] else 'fail'}; literal full-registry: FAIL / not cleared</td>"
             f"<td><strong>{esc(verdict_for(item, is_rec))}</strong></td></tr>"
         )
-    return (EX_BEGIN + "<section><h2>Which file to download and submit (2026-10-29)</h2>"
-            "<p>Estimated organizer score for the recommended file is <strong>unknown</strong>; see "
-            "<a href=\"submit-now.html\">Download &amp; submit</a> for steps, portal name/note, irregularities and sources.</p>"
-            "<table><thead><tr><th>File to download</th><th>SGMC-CAL HOLDOUT-DTI (re-run)</th><th>Organizer estimate</th>"
-            "<th>Unique (local registry, detector-only)</th><th>Verdict</th></tr></thead><tbody>"
+    return (EX_BEGIN + "<section><h2>Contest download decision (reviewed 2026-10-31): NO FILE CLEARED</h2>"
+            "<p><strong>Do not download any TIFF here for contest submission.</strong> All linked files are historical research artifacts. Every candidate remains blocked by the literal all-registry gate; a detector-only pass or format validation is not promotion. Organizer score is unknown. See "
+            "<a href=\"review-20261031.md\">the latest evidence review</a> and <a href=\"submit-now.html\">submission instructions (when a future file is cleared)</a>.</p>"
+            "<table><thead><tr><th>Research artifact (not for submission)</th><th>HOLDOUT-DTI</th><th>Historical projection (not score)</th>"
+            "<th>Uniqueness status</th><th>Verdict</th></tr></thead><tbody>"
             + "".join(trs) + "</tbody></table></section>" + EX_END)
 
 
@@ -300,8 +300,8 @@ def build_card(g: dict) -> dict:
         "submission_note": SUBMISSION_NOTE,
         "submission_note_characters": len(SUBMISSION_NOTE),
         "organizer_estimate": {"value": None, "status": "UNKNOWN", "projection_not_a_score": rr["organizer_projection"]},
-        "ok_to_download_and_submit": True,
-        "verdict": "promote-to-download (automated gates PASS); score unverified",
+        "ok_to_download_and_submit": False,
+        "verdict": "negative (literal all-registry uniqueness gate fails; no submission cleared)",
         "uploaded_by_agent": False,
     }
 
