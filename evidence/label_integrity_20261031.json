@@ -1,0 +1,22 @@
+{
+  "schema": "label-integrity/v1",
+  "files": {
+    "labels.tif": {
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+      "positive_pixels": 60988
+    },
+    "existing_faults.tif": {
+      "sha256": "7ba308ccdc4418b31a178f4f1ef21aaa6e152e4028f2f6f64b01f7eb25ae4093",
+      "positive_pixels": 60988
+    },
+    "sample_submission.tif": {
+      "sha256": "2176d08e485aa2cd2860ce8df539db4faf4d76163b38a4dd8c30a40454d35cbc",
+      "pixels_equal_to_1": 60988
+    }
+  },
+  "labels_and_existing_faults_byte_identical": true,
+  "labels_vs_existing_faults_positive_overlap": 60988,
+  "sample_ones_equal_labels_ones": true,
+  "provenance": "hash-pinned owner mirror (registry/data_manifest.json); not organizer-authenticated",
+  "verdict": "BLOCKER: labels.tif == existing_faults.tif (byte-identical); holdout invalid until verified"
+}
