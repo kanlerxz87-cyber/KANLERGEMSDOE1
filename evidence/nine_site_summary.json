@@ -1,0 +1,1280 @@
+{
+  "schema": "nine-site-summary/v1",
+  "generated_utc": "2026-10-31T00:48:42+00:00",
+  "template": {
+    "file": "data/sample_submission.tif",
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "footprint_pixels": 5167373
+  },
+  "tol_px": 3.0,
+  "literal_saturation_limit": 0.7,
+  "ledger_label": "USER-REPORTED",
+  "candidates": [
+    {
+      "key": "GEMSDOE24",
+      "kind": "focus (owner-mirror, other team)",
+      "file": "data/focus/GEMSDOE24.tif",
+      "sha256": "68d0e2e4fcc594f9a23f56c44b885fee733d026d39be55e18ad2a07289525310",
+      "bytes": 1632732,
+      "dots": 60069,
+      "sgmc": {
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "score_label": "HOLDOUT-DTI",
+        "sgmc_cal": 0.057932,
+        "ci95": [
+          0.051127,
+          0.065217
+        ],
+        "n_withheld_positives": 62703,
+        "n_spatial_clusters": 140,
+        "n_bootstrap_reps": 1000
+      }
+    },
+    {
+      "key": "GEMSDOE25",
+      "kind": "focus (owner-mirror, other team)",
+      "file": "data/focus/GEMSDOE25.tif",
+      "sha256": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
+      "bytes": 1603424,
+      "dots": 44090,
+      "sgmc": {
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "score_label": "HOLDOUT-DTI",
+        "sgmc_cal": 0.060592,
+        "ci95": [
+          0.053583,
+          0.067855
+        ],
+        "n_withheld_positives": 62703,
+        "n_spatial_clusters": 140,
+        "n_bootstrap_reps": 1000
+      }
+    },
+    {
+      "key": "GEMSDOE27",
+      "kind": "focus (owner-mirror, other team)",
+      "file": "data/focus/GEMSDOE27.tif",
+      "sha256": "33003374335d84bf885f2d8f5e9dd4c57044c8ec58fa6a0d7fa581e8bc41c11d",
+      "bytes": 1635084,
+      "dots": 61328,
+      "sgmc": {
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "score_label": "HOLDOUT-DTI",
+        "sgmc_cal": 0.058262,
+        "ci95": [
+          0.051476,
+          0.065534
+        ],
+        "n_withheld_positives": 62703,
+        "n_spatial_clusters": 140,
+        "n_bootstrap_reps": 1000
+      }
+    },
+    {
+      "key": "GEMSDOE28",
+      "kind": "focus (owner-mirror, other team)",
+      "file": "data/focus/GEMSDOE28.tif",
+      "sha256": "5556aa1438fd67376b60d5ffc99228ec09dcc11a8408298a743ccb88d6163641",
+      "bytes": 1590848,
+      "dots": 37660,
+      "sgmc": {
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "score_label": "HOLDOUT-DTI",
+        "sgmc_cal": 0.062967,
+        "ci95": [
+          0.055719,
+          0.070375
+        ],
+        "n_withheld_positives": 62703,
+        "n_spatial_clusters": 140,
+        "n_bootstrap_reps": 1000
+      }
+    },
+    {
+      "key": "GEMSDOE30",
+      "kind": "focus (owner-mirror, other team)",
+      "file": "data/focus/GEMSDOE30.tif",
+      "sha256": "8cf893ead5667df21d3288a9968c35fd5385c425b029d82ee71d311715b129fd",
+      "bytes": 806758,
+      "dots": 44090,
+      "sgmc": {
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "score_label": "HOLDOUT-DTI",
+        "sgmc_cal": 0.060592,
+        "ci95": [
+          0.053583,
+          0.067855
+        ],
+        "n_withheld_positives": 62703,
+        "n_spatial_clusters": 140,
+        "n_bootstrap_reps": 1000
+      }
+    },
+    {
+      "key": "GEMSDOE31",
+      "kind": "focus (owner-mirror, other team)",
+      "file": "data/focus/GEMSDOE31.tif",
+      "sha256": "07b6db440535404bb41ec8ddc797713e200d308e3da35937393efde5eb84bc40",
+      "bytes": 199214,
+      "dots": 40199,
+      "sgmc": {
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "score_label": "HOLDOUT-DTI",
+        "sgmc_cal": 0.06301,
+        "ci95": [
+          0.055781,
+          0.070395
+        ],
+        "n_withheld_positives": 62703,
+        "n_spatial_clusters": 140,
+        "n_bootstrap_reps": 1000
+      }
+    },
+    {
+      "key": "GEMSDOE32",
+      "kind": "focus (owner-mirror, other team)",
+      "file": "data/focus/GEMSDOE32.tif",
+      "sha256": "c55bafc470054e8271dcb89347a17e07fefe50de6af6e6ba6c4b169ef7ab6fa9",
+      "bytes": 219065,
+      "dots": 37654,
+      "sgmc": {
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "score_label": "HOLDOUT-DTI",
+        "sgmc_cal": 0.064121,
+        "ci95": [
+          0.05673,
+          0.071649
+        ],
+        "n_withheld_positives": 62703,
+        "n_spatial_clusters": 140,
+        "n_bootstrap_reps": 1000
+      }
+    },
+    {
+      "key": "GEMSDOE33",
+      "kind": "focus (owner-mirror, other team)",
+      "file": "data/focus/GEMSDOE33.tif",
+      "sha256": "87f857d505e23247e991ccfab2cbe9f49a04df4f9c8028dce7ea261554690757",
+      "bytes": 917544,
+      "dots": 41865,
+      "sgmc": {
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "score_label": "HOLDOUT-DTI",
+        "sgmc_cal": 0.062551,
+        "ci95": [
+          0.055311,
+          0.069986
+        ],
+        "n_withheld_positives": 62703,
+        "n_spatial_clusters": 140,
+        "n_bootstrap_reps": 1000
+      }
+    },
+    {
+      "key": "GEMSDOE36",
+      "kind": "focus (owner-mirror, other team)",
+      "file": "data/focus/GEMSDOE36.tif",
+      "sha256": "e15891020b9c57056ac7fa874a5e506fbd6ed9314a4ea8e73af0753887a3708a",
+      "bytes": 318190,
+      "dots": 38854,
+      "sgmc": {
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "score_label": "HOLDOUT-DTI",
+        "sgmc_cal": 0.064444,
+        "ci95": [
+          0.057087,
+          0.071958
+        ],
+        "n_withheld_positives": 62703,
+        "n_spatial_clusters": 140,
+        "n_bootstrap_reps": 1000
+      }
+    },
+    {
+      "key": "OURS-UWBP-DRCS-EXP3",
+      "kind": "candidate (this repo)",
+      "file": "docs/downloads/gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif",
+      "sha256": "2693c2daf87bd7948d3d57fc41fdcf40653ef42014c93d0e947bc2a8fc00a30c",
+      "bytes": 366076,
+      "dots": 37647,
+      "sgmc": {
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "score_label": "HOLDOUT-DTI",
+        "sgmc_cal": 0.089182,
+        "ci95": [
+          0.081246,
+          0.095651
+        ],
+        "n_withheld_positives": 62703,
+        "n_spatial_clusters": 140,
+        "n_bootstrap_reps": 1000
+      }
+    },
+    {
+      "key": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "kind": "scored owner mirror",
+      "file": "data/scored/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif",
+      "sha256": "b4570b406efec198eb2f4d142ad8d0d6184b14b66f2f52b5c4d697f0647dc9b2",
+      "bytes": 1706456,
+      "dots": 206895,
+      "sgmc": {
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "score_label": "HOLDOUT-DTI",
+        "sgmc_cal": 0.093614,
+        "ci95": [
+          0.082335,
+          0.104805
+        ],
+        "n_withheld_positives": 62703,
+        "n_spatial_clusters": 140,
+        "n_bootstrap_reps": 1000
+      }
+    },
+    {
+      "key": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "kind": "scored owner mirror",
+      "file": "data/scored/8GEMSDOE_Hedge-v2_submission.tif",
+      "sha256": "052688eafbc7a55d90caab72252a50304fe5caa8ecf973f8e791b4ae910f0792",
+      "bytes": 736494,
+      "dots": 227507,
+      "sgmc": {
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "score_label": "HOLDOUT-DTI",
+        "sgmc_cal": 0.040421,
+        "ci95": [
+          0.035443,
+          0.045496
+        ],
+        "n_withheld_positives": 62703,
+        "n_spatial_clusters": 140,
+        "n_bootstrap_reps": 1000
+      }
+    }
+  ],
+  "overlap3px_pairs": [
+    {
+      "a": "GEMSDOE24",
+      "b": "GEMSDOE25",
+      "overlap3px": 1.0,
+      "jaccard_exact": 0.4017,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE24",
+      "b": "GEMSDOE27",
+      "overlap3px": 1.0,
+      "jaccard_exact": 0.9795,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE24",
+      "b": "GEMSDOE28",
+      "overlap3px": 0.9348,
+      "jaccard_exact": 0.3518,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE24",
+      "b": "GEMSDOE30",
+      "overlap3px": 1.0,
+      "jaccard_exact": 0.4017,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE24",
+      "b": "GEMSDOE31",
+      "overlap3px": 0.9408,
+      "jaccard_exact": 0.3696,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE24",
+      "b": "GEMSDOE32",
+      "overlap3px": 0.8848,
+      "jaccard_exact": 0.3534,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE24",
+      "b": "GEMSDOE33",
+      "overlap3px": 0.9624,
+      "jaccard_exact": 0.3893,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE24",
+      "b": "GEMSDOE36",
+      "overlap3px": 0.8856,
+      "jaccard_exact": 0.3476,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE24",
+      "b": "OURS-UWBP-DRCS-EXP3",
+      "overlap3px": 0.2382,
+      "jaccard_exact": 0.0056,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE24",
+      "b": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "overlap3px": 0.9992,
+      "jaccard_exact": 0.0092,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE24",
+      "b": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "overlap3px": 0.7148,
+      "jaccard_exact": 0.0314,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE25",
+      "b": "GEMSDOE24",
+      "overlap3px": 1.0,
+      "jaccard_exact": 0.4017,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE25",
+      "b": "GEMSDOE27",
+      "overlap3px": 1.0,
+      "jaccard_exact": 0.395,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE25",
+      "b": "GEMSDOE28",
+      "overlap3px": 0.9318,
+      "jaccard_exact": 0.5168,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE25",
+      "b": "GEMSDOE30",
+      "overlap3px": 1.0,
+      "jaccard_exact": 1.0,
+      "exact_mask_equal": true
+    },
+    {
+      "a": "GEMSDOE25",
+      "b": "GEMSDOE31",
+      "overlap3px": 0.9372,
+      "jaccard_exact": 0.9117,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE25",
+      "b": "GEMSDOE32",
+      "overlap3px": 0.8817,
+      "jaccard_exact": 0.854,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE25",
+      "b": "GEMSDOE33",
+      "overlap3px": 0.9606,
+      "jaccard_exact": 0.682,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE25",
+      "b": "GEMSDOE36",
+      "overlap3px": 0.8826,
+      "jaccard_exact": 0.8314,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE25",
+      "b": "OURS-UWBP-DRCS-EXP3",
+      "overlap3px": 0.238,
+      "jaccard_exact": 0.0047,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE25",
+      "b": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "overlap3px": 0.9992,
+      "jaccard_exact": 0.0071,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE25",
+      "b": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "overlap3px": 0.7031,
+      "jaccard_exact": 0.0235,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE27",
+      "b": "GEMSDOE24",
+      "overlap3px": 0.9802,
+      "jaccard_exact": 0.9795,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE27",
+      "b": "GEMSDOE25",
+      "overlap3px": 0.9802,
+      "jaccard_exact": 0.395,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE27",
+      "b": "GEMSDOE28",
+      "overlap3px": 0.9162,
+      "jaccard_exact": 0.3458,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE27",
+      "b": "GEMSDOE30",
+      "overlap3px": 0.9802,
+      "jaccard_exact": 0.395,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE27",
+      "b": "GEMSDOE31",
+      "overlap3px": 0.9221,
+      "jaccard_exact": 0.3634,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE27",
+      "b": "GEMSDOE32",
+      "overlap3px": 0.8672,
+      "jaccard_exact": 0.3473,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE27",
+      "b": "GEMSDOE33",
+      "overlap3px": 0.9433,
+      "jaccard_exact": 0.3827,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE27",
+      "b": "GEMSDOE36",
+      "overlap3px": 0.868,
+      "jaccard_exact": 0.3418,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE27",
+      "b": "OURS-UWBP-DRCS-EXP3",
+      "overlap3px": 0.237,
+      "jaccard_exact": 0.0056,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE27",
+      "b": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "overlap3px": 0.9992,
+      "jaccard_exact": 0.0094,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE27",
+      "b": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "overlap3px": 0.7091,
+      "jaccard_exact": 0.0314,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE28",
+      "b": "GEMSDOE24",
+      "overlap3px": 1.0,
+      "jaccard_exact": 0.3518,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE28",
+      "b": "GEMSDOE25",
+      "overlap3px": 1.0,
+      "jaccard_exact": 0.5168,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE28",
+      "b": "GEMSDOE27",
+      "overlap3px": 1.0,
+      "jaccard_exact": 0.3458,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE28",
+      "b": "GEMSDOE30",
+      "overlap3px": 1.0,
+      "jaccard_exact": 0.5168,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE28",
+      "b": "GEMSDOE31",
+      "overlap3px": 0.9976,
+      "jaccard_exact": 0.557,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE28",
+      "b": "GEMSDOE32",
+      "overlap3px": 0.9547,
+      "jaccard_exact": 0.535,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE28",
+      "b": "GEMSDOE33",
+      "overlap3px": 0.9984,
+      "jaccard_exact": 0.5317,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE28",
+      "b": "GEMSDOE36",
+      "overlap3px": 0.9552,
+      "jaccard_exact": 0.5222,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE28",
+      "b": "OURS-UWBP-DRCS-EXP3",
+      "overlap3px": 0.2533,
+      "jaccard_exact": 0.0049,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE28",
+      "b": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "overlap3px": 0.9991,
+      "jaccard_exact": 0.0062,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE28",
+      "b": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "overlap3px": 0.6713,
+      "jaccard_exact": 0.0196,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE30",
+      "b": "GEMSDOE24",
+      "overlap3px": 1.0,
+      "jaccard_exact": 0.4017,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE30",
+      "b": "GEMSDOE25",
+      "overlap3px": 1.0,
+      "jaccard_exact": 1.0,
+      "exact_mask_equal": true
+    },
+    {
+      "a": "GEMSDOE30",
+      "b": "GEMSDOE27",
+      "overlap3px": 1.0,
+      "jaccard_exact": 0.395,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE30",
+      "b": "GEMSDOE28",
+      "overlap3px": 0.9318,
+      "jaccard_exact": 0.5168,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE30",
+      "b": "GEMSDOE31",
+      "overlap3px": 0.9372,
+      "jaccard_exact": 0.9117,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE30",
+      "b": "GEMSDOE32",
+      "overlap3px": 0.8817,
+      "jaccard_exact": 0.854,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE30",
+      "b": "GEMSDOE33",
+      "overlap3px": 0.9606,
+      "jaccard_exact": 0.682,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE30",
+      "b": "GEMSDOE36",
+      "overlap3px": 0.8826,
+      "jaccard_exact": 0.8314,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE30",
+      "b": "OURS-UWBP-DRCS-EXP3",
+      "overlap3px": 0.238,
+      "jaccard_exact": 0.0047,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE30",
+      "b": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "overlap3px": 0.9992,
+      "jaccard_exact": 0.0071,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE30",
+      "b": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "overlap3px": 0.7031,
+      "jaccard_exact": 0.0235,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE31",
+      "b": "GEMSDOE24",
+      "overlap3px": 1.0,
+      "jaccard_exact": 0.3696,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE31",
+      "b": "GEMSDOE25",
+      "overlap3px": 1.0,
+      "jaccard_exact": 0.9117,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE31",
+      "b": "GEMSDOE27",
+      "overlap3px": 1.0,
+      "jaccard_exact": 0.3634,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE31",
+      "b": "GEMSDOE28",
+      "overlap3px": 0.9956,
+      "jaccard_exact": 0.557,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE31",
+      "b": "GEMSDOE30",
+      "overlap3px": 1.0,
+      "jaccard_exact": 0.9117,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE31",
+      "b": "GEMSDOE32",
+      "overlap3px": 0.9539,
+      "jaccard_exact": 0.9367,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE31",
+      "b": "GEMSDOE33",
+      "overlap3px": 0.9991,
+      "jaccard_exact": 0.6957,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE31",
+      "b": "GEMSDOE36",
+      "overlap3px": 0.9544,
+      "jaccard_exact": 0.9095,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE31",
+      "b": "OURS-UWBP-DRCS-EXP3",
+      "overlap3px": 0.2525,
+      "jaccard_exact": 0.005,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE31",
+      "b": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "overlap3px": 0.9992,
+      "jaccard_exact": 0.0066,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE31",
+      "b": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "overlap3px": 0.6744,
+      "jaccard_exact": 0.0204,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE32",
+      "b": "GEMSDOE24",
+      "overlap3px": 1.0,
+      "jaccard_exact": 0.3534,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE32",
+      "b": "GEMSDOE25",
+      "overlap3px": 1.0,
+      "jaccard_exact": 0.854,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE32",
+      "b": "GEMSDOE27",
+      "overlap3px": 1.0,
+      "jaccard_exact": 0.3473,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE32",
+      "b": "GEMSDOE28",
+      "overlap3px": 0.9988,
+      "jaccard_exact": 0.535,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE32",
+      "b": "GEMSDOE30",
+      "overlap3px": 1.0,
+      "jaccard_exact": 0.854,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE32",
+      "b": "GEMSDOE31",
+      "overlap3px": 1.0,
+      "jaccard_exact": 0.9367,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE32",
+      "b": "GEMSDOE33",
+      "overlap3px": 0.9998,
+      "jaccard_exact": 0.6599,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE32",
+      "b": "GEMSDOE36",
+      "overlap3px": 1.0,
+      "jaccard_exact": 0.9691,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE32",
+      "b": "OURS-UWBP-DRCS-EXP3",
+      "overlap3px": 0.2596,
+      "jaccard_exact": 0.0049,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE32",
+      "b": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "overlap3px": 0.9992,
+      "jaccard_exact": 0.0062,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE32",
+      "b": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "overlap3px": 0.6524,
+      "jaccard_exact": 0.0185,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE33",
+      "b": "GEMSDOE24",
+      "overlap3px": 0.9971,
+      "jaccard_exact": 0.3893,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE33",
+      "b": "GEMSDOE25",
+      "overlap3px": 0.997,
+      "jaccard_exact": 0.682,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE33",
+      "b": "GEMSDOE27",
+      "overlap3px": 0.9971,
+      "jaccard_exact": 0.3827,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE33",
+      "b": "GEMSDOE28",
+      "overlap3px": 0.9705,
+      "jaccard_exact": 0.5317,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE33",
+      "b": "GEMSDOE30",
+      "overlap3px": 0.997,
+      "jaccard_exact": 0.682,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE33",
+      "b": "GEMSDOE31",
+      "overlap3px": 0.9748,
+      "jaccard_exact": 0.6957,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE33",
+      "b": "GEMSDOE32",
+      "overlap3px": 0.9264,
+      "jaccard_exact": 0.6599,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE33",
+      "b": "GEMSDOE36",
+      "overlap3px": 0.9271,
+      "jaccard_exact": 0.6438,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE33",
+      "b": "OURS-UWBP-DRCS-EXP3",
+      "overlap3px": 0.2496,
+      "jaccard_exact": 0.0051,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE33",
+      "b": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "overlap3px": 0.9991,
+      "jaccard_exact": 0.0067,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE33",
+      "b": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "overlap3px": 0.681,
+      "jaccard_exact": 0.021,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE36",
+      "b": "GEMSDOE24",
+      "overlap3px": 0.9757,
+      "jaccard_exact": 0.3476,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE36",
+      "b": "GEMSDOE25",
+      "overlap3px": 0.975,
+      "jaccard_exact": 0.8314,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE36",
+      "b": "GEMSDOE27",
+      "overlap3px": 0.9758,
+      "jaccard_exact": 0.3418,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE36",
+      "b": "GEMSDOE28",
+      "overlap3px": 0.9731,
+      "jaccard_exact": 0.5222,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE36",
+      "b": "GEMSDOE30",
+      "overlap3px": 0.975,
+      "jaccard_exact": 0.8314,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE36",
+      "b": "GEMSDOE31",
+      "overlap3px": 0.9746,
+      "jaccard_exact": 0.9095,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE36",
+      "b": "GEMSDOE32",
+      "overlap3px": 0.974,
+      "jaccard_exact": 0.9691,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE36",
+      "b": "GEMSDOE33",
+      "overlap3px": 0.975,
+      "jaccard_exact": 0.6438,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE36",
+      "b": "OURS-UWBP-DRCS-EXP3",
+      "overlap3px": 0.2639,
+      "jaccard_exact": 0.005,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE36",
+      "b": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "overlap3px": 0.9992,
+      "jaccard_exact": 0.0064,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "GEMSDOE36",
+      "b": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "overlap3px": 0.647,
+      "jaccard_exact": 0.0187,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "OURS-UWBP-DRCS-EXP3",
+      "b": "GEMSDOE24",
+      "overlap3px": 0.2179,
+      "jaccard_exact": 0.0056,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "OURS-UWBP-DRCS-EXP3",
+      "b": "GEMSDOE25",
+      "overlap3px": 0.2058,
+      "jaccard_exact": 0.0047,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "OURS-UWBP-DRCS-EXP3",
+      "b": "GEMSDOE27",
+      "overlap3px": 0.222,
+      "jaccard_exact": 0.0056,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "OURS-UWBP-DRCS-EXP3",
+      "b": "GEMSDOE28",
+      "overlap3px": 0.1971,
+      "jaccard_exact": 0.0049,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "OURS-UWBP-DRCS-EXP3",
+      "b": "GEMSDOE30",
+      "overlap3px": 0.2058,
+      "jaccard_exact": 0.0047,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "OURS-UWBP-DRCS-EXP3",
+      "b": "GEMSDOE31",
+      "overlap3px": 0.2009,
+      "jaccard_exact": 0.005,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "OURS-UWBP-DRCS-EXP3",
+      "b": "GEMSDOE32",
+      "overlap3px": 0.1949,
+      "jaccard_exact": 0.0049,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "OURS-UWBP-DRCS-EXP3",
+      "b": "GEMSDOE33",
+      "overlap3px": 0.2069,
+      "jaccard_exact": 0.0051,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "OURS-UWBP-DRCS-EXP3",
+      "b": "GEMSDOE36",
+      "overlap3px": 0.2024,
+      "jaccard_exact": 0.005,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "OURS-UWBP-DRCS-EXP3",
+      "b": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "overlap3px": 0.9998,
+      "jaccard_exact": 0.0062,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "OURS-UWBP-DRCS-EXP3",
+      "b": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "overlap3px": 0.3383,
+      "jaccard_exact": 0.0067,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "b": "GEMSDOE24",
+      "overlap3px": 0.1807,
+      "jaccard_exact": 0.0092,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "b": "GEMSDOE25",
+      "overlap3px": 0.1718,
+      "jaccard_exact": 0.0071,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "b": "GEMSDOE27",
+      "overlap3px": 0.1851,
+      "jaccard_exact": 0.0094,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "b": "GEMSDOE28",
+      "overlap3px": 0.1577,
+      "jaccard_exact": 0.0062,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "b": "GEMSDOE30",
+      "overlap3px": 0.1718,
+      "jaccard_exact": 0.0071,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "b": "GEMSDOE31",
+      "overlap3px": 0.1599,
+      "jaccard_exact": 0.0066,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "b": "GEMSDOE32",
+      "overlap3px": 0.1506,
+      "jaccard_exact": 0.0062,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "b": "GEMSDOE33",
+      "overlap3px": 0.1661,
+      "jaccard_exact": 0.0067,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "b": "GEMSDOE36",
+      "overlap3px": 0.1544,
+      "jaccard_exact": 0.0064,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "b": "OURS-UWBP-DRCS-EXP3",
+      "overlap3px": 0.197,
+      "jaccard_exact": 0.0062,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "b": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "overlap3px": 0.2832,
+      "jaccard_exact": 0.0213,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "b": "GEMSDOE24",
+      "overlap3px": 0.4853,
+      "jaccard_exact": 0.0314,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "b": "GEMSDOE25",
+      "overlap3px": 0.4689,
+      "jaccard_exact": 0.0235,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "b": "GEMSDOE27",
+      "overlap3px": 0.4906,
+      "jaccard_exact": 0.0314,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "b": "GEMSDOE28",
+      "overlap3px": 0.3854,
+      "jaccard_exact": 0.0196,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "b": "GEMSDOE30",
+      "overlap3px": 0.4689,
+      "jaccard_exact": 0.0235,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "b": "GEMSDOE31",
+      "overlap3px": 0.3919,
+      "jaccard_exact": 0.0204,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "b": "GEMSDOE32",
+      "overlap3px": 0.3326,
+      "jaccard_exact": 0.0185,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "b": "GEMSDOE33",
+      "overlap3px": 0.4203,
+      "jaccard_exact": 0.021,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "b": "GEMSDOE36",
+      "overlap3px": 0.3374,
+      "jaccard_exact": 0.0187,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "b": "OURS-UWBP-DRCS-EXP3",
+      "overlap3px": 0.2207,
+      "jaccard_exact": 0.0067,
+      "exact_mask_equal": false
+    },
+    {
+      "a": "8GEMSDOE Hedge-v2 (owner mirror)",
+      "b": "13gems r13-lattice-s5_v2 (owner mirror)",
+      "overlap3px": 0.9993,
+      "jaccard_exact": 0.0213,
+      "exact_mask_equal": false
+    }
+  ],
+  "binary_pearson": {
+    "GEMSDOE24 | GEMSDOE25": 0.5759,
+    "GEMSDOE24 | GEMSDOE27": 0.9896,
+    "GEMSDOE24 | GEMSDOE28": 0.5306,
+    "GEMSDOE24 | GEMSDOE30": 0.5759,
+    "GEMSDOE24 | GEMSDOE31": 0.5464,
+    "GEMSDOE24 | GEMSDOE32": 0.5324,
+    "GEMSDOE24 | GEMSDOE33": 0.5654,
+    "GEMSDOE24 | GEMSDOE36": 0.5239,
+    "GEMSDOE24 | OURS-UWBP-DRCS-EXP3": 0.0023,
+    "GEMSDOE25 | GEMSDOE27": 0.5698,
+    "GEMSDOE25 | GEMSDOE28": 0.681,
+    "GEMSDOE25 | GEMSDOE30": 1.0,
+    "GEMSDOE25 | GEMSDOE31": 0.9545,
+    "GEMSDOE25 | GEMSDOE32": 0.9236,
+    "GEMSDOE25 | GEMSDOE33": 0.8096,
+    "GEMSDOE25 | GEMSDOE36": 0.909,
+    "GEMSDOE25 | OURS-UWBP-DRCS-EXP3": 0.0016,
+    "GEMSDOE27 | GEMSDOE28": 0.525,
+    "GEMSDOE27 | GEMSDOE30": 0.5698,
+    "GEMSDOE27 | GEMSDOE31": 0.5407,
+    "GEMSDOE27 | GEMSDOE32": 0.5267,
+    "GEMSDOE27 | GEMSDOE33": 0.5594,
+    "GEMSDOE27 | GEMSDOE36": 0.5184,
+    "GEMSDOE27 | OURS-UWBP-DRCS-EXP3": 0.0023,
+    "GEMSDOE28 | GEMSDOE30": 0.681,
+    "GEMSDOE28 | GEMSDOE31": 0.7137,
+    "GEMSDOE28 | GEMSDOE32": 0.6948,
+    "GEMSDOE28 | GEMSDOE33": 0.6929,
+    "GEMSDOE28 | GEMSDOE36": 0.6838,
+    "GEMSDOE28 | OURS-UWBP-DRCS-EXP3": 0.0025,
+    "GEMSDOE30 | GEMSDOE31": 0.9545,
+    "GEMSDOE30 | GEMSDOE32": 0.9236,
+    "GEMSDOE30 | GEMSDOE33": 0.8096,
+    "GEMSDOE30 | GEMSDOE36": 0.909,
+    "GEMSDOE30 | OURS-UWBP-DRCS-EXP3": 0.0016,
+    "GEMSDOE31 | GEMSDOE32": 0.9676,
+    "GEMSDOE31 | GEMSDOE33": 0.8193,
+    "GEMSDOE31 | GEMSDOE36": 0.9524,
+    "GEMSDOE31 | OURS-UWBP-DRCS-EXP3": 0.0024,
+    "GEMSDOE32 | GEMSDOE33": 0.7947,
+    "GEMSDOE32 | GEMSDOE36": 0.9843,
+    "GEMSDOE32 | OURS-UWBP-DRCS-EXP3": 0.0024,
+    "GEMSDOE33 | GEMSDOE36": 0.7822,
+    "GEMSDOE33 | OURS-UWBP-DRCS-EXP3": 0.0025,
+    "GEMSDOE36 | OURS-UWBP-DRCS-EXP3": 0.0026,
+    "13gems r13-lattice-s5_v2 (owner mirror) | GEMSDOE24": 0.0004,
+    "13gems r13-lattice-s5_v2 (owner mirror) | GEMSDOE25": 0.0001,
+    "13gems r13-lattice-s5_v2 (owner mirror) | GEMSDOE27": 0.0003,
+    "13gems r13-lattice-s5_v2 (owner mirror) | GEMSDOE28": 0.0001,
+    "13gems r13-lattice-s5_v2 (owner mirror) | GEMSDOE30": 0.0001,
+    "13gems r13-lattice-s5_v2 (owner mirror) | GEMSDOE31": 0.0,
+    "13gems r13-lattice-s5_v2 (owner mirror) | GEMSDOE32": 0.0001,
+    "13gems r13-lattice-s5_v2 (owner mirror) | GEMSDOE33": -0.0002,
+    "13gems r13-lattice-s5_v2 (owner mirror) | GEMSDOE36": -0.0,
+    "13gems r13-lattice-s5_v2 (owner mirror) | OURS-UWBP-DRCS-EXP3": 0.0001,
+    "13gems r13-lattice-s5_v2 (owner mirror) | 8GEMSDOE Hedge-v2 (owner mirror)": -0.0003,
+    "8GEMSDOE Hedge-v2 (owner mirror) | GEMSDOE24": 0.0537,
+    "8GEMSDOE Hedge-v2 (owner mirror) | GEMSDOE25": 0.0441,
+    "8GEMSDOE Hedge-v2 (owner mirror) | GEMSDOE27": 0.0531,
+    "8GEMSDOE Hedge-v2 (owner mirror) | GEMSDOE28": 0.038,
+    "8GEMSDOE Hedge-v2 (owner mirror) | GEMSDOE30": 0.0441,
+    "8GEMSDOE Hedge-v2 (owner mirror) | GEMSDOE31": 0.0384,
+    "8GEMSDOE Hedge-v2 (owner mirror) | GEMSDOE32": 0.035,
+    "8GEMSDOE Hedge-v2 (owner mirror) | GEMSDOE33": 0.039,
+    "8GEMSDOE Hedge-v2 (owner mirror) | GEMSDOE36": 0.0347,
+    "8GEMSDOE Hedge-v2 (owner mirror) | OURS-UWBP-DRCS-EXP3": 0.0012
+  },
+  "projection": {
+    "label": "PROJECTION (not a score)",
+    "fit": "ledger best per site ~ SGMC-CAL, n=9 focus sites",
+    "slope": 4.715,
+    "intercept": -0.0271,
+    "pearson_r": 0.9776,
+    "spearman_rho": 0.9496,
+    "residual_sd": 0.0026,
+    "ours_sgmc": 0.089182,
+    "ours_projected": 0.3934,
+    "prediction_95": [
+      0.3676,
+      0.4192
+    ],
+    "inside_fitted_sgmc_range": false,
+    "fitted_sgmc_range": [
+      0.057932,
+      0.064444
+    ]
+  }
+}

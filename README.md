@@ -10,6 +10,14 @@ End-to-end geological feature engineering, fold-local hide-and-recover evaluatio
 
 ---
 
+## 00. Session 2026-10-31 — Nine-site summary & dot-level audit (read first)
+
+- **Nine-site executive summary:** [`docs/nine-site-summary.html`](docs/nine-site-summary.html) (built by `scripts/build_nine_site_summary.py`; evidence in `evidence/nine_site_summary.json`). It gives the best entry per site, the proxy values, overlap, and the flagged irregularities.
+- **Download:** the file from the verdict below is still the only one we would download. It passes the validator and is distinct from all 23 restored references by exact pixels (max exact Jaccard 0.0067). The literal 3-px rule still fails against the saturated r13 lattice. That needs a team decision.
+- **New finding:** the nine focus files are not nine independent placements. GEMSDOE25 and GEMSDOE30 have identical dot masks, and GEMSDOE32 and GEMSDOE36 have Jaccard 0.969. Confirmed by the pinned hashes and the exact-mask check.
+- **Metric caveat:** the 3-px overlap rule saturates on dense references (r13 covers almost the whole footprint at 3 px). Use exact-pixel Jaccard alongside it.
+- **Labels:** ledger scores are USER-REPORTED. Proxy values are HOLDOUT-DTI (SGMC-CAL-v3.0, withheld positives and 95% CI shown). The organizer projection is a PROJECTION and not a score.
+
 ## 0. START HERE — Download verdict (2026-10-29)
 
 > **VERDICT: OK TO DOWNLOAD AND SUBMIT ONE FILE — [`docs/submit-now.html`](docs/submit-now.html).**
@@ -70,6 +78,7 @@ bash scripts/download_competition_data.sh
 .venv/bin/python scripts/build_candidate_scoreboard.py     # SGMC-CAL re-run + projection (labelled)
 .venv/bin/python scripts/validate_submission_file.py docs/downloads/gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif
 .venv/bin/python scripts/build_submit_page.py --check      # submit page + executive block
+.venv/bin/python scripts/build_nine_site_summary.py       # nine-site summary (reruns SGMC-CAL on 11 files, ~2 min)
 .venv/bin/python -m unittest discover -s tests -v
 ```
 

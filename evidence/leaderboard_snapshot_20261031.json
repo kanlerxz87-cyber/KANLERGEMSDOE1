@@ -1,0 +1,17 @@
+{
+  "schema": "leaderboard-snapshot/v1",
+  "source_url": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+  "retrieved_via": "fetch_page tool (public page, no DrivenData auth)",
+  "retrieved_on": "2026-10-31",
+  "column": "Best public DW-Tversky (public test set). The initial prize round is scored on the PRIVATE test set.",
+  "top_rows": [
+    {"rank": 1, "participant": "xiaofanhu", "best_public_dw_tversky": 0.4544, "submissions": 35},
+    {"rank": 2, "participant": "cfld__", "best_public_dw_tversky": 0.3925, "submissions": 22},
+    {"rank": 3, "participant": "Batik Shirt Brothers", "best_public_dw_tversky": 0.3917, "submissions": 61},
+    {"rank": 4, "participant": "BrandenKMurray", "best_public_dw_tversky": 0.3860, "submissions": 36},
+    {"rank": 5, "participant": "op01", "best_public_dw_tversky": 0.3642, "submissions": 16}
+  ],
+  "change_vs_20261029_snapshot": "#2 0.3916 -> 0.3925; #3 0.3911 -> 0.3917; #1 unchanged at 0.4544",
+  "prompt_values_not_matching_page": {"0.4413": "claimed top in prompt", "0.3195": "claimed highest in a later prompt paragraph"},
+  "label": "ORGANIZER-PAGE (public leaderboard; not a submission receipt for this repo)"
+}
