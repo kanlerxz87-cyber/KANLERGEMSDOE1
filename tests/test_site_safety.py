@@ -39,17 +39,18 @@ class SiteSafetyTests(unittest.TestCase):
     def html(self, name):
         return (ROOT / "docs" / name).read_text(encoding="utf-8")
 
-    def test_landing_shows_the_one_download_verdict_with_honest_score_label(self):
-        # 2026-10-29 user directive: an obvious, validated download with an unambiguous verdict.
+    def test_landing_and_submission_desk_fail_closed(self):
         html = self.html("index.html")
-        self.assertIn("SUBMISSION ON HOLD", html)
-        self.assertIn("gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif", html)
-        self.assertIn("organizer score is unknown", html.lower())
-        self.assertIn("submit-now.html", html)
+        self.assertIn("NO FILE IS CLEARED TO DOWNLOAD AND SUBMIT", html)
+        self.assertIn("negative / research hold", html)
+        self.assertNotIn("VERDICT: OK TO DOWNLOAD AND SUBMIT ONE FILE", html)
         submit = self.html("submit-now.html")
-        self.assertIn("SUBMIT: ON HOLD", submit)
-        self.assertIn("Estimated organizer score for this file: unknown", submit)
-        self.assertIn("r13-lattice-s5_v2", submit)  # the saturating-reference irregularity is disclosed
+        self.assertIn("NOT CLEARED", submit)
+        self.assertIn("there is intentionally no download button", submit.lower())
+        self.assertNotIn("Download the .tif", submit)
+        summary = self.html("executive-summary.html")
+        self.assertIn("File to download: NONE", summary)
+        self.assertIn("full-registry uniqueness audit is incomplete", summary)
 
     def test_executive_covers_nine_sites_and_negative_findings(self):
         html = self.html("executive-summary.html")

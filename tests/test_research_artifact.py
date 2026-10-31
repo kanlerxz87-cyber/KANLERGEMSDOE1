@@ -24,8 +24,8 @@ class ResearchArtifactTest(unittest.TestCase):
 
     def test_page_does_not_assign_zero_hash_to_nan_tiff(self):
         html = (ROOT / 'docs/index.html').read_text()
-        self.assertIn('06ccd852475120cbdff86732252478096c821babe6e608aae9e66945cc7c4bb2', html)
-        self.assertIn('final OCDA TIFF has 37,649', html)
+        self.assertIn('NO FILE IS CLEARED TO DOWNLOAD AND SUBMIT', html)
+        self.assertNotIn('06ccd852475120cbdff86732252478096c821babe6e608aae9e66945cc7c4bb2', html)
 
 
 if __name__ == '__main__':
