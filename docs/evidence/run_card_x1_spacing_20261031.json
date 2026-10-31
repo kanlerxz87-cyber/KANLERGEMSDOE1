@@ -8,12 +8,12 @@
   "max_experiments_budget": 3,
   "slot_used": false,
   "ok_to_submit": false,
-  "verdict": "negative",
+  "verdict": "negative (surrogate-level; inadmissible until B1 resolved)",
   "hypothesis": "H-X1: For the GEMSDOE32 champion rule (H19-5 support, raster-order Euclidean thinning, visible-only collar d_vis>2), the holdout pooled DTI depends on the thinning spacing, so a spacing other than the incumbent 2.83 px may raise the HOLDOUT-DTI.",
   "mechanism": "Spacing trades coverage (more dots within 3 px of hidden truth, TP up) against false-positive mass (more dots, FP up at weight 0.2). The official alpha=0.2, beta=0.8 Tversky makes coverage cheap, so the optimum sits at the spacing where extra dots stop adding max-credit.",
   "named_non_fault_process": "Carried over from docs/evidence/current_run_card.json (field named_non_fault_process: alluvial-fan apron toes, Pleistocene shoreline wave-cut scarps of Lake Lahontan/Bonneville, and unmapped pluton-margin intrusive contacts). X1 does not test these mimics; its canary is the random-placement baseline recorded below.",
   "holdout_dti": {
-    "status": "HOLDOUT-DTI (fold-local per-cell npz through shared evaluate_holdout.evaluate_path)",
+    "status": "HOLDOUT-DTI - INADMISSIBLE until B1 is resolved (reproduction of recorded value only)",
     "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
     "n_withheld_positives": 22232,
     "arms": {
@@ -113,7 +113,10 @@
     "Arms are a sweep on the holdout: selection on the holdout is optimistic and cannot be used as a score.",
     "The H19-5 support itself was produced by the owner. Whether it used hidden holdout segments is NOT verified here (see irregularity log IR-X1-01).",
     "dot_thin uses integer squared offsets, so spacings 3.2 and 3.6 select identical pixels (identical results).",
-    "The shared harness reproduces the recorded champion exactly, but the holdout correlates with organizer scores at rho = -0.10 in the calibration file (fold-local vs diagnostic mismatch is noted there)."
+    "The shared harness reproduces the recorded champion exactly, but the holdout correlates with organizer scores at rho = -0.10 in the calibration file (fold-local vs diagnostic mismatch is noted there).",
+    "Owner mirror inputs may breach competition data terms (B2, docs/review-20261031-labels.md); do not reuse this card for any submission decision until the team clears B2."
   ],
-  "promotion_gate_literal": "FAIL (duplicate of champion lineage; no unique file)"
+  "promotion_gate_literal": "FAIL (duplicate of champion lineage; no unique file)",
+  "holdout_admissible": false,
+  "admissibility_blocker": "B1 (docs/review-20261031-labels.md): labels.tif and existing_faults.tif are byte-identical (SHA-256 7ba308cc...). Hide-and-recover numbers in this card read the mirror and are INVALID until the organizer label set is compared. They reproduce a recorded number on the same inputs; they do not validate it."
 }

@@ -40,7 +40,8 @@ class SessionEvidenceTests(unittest.TestCase):
 
     def test_run_card_is_negative_and_not_submittable(self):
         card = json.loads((EV / "run_card_x1_spacing_20261031.json").read_text())
-        self.assertEqual(card["verdict"], "negative")
+        self.assertTrue(card["verdict"].startswith("negative"))
+        self.assertFalse(card["holdout_admissible"])
         self.assertFalse(card["ok_to_submit"])
         self.assertFalse(card["slot_used"])
         self.assertIsNone(card["submission_name"])
@@ -76,8 +77,11 @@ class SessionEvidenceTests(unittest.TestCase):
     def test_executive_summary_quotes_candidate_hash_and_label(self):
         html = (ROOT / "docs" / "executive-summary-20261031.html").read_text()
         self.assertIn(CANDIDATE_SHA, html)
-        self.assertIn("PROJECTION", html)
-        self.assertIn("NOT WITHOUT SELECTOR SIGN-OFF", html)
+        self.assertIn("NEGATIVE / RESEARCH HOLD", html)
+        self.assertIn("B1", html)
+        self.assertIn("INADMISSIBLE", html)
+        self.assertNotIn("OK TO DOWNLOAD AND SUBMIT", html)
+        self.assertNotIn("PROJECTION", html, "projection must not appear on the summary page")
         self.assertIn("gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif", html)
 
     def test_candidate_file_hash_matches_claim(self):

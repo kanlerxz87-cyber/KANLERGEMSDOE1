@@ -35,5 +35,6 @@
     "byte_identical": false,
     "pinned_25": "91eae1ca42ec845eaa8c2ba32da49806e24751743459b8a10017c479bbe639b8",
     "pinned_30": "8cf893ead5667df21d3288a9968c35fd5385c425b029d82ee71d311715b129fd"
-  }
+  },
+  "admissibility": "INADMISSIBLE until B1 resolved: SGMC-CAL inputs are computed on the mirror whose labels are byte-identical to existing_faults.tif. Not for decisions."
 }

@@ -1,0 +1,19 @@
+{
+  "schema": "leaderboard-snapshot/v1",
+  "retrieved_utc": "2026-10-31",
+  "source": "https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/",
+  "label": "PUBLIC-TEST DW-Tversky (live page; not the private-test score that decides the Initial Prize Round)",
+  "rows_seen": [
+    {"rank": 1, "participant": "xiaofanhu", "public_dw_tversky": 0.4544},
+    {"rank": 2, "participant": "cfld__", "public_dw_tversky": 0.3925},
+    {"rank": 3, "participant": "Batik Shirt Brothers", "public_dw_tversky": 0.3917},
+    {"rank": 4, "participant": "BrandenKMurray", "public_dw_tversky": 0.3860},
+    {"rank": 5, "participant": "op01", "public_dw_tversky": 0.3642},
+    {"rank": 6, "participant": "No Fault of Our Own", "public_dw_tversky": 0.3631},
+    {"rank": 7, "participant": "tommymaherregen", "public_dw_tversky": 0.3558},
+    {"rank": 8, "participant": "sevenrights0", "public_dw_tversky": 0.3557},
+    {"rank": 9, "participant": "luh.correia98", "public_dw_tversky": 0.3544},
+    {"rank": 10, "participant": "jaydevelop111", "public_dw_tversky": 0.3533}
+  ],
+  "note": "Ranks 11-23 were visible in the fetched page but are omitted here for brevity. The prompt's 0.4413 and 0.3195 figures could not be matched to any row on this page; they are unverified."
+}

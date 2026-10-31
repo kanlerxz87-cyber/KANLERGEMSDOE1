@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Executive summary (31 Oct 2026) · KANLER GEMS</title>
+<title>Companion summary (31 Oct 2026) · KANLER GEMS</title>
 <link rel="stylesheet" href="assets/style.css">
 <style>
   table{border-collapse:collapse;width:100%;font-size:.88rem;margin:.6rem 0}
@@ -8,160 +8,76 @@
   th{background:#f3f5f7}
   .pill{display:inline-block;padding:.05rem .4rem;border-radius:.3rem;font-weight:600;font-size:.8rem}
   .p-ok{background:#dff5e8;color:#0f6b3b}.p-no{background:#fde2e1;color:#8a1c17}.p-hold{background:#fff1cc;color:#7a5600}
-  .decision{border:3px solid #3dcc8a;border-radius:.6rem;padding:1rem 1.2rem;background:#f4fff9}
+  .decision{border:3px solid #e0a030;border-radius:.6rem;padding:1rem 1.2rem;background:#fffaf0}
   .decision h2{margin-top:0}
   code{word-break:break-all}
 </style></head>
 <body>
 <header><div class="wrap head">
-<p class="brand">KANLERGEMSDOE1 / DOE GEMS PRIZE / EXECUTIVE SUMMARY</p>
-<h1>Executive summary — 31 October 2026</h1>
-<nav class="nav" aria-label="Primary"><a href="executive-summary-20261031.html" aria-current="page">Executive summary (today)</a><a href="submit-now.html">Download &amp; submit (28 Oct)</a><a href="index.html">Status</a><a href="executive-summary.html">Earlier summary</a><a href="sources.html">Sources</a></nav>
+<p class="brand">KANLERGEMSDOE1 / DOE GEMS PRIZE / COMPANION SUMMARY</p>
+<h1>Companion summary — 31 October 2026</h1>
+<nav class="nav" aria-label="Primary"><a href="executive-summary-20261031.html" aria-current="page">Companion summary</a><a href="executive-summary.html">Executive summary (main)</a><a href="submit-now.html">Download &amp; submit</a><a href="index.html">Status</a><a href="sources.html">Sources</a></nav>
 </div></header>
 
 <main class="wrap">
 
-<section class="decision" aria-label="Decision">
-<h2>Decision in one screen</h2>
-<p><strong>1. The one file to download</strong> (unique, format-valid, all automated checks pass):</p>
-<p><a href="downloads/gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif"><code>gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif</code></a><br>
-SHA-256 <code>2693c2daf87bd7948d3d57fc41fdcf40653ef42014c93d0e947bc2a8fc00a30c</code> · float32 · EPSG:32611 · 3730 × 3292 · 37,647 positives · NaN outside footprint · 366,076 bytes.</p>
-<p><strong>2. Is it OK to download?</strong> <span class="pill p-ok">YES</span> It is the only file in this repo that is both format-valid (validator re-run today: PASS on all 10 checks) and unique under the detector rule against all 23 restored references, including the nine focus sites.</p>
-<p><strong>3. Is it OK to submit as the team's entry?</strong> <span class="pill p-hold">NOT WITHOUT SELECTOR SIGN-OFF</span> The lane's own run card says <code>verdict: negative</code>, <code>ok_to_submit: false</code>, and most of its promotion gates are false. On the same hide-recover holdout it scores 0.0648, below the champion's 0.0992. Its organizer score is <strong>unknown</strong>.</p>
-<p><strong>4. Will it beat 0.2778?</strong> <span class="pill p-no">NOT SHOWN</span> The only proxy that moves with organizer scores (SGMC-CAL) projects <strong>≈ 0.25, 95% prediction interval 0.06 – 0.44</strong>. That is a projection, not a score. No receipt exists.</p>
-<p><strong>5. Do not submit any other file in this repo or on the nine focus sites.</strong> The other nine sites' files are other teams' submissions (duplicates), and every other candidate here is either a duplicate or a research hold (table 2).</p>
+<section class="decision" aria-label="Status">
+<h2>Status: NEGATIVE / RESEARCH HOLD (matches <a href="review-20261031.md">review-20261031.md</a>)</h2>
+<table>
+<tr><th>Question</th><th>Answer</th></tr>
+<tr><td>Can I <strong>submit</strong> any file to the portal?</td><td><span class="pill p-no">NO</span> No file is cleared. The team must also pick one final submission (B8).</td></tr>
+<tr><td>Can I <strong>download</strong> the UWBP-DRCS-EXP3 file?</td><td><span class="pill p-hold">RESEARCH ARTIFACT ONLY</span> <code>gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif</code>, SHA-256 <code>2693c2daf87bd7948d3d57fc41fdcf40653ef42014c93d0e947bc2a8fc00a30c</code>. It is format-valid (validator PASS, 10/10 checks). It is not an approved contest download.</td></tr>
+<tr><td>What is the organizer score?</td><td><strong>UNKNOWN.</strong> No DrivenData receipt exists. The 0.2778 figure is user-reported.</td></tr>
+<tr><td>Are the holdout numbers usable?</td><td><span class="pill p-no">NO</span> <strong>B1:</strong> <code>labels.tif</code> and <code>existing_faults.tif</code> are byte-identical in the owner mirror. Every holdout number in this companion is INADMISSIBLE until that is resolved.</td></tr>
+<tr><td>Is the candidate unique?</td><td><span class="pill p-ok">YES by the detector rule</span> (no reference above 33.8% 3-px overlap, max |ρ| 0.0064, against 23 references). <span class="pill p-hold">Literal rule fails</span> only against the saturating <code>r13-lattice</code> reference (99.9% coverage), which the team has not exempted.</td></tr>
+</table>
 </section>
 
-<h2>Score labels used on this page</h2>
+<h2>Score labels</h2>
 <table>
 <tr><th>Label</th><th>Meaning</th></tr>
-<tr><td><strong>USER-REPORTED</strong></td><td>Score copied from the user's site list. Not a DrivenData receipt.</td></tr>
-<tr><td><strong>HOLDOUT-DTI</strong></td><td>Shared evaluator <code>GEMSDOE32-HIDE-RECOVER-v3.1</code> (withheld positives N = 22,232, 95% cluster-bootstrap CI). A surrogate, not the organizer's score.</td></tr>
-<tr><td><strong>SGMC-CAL</strong></td><td>Shared evaluator <code>GEMSDOE32-SGMC-CAL-v3.0</code>: off-catalogue USGS SGMC faults with a prevalence-calibrated DTI. A surrogate.</td></tr>
-<tr><td><strong>PROJECTION — NOT A SCORE</strong></td><td>Linear fit to the 13 user-reported points (<a href="evidence/organizer_projection_20261031.json"><code>organizer_projection_20261031.json</code></a>). Shown only as a bracket.</td></tr>
-<tr><td><strong>ORGANIZER-CONFIRMED</strong></td><td>None available. Requires a copy of the DrivenData submission-page receipt.</td></tr>
+<tr><td><strong>USER-REPORTED</strong></td><td>Copied from the user's site list. Not a DrivenData receipt.</td></tr>
+<tr><td><strong>HOLDOUT-DTI (INADMISSIBLE, B1)</strong></td><td>Shared evaluator value. The inputs carry blocker B1, so the value is reproduction-only.</td></tr>
+<tr><td><strong>ORGANIZER-CONFIRMED</strong></td><td>None available. Needs a copy of the DrivenData submission receipt.</td></tr>
 </table>
 
-<h2>1. The nine focus sites — best listed submission on each site</h2>
-<p>Files restored from the pinned owner repositories and SHA-256 verified (<a href="evidence/focus_site_table_20261031.json"><code>focus_site_table_20261031.json</code></a>). "Overlap" = share of the candidate's dots within 3 px of that site's dots. The literal duplicate rule is over 70%.</p>
+<h2>1. The nine focus sites — uniqueness (does not depend on labels)</h2>
+<p>Restored from pinned owner repositories and SHA-256 verified (<a href="evidence/focus_site_table_20261031.json"><code>focus_site_table_20261031.json</code></a>; restore is subject to B2). "Overlap" = share of the candidate's dots within 3 px of that site's dots. The literal duplicate threshold is 70%. Every site is well under the threshold.</p>
 <div class="table-wrap"><table>
-<tr><th>Site</th><th>Best listed submission (as given by the user)</th><th>Score (USER-REPORTED)</th><th>Dots in restored file</th><th>Candidate dots within 3 px</th><th>Unique vs candidate?</th><th>Download for us?</th></tr>
-<tr><td>GEMSDOE24</td><td><code>h25-1-dotted-h19-5-d1-5-…-nan</code></td><td>0.2477</td><td>60,069</td><td>21.8%</td><td><span class="pill p-ok">YES</span></td><td><span class="pill p-no">NO</span> other team's file</td></tr>
-<tr><td>GEMSDOE25</td><td><code>dotted-h19-5-d2-8-…-nan</code></td><td>0.2600</td><td>44,090</td><td>20.6%</td><td><span class="pill p-ok">YES</span></td><td><span class="pill p-no">NO</span></td></tr>
-<tr><td>GEMSDOE27</td><td><code>topo-gap-closure-t-v2-on-d1-5-…-nan</code></td><td>0.2449</td><td>61,328</td><td>22.2%</td><td><span class="pill p-ok">YES</span></td><td><span class="pill p-no">NO</span></td></tr>
-<tr><td>GEMSDOE28</td><td><code>h36-1-rung30-blind-r1-…-nan</code> (highest on site)</td><td>0.2710</td><td>37,660</td><td>19.7%</td><td><span class="pill p-ok">YES</span></td><td><span class="pill p-no">NO</span></td></tr>
-<tr><td>GEMSDOE30</td><td><code>d28-poisson300m-offcat-44090-…</code></td><td>0.2600</td><td>44,090</td><td>20.6%</td><td><span class="pill p-ok">YES</span></td><td><span class="pill p-no">NO</span></td></tr>
-<tr><td>GEMSDOE31</td><td><code>h27-4-solo-d28-…-nan</code></td><td>0.2708</td><td>40,199</td><td>20.1%</td><td><span class="pill p-ok">YES</span></td><td><span class="pill p-no">NO</span></td></tr>
-<tr><td><strong>GEMSDOE32</strong></td><td><code>h33-h33-2-b2-…-zeros</code> — <strong>highest of the nine</strong></td><td><strong>0.2778</strong></td><td>37,654</td><td>19.5%</td><td><span class="pill p-ok">YES</span></td><td><span class="pill p-no">NO</span> already submitted</td></tr>
-<tr><td>GEMSDOE33</td><td><code>h33d-analog-tip-stepover-r30-…</code></td><td>0.2632</td><td>41,865</td><td>20.7%</td><td><span class="pill p-ok">YES</span></td><td><span class="pill p-no">NO</span></td></tr>
-<tr><td>GEMSDOE36</td><td><code>anderson-geothermal-pinn-38854-…-zeros</code></td><td>0.2750</td><td>38,854</td><td>20.2%</td><td><span class="pill p-ok">YES</span></td><td><span class="pill p-no">NO</span></td></tr>
+<tr><th>Site</th><th>Best listed submission (as the user gave it)</th><th>Score (USER-REPORTED)</th><th>Dots in restored file</th><th>Candidate dots within 3 px</th><th>Duplicate?</th><th>Download for us?</th></tr>
+<tr><td>GEMSDOE24</td><td><code>h25-1-dotted-h19-5-d1-5</code></td><td>0.2477</td><td>60,069</td><td>21.8%</td><td><span class="pill p-ok">NO</span></td><td><span class="pill p-no">NO</span> other team's file</td></tr>
+<tr><td>GEMSDOE25</td><td><code>dotted-h19-5-d2-8</code></td><td>0.2600</td><td>44,090</td><td>20.6%</td><td><span class="pill p-ok">NO</span></td><td><span class="pill p-no">NO</span></td></tr>
+<tr><td>GEMSDOE27</td><td><code>topo-gap-closure-t-v2-on-d1-5</code></td><td>0.2449</td><td>61,328</td><td>22.2%</td><td><span class="pill p-ok">NO</span></td><td><span class="pill p-no">NO</span></td></tr>
+<tr><td>GEMSDOE28</td><td><code>h36-1-rung30-blind-r1</code> (highest on site)</td><td>0.2710</td><td>37,660</td><td>19.7%</td><td><span class="pill p-ok">NO</span></td><td><span class="pill p-no">NO</span></td></tr>
+<tr><td>GEMSDOE30</td><td><code>d28-poisson300m-offcat-44090</code></td><td>0.2600</td><td>44,090</td><td>20.6%</td><td><span class="pill p-ok">NO</span></td><td><span class="pill p-no">NO</span></td></tr>
+<tr><td>GEMSDOE31</td><td><code>h27-4-solo-d28</code></td><td>0.2708</td><td>40,199</td><td>20.1%</td><td><span class="pill p-ok">NO</span></td><td><span class="pill p-no">NO</span></td></tr>
+<tr><td><strong>GEMSDOE32</strong></td><td><code>h33-h33-2-b2</code> — <strong>highest of the nine</strong></td><td><strong>0.2778</strong></td><td>37,654</td><td>19.5%</td><td><span class="pill p-ok">NO</span></td><td><span class="pill p-no">NO</span> already submitted</td></tr>
+<tr><td>GEMSDOE33</td><td><code>h33d-analog-tip-stepover-r30</code></td><td>0.2632</td><td>41,865</td><td>20.7%</td><td><span class="pill p-ok">NO</span></td><td><span class="pill p-no">NO</span></td></tr>
+<tr><td>GEMSDOE36</td><td><code>anderson-geothermal-pinn-38854</code></td><td>0.2750</td><td>38,854</td><td>20.2%</td><td><span class="pill p-ok">NO</span></td><td><span class="pill p-no">NO</span></td></tr>
 </table></div>
-<p class="note">Highest of the nine focus sites: <strong>GEMSDOE32, 0.2778</strong> (USER-REPORTED). Note that the user's "highest right now" figure of 0.3195 is not on this list (see irregularity IR-02).</p>
+<p class="note">The "Duplicate?" column is about the candidate's uniqueness against each site. No candidate is cleared in any case (section 0). The user's "highest right now" figure of 0.3195 is not on this list, and the public leaderboard's #1 is 0.4544 (IR-02).</p>
 
-<h2>2. Candidate files — what to download, the estimate, and whether it is unique</h2>
-<div class="table-wrap"><table>
-<tr><th>File</th><th>Estimated organizer score</th><th>HOLDOUT-DTI (N = 22,232)</th><th>SGMC-CAL</th><th>Unique vs the nine GEMSDOE sites and 23 references?</th><th>Verdict</th></tr>
-<tr>
-<td><strong><code>…uwbp-drcs-exp3…-nan.tif</code></strong> (recommended download)</td>
-<td>PROJECTION ≈ 0.25 (95% PI 0.06–0.44). <strong>Not a score.</strong></td>
-<td>0.0648, CI [0.0574, 0.0718] (recorded 2026-10-28; not re-run today)</td>
-<td>0.0892, CI [0.0812, 0.0956] (recorded)</td>
-<td><span class="pill p-ok">YES</span> detector rule passes against all 23 references; max within-3 px vs any non-space-filling reference = 33.8%. Literal rule fails only against the saturating <code>r13-lattice</code> reference (99.9% footprint coverage) — see IR-06.</td>
-<td><span class="pill p-ok">DOWNLOAD OK</span> <span class="pill p-hold">SUBMIT: selector decision</span></td>
-</tr>
-<tr>
-<td><code>gemsdoe32-h33-h33-2-b2-…-zeros.tif</code> (the 0.2778 champion)</td>
-<td>0.2778 USER-REPORTED (organizer-side score for GEMSDOE32)</td>
-<td>0.0992, CI [0.0860, 0.1127] (re-run today from owner d2.8 file; matches record exactly)</td>
-<td>0.0641, CI [0.0567, 0.0716] (re-run today)</td>
-<td><span class="pill p-no">NO</span> it is GEMSDOE32's own file.</td>
-<td><span class="pill p-no">DO NOT SUBMIT</span> duplicate</td>
-</tr>
-<tr>
-<td>Experiment X1 spacing arms (2.83, 3.0, 3.2, 4.0 px; plus owner d1.5)</td>
-<td>none (no arm is a candidate)</td>
-<td>0.0934 – 0.0996 (owner d1.5: 0.0972)</td>
-<td>0.0589 – 0.0645</td>
-<td><span class="pill p-no">NO</span> every treatment arm is ≥ 99% within 3 px of the champion.</td>
-<td><span class="pill p-no">DO NOT SUBMIT</span> negative result (run card <code>run_card_x1_spacing_20261031.json</code>)</td>
-</tr>
-<tr>
-<td><code>…ocda-mscs-exp3…-nan.tif</code> (KANLER1 OCDA-MSCS)</td>
-<td>none recorded</td>
-<td>0.1058, CI [0.0950, 0.1153] (recorded; highest surrogate in repo)</td>
-<td>0.0500 (recorded)</td>
-<td><span class="pill p-ok">YES</span> detector rule passes; literal fails only vs r13.</td>
-<td><span class="pill p-hold">RESEARCH HOLD</span> repo verdict negative</td>
-</tr>
-<tr>
-<td><code>…comb-piedmont-worm-disjoint…-nan.tif</code>, <code>…upflow-exp2…-nan.tif</code>, <code>…cgji-htb…</code></td>
-<td>none recorded</td>
-<td>see repo run cards</td>
-<td>see repo run cards</td>
-<td><span class="pill p-ok">YES</span> detector rule passes; literal fails only vs r13.</td>
-<td><span class="pill p-hold">RESEARCH HOLD</span></td>
-</tr>
-</table></div>
-<p class="note">Unique-name note for the recommended file (≤ 140 characters, 102 used): <code>KANLER1 UWBP-DRCS-EXP3: 55deg up-dip worms, deconfounded dual regime, Dinkelbach 300m CELF, 37647 dots</code>. The repo's older note, which ends in <code>[RESEARCH-HOLD]</code>, is not recommended for a live entry.</p>
-
-<h2>3. Why GEMSDOE32 scored 0.2778 (what we verified)</h2>
-<ol>
-<li><strong>Lineage (verified by file):</strong> the GEMSDOE32 file is the H19-5 surface (121,131 px) after raster-order Euclidean thinning at spacing √8 px (44,090 px), then removal of dots within 2 px of mapped faults (37,654 px). The shared reimplementation of the thinning matches the owner's d2.8 layout to within 181 px (100% of owner pixels within 3 px).</li>
-<li><strong>Metric reason:</strong> the official distance-weighted Tversky index with α = 0.2, β = 0.8 gives DTI = TP / (0.2·(TP+FP) + 0.8·|G|). Missed truth (FN) dominates, so coverage is cheap, while false positives cost only 0.2 each. Thinning removes redundant dots that add FP without adding max-credit, and the collar removes dots sitting on digitization halos of mapped faults.</li>
-<li><strong>Experiment X1 (1 of 3 budget):</strong> on the same surface, the holdout is best at the 2.83 px spacing among the arms tested. Sparser spacing lowers the surrogate, and so does the denser owner d1.5 layout. This is a negative result for spacing as a lever.</li>
-<li><strong>Caveat:</strong> the holdout surrogate does not rank organizer scores reliably (IR-03), and the random-placement canary scores 0.047 (IR-04). Neither proves that 0.2778 is the best achievable.</li>
-</ol>
-
-<h2>4. Steps to submit (for whoever uploads)</h2>
-<ol>
-<li>Download <a href="downloads/gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif"><code>…-nan.tif</code></a> (or the matching <code>…-nan.zip</code>, which contains only this file). Verify the SHA-256 above.</li>
-<li>On the DrivenData "New submission" form, choose the <code>.tif</code>. The form accepts a single-band GeoTIFF or a zip with one GeoTIFF.</li>
-<li>Enter the note from section 2. Do not upload the <code>-zeros.tif</code> diagnostic.</li>
-<li>If the portal reports "Predicted values must be in range [0, 1]", a likely cause is an undeclared nodata sentinel (not observed directly). This file declares nodata = NaN and has values only in {0, 1} inside the footprint (validator PASS).</li>
-<li><strong>Stop here unless the selector approves.</strong> The weekly cap is shown only on the logged-in submission page, which this agent cannot read.</li>
-</ol>
-
-<h2>5. Hypotheses to test next (3–5, ranked; none validated yet)</h2>
-<table>
-<tr><th>#</th><th>Hypothesis and layer(s)</th><th>Physical signature targeted</th><th>Why not already in the USGS/INGENIOUS catalogue</th><th>Difference from repo</th><th>Expected gain / cost</th></tr>
-<tr><td>H-N1</td><td>Probability-valued gap-fill of the H19-5 dot field (dots keep 1.0; non-dot pixels get values from the 300 m kernel of nearby dots)</td><td>Gaps between dots that lose max-credit at ~2–3 px</td><td>Operates on emission geometry, not on any fault feature</td><td>Every lane so far emits binary dots. The shared holdout accepts only binary inputs, so the evaluator must be extended once in shared code</td><td>Unknown / medium. Blocked as a unique entry while the lineage is the champion's</td></tr>
-<tr><td>H-N2</td><td>Union of OCDA-MSCS and UWBP-DRCS with 3-px exclusion at a fixed 37k budget (the repo's own top next step)</td><td>Two populations: quaternary piedmont and deconfounded worm/knickzone</td><td>Uses the shared surface stack, no new external data</td><td>Repo measured 24.05% dot overlap between the two lanes; lane caches are not in this sandbox</td><td>Moderate / high (re-run both lanes)</td></tr>
-<tr><td>H-N3</td><td>Select lane weights on SGMC-CAL (the only proxy with positive rank correlation) rather than hide-recover</td><td>Off-catalogue structure, closer to what the organizer may add</td><td>SGMC-CAL is an off-catalogue set</td><td>Current selection leans on hide-recover</td><td>Low / low, but overfit risk on n = 13</td></tr>
-<tr><td>H-N4</td><td>LiDAR scarp evidence from 1 m DEM tiles (the official USGS 3DEP route; the DEM list is on the DrivenData data page)</td><td>Quaternary scarps the catalogue misses</td><td>Scarps are a direct surface signature</td><td>The repo uses only a derived lidar_scarp raster from an owner mirror</td><td>Potentially high / high. <strong>Not yet obtainable:</strong> the DrivenData data page needs login. From bash, 3DEP hosts are outside the allowlist; the fetch tool was not tested on them. Obtainability not confirmed</td></tr>
-</table>
-
-<h2>6. What was verified this session</h2>
+<h2>2. Experiment X1 — spacing sweep of the champion rule (1 of 3 budget)</h2>
 <ul>
-<li>Official metric (distance-weighted Tversky, α = 0.2, β = 0.8, 300 m triangular kernel, float32 in [0, 1], null/NaN outside): read from the <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">DrivenData problem page</a> and the <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">official rules PDF</a>. The repo's <code>src/gems32/metric.py</code> matches the published formula.</li>
-<li>Reference solution (<a href="https://github.com/drivendataorg/gems-prize-reference-solution">GitHub</a>): uses Tversky loss with α = 0.2, β = 0.8. It does not contain the scoring code.</li>
-<li>Owner-mirror inputs restored and SHA-256 verified: 26 core and external files (<code>data/restore_receipt.json</code>) and 9 focus-site files (<code>data/focus/</code>).</li>
-<li>Validator re-run on the recommended file: PASS. Uniqueness audit re-run: identical numbers to the 2026-10-29 record.</li>
-<li>Harness reproduction: owner d2.8 file gives HOLDOUT-DTI 0.099202, CI [0.085951, 0.112668], SGMC-CAL 0.064121, matching the recorded champion exactly.</li>
-<li>Live public leaderboard fetched 2026-10-31: #1 0.4544 (xiaofanhu), not the 0.4413 or 0.3195 figures in the request.</li>
-<li>Experiment budget used: 1 of 3 (X1). Compute for all runs this session was under 10 minutes.</li>
+<li><strong>Duplicate finding (not label-dependent):</strong> every treatment arm (2.83, 3.0, 3.2, 4.0 px spacing) is at least 99% within 3 px of the champion layout. Under the literal rule each is a duplicate of the champion lineage and cannot be submitted.</li>
+<li><strong>Holdout findings (INADMISSIBLE, B1):</strong> the owner d2.8 control reproduces the recorded HOLDOUT-DTI 0.099202 (CI 0.085951–0.112668). The spacing arms score 0.093–0.100. Random placement with the same dot count scores 0.047. These numbers reproduce on the same inputs; they do not validate anything.</li>
+<li><strong>Run card:</strong> <a href="evidence/run_card_x1_spacing_20261031.json"><code>run_card_x1_spacing_20261031.json</code></a> (negative, <code>ok_to_submit: false</code>, <code>holdout_admissible: false</code>).</li>
 </ul>
 
-<h2>7. Irregularities for manual review</h2>
-<p>Full list with evidence paths: <a href="evidence/irregularity_log_20261031.json"><code>irregularity_log_20261031.json</code></a>. Highest priority:</p>
+<h2>3. What this session did not do</h2>
 <ul>
-<li><strong>IR-01</strong> Repo verdicts contradict each other (README and index say "OK to submit"; run card says negative, ok_to_submit false).</li>
-<li><strong>IR-02</strong> The quoted leaderboard figures (0.4413, 0.3195) do not match the public leaderboard (#1 0.4544).</li>
-<li><strong>IR-03</strong> The hide-recover surrogate does not rank organizer scores (ρ = −0.10 in the calibration file; SGMC-CAL ρ = +0.58 with n = 13).</li>
-<li><strong>IR-04</strong> Random placement scores 0.047, about half the champion. The surrogate is coverage-dominated.</li>
-<li><strong>IR-05</strong> The champion control's "fold-honest" label depends on an owner H19-5 surface that has not been verified.</li>
-<li><strong>IR-07</strong> The official text calls the sample a total-absence prediction, but it contains the 60,988 label positives.</li>
-<li><strong>IR-08</strong> GEMSDOE25 and GEMSDOE30 have the same dot count and score but different bytes.</li>
-<li><strong>IR-09</strong> Training inputs are owner mirrors, not organizer-authenticated.</li>
+<li>It did not generate a new candidate. The earlier draft of this page said the UWBP file was "OK to download and submit". That is superseded by the 31 Oct review and is withdrawn.</li>
+<li>It did not produce a score projection. The earlier projection (≈0.25) rested on B1-affected inputs and has been removed from this page. The JSON is kept and flagged INADMISSIBLE.</li>
+<li>It did not beat 0.2778 with any evidence.</li>
 </ul>
 
-<h2>8. Limitations and access needed</h2>
+<h2>4. Where the rest lives</h2>
 <ul>
-<li><strong>DrivenData login</strong> (data page, submission page, weekly cap, receipts). Without it there is no organizer-confirmed score.</li>
-<li><strong>Owner's H19-5 build log</strong> (to verify fold-locality of the champion control).</li>
-<li><strong>Team decision</strong> on the r13 lattice exemption and on probability-valued outputs.</li>
-<li>Free public sources beyond USGS/INGENIOUS were not searched exhaustively. From bash, only github.com, codeload.github.com, api.github.com, registry.npmjs.org, pypi.org and files.pythonhosted.org are reachable.</li>
+<li>Ranked future hypotheses (proposals only): <a href="review-20261031.md">review-20261031.md</a>, the table of five hypotheses.</li>
+<li>Full irregularity list, 16 items (IR-01 to IR-16): <a href="evidence/irregularity_log_20261031.json"><code>irregularity_log_20261031.json</code></a>. Top items: IR-14 (B1), IR-15 (B2 data terms), IR-01 (verdict conflicts), IR-02 (leaderboard figures).</li>
+<li>Label-integrity evidence: <a href="review-20261031-labels.md">review-20261031-labels.md</a>.</li>
 </ul>
 
-<footer>Prepared 31 Oct 2026 UTC by the repo agent. Sources: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/">competition</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">problem</a> · <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">rules PDF</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">leaderboard</a> · <a href="https://github.com/drivendataorg/gems-prize-reference-solution">reference solution</a> · <a href="https://epsg.io/32611">EPSG:32611</a> · <a href="sources.html">all sources</a></footer>
+<footer>Prepared 31 Oct 2026 UTC by the repo agent. Competition: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">problem page</a> · <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">official rules</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">leaderboard</a> · <a href="sources.html">all sources</a></footer>
 </main>
 </body></html>

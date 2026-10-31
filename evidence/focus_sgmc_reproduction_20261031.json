@@ -1,0 +1,136 @@
+{
+  "schema": "focus-sgmc-reproduction/v1",
+  "date_utc": "2026-10-31",
+  "evaluator": "GEMSDOE32-SGMC-CAL-v3.0 via scripts/evaluate_holdout.py --diagnostic-full-map (shared gems32.holdout)",
+  "label": "HOLDOUT-DTI (SGMC off-catalogue proxy). Not organizer-confirmed. Calibrated variant uses a fixed hidden-truth size of 12,691 px fitted to the user-reported ledger (see review-20261031 irregularity I1).",
+  "files_source": "registry/focus_sites.json (pinned SHA-256; verified by scripts/restore_focus_sites.py)",
+  "per_site": {
+    "GEMSDOE24": {
+      "emitted_pixels": 60069,
+      "sgmc_raw": 0.10111756213920534,
+      "sgmc_raw_ci95": [
+        0.09049695337455287,
+        0.11246319593456701
+      ],
+      "sgmc_cal": 0.057932246070648355,
+      "sgmc_cal_ci95": [
+        0.05112656686015078,
+        0.0652165822506664
+      ],
+      "n_withheld_positives": 62703
+    },
+    "GEMSDOE25": {
+      "emitted_pixels": 44090,
+      "sgmc_raw": 0.09528236525805692,
+      "sgmc_raw_ci95": [
+        0.08501204821158427,
+        0.10605395764558845
+      ],
+      "sgmc_cal": 0.060592489973569044,
+      "sgmc_cal_ci95": [
+        0.05358257868838623,
+        0.06785452888019962
+      ],
+      "n_withheld_positives": 62703
+    },
+    "GEMSDOE27": {
+      "emitted_pixels": 61328,
+      "sgmc_raw": 0.10242171571074637,
+      "sgmc_raw_ci95": [
+        0.09151054244866387,
+        0.11353519927655141
+      ],
+      "sgmc_cal": 0.05826237030075181,
+      "sgmc_cal_ci95": [
+        0.051476178073377704,
+        0.06553368995679887
+      ],
+      "n_withheld_positives": 62703
+    },
+    "GEMSDOE28": {
+      "emitted_pixels": 37660,
+      "sgmc_raw": 0.09434123664384234,
+      "sgmc_raw_ci95": [
+        0.0842957372052437,
+        0.10485185652503612
+      ],
+      "sgmc_cal": 0.06296746868114517,
+      "sgmc_cal_ci95": [
+        0.05571910069273813,
+        0.07037502524536735
+      ],
+      "n_withheld_positives": 62703
+    },
+    "GEMSDOE30": {
+      "emitted_pixels": 44090,
+      "sgmc_raw": 0.09528236525805692,
+      "sgmc_raw_ci95": [
+        0.08501204821158427,
+        0.10605395764558845
+      ],
+      "sgmc_cal": 0.060592489973569044,
+      "sgmc_cal_ci95": [
+        0.05358257868838623,
+        0.06785452888019962
+      ],
+      "n_withheld_positives": 62703
+    },
+    "GEMSDOE31": {
+      "emitted_pixels": 40199,
+      "sgmc_raw": 0.09627307160880005,
+      "sgmc_raw_ci95": [
+        0.08590444160453334,
+        0.10700931831323503
+      ],
+      "sgmc_cal": 0.06300952965550723,
+      "sgmc_cal_ci95": [
+        0.055780891540621436,
+        0.07039487831429346
+      ],
+      "n_withheld_positives": 62703
+    },
+    "GEMSDOE32": {
+      "emitted_pixels": 37654,
+      "sgmc_raw": 0.09606004283619354,
+      "sgmc_raw_ci95": [
+        0.08565972243445039,
+        0.10707194739837263
+      ],
+      "sgmc_cal": 0.0641209376417646,
+      "sgmc_cal_ci95": [
+        0.056730181217206584,
+        0.0716486609703412
+      ],
+      "n_withheld_positives": 62703
+    },
+    "GEMSDOE33": {
+      "emitted_pixels": 41865,
+      "sgmc_raw": 0.09676373589379636,
+      "sgmc_raw_ci95": [
+        0.08618171024628718,
+        0.10778853994649824
+      ],
+      "sgmc_cal": 0.06255070275978937,
+      "sgmc_cal_ci95": [
+        0.05531125719222555,
+        0.06998567406425855
+      ],
+      "n_withheld_positives": 62703
+    },
+    "GEMSDOE36": {
+      "emitted_pixels": 38854,
+      "sgmc_raw": 0.09743406327058107,
+      "sgmc_raw_ci95": [
+        0.08676083043853253,
+        0.10846427856649044
+      ],
+      "sgmc_cal": 0.06444361006575842,
+      "sgmc_cal_ci95": [
+        0.057086576831896246,
+        0.07195818932689524
+      ],
+      "n_withheld_positives": 62703
+    }
+  },
+  "duplicate_content_note": "GEMSDOE25 and GEMSDOE30 have identical dot sets (44,090 px each) but different file SHA-256 values; GEMSDOE25 also equals registry_rasters/d28_02600.tif. Hash-level uniqueness is therefore insufficient."
+}

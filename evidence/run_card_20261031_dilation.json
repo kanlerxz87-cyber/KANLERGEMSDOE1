@@ -1,0 +1,46 @@
+{
+  "run_card_schema": "parallel-run-protocol/v1",
+  "date_utc": "2026-10-31",
+  "budget": {"experiments_used": 1, "experiments_max": 3, "note": "One experiment with two dilation variants; no promotion to a weekly slot."},
+  "hypothesis": "Under the official distance-weighted Tversky index (alpha 0.2, beta 0.8, 300 m kernel), 1-px dilation of the recommended 37,647-dot file increases expected score because false negatives cost 4x false positives.",
+  "mechanism": "Dilated neighbours fall inside the 3 px kernel of off-catalogue truth, raising TP and lowering FN; each added pixel costs only alpha=0.2 if it is a false positive.",
+  "named_non_fault_mimic": "Digitisation halos and gravity/magnetic edge artefacts beside mapped faults (official scoring penalises these fully, because only new-fault ground truth counts; see DrivenData forum #11516).",
+  "holdout": {
+    "label": "HOLDOUT-DTI (proxy)",
+    "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0 (shared gems32.holdout.evaluate_sgmc_with_ci)",
+    "withheld_positives": 62703,
+    "spatial_clusters": 140,
+    "bootstrap_reps": 1000,
+    "results": {
+      "V0_base_37647dots": {"raw_pooled": 0.132736, "raw_ci95": [0.124812, 0.139178], "calibrated": 0.089182, "calibrated_ci95": [0.081246, 0.095651]},
+      "V1_cross1px_188232dots": {"raw_pooled": 0.170749, "raw_ci95": [0.156270, 0.182440], "calibrated": 0.063669, "calibrated_ci95": [0.055642, 0.071231]},
+      "V2_square1px_338796dots": {"raw_pooled": 0.162937, "raw_ci95": [0.146364, 0.177434], "calibrated": 0.049443, "calibrated_ci95": [0.042751, 0.055903]}
+    },
+    "caveat": "Raw and calibrated proxies disagree in direction. The calibrated variant assumes a hidden-truth size of 12,691 px fitted to the leaderboard ledger; the raw variant uses the 62,703-px SGMC truth count. The organizer's hidden-truth size is unknown. This experiment does not resolve the question."
+  },
+  "leakage_canary": {"status": "not_run", "reason": "No new feature was introduced; the experiment only changes dot count on a fixed output."},
+  "correlation_overlap_vs_registry": {
+    "reference_count": 23,
+    "V0_worst_non_space_filling_within_3px": 0.338327,
+    "V0_max_abs_spearman": 0.006361,
+    "V1_worst_non_space_filling_within_3px": 0.337573,
+    "V1_max_abs_spearman": 0.013984,
+    "literal_rule": "FAILS for all variants because of the r13 lattice reference (coverage of footprint >= 70%). Detector-only rule passes. Literal-rule exemption is a team decision, not an official rule.",
+    "source": "evidence/uniqueness_audit_20261029.json (V0); V1 computed with the same shared audit in scripts/experiment_dilation_variants.py"
+  },
+  "raster_sha256": {
+    "V0_recommended_download": "2693c2daf87bd7948d3d57fc41fdcf40653ef42014c93d0e947bc2a8fc00a30c",
+    "V1_probe_not_for_download": "ece54851855deb8e953b825ce0e75f1036284ba93c3b3f1c519c875d5f7b0df7"
+  },
+  "validator_output": {
+    "V0": "PASS: 10/10 checks (single band, float32, EPSG:32611, 3730x3292, transform match, NaN outside, no NaN inside, values in [0,1] inside, footprint identical, GTiff)",
+    "V1": "PASS: all checks; 188,232 positive pixels inside footprint"
+  },
+  "submission_name_and_note": {
+    "V0_name": "kanler1-uwbp-drcs-exp3-37647d-nan",
+    "V0_note": "KANLER1 UWBP-DRCS EXP3 worm+Dinkelbach 37647 dots NaN-outside; SGMC-CAL proxy 0.0892 (not organizer score)",
+    "V1_name": "kanler1-dil1x-probe-188k-nan",
+    "V1_note": "PROBE ONLY: 1px cross dilation of UWBP-DRCS EXP3; SGMC-CAL 0.0637 (down), raw 0.1707 (up). Not for final selection."
+  },
+  "verdict": "negative for V1 (dilation not promoted: calibrated proxy down, raw proxy up; unresolved). V0 remains the download candidate; its organizer score is UNKNOWN until a portal receipt exists."
+}

@@ -81,9 +81,16 @@ def evaluate_path(
             arr = ds.read(1)
     if arr.shape != ctx.foot.shape:
         raise ValueError(f"Expected grid shape {ctx.foot.shape}, got {arr.shape}")
-    if not np.isfinite(arr).all() or not np.all((arr == 0) | (arr == 1)):
-        raise ValueError("Diagnostic map must be finite and binary; values are not silently repaired")
-    mask = (arr > 0) & ctx.foot
+    # Footprint = finite cells of sample_submission.tif. Inside it the map must be exactly
+    # binary and finite; outside it the official format allows NaN (or 0). Earlier versions
+    # rejected every NaN-outside file, i.e. the portal-format file itself (fixed 2026-10-31).
+    inside = arr[ctx.foot]
+    outside = arr[~ctx.foot]
+    if not np.isfinite(inside).all() or not np.all((inside == 0) | (inside == 1)):
+        raise ValueError("Diagnostic map must be finite and binary inside the footprint; values are not silently repaired")
+    if not np.all(np.isnan(outside) | (outside == 0)):
+        raise ValueError("Diagnostic map must be NaN or 0 outside the footprint")
+    mask = (np.nan_to_num(arr, nan=0.0) > 0) & ctx.foot
     hr = _strip_internal(holdout.evaluate_hide_and_recover(mask, ctx, b_visible_px=b_visible_px, name=cand_name, diagnostic_allow_full_map=True))
     sg = _strip_internal(holdout.evaluate_sgmc_with_ci(mask, ctx, name=cand_name))
     legacy = holdout.evaluate_candidate_holdout(mask, ctx, name=cand_name)
