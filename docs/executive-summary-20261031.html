@@ -42,20 +42,11 @@
 </table>
 
 <h2>1. The nine focus sites — uniqueness (does not depend on labels)</h2>
-<p>Restored from pinned owner repositories and SHA-256 verified (<a href="evidence/focus_site_table_20261031.json"><code>focus_site_table_20261031.json</code></a>; restore is subject to B2). "Overlap" = share of the candidate's dots within 3 px of that site's dots. The literal duplicate threshold is 70%. Every site is well under the threshold.</p>
-<div class="table-wrap"><table>
-<tr><th>Site</th><th>Best listed submission (as the user gave it)</th><th>Score (USER-REPORTED)</th><th>Dots in restored file</th><th>Candidate dots within 3 px</th><th>Duplicate?</th><th>Download for us?</th></tr>
-<tr><td>GEMSDOE24</td><td><code>h25-1-dotted-h19-5-d1-5</code></td><td>0.2477</td><td>60,069</td><td>21.8%</td><td><span class="pill p-ok">NO</span></td><td><span class="pill p-no">NO</span> other team's file</td></tr>
-<tr><td>GEMSDOE25</td><td><code>dotted-h19-5-d2-8</code></td><td>0.2600</td><td>44,090</td><td>20.6%</td><td><span class="pill p-ok">NO</span></td><td><span class="pill p-no">NO</span></td></tr>
-<tr><td>GEMSDOE27</td><td><code>topo-gap-closure-t-v2-on-d1-5</code></td><td>0.2449</td><td>61,328</td><td>22.2%</td><td><span class="pill p-ok">NO</span></td><td><span class="pill p-no">NO</span></td></tr>
-<tr><td>GEMSDOE28</td><td><code>h36-1-rung30-blind-r1</code> (highest on site)</td><td>0.2710</td><td>37,660</td><td>19.7%</td><td><span class="pill p-ok">NO</span></td><td><span class="pill p-no">NO</span></td></tr>
-<tr><td>GEMSDOE30</td><td><code>d28-poisson300m-offcat-44090</code></td><td>0.2600</td><td>44,090</td><td>20.6%</td><td><span class="pill p-ok">NO</span></td><td><span class="pill p-no">NO</span></td></tr>
-<tr><td>GEMSDOE31</td><td><code>h27-4-solo-d28</code></td><td>0.2708</td><td>40,199</td><td>20.1%</td><td><span class="pill p-ok">NO</span></td><td><span class="pill p-no">NO</span></td></tr>
-<tr><td><strong>GEMSDOE32</strong></td><td><code>h33-h33-2-b2</code> — <strong>highest of the nine</strong></td><td><strong>0.2778</strong></td><td>37,654</td><td>19.5%</td><td><span class="pill p-ok">NO</span></td><td><span class="pill p-no">NO</span> already submitted</td></tr>
-<tr><td>GEMSDOE33</td><td><code>h33d-analog-tip-stepover-r30</code></td><td>0.2632</td><td>41,865</td><td>20.7%</td><td><span class="pill p-ok">NO</span></td><td><span class="pill p-no">NO</span></td></tr>
-<tr><td>GEMSDOE36</td><td><code>anderson-geothermal-pinn-38854</code></td><td>0.2750</td><td>38,854</td><td>20.2%</td><td><span class="pill p-ok">NO</span></td><td><span class="pill p-no">NO</span></td></tr>
-</table></div>
-<p class="note">The "Duplicate?" column is about the candidate's uniqueness against each site. No candidate is cleared in any case (section 0). The user's "highest right now" figure of 0.3195 is not on this list, and the public leaderboard's #1 is 0.4544 (IR-02).</p>
+<ul>
+<li><strong>Candidate vs each of the nine sites:</strong> 19.5% to 22.2% of the candidate's dots lie within 3 px of that site's dots (definition: fraction of candidate dots within 3 px of any site dot; the literal duplicate threshold is 70%). No site is near the threshold. Numbers: <a href="evidence/focus_site_table_20261031.json"><code>focus_site_table_20261031.json</code></a>. Main's pairwise file agrees in its own direction.</li>
+<li><strong>The nine sites overlap each other heavily</strong> (<a href="nine-site-summary.html"><code>nine-site-summary.html</code></a>, <code>evidence/nine_site_summary.json</code>): GEMSDOE25 and GEMSDOE30 have <strong>identical dot masks</strong> (Jaccard 1.0, same 44,090 dots, different file bytes). GEMSDOE24 and GEMSDOE27 have Jaccard 0.98. GEMSDOE31, 32 and 36 have Jaccard 0.91 to 0.97. "Best unique site" therefore has little meaning within this set.</li>
+<li><strong>Scores</strong> are USER-REPORTED (highest: GEMSDOE32, 0.2778). Each site's file is another team's submission and is not a download for us.</li>
+</ul>
 
 <h2>2. Experiment X1 — spacing sweep of the champion rule (1 of 3 budget)</h2>
 <ul>

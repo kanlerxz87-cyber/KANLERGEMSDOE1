@@ -85,13 +85,14 @@
     {
       "id": "IR-08",
       "severity": "MEDIUM",
-      "title": "Two focus sites carry the same dot count and score but different bytes",
-      "detail": "GEMSDOE25 and GEMSDOE30 both list 0.2600 and both have 44,090 dots, but their SHA-256 values differ (91eae1ca... vs 8cf893ea...). Their pixel overlap was not computed in this session.",
+      "title": "GEMSDOE25 and GEMSDOE30 have identical dot masks under different file bytes",
+      "detail": "Both list 0.2600 and 44,090 dots. Their SHA-256 values differ (91eae1ca... vs 8cf893ea...), but evidence/nine_site_summary.json reports exact_mask_equal = true (Jaccard 1.0). This session's own check showed the bytes differ only. Treat them as one submission, not two independent sites. Also: GEMSDOE24 and 27 have Jaccard 0.98, and 31/32/36 have 0.91 to 0.97.",
       "evidence": [
+        "evidence/nine_site_summary.json",
         "registry/focus_sites.json",
         "docs/evidence/organizer_projection_20261031.json"
       ],
-      "status": "OPEN - check overlap before treating them as independent"
+      "status": "RECORDED (mask-level identity confirmed by main's audit; the organizer-side meaning is unverified)"
     },
     {
       "id": "IR-09",
