@@ -319,17 +319,18 @@ def render(out: dict, ledger: dict, focus: dict) -> str:
 <h1>Nine-site executive summary</h1>
 <p>Sites: GEMSDOE24, 25, 27, 28, 30, 31, 32, 33, 36. Scores are <strong>USER-REPORTED</strong> (no submission-page receipts). Proxy values are <strong>HOLDOUT-DTI</strong> from the shared evaluator (SGMC-CAL-v3.0). Estimates are <strong>PROJECTION</strong>. Generated {e(out['generated_utc'])} by <code>scripts/build_nine_site_summary.py</code>.</p>
 
-<div class="box">
-<h2>1. Which file to download and submit</h2>
+<div class="box warn" style="border-color:var(--bad)">
+<h2>1. Release status: <span class="tag-bad">HOLD — NOT CLEARED. Do not download or submit.</span></h2>
+<p>This page follows the fail-closed release decision on <code>main</code> (<a href="review-20261031.md">review-20261031.md</a>, <a href="submit-now.html">submit gate</a>). The candidate is a format-valid research artifact with no download button here. Its organizer score is <strong>UNKNOWN</strong>.</p>
 <table>
-<tr><th>File to download</th><th>Estimated organizer score</th><th>Unique vs the nine sites?</th><th>Status</th></tr>
-<tr><td><a href="downloads/{e(OUR_FILE.name)}"><code>{e(OUR_FILE.name)}</code></a><br><small>single-band float32 GeoTIFF, EPSG:32611, 3730x3292, values 0/1 inside footprint, NaN outside, {ours['dots']:,} dots, SHA-256 <code>{ours['sha256']}</code></small></td>
-<td>Not verified. Organizer score is UNKNOWN until a portal receipt exists.<br>{proj_html.replace('<p>','').replace('</p>','')}</td>
-<td><span class="tag-ok">YES</span> against the 9 focus sites and 2 owner-mirror files restored here (100+ other ledger sites not restored). Highest 3-px overlap with a focus file: {pct(o_focus_max[0])} ({e(o_focus_max[1])}), below the 70% limit. Highest exact-pixel Jaccard with any reference: {o_jac_all:.4f}.<br><small>The literal 3-px rule fails against the r13 lattice, but that is saturation from a dense reference (exact Jaccard {o_jac_all:.4f}). See section 5.</small></td>
-<td><span class="tag-ok">Validator PASS</span>. Download OK. Submit only after the team signs off on the r13 uniqueness decision.</td></tr>
+<tr><th>Question</th><th>Answer</th></tr>
+<tr><td>Can I download and submit the candidate?</td><td><span class="tag-bad">No.</span> Blocked by B1 (labels identity) and by the literal uniqueness rule (section 5). Main's supplementary review says the file is "format-valid for review"; this page follows the stricter gate.</td></tr>
+<tr><td>Candidate (research artifact, not published)</td><td><code>{e(OUR_FILE.name)}</code><br><small>single-band float32 GeoTIFF, EPSG:32611, 3730x3292, values 0/1 inside footprint, NaN outside, {ours['dots']:,} dots, SHA-256 <code>{ours['sha256']}</code></small></td></tr>
+<tr><td>Estimated organizer score</td><td>Not a score. Projected {proj['ours_projected']:.3f} (95% band {proj['prediction_95'][0]:.3f} to {proj['prediction_95'][1]:.3f}) from a fit on 9 points. Our SGMC-CAL value is outside the fitted range, so this is an extrapolation. PROJECTION only.<br>{proj_html.replace('<p>','').replace('</p>','')}</td></tr>
+<tr><td>Unique vs the nine sites?</td><td>Detector-only and exact-pixel checks pass. Highest 3-px overlap with a focus file: {pct(o_focus_max[0])} ({e(o_focus_max[1])}). Highest exact-pixel Jaccard with any reference: {o_jac_all:.4f}. The literal 3-px rule fails only against the saturated r13 lattice (ours {pct(o_r13)} within 3 px, exact Jaccard {o_r13_j:.4f}). Main's review says no exemption is authorized, so the literal rule currently fails.</td></tr>
+<tr><td>What clears it</td><td>(1) Compare the restored labels against the official DrivenData download (B1). (2) Team decision on the literal uniqueness rule. (3) Fold-local holdout on verified labels. (4) Separate selector approval. A portal receipt is the only source of an organizer score.</td></tr>
 </table>
-<p><strong>Portal fields (paste exactly):</strong><br>Unique name: <code>{e(OUR_NAME)}</code><br>Note ({len(OUR_NOTE)} chars): <code>{e(OUR_NOTE)}</code></p>
-<p><strong>Benchmark:</strong> GEMSDOE32 scored 0.2778 (USER-REPORTED). That is the highest of the nine sites. The live public leaderboard (fetched 2026-10-31, <code>evidence/leaderboard_snapshot_20261031.json</code>) has #1 at 0.4544, #2 at 0.3925 and #3 at 0.3917. The prompt also cites 0.4413 and 0.3195.</p>
+<p><strong>Benchmark:</strong> GEMSDOE32 scored 0.2778 (USER-REPORTED), the highest of the nine sites. The live public leaderboard (fetched 2026-10-31, <code>evidence/leaderboard_snapshot_20261031.json</code>) has #1 at 0.4544, #2 at 0.3925 and #3 at 0.3917. The prompt also cites 0.4413 and 0.3195.</p>
 </div>
 
 <h2>2. Best submission per site</h2>
@@ -338,7 +339,7 @@ def render(out: dict, ledger: dict, focus: dict) -> str:
 <tr><th>Site</th><th>Best entry (ledger ID)</th><th class=num>Score (USER-REPORTED)</th><th class=num>SGMC-CAL HOLDOUT-DTI [95% CI] n</th><th class=num>Max 3-px overlap with other focus sites (saturates)</th><th class=num>Max exact Jaccard with other focus sites</th><th>Use</th></tr>
 {''.join(best_rows)}
 </table>
-<p><small>How to read the table: SGMC-CAL is an off-catalogue holdout. It is the only proxy we could rerun that tracks the ledger across these nine sites. Whether it tracks the organizer beyond these nine is unverified.</small></p>
+<p><small>How to read the table: SGMC-CAL is an off-catalogue holdout, provisional until blocker B1 (labels identity) is resolved. It is the only proxy we could rerun that tracks the ledger across these nine sites. Whether it tracks the organizer beyond these nine is unverified.</small></p>
 
 <h2>3. Why GEMSDOE32 leads the nine (what the measurements show)</h2>
 <p>On the off-catalogue holdout the top two of the nine are GEMSDOE36 ({r36['sgmc']['sgmc_cal']:.6f}, CI [{r36['sgmc']['ci95'][0]:.4f}, {r36['sgmc']['ci95'][1]:.4f}]) and GEMSDOE32 ({r32['sgmc']['sgmc_cal']:.6f}, CI [{r32['sgmc']['ci95'][0]:.4f}, {r32['sgmc']['ci95'][1]:.4f}]). Their intervals overlap almost entirely, so the proxy cannot separate them. Their ledger scores are {ledger_score('GEMSDOE32'):.4f} and {ledger_score('GEMSDOE36'):.4f}.</p>
@@ -355,7 +356,8 @@ def render(out: dict, ledger: dict, focus: dict) -> str:
 
 <h2>5. Irregularities flagged for review</h2>
 <ol>
-<li><strong>Literal 3-px uniqueness rule is saturated by dense references.</strong> The r13-lattice reference covers almost the whole footprint at 3 px, so any dense candidate fails the literal rule (ours: {pct(o_r13)} within 3 px). Exact-pixel Jaccard is {o_r13_j:.4f}, so the two dot sets share almost no pixels. Detector-only overlap is the only usable measure here. Team decision needed. This rule is our reading of the prompt, not a DrivenData rule.</li>
+<li><strong>B1 — labels identity (blocker, from main's review).</strong> <code>labels.tif</code> and <code>existing_faults.tif</code> are byte-identical (60,988 positives each). The SGMC-CAL proxy in this page is defined relative to <code>labels.tif</code>, so every HOLDOUT-DTI value here is <strong>provisional</strong> until the labels are verified against the official download. See <code>evidence/label_integrity_20261031.json</code>.</li>
+<li><strong>Literal 3-px uniqueness rule is saturated by dense references (main's review: no exemption authorized).</strong> The r13-lattice reference covers almost the whole footprint at 3 px, so any dense candidate fails the literal rule (ours: {pct(o_r13)} within 3 px). Exact-pixel Jaccard is {o_r13_j:.4f}, so the two dot sets share almost no pixels. Exact-pixel Jaccard is a complementary measure. The literal rule currently fails for this file. Team decision needed. The rule is the one written in the repo's protocol, not a DrivenData rule.</li>
 <li><strong>GEMSDOE30 duplicates GEMSDOE25 in dots.</strong> (Exact mask equality is computed in section 4.) The ledger ID ends in <code>91eae1ca</code>, which is GEMSDOE25's SHA prefix, but the pinned GEMSDOE30 file is <code>{rows['GEMSDOE30']['sha256'][:8]}</code>. Its bytes differ, but its dots match GEMSDOE25 (exact mask equal: {str(PP_eq('GEMSDOE25','GEMSDOE30'))}, dot count {rows['GEMSDOE30']['dots']:,}, same SGMC-CAL). Both score 0.2600 USER-REPORTED. Treat GEMSDOE30 as not a distinct submission.</li>
 <li><strong>GEMSDOE25 owner-mirror copy is mislabelled.</strong> <code>data/scored/gems24-…-e56ea318af89-nan.tif</code> is byte-identical to GEMSDOE25's focus file. The "gems24" name is wrong.</li>
 <li><strong>GEMSDOE28 and GEMSDOE31 share a run ID.</strong> <code>8acb75e1</code> appears in both ledger entries and both score 0.2708. Their dots are nearly identical (3-px overlap 99.8% and 99.6%), though the bytes differ.</li>

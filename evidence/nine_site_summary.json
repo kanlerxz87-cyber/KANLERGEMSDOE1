@@ -1,6 +1,6 @@
 {
   "schema": "nine-site-summary/v1",
-  "generated_utc": "2026-10-31T00:48:42+00:00",
+  "generated_utc": "2026-10-31T00:50:18+00:00",
   "template": {
     "file": "data/sample_submission.tif",
     "crs": "EPSG:32611",

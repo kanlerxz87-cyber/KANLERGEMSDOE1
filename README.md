@@ -1,33 +1,28 @@
 # `KANLERGEMSDOE1` — DOE GEMS Prize Research, Fold-Local Validation, Uniqueness & Submission Gate System
 
 [![Competition](https://img.shields.io/badge/DrivenData-DOE_GEMS_Prize_(306)-d08a4c)](https://www.drivendata.org/competitions/306/competition-doe-gems/)
-[![Download Verdict](https://img.shields.io/badge/Download_verdict-OK_for_one_file_(see_submit--now)-3dcc8a)](docs/submit-now.html)
+[![Download Verdict](https://img.shields.io/badge/Download_verdict-NO_FILE_CLEARED-red)](docs/submit-now.html)
 [![Tests](https://img.shields.io/badge/Automated_Gate_Tests-Passing-3dcc8a)](#7-autonomous-reproduction-commands)
 
 End-to-end geological feature engineering, fold-local hide-and-recover evaluation, 60-raster multi-site uniqueness auditing, automated 15-check GeoTIFF validation, and fail-closed GitHub Pages desk ([Executive summary](docs/executive-summary.html) · [Focus-site scorecard](docs/focus-sites-review-20261028.html) · [Submission gate](docs/how-to-submit.html) · [Latest review](docs/review-20261029.md) · [Prior review](docs/review-20261028.md)) for the [**DOE Geothermal Exploration Machine Learning (GEMS) Prize**](https://www.drivendata.org/competitions/306/competition-doe-gems/).
 
-**Project-start rule:** At the start of every research or implementation session, read this standing prompt section and the latest dated review linked above. The full original request is archived verbatim in [`docs/ORIGINAL_PROMPT.md`](docs/ORIGINAL_PROMPT.md) and [`docs/REQUEST_20261027.md`](docs/REQUEST_20261027.md). Treat their constraints as active; report conflicts and evidence limitations instead of relaxing gates.
+**Project-start rule:** At the start of every research or implementation session, read this standing prompt section and the latest dated review ([2026-10-31](docs/review-20261031.md)). The full original request is archived verbatim in [`docs/ORIGINAL_PROMPT.md`](docs/ORIGINAL_PROMPT.md) and [`docs/REQUEST_20261027.md`](docs/REQUEST_20261027.md). Treat their constraints as active; report conflicts and evidence limitations instead of relaxing gates.
 
 ---
 
-## 00. Session 2026-10-31 — Nine-site summary & dot-level audit (read first)
+## 0. START HERE — Current release decision (2026-10-31)
 
-- **Nine-site executive summary:** [`docs/nine-site-summary.html`](docs/nine-site-summary.html) (built by `scripts/build_nine_site_summary.py`; evidence in `evidence/nine_site_summary.json`). It gives the best entry per site, the proxy values, overlap, and the flagged irregularities.
-- **Download:** the file from the verdict below is still the only one we would download. It passes the validator and is distinct from all 23 restored references by exact pixels (max exact Jaccard 0.0067). The literal 3-px rule still fails against the saturated r13 lattice. That needs a team decision.
-- **New finding:** the nine focus files are not nine independent placements. GEMSDOE25 and GEMSDOE30 have identical dot masks, and GEMSDOE32 and GEMSDOE36 have Jaccard 0.969. Confirmed by the pinned hashes and the exact-mask check.
-- **Metric caveat:** the 3-px overlap rule saturates on dense references (r13 covers almost the whole footprint at 3 px). Use exact-pixel Jaccard alongside it.
-- **Labels:** ledger scores are USER-REPORTED. Proxy values are HOLDOUT-DTI (SGMC-CAL-v3.0, withheld positives and 95% CI shown). The organizer projection is a PROJECTION and not a score.
-
-## 0. START HERE — Download verdict (2026-10-29)
-
-> **VERDICT: OK TO DOWNLOAD AND SUBMIT ONE FILE — [`docs/submit-now.html`](docs/submit-now.html).**
+> **VERDICT: NO FILE IS CLEARED TO DOWNLOAD AND SUBMIT.** The prominent historical “OK TO DOWNLOAD AND SUBMIT” text is stale; see [current review](docs/review-20261031.md). Do not submit any candidate currently linked in this repository. No authenticated organizer receipt or valid complete release gate is available.
 >
-> - **File:** [`docs/downloads/gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif`](docs/downloads/gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif) (NaN-outside, single-band float32 GeoTIFF, EPSG:32611, 3730 × 3292, values in [0, 1]; SHA-256 `2693c2daf87bd7948d3d57fc41fdcf40653ef42014c93d0e947bc2a8fc00a30c`).
-> - **Automated gates (no human inspector):** official-format validator PASS ([`evidence/validation_…-nan.json`](evidence/)); detector-only uniqueness audit PASS against 23 local reference rasters ([`evidence/uniqueness_audit_20261029.json`](evidence/uniqueness_audit_20261029.json)).
-> - **Organizer score: UNKNOWN.** Our SGMC-CAL holdout re-run is 0.0892 (the only file-level proxy that tracked the organizer ledger, on 12-13 user-reported points with one counterexample). Its catalogue-holdout score is lower than the champion's. The leaderboard projection of 0.405 is an extrapolation, not a score. The portal receipt is the only way to confirm.
-> - **Uploading is your action.** The agent has no DrivenData auth and did not submit anything.
-> - **Everything else on this site is historical research and stays DO NOT SUBMIT.** The GEMSDOE focus rasters are other teams' submissions and are not to be resubmitted.
-> - **Open decisions for the team:** whether to exempt the saturating `r13-lattice-s5_v2` reference from the literal uniqueness rule; whether to use probability-valued (non-binary) submissions; and the weekly cap on the portal.
+> - No new TIFF was generated in this review. Historical rasters are research artifacts, not recommendations.
+> - The latest substantive candidate review found the combined candidate's score diagnostic/inadmissible and the complete registry audit incomplete. The literal uniqueness protocol includes the spacing-5 calibration lattice; no exemption is authorized.
+> - Competition core data are absent from this checkout, and the default Python environment lacks NumPy. The full holdout/evaluation pipeline and full suite cannot be rerun here.
+> - No weekly submission slot was used. See [nine-site scorecard](docs/focus-sites-review-20261028.html), [submission gate](docs/submission-readiness.html), and [next steps](docs/review-20261031.md).
+
+> - **Additional blocker (2026-10-31, supplementary):** [`docs/review-20261031-labels.md`](docs/review-20261031-labels.md) and `evidence/label_integrity_20261031.json` show `labels.tif` and `existing_faults.tif` are byte-identical in the restored owner mirror (60,988 positives each). The official page describes the test labels as *new* faults, so any holdout built on this mirror is invalid until the organizer download is compared.
+
+> - **Nine-site computed audit (exact-pixel Jaccard, SGMC-CAL recomputed, all values HOLD-provisional):** [`docs/nine-site-summary.html`](docs/nine-site-summary.html) (`scripts/build_nine_site_summary.py`, evidence `evidence/nine_site_summary.json`).
+- **Nine-site table, KANLER1 candidate status (HOLD), and dilation experiment (negative as a download):** [`docs/review-20261031-nine-site-dilation.md`](docs/review-20261031-nine-site-dilation.md). Shared-tool fix today: `scripts/evaluate_holdout.py` now accepts the official NaN-outside format in its diagnostic path.
 
 ## 1. Six Byte-Verified Dataset & Portal Irregularities Flagged
 
@@ -78,7 +73,6 @@ bash scripts/download_competition_data.sh
 .venv/bin/python scripts/build_candidate_scoreboard.py     # SGMC-CAL re-run + projection (labelled)
 .venv/bin/python scripts/validate_submission_file.py docs/downloads/gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif
 .venv/bin/python scripts/build_submit_page.py --check      # submit page + executive block
-.venv/bin/python scripts/build_nine_site_summary.py       # nine-site summary (reruns SGMC-CAL on 11 files, ~2 min)
 .venv/bin/python -m unittest discover -s tests -v
 ```
 
