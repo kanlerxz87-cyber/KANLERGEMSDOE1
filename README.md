@@ -1,24 +1,23 @@
 # `KANLERGEMSDOE1` — DOE GEMS Prize Research, Fold-Local Validation, Uniqueness & Submission Gate System
 
 [![Competition](https://img.shields.io/badge/DrivenData-DOE_GEMS_Prize_(306)-d08a4c)](https://www.drivendata.org/competitions/306/competition-doe-gems/)
-[![Download Verdict](https://img.shields.io/badge/Download_verdict-RESEARCH_HOLD--DO_NOT_SUBMIT-d9534f)](docs/submit-now.html)
+[![Download Verdict](https://img.shields.io/badge/Download_verdict-NO_FILE_CLEARED-red)](docs/submit-now.html)
 [![Tests](https://img.shields.io/badge/Automated_Gate_Tests-Passing-3dcc8a)](#7-autonomous-reproduction-commands)
 
-End-to-end geological feature engineering, fold-local hide-and-recover evaluation, 60-raster multi-site uniqueness auditing, automated 15-check GeoTIFF validation, and fail-closed GitHub Pages desk ([Executive summary](docs/executive-summary.html) · [Focus-site scorecard](docs/focus-sites-review-20261028.html) · [Submission gate](docs/how-to-submit.html) · [Latest review](docs/review-20261031.md) · [Prior review](docs/review-20261029.md)) for the [**DOE Geothermal Exploration Machine Learning (GEMS) Prize**](https://www.drivendata.org/competitions/306/competition-doe-gems/).
+End-to-end geological feature engineering, fold-local hide-and-recover evaluation, 60-raster multi-site uniqueness auditing, automated 15-check GeoTIFF validation, and fail-closed GitHub Pages desk ([Executive summary](docs/executive-summary.html) · [Focus-site scorecard](docs/focus-sites-review-20261028.html) · [Submission gate](docs/how-to-submit.html) · [Latest review](docs/review-20261029.md) · [Prior review](docs/review-20261028.md)) for the [**DOE Geothermal Exploration Machine Learning (GEMS) Prize**](https://www.drivendata.org/competitions/306/competition-doe-gems/).
 
-**Project-start rule:** At the start of every research or implementation session, read this standing prompt section and the latest dated review linked above. The full original request is archived verbatim in [`docs/ORIGINAL_PROMPT.md`](docs/ORIGINAL_PROMPT.md) and [`docs/REQUEST_20261027.md`](docs/REQUEST_20261027.md). Treat their constraints as active; report conflicts and evidence limitations instead of relaxing gates.
+**Project-start rule:** At the start of every research or implementation session, read this standing prompt section and the latest dated review ([2026-10-31](docs/review-20261031.md)). The full original request is archived verbatim in [`docs/ORIGINAL_PROMPT.md`](docs/ORIGINAL_PROMPT.md) and [`docs/REQUEST_20261027.md`](docs/REQUEST_20261027.md). Treat their constraints as active; report conflicts and evidence limitations instead of relaxing gates.
 
 ---
 
-## 0. START HERE — Current submission verdict (2026-10-31)
+## 0. START HERE — Current release decision (2026-10-31)
 
-> **VERDICT: RESEARCH HOLD — DO NOT DOWNLOAD OR SUBMIT any current project GeoTIFF.** See [latest repository review](docs/review-20261031.md) and [submission desk](docs/submit-now.html).
+> **VERDICT: NO FILE IS CLEARED TO DOWNLOAD AND SUBMIT.** The prominent historical “OK TO DOWNLOAD AND SUBMIT” text is stale; see [current review](docs/review-20261031.md). Do not submit any candidate currently linked in this repository. No authenticated organizer receipt or valid complete release gate is available.
 >
-> - Prior candidate files are retained for research only. The candidate's literal uniqueness audit fails against the `r13-lattice-s5` raster; detector-only uniqueness is not an authorized substitute.
-> - The local registry covers only 23 rasters and is incomplete. Full-registry novelty is therefore unverified.
-> - The candidate's format validator PASS does not imply scientific promotion or organizer acceptance. No organizer receipt is present.
-> - No submission slot was used and no upload occurred. Promotion to a weekly slot is a separate selector decision.
-> - Do not use archived leaderboard projections as scores. Historical values are user/owner-reported unless backed by an organizer receipt.
+> - No new TIFF was generated in this review. Historical rasters are research artifacts, not recommendations.
+> - The latest substantive candidate review found the combined candidate's score diagnostic/inadmissible and the complete registry audit incomplete. The literal uniqueness protocol includes the spacing-5 calibration lattice; no exemption is authorized.
+> - Competition core data are absent from this checkout, and the default Python environment lacks NumPy. The full holdout/evaluation pipeline and full suite cannot be rerun here.
+> - No weekly submission slot was used. See [nine-site scorecard](docs/focus-sites-review-20261028.html), [submission gate](docs/submission-readiness.html), and [next steps](docs/review-20261031.md).
 
 ## 1. Six Byte-Verified Dataset & Portal Irregularities Flagged
 

@@ -56,7 +56,6 @@ class EvidenceTests(unittest.TestCase):
         self.assertIsNone(card["organizer_estimate"]["value"])
         self.assertEqual(card["organizer_estimate"]["status"], "UNKNOWN")
         self.assertFalse(card["ok_to_download_and_submit"])
-        self.assertIn("RESEARCH HOLD", card["verdict"])
         self.assertFalse(card["uploaded_by_agent"])
         self.assertLessEqual(card["submission_note_characters"], 140)
 
@@ -68,16 +67,19 @@ class EvidenceTests(unittest.TestCase):
                 self.assertEqual((ROOT / "docs" / "evidence" / name).read_bytes(),
                                  (ROOT / "evidence" / name).read_bytes())
 
-    def test_submit_page_is_generated_and_up_to_date(self):
-        out = subprocess.run([sys.executable, str(ROOT / "scripts" / "build_submit_page.py"), "--check"],
+    def test_legacy_submit_renderer_refuses_to_publish(self):
+        out = subprocess.run([sys.executable, str(ROOT / "scripts" / "build_submit_page.py")],
                              capture_output=True, text=True, cwd=ROOT)
-        self.assertEqual(out.returncode, 0, out.stdout + out.stderr)
+        self.assertNotEqual(out.returncode, 0)
+        self.assertIn("legacy release renderer is retired", out.stdout + out.stderr)
+        page = (ROOT / "docs" / "submit-now.html").read_text()
+        self.assertIn("NOT CLEARED", page)
+        self.assertNotIn("Download the .tif", page)
 
-    def test_portal_note_is_within_limit(self):
+    def test_no_active_portal_note_is_offered(self):
         html = (ROOT / "docs" / "submit-now.html").read_text()
-        m = re.search(r"<tr><th>Note</th><td><code>([^<]+)</code>", html)
-        self.assertIsNotNone(m)
-        self.assertLessEqual(len(m.group(1)), 140)
+        self.assertIn("no file", html.lower())
+        self.assertNotIn("<tr><th>Note</th>", html)
 
 
 class RasterTests(unittest.TestCase):

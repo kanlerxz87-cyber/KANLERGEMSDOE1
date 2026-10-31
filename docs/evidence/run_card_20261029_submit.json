@@ -66,6 +66,7 @@
     }
   },
   "ok_to_download_and_submit": false,
-  "verdict": "negative \u2014 RESEARCH HOLD; literal uniqueness fails and registry coverage is incomplete",
-  "uploaded_by_agent": false
+  "verdict": "negative / superseded; no file cleared",
+  "uploaded_by_agent": false,
+  "release_status_note": "Superseded by docs/review-20261031.md: full-registry check incomplete; legacy detector-only recommendation withdrawn."
 }
