@@ -20,6 +20,8 @@ End-to-end geological feature engineering, fold-local hide-and-recover evaluatio
 > - **Uploading is your action.** The agent has no DrivenData auth and did not submit anything.
 > - **Everything else on this site is historical research and stays DO NOT SUBMIT.** The GEMSDOE focus rasters are other teams' submissions and are not to be resubmitted.
 > - **Open decisions for the team:** whether to exempt the saturating `r13-lattice-s5_v2` reference from the literal uniqueness rule; whether to use probability-valued (non-binary) submissions; and the weekly cap on the portal.
+>
+> **Re-verified 2026-10-31:** the file's SHA-256 and all 10 format checks pass; SGMC-CAL reproduces at 0.089182 and the 0.2778 champion at 0.064121; the nine focus files were restored and verified by pinned SHA-256. Full review, nine-site table, dilation experiment (negative as a download), and irregularities I1–I12 are in [`docs/review-20261031.md`](docs/review-20261031.md). One shared-tool bug was fixed: `scripts/evaluate_holdout.py` now accepts the official NaN-outside format in its diagnostic path.
 
 ## 1. Six Byte-Verified Dataset & Portal Irregularities Flagged
 

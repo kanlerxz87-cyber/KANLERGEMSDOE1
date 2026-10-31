@@ -1,0 +1,29 @@
+{
+  "schema": "submission-file-validation/v1",
+  "file": "data/experiments/V1_dilate_cross1px.tif",
+  "tif_member": "V1_dilate_cross1px.tif",
+  "tif": {
+    "checks": {
+      "driver_GTiff": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "crs_epsg_32611": true,
+      "shape_3730x3292": true,
+      "transform_matches_template": true,
+      "no_nan_or_inf_inside_footprint": true,
+      "values_in_0_1_inside_footprint": true,
+      "outside_footprint_is_nan": true,
+      "footprint_identical_to_template": true
+    },
+    "all_passed": true,
+    "nodata_tag": "nan",
+    "positive_pixels_inside_footprint": 188232,
+    "min_inside": 0.0,
+    "max_inside": 1.0,
+    "distinct_values_inside": 2,
+    "sha256": "ece54851855deb8e953b825ce0e75f1036284ba93c3b3f1c519c875d5f7b0df7",
+    "bytes": 357925
+  },
+  "all_passed": true,
+  "verdict": "PASS: automated official-format validation"
+}

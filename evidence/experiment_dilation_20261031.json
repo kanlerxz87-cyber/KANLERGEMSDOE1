@@ -1,0 +1,88 @@
+{
+  "schema": "experiment-dilation/v1",
+  "date_utc": "2026-10-31",
+  "budget_index": 1,
+  "hypothesis": "1-px dilation of the recommended dot set raises SGMC-CAL-v3.0 HOLDOUT-DTI under alpha=0.2, beta=0.8",
+  "evaluator": "GEMSDOE32-SGMC-CAL-v3.0 (gems32.holdout.evaluate_sgmc_with_ci)",
+  "label": "HOLDOUT-DTI (SGMC off-catalogue proxy; not organizer-confirmed)",
+  "variants": {
+    "V0_base": {
+      "file": "data/experiments/V0_base.tif",
+      "emitted_pixels": 37647,
+      "sgmc_cal": {
+        "candidate_id": "V0_base",
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "score_label": "HOLDOUT-DTI",
+        "n_withheld_positives": 62703,
+        "n_spatial_clusters": 140,
+        "n_bootstrap_reps": 1000,
+        "sgmc_raw_pooled_dti": 0.13273601233105384,
+        "sgmc_raw_ci95": [
+          0.12481238898256308,
+          0.1391777985612834
+        ],
+        "sgmc_prevalence_calibrated_dti": 0.0891815454781798,
+        "sgmc_calibrated_ci95": [
+          0.08124636388710722,
+          0.09565071208767431
+        ]
+      },
+      "uniqueness_worst_non_space_filling_within_3px": 0.338327,
+      "uniqueness_worst_reference": "data/scored/8GEMSDOE_Hedge-v2_submission.tif",
+      "uniqueness_worst_abs_spearman": 0.006361,
+      "uniqueness_detector_only_passed": true
+    },
+    "V1_dilate_cross1px": {
+      "file": "data/experiments/V1_dilate_cross1px.tif",
+      "emitted_pixels": 188232,
+      "sgmc_cal": {
+        "candidate_id": "V1_dilate_cross1px",
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "score_label": "HOLDOUT-DTI",
+        "n_withheld_positives": 62703,
+        "n_spatial_clusters": 140,
+        "n_bootstrap_reps": 1000,
+        "sgmc_raw_pooled_dti": 0.17074872738238395,
+        "sgmc_raw_ci95": [
+          0.15626951047106827,
+          0.18243995367246071
+        ],
+        "sgmc_prevalence_calibrated_dti": 0.06366899103089985,
+        "sgmc_calibrated_ci95": [
+          0.05564211886154304,
+          0.07123078245958317
+        ]
+      },
+      "uniqueness_worst_non_space_filling_within_3px": 0.337573,
+      "uniqueness_worst_reference": "data/scored/8GEMSDOE_Hedge-v2_submission.tif",
+      "uniqueness_worst_abs_spearman": 0.013984,
+      "uniqueness_detector_only_passed": true
+    },
+    "V2_dilate_square1px": {
+      "file": "data/experiments/V2_dilate_square1px.tif",
+      "emitted_pixels": 338796,
+      "sgmc_cal": {
+        "candidate_id": "V2_dilate_square1px",
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "score_label": "HOLDOUT-DTI",
+        "n_withheld_positives": 62703,
+        "n_spatial_clusters": 140,
+        "n_bootstrap_reps": 1000,
+        "sgmc_raw_pooled_dti": 0.16293688516082924,
+        "sgmc_raw_ci95": [
+          0.14636427076847297,
+          0.17743409800261103
+        ],
+        "sgmc_prevalence_calibrated_dti": 0.0494433645696184,
+        "sgmc_calibrated_ci95": [
+          0.042750613948390394,
+          0.05590306761258784
+        ]
+      },
+      "uniqueness_worst_non_space_filling_within_3px": 0.33759,
+      "uniqueness_worst_reference": "data/scored/8GEMSDOE_Hedge-v2_submission.tif",
+      "uniqueness_worst_abs_spearman": 0.018869,
+      "uniqueness_detector_only_passed": true
+    }
+  }
+}

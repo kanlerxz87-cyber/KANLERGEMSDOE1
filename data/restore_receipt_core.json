@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
-  "generated_utc": "2026-10-28T16:16:08.212455+00:00",
+  "generated_utc": "2026-10-31T00:36:00.450059+00:00",
   "group": "core",
   "verified_files_count": 4,
-  "storage_root": ".cache/gems_data",
+  "storage_root": "data",
   "provenance_warning": "Owner-hosted mirrors; hashes do not authenticate the organizer's files.",
   "files": [
     {
