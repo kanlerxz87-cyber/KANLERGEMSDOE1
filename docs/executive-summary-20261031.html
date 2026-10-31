@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Companion summary (31 Oct 2026) · KANLER GEMS</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  table{border-collapse:collapse;width:100%;font-size:.88rem;margin:.6rem 0}
+  th,td{border:1px solid #d8dee4;padding:.4rem .5rem;text-align:left;vertical-align:top}
+  th{background:#f3f5f7}
+  .pill{display:inline-block;padding:.05rem .4rem;border-radius:.3rem;font-weight:600;font-size:.8rem}
+  .p-ok{background:#dff5e8;color:#0f6b3b}.p-no{background:#fde2e1;color:#8a1c17}.p-hold{background:#fff1cc;color:#7a5600}
+  .decision{border:3px solid #e0a030;border-radius:.6rem;padding:1rem 1.2rem;background:#fffaf0}
+  .decision h2{margin-top:0}
+  code{word-break:break-all}
+</style></head>
+<body>
+<header><div class="wrap head">
+<p class="brand">KANLERGEMSDOE1 / DOE GEMS PRIZE / COMPANION SUMMARY</p>
+<h1>Companion summary — 31 October 2026</h1>
+<nav class="nav" aria-label="Primary"><a href="executive-summary-20261031.html" aria-current="page">Companion summary</a><a href="executive-summary.html">Executive summary (main)</a><a href="submit-now.html">Download &amp; submit</a><a href="index.html">Status</a><a href="sources.html">Sources</a></nav>
+</div></header>
+
+<main class="wrap">
+
+<section class="decision" aria-label="Status">
+<h2>Status: NEGATIVE / RESEARCH HOLD (matches <a href="review-20261031.md">review-20261031.md</a>)</h2>
+<table>
+<tr><th>Question</th><th>Answer</th></tr>
+<tr><td>Can I <strong>submit</strong> any file to the portal?</td><td><span class="pill p-no">NO</span> No file is cleared. The team must also pick one final submission (B8).</td></tr>
+<tr><td>Can I <strong>download</strong> the UWBP-DRCS-EXP3 file?</td><td><span class="pill p-hold">RESEARCH ARTIFACT ONLY</span> <code>gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif</code>, SHA-256 <code>2693c2daf87bd7948d3d57fc41fdcf40653ef42014c93d0e947bc2a8fc00a30c</code>. It is format-valid (validator PASS, 10/10 checks). It is not an approved contest download.</td></tr>
+<tr><td>What is the organizer score?</td><td><strong>UNKNOWN.</strong> No DrivenData receipt exists. The 0.2778 figure is user-reported.</td></tr>
+<tr><td>Are the holdout numbers usable?</td><td><span class="pill p-no">NO</span> <strong>B1:</strong> <code>labels.tif</code> and <code>existing_faults.tif</code> are byte-identical in the owner mirror. Every holdout number in this companion is INADMISSIBLE until that is resolved.</td></tr>
+<tr><td>Is the candidate unique?</td><td><span class="pill p-ok">YES by the detector rule</span> (no reference above 33.8% 3-px overlap, max |ρ| 0.0064, against 23 references). <span class="pill p-hold">Literal rule fails</span> only against the saturating <code>r13-lattice</code> reference (99.9% coverage), which the team has not exempted.</td></tr>
+</table>
+</section>
+
+<h2>Score labels</h2>
+<table>
+<tr><th>Label</th><th>Meaning</th></tr>
+<tr><td><strong>USER-REPORTED</strong></td><td>Copied from the user's site list. Not a DrivenData receipt.</td></tr>
+<tr><td><strong>HOLDOUT-DTI (INADMISSIBLE, B1)</strong></td><td>Shared evaluator value. The inputs carry blocker B1, so the value is reproduction-only.</td></tr>
+<tr><td><strong>ORGANIZER-CONFIRMED</strong></td><td>None available. Needs a copy of the DrivenData submission receipt.</td></tr>
+</table>
+
+<h2>1. The nine focus sites — uniqueness (does not depend on labels)</h2>
+<ul>
+<li><strong>Candidate vs each of the nine sites:</strong> 19.5% to 22.2% of the candidate's dots lie within 3 px of that site's dots (definition: fraction of candidate dots within 3 px of any site dot; the literal duplicate threshold is 70%). No site is near the threshold. Numbers: <a href="evidence/focus_site_table_20261031.json"><code>focus_site_table_20261031.json</code></a>. Main's pairwise file agrees in its own direction.</li>
+<li><strong>The nine sites overlap each other heavily</strong> (<a href="nine-site-summary.html"><code>nine-site-summary.html</code></a>, <code>evidence/nine_site_summary.json</code>): GEMSDOE25 and GEMSDOE30 have <strong>identical dot masks</strong> (Jaccard 1.0, same 44,090 dots, different file bytes). GEMSDOE24 and GEMSDOE27 have Jaccard 0.98. GEMSDOE31, 32 and 36 have Jaccard 0.91 to 0.97. "Best unique site" therefore has little meaning within this set.</li>
+<li><strong>Scores</strong> are USER-REPORTED (highest: GEMSDOE32, 0.2778). Each site's file is another team's submission and is not a download for us.</li>
+</ul>
+
+<h2>2. Experiment X1 — spacing sweep of the champion rule (1 of 3 budget)</h2>
+<ul>
+<li><strong>Duplicate finding (not label-dependent):</strong> every treatment arm (2.83, 3.0, 3.2, 4.0 px spacing) is at least 99% within 3 px of the champion layout. Under the literal rule each is a duplicate of the champion lineage and cannot be submitted.</li>
+<li><strong>Holdout findings (INADMISSIBLE, B1):</strong> the owner d2.8 control reproduces the recorded HOLDOUT-DTI 0.099202 (CI 0.085951–0.112668). The spacing arms score 0.093–0.100. Random placement with the same dot count scores 0.047. These numbers reproduce on the same inputs; they do not validate anything.</li>
+<li><strong>Run card:</strong> <a href="evidence/run_card_x1_spacing_20261031.json"><code>run_card_x1_spacing_20261031.json</code></a> (negative, <code>ok_to_submit: false</code>, <code>holdout_admissible: false</code>).</li>
+</ul>
+
+<h2>3. What this session did not do</h2>
+<ul>
+<li>It did not generate a new candidate. The earlier draft of this page said the UWBP file was "OK to download and submit". That is superseded by the 31 Oct review and is withdrawn.</li>
+<li>It did not produce a score projection. The earlier projection (≈0.25) rested on B1-affected inputs and has been removed from this page. The JSON is kept and flagged INADMISSIBLE.</li>
+<li>It did not beat 0.2778 with any evidence.</li>
+</ul>
+
+<h2>4. Where the rest lives</h2>
+<ul>
+<li>Ranked future hypotheses (proposals only): <a href="review-20261031.md">review-20261031.md</a>, the table of five hypotheses.</li>
+<li>Full irregularity list, 16 items (IR-01 to IR-16): <a href="evidence/irregularity_log_20261031.json"><code>irregularity_log_20261031.json</code></a>. Top items: IR-14 (B1), IR-15 (B2 data terms), IR-01 (verdict conflicts), IR-02 (leaderboard figures).</li>
+<li>Label-integrity evidence: <a href="review-20261031-labels.md">review-20261031-labels.md</a>.</li>
+</ul>
+
+<footer>Prepared 31 Oct 2026 UTC by the repo agent. Competition: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">problem page</a> · <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">official rules</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">leaderboard</a> · <a href="sources.html">all sources</a></footer>
+</main>
+</body></html>

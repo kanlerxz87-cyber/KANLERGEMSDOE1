@@ -24,6 +24,8 @@ End-to-end geological feature engineering, fold-local hide-and-recover evaluatio
 > - **Nine-site computed audit (exact-pixel Jaccard, SGMC-CAL recomputed, all values HOLD-provisional):** [`docs/nine-site-summary.html`](docs/nine-site-summary.html) (`scripts/build_nine_site_summary.py`, evidence `evidence/nine_site_summary.json`).
 - **Nine-site table, KANLER1 candidate status (HOLD), and dilation experiment (negative as a download):** [`docs/review-20261031-nine-site-dilation.md`](docs/review-20261031-nine-site-dilation.md). Shared-tool fix today: `scripts/evaluate_holdout.py` now accepts the official NaN-outside format in its diagnostic path.
 
+> **Companion (2026-10-31):** [nine-site uniqueness table, X1 spacing sweep (inadmissible until B1), and 16-item irregularity log](docs/executive-summary-20261031.html) · [`docs/evidence/irregularity_log_20261031.json`](docs/evidence/irregularity_log_20261031.json).
+
 ## 1. Six Byte-Verified Dataset & Portal Irregularities Flagged
 
 1. **`IR-BAND-06` (`tc` Metadata Misidentification in `training_features.tif`):** Tagged `"Tilt angle or total curvature - magnetic field derivative"`, Band 6 (`[2.953, 88.567]`) matches USGS GeoDAWN Radiometric Total Count (`geodawn_rad_u8.tif` Band 4) at **Spearman $\rho = +0.999951$** ($\rho = +0.01884$ vs true magnetic tilt).

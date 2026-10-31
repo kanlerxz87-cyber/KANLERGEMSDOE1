@@ -1,0 +1,225 @@
+{
+  "schema": "exp-x1-spacing-sweep/v1",
+  "generated_utc": "2026-10-31T00:43:07Z",
+  "hypothesis": "H-X1: holdout DTI of the champion rule depends on Poisson spacing; sparse/dense arms change the score.",
+  "budget_note": "one hypothesis, five arms incl. control and null canary; arms are a sweep (selection risk on the holdout)",
+  "inputs": {
+    "support": "data/scored/gems19-h19-5-powerlaw-budget-multiline-corroborated-20260930-e27054cf-nan.tif",
+    "control_owner_d28": "data/scored/gems24-h25-1-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif",
+    "champion_full_map": "docs/downloads/gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif",
+    "labels": "data/labels.tif",
+    "template": "data/sample_submission.tif",
+    "collar_px": 2.0
+  },
+  "control_check": {
+    "support_px": 121131,
+    "owner_d28_px": 44090,
+    "reimpl_d2828_px": 44271,
+    "exact_match_with_owner_d28": false,
+    "overlap_within3px_reimpl_vs_owner": 1.0,
+    "note": "reimplementation is a faithful control, not a byte copy (see emitter.dot_thin docstring)"
+  },
+  "arms": [
+    {
+      "arm": "owner_d28_exact",
+      "role": "control-exact",
+      "dots_full_map_after_catalogue_gate": 37654,
+      "dots_cell_sum_visible_gated": 72887,
+      "holdout_hide_recover": {
+        "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+        "label": "HOLDOUT-DTI",
+        "pooled_dti": 0.09920232315251679,
+        "ci95": [
+          0.08595140754809347,
+          0.11266835751415871
+        ],
+        "n_withheld_positives": 22232
+      },
+      "sgmc_off_catalogue": {
+        "label": "HOLDOUT-DTI (off-catalogue SGMC-CAL)",
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "prevalence_calibrated_dti": 0.0641209376417646,
+        "raw_pooled_dti": 0.09606004283619354
+      },
+      "within3px_vs_champion_full_map": 1.0,
+      "within3px_vs_owner_d28_full_map": 1.0,
+      "cells_npz": "/home/user/KANLERGEMSDOE1/.cache/gems_work/x1_spacing_sweep/owner_d28_exact_cells.npz"
+    },
+    {
+      "arm": "owner_d15_exact",
+      "role": "owner-denser",
+      "dots_full_map_after_catalogue_gate": 51300,
+      "dots_cell_sum_visible_gated": 99354,
+      "holdout_hide_recover": {
+        "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+        "label": "HOLDOUT-DTI",
+        "pooled_dti": 0.09720385946561562,
+        "ci95": [
+          0.08411403431092085,
+          0.11106569814941615
+        ],
+        "n_withheld_positives": 22232
+      },
+      "sgmc_off_catalogue": {
+        "label": "HOLDOUT-DTI (off-catalogue SGMC-CAL)",
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "prevalence_calibrated_dti": 0.0622574311371483,
+        "raw_pooled_dti": 0.10292949255413089
+      },
+      "within3px_vs_champion_full_map": 0.9937231968810916,
+      "within3px_vs_owner_d28_full_map": 1.0,
+      "cells_npz": "/home/user/KANLERGEMSDOE1/.cache/gems_work/x1_spacing_sweep/owner_d15_exact_cells.npz"
+    },
+    {
+      "arm": "ctrl_d2828_reimpl",
+      "role": "control-reimpl",
+      "dots_full_map_after_catalogue_gate": 37843,
+      "dots_cell_sum_visible_gated": 73275,
+      "holdout_hide_recover": {
+        "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+        "label": "HOLDOUT-DTI",
+        "pooled_dti": 0.09961081364788417,
+        "ci95": [
+          0.08646155952239937,
+          0.11253562552289034
+        ],
+        "n_withheld_positives": 22232
+      },
+      "sgmc_off_catalogue": {
+        "label": "HOLDOUT-DTI (off-catalogue SGMC-CAL)",
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "prevalence_calibrated_dti": 0.06451602102855411,
+        "raw_pooled_dti": 0.09678543873878889
+      },
+      "within3px_vs_champion_full_map": 0.9976217530322649,
+      "within3px_vs_owner_d28_full_map": 1.0,
+      "cells_npz": "/home/user/KANLERGEMSDOE1/.cache/gems_work/x1_spacing_sweep/ctrl_d2828_reimpl_cells.npz"
+    },
+    {
+      "arm": "d3p0",
+      "role": "treatment",
+      "dots_full_map_after_catalogue_gate": 33325,
+      "dots_cell_sum_visible_gated": 64516,
+      "holdout_hide_recover": {
+        "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+        "label": "HOLDOUT-DTI",
+        "pooled_dti": 0.09860051177281969,
+        "ci95": [
+          0.08563871388599754,
+          0.11155939778903691
+        ],
+        "n_withheld_positives": 22232
+      },
+      "sgmc_off_catalogue": {
+        "label": "HOLDOUT-DTI (off-catalogue SGMC-CAL)",
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "prevalence_calibrated_dti": 0.06299042960651947,
+        "raw_pooled_dti": 0.09112343761410123
+      },
+      "within3px_vs_champion_full_map": 0.9954988747186797,
+      "within3px_vs_owner_d28_full_map": 1.0,
+      "cells_npz": "/home/user/KANLERGEMSDOE1/.cache/gems_work/x1_spacing_sweep/d3p0_cells.npz"
+    },
+    {
+      "arm": "d3p2",
+      "role": "treatment",
+      "dots_full_map_after_catalogue_gate": 30059,
+      "dots_cell_sum_visible_gated": 58170,
+      "holdout_hide_recover": {
+        "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+        "label": "HOLDOUT-DTI",
+        "pooled_dti": 0.09656461381716222,
+        "ci95": [
+          0.08389043692185193,
+          0.10900383160822665
+        ],
+        "n_withheld_positives": 22232
+      },
+      "sgmc_off_catalogue": {
+        "label": "HOLDOUT-DTI (off-catalogue SGMC-CAL)",
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "prevalence_calibrated_dti": 0.06136711920945596,
+        "raw_pooled_dti": 0.0863418597841344
+      },
+      "within3px_vs_champion_full_map": 0.9952094214711068,
+      "within3px_vs_owner_d28_full_map": 1.0,
+      "cells_npz": "/home/user/KANLERGEMSDOE1/.cache/gems_work/x1_spacing_sweep/d3p2_cells.npz"
+    },
+    {
+      "arm": "d3p6",
+      "role": "treatment",
+      "dots_full_map_after_catalogue_gate": 30059,
+      "dots_cell_sum_visible_gated": 58170,
+      "holdout_hide_recover": {
+        "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+        "label": "HOLDOUT-DTI",
+        "pooled_dti": 0.09656461381716222,
+        "ci95": [
+          0.08389043692185193,
+          0.10900383160822665
+        ],
+        "n_withheld_positives": 22232
+      },
+      "sgmc_off_catalogue": {
+        "label": "HOLDOUT-DTI (off-catalogue SGMC-CAL)",
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "prevalence_calibrated_dti": 0.06136711920945596,
+        "raw_pooled_dti": 0.0863418597841344
+      },
+      "within3px_vs_champion_full_map": 0.9952094214711068,
+      "within3px_vs_owner_d28_full_map": 1.0,
+      "cells_npz": "/home/user/KANLERGEMSDOE1/.cache/gems_work/x1_spacing_sweep/d3p6_cells.npz"
+    },
+    {
+      "arm": "d4p0",
+      "role": "treatment",
+      "dots_full_map_after_catalogue_gate": 26603,
+      "dots_cell_sum_visible_gated": 51491,
+      "holdout_hide_recover": {
+        "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+        "label": "HOLDOUT-DTI",
+        "pooled_dti": 0.0934265464471341,
+        "ci95": [
+          0.08131644730749532,
+          0.10535178889672249
+        ],
+        "n_withheld_positives": 22232
+      },
+      "sgmc_off_catalogue": {
+        "label": "HOLDOUT-DTI (off-catalogue SGMC-CAL)",
+        "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+        "prevalence_calibrated_dti": 0.05888867720282353,
+        "raw_pooled_dti": 0.08033819781411254
+      },
+      "within3px_vs_champion_full_map": 0.9954140510468744,
+      "within3px_vs_owner_d28_full_map": 1.0,
+      "cells_npz": "/home/user/KANLERGEMSDOE1/.cache/gems_work/x1_spacing_sweep/d4p0_cells.npz"
+    }
+  ],
+  "canary": {
+    "arm": "canary_random_same_count",
+    "role": "null-canary",
+    "dots_full_map_after_catalogue_gate": 41696,
+    "dots_cell_sum_visible_gated": 79935,
+    "holdout_hide_recover": {
+      "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+      "label": "HOLDOUT-DTI",
+      "pooled_dti": 0.04723734925861772,
+      "ci95": [
+        0.04334262697488073,
+        0.05083805934392375
+      ],
+      "n_withheld_positives": 22232
+    },
+    "sgmc_off_catalogue": {
+      "label": "HOLDOUT-DTI (off-catalogue SGMC-CAL)",
+      "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+      "prevalence_calibrated_dti": 0.05091112045017232,
+      "raw_pooled_dti": 0.07873135886232066
+    },
+    "within3px_vs_champion_full_map": 0.1515972755180353,
+    "within3px_vs_owner_d28_full_map": 0.15668169608595547,
+    "cells_npz": "/home/user/KANLERGEMSDOE1/.cache/gems_work/x1_spacing_sweep/canary_random_same_count_cells.npz"
+  },
+  "runtime_seconds": 79.0
+}
