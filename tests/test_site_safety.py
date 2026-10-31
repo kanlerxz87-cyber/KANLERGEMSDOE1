@@ -42,12 +42,16 @@ class SiteSafetyTests(unittest.TestCase):
     def test_landing_shows_the_one_download_verdict_with_honest_score_label(self):
         # 2026-10-29 user directive: an obvious, validated download with an unambiguous verdict.
         html = self.html("index.html")
-        self.assertIn("VERDICT: OK TO DOWNLOAD AND SUBMIT ONE FILE", html)
+        self.assertIn("VERDICT: RESEARCH HOLD", html)
+        self.assertIn("DO NOT DOWNLOAD OR SUBMIT", html)
+        self.assertNotIn("VERDICT: OK TO DOWNLOAD AND SUBMIT", html)
         self.assertIn("gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif", html)
-        self.assertIn("organizer score is unknown", html.lower())
+        self.assertIn("no organizer score is confirmed", html.lower())
         self.assertIn("submit-now.html", html)
         submit = self.html("submit-now.html")
-        self.assertIn("OK TO DOWNLOAD AND SUBMIT", submit)
+        self.assertIn("RESEARCH HOLD", submit)
+        self.assertIn("No submission download is authorized", submit)
+        self.assertNotIn('class="dl" href="downloads/', submit)
         self.assertIn("Estimated organizer score for this file: unknown", submit)
         self.assertIn("r13-lattice-s5_v2", submit)  # the saturating-reference irregularity is disclosed
 

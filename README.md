@@ -1,25 +1,24 @@
 # `KANLERGEMSDOE1` — DOE GEMS Prize Research, Fold-Local Validation, Uniqueness & Submission Gate System
 
 [![Competition](https://img.shields.io/badge/DrivenData-DOE_GEMS_Prize_(306)-d08a4c)](https://www.drivendata.org/competitions/306/competition-doe-gems/)
-[![Download Verdict](https://img.shields.io/badge/Download_verdict-OK_for_one_file_(see_submit--now)-3dcc8a)](docs/submit-now.html)
+[![Download Verdict](https://img.shields.io/badge/Download_verdict-RESEARCH_HOLD--DO_NOT_SUBMIT-d9534f)](docs/submit-now.html)
 [![Tests](https://img.shields.io/badge/Automated_Gate_Tests-Passing-3dcc8a)](#7-autonomous-reproduction-commands)
 
-End-to-end geological feature engineering, fold-local hide-and-recover evaluation, 60-raster multi-site uniqueness auditing, automated 15-check GeoTIFF validation, and fail-closed GitHub Pages desk ([Executive summary](docs/executive-summary.html) · [Focus-site scorecard](docs/focus-sites-review-20261028.html) · [Submission gate](docs/how-to-submit.html) · [Latest review](docs/review-20261029.md) · [Prior review](docs/review-20261028.md)) for the [**DOE Geothermal Exploration Machine Learning (GEMS) Prize**](https://www.drivendata.org/competitions/306/competition-doe-gems/).
+End-to-end geological feature engineering, fold-local hide-and-recover evaluation, 60-raster multi-site uniqueness auditing, automated 15-check GeoTIFF validation, and fail-closed GitHub Pages desk ([Executive summary](docs/executive-summary.html) · [Focus-site scorecard](docs/focus-sites-review-20261028.html) · [Submission gate](docs/how-to-submit.html) · [Latest review](docs/review-20261031.md) · [Prior review](docs/review-20261029.md)) for the [**DOE Geothermal Exploration Machine Learning (GEMS) Prize**](https://www.drivendata.org/competitions/306/competition-doe-gems/).
 
 **Project-start rule:** At the start of every research or implementation session, read this standing prompt section and the latest dated review linked above. The full original request is archived verbatim in [`docs/ORIGINAL_PROMPT.md`](docs/ORIGINAL_PROMPT.md) and [`docs/REQUEST_20261027.md`](docs/REQUEST_20261027.md). Treat their constraints as active; report conflicts and evidence limitations instead of relaxing gates.
 
 ---
 
-## 0. START HERE — Download verdict (2026-10-29)
+## 0. START HERE — Current submission verdict (2026-10-31)
 
-> **VERDICT: OK TO DOWNLOAD AND SUBMIT ONE FILE — [`docs/submit-now.html`](docs/submit-now.html).**
+> **VERDICT: RESEARCH HOLD — DO NOT DOWNLOAD OR SUBMIT any current project GeoTIFF.** See [latest repository review](docs/review-20261031.md) and [submission desk](docs/submit-now.html).
 >
-> - **File:** [`docs/downloads/gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif`](docs/downloads/gemsdoe32-kanler1-uwbp-drcs-exp3-37647d-20261028T1725Z-6e01786e-nan.tif) (NaN-outside, single-band float32 GeoTIFF, EPSG:32611, 3730 × 3292, values in [0, 1]; SHA-256 `2693c2daf87bd7948d3d57fc41fdcf40653ef42014c93d0e947bc2a8fc00a30c`).
-> - **Automated gates (no human inspector):** official-format validator PASS ([`evidence/validation_…-nan.json`](evidence/)); detector-only uniqueness audit PASS against 23 local reference rasters ([`evidence/uniqueness_audit_20261029.json`](evidence/uniqueness_audit_20261029.json)).
-> - **Organizer score: UNKNOWN.** Our SGMC-CAL holdout re-run is 0.0892 (the only file-level proxy that tracked the organizer ledger, on 12-13 user-reported points with one counterexample). Its catalogue-holdout score is lower than the champion's. The leaderboard projection of 0.405 is an extrapolation, not a score. The portal receipt is the only way to confirm.
-> - **Uploading is your action.** The agent has no DrivenData auth and did not submit anything.
-> - **Everything else on this site is historical research and stays DO NOT SUBMIT.** The GEMSDOE focus rasters are other teams' submissions and are not to be resubmitted.
-> - **Open decisions for the team:** whether to exempt the saturating `r13-lattice-s5_v2` reference from the literal uniqueness rule; whether to use probability-valued (non-binary) submissions; and the weekly cap on the portal.
+> - Prior candidate files are retained for research only. The candidate's literal uniqueness audit fails against the `r13-lattice-s5` raster; detector-only uniqueness is not an authorized substitute.
+> - The local registry covers only 23 rasters and is incomplete. Full-registry novelty is therefore unverified.
+> - The candidate's format validator PASS does not imply scientific promotion or organizer acceptance. No organizer receipt is present.
+> - No submission slot was used and no upload occurred. Promotion to a weekly slot is a separate selector decision.
+> - Do not use archived leaderboard projections as scores. Historical values are user/owner-reported unless backed by an organizer receipt.
 
 ## 1. Six Byte-Verified Dataset & Portal Irregularities Flagged
 

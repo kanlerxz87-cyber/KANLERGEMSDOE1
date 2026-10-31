@@ -7,8 +7,7 @@ Every number on the page is read from an evidence file (no hand-typed scores):
   evidence/candidate_scoreboard_20261029.json SGMC-CAL re-run, repo-reported HIDE-RECOVER, PROJECTION
   evidence/proxy_vs_organizer_calibration.json proxy-vs-ledger Spearman / Pearson evidence
 
-Fail-closed: the download is marked RECOMMENDED only if the validator and the detector-only
-uniqueness audit both pass for that file. `--check` regenerates in memory and fails on any drift.
+Fail-closed: a format pass and detector-only uniqueness do not authorize submission. The current literal registry audit fails and the full registry is not verified; the page must remain research-hold until both are resolved. `--check` regenerates in memory and fails on any drift.
 """
 from __future__ import annotations
 
@@ -67,12 +66,10 @@ LB = [r["best_public_dw_tversky"] for r in load("evidence/leaderboard_snapshot_2
 
 
 def file_cell(rel: str, code: bool = False) -> str:
-    """Link only files that are actually published under docs/ (the Pages root)."""
+    """Show historical artifact names without creating a submit/download affordance."""
     name = Path(rel).name
     label = f"<code>{esc(name)}</code>" if code else esc(name)
-    if (ROOT / "docs" / "downloads" / name).exists():
-        return f"<a href=\"downloads/{esc(name)}\">{label}</a>"
-    return f"{label} <small>(not published; research artifact)</small>"
+    return f"{label} <small>(research artifact; not cleared for submission)</small>"
 
 
 def esc(x) -> str:
@@ -111,9 +108,9 @@ def champion_sgmc() -> float:
 
 
 def verdict_for(row: dict, is_recommended: bool) -> str:
-    if not (row["uniq"]["detector_only_rule_passed"] and row["row"]["file"].endswith("-nan.tif")):
-        return "DO NOT SUBMIT"
-    return "RECOMMENDED - download and submit" if is_recommended else "ALTERNATE - not recommended"
+    # The literal uniqueness rule includes the dense r13 lattice and the registry
+    # itself is incomplete. Never downgrade the protocol to detector-only here.
+    return "RESEARCH HOLD — DO NOT SUBMIT"
 
 
 def build_html(g: dict) -> str:
@@ -169,13 +166,13 @@ def build_html(g: dict) -> str:
 <body><header><div class="wrap head"><p class="brand">KANLERGEMSDOE1 / DOE GEMS PRIZE / SUBMISSION DESK</p><h1>Download &amp; submit</h1>
 <nav class="nav" aria-label="Primary"><a href="submit-now.html" aria-current="page">Download &amp; submit</a><a href="index.html">Status</a><a href="executive-summary.html">Executive summary</a><a href="how-to-submit.html">How to submit</a><a href="sources.html">Sources</a></nav></div></header>
 <main class="wrap">
-<div class="banner" role="status" style="border-color:#3dcc8a">
-<strong>VERDICT: OK TO DOWNLOAD AND SUBMIT <code>{esc(dl_name)}</code></strong>
-<p>This file passes every automated gate: official format, independent validator, and the detector-only uniqueness audit against {g['uniq']['reference_count']} local reference rasters (<a href="#irregularities">irregularities below</a>). The <strong>organizer score is unknown</strong>. No human inspection is required. The file was not uploaded by the agent. The portal upload is your action, and the weekly cap is shown on the DrivenData submission page.</p>
+<div class="banner" role="status" style="border-color:#d9534f">
+<strong>VERDICT: RESEARCH HOLD — DO NOT DOWNLOAD OR SUBMIT A CANDIDATE</strong>
+<p>The candidate passes local format checks but fails the literal uniqueness gate against the r13 lattice, and the full registry has not been checked. Detector-only uniqueness is not a substitute for the required rule. There is no authorized submission file; no slot was used.</p>
 </div>
 
-<h2>1. Download</h2>
-<p><a class="dl" href="downloads/{esc(dl_name)}">Download the .tif (recommended, {v['bytes']:,} bytes)</a> &nbsp; <a class="dl ghost" href="downloads/{esc(RECOMMENDED_STEM)}.zip">or the .zip (contains the same .tif)</a></p>
+<h2>1. No submission download is authorized</h2>
+<p>The historic GeoTIFF is retained as research evidence only; it is deliberately not linked as a submission download. Resume only after the registry is complete and all surface and final-dot uniqueness checks pass.</p>
 <table><tbody>
 <tr><th>File</th><td><code>{esc(dl_name)}</code></td></tr>
 <tr><th>SHA-256 (validated bytes)</th><td><code>{esc(v['sha256'])}</code></td></tr>
@@ -184,7 +181,7 @@ def build_html(g: dict) -> str:
 <tr><th>Format</th><td>single-band float32 GeoTIFF, EPSG:32611, 3730 x 3292, 100 m, same bounds as sample_submission.tif</td></tr>
 </tbody></table>
 
-<h2>2. Portal fields (copy exactly)</h2>
+<h2>2. Reserved tracking metadata (not authorization to submit)</h2>
 <table><tbody>
 <tr><th>Unique name</th><td><code>{esc(SUBMISSION_NAME)}</code></td></tr>
 <tr><th>Note</th><td><code>{esc(SUBMISSION_NOTE)}</code> <small>({len(SUBMISSION_NOTE)} / 140 characters)</small></td></tr>
@@ -192,18 +189,18 @@ def build_html(g: dict) -> str:
 
 <h2>3. Steps</h2>
 <ol>
-<li>Click the download button above and keep the file unchanged (do not rename it or re-save it).</li>
-<li>Open the DrivenData submission page and choose <strong>File to submit</strong> → the .tif above.</li>
-<li>Paste the name and note from section 2.</li>
-<li>Check the weekly cap shown on the submission page before submitting. This page cannot see it.</li>
-<li>Submit, then record the portal receipt score. A portal receipt is the only way to turn a proxy into an <em>ORGANIZER-CONFIRMED</em> value.</li>
+<li>Do not upload a research artifact. When a candidate is independently cleared, download the approved GeoTIFF and keep it unchanged.</li>
+<li>Do not proceed while the status is RESEARCH HOLD. The historical file and metadata below are not approved for upload.</li>
+<li>After a separately authorized selector clears a future artifact, follow the competition's current submission form and validate its exact file, name, and note.</li>
+<li>Check the weekly cap shown on the authenticated submission page; this project cannot see the cap or submit on your behalf.</li>
+<li>If a future authorized upload is made, retain the organizer receipt; only that receipt can establish an <em>ORGANIZER-CONFIRMED</em> score.</li>
 </ol>
 
 <h2>4. Estimated score (honest)</h2>
 <p><strong>Official public leaderboard snapshot (2026-10-29):</strong> #1 {LB[0]:.4f} · #2 {LB[1]:.4f} · #3 {LB[2]:.4f} (public test set; <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">live leaderboard</a>).</p>
 <p><strong>Estimated organizer score for this file: unknown.</strong> The best available estimate is the projection in the table, <em>not</em> a score. It rests on 12 user-reported points, an extrapolation beyond the fitted range, and a counterexample (<code>r13</code>). The benchmark to beat is 0.2778 (GEMSDOE32, USER-REPORTED) and 0.4413 (current leaderboard top, as stated in the prompt).</p>
 <table>
-<thead><tr><th>Candidate</th><th>File to download</th><th>Dots</th><th>SGMC-CAL HOLDOUT-DTI (re-run today)</th><th>HIDE-RECOVER HOLDOUT-DTI (fold-local, repo-reported)</th><th>Organizer estimate</th><th>Unique vs local registry?</th><th>Verdict</th></tr></thead>
+<thead><tr><th>Candidate</th><th>Historical artifact (not cleared)<th>Dots</th><th>SGMC-CAL HOLDOUT-DTI (re-run today)</th><th>HIDE-RECOVER HOLDOUT-DTI (fold-local, repo-reported)</th><th>Organizer estimate</th><th>Unique vs local registry?</th><th>Verdict</th></tr></thead>
 <tbody>{''.join(rows_html)}</tbody></table>
 <p><small>Labels: <strong>HOLDOUT-DTI</strong> = our evaluator (<code>GEMSDOE32-SGMC-CAL-v3.0</code>, n = {sg['n_withheld_positives']:,} withheld positives, cluster-bootstrap 95% CI). <strong>PROJECTION</strong> = linear fit of user-reported organizer scores on SGMC-CAL (n = {fit['n']}, slope {fit['slope']:.3f}, residual SD {fit['residual_sd']:.4f}); not a score. <strong>USER-REPORTED</strong> = leaderboard ledger supplied in the prompt, not a receipt.</small></p>
 
@@ -246,10 +243,10 @@ def exec_block(g: dict) -> str:
             f"<td>{'YES (detector-only)' if u['detector_only_rule_passed'] else 'NO'}</td>"
             f"<td><strong>{esc(verdict_for(item, is_rec))}</strong></td></tr>"
         )
-    return (EX_BEGIN + "<section><h2>Which file to download and submit (2026-10-29)</h2>"
-            "<p>Estimated organizer score for the recommended file is <strong>unknown</strong>; see "
-            "<a href=\"submit-now.html\">Download &amp; submit</a> for steps, portal name/note, irregularities and sources.</p>"
-            "<table><thead><tr><th>File to download</th><th>SGMC-CAL HOLDOUT-DTI (re-run)</th><th>Organizer estimate</th>"
+    return (EX_BEGIN + "<section><h2>Submission status: RESEARCH HOLD (2026-10-31)</h2>"
+            "<p>No candidate is cleared for download or upload. Organizer score is <strong>unknown</strong>; no projection is an admissible score. See "
+            "<a href=\"submit-now.html\">submission desk</a> for gates, limitations, and sources.</p>"
+            "<table><thead><tr><th>Historical artifact (not cleared)</th><th>SGMC-CAL HOLDOUT-DTI (re-run)</th><th>Organizer estimate (not a score)</th>"
             "<th>Unique (local registry, detector-only)</th><th>Verdict</th></tr></thead><tbody>"
             + "".join(trs) + "</tbody></table></section>" + EX_END)
 
@@ -300,8 +297,8 @@ def build_card(g: dict) -> dict:
         "submission_note": SUBMISSION_NOTE,
         "submission_note_characters": len(SUBMISSION_NOTE),
         "organizer_estimate": {"value": None, "status": "UNKNOWN", "projection_not_a_score": rr["organizer_projection"]},
-        "ok_to_download_and_submit": True,
-        "verdict": "promote-to-download (automated gates PASS); score unverified",
+        "ok_to_download_and_submit": False,
+        "verdict": "negative — RESEARCH HOLD; literal uniqueness fails and registry coverage is incomplete",
         "uploaded_by_agent": False,
     }
 
