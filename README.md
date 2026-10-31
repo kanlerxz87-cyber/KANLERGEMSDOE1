@@ -21,7 +21,8 @@ End-to-end geological feature engineering, fold-local hide-and-recover evaluatio
 
 > - **Additional blocker (2026-10-31, supplementary):** [`docs/review-20261031-labels.md`](docs/review-20261031-labels.md) and `evidence/label_integrity_20261031.json` show `labels.tif` and `existing_faults.tif` are byte-identical in the restored owner mirror (60,988 positives each). The official page describes the test labels as *new* faults, so any holdout built on this mirror is invalid until the organizer download is compared.
 
-> - **Nine-site table, KANLER1 candidate status (HOLD), and dilation experiment (negative as a download):** [`docs/review-20261031-nine-site-dilation.md`](docs/review-20261031-nine-site-dilation.md). Shared-tool fix today: `scripts/evaluate_holdout.py` now accepts the official NaN-outside format in its diagnostic path.
+> - **Nine-site computed audit (exact-pixel Jaccard, SGMC-CAL recomputed, all values HOLD-provisional):** [`docs/nine-site-summary.html`](docs/nine-site-summary.html) (`scripts/build_nine_site_summary.py`, evidence `evidence/nine_site_summary.json`).
+- **Nine-site table, KANLER1 candidate status (HOLD), and dilation experiment (negative as a download):** [`docs/review-20261031-nine-site-dilation.md`](docs/review-20261031-nine-site-dilation.md). Shared-tool fix today: `scripts/evaluate_holdout.py` now accepts the official NaN-outside format in its diagnostic path.
 
 ## 1. Six Byte-Verified Dataset & Portal Irregularities Flagged
 

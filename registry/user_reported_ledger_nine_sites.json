@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "label": "USER-REPORTED",
+  "source": "Leaderboard/result lines supplied by the user in the session prompt (2026-10-31). These are NOT submission-page receipts and NOT verified against DrivenData. Transcribed verbatim; typos kept.",
+  "sites": {
+    "GEMSDOE24": {"url": "https://buffedlizard55-lab.github.io/GEMSDOE24/", "entries": [
+      {"id": "h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan", "score": 0.2477},
+      {"id": "gems24-gvc1-negative-geothermal-lineament-submod-20261025-abe8e51c719d-zeros", "score": 0.0859}
+    ]},
+    "GEMSDOE25": {"url": "https://buffedlizard55-lab.github.io/GEMSDOE25/", "entries": [
+      {"id": "dotted-h19-5-d2-8-20261002-e56ea318af89-nan", "score": 0.2600},
+      {"id": "gems25-h66-mgd-flank-sapd3-0-k3p5-20261025-da617550a0e9-zeros", "score": 0.0742}
+    ]},
+    "GEMSDOE27": {"url": "https://buffedlizard55-lab.github.io/GEMSDOE27/", "entries": [
+      {"id": "topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan", "score": 0.2449},
+      {"id": "gems27-h29-hydrothermal-piedmont-celf-20261025-511898747886-allfinite", "score": 0.2190},
+      {"id": "gems27-h31-drcg-wl-celf28-20261026-cf8e1bbef244-allfinite", "score": 0.2250}
+    ]},
+    "GEMSDOE28": {"url": "https://buffedlizard55-lab.github.io/GEMSDOE28/", "entries": [
+      {"id": "h27-4-r1-solo-d2-8-20261003-8acb75e1f2cc-nan", "score": 0.2708},
+      {"id": "h32-1-prethin-tip-euler-d2-8-20261003-31e35eee884e-nan", "score": 0.2649},
+      {"id": "h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan", "score": 0.2710},
+      {"id": "h38-1-hf-euler-r30-r1-20261003-56a9f473edc7-nan", "score": 0.2707},
+      {"id": "gems28-s18-mxtp-20261025-3e95505c011a-allfinite", "score": 0.0217},
+      {"id": "gems28-s21-puhgb-20261026-16bbf281ba9b-allfinite", "score": 0.0206}
+    ]},
+    "GEMSDOE30": {"url": "https://buffedlizard55-lab.github.io/GEMSDOE30/", "entries": [
+      {"id": "d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca", "score": 0.2600},
+      {"id": "gems30-MSDB1-edge44090-20261025-e7856ec3f14a", "score": 0.1462}
+    ]},
+    "GEMSDOE31": {"url": "https://buffedlizard55-lab.github.io/GEMSDOE31/docs/", "entries": [
+      {"id": "h27-4-solo-d28-20261004-8acb75e1-nan", "score": 0.2708}
+    ]},
+    "GEMSDOE32": {"url": "https://buffedlizard55-lab.github.io/GEMSDOE32/docs/index.html", "entries": [
+      {"id": "h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros", "score": 0.2778}
+    ]},
+    "GEMSDOE33": {"url": "https://buffedlizard55-lab.github.io/GEMSDOE33/", "entries": [
+      {"id": "h33d-analog-tip-stepover-r30-20261004-cb490425926e", "score": 0.2632},
+      {"id": "gemsdoe33-s33-seisdil-strain-seismicity-37654-20261026-3463540a7e02-zeros", "score": 0.0963}
+    ]},
+    "GEMSDOE36": {"url": "https://buffedlizard55-lab.github.io/GEMSDOE36/docs/", "entries": [
+      {"id": "anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros", "score": 0.2750},
+      {"id": "gemsdoe36-kpl36-exp3-20261026-fc869911e88c-zeros", "score": 0.1647}
+    ]}
+  }
+}
