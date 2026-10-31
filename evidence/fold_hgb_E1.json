@@ -1,0 +1,272 @@
+{
+  "schema": "fold-local-lane-run/v1",
+  "experiment": "E1",
+  "generated_utc": "2026-10-31T00:38:10.505558+00:00",
+  "lane": "HGB-FOLDLOCAL",
+  "model_bands": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    11,
+    12,
+    13,
+    14,
+    15,
+    17,
+    18,
+    19
+  ],
+  "budget_frac": 0.007286874781441169,
+  "params": {
+    "nms_radius_px": 0,
+    "b_visible_px": 2.0,
+    "neg_sample": 300000,
+    "seed": 20261031
+  },
+  "evaluator": {
+    "hide_recover": "GEMSDOE32-HIDE-RECOVER-v3.1",
+    "sgmc": "GEMSDOE32-SGMC-CAL-v3.0"
+  },
+  "leakage_canary": [
+    {
+      "band": 1,
+      "feature_seismic_excluded_from_model": false,
+      "max_cell_auc": 0.5798605376766091,
+      "mean_cell_auc": 0.5263551230004828,
+      "leakage_flag_over_0.90": false
+    },
+    {
+      "band": 2,
+      "feature_seismic_excluded_from_model": false,
+      "max_cell_auc": 0.5736888762428048,
+      "mean_cell_auc": 0.5338384001901877,
+      "leakage_flag_over_0.90": false
+    },
+    {
+      "band": 3,
+      "feature_seismic_excluded_from_model": false,
+      "max_cell_auc": 0.5636908653421633,
+      "mean_cell_auc": 0.5320251574470307,
+      "leakage_flag_over_0.90": false
+    },
+    {
+      "band": 4,
+      "feature_seismic_excluded_from_model": false,
+      "max_cell_auc": 0.5453577289377289,
+      "mean_cell_auc": 0.5250104783143286,
+      "leakage_flag_over_0.90": false
+    },
+    {
+      "band": 5,
+      "feature_seismic_excluded_from_model": false,
+      "max_cell_auc": 0.5800016291390728,
+      "mean_cell_auc": 0.5449920215535662,
+      "leakage_flag_over_0.90": false
+    },
+    {
+      "band": 6,
+      "feature_seismic_excluded_from_model": false,
+      "max_cell_auc": 0.5911986269315673,
+      "mean_cell_auc": 0.5507976642990324,
+      "leakage_flag_over_0.90": false
+    },
+    {
+      "band": 7,
+      "feature_seismic_excluded_from_model": false,
+      "max_cell_auc": 0.5520444922737306,
+      "mean_cell_auc": 0.5341612406376708,
+      "leakage_flag_over_0.90": false
+    },
+    {
+      "band": 8,
+      "feature_seismic_excluded_from_model": false,
+      "max_cell_auc": 0.5459164115646258,
+      "mean_cell_auc": 0.5207142497892672,
+      "leakage_flag_over_0.90": false
+    },
+    {
+      "band": 9,
+      "feature_seismic_excluded_from_model": false,
+      "max_cell_auc": 0.522397746511628,
+      "mean_cell_auc": 0.5100768735498404,
+      "leakage_flag_over_0.90": false
+    },
+    {
+      "band": 10,
+      "feature_seismic_excluded_from_model": true,
+      "max_cell_auc": 0.5500520826792256,
+      "mean_cell_auc": 0.524908279569954,
+      "leakage_flag_over_0.90": false
+    },
+    {
+      "band": 11,
+      "feature_seismic_excluded_from_model": false,
+      "max_cell_auc": 0.5914397346774194,
+      "mean_cell_auc": 0.5411062229859568,
+      "leakage_flag_over_0.90": false
+    },
+    {
+      "band": 12,
+      "feature_seismic_excluded_from_model": false,
+      "max_cell_auc": 0.632763870203695,
+      "mean_cell_auc": 0.5500650992735857,
+      "leakage_flag_over_0.90": false
+    },
+    {
+      "band": 13,
+      "feature_seismic_excluded_from_model": false,
+      "max_cell_auc": 0.5699271612903226,
+      "mean_cell_auc": 0.5216052961854324,
+      "leakage_flag_over_0.90": false
+    },
+    {
+      "band": 14,
+      "feature_seismic_excluded_from_model": false,
+      "max_cell_auc": 0.5705176268969125,
+      "mean_cell_auc": 0.520507488165468,
+      "leakage_flag_over_0.90": false
+    },
+    {
+      "band": 15,
+      "feature_seismic_excluded_from_model": false,
+      "max_cell_auc": 0.5920241290322581,
+      "mean_cell_auc": 0.5370885771482612,
+      "leakage_flag_over_0.90": false
+    },
+    {
+      "band": 16,
+      "feature_seismic_excluded_from_model": true,
+      "max_cell_auc": 0.5778940698587127,
+      "mean_cell_auc": 0.5314703281243547,
+      "leakage_flag_over_0.90": false
+    },
+    {
+      "band": 17,
+      "feature_seismic_excluded_from_model": false,
+      "max_cell_auc": 0.5875940685504971,
+      "mean_cell_auc": 0.5312552541818527,
+      "leakage_flag_over_0.90": false
+    },
+    {
+      "band": 18,
+      "feature_seismic_excluded_from_model": false,
+      "max_cell_auc": 0.6093346445916115,
+      "mean_cell_auc": 0.5420032075145167,
+      "leakage_flag_over_0.90": false
+    },
+    {
+      "band": 19,
+      "feature_seismic_excluded_from_model": false,
+      "max_cell_auc": 0.6368250793462813,
+      "mean_cell_auc": 0.5557147957445452,
+      "leakage_flag_over_0.90": false
+    }
+  ],
+  "leakage_canary_max_auc": 0.6368250793462813,
+  "cells": {
+    "draw20_fold0": {
+      "eligible_px": 1057472,
+      "budget_n": 7706,
+      "emitted": 7706
+    },
+    "draw20_fold1": {
+      "eligible_px": 1312230,
+      "budget_n": 9562,
+      "emitted": 9562
+    },
+    "draw20_fold2": {
+      "eligible_px": 1267039,
+      "budget_n": 9233,
+      "emitted": 9233
+    },
+    "draw20_fold3": {
+      "eligible_px": 1020792,
+      "budget_n": 7438,
+      "emitted": 7438
+    },
+    "draw21_fold0": {
+      "eligible_px": 1058346,
+      "budget_n": 7712,
+      "emitted": 7712
+    },
+    "draw21_fold1": {
+      "eligible_px": 1311630,
+      "budget_n": 9558,
+      "emitted": 9558
+    },
+    "draw21_fold2": {
+      "eligible_px": 1266337,
+      "budget_n": 9228,
+      "emitted": 9228
+    },
+    "draw21_fold3": {
+      "eligible_px": 1019994,
+      "budget_n": 7433,
+      "emitted": 7433
+    }
+  },
+  "hide_and_recover": {
+    "candidate_id": "E1",
+    "evaluator_version": "GEMSDOE32-HIDE-RECOVER-v3.1",
+    "score_label": "HOLDOUT-DTI",
+    "prediction_mode": "per_cell",
+    "catalogue_feature_provenance_verified": false,
+    "promotion_evidence": false,
+    "provenance_warning": "Fold-local array inputs alone cannot prove visible-only feature construction; require an independent replay.",
+    "b_visible_px": 2.0,
+    "n_withheld_positives": 22232,
+    "n_spatial_clusters": 140,
+    "n_bootstrap_reps": 1000,
+    "pooled_dti": 0.03879566443699499,
+    "ci95_cluster_bootstrap": [
+      0.02802227915782939,
+      0.05058978851434196
+    ],
+    "fold_mean_dti": 0.03960589428919768,
+    "per_quadrant_dti": {
+      "NW": 0.03234125972406999,
+      "NE": 0.055516923473449456,
+      "SW": 0.019635835457586043,
+      "SE": 0.05092955850168523
+    },
+    "per_cell_dti": {
+      "draw20_fold0": 0.038877,
+      "draw20_fold1": 0.05703,
+      "draw20_fold2": 0.026876,
+      "draw20_fold3": 0.073336,
+      "draw21_fold0": 0.025805,
+      "draw21_fold1": 0.054004,
+      "draw21_fold2": 0.012396,
+      "draw21_fold3": 0.028523
+    }
+  },
+  "sgmc_off_catalogue_draw20_composite": {
+    "candidate_id": "E1",
+    "evaluator_version": "GEMSDOE32-SGMC-CAL-v3.0",
+    "score_label": "HOLDOUT-DTI",
+    "n_withheld_positives": 62703,
+    "n_spatial_clusters": 140,
+    "n_bootstrap_reps": 1000,
+    "sgmc_raw_pooled_dti": 0.019173687351228902,
+    "sgmc_raw_ci95": [
+      0.014653204997015565,
+      0.024574782705712103
+    ],
+    "sgmc_prevalence_calibrated_dti": 0.013058008019747316,
+    "sgmc_calibrated_ci95": [
+      0.01030405766741324,
+      0.01592973360952776
+    ]
+  },
+  "score_labels": {
+    "hide_recover": "HOLDOUT-DTI (GEMSDOE32-HIDE-RECOVER-v3.1, N=22232, 95% CI [0.02802227915782939, 0.05058978851434196])",
+    "sgmc": "HOLDOUT-DTI (GEMSDOE32-SGMC-CAL-v3.0, N=62703, 95% CI [0.01030405766741324, 0.01592973360952776] [calibrated])"
+  },
+  "elapsed_seconds": 196.4
+}

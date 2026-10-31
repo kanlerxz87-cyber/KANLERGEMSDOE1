@@ -1,0 +1,29 @@
+{
+  "schema": "submission-file-validation/v1",
+  "file": "docs/downloads/kanlergemsdoe1-hgb-foldlocal-nms3-b2-20261031T005029Z-48e16833-nan.tif",
+  "tif_member": "kanlergemsdoe1-hgb-foldlocal-nms3-b2-20261031T005029Z-48e16833-nan.tif",
+  "tif": {
+    "checks": {
+      "driver_GTiff": true,
+      "single_band": true,
+      "dtype_float32": true,
+      "crs_epsg_32611": true,
+      "shape_3730x3292": true,
+      "transform_matches_template": true,
+      "no_nan_or_inf_inside_footprint": true,
+      "values_in_0_1_inside_footprint": true,
+      "outside_footprint_is_nan": true,
+      "footprint_identical_to_template": true
+    },
+    "all_passed": true,
+    "nodata_tag": "nan",
+    "positive_pixels_inside_footprint": 35435,
+    "min_inside": 0.0,
+    "max_inside": 1.0,
+    "distinct_values_inside": 2,
+    "sha256": "4291b456c1019f467592aa13847b3fb2a78fc8ef27cb62e5508df1ab8bc2490f",
+    "bytes": 345581
+  },
+  "all_passed": true,
+  "verdict": "PASS: automated official-format validation"
+}

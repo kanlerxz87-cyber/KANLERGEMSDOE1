@@ -1,0 +1,164 @@
+{
+  "schema": "run-card/v1",
+  "session": "2026-10-31",
+  "branch": "arena/4c317c68-kanlergemsdoe1",
+  "hypothesis": "Off-catalogue faults under Quaternary cover can be recovered by a fold-local learned hazard over geophysical bands (H-HGB), and/or by structure-tensor strike coherence (H-ST, untested).",
+  "recommended_file": {
+    "download": "docs/downloads/kanlergemsdoe1-DOWNLOAD-ocda-mscs-exp3-nan.tif",
+    "identical_to": "docs/downloads/gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-nan.tif",
+    "sha256": "06ccd852475120cbdff86732252478096c821babe6e608aae9e66945cc7c4bb2",
+    "lane": "OCDA-MSCS EXP-3 (H-K1-A, 3/3), recorded in docs/evidence/run_card_ocda_mscs.json",
+    "mechanism": "Quaternary piedmont/relay-zone dots from catalogue-derived features with coordinate-band suppression of upland SGMC",
+    "named_non_fault_mimic": "Upland drainage/alluvial-fan edges and tilt-angle ridges from topography (suppressed by coordinate bands in OCDA, not eliminated)",
+    "holdout_dti": {
+      "label": "HOLDOUT-DTI",
+      "evaluator": "GEMSDOE32-HIDE-RECOVER-v3.1",
+      "n_withheld_positives": 22232,
+      "pooled": 0.10583,
+      "ci95": [
+        0.095019,
+        0.115257
+      ],
+      "status": "ADMISSIBLE_FOLD_LOCAL",
+      "source": "docs/evidence/run_card_ocda_mscs.json (recorded; NOT re-run in this session)",
+      "paired_delta_vs_incumbent": {
+        "delta": 0.006627,
+        "ci95": [
+          -0.003423,
+          0.015957
+        ],
+        "note": "CI crosses zero: not a significant gain"
+      }
+    },
+    "sgmc_calibrated": {
+      "label": "HOLDOUT-DTI",
+      "evaluator": "GEMSDOE32-SGMC-CAL-v3.0",
+      "n_withheld_positives": 62703,
+      "value": 0.05004,
+      "source": "docs/evidence/run_card_ocda_mscs.json",
+      "note": "below incumbent 0.064121"
+    },
+    "organizer_score": "UNKNOWN (no portal receipt; not a projection)"
+  },
+  "validator": {
+    "command": "scripts/validate_submission_file.py",
+    "verdict": "PASS: automated official-format validation",
+    "checks_all_true": true,
+    "positive_pixels_in_footprint": 37649,
+    "min_inside": 0.0,
+    "max_inside": 1.0,
+    "crs": "EPSG:32611",
+    "shape": [
+      3730,
+      3292
+    ],
+    "transform": [
+      100.0,
+      0.0,
+      243350.0,
+      0.0,
+      -100.0,
+      4508550.0
+    ],
+    "evidence": "evidence/validation_kanlergemsdoe1-DOWNLOAD-ocda-mscs-exp3-nan.json"
+  },
+  "uniqueness": {
+    "registry": "720 GeoTIFFs from 9 GEMSDOE owner repos (github.com/buffedlizard55-lab/GEMSDOE24,25,27,28,30,31,32,33,36), input layers under data/ excluded",
+    "rule_space_filling_aware": "PASS (no duplicates); worst |rho| 0.0375; worst within-3px 0.9994 vs 13gems lattice (space-filling, coverage 0.9987, null-calibrated excess 0.5046 < 0.70)",
+    "rule_literal": "FAIL only on GEMSDOE24 inputs/calibration/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif (coverage 0.9987); no non-empty dot file can pass this clause",
+    "evidence": "evidence/owner_registry_uniqueness_ocda_mscs_exp3_20261031_sf.json"
+  },
+  "experiments_this_session": {
+    "budget": "3 experiments (protocol cap reached)",
+    "results": {
+      "E1": {
+        "nms_radius_px": 0,
+        "b_visible_px": 2.0,
+        "holdout_dti_hide_recover": 0.038796,
+        "ci95": [
+          0.028022,
+          0.05059
+        ],
+        "n_withheld_positives": 22232,
+        "evaluator": "GEMSDOE32-HIDE-RECOVER-v3.1",
+        "sgmc_calibrated_draw20_composite": 0.013058,
+        "sgmc_calibrated_ci95": [
+          0.010304,
+          0.01593
+        ],
+        "sgmc_evaluator": "GEMSDOE32-SGMC-CAL-v3.0",
+        "evidence": "evidence/fold_hgb_E1.json"
+      },
+      "E2": {
+        "nms_radius_px": 3,
+        "b_visible_px": 2.0,
+        "holdout_dti_hide_recover": 0.062693,
+        "ci95": [
+          0.055837,
+          0.069047
+        ],
+        "n_withheld_positives": 22232,
+        "evaluator": "GEMSDOE32-HIDE-RECOVER-v3.1",
+        "sgmc_calibrated_draw20_composite": 0.0445,
+        "sgmc_calibrated_ci95": [
+          0.038656,
+          0.049785
+        ],
+        "sgmc_evaluator": "GEMSDOE32-SGMC-CAL-v3.0",
+        "evidence": "evidence/fold_hgb_E2.json"
+      },
+      "E3": {
+        "nms_radius_px": 5,
+        "b_visible_px": 2.0,
+        "holdout_dti_hide_recover": 0.046295,
+        "ci95": [
+          0.040863,
+          0.051155
+        ],
+        "n_withheld_positives": 22232,
+        "evaluator": "GEMSDOE32-HIDE-RECOVER-v3.1",
+        "sgmc_calibrated_draw20_composite": 0.034832,
+        "sgmc_calibrated_ci95": [
+          0.031727,
+          0.037528
+        ],
+        "sgmc_evaluator": "GEMSDOE32-SGMC-CAL-v3.0",
+        "evidence": "evidence/fold_hgb_E3.json"
+      }
+    },
+    "verdict": "NEGATIVE: all three below the recorded holdout best 0.1058 (OCDA) and below incumbent 0.099202; E2 best of the three"
+  },
+  "leakage_canary": {
+    "test": "single-band AUC on hidden truth vs active background, per cell, 19 bands",
+    "max_auc": 0.6368,
+    "threshold": 0.9,
+    "passed": true,
+    "evidence": "evidence/fold_hgb_E1.json"
+  },
+  "submission": {
+    "name_for_portal": "kanlergemsdoe1-ocda-mscs-exp3-nan.tif",
+    "note_<=140": "KANLER1 OCDA-MSCS Exp3 fold-local PU-HGB+300m CELF 37649d; HOLDOUT-DTI 0.1058 (organizer unscored)",
+    "note_length": 98,
+    "file_format": "single-band float32 GeoTIFF with one raster layer at 100 m (official rules NLR 96647 \u00a73.2); NaN-outside is the repo validator's requirement citing the DrivenData format page, which is login-walled here and unverified"
+  },
+  "verdict": "PROMOTE-TO-SELECTOR (recommended download; literal uniqueness clause blocked by an unsatisfiable registry raster; team sign-off required). Not submitted by the agent.",
+  "not_claimed": [
+    "Organizer score",
+    "Leaderboard rank",
+    "Any projection of 0.2778/0.3195/0.4413 to this file"
+  ],
+  "next_steps": [
+    "Validate H-ST (structure-tensor strike coherence) on the spatially blocked holdout before spending any slot",
+    "Team decision on the literal uniqueness clause vs the 13gems lattice raster (I-1)",
+    "Verify the NaN-outside and zeros-outside formats against the DrivenData format page and portal receipts (I-4, I-5)",
+    "Write the generative-AI disclosure into the submission narrative (official rules \u00a73.2)",
+    "Re-check the leaderboard ledger against the live page (I-3)"
+  ],
+  "limitations": [
+    "Organizer score unknown; no portal receipt",
+    "Holdout is a fold-local proxy, not the organizer metric (I-6)",
+    "Owner-repo mirrors are not organizer-authenticated (I-7)",
+    "Three-experiment budget spent; H-ST untested",
+    "OCDA evidence values recorded in docs/evidence/run_card_ocda_mscs.json, not re-run this session"
+  ]
+}

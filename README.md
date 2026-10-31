@@ -1,7 +1,7 @@
 # `KANLERGEMSDOE1` — DOE GEMS Prize Research, Fold-Local Validation, Uniqueness & Submission Gate System
 
 [![Competition](https://img.shields.io/badge/DrivenData-DOE_GEMS_Prize_(306)-d08a4c)](https://www.drivendata.org/competitions/306/competition-doe-gems/)
-[![Download Verdict](https://img.shields.io/badge/Download_verdict-OK_for_one_file_(see_submit--now)-3dcc8a)](docs/submit-now.html)
+[![Download Verdict](https://img.shields.io/badge/Download_verdict-2026--10--31_see_executive_summary-f5c542)](docs/executive-summary-20261031.html)
 [![Tests](https://img.shields.io/badge/Automated_Gate_Tests-Passing-3dcc8a)](#7-autonomous-reproduction-commands)
 
 End-to-end geological feature engineering, fold-local hide-and-recover evaluation, 60-raster multi-site uniqueness auditing, automated 15-check GeoTIFF validation, and fail-closed GitHub Pages desk ([Executive summary](docs/executive-summary.html) · [Focus-site scorecard](docs/focus-sites-review-20261028.html) · [Submission gate](docs/how-to-submit.html) · [Latest review](docs/review-20261029.md) · [Prior review](docs/review-20261028.md)) for the [**DOE Geothermal Exploration Machine Learning (GEMS) Prize**](https://www.drivendata.org/competitions/306/competition-doe-gems/).
@@ -10,7 +10,24 @@ End-to-end geological feature engineering, fold-local hide-and-recover evaluatio
 
 ---
 
-## 0. START HERE — Download verdict (2026-10-29)
+## 0. START HERE — Download verdict (2026-10-31, supersedes 2026-10-29)
+
+> **VERDICT: DOWNLOAD ONE FILE — [`docs/executive-summary-20261031.html`](docs/executive-summary-20261031.html). Team sign-off on one literal-rule clause is required before submitting.**
+>
+> - **File:** [`docs/downloads/kanlergemsdoe1-DOWNLOAD-ocda-mscs-exp3-nan.tif`](docs/downloads/kanlergemsdoe1-DOWNLOAD-ocda-mscs-exp3-nan.tif) (byte-identical to the OCDA-MSCS EXP-3 NaN TIFF; SHA-256 `06ccd852475120cbdff86732252478096c821babe6e608aae9e66945cc7c4bb2`). Note (98 chars): see the executive summary §5.
+> - **Estimated score: HOLDOUT-DTI 0.1058** (GEMSDOE32-HIDE-RECOVER-v3.1, N = 22,232, 95% CI [0.0950, 0.1153]; ADMISSIBLE_FOLD_LOCAL; recorded in `docs/evidence/run_card_ocda_mscs.json`, not re-run). Paired gain over the incumbent is not significant. **Organizer score: UNKNOWN.**
+> - **Automated gates:** validator PASS (`evidence/validation_kanlergemsdoe1-DOWNLOAD-ocda-mscs-exp3-nan.json`). Uniqueness PASS under the documented space-filling rule against 720 owner-repo rasters (`evidence/owner_registry_uniqueness_ocda_mscs_exp3_20261031_sf.json`). Literal rule FAILS for every possible dot file, because of the `13gems` lattice raster (99.87% coverage). This is open decision I-1.
+> - **Superseded:** the 2026-10-29 "OK to download" file (`gemsdoe32-kanler1-uwbp-drcs-exp3-…-nan.tif`) is a duplicate of the 13gems lattice under the documented rule (excess 0.81 > 0.70). Do not submit it. Its earlier PASS checked only 23 local references.
+> - **Experiments this session:** fold-local HGB, three runs (E1 0.0388, E2 0.0627, E3 0.0463; HOLDOUT-DTI). All negative against 0.1058. Run card: `evidence/run_card_20261031.json`. Hypotheses: `docs/research/hypotheses-20261031.md`.
+> - **Uploading is a user action.** The agent has no DrivenData auth and did not submit anything.
+> - **Irregularities** (I-1 to I-10, including ledger vs live leaderboard mismatch and zeros-outside top files for GEMSDOE32 and GEMSDOE36) are in the executive summary §6.
+> - **Next steps:** (1) validate the structure-tensor hypothesis H-ST on the holdout first; (2) team decision on the literal uniqueness clause; (3) verify the NaN/zeros format against the DrivenData format page; (4) write the generative-AI disclosure into the narrative (official rules §3.2); (5) re-check the leaderboard ledger.
+> - **Limitations:** organizer score unknown; holdout is a fold-local proxy; owner-repo mirrors are not organizer-authenticated; experiment budget spent, so H-ST is untested.
+
+<details>
+<summary><strong>Superseded 2026-10-29 verdict (kept for the record)</strong></summary>
+
+## 0a. Download verdict (2026-10-29) — SUPERSEDED
 
 > **VERDICT: OK TO DOWNLOAD AND SUBMIT ONE FILE — [`docs/submit-now.html`](docs/submit-now.html).**
 >
@@ -20,6 +37,10 @@ End-to-end geological feature engineering, fold-local hide-and-recover evaluatio
 > - **Uploading is your action.** The agent has no DrivenData auth and did not submit anything.
 > - **Everything else on this site is historical research and stays DO NOT SUBMIT.** The GEMSDOE focus rasters are other teams' submissions and are not to be resubmitted.
 > - **Open decisions for the team:** whether to exempt the saturating `r13-lattice-s5_v2` reference from the literal uniqueness rule; whether to use probability-valued (non-binary) submissions; and the weekly cap on the portal.
+
+</details>
+
+---
 
 ## 1. Six Byte-Verified Dataset & Portal Irregularities Flagged
 
@@ -76,6 +97,8 @@ bash scripts/download_competition_data.sh
 ---
 
 ## 5. Standing Prompt Reference (Stored Verbatim in `README.md`, `docs/ORIGINAL_PROMPT.md` & `docs/REQUEST_20261027.md`)
+
+> **2026-10-31 request:** the condensed requirement list is in [`docs/ORIGINAL_PROMPT_20261031.md`](docs/ORIGINAL_PROMPT_20261031.md). It is explicitly not verbatim. The full wording is in the session transcript. The rules in that file are active.
 
 <details>
 <summary><strong>Click to expand full prompt governing this repository</strong></summary>

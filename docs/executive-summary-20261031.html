@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Executive summary 2026-10-31 · KANLER GEMS</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+ table.t { width:100%; border-collapse:collapse; font-size:.92rem; margin:.6rem 0 1.2rem; }
+ table.t th, table.t td { border:1px solid var(--line); padding:.45rem .55rem; text-align:left; vertical-align:top; }
+ table.t th { background:var(--bg2); }
+ .tag { display:inline-block; font-size:.72rem; padding:.05rem .4rem; border-radius:4px; border:1px solid var(--line); color:var(--muted); }
+ .tag.user { color:var(--warn); border-color:var(--warn); }
+ .tag.ok { color:var(--good); border-color:var(--good); }
+ .tag.bad { color:var(--bad); border-color:var(--bad); }
+ .muted { color:var(--muted); }
+ .verdict { border:2px solid var(--good); border-radius:10px; padding:1rem 1.2rem; background:var(--card); }
+</style></head>
+<body><header><div class="wrap head"><p class="brand">KANLERGEMSDOE1 / DOE GEMS PRIZE / EXECUTIVE SUMMARY</p>
+<h1>Executive summary — 2026-10-31</h1>
+<nav class="nav" aria-label="Primary"><a href="index.html">Status</a><a href="executive-summary-20261031.html" aria-current="page">Executive summary</a><a href="executive-summary.html">Earlier summary</a><a href="submit-now.html">Earlier verdict (superseded)</a><a href="how-to-submit.html">Submission gate</a></nav></div></header>
+<main class="wrap">
+
+<div class="verdict" role="status">
+<h2 style="margin-top:0">VERDICT — download ONE file, then submit it only after the uniqueness sign-off below</h2>
+<p><b>Download:</b> <a href="downloads/kanlergemsdoe1-DOWNLOAD-ocda-mscs-exp3-nan.tif"><code>kanlergemsdoe1-DOWNLOAD-ocda-mscs-exp3-nan.tif</code></a>
+(SHA-256 <code>06ccd852475120cbdff86732252478096c821babe6e608aae9e66945cc7c4bb2</code>; byte-identical to <code>gemsdoe32-kanler1-ocda-mscs-exp3-37654d-20261027T1842Z-1db32b55-nan.tif</code>)</p>
+<ul>
+<li><b>Format — PASS:</b> automated validator (no human inspector): single-band float32 GeoTIFF, EPSG:32611, 3730×3292, template transform, 37,649 dots, values exactly 0 or 1 inside the footprint, NaN outside. The validator checks the [0, 1] condition that the portal's “Predicted values must be in range [0, 1]” error enforces. Passing it is necessary, not a guarantee of acceptance.</li>
+<li><b>Uniqueness — PASS under the repo's documented space-filling rule</b> against 720 GeoTIFFs in the nine GEMSDOE owner repos (|rho| ≤ 0.0375; no 3-px overlap above 0.70 after null calibration). <b>Literal rule — FAIL, but unavoidable:</b> one registry raster (<code>GEMSDOE24/inputs/calibration/13gems_20261001_r13-lattice-s5_v2_nan-outside.tif</code>) covers 99.87% of the footprint, so every dot file lands within 3 px of it. <b>Team decision required</b> before submitting.</li>
+<li><b>Estimated score:</b> <span class="tag">HOLDOUT-DTI 0.1058</span> (evaluator GEMSDOE32-HIDE-RECOVER-v3.1, N = 22,232 withheld positives, 95% CI [0.0950, 0.1153]; status ADMISSIBLE_FOLD_LOCAL; recorded in <code>docs/evidence/run_card_ocda_mscs.json</code>, not re-run here). Its paired gain over the 0.0992 incumbent is <b>not significant</b> (CI [−0.0034, +0.0160]).</li>
+<li><b>Organizer score: UNKNOWN.</b> No portal receipt is available to this sandbox. Holdout values are not on the leaderboard scale and must not be read as a leaderboard forecast.</li>
+<li><b>Do NOT submit</b> the earlier “OK to download” file <code>gemsdoe32-kanler1-uwbp-drcs-exp3…-nan.tif</code>: it passes the format check but fails uniqueness (it is a duplicate of the 13gems lattice under the documented rule, excess 0.81 &gt; 0.70). Its earlier PASS was checked against only 23 local references.</li>
+</ul>
+<p class="muted">The agent did not submit anything. Upload is a user action on DrivenData.</p>
+</div>
+
+<h2>1. Per-site view (nine focus sites)</h2>
+<p>Scores in this table are <span class="tag user">USER-REPORTED</span> (the ledger in the request). They are <b>not</b> portal receipts. The file for each site was located in the owner repository and hashed. The last two columns compare our recommended file, and the earlier UWBP file, with that site's top file.</p>
+<table class="t"><thead><tr><th>Site</th><th>Top listed score</th><th>Top file (owner repo)</th><th>SHA-256 (16)</th><th>Recommended file vs this site: 3-px overlap / |phi|</th><th>Earlier UWBP file vs this site</th></tr></thead>
+<tbody><tr><td><b>GEMSDOE24</b></td><td>0.2477 <span class='tag user'>USER-REPORTED</span></td><td><code>gems24-h25-1-dotted-h19-5-d1-5-20261002-989f59505db1-nan.tif</code><br><span class='muted'>dotted H19-5 d1.5 (NaN)</span></td><td><code>68d0e2e4fcc594f9</code></td><td>33.8% / |phi| 0.0062 <span class='tag ok'>not duplicate</span></td><td>21.8% / |phi| 0.0023</td></tr><tr><td><b>GEMSDOE25</b></td><td>0.2600 <span class='tag user'>USER-REPORTED</span></td><td><code>gems25-dotted-h19-5-d2-8-20261002-e56ea318af89-nan.tif</code><br><span class='muted'>dotted H19-5 d2.8 (NaN)</span></td><td><code>91eae1ca42ec845e</code></td><td>32.2% / |phi| 0.0041 <span class='tag ok'>not duplicate</span></td><td>20.6% / |phi| 0.0016</td></tr><tr><td><b>GEMSDOE27</b></td><td>0.2449 <span class='tag user'>USER-REPORTED</span></td><td><code>gems27-topo-gap-closure-t-v2-on-d1-5-20261002-5512495c6bd1-nan.tif</code><br><span class='muted'>topo gap-closure (NaN)</span></td><td><code>33003374335d84bf</code></td><td>35.0% / |phi| 0.0068 <span class='tag ok'>not duplicate</span></td><td>22.2% / |phi| 0.0023</td></tr><tr><td><b>GEMSDOE28</b></td><td>0.2710 <span class='tag user'>USER-REPORTED</span></td><td><code>gems28-h36-1-rung30-blind-r1-20261003-b531dae0a36f-nan.tif</code><br><span class='muted'>H36-1 rung30 blind (NaN)</span></td><td><code>5556aa1438fd6737</code></td><td>30.4% / |phi| 0.0053 <span class='tag ok'>not duplicate</span></td><td>19.7% / |phi| 0.0025</td></tr><tr><td><b>GEMSDOE30</b></td><td>0.2600 <span class='tag user'>USER-REPORTED</span></td><td><code>gemsdoe30-d28-poisson300m-offcat-44090-20261003T233156Z-91eae1ca-nanoutside.tif</code><br><span class='muted'>D2.8 Poisson off-cat (nan-outside)</span></td><td><code>5f963b8bca5ec226</code></td><td>32.2% / |phi| 0.0041 <span class='tag ok'>not duplicate</span></td><td>20.6% / |phi| 0.0016</td></tr><tr><td><b>GEMSDOE31</b></td><td>0.2708 <span class='tag user'>USER-REPORTED</span></td><td><code>gemsdoe31-h27-4-solo-d28-20261004-8acb75e1-nan.tif</code><br><span class='muted'>H27-4 solo D2.8 (NaN)</span></td><td><code>07b6db440535404b</code></td><td>30.9% / |phi| 0.0050 <span class='tag ok'>not duplicate</span></td><td>20.1% / |phi| 0.0024</td></tr><tr><td><b>GEMSDOE32</b></td><td>0.2778 <span class='tag user'>USER-REPORTED</span></td><td><code>gemsdoe32-h33-h33-2-b2-20261004T220000Z-e5eb6e7e-zeros.tif</code><br><span class='muted'>H33-2 B2 — ZEROS outside (see irregularities)</span></td><td><code>c55bafc470054e82</code></td><td>29.5% / |phi| 0.0054 <span class='tag ok'>not duplicate</span></td><td>19.5% / |phi| 0.0024</td></tr><tr><td><b>GEMSDOE33</b></td><td>0.2632 <span class='tag user'>USER-REPORTED</span></td><td><code>GEMSDOE33-h33d-analog-tip-stepover-r30-20261004-cb490425926e-nanoutside.tif</code><br><span class='muted'>H33d analog tip (nan-outside)</span></td><td><code>bc3af2a5fcb4b49b</code></td><td>31.8% / |phi| 0.0048 <span class='tag ok'>not duplicate</span></td><td>20.7% / |phi| 0.0025</td></tr><tr><td><b>GEMSDOE36</b></td><td>0.2750 <span class='tag user'>USER-REPORTED</span></td><td><code>gemsdoe36-anderson-geothermal-pinn-38854-20261004T230000Z-9b9ea4e6-zeros.tif</code><br><span class='muted'>Anderson PINN (ZEROS outside)</span></td><td><code>e15891020b9c5705</code></td><td>30.0% / |phi| 0.0056 <span class='tag ok'>not duplicate</span></td><td>20.2% / |phi| 0.0026</td></tr></tbody></table>
+<p class="muted">Highest listed site score: GEMSDOE32 (0.2778). Checked by reading each file: seven of the nine top files are NaN-outside; GEMSDOE32 and GEMSDOE36 top files are zeros-outside (see irregularities I-4 and I-5). No site file is a duplicate of the recommended file (3-px overlap ≤ 35%, |phi| ≤ 0.007).</p>
+
+<h2>2. Candidate files and their estimates</h2>
+<table class="t"><thead><tr><th>File</th><th>Role</th><th>Holdout estimate</th><th>Validator</th><th>Uniqueness (owner registry)</th><th>Decision</th></tr></thead><tbody>
+<tr><td><code>kanlergemsdoe1-DOWNLOAD-ocda-mscs-exp3-nan.tif</code><br><span class="muted">SHA 06ccd852475120cb…</span></td><td>Best tested unique file (copy of OCDA-MSCS EXP-3, same bytes)</td>
+<td>0.1058 <span class="tag">HOLDOUT-DTI</span> [0.0950, 0.1153], N=22,232</td><td><span class="tag ok">PASS</span></td>
+<td>Space-filling rule <span class="tag ok">PASS</span> · literal <span class="tag bad">FAIL (13gems lattice)</span></td><td><b>DOWNLOAD (after sign-off)</b></td></tr>
+<tr><td><code>kanlergemsdoe1-hgb-foldlocal-nms3-b2-…-nan.tif</code><br><span class="muted">SHA 4291b456c1019f46…</span></td><td>New file generated this session (fold-local HGB, 3-px thinning)</td>
+<td>0.0627 <span class="tag">HOLDOUT-DTI</span> [0.0558, 0.0690], N=22,232; SGMC-CAL 0.0445</td>
+<td><span class="tag ok">PASS</span></td><td>Space-filling <span class="tag ok">PASS</span> · literal <span class="tag bad">FAIL (13gems lattice)</span></td><td>Valid, unique alternative; lower holdout than OCDA</td></tr>
+<tr><td><code>gemsdoe32-kanler1-uwbp-drcs-exp3-…-nan.tif</code><br><span class="muted">SHA 2693c2daf87bd794…</span></td><td>Previous “OK to download” verdict</td>
+<td>0.0648 <span class="tag">HOLDOUT-DTI</span> [0.0574, 0.0718] (recorded); SGMC-CAL 0.0892</td><td><span class="tag ok">PASS</span></td>
+<td><span class="tag bad">FAIL</span> — duplicate of 13gems lattice (excess 0.81 &gt; 0.70)</td><td><b>DO NOT SUBMIT</b> (superseded)</td></tr>
+</tbody></table>
+
+<h2>3. Experiments run this session (budget: 3 experiments, reached)</h2>
+<p>Lane: fold-local histogram gradient boosting on the 17 non-seismic bands, trained only on the visible catalogue with a 1.5 km collar; B = 2 px visible gate; budget matched to 37,654 dots. Shared evaluator <code>gems32.holdout.evaluate_hide_and_recover</code> (unmodified). The earthquake-derived bands 10 (deq_n100a15) and 16 (ieq_n100a15) are excluded from the model.</p>
+<table class="t"><thead><tr><th>Run</th><th>Emission</th><th>Pooled DTI</th><th>95% CI</th><th>N withheld</th><th>Result</th></tr></thead><tbody>
+<tr><td>E1</td><td>no thinning</td><td>0.0388 <span class='tag'>HOLDOUT-DTI</span></td><td>[0.0280, 0.0506]</td><td>22,232</td><td> NEGATIVE vs 0.1058</td></tr><tr><td>E2</td><td>3 px local-max thinning</td><td>0.0627 <span class='tag'>HOLDOUT-DTI</span></td><td>[0.0558, 0.0690]</td><td>22,232</td><td><b>best of three</b> NEGATIVE vs 0.1058</td></tr><tr><td>E3</td><td>5 px local-max thinning</td><td>0.0463 <span class='tag'>HOLDOUT-DTI</span></td><td>[0.0409, 0.0512]</td><td>22,232</td><td> NEGATIVE vs 0.1058</td></tr></tbody></table>
+<p>Leakage canary (Rule 4): the highest single-band AUC on hidden truth vs background is <b>0.637</b> (threshold 0.90) — no leakage flag. None of the three experiments beats the recorded holdout best (0.1058) or the incumbent (0.0992). Negative results are logged, not hidden.</p>
+
+<h2>4. Next steps and hypotheses</h2>
+<p>Full ranked hypotheses: <a href="research/hypotheses-20261031.md"><code>docs/research/hypotheses-20261031.md</code></a>. Top untested idea: a multi-scale <b>structure-tensor</b> strike-coherence map on the RTP magnetic field and isostatic gravity gradient. The repo has no structure-tensor work (keyword search: 0 hits), so it's new. It was not validated here because the experiment budget is spent, and the first action for the next session is to validate it on the holdout.</p>
+
+<h2>5. How to submit (after sign-off)</h2>
+<ol>
+<li>Sign in at the DrivenData competition page and open <i>New submission</i>.</li>
+<li><b>File to submit:</b> choose <code>kanlergemsdoe1-DOWNLOAD-ocda-mscs-exp3-nan.tif</code> (official rules §3.2: a single GeoTIFF with a single raster layer at 100 m; a zip wrapper is not required).</li>
+<li><b>Note (≤ 140 characters, 98 used):</b> <code>KANLER1 OCDA-MSCS Exp3 fold-local PU-HGB+300m CELF 37649d; HOLDOUT-DTI 0.1058 (organizer unscored)</code></li>
+<li>Expected result: no “Predicted values must be in range [0, 1]” error. If the portal reports anything else, record the exact text in <code>evidence/</code> and stop.</li>
+<li>Official rules §3.2 allow three submissions per week. Check your count on the portal before uploading.</li>
+</ol>
+
+<h2>6. Irregularities flagged for review</h2>
+<ul>
+<li><b>I-1 Uniqueness (literal).</b> No non-empty dot file can satisfy the literal ≤ 70% 3-px rule against the 13gems lattice (99.87% coverage). The team must decide whether the documented space-filling exemption is valid. Repo open decision, now confirmed by the full registry audit.</li>
+<li><b>I-2 Previous verdict was wrong.</b> The UWBP-DRCS-EXP3 file was declared unique after checking only 23 local references. Checked against the full owner registry it fails.</li>
+<li><b>I-3 Ledger vs live leaderboard.</b> The request quotes a leaderboard high of 0.4413 and says 0.3195 is the highest. On the live DrivenData leaderboard (fetched today) #1 is 0.4544 and #2 is 0.3925; ranks 1–22 on the fetched page are all above 0.34. The 0.4413 and 0.3195 figures do not match.</li>
+<li><b>I-4 GEMSDOE32 top file is a zeros-outside variant.</b> The repo's validator requires NaN outside the footprint, citing the DrivenData format page. The official rules (NLR 96647 §3.2) defer format to that page, which this sandbox cannot access, so the NaN rule is repo-sourced and unverified here. The 0.2778 entry is <code>…-zeros.tif</code>. Verify the required format and the portal receipt before relying on either.</li>
+<li><b>I-5 GEMSDOE36 top file is zeros-outside too</b> (<code>…-zeros.tif</code>, 0.2750).</li>
+<li><b>I-6 Holdout is not the organizer metric.</b> Holdout values (≈0.10) and organizer values (≈0.27–0.28) are on different scales. No projection is made.</li>
+<li><b>I-7 Data provenance.</b> Competition rasters were restored from SHA-256-pinned owner mirrors on GitHub (not from DrivenData, which requires login). Hashes prove mirror consistency only. <code>sample_submission.tif</code> is an unauthenticated mirror.</li>
+<li><b>I-8 Filename prefix.</b> The shared writer defaulted to <code>gemsdoe32-</code>, which reads like GEMSDOE32's own upload. New files use the <code>kanlergemsdoe1-</code> prefix; older files keep the old name.</li>
+<li><b>I-9 OCDA target mismatch.</b> The OCDA file has 37,649 positives against a 37,654 filename target.</li>
+<li><b>I-10 Generative-AI disclosure.</b> Official rules §3.2 require the submission narrative to state the extent and manner of any generative-AI use. This work used AI tools. The disclosure must be written into the narrative before any submission (the repo's AI_DISCLOSURE.md is a starting point, not the final text).</li>
+</ul>
+
+<h2>7. Reproduce</h2>
+<pre style="white-space:pre-wrap;font-size:.85rem">bash scripts/download_competition_data.sh
+.venv/bin/python scripts/run_fold_hgb_lane.py --experiment E2 --nms 3 --b 2
+.venv/bin/python scripts/build_hgb_submission.py --nms 3 --b 2 --slug hgb-foldlocal-nms3-b2 --candidate-id kanler1-hgb-foldlocal-nms3-b2 --note "…"
+.venv/bin/python scripts/validate_submission_file.py docs/downloads/kanlergemsdoe1-DOWNLOAD-ocda-mscs-exp3-nan.tif
+.venv/bin/python scripts/audit_owner_registry.py --owner-dir /tmp/owners --candidate docs/downloads/kanlergemsdoe1-DOWNLOAD-ocda-mscs-exp3-nan.tif --space-filling-coverage 0.70 --out evidence/owner_registry_uniqueness_ocda_mscs_exp3_20261031_sf.json
+.venv/bin/python scripts/site_pair_overlap.py
+.venv/bin/python scripts/build_executive_summary_20261031.py</pre>
+<p class="muted">Owner repos are cloned with <code>git clone --depth 1 https://github.com/buffedlizard55-lab/GEMSDOE&lt;NN&gt;.git</code> into <code>/tmp/owners</code> (outside the repository). Official sources: <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/page/967/">problem page</a> · <a href="https://www.drivendata.org/competitions/306/competition-doe-gems/leaderboard/">leaderboard</a> · <a href="https://github.com/drivendataorg/gems-prize-reference-solution">reference solution</a> · <a href="https://docs.nlr.gov/docs/fy26osti/96647.pdf">submission PDF (NLR 96647)</a> · <a href="https://community.drivendata.org/t/scoring-clarification-are-known-usgs-ingenious-faults-masked-when-scoring-and-are-they-in-the-final-round-label-set/11516/4">forum #11516</a>.</p>
+</main>
+<footer class="wrap muted" style="padding:1rem 0">Generated by <code>scripts/build_executive_summary_20261031.py</code> from evidence JSON. No number on this page is hand-typed.</footer>
+</body></html>
